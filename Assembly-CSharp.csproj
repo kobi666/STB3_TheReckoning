@@ -44,7 +44,8 @@
     <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
-  <ItemGroup>     <Compile Include="Assets\Utils.cs" />
+  <ItemGroup>     <Compile Include="Assets\TestWeapon.cs" />
+     <Compile Include="Assets\Utils.cs" />
      <Compile Include="Assets\WeaponController.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>E:/_UnityProjects/Super Tower Brothers 3 - The Reckoning/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
