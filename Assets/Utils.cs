@@ -28,6 +28,16 @@ public class Utils : MonoBehaviour
         return TargetGO;
     }
 
+    public GameObject IdentifyCollidingUnitNearestToPathEndWithTag(Collider2D _col, string _tag) {
+        
+        if (_col.gameObject.tag == _tag) {
+            return Utils.FindObjectNearestToEndToEndOfSplineInGOLayer(_col.gameObject);
+        }
+        else {
+        return null;
+        }  
+    }
+
     public static Action DBG(string s) {
         Debug.Log(s);
         return null;

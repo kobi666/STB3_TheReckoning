@@ -62,7 +62,12 @@ public class WeaponController : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other) {
         if (other.gameObject.tag == "Enemy") {
             EnemyTargetIdentified();
+            Debug.Log(other.gameObject.name + "  On Stay");
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log(other.gameObject.name + " Entered");
     }
 
 
@@ -70,7 +75,7 @@ public class WeaponController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.tag == "Enemy") {
             EnemyLeftRange();
-            Debug.Log(other.gameObject.name);
+            Debug.Log(other.gameObject.name + " Exited");
         }
     }
 }
