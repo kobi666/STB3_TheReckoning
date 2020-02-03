@@ -47,7 +47,7 @@ public class WeaponController : MonoBehaviour
         rangeCollider.radius = range;
     }
 
-    public GameObject IdentifyUnitNearestToPathEnd(Collider2D _col, string _tag) {
+    public GameObject IdentifyCollidingUnitNearestToPathEndWithTag(Collider2D _col, string _tag) {
         
         if (_col.gameObject.tag == _tag) {
             return Utils.FindObjectNearestToEndToEndOfSplineInGOLayer(_col.gameObject);
