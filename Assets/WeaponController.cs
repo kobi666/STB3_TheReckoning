@@ -20,14 +20,6 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    public void stam() {
-        Debug.Log("Meshy is pretty");
-    }
-
-    public void stam2 () {
-        Debug.Log("stam");
-    }
-
     
 
     private void Awake() {
@@ -47,23 +39,12 @@ public class WeaponController : MonoBehaviour
         rangeCollider.radius = range;
     }
 
-    public GameObject IdentifyCollidingUnitNearestToPathEndWithTag(Collider2D _col, string _tag) {
-        
-        if (_col.gameObject.tag == _tag) {
-            return Utils.FindObjectNearestToEndToEndOfSplineInGOLayer(_col.gameObject);
-        }
-        else {
-        return null;
-        }  
-    }
+    
 
 
     // Update is called once per frame
     private void OnTriggerStay2D(Collider2D other) {
-        if (other.gameObject.tag == "Enemy") {
-            EnemyTargetIdentified();
-            Debug.Log(other.gameObject.name + "  On Stay");
-        }
+        Debug.Log(other.gameObject.name + "  On Stay");
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -73,9 +54,6 @@ public class WeaponController : MonoBehaviour
 
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.tag == "Enemy") {
-            EnemyLeftRange();
-            Debug.Log(other.gameObject.name + " Exited");
-        }
+        Debug.Log(other.gameObject.name + " Exited");
     }
 }
