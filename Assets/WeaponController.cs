@@ -7,8 +7,8 @@ using UnityEngine.Events;
 public class WeaponController : MonoBehaviour
 {
     
-    public GameObject EnemyTarget;
-
+    
+    Collider2D[] Collisions;
     public event Action<GameObject> _OnTargetCheck;
     public void OnTargetCheck(GameObject self) {
         if (_OnTargetCheck != null) {
@@ -16,16 +16,14 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    public void SetEnemyTarget(GameObject __self) {
-        EnemyTarget = FindEnemyNearestToEndOfPath(__self);
-    }
+    
 
 
     public GameObject[] GetCollidingObjectsOfType (GameObject SelfGO, string ObjectType)
     {
         
         LayerMask lm = LayerMask.NameToLayer(ObjectType);
-        Collider2D[] Collisions = Physics2D.OverlapCircleAll(SelfGO.transform.position, SelfGO.GetComponent<CircleCollider2D>().radius, 1 << lm);
+        Collisions = Physics2D.OverlapCircleAll(SelfGO.transform.position, SelfGO.GetComponent<CircleCollider2D>().radius, 1 << lm);
         // Collider2D[] Collisions = Physics2D.OverlapCircleAll(GO.transform.position, GO.GetComponent<CircleCollider2D>().radius - 0.2f, 1 << lm);
         GameObject[] GOs = new GameObject[Collisions.Length];
         for (int i = 0 ; i <= Collisions.Length-1 ; i++) {
@@ -71,15 +69,11 @@ public class WeaponController : MonoBehaviour
     
 
     private void Awake() {
-        rangeCollider = gameObject.GetComponent<CircleCollider2D>();
-        rangeCollider.radius = range;
-        
+
     }
 
     // private event Action _checkForSurroundingUnits
 
-    public float range;
-    private CircleCollider2D rangeCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -97,14 +91,14 @@ public class WeaponController : MonoBehaviour
     // }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        OnTargetCheck(gameObject);
+        OnTargetCheck(this.gameObject);
         Debug.Log(other.gameObject.name + " Entered");
     }
 
 
 
     private void OnTriggerExit2D(Collider2D other) {
-        OnTargetCheck(gameObject);
+        OnTargetCheck(this.gameObject);
         Debug.Log(other.gameObject.name + " Exited");
     }
 }

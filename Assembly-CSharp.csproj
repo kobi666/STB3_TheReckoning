@@ -44,7 +44,9 @@
     <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
-  <ItemGroup>     <Compile Include="Assets\Scripts\Classes\GO_PRXM.cs" />
+  <ItemGroup>     <Compile Include="Assets\ProjectileController.cs" />
+     <Compile Include="Assets\Scripts\Classes\GO_PRXM.cs" />
+     <Compile Include="Assets\Scripts\Classes\NativeClasses.cs" />
      <Compile Include="Assets\TestProjectileWeapon.cs" />
      <Compile Include="Assets\Utils.cs" />
      <Compile Include="Assets\WeaponController.cs" />

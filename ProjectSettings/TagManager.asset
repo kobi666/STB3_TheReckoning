@@ -16,9 +16,9 @@ TagManager:
   - 
   - 
   - Enemy
-  - PUs
+  - PlayerUnits
   - Towers
-  - 
+  - Projectiles
   - 
   - 
   - 
@@ -43,6 +43,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Enemy
-    uniqueID: 40103167
+  - name: Towers
+    uniqueID: 2402036869
+    locked: 0
+  - name: Units
+    uniqueID: 4016471947
+    locked: 0
+  - name: Projectiles
+    uniqueID: 3768189027
     locked: 0
