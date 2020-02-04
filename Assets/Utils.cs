@@ -67,16 +67,23 @@ public class Utils : MonoBehaviour
         bool TargetWasHit = false;
         foreach (Collider2D col in collisions) 
         {
+            if (col == null) {
+                continue;
+            }
             if (col.gameObject.name == TargetGO.name) {
-                _HitTarget.Invoke();
+                TargetWasHit = true;
                 break;
             }
         }
         if (TargetWasHit) {
+            Debug.Log("Hit");
             _HitTarget.Invoke();
+            yield break;
         }
         else {
+            Debug.Log("miss");
             _missedTarget.Invoke();
+            yield break;
         }
             
              

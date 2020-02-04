@@ -92,13 +92,13 @@ public class WeaponController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         OnTargetCheck(this.gameObject);
-        Debug.Log(other.gameObject.name + " Entered");
+        //Debug.Log(other.gameObject.name + " Entered");
     }
 
 
 
     private void OnTriggerExit2D(Collider2D other) {
         OnTargetCheck(this.gameObject);
-        Debug.Log(other.gameObject.name + " Exited");
+        //Debug.Log(other.gameObject.name + " Exited");
     }
 }
