@@ -6,12 +6,59 @@ using UnityEngine.Events;
 [RequireComponent(typeof(CircleCollider2D))]
 public class WeaponController : MonoBehaviour
 {
-    public event Action<CircleCollider2D, Collider2D> _OnTargetCheck;
-    public void OnTargetCheck(CircleCollider2D col, Collider2D othercol) {
+    
+    public GameObject EnemyTarget;
+
+    public event Action<GameObject> _OnTargetCheck;
+    public void OnTargetCheck(GameObject self) {
         if (_OnTargetCheck != null) {
-            _OnTargetCheck.Invoke(col, othercol);
+            _OnTargetCheck.Invoke(self);
         }
     }
+
+    public void SetEnemyTarget(GameObject __self) {
+        EnemyTarget = FindEnemyNearestToEndOfPath(__self);
+    }
+
+
+    public GameObject[] GetCollidingObjectsOfType (GameObject SelfGO, string ObjectType)
+    {
+        
+        LayerMask lm = LayerMask.NameToLayer(ObjectType);
+        Collider2D[] Collisions = Physics2D.OverlapCircleAll(SelfGO.transform.position, SelfGO.GetComponent<CircleCollider2D>().radius, 1 << lm);
+        // Collider2D[] Collisions = Physics2D.OverlapCircleAll(GO.transform.position, GO.GetComponent<CircleCollider2D>().radius - 0.2f, 1 << lm);
+        GameObject[] GOs = new GameObject[Collisions.Length];
+        for (int i = 0 ; i <= Collisions.Length-1 ; i++) {
+            if (Collisions[i] == null) {
+                continue;
+            }
+            GOs[i] = Collisions[i].gameObject;
+        }
+        return GOs;
+    }
+
+    public GameObject[] GetEnemiesInRange(GameObject _self) {
+        GameObject[] Enemies = GetCollidingObjectsOfType(_self, "Enemy");
+        return Enemies;
+    }
+
+    public GameObject FindEnemyNearestToEndOfPath(GameObject self) {
+        GameObject target = null;
+        float LowestProximity = 999.0f;
+        foreach (GameObject Enemy in GetEnemiesInRange(self)) {
+            if (Enemy.GetComponent<BezierSolution.UnitWalker>().ProximityToEndOfSpline < LowestProximity) {
+                target = Enemy;
+                LowestProximity = Enemy.GetComponent<BezierSolution.UnitWalker>().ProximityToEndOfSpline;
+            }
+            else {
+                continue;
+            }
+        }
+        return target;
+    }
+
+    
+
 
     
 
@@ -26,12 +73,12 @@ public class WeaponController : MonoBehaviour
     private void Awake() {
         rangeCollider = gameObject.GetComponent<CircleCollider2D>();
         rangeCollider.radius = range;
+        
     }
 
     // private event Action _checkForSurroundingUnits
 
     public float range;
-    GameObject EnemyTarget;
     private CircleCollider2D rangeCollider;
 
     // Start is called before the first frame update
@@ -50,14 +97,14 @@ public class WeaponController : MonoBehaviour
     // }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        OnTargetCheck(rangeCollider, other);
+        OnTargetCheck(gameObject);
         Debug.Log(other.gameObject.name + " Entered");
     }
 
 
 
     private void OnTriggerExit2D(Collider2D other) {
-        OnTargetCheck(rangeCollider, other);
+        OnTargetCheck(gameObject);
         Debug.Log(other.gameObject.name + " Exited");
     }
 }
