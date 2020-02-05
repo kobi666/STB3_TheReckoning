@@ -19,6 +19,7 @@ public class TestProjectileWeapon : WeaponController
     public GameObject Projectile;
     public void CreateProjectile() {
         GameObject _projectile = GameObject.Instantiate(Projectile, this.gameObject.transform.position, Quaternion.identity);
+        _projectile.name = (_projectile.name+UnityEngine.Random.Range(10000, 99999));
         _projectile.GetComponent<ProjectileController>().Target = EnemyTarget;
     }
 

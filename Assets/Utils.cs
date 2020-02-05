@@ -5,6 +5,7 @@ using System;
 
 public class Utils : MonoBehaviour 
 {
+    
     // Start is called before the first frame update
     // public static GameObject FindObjectNearestToEndToEndOfSplineInGOLayer (GameObject SelfGO, Collider2D otherGO)
     // {
@@ -39,15 +40,17 @@ public class Utils : MonoBehaviour
         Self.transform.position = TargetPosition;
     }
 
-    public static IEnumerator MoveToTargetWithEvent(GameObject Self, Vector2 OriginPosition, Vector2 TargetPosition, float _speed, Action _actionEvent) {
+    public static IEnumerator MoveToTargetWithEvent(GameObject _selfGO, GameObject _targetGO, float _speed, Action _actionEvent) {
+        Vector2 OriginPosition = _selfGO.transform.position;
+        Vector2 TargetPosition =  _targetGO.transform.position;
         float step = (_speed / (OriginPosition - TargetPosition).magnitude * Time.fixedDeltaTime );
         float t = 0;
         while (t <= 1.0f) {
             t += step;
-            Self.transform.position = Vector2.Lerp(OriginPosition, TargetPosition, t);
+            _selfGO.transform.position = Vector2.Lerp(OriginPosition, TargetPosition, t);
             yield return new WaitForFixedUpdate();
         }
-        Self.transform.position = TargetPosition;
+        //_selfGO.transform.position = TargetPosition;
         _actionEvent.Invoke();
     }
 
@@ -62,14 +65,20 @@ public class Utils : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         Self.transform.position = TargetPosition;
-        Collider2D[] collisions = new Collider2D[20];
-        Physics2D.OverlapCollider(Self.GetComponent<CircleCollider2D>() ,FilterByLayerObject(TargetGO), collisions);
+        Collider2D[] collisions = Physics2D.OverlapCircleAll(OriginPosition, Self.GetComponent<CircleCollider2D>().radius, 1 << TargetGO.layer);
         bool TargetWasHit = false;
         foreach (Collider2D col in collisions) 
         {
+            
             if (col == null) {
+                Debug.Log("null colider");
                 continue;
+                
             }
+
+            Debug.Log("Collider Name: " + col.gameObject.name);
+            Debug.Log("TargetGO name: " + TargetGO.name);
+
             if (col.gameObject.name == TargetGO.name) {
                 TargetWasHit = true;
                 break;

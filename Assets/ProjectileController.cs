@@ -15,15 +15,24 @@ public class ProjectileController : MonoBehaviour
     public DamageRange _damageRange;
     
     public GameObject _target;
-    public GameObject Target { 
+    public GameObject Target { get => _target;
         set {
             _target = value;
-            StartCoroutine(Utils.ShootProjectileWithSingleTargetWithConfirmationEvents(gameObject, value, speed, MissedTarget, HitTarget));
+            Debug.Log(gameObject.name);
+            StartCoroutine(Utils.MoveToTargetWithEvent(gameObject, Target, speed, ReachedTarget));
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (Target != null || other != null) {
+            if (other.gameObject.name == Target.gameObject.name) {
+            HitTarget();
+            }
         }
     }
 
     public void HitTarget() {
-        Debug.Log("Target was hit");
+        //Debug.Log("Target was hit");
     }
 
     public void MissedTarget() {
@@ -31,18 +40,14 @@ public class ProjectileController : MonoBehaviour
     }
 
     
-    Vector2 _targetPosition;
-    public Vector2 TargetPosition {get => _targetPosition ;set {
-        _targetPosition = value;
-        //StartCoroutine(Utils.MoveToTargetWithEvent(gameObject, SelfPositon, _targetPosition, speed, ReachedTarget));
-        StartCoroutine(Utils.ShootProjectileWithSingleTargetWithConfirmationEvents(gameObject, _target, speed, MissedTarget, HitTarget));
-    }}
+    
+    
 
     void asdas () {
         Debug.Log("I did it");
     }
 
-    Vector2 SelfPositon;
+    
     event Action _reachedTarget;
     void ReachedTarget() {
         if (_reachedTarget != null) {
@@ -51,11 +56,11 @@ public class ProjectileController : MonoBehaviour
     }
 
     private void Awake() {
-        SelfPositon = gameObject.transform.position;
+        
     }
 
     private void Start() {
-        
+        _reachedTarget += asdas;
     }
 
     // IEnumerator MoveToTargetWithSpeed(GameObject Self, Vector2 OriginPosition, Vector2 TargetPosition, float _speed) {
