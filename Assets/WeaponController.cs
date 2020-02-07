@@ -68,18 +68,13 @@ public class WeaponController : MonoBehaviour
 
     
 
-    private void Awake() {
-
-    }
+    
 
     // private event Action _checkForSurroundingUnits
 
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
     
 

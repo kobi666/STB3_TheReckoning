@@ -18,7 +18,6 @@ public class ProjectileController : MonoBehaviour
     public GameObject Target { get => _target;
         set {
             _target = value;
-            Debug.Log(gameObject.name);
             StartCoroutine(Utils.MoveToTargetWithEvent(gameObject, Target, speed, ReachedTarget));
         }
     }
@@ -60,7 +59,7 @@ public class ProjectileController : MonoBehaviour
     }
 
     private void Start() {
-        _reachedTarget += asdas;
+        
     }
 
     // IEnumerator MoveToTargetWithSpeed(GameObject Self, Vector2 OriginPosition, Vector2 TargetPosition, float _speed) {
