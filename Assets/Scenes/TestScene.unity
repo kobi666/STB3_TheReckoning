@@ -149,6 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd269caabf3b21640bd50febeaa3a471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameTimeMultiplier: 1
+  GameTime: 0
   instance: {fileID: 0}
 --- !u!4 &41704194
 Transform:
@@ -1443,6 +1445,49 @@ MonoBehaviour:
     c2: 0
     c3: 0
     c4: 0
+--- !u!1 &1243179117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1243179118}
+  - component: {fileID: 1243179119}
+  m_Layer: 0
+  m_Name: SpawningPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1243179118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243179117}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -11.24, y: 3.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1574174087}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1243179119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243179117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33df68157a448534e92556aef0032d63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1258549232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,6 +1756,7 @@ Transform:
   - {fileID: 569593590}
   - {fileID: 369378504}
   - {fileID: 1971205598}
+  - {fileID: 1243179118}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1955,7 +2001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProximityToEndOfSpline: 0
   SplineLength: 0
-  spline: {fileID: 0}
+  spline: {fileID: 569593591}
   travelMode: 0
   IsWalking: 1
   speed: 3
@@ -2608,7 +2654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProximityToEndOfSpline: 0
   SplineLength: 0
-  spline: {fileID: 0}
+  spline: {fileID: 569593591}
   travelMode: 0
   IsWalking: 1
   speed: 1.5
@@ -2724,6 +2770,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2000761365}
+  - component: {fileID: 2000761366}
   m_Layer: 0
   m_Name: GameFlowManager
   m_TagString: Untagged
@@ -2745,6 +2792,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2000761366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000761364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34019037c33d41247b22df63a769449d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2009423122
 GameObject:
   m_ObjectHideFlags: 0
