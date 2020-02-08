@@ -41,14 +41,6 @@ public class ProjectileController : MonoBehaviour
     }
 
     
-    
-    
-
-    void asdas () {
-        Debug.Log("I did it");
-    }
-
-    
     event Action _reachedTarget;
     void ReachedTarget() {
         if (_reachedTarget != null) {
@@ -56,24 +48,9 @@ public class ProjectileController : MonoBehaviour
         }
     }
 
-    private void Awake() {
-        
-    }
+    
 
-    private void Start() {
-        
-    }
-
-    // IEnumerator MoveToTargetWithSpeed(GameObject Self, Vector2 OriginPosition, Vector2 TargetPosition, float _speed) {
-    //     float step = (_speed / (OriginPosition - TargetPosition).magnitude * Time.fixedDeltaTime );
-    //     float t = 0;
-    //     while (t <= 1.0f) {
-    //         t += step;
-    //         Self.transform.position = Vector2.Lerp(OriginPosition, TargetPosition, t);
-    //         yield return new WaitForFixedUpdate();
-    //     }
-    //     Self.transform.position = TargetPosition;
-    // }
+    
 
     
 

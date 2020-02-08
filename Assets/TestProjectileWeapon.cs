@@ -51,10 +51,11 @@ public class TestProjectileWeapon : WeaponController
     
 
     public GameObject Projectile;
-    public virtual void CreateProjectile() {
+    public void CreateProjectile() {
         //Debug.Log("I fired a projectile");
-        GameObject _projectile = GameObject.Instantiate(Projectile, this.gameObject.transform.position, Quaternion.identity);
+        GameObject _projectile = GameObject.Instantiate(Projectile, gameObject.transform.position, Quaternion.identity);
         _projectile.name = (_projectile.name+UnityEngine.Random.Range(10000, 99999));
+        _projectile.transform.parent = StaticObjects.PPH;
         _projectile.GetComponent<ProjectileController>()._damageRange = _damageRange;
         _projectile.GetComponent<ProjectileController>().Target = EnemyTarget;
     }
@@ -73,28 +74,18 @@ public class TestProjectileWeapon : WeaponController
     public GameObject EnemyTarget { get => _EnemyTarget ;  set {
         if (value != null) {
             _EnemyTarget = value;
-            //EnemyTargetIdentified();
+            EnemyTargetIdentified();
         }
         if (value == null) {
             _EnemyTarget = value;
             EnemyTargetRelease();
         }
     }}
-
-    
-
-
-    
-    
-
-
-
     public void SetSingleEnemyTarget(GameObject __self) {
         EnemyTarget = FindEnemyNearestToEndOfPath(__self);
     }
 
-    void Start()
-    {
+    private void Awake() {
         _OnTargetCheck += SetSingleEnemyTarget;
         _onShootprojectile += Shoot;
     }
