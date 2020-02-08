@@ -28,6 +28,7 @@ namespace BezierSolution
 		private static Material gizmoMaterial;
 
 		private List<BezierPoint> endPoints = new List<BezierPoint>();
+		public List<BezierPoint> _EndPoints {get => endPoints;}
 
 		public bool loop = false;
 		public bool drawGizmos = false;
