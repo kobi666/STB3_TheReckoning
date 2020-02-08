@@ -13,8 +13,10 @@ public class ProjectileController : MonoBehaviour
 
 [SerializeField]
     public DamageRange _damageRange;
+    public Damage_Type _damageType = new Damage_Type("normal");
     
     public GameObject _target;
+    public EnemyUnitController _EnemyUnitController {get => Target.GetComponent<EnemyUnitController>();}
     public GameObject Target { get => _target;
         set {
             _target = value;
@@ -23,7 +25,7 @@ public class ProjectileController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (Target != null || other != null) {
+        if (Target != null && other != null) {
             if (other.gameObject.name == Target.gameObject.name) {
             HitTarget();
             }
@@ -31,7 +33,7 @@ public class ProjectileController : MonoBehaviour
     }
 
     public void HitTarget() {
-        //Debug.Log("Target was hit");
+        _EnemyUnitController._UnitStats.DamageToUnit(UnityEngine.Random.Range(_damageRange.min, _damageRange.max), _damageType);
     }
 
     public void MissedTarget() {

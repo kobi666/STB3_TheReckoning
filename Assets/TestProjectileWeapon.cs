@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class TestProjectileWeapon : WeaponController
 {
 
-
+    public DamageRange _damageRange;
 
     public event Action _onShootprojectile;
     public void OnShootProjectile() {
@@ -36,7 +36,7 @@ public class TestProjectileWeapon : WeaponController
         _fireRate = value;
     }}
 
-    float fireCounter;
+    public float fireCounter;
 
     // Start is called before the first frame update
     // Do not Declare things in Awake, it overrides functions in parent class AwakeFunction!!
@@ -51,10 +51,11 @@ public class TestProjectileWeapon : WeaponController
     
 
     public GameObject Projectile;
-    public void CreateProjectile() {
+    public virtual void CreateProjectile() {
         //Debug.Log("I fired a projectile");
         GameObject _projectile = GameObject.Instantiate(Projectile, this.gameObject.transform.position, Quaternion.identity);
         _projectile.name = (_projectile.name+UnityEngine.Random.Range(10000, 99999));
+        _projectile.GetComponent<ProjectileController>()._damageRange = _damageRange;
         _projectile.GetComponent<ProjectileController>().Target = EnemyTarget;
     }
 

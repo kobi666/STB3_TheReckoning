@@ -47,7 +47,12 @@ public class Utils : MonoBehaviour
         float t = 0;
         while (t <= 1.0f) {
             t += step;
-            _selfGO.transform.position = Vector2.Lerp(OriginPosition, TargetPosition, t);
+            if (_targetGO != null) {
+            _selfGO.transform.position = Vector2.Lerp(OriginPosition, _targetGO.transform.position, t);
+            }
+            else {
+                _selfGO.transform.position = Vector2.Lerp(OriginPosition, TargetPosition, t);
+            }
             yield return new WaitForFixedUpdate();
         }
         //_selfGO.transform.position = TargetPosition;
@@ -98,18 +103,7 @@ public class Utils : MonoBehaviour
              
     }
 
-    public static ContactFilter2D FilterByLayerName(string _layerName) {
-        ContactFilter2D EF = new ContactFilter2D();
-        EF.SetLayerMask(LayerMask.NameToLayer("Enemy"));
-        return EF;
-    }
 
-    public static ContactFilter2D FilterByLayerObject(GameObject _go) {
-        ContactFilter2D EF = new ContactFilter2D();
-        LayerMask lm = _go.layer;
-        EF.SetLayerMask(_go.layer);
-        return EF;
-    }
 
 
     
