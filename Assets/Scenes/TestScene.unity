@@ -1457,7 +1457,7 @@ GameObject:
   - component: {fileID: 1243179119}
   m_Layer: 0
   m_Name: SpawningPoint
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1491,7 +1491,7 @@ MonoBehaviour:
   TestEnemyPrefab: {fileID: 7194456980094505919, guid: 44fd75bfdc979e74db3864817b932320,
     type: 3}
   PathsParentObject: {fileID: 0}
-  _splines: []
+  _splineGOs: []
   _initialPoints: []
 --- !u!1 &1258549232
 GameObject:
@@ -2615,6 +2615,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34019037c33d41247b22df63a769449d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TestSubwave:
+    _intervalBetweenSpawns: 0
+    _amountOfUnits: 0
+    _unitPrefab: {fileID: 0}
+    _splineOrder: 
+    _splinePosition: 0
+  Spawners: []
+  EnemyUnitPrefabs:
+  - {fileID: 7194456980094505919, guid: 44fd75bfdc979e74db3864817b932320, type: 3}
+  - {fileID: 0}
 --- !u!1 &2009423122
 GameObject:
   m_ObjectHideFlags: 0

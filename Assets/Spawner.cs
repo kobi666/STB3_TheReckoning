@@ -29,22 +29,45 @@ public class Spawner : MonoBehaviour
        
    }
 
+   public void SpawnSubWave(SubWave _subwave) {
+       switch(_subwave._splineOrder) {
+        case "random":
+            StartCoroutine(SpawnEnemiesToSplineAtInterval_RandomSpline( _subwave._amountOfUnits, _subwave._intervalBetweenSpawns, _subwave._unitPrefab ));
+            break;
+        case "single":
+            StartCoroutine(SpawnEnemiesToSplineAtInterval_SingleSpline( _subwave._amountOfUnits, _subwave._intervalBetweenSpawns, _subwave._unitPrefab, _subwave._splinePosition));
+            break;
+        case null:
+            Debug.Log("No Spline order set! Defaulting to Random!");
+            StartCoroutine(SpawnEnemiesToSplineAtInterval_RandomSpline( _subwave._amountOfUnits, _subwave._intervalBetweenSpawns, _subwave._unitPrefab ));
+            break;
+        }
+   }
+
    public void SpawnEnemyToSpline(GameObject _enemyGO, GameObject _spline, Vector2 _position) {
        GameObject E = GameObject.Instantiate(_enemyGO, _position, Quaternion.identity);
        E.name = (E.name + Random.Range(10000, 99999).ToString());
        E.GetComponent<BezierSolution.UnitWalker>().spline = _spline.GetComponent<BezierSolution.BezierSpline>();
    }
 
-    public IEnumerator SpawnEnemiesToSplineAtInterval (int numberOfEnemies, float intervalBetweenSpawns) {
+    public IEnumerator SpawnEnemiesToSplineAtInterval_SingleSpline (int numberOfEnemies, float intervalBetweenSpawns, GameObject _EnemySpawn, int _splinePosition) {
+        int pos;
+        if (_splinePosition == (-1)) {
+            pos = 1;
+            }
+        else {
+            pos = _splinePosition;
+            }
+        
         for (int i = 0 ; i < numberOfEnemies ; i++) {
-            SpawnEnemyToSpline(TestEnemyPrefab, SplineGOs[0],_initialPoints[0]);
+            SpawnEnemyToSpline(_EnemySpawn, SplineGOs[pos],_initialPoints[pos]);
             yield return new WaitForSeconds(intervalBetweenSpawns);
         }
         Debug.Log("Finished");
         yield break;
     }
 
-    public IEnumerator SpawnEnemiesToSplineAtInterval_RandomSpline (int numberOfEnemies, float intervalBetweenSpawns) {
+    public IEnumerator SpawnEnemiesToSplineAtInterval_RandomSpline (int numberOfEnemies, float intervalBetweenSpawns, GameObject _enemySpawn) {
         
         for (int i = 0 ; i < numberOfEnemies ; i++) {
             int r = Random.Range(0,SplineGOs.Count);
@@ -73,7 +96,7 @@ public class Spawner : MonoBehaviour
        _initialPoints = InitilizeInitPoints(SplineGOs);
        //SpawnEnemyToSpline(TestEnemyPrefab,SplineGOs[0],_initialPoints[0]);
        //StartCoroutine(SpawnEnemiesToSplineAtInterval(6, 2.0f));
-           StartCoroutine(SpawnEnemiesToSplineAtInterval_RandomSpline(20, 2.0f));
+       //StartCoroutine(SpawnEnemiesToSplineAtInterval_RandomSpline(20, 2.0f));
    }
 
    
