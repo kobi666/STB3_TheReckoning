@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-
+    public static WaveManager Instance;
+    public List<GameObject> Paths;
+    public Dictionary<string, GameObject> PathsDict = new Dictionary<string, GameObject>();
+    
     public SubWave TestSubwave;
     public List<Spawner> Spawners;
     public Dictionary<string, Spawner> SpawnerDict = new Dictionary<string, Spawner>();
@@ -18,6 +21,17 @@ public class WaveManager : MonoBehaviour
             if (_EnemyUnit != null) {
                 EnemisDict.Add(_EnemyUnit.name, _EnemyUnit);
             }
+        }
+    }
+
+    private void Awake() {
+        Instance = this;
+    }
+
+    void InitlizePaths() {
+        foreach (GameObject _path in GameObject.FindGameObjectsWithTag("Path")) {
+            Paths.Add(_path);
+            PathsDict.Add(_path.name, _path);
         }
     }
 
@@ -40,5 +54,7 @@ public class WaveManager : MonoBehaviour
         InitilizeSpawners();
         TestSubwave = new SubWave(2.0f, 16, EnemisDict["Akuma"], "random");
         Spawners[0].SpawnSubWave(TestSubwave);
+        Spawners[0].SpawnSubWave(TestSubwave);
+
     }
 }

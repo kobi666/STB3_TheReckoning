@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     // Start is called before the first frame update
+    WaveManager _waveManager = WaveManager.Instance;
     public GameObject TestEnemyPrefab;
    public GameObject PathsParentObject;
    [SerializeField]

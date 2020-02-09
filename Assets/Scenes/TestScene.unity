@@ -1742,7 +1742,7 @@ GameObject:
   - component: {fileID: 1574174087}
   m_Layer: 0
   m_Name: Path_1
-  m_TagString: Untagged
+  m_TagString: Path
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2615,6 +2615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34019037c33d41247b22df63a769449d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Paths: []
   TestSubwave:
     _intervalBetweenSpawns: 0
     _amountOfUnits: 0
