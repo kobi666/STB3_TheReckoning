@@ -5,14 +5,37 @@ using System;
 
 
 [System.Serializable]
-public class SubWave {
+public class Subwave {
+    public SubWavePackage Package;
+    [SerializeField]
+    public float StartupPauseSeconds;
+    public Subwave(SubWavePackage _subWavePackage, float _startupPauseSeconds) {
+        Package = _subWavePackage;
+        StartupPauseSeconds = _startupPauseSeconds;
+    }
+}
+
+[System.Serializable]
+public class Wave {
+    public Subwave[] Subwaves;
+    //PlaceHolder comment for effect on entire wave
+    public Wave(int _amountOfWaves) {
+        Subwaves = new Subwave[_amountOfWaves];
+    }
+}
+
+[System.Serializable]
+public class SubWavePackage {
     [SerializeField]
     public float _intervalBetweenSpawns;
     public int _amountOfUnits;
     public GameObject _unitPrefab;
     public string _splineOrder;
     public int _splinePosition;
-    public SubWave(float IntervalBetweenSpawns, int AmountOfUnits, GameObject UnitPrefab, string SplineOrder ) {
+    public float _timeToSpawnEntireSubwave() {
+        return (_intervalBetweenSpawns * _amountOfUnits);
+    }
+    public SubWavePackage(float IntervalBetweenSpawns, int AmountOfUnits, GameObject UnitPrefab, string SplineOrder ) {
         _intervalBetweenSpawns = IntervalBetweenSpawns;
         _amountOfUnits = AmountOfUnits;
         _unitPrefab = UnitPrefab;
@@ -20,7 +43,7 @@ public class SubWave {
         _splinePosition = -1;
     }
 
-    public SubWave(float IntervalBetweenSpawns, int AmountOfUnits, GameObject UnitPrefab, string SplineOrder, int SplinePosition ) {
+    public SubWavePackage(float IntervalBetweenSpawns, int AmountOfUnits, GameObject UnitPrefab, string SplineOrder, int SplinePosition ) {
         _intervalBetweenSpawns = IntervalBetweenSpawns;
         _amountOfUnits = AmountOfUnits;
         _unitPrefab = UnitPrefab;

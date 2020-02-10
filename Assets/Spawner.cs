@@ -8,8 +8,17 @@ public class Spawner : MonoBehaviour
     WaveManager _waveManager = WaveManager.Instance;
     public GameObject TestEnemyPrefab;
    public GameObject PathsParentObject;
-   [SerializeField]
 
+   public IEnumerator StartWave(Wave _wave) {
+       foreach (Subwave s in _wave.Subwaves) {
+           yield return StartCoroutine(SpawnSubWave(s.Package));
+           yield return new WaitForSeconds(s.StartupPauseSeconds);
+       }
+       Debug.Log("Wave Finished!");
+       yield break;
+   }
+
+   [SerializeField]
    List<GameObject> _splineGOs;
    public List<Vector2> _initialPoints;
    List<Vector2> InitilizeInitPoints(List<GameObject> SplineGoList) {
@@ -30,19 +39,20 @@ public class Spawner : MonoBehaviour
        
    }
 
-   public void SpawnSubWave(SubWave _subwave) {
+   public IEnumerator SpawnSubWave(SubWavePackage _subwave) {
        switch(_subwave._splineOrder) {
         case "random":
-            StartCoroutine(SpawnEnemiesToSplineAtInterval_RandomSpline( _subwave._amountOfUnits, _subwave._intervalBetweenSpawns, _subwave._unitPrefab ));
+            yield return StartCoroutine(SpawnEnemiesToSplineAtInterval_RandomSpline( _subwave._amountOfUnits, _subwave._intervalBetweenSpawns, _subwave._unitPrefab));
             break;
         case "single":
-            StartCoroutine(SpawnEnemiesToSplineAtInterval_SingleSpline( _subwave._amountOfUnits, _subwave._intervalBetweenSpawns, _subwave._unitPrefab, _subwave._splinePosition));
+            yield return StartCoroutine(SpawnEnemiesToSplineAtInterval_SingleSpline( _subwave._amountOfUnits, _subwave._intervalBetweenSpawns, _subwave._unitPrefab, _subwave._splinePosition));
             break;
         case null:
             Debug.Log("No Spline order set! Defaulting to Random!");
-            StartCoroutine(SpawnEnemiesToSplineAtInterval_RandomSpline( _subwave._amountOfUnits, _subwave._intervalBetweenSpawns, _subwave._unitPrefab ));
+            yield return StartCoroutine(SpawnEnemiesToSplineAtInterval_RandomSpline( _subwave._amountOfUnits, _subwave._intervalBetweenSpawns, _subwave._unitPrefab ));
             break;
         }
+        //yield return new WaitForSeconds(_subwave._timeToSpawnEntireSubwave());
    }
 
    public void SpawnEnemyToSpline(GameObject _enemyGO, GameObject _spline, Vector2 _position) {

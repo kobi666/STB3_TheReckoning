@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
+    Wave TestWave = new Wave(6);
     public static WaveManager Instance;
     public List<GameObject> Paths;
     public Dictionary<string, GameObject> PathsDict = new Dictionary<string, GameObject>();
     
-    public SubWave TestSubwave;
+    public SubWavePackage TestSubwavePackage;
     public List<Spawner> Spawners;
     public Dictionary<string, Spawner> SpawnerDict = new Dictionary<string, Spawner>();
     //used for specific Enemy Selection
@@ -50,11 +51,17 @@ public class WaveManager : MonoBehaviour
 
     private void Start() {
 
+
+
         InitilizeEnemiesDict();
         InitilizeSpawners();
-        TestSubwave = new SubWave(2.0f, 16, EnemisDict["Akuma"], "random");
-        Spawners[0].SpawnSubWave(TestSubwave);
-        Spawners[0].SpawnSubWave(TestSubwave);
+        TestSubwavePackage = new SubWavePackage(2.0f, 16, EnemisDict["Akuma"], "random");
+        // Spawners[0].SpawnSubWave(TestSubwave);
+        Spawners[0].SpawnSubWave(TestSubwavePackage);
+        for (int i = 0 ; i < TestWave.Subwaves.Length ; i++) {
+            TestWave.Subwaves[i] = new Subwave(TestSubwavePackage, 5.0f);
+        }
+        StartCoroutine(Spawners[0].StartWave(TestWave));
 
     }
 }

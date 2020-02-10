@@ -24,10 +24,19 @@ public class ProjectileController : MonoBehaviour
         }
     }
 
+    private void Awake() {
+        _reachedTarget += DestroySelf;
+    }
+
+    void DestroySelf() {
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
         if (Target != null && other != null) {
             if (other.gameObject.name == Target.gameObject.name) {
             HitTarget();
+            Destroy(gameObject);
             }
         }
     }
