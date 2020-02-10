@@ -43,6 +43,7 @@ namespace BezierSolution
 		private void Update()
 		{
 			Execute( Time.deltaTime );
+			ProximityToEndOfSpline = SplineLength * (1.0f - NormalizedT);
 		}
 
 		private void Start() {

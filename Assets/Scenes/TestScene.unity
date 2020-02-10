@@ -1329,7 +1329,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 916360069}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.2, y: 3.11, z: 0}
+  m_LocalPosition: {x: -2.35, y: 1.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1768240587}
@@ -2009,7 +2009,7 @@ MonoBehaviour:
   spline: {fileID: 569593591}
   travelMode: 0
   IsWalking: 1
-  speed: 3
+  speed: 5
   m_normalizedT: 0
   rotationLerpModifier: 0
   lookAt: 1
@@ -2042,7 +2042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddfb19560cfe77e48b97e0550a05a2c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setHP: 300
+  setHP: 1000
   HP: 0
   ARMOR: 0
 --- !u!1 &1657876310
@@ -2464,7 +2464,7 @@ CircleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
