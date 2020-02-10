@@ -5,6 +5,7 @@ using System;
 
 public class Utils : MonoBehaviour 
 {
+
     
     // Start is called before the first frame update
     // public static GameObject FindObjectNearestToEndToEndOfSplineInGOLayer (GameObject SelfGO, Collider2D otherGO)
@@ -101,6 +102,52 @@ public class Utils : MonoBehaviour
         }
             
              
+    }
+
+    public static GameObject SetSingleEnemyTarget(GameObject _self, Collider2D[] _collisions) {
+        return FindEnemyNearestToEndOfPath(_self, _collisions);
+    }
+
+    public static GameObject[] GetCollidingObjectsOfType (GameObject _SelfGO, string _objectType, Collider2D[] _collisions)
+    {
+        
+        LayerMask lm = LayerMask.NameToLayer(_objectType);
+        _collisions = Physics2D.OverlapCircleAll(_SelfGO.transform.position, _SelfGO.GetComponent<CircleCollider2D>().radius, 1 << lm);
+        // Collider2D[] Collisions = Physics2D.OverlapCircleAll(GO.transform.position, GO.GetComponent<CircleCollider2D>().radius - 0.2f, 1 << lm);
+        GameObject[] GOs = new GameObject[_collisions.Length];
+        for (int i = 0 ; i <= _collisions.Length-1 ; i++) {
+            if (_collisions[i] == null) {
+                continue;
+            }
+            GOs[i] = _collisions[i].gameObject;
+        }
+        return GOs;
+    }
+
+
+    public static GameObject[] GetEnemiesInRange(GameObject _self, Collider2D[] _collisions) {
+        GameObject[] Enemies = GetCollidingObjectsOfType(_self, "Enemy",_collisions);
+        return Enemies;
+    }
+
+    public static GameObject[] GetObjectsOfTypeInRange(GameObject _self, string _type, Collider2D[] _collisions) {
+        GameObject[] Enemies = GetCollidingObjectsOfType(_self, _type,_collisions);
+        return Enemies;
+    }
+
+    public static GameObject FindEnemyNearestToEndOfPath(GameObject self, Collider2D[] _collisions) {
+        GameObject target = null;
+        float LowestProximity = 999.0f;
+        foreach (GameObject Enemy in GetEnemiesInRange(self, _collisions)) {
+            if (Enemy.GetComponent<BezierSolution.UnitWalker>().ProximityToEndOfSpline < LowestProximity) {
+                target = Enemy;
+                LowestProximity = Enemy.GetComponent<BezierSolution.UnitWalker>().ProximityToEndOfSpline;
+            }
+            else {
+                continue;
+            }
+        }
+        return target;
     }
 
 

@@ -45,6 +45,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>     <Compile Include="Assets\EnemyUnitController.cs" />
+     <Compile Include="Assets\PlayerUnitController.cs" />
      <Compile Include="Assets\ProjectileController.cs" />
      <Compile Include="Assets\Scripts\Classes\GO_PRXM.cs" />
      <Compile Include="Assets\Scripts\Classes\NativeClasses.cs" />

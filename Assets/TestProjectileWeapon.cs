@@ -51,7 +51,7 @@ public class TestProjectileWeapon : WeaponController
     
 
     public GameObject Projectile;
-    public void CreateProjectile() {
+    public virtual void CreateProjectile() {
         //Debug.Log("I fired a projectile");
         GameObject _projectile = GameObject.Instantiate(Projectile, gameObject.transform.position, Quaternion.identity);
         _projectile.name = (_projectile.name+UnityEngine.Random.Range(10000, 99999));

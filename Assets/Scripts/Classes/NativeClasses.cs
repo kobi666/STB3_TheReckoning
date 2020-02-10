@@ -15,6 +15,14 @@ public class Subwave {
     }
 }
 
+public class PlayerUnitStateMachine {
+    
+}
+
+public abstract class State {
+
+}
+
 [System.Serializable]
 public class Wave {
     public Subwave[] Subwaves;
