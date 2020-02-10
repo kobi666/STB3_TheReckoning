@@ -12,5 +12,11 @@ public class TestPlayerUnitController : PlayerUnitController
         _onTargetCheck += SetEnemyTarget;
     }
 
+    private void FixedUpdate() {
+        if (EnemyTarget != null) {
+             transform.position = PlayerUnitUtils.FindPositionNextToUnit(gameObject, EnemyTarget);
+        }
+    }
+
 
 }

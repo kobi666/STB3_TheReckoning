@@ -1558,8 +1558,8 @@ GameObject:
   - component: {fileID: 1338783440}
   - component: {fileID: 1338783438}
   - component: {fileID: 1338783437}
-  - component: {fileID: 1338783441}
   - component: {fileID: 1338783439}
+  - component: {fileID: 1338783441}
   m_Layer: 0
   m_Name: PlayerUnit
   m_TagString: Player_Unit
@@ -1704,7 +1704,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1338783436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 139f2c5f38f1a904d9b6cecd48496456, type: 3}
+  m_Script: {fileID: 11500000, guid: 484e8f47a8b343940ba10ed867566dc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyTarget: {fileID: 0}
@@ -2753,12 +2753,12 @@ PrefabInstance:
     - target: {fileID: 7194456980094505905, guid: 44fd75bfdc979e74db3864817b932320,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.08
+      value: -8.57
       objectReference: {fileID: 0}
     - target: {fileID: 7194456980094505905, guid: 44fd75bfdc979e74db3864817b932320,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.81
+      value: 4.63
       objectReference: {fileID: 0}
     - target: {fileID: 7194456980094505905, guid: 44fd75bfdc979e74db3864817b932320,
         type: 3}
@@ -2814,6 +2814,11 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194456980094505916, guid: 44fd75bfdc979e74db3864817b932320,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44fd75bfdc979e74db3864817b932320, type: 3}
