@@ -12,7 +12,7 @@ public class PlayerUnitController : MonoBehaviour
 
     public void SetEnemyTarget() {
         EnemyTarget = Utils.FindEnemyNearestToEndOfPath(gameObject, collisions);
-        Debug.Log("Player Unit Found Enemy " + EnemyTarget.name);
+        //Debug.Log("Player Unit Found Enemy " + EnemyTarget.name);
     }
     // Start is called before the first frame update
     public event Action _onTargetCheck;
@@ -23,6 +23,10 @@ public class PlayerUnitController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+        OnTargetCheck();
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
         OnTargetCheck();
     }
 

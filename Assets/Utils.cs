@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Utils : MonoBehaviour 
+public class Utils
 {
 
     
@@ -41,7 +41,7 @@ public class Utils : MonoBehaviour
         Self.transform.position = TargetPosition;
     }
 
-    public static IEnumerator MoveToTargetWithEvent(GameObject _selfGO, GameObject _targetGO, float _speed, Action _actionEvent) {
+    public static IEnumerator MoveTowardsTargetWithEvent(GameObject _selfGO, GameObject _targetGO, float _speed, Action _actionEvent) {
         Vector2 OriginPosition = _selfGO.transform.position;
         Vector2 TargetPosition =  _targetGO.transform.position;
         float step = (_speed / (OriginPosition - TargetPosition).magnitude * Time.fixedDeltaTime );
@@ -49,7 +49,7 @@ public class Utils : MonoBehaviour
         while (t <= 1.0f) {
             t += step;
             if (_targetGO != null) {
-            _selfGO.transform.position = Vector2.Lerp(OriginPosition, _targetGO.transform.position, t);
+            _selfGO.transform.position = Vector2.Lerp(OriginPosition, TargetPosition, t);
             }
             else {
                 _selfGO.transform.position = Vector2.Lerp(OriginPosition, TargetPosition, t);

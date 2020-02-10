@@ -20,7 +20,7 @@ public class ProjectileController : MonoBehaviour
     public GameObject Target { get => _target;
         set {
             _target = value;
-            StartCoroutine(Utils.MoveToTargetWithEvent(gameObject, Target, speed, ReachedTarget));
+            StartCoroutine(Utils.MoveTowardsTargetWithEvent(gameObject, Target, speed, ReachedTarget));
         }
     }
 
