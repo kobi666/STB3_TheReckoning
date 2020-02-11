@@ -30,10 +30,11 @@ public class PlayerUnitUtils
 
         Vector2 pos = SelfPos;
         if (LoR == "left") {
-            pos.x = (TargetGOPos.x -TargetSpriteExtent.x) - (SelfPos.x + SelfSpriteExtent.x) - 0.5f;
+            pos.x = (TargetGOPos.x - TargetSpriteExtent.x - 0.1f - SelfSpriteExtent.x);
+            pos.y = (TargetGOPos.y - TargetSpriteExtent.y + SelfSpriteExtent.y);
         }
         else if (LoR == "right") {
-            pos.x = (TargetGOPos.x + TargetSpriteExtent.x) + (SelfPos.x - SelfSpriteExtent.x);
+            pos.x = (TargetGOPos.x + TargetSpriteExtent.x + 0.1f + SelfSpriteExtent.x);
             pos.y = (TargetGOPos.y - TargetSpriteExtent.y + SelfSpriteExtent.y);
         }
         else {
