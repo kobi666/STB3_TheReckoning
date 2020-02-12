@@ -56,7 +56,8 @@
      <Compile Include="Assets\StaticObjects.cs" />
      <Compile Include="Assets\TestPlayerUnitController.cs" />
      <Compile Include="Assets\TestProjectileWeapon.cs" />
-     <Compile Include="Assets\UnitStats.cs" />
+     <Compile Include="Assets\UnitLife.cs" />
+     <Compile Include="Assets\UnitTypes.cs" />
      <Compile Include="Assets\Utils.cs" />
      <Compile Include="Assets\WaveManager.cs" />
      <Compile Include="Assets\WeaponController.cs" />

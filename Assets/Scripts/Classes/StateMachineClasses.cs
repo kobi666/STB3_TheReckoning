@@ -24,7 +24,9 @@ public class UnitState  {
     public virtual bool IsFinalState { get => _isFinalState ; set {
         _isFinalState = value;
     }}
+    [SerializeField]
     public string stateName;
+    [SerializeField]
     public virtual string StateName {get => stateName ; set {
         stateName = value;
     }}

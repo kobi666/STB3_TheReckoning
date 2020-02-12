@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System;
 
 [System.Serializable]
-public class UnitStats
+public class UnitLifeManager
 {
-    public UnitStats(int hp, int armor, int special_armor) {
+    public UnitLifeManager(int hp, int armor, int special_armor) {
         HP = hp;
         Armor = armor;
         SpecialArmor = special_armor;
@@ -16,6 +16,8 @@ public class UnitStats
             _onUnitDeath.Invoke();
         }
     }
+
+   
     int _HP;
     
     public int HP {get => _HP ; set {

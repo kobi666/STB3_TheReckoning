@@ -5,11 +5,20 @@ using System;
 
 public class EnemyUnitController : MonoBehaviour
 {
-    
-    public UnitState US;
+    UnitState[] UnitStates;
+    BezierSolution.UnitWalker walker;
+   public string[] states = new string[5];
+   public StateMachine SM;
+   public UnitState CreateState(string _stateName, bool _isfinal) {
+       return new UnitState(_isfinal, _stateName, this);
+   }
+
+   
+
+   
     public int setHP;
-    StateMachine SM;
-    public UnitStats _UnitStats;
+    
+    public UnitLifeManager UnitLife;
     
     //Display purpose only
     [SerializeField]
@@ -19,11 +28,12 @@ public class EnemyUnitController : MonoBehaviour
      int ARMOR;
 
      private void Awake() {
-         _UnitStats = new UnitStats(setHP, 1,0);
+         UnitLife = new UnitLifeManager(setHP, 1,0);
      }
 
-    public void Die() {
+    public IEnumerator Die() {
         Destroy(gameObject);
+        yield break;
     }
 
     public IEnumerator test() {
@@ -31,21 +41,54 @@ public class EnemyUnitController : MonoBehaviour
         Debug.Log("Success!");
     }
 
+    public virtual void UnitDeath() {
+        SM.SetState("Death");
+    }
 
+    public virtual void GoIntoBattleState() {
+        SM.SetState("InBattle");
+    }
+
+    public virtual void goInto_Pre_BattleState() {
+        SM.SetState("PreBattle");
+    }
+
+    IEnumerator ReturnToWalkPath() {
+        walker.IsWalking = true;
+        yield break;
+    }
+
+    IEnumerator StopWalkingOnPath() {
+        walker.IsWalking = false;
+        yield break;
+    }
+
+    IEnumerator Battle() {
+        Debug.Log("I'm in battle!");
+        yield break;
+    }
+
+    
+
+    
+    
+    
 
     private void Start() {
-        _UnitStats._onUnitDeath += Die;
-        
-        SM = gameObject.GetComponent<StateMachine>();
-        US = new UnitState(false, "US", this);
-        US.OnEnterState += test;
-        SM.SetState(US);
-        
+        walker = GetComponent<BezierSolution.UnitWalker>();
+        SM = GetComponent<StateMachine>();
+        UnitStates = UnitTypes.normal(this);
+        SM.InitilizeStateMachine(UnitTypes.normal(this));
+        UnitLife._onUnitDeath += UnitDeath;
+        SM.States["Death"].OnEnterState += Die;
+        SM.States["PreBattle"].OnEnterState += StopWalkingOnPath;
+        SM.States["Default"].OnEnterState += ReturnToWalkPath;
+        SM.States["InBattle"].OnEnterState += Battle;
     }
 
     private void Update() {
-        HP = _UnitStats.HP;
-        ARMOR = _UnitStats.Armor;
+        HP = UnitLife.HP;
+        ARMOR = UnitLife.Armor;
     }
     
 }

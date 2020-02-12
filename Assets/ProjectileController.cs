@@ -42,7 +42,7 @@ public class ProjectileController : MonoBehaviour
     }
 
     public void HitTarget() {
-        _EnemyUnitController._UnitStats.DamageToUnit(UnityEngine.Random.Range(_damageRange.min, _damageRange.max), _damageType);
+        _EnemyUnitController.UnitLife.DamageToUnit(UnityEngine.Random.Range(_damageRange.min, _damageRange.max), _damageType);
     }
 
     public void MissedTarget() {

@@ -5,29 +5,24 @@ using System;
 
 public class StateMachine : MonoBehaviour
 {
-    public void SetState(UnitState _newState) {
+
+    public void SetState(string _newStateName) {
         if (StateChangeLocked != true) {
-        StartCoroutine(StateChangeTransition(_newState));
+        StartCoroutine(StateChangeTransition(States[_newStateName]));
         }
         else {Debug.Log("State change lock is active");
         }
     }
     public void AddState(UnitState _unitstate) {
+        if (_unitstate != null) {
         States.Add(_unitstate.stateName, _unitstate);
+        }
     }
     public void RemoveState(UnitState _unitstate) {
         States.Remove(_unitstate.stateName);
     }
-    public event Action _onStateChange;
     public bool StateChangeLocked;
-    public void OnStateChange(UnitState _newState) {
-        if (_onStateChange != null) {
-            _onStateChange.Invoke();
-        }
-        else {
-            Debug.Log("No actions subscribed to \\_onStateChange");
-        }
-    }
+    
     
 
     public IEnumerator StateChangeTransition(UnitState _newState) {
@@ -53,4 +48,10 @@ public class StateMachine : MonoBehaviour
     
     public Dictionary<string, UnitState> States = new Dictionary<string, UnitState>();
     public UnitState CurrentState;
+
+    public void InitilizeStateMachine(UnitState[] _states) {
+        foreach(UnitState _unitstate in _states) {
+            AddState(_unitstate);
+        }
+    }
 }
