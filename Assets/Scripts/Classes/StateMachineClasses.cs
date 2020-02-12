@@ -3,38 +3,65 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class StateMachine
-{
-    public event Action _onStateChange;
-    public bool StateChangeLocked;
-    public void OnStateChange() {
-        if (_onStateChange != null) {
-            _onStateChange.Invoke();
+
+[System.Serializable]
+public class UnitState  {
+
+    // Override EnterState() and ExitState() in new classes
+    public UnitState(bool _isfinalState, string _name, MonoBehaviour _self ) {
+        IsFinalState = _isFinalState;
+        StateName = _name;
+        exec = _self;
+    }
+
+    MonoBehaviour exec;
+        
+    
+
+    public event Action ExitStateActions;
+    public event Action EnterStateActions;
+    public bool _isFinalState;
+    public virtual bool IsFinalState { get => _isFinalState ; set {
+        _isFinalState = value;
+    }}
+    public string stateName;
+    public virtual string StateName {get => stateName ; set {
+        stateName = value;
+    }}
+
+    public event Func<IEnumerator> OnEnterState;
+    public event Func<IEnumerator> OnExitState;
+
+    public IEnumerator InvokeEnterStateFunctions() {
+        if (OnEnterState != null) {
+        
+        Delegate[] delegates = OnEnterState.GetInvocationList();
+        for (int i = 0 ; i <  delegates.Length ; i++) {
+                var x = delegates[i] as Func<IEnumerator>;
+                yield return exec.StartCoroutine(x.Invoke());
+            }
         }
-        else {
-            Debug.Log("No actions subscribed to \\_onStateChange");
+        yield break;
+    }
+
+    public IEnumerator InvokeExitStateFunctions() {
+        if (OnExitState != null) {
+        Delegate[] delegates = OnExitState.GetInvocationList();
+        for (int i = 0 ; i <  delegates.Length ; i++) {
+                var x = delegates[i] as Func<IEnumerator>;
+                yield return exec.StartCoroutine(x.Invoke());
+            }
         }
-    }
-    public Dictionary<string, State> States = new Dictionary<string, State>();
-    public State CurrentState;
-    public State FormerState;
-   
-}
-
-public class state {
-    public virtual void StateTransition() {
-        Debug.Log("Transitioning..");
+        yield break;
     }
 
-    public virtual void SetState() {
-        Debug.Log("State set");
-    }
+    
+
+
+    
+    
+
+    
 }
 
-public class GeneralEnemyUnitStateMachine {
 
-}
-
-public class GeneralPlayerUnitStateMachine {
-
-}
