@@ -922,8 +922,8 @@ MonoBehaviour:
   - StateName: 
     IsFinalState: 0
   SM: {fileID: 0}
-  setHP: 0
-  setArmor: 0
+  setHP: 300
+  setArmor: 2
   SetSpecialArmor: 0
   HP: 0
   ARMOR: 0
@@ -1786,6 +1786,7 @@ GameObject:
   - component: {fileID: 1338783437}
   - component: {fileID: 1338783439}
   - component: {fileID: 1338783441}
+  - component: {fileID: 1338783442}
   m_Layer: 0
   m_Name: PlayerUnit
   m_TagString: Player_Unit
@@ -1935,6 +1936,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyTarget: {fileID: 0}
   SetPosition: {x: 0, y: 0}
+--- !u!114 &1338783442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338783436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0e09736b08841469cf1f2ab13b804f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StateChangeLocked: 0
+  CurrentState:
+    _isFinalState: 0
+    stateName: 
 --- !u!1 &1344902636
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,7 +2054,7 @@ MonoBehaviour:
   _damageRange:
     min: 10
     max: 30
-  _fireRate: 20
+  _fireRate: 50
   fireCounter: 0
   Projectile: {fileID: 7323633464250655606, guid: 83a335e89eca39f489d25cb51a0c8dc0,
     type: 3}
@@ -2220,7 +2237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1648176394
 Rigidbody2D:
   serializedVersion: 4

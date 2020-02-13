@@ -7,7 +7,6 @@ public class EnemyUnitController : MonoBehaviour
 {
    public UnitType unitType;
    public BezierSolution.UnitWalker walker;
-   public StringAndBool[] states = new StringAndBool[5];
    public StateMachine SM;
     public int setHP;
     public int setArmor;
@@ -35,7 +34,7 @@ public class EnemyUnitController : MonoBehaviour
         UnitLife = new UnitLifeManager(setHP, setArmor, SetSpecialArmor);
         walker = GetComponent<BezierSolution.UnitWalker>();
         SM = GetComponent<StateMachine>();
-//        SM.InitilizeStateMachine(unitType.States);
+        //SM.InitilizeStateMachine(unitType.States);
         //SM.InitilizeStateMachine(UnitTypes.NormalEnemy(this).States);
         // UnitLife._onUnitDeath += UnitDeath;
         // SM.States["Death"].OnEnterState += Die;

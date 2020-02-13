@@ -5,15 +5,22 @@ using System;
 
 public class PlayerUnitController : MonoBehaviour
 {
-
-    public GameObject EnemyTarget;
-    public Vector2 SetPosition;
+    UnitType unitType;
+    public int AttackRate;
+    public DamageRange DamageRange;
+    public StateMachine SM;
+    public int setHP;
+    public int setArmor;
+    public int SetSpecialArmor;
+    UnitLifeManager UnitLife;
+    
+    
     Collider2D [] collisions;
 
-    public void SetEnemyTarget() {
-        EnemyTarget = Utils.FindEnemyNearestToEndOfPath(gameObject, collisions);
-        //Debug.Log("Player Unit Found Enemy " + EnemyTarget.name);
-    }
+    // public void SetEnemyTarget() {
+    //     EnemyTarget = Utils.FindEnemyNearestToEndOfPath(gameObject, collisions);
+    //     //Debug.Log("Player Unit Found Enemy " + EnemyTarget.name);
+    // }
     // Start is called before the first frame update
     public event Action _onTargetCheck;
     public void OnTargetCheck() {
@@ -31,7 +38,13 @@ public class PlayerUnitController : MonoBehaviour
     }
 
     private void Awake() {
-        _onTargetCheck += SetEnemyTarget;
+    // unitType = UnitTypes.NormalEnemy(this);
+    SM = GetComponent<StateMachine>();
+    // SM.InitilizeStateMachine(unitType.States);
+    UnitLife = new UnitLifeManager(setHP, setArmor, SetSpecialArmor);
+
+    
+    //_onTargetCheck += SetEnemyTarget;
     }
 
 
