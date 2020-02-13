@@ -3,6 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[System.Serializable]
+public struct StringAndBool {
+    [SerializeField]
+    public string StateName;
+    [SerializeField]
+    public bool IsFinalState;
+    public StringAndBool(string s, bool b) {
+        StateName = s;
+        IsFinalState = b;
+    }
+    public StringAndBool(string s) {
+        StateName = s;
+        IsFinalState = false;
+    }
+}
 
 [System.Serializable]
 public class Subwave {

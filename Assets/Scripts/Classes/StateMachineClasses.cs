@@ -4,6 +4,8 @@ using UnityEngine;
 using System;
 
 
+
+
 [System.Serializable]
 public class UnitState  {
 
@@ -18,8 +20,8 @@ public class UnitState  {
         
     
 
-    public event Action ExitStateActions;
-    public event Action EnterStateActions;
+    //public event Action ExitStateActions;
+    //public event Action EnterStateActions;
     public bool _isFinalState;
     public virtual bool IsFinalState { get => _isFinalState ; set {
         _isFinalState = value;

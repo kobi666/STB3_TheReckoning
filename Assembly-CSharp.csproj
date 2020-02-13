@@ -44,23 +44,27 @@
     <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
-  <ItemGroup>     <Compile Include="Assets\EnemyUnitController.cs" />
-     <Compile Include="Assets\PlayerUnitController.cs" />
-     <Compile Include="Assets\PlayerUnitUtils.cs" />
-     <Compile Include="Assets\ProjectileController.cs" />
-     <Compile Include="Assets\Scripts\Classes\GO_PRXM.cs" />
+  <ItemGroup>     <Compile Include="Assets\Scripts\Classes\GO_PRXM.cs" />
      <Compile Include="Assets\Scripts\Classes\NativeClasses.cs" />
      <Compile Include="Assets\Scripts\Classes\StateMachineClasses.cs" />
-     <Compile Include="Assets\Spawner.cs" />
-     <Compile Include="Assets\StateMachine.cs" />
-     <Compile Include="Assets\StaticObjects.cs" />
-     <Compile Include="Assets\TestPlayerUnitController.cs" />
-     <Compile Include="Assets\TestProjectileWeapon.cs" />
-     <Compile Include="Assets\UnitLife.cs" />
-     <Compile Include="Assets\UnitTypes.cs" />
-     <Compile Include="Assets\Utils.cs" />
-     <Compile Include="Assets\WaveManager.cs" />
-     <Compile Include="Assets\WeaponController.cs" />
+     <Compile Include="Assets\Scripts\EnemyUnitController.cs" />
+     <Compile Include="Assets\Scripts\PlayerUnitController.cs" />
+     <Compile Include="Assets\Scripts\PlayerUnitUtils.cs" />
+     <Compile Include="Assets\Scripts\ProjectileController.cs" />
+     <Compile Include="Assets\Scripts\Spawner.cs" />
+     <Compile Include="Assets\Scripts\StateMachine.cs" />
+     <Compile Include="Assets\Scripts\StaticObjects.cs" />
+     <Compile Include="Assets\Scripts\TestEnemyUnitController.cs" />
+     <Compile Include="Assets\Scripts\TestPlayerUnitController.cs" />
+     <Compile Include="Assets\Scripts\TestProjectileWeapon.cs" />
+     <Compile Include="Assets\Scripts\UnitLife.cs" />
+     <Compile Include="Assets\Scripts\UnitStates.cs" />
+     <Compile Include="Assets\Scripts\UnitType.cs" />
+     <Compile Include="Assets\Scripts\UnitTypes.cs" />
+     <Compile Include="Assets\Scripts\UnitUtils.cs" />
+     <Compile Include="Assets\Scripts\Utils.cs" />
+     <Compile Include="Assets\Scripts\WaveManager.cs" />
+     <Compile Include="Assets\Scripts\WeaponController.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>E:/_UnityProjects/Super Tower Brothers 3 - The Reckoning/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

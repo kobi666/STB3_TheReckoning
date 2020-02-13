@@ -5,6 +5,7 @@ using System;
 [System.Serializable]
 public class UnitLifeManager
 {
+    
     public UnitLifeManager(int hp, int armor, int special_armor) {
         HP = hp;
         Armor = armor;
@@ -14,11 +15,13 @@ public class UnitLifeManager
     public void OnUnitDeath() {
         if (_onUnitDeath != null) {
             _onUnitDeath.Invoke();
+            
         }
     }
 
    
     int _HP;
+    
     
     public int HP {get => _HP ; set {
         if (value <= 0) {
