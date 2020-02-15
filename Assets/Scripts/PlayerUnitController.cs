@@ -13,9 +13,10 @@ public class PlayerUnitController : MonoBehaviour
     public int setArmor;
     public int SetSpecialArmor;
     UnitLifeManager UnitLife;
+    public int speed;
     
     
-    Collider2D [] collisions;
+    public Collider2D [] collisions;
 
     // public void SetEnemyTarget() {
     //     EnemyTarget = Utils.FindEnemyNearestToEndOfPath(gameObject, collisions);

@@ -8,6 +8,7 @@ public class EnemyUnitController : MonoBehaviour
    public UnitType unitType;
    public BezierSolution.UnitWalker walker;
    public StateMachine SM;
+   public GameObject TargetPlayerUnit = null;
     public int setHP;
     public int setArmor;
     public int SetSpecialArmor;
