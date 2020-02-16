@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7194456980094505905}
-  - component: {fileID: 7194456980094505916}
   - component: {fileID: 7194456980094505904}
   - component: {fileID: 7194456980094505907}
   - component: {fileID: 7194456980094505906}
   - component: {fileID: 7194456980094505917}
+  - component: {fileID: 7899240167070551348}
   m_Layer: 8
-  m_Name: EnemyUnit_AGDQ20 (1)
+  m_Name: Akuma
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,21 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7194456980094505916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7194456980094505919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddfb19560cfe77e48b97e0550a05a2c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  setHP: 300
-  HP: 0
-  ARMOR: 0
 --- !u!114 &7194456980094505904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,3 +179,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7899240167070551348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7194456980094505919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30fc5fcd8e808984f9506bddbed8921a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walker: {fileID: 0}
+  SM: {fileID: 0}
+  TargetPlayerUnit: {fileID: 0}
+  setHP: 200
+  setArmor: 2
+  SetSpecialArmor: 0
+  HP: 0
+  ARMOR: 0
