@@ -48,6 +48,8 @@
      <Compile Include="Assets\Scripts\Classes\NativeClasses.cs" />
      <Compile Include="Assets\Scripts\Classes\StateMachineClasses.cs" />
      <Compile Include="Assets\Scripts\EnemyUnitController.cs" />
+     <Compile Include="Assets\Scripts\NormalUnitStates.cs" />
+     <Compile Include="Assets\Scripts\OldStateMachine.cs" />
      <Compile Include="Assets\Scripts\PlayerUnitController.cs" />
      <Compile Include="Assets\Scripts\PlayerUnitUtils.cs" />
      <Compile Include="Assets\Scripts\ProjectileController.cs" />

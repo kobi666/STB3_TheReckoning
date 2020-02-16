@@ -5,7 +5,8 @@ using System;
 
 public class PlayerUnitController : MonoBehaviour
 {
-    UnitType unitType;
+    public UnitType unitType;
+    public NormalUnitStates states {get => unitType.States;}
     public int AttackRate;
     public DamageRange DamageRange;
     public StateMachine SM;
@@ -39,13 +40,8 @@ public class PlayerUnitController : MonoBehaviour
     }
 
     private void Awake() {
-    // unitType = UnitTypes.NormalEnemy(this);
     SM = GetComponent<StateMachine>();
-    // SM.InitilizeStateMachine(unitType.States);
     UnitLife = new UnitLifeManager(setHP, setArmor, SetSpecialArmor);
-
-    
-    //_onTargetCheck += SetEnemyTarget;
     }
 
 

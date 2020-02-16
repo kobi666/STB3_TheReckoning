@@ -12,7 +12,7 @@ public class TestEnemyUnitController : EnemyUnitController
     }
 
     public virtual void GoIntoBattleState() {
-        SM.SetState("InBattle");
+        SM.SetState(states.InBattle);
     }
 
     IEnumerator ReturnToWalkPath() {
@@ -38,13 +38,12 @@ public class TestEnemyUnitController : EnemyUnitController
 
     private void Start() {
         unitType = UnitTypes.NormalEnemy(this);
-        SM.InitilizeStateMachine(unitType.States);
         UnitLife._onUnitDeath += UnitDeath;
-        SM.States["Death"].OnEnterState += Die;
+        states.Death.OnEnterState += Die;
          // SM.States["PreBattle"].OnEnterState += StopWalkingOnPath;
-        SM.States["Default"].OnEnterState += ReturnToWalkPath;
-        SM.States["PreBattle"].OnEnterState += StopWalkingOnPath;
-        SM.States["InBattle"].OnEnterState += StartBattle;
+        states.Default.OnEnterState += ReturnToWalkPath;
+        states.PreBattle.OnEnterState += StopWalkingOnPath;
+        states.InBattle.OnEnterState += StartBattle;
     }
 
     

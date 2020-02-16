@@ -3,37 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class StateMachine : MonoBehaviour
+public class OldStateMachine : MonoBehaviour
 {
 
-    public void SetState(UnitState _newState) {
+    public void SetState(string _newStateName) {
         if (StateChangeLocked != true) {
-        StartCoroutine(StateChangeTransition(_newState));
+        StartCoroutine(StateChangeTransition(States[_newStateName]));
         }
         else {Debug.Log("State change lock is active");
         }
     }
-   
-    public bool StateChangeLocked;
-    
-    public bool ConditionToChangeToNewState (UnitState _cur, UnitState _new) {
-        if (CurrentState.ExitEventIsNotEmpty()) {
-            if (_new.EnterEventIsNotEmpty()) {
-                return true;
-            }
-            else {
-                Debug.Log(_new.stateName + " Enter Sequence Is Empty");
-                return false;
-            }
-        }
-        else {
-            Debug.Log(_cur.stateName + " Exit Sequence Is Empty");
-            return false;
+    public void AddState(UnitState _unitstate) {
+        if (_unitstate != null) {
+        States.Add(_unitstate.stateName, _unitstate);
         }
     }
+    public void RemoveState(UnitState _unitstate) {
+        States.Remove(_unitstate.stateName);
+    }
+    public bool StateChangeLocked;
+    
+    
 
     public IEnumerator StateChangeTransition(UnitState _newState) {
-        if (StateChangeLocked == false && ConditionToChangeToNewState(CurrentState, _newState) == true) {
+        if (StateChangeLocked == false) {
             StateChangeLocked = true;
             yield return StartCoroutine(CurrentState.InvokeExitStateFunctions());
             yield return StartCoroutine(_newState.InvokeEnterStateFunctions());
@@ -47,15 +40,18 @@ public class StateMachine : MonoBehaviour
             }
         }
         else {
-            Debug.Log("State change lock is : " + StateChangeLocked.ToString());
+            Debug.Log("State Change is Locked");
         }
         yield break;
     }
-    
 
     
-    
+    public Dictionary<string, UnitState> States = new Dictionary<string, UnitState>();
     public UnitState CurrentState;
 
-    
+    public void InitilizeStateMachine(UnitState[] _states) {
+        foreach(UnitState _unitstate in _states) {
+            AddState(_unitstate);
+        }
     }
+}

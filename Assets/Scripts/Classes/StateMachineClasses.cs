@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+public abstract class States {
+
+}
 
 
 
@@ -10,6 +13,21 @@ using System;
 public class UnitState  {
 
     // Override EnterState() and ExitState() in new classes
+
+    public bool ExitEventIsNotEmpty() {
+        if (OnExitState != null) {
+            return true;
+        }
+        else {return false;}
+    }
+    public bool EnterEventIsNotEmpty() {
+        if (OnEnterState != null) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     public UnitState(bool _isfinalState, string _name, MonoBehaviour _self ) {
         IsFinalState = _isFinalState;
         StateName = _name;

@@ -6,11 +6,10 @@ public class TestPlayerUnitController : PlayerUnitController
 {
     // Start is called before the first frame update
     public Vector2 SetPosition;
-    UnitType unitType;
 
      // PlayerUnitUtils.FindPositionNextToUnit(gameObject, EnemyTarget);
     public GameObject EnemyTarget;
-    public StateMachine EnemyStateMachine { get => EnemyTarget.GetComponent<StateMachine>();}
+    public OldStateMachine EnemyStateMachine { get => EnemyTarget.GetComponent<OldStateMachine>();}
     public EnemyUnitController EnemyController {get => EnemyTarget.GetComponent<EnemyUnitController>();}
 
     public bool ConditionTo_Start_BattleWithEnemy() {
@@ -58,14 +57,15 @@ public class TestPlayerUnitController : PlayerUnitController
     
 
     public IEnumerator StartBattleWithEnemy() {
-        SM.SetState("PreBattle");
+        // SM.SetState("PreBattle");
+        SM.SetState(states.PreBattle);
         EnemyController.TargetPlayerUnit = gameObject;
         EnemyStateMachine.SetState("PreBattle");
         yield break;
     }
 
     public IEnumerator JoinBattleWithEnemy() {
-        SM.SetState("PreBattle");
+        base.SM.SetState(states.PreBattle);
         yield break;
     }
 
@@ -75,10 +75,10 @@ public class TestPlayerUnitController : PlayerUnitController
     }
     
     private void Start() {
-    SetPosition = transform.position;
-    unitType = UnitTypes.NormalEnemy(this);
+    
     SM = GetComponent<StateMachine>();
-    SM.InitilizeStateMachine(unitType.States);
+    SetPosition = transform.position;
+    unitType = new UnitType(this);
     _onTargetCheck += SetEnemyTarget;
     }
 
