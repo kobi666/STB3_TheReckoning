@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PlayerUnitController : MonoBehaviour
+public class PlayerUnitController : UnitController
 {
-    public UnitType unitType;
-    public NormalUnitStates states {get => unitType.States;}
+    public event Action reachedBattlePosition;
+    public void ReachedBattlePosition() {
+        if (reachedBattlePosition != null) {
+            reachedBattlePosition.Invoke();
+        }
+    }
     public int AttackRate;
     public DamageRange DamageRange;
     public StateMachine SM;
@@ -24,10 +28,10 @@ public class PlayerUnitController : MonoBehaviour
     //     //Debug.Log("Player Unit Found Enemy " + EnemyTarget.name);
     // }
     // Start is called before the first frame update
-    public event Action _onTargetCheck;
+    public event Action onTargetCheck;
     public void OnTargetCheck() {
-        if (_onTargetCheck != null) {
-            _onTargetCheck.Invoke();
+        if (onTargetCheck != null) {
+            onTargetCheck.Invoke();
         }
     }
 

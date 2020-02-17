@@ -888,8 +888,8 @@ GameObject:
   - component: {fileID: 629388352}
   - component: {fileID: 629388351}
   - component: {fileID: 629388350}
-  - component: {fileID: 629388349}
   - component: {fileID: 629388348}
+  - component: {fileID: 629388349}
   m_Layer: 8
   m_Name: EnemyUnit_AGDQ19
   m_TagString: Enemy
@@ -926,7 +926,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 629388347}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f0e09736b08841469cf1f2ab13b804f, type: 3}
+  m_Script: {fileID: 11500000, guid: ed402ea4c57e01d41a273a54170295b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StateChangeLocked: 0
@@ -1658,13 +1658,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackRate: 0
   DamageRange:
-    min: 0
-    max: 0
+    min: 20
+    max: 30
   SM: {fileID: 0}
   setHP: 0
   setArmor: 0
   SetSpecialArmor: 0
-  speed: 0
+  speed: 5
   collisions: []
   SetPosition: {x: 0, y: 0}
   EnemyTarget: {fileID: 0}
@@ -2134,7 +2134,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1338783436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f0e09736b08841469cf1f2ab13b804f, type: 3}
+  m_Script: {fileID: 11500000, guid: ed402ea4c57e01d41a273a54170295b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StateChangeLocked: 0
@@ -2414,12 +2414,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1648176398}
-  - component: {fileID: 1648176399}
   - component: {fileID: 1648176397}
   - component: {fileID: 1648176396}
   - component: {fileID: 1648176395}
   - component: {fileID: 1648176394}
   - component: {fileID: 1648176400}
+  - component: {fileID: 1648176399}
   m_Layer: 8
   m_Name: EnemyUnit_AGDQ20
   m_TagString: Enemy
@@ -2594,13 +2594,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1648176393}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddfb19560cfe77e48b97e0550a05a2c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 30fc5fcd8e808984f9506bddbed8921a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walker: {fileID: 0}
   SM: {fileID: 0}
   TargetPlayerUnit: {fileID: 0}
-  setHP: 1000
+  setHP: 0
   setArmor: 0
   SetSpecialArmor: 0
   HP: 0
@@ -2614,7 +2614,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1648176393}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f0e09736b08841469cf1f2ab13b804f, type: 3}
+  m_Script: {fileID: 11500000, guid: ed402ea4c57e01d41a273a54170295b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StateChangeLocked: 0

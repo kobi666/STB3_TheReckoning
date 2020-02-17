@@ -10,7 +10,8 @@ public class StateMachine : MonoBehaviour
         if (StateChangeLocked != true) {
         StartCoroutine(StateChangeTransition(_newState));
         }
-        else {Debug.Log("State change lock is active");
+        else {
+  //          Debug.Log("State change lock is active");
         }
     }
    
@@ -37,7 +38,7 @@ public class StateMachine : MonoBehaviour
             StateChangeLocked = true;
             yield return StartCoroutine(CurrentState.InvokeExitStateFunctions());
             yield return StartCoroutine(_newState.InvokeEnterStateFunctions());
-            Debug.Log("State Transition from " + CurrentState.stateName + " to " + _newState.stateName + " Finished" );
+//            Debug.Log("State Transition from " + CurrentState.stateName + " to " + _newState.stateName + " Finished" );
             CurrentState = _newState;
             if (_newState._isFinalState == true) {
             StateChangeLocked = true;

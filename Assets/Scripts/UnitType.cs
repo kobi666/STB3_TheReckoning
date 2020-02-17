@@ -20,10 +20,10 @@ public class UnitType
     public NormalUnitStates States {get => states ; set {
         states = value;
     }}
-    UnitState InitialState;
 
-    public UnitType(MonoBehaviour _monobehavior) {
+    public UnitType(MonoBehaviour _monobehavior, StateMachine _stateMachine) {
         States = new NormalUnitStates(_monobehavior);
+        _stateMachine.CurrentState = States.Default;
     }
 
      
