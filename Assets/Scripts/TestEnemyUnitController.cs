@@ -5,29 +5,7 @@ using System;
 
 public class TestEnemyUnitController : EnemyUnitController
 {
-    event Action<GameObject> targetUnitSet;
-    event Action targetUnitReleased;
-    public void TargetUnitReleased(GameObject _playerUnit) {
-        if (targetUnitReleased != null) {
-            targetUnitReleased.Invoke();
-        }
-    }
-    public void TargetUnitSet(GameObject _playerUnit) {
-        if (targetUnitSet != null){
-            targetUnitSet.Invoke(_playerUnit);
-        }
-    }
-    public GameObject TargetPlayerUnit {
-        get => targetPlayerUnit;
-        set {
-            if (value != null) {
-            TargetUnitSet(value);
-            }
-            else {
-            TargetUnitReleased(value);
-            }
-        }
-    }
+    
 
     public void WaitForTargetToEnterBattlePosition(GameObject _playerUnit) {
         SM.SetState(states.PreBattle);
@@ -101,7 +79,9 @@ public class TestEnemyUnitController : EnemyUnitController
     private void Start() {
         unitType = new UnitType(this, SM);
         UnitLife._onUnitDeath += UnitDeath;
+        targetUnitSet += SetTargetUnit;
         targetUnitSet += WaitForTargetToEnterBattlePosition;
+        targetUnitReleased += LeaveBattle;
 
         states.Default.OnExitState += EmptyRoutine;
         states.Default.OnEnterState += ReturnToWalkPath;
@@ -114,6 +94,13 @@ public class TestEnemyUnitController : EnemyUnitController
 
         states.InBattle.OnEnterState += EmptyRoutine;
         states.InBattle.OnExitState += EmptyRoutine;
+    }
+
+    private void FixedUpdate() {
+       if (Input.GetKeyDown(KeyCode.N)) {
+           TargetPlayerUnit = null;
+           LeaveBattle(null);
+       }
     }
 
     

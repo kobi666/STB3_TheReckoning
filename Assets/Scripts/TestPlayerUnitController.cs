@@ -58,10 +58,10 @@ public class TestPlayerUnitController : PlayerUnitController
     public UnitLifeManager EnemyLife {get => EnemyTarget.GetComponent<UnitLifeManager>();}
 
     public void LeaveBattle(GameObject _enemy) {
-        enemyTarget = _enemy;
-        if (_enemy != null) {
-            if (_enemy.GetComponent<EnemyUnitController>().targetPlayerUnit.name == gameObject.name) {
-                _enemy.GetComponent<EnemyUnitController>().targetPlayerUnit = null;
+        EnemyTarget = _enemy;
+        if (EnemyTarget != null) {
+            if (EnemyController.TargetPlayerUnit.name == gameObject.name) {
+                EnemyController.TargetPlayerUnit = null;
             }
         }
         SM.SetState(states.Default);
@@ -70,7 +70,7 @@ public class TestPlayerUnitController : PlayerUnitController
     public void StartOrJoinBattle(GameObject _enemy) {
         if (_enemy.GetComponent<EnemyUnitController>().InBattleWithUnit() == false) {
             enemyTarget = _enemy;
-            EnemyController.targetPlayerUnit = gameObject;
+            EnemyController.TargetPlayerUnit = gameObject;
             SM.SetState(states.PreBattle);
         }
         else {
@@ -118,6 +118,18 @@ public class TestPlayerUnitController : PlayerUnitController
         yield break;
     }
 
+    public IEnumerator Die() {
+        Destroy(gameObject);
+        yield break;
+    }
+
+    public IEnumerator RemoveSelfTargetFromEnemyTarget() {
+        if (EnemyController.TargetPlayerUnit.name == gameObject.name) {
+        EnemyController.TargetPlayerUnit = null;
+        }
+        yield break;
+    }
+
     
 
     public IEnumerator ReturnToSetPosition () {
@@ -139,6 +151,12 @@ public class TestPlayerUnitController : PlayerUnitController
 
     states.InBattle.OnEnterState += EmptyRoutine;
     states.InBattle.OnExitState += EmptyRoutine;
+    states.InBattle.OnExitState += RemoveSelfTargetFromEnemyTarget;
+
+    states.Death.OnEnterState += EmptyRoutine;
+    //states.Death.OnEnterState += RemoveSelfTargetFromEnemyTarget;
+    states.Death.OnEnterState += Die;
+    states.Death.OnExitState += EmptyRoutine;
     
 
     onAttack += HitEnemy;
@@ -150,6 +168,11 @@ public class TestPlayerUnitController : PlayerUnitController
     private void FixedUpdate() {
         if (AttackCounter < 1.0f) {
             AttackCounter += (Time.fixedDeltaTime * AttackRate) / 10;
+        }
+
+        if (Input.GetKeyDown(KeyCode.D)) {
+            Debug.Log("D pressed");
+            SM.SetState(states.Death);
         }
 
     }

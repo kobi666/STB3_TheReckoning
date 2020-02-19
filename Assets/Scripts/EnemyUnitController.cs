@@ -9,11 +9,36 @@ public class EnemyUnitController : UnitController
    public BezierSolution.UnitWalker walker;
    public StateMachine SM;
    public GameObject targetPlayerUnit;
+   public GameObject TargetPlayerUnit {
+        get => targetPlayerUnit;
+        set {
+            if (value != null) {
+            TargetUnitSet(value);
+            }
+            else {
+            TargetUnitReleased(value);
+            }
+        }
+    }
+
+    public event Action<GameObject> targetUnitSet;
+    public event Action <GameObject> targetUnitReleased;
+    public void TargetUnitReleased(GameObject _playerUnit) {
+        if (targetUnitReleased != null) {
+            targetUnitReleased.Invoke(_playerUnit);
+        }
+    }
+    public void TargetUnitSet(GameObject _playerUnit) {
+        if (targetUnitSet != null){
+            targetUnitSet.Invoke(_playerUnit);
+        }
+    }
     public int setHP;
     public int setArmor;
     public int SetSpecialArmor;
     
     public UnitLifeManager UnitLife;
+    
 
     public bool InBattleWithUnit() {
         if (targetPlayerUnit != null) {
