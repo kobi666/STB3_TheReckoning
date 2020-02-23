@@ -10,7 +10,54 @@ public abstract class States {
 
 
 [System.Serializable]
-public class UnitState  {
+public class UnitState : IEquatable<UnitState> {
+
+    public bool Equals(UnitState other)
+   {
+      if (other == null)
+         return false;
+
+      if (this.stateName == other.stateName)
+         return true;
+      else
+         return false;
+   }
+
+   
+
+   public override bool Equals(System.Object obj)
+   {
+      if (obj == null)
+         return false;
+
+      UnitState otherUnitState = obj as UnitState;
+      if (otherUnitState == null)
+         return false;
+      else
+         return Equals(otherUnitState);
+   }
+
+    public static bool operator == (UnitState thisUnitState, UnitState otherUnitState)
+   {
+      if (((object)thisUnitState) == null || ((object)otherUnitState) == null) {
+         return System.Object.Equals(thisUnitState, otherUnitState);
+      }
+
+      return thisUnitState.Equals(otherUnitState);
+   }
+
+   public static bool operator != (UnitState thisUnitState, UnitState otherUnitState)
+   {
+      if (((object)thisUnitState) == null || ((object)otherUnitState) == null) {
+         return ! System.Object.Equals(thisUnitState, otherUnitState);
+      }
+
+      return ! thisUnitState.Equals(otherUnitState);
+   }
+
+   
+
+
 
     // Override EnterState() and ExitState() in new classes
 

@@ -36,10 +36,11 @@ public class StateMachine : MonoBehaviour
     public IEnumerator StateChangeTransition(UnitState _newState) {
         if (StateChangeLocked == false && ConditionToChangeToNewState(CurrentState, _newState) == true) {
             StateChangeLocked = true;
+            CurrentState = _newState;
             yield return StartCoroutine(CurrentState.InvokeExitStateFunctions());
             yield return StartCoroutine(_newState.InvokeEnterStateFunctions());
 //            Debug.Log("State Transition from " + CurrentState.stateName + " to " + _newState.stateName + " Finished" );
-            CurrentState = _newState;
+            
             if (_newState._isFinalState == true) {
             StateChangeLocked = true;
             }

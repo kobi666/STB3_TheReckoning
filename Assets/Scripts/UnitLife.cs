@@ -5,7 +5,12 @@ using System;
 [System.Serializable]
 public class UnitLifeManager
 {
-    
+    public event Action hp_changed;
+    public void HP_changed() {
+        if (hp_changed != null) {
+            hp_changed.Invoke();
+        }
+    }
     public UnitLifeManager(int hp, int armor, int special_armor) {
         HP = hp;
         Armor = armor;
@@ -26,10 +31,12 @@ public class UnitLifeManager
     public int HP {get => _HP ; set {
         if (value <= 0) {
             _HP = value;
+            HP_changed();
             OnUnitDeath();
         }
         else {
             _HP = value;
+            HP_changed();
         }
     }}
     int _armor;

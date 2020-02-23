@@ -41,6 +41,18 @@ public class Utils
         Self.transform.position = TargetPosition;
     }
 
+    public static IEnumerator MoveToTargetWithEvent(GameObject Self, Vector2 OriginPosition, Vector2 TargetPosition, float _speed, Action _actionEvent) {
+        float step = (_speed / (OriginPosition - TargetPosition).magnitude * Time.fixedDeltaTime );
+        float t = 0;
+        while (t <= 1.0f) {
+            t += step;
+            Self.transform.position = Vector2.Lerp(OriginPosition, TargetPosition, t);
+            yield return new WaitForFixedUpdate();
+        }
+        Self.transform.position = TargetPosition;
+        _actionEvent.Invoke();
+    }
+
     public static IEnumerator MoveTowardsTargetWithEvent(GameObject _selfGO, GameObject _targetGO, float _speed, Action _actionEvent) {
         Vector2 OriginPosition = _selfGO.transform.position;
         Vector2 TargetPosition =  _targetGO.transform.position;

@@ -16,7 +16,7 @@ public class ProjectileController : MonoBehaviour
     public Damage_Type _damageType = new Damage_Type("normal");
     
     public GameObject _target;
-    public EnemyUnitController _EnemyUnitController {get => Target.GetComponent<EnemyUnitController>();}
+    public EnemyUnitController2 _EnemyUnitController {get => Target.GetComponent<EnemyUnitController2>();}
     public GameObject Target { get => _target;
         set {
             _target = value;
@@ -33,16 +33,19 @@ public class ProjectileController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (Target != null && other != null) {
-            if (other.gameObject.name == Target.gameObject.name) {
-            HitTarget();
-            Destroy(gameObject);
+        if (Target != null) {
+            if (Target.CompareTag("Enemy")) 
+            {
+                if (other.gameObject.name == Target.gameObject.name) {
+                HitTarget();
+                Destroy(gameObject);
+                }
             }
         }
     }
 
     public void HitTarget() {
-        _EnemyUnitController.UnitLife.DamageToUnit(UnityEngine.Random.Range(_damageRange.min, _damageRange.max), _damageType);
+        _EnemyUnitController.LifeManager.DamageToUnit(UnityEngine.Random.Range(_damageRange.min, _damageRange.max), _damageType);
     }
 
     public void MissedTarget() {
