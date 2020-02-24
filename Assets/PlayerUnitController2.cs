@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 public class PlayerUnitController2 : MonoBehaviour
 {
-    
+    public float AttackCounter;
     Collider2D[] collisions;
     public UnitType unitType;
     public UnitData Data;
@@ -36,8 +36,12 @@ public class PlayerUnitController2 : MonoBehaviour
     public UnitData TargetData { get => TargetController.Data;}
     public NormalUnitStates TargetStates { get => TargetController.states;}
     public NormalUnitStates states {get => unitType.states;}
+
+    UnitState CurrentState { get => SM.CurrentState;}
+
+    [SerializeField]
     string currentStateName {
-        get => SM.CurrentState.stateName;
+        get => CurrentState.stateName;
     }
 
     public StateMachine TargetStateMachine { get => Data.Target.GetComponent<StateMachine>();}
@@ -72,10 +76,13 @@ public class PlayerUnitController2 : MonoBehaviour
 
     public void Battle() {
         if (Data.Target == null) { 
-            //SM.SetState(states.Default);
+            SM.SetState(states.Default);
         }
         else {
-            SM.SetState(states.InBattle);
+            if (CurrentState == states.PreBattle) {
+                SM.StateChangeLocked = false;
+                SM.SetState(states.InBattle);
+            }
         }
     }
 
@@ -93,7 +100,13 @@ public class PlayerUnitController2 : MonoBehaviour
                 }
             }
         }
-        yield return StartCoroutine(Utils.MoveToTargetWithEvent(gameObject, transform.position, Data.Target.transform.position, Data.speed, ReachedTarget));
+        //yield return StartCoroutine(Utils.MoveToTargetWithEvent(gameObject, transform.position, Data.Target.transform.position, Data.speed, ReachedTarget));
+        yield return StartCoroutine(MoveToBattlePosition());
+    }
+
+    public IEnumerator MoveToBattlePosition() {
+        Vector2 TargetPosition = PlayerUnitUtils.FindPositionNextToUnit(gameObject, Data.Target);
+        yield return StartCoroutine(Utils.MoveToTargetWithEvent(gameObject, transform.position, TargetPosition, Data.speed, ReachedTarget));
     }
     
 
@@ -115,7 +128,6 @@ public class PlayerUnitController2 : MonoBehaviour
     }
 
     public IEnumerator EmptyCoroutine() {
-        Debug.Log("Currnet State : " + currentStateName);
         yield break;
     }
 

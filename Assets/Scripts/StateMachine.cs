@@ -11,7 +11,7 @@ public class StateMachine : MonoBehaviour
         StartCoroutine(StateChangeTransition(_newState));
         }
         else {
-  //          Debug.Log("State change lock is active");
+            Debug.Log("Could not change state from " + CurrentState.stateName + " to " + _newState.stateName + " because STATE CHANGE LOCK is active");
         }
     }
    

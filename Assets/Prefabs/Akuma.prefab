@@ -52,7 +52,7 @@ MonoBehaviour:
   SplineLength: 0
   spline: {fileID: 0}
   travelMode: 0
-  IsWalking: 1
+  isWalking: 1
   speed: 1.5
   m_normalizedT: 0
   rotationLerpModifier: 0
@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c66d515278d5844a38a907a1d571a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Walker: {fileID: 0}
   Data:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 0

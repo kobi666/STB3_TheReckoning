@@ -54,15 +54,15 @@ public class TestEnemyUnitController : EnemyUnitController
         SM.SetState(states.InBattle);
     }
 
-    IEnumerator ReturnToWalkPath() {
-        walker.IsWalking = true;
-        yield break;
-    }
+    // IEnumerator ReturnToWalkPath() {
+    //     walker.isWalking = true;
+    //     yield break;
+    // }
 
-    IEnumerator StopWalkingOnPath() {
-        walker.IsWalking = false;
-        yield break;
-    }
+    // IEnumerator StopWalkingOnPath() {
+    //     walker.isWalking = false;
+    //     yield break;
+    // }
 
     
 
@@ -84,12 +84,12 @@ public class TestEnemyUnitController : EnemyUnitController
         targetUnitReleased += LeaveBattle;
 
         states.Default.OnExitState += EmptyRoutine;
-        states.Default.OnEnterState += ReturnToWalkPath;
+       // states.Default.OnEnterState += ReturnToWalkPath;
 
         states.Death.OnEnterState += ReleaseInBattleFunctionForExistingTargetUnit;
         states.Death.OnEnterState += Die;
         
-        states.PreBattle.OnEnterState += StopWalkingOnPath;
+       // states.PreBattle.OnEnterState += StopWalkingOnPath;
         states.PreBattle.OnExitState += EmptyRoutine;
 
         states.InBattle.OnEnterState += EmptyRoutine;

@@ -11,12 +11,12 @@ public class UnitUtils : MonoBehaviour
     }
 
     public static IEnumerator StopWalkingOnPath(BezierSolution.UnitWalker _walker) {
-        _walker.IsWalking = false;
+        _walker.StopWalking();
         yield break;
     }
 
     public static IEnumerator ReturnToWalkPath(BezierSolution.UnitWalker _walker) {
-        _walker.IsWalking = true;
+        _walker.ReturnWalking();
         yield break;
     }
 }

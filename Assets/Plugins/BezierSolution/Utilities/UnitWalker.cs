@@ -10,7 +10,18 @@ namespace BezierSolution
 
 		public BezierSpline spline;
 		public TravelMode travelMode;
-		public bool IsWalking;
+		[SerializeField]
+		private bool isWalking;
+		public bool IsWalking {get => isWalking ; private set {
+			isWalking = value;
+		}}
+
+		public void StopWalking() {
+			IsWalking = false;
+		}
+		public void ReturnWalking() {
+			IsWalking = true;
+		}
 
 		public float speed = 5f;
 		[SerializeField]
@@ -52,7 +63,7 @@ namespace BezierSolution
 
 		public override void Execute( float deltaTime )
 		{
-			if (IsWalking) {
+			if (isWalking) {
 			float targetSpeed = ( isGoingForward ) ? speed : -speed;
 
 			Vector3 targetPos = spline.MoveAlongSpline( ref m_normalizedT, targetSpeed * deltaTime );

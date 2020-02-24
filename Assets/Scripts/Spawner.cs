@@ -85,7 +85,7 @@ public class Spawner : MonoBehaviour
             SpawnEnemyToSpline(TestEnemyPrefab, SplineGOs[r],_initialPoints[r]);
             yield return new WaitForSeconds(intervalBetweenSpawns);
         }
-        Debug.Log("Finished");
+        //Debug.Log("Finished");
         yield break;
     }
 
