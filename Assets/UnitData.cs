@@ -17,4 +17,7 @@ public class UnitData
     public int speed;
     public Vector2 SetPosition;
     public GameObject Target;
+    public UnitType unitType;
+
+    public Damage_Type damageType = new Damage_Type("normal");
 }

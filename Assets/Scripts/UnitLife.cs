@@ -16,10 +16,10 @@ public class UnitLifeManager
         Armor = armor;
         SpecialArmor = special_armor;
     }
-    public event Action _onUnitDeath;
+    public event Action onUnitDeath;
     public void OnUnitDeath() {
-        if (_onUnitDeath != null) {
-            _onUnitDeath.Invoke();
+        if (onUnitDeath != null) {
+            onUnitDeath.Invoke();
             
         }
     }

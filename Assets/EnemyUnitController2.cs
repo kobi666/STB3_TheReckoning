@@ -1,16 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemyUnitController2 : MonoBehaviour
 {
-    public float AttackCounter;
+    UnitState CurrentState { get => SM.CurrentState;}
+    public event Action onAttack;
+    public void OnAttack(){
+        if (onAttack != null){
+            onAttack.Invoke();
+        }
+    }
+
+    public bool CanAttack {
+        get {
+            if (CurrentState == states.InBattle) {
+                if (Data.Target != null) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            else {
+                return false;
+            }
+        }
+    }
+    private float attackCounter;
+    public float AttackCounter {
+        get => attackCounter;
+        set {
+            attackCounter = value;
+        }
+    }
     public UnitType unitType;
     public BezierSolution.UnitWalker Walker;
     public UnitData Data;
     public UnitLifeManager LifeManager;
     public StateMachine SM;
-    public NormalUnitStates states {get => unitType.states;}
+    public NormalUnitStates states {get => Data.unitType.states;}
     public PlayerUnitController2 TargetController { get => Data.Target.GetComponent<PlayerUnitController2>();}
 
     public void ChangeDisplayStats() {
@@ -48,6 +78,34 @@ public class EnemyUnitController2 : MonoBehaviour
         }
     }
 
+    public void Attack() {
+        Debug.Log("Attacking " + Data.Target.name);
+        TargetController.LifeManager.DamageToUnit(UnityEngine.Random.Range(Data.DamageRange.min,Data.DamageRange.max), Data.damageType);
+    }
+
+    public void StartAttackRoutine() {
+        StartCoroutine(Utils.IncrementCounterOverTimeAndInvokeAction(AttackCounter, 1.0f, Data.AttackRate / 10, CanAttack, OnAttack ));
+    } 
+
+    public IEnumerator StartAttack() {
+        StartAttackRoutine();
+        yield break;
+    }
+
+    public void StartDying() {
+        SM.StateChangeLocked = false;
+        SM.SetState(states.Death);
+    }
+
+    public IEnumerator PreDeathSequence() {
+        Debug.Log("OMG " + gameObject.name + " is dying...");
+        yield break;
+    }
+
+    public IEnumerator Die() {
+        Destroy(gameObject);
+        yield break;
+    }
 
 
     
@@ -56,9 +114,11 @@ public class EnemyUnitController2 : MonoBehaviour
     {
         Walker = GetComponent<BezierSolution.UnitWalker>();
         SM = GetComponent<StateMachine>();
-        unitType = new UnitType(this, SM);
+        Data.unitType = new UnitType(this, SM);
         LifeManager = new UnitLifeManager(Data.HP, Data.Armor, Data.SpecialArmor);
         LifeManager.hp_changed += ChangeDisplayStats;
+        LifeManager.onUnitDeath += StartDying;
+        onAttack += Attack;
 
         states.Default.OnEnterState += EmptyCoroutine;
         states.Default.OnExitState += EmptyCoroutine;
@@ -68,9 +128,12 @@ public class EnemyUnitController2 : MonoBehaviour
         states.PreBattle.OnExitState += EmptyCoroutine;
 
         states.InBattle.OnEnterState += EmptyCoroutine;
+        states.InBattle.OnEnterState += StartAttack;
         states.InBattle.OnExitState += EmptyCoroutine;
 
         states.Death.OnEnterState += EmptyCoroutine;
+        states.Death.OnEnterState += PreDeathSequence;
+        states.Death.OnEnterState += Die;
         states.Death.OnExitState += EmptyCoroutine;
 
         SM.SetState(states.Default);

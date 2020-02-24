@@ -78,7 +78,7 @@ public class TestEnemyUnitController : EnemyUnitController
 
     private void Start() {
         unitType = new UnitType(this, SM);
-        UnitLife._onUnitDeath += UnitDeath;
+        UnitLife.onUnitDeath += UnitDeath;
         targetUnitSet += SetTargetUnit;
         targetUnitSet += WaitForTargetToEnterBattlePosition;
         targetUnitReleased += LeaveBattle;

@@ -8,9 +8,37 @@ using UnityEngine.EventSystems;
 
 public class PlayerUnitController2 : MonoBehaviour
 {
-    public float AttackCounter;
+    float attackCounter;
+    public float AttackCounter {
+        get => attackCounter;
+        set {
+            attackCounter = value;
+        }
+    }
+    public event Action onAttack;
+    public void OnAttack(){
+        if (onAttack != null){
+            onAttack.Invoke();
+        }
+    }
+
+    public bool CanAttack {
+        get {
+            if (CurrentState == states.InBattle) {
+                if (Data.Target != null) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            else {
+                return false;
+            }
+        }
+    }
     Collider2D[] collisions;
-    public UnitType unitType;
+
     public UnitData Data;
     public event Action reachedTarget; 
     public void ReachedTarget() {
@@ -35,7 +63,7 @@ public class PlayerUnitController2 : MonoBehaviour
     public EnemyUnitController2 TargetController { get => Data.Target.GetComponent<EnemyUnitController2>();}
     public UnitData TargetData { get => TargetController.Data;}
     public NormalUnitStates TargetStates { get => TargetController.states;}
-    public NormalUnitStates states {get => unitType.states;}
+    public NormalUnitStates states {get => Data.unitType.states;}
 
     UnitState CurrentState { get => SM.CurrentState;}
 
@@ -45,6 +73,35 @@ public class PlayerUnitController2 : MonoBehaviour
     }
 
     public StateMachine TargetStateMachine { get => Data.Target.GetComponent<StateMachine>();}
+
+    public void StartDying() {
+        SM.StateChangeLocked = false;
+        SM.SetState(states.Death);
+    }
+
+    public IEnumerator PreDeathSequence() {
+        Debug.Log("OMG " + gameObject.name + " is dying...");
+        yield break;
+    }
+
+    public IEnumerator Die() {
+        Destroy(gameObject);
+        yield break;
+    }
+
+    public void DetermineWhatToDoWhenTargetDies() {
+        GameObject TentativeTarget = Utils.FindEnemyNearestToEndOfPath(gameObject, collisions);
+        if (Data.Target == null || TargetStateMachine.CurrentState == TargetStates.Death) {
+            if (Utils.FindEnemyNearestToEndOfPath(gameObject, collisions) == null) {
+                SM.SetState(states.Default);
+            }
+            else {
+                Data.Target = TentativeTarget;
+                TargetController.LifeManager.onUnitDeath += DetermineWhatToDoWhenTargetDies;
+                StartPreBattleSequnece(Data.Target);
+            }
+        }
+    }
 
     public bool TargetIsInBattleWithThisUnit {
         get {
@@ -65,6 +122,7 @@ public class PlayerUnitController2 : MonoBehaviour
     public void SetEnemyTarget(GameObject target) {
         if (TargetSlotIsEmpty) {
             Data.Target = Utils.FindEnemyNearestToEndOfPath(gameObject, collisions);
+            TargetController.LifeManager.onUnitDeath += DetermineWhatToDoWhenTargetDies;
         }
     }
 
@@ -84,6 +142,21 @@ public class PlayerUnitController2 : MonoBehaviour
                 SM.SetState(states.InBattle);
             }
         }
+    }
+
+    public void Attack() {
+        if (Data.Target != null) {
+        TargetController.LifeManager.DamageToUnit(UnityEngine.Random.Range(Data.DamageRange.min,Data.DamageRange.max), Data.damageType);
+        }
+    }
+
+    public void StartAttackRoutine() {
+        StartCoroutine(Utils.IncrementCounterOverTimeAndInvokeAction(AttackCounter, 1.0f, Data.AttackRate / 10, CanAttack, OnAttack ));
+    } 
+
+    public IEnumerator StartAttack() {
+        StartAttackRoutine();
+        yield break;
     }
 
     public IEnumerator PreBattleSequence() {
@@ -118,7 +191,7 @@ public class PlayerUnitController2 : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.CompareTag("Enemy")) {
+        if (other.gameObject.CompareTag("Enemy") && CurrentState == states.Default) {
             EnemyEnteredProximity(other.gameObject);
         }
     }
@@ -140,9 +213,11 @@ public class PlayerUnitController2 : MonoBehaviour
     private void Start() {
         LifeManager = new UnitLifeManager(Data.HP, Data.Armor, Data.SpecialArmor);
         LifeManager.hp_changed += ChangeDisplayStats;
+        LifeManager.onUnitDeath += StartDying;
         SM = GetComponent<StateMachine>();
-        unitType = new UnitType(this, SM);
+        Data.unitType = new UnitType(this, SM);
         Data.SetPosition = transform.position;
+        onAttack += Attack;
         
 
         reachedTarget += Battle;
@@ -157,17 +232,18 @@ public class PlayerUnitController2 : MonoBehaviour
         states.PreBattle.OnExitState += EmptyCoroutine;
 
         states.InBattle.OnEnterState += EmptyCoroutine;
+        states.InBattle.OnEnterState += StartAttack;
         states.InBattle.OnExitState += EmptyCoroutine;
 
         states.Death.OnEnterState += EmptyCoroutine;
+        states.Death.OnEnterState += PreDeathSequence;
+        states.Death.OnEnterState += Die;
         states.Death.OnExitState += EmptyCoroutine;
 
         SM.SetState(states.Default);
     }
 
-    private void Awake() {
-        
-    }
+    
 
     private void FixedUpdate() {
         

@@ -11,7 +11,12 @@ public class StateMachine : MonoBehaviour
         StartCoroutine(StateChangeTransition(_newState));
         }
         else {
+            if (CurrentState.IsFinalState == true) {
+                Debug.Log(CurrentState.stateName + " is a final state");
+            }
+            else {
             Debug.Log("Could not change state from " + CurrentState.stateName + " to " + _newState.stateName + " because STATE CHANGE LOCK is active");
+            }
         }
     }
    
