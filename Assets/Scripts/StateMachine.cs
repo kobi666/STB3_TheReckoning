@@ -5,7 +5,7 @@ using System;
 
 public class StateMachine : MonoBehaviour
 {
-
+    public bool StateInTransition = false;
     public void SetState(UnitState _newState) {
         if (StateChangeLocked != true) {
         StartCoroutine(StateChangeTransition(_newState));
@@ -19,6 +19,22 @@ public class StateMachine : MonoBehaviour
             }
         }
     }
+
+    public void SetState(UnitState _newState, bool interrupt) {
+        if (StateChangeLocked != true) {
+        CurrentState.StateTransitionInterrupted = true;
+        StartCoroutine(StateChangeTransition(_newState));
+        }
+        else {
+            if (CurrentState.IsFinalState == true) {
+                Debug.Log(CurrentState.stateName + " is a final state");
+            }
+            else {
+            Debug.Log("Could not change state from " + CurrentState.stateName + " to " + _newState.stateName + " because STATE CHANGE LOCK is active");
+            }
+        }
+    }
+   
    
     public bool StateChangeLocked;
     
@@ -42,6 +58,7 @@ public class StateMachine : MonoBehaviour
         if (StateChangeLocked == false && ConditionToChangeToNewState(CurrentState, _newState) == true) {
             StateChangeLocked = true;
             CurrentState = _newState;
+            StateInTransition = true;
 //            Debug.Log("Changed to State :" + _newState.stateName);
             yield return StartCoroutine(CurrentState.InvokeExitStateFunctions());
             yield return StartCoroutine(_newState.InvokeEnterStateFunctions());
@@ -59,6 +76,28 @@ public class StateMachine : MonoBehaviour
         }
         yield break;
     }
+
+//     public IEnumerator StateChangeTransition(UnitState _newState) {
+//         if (StateChangeLocked == false && ConditionToChangeToNewState(CurrentState, _newState) == true) {
+//             StateChangeLocked = true;
+//             CurrentState = _newState;
+// //            Debug.Log("Changed to State :" + _newState.stateName);
+//             yield return StartCoroutine(CurrentState.InvokeExitStateFunctions());
+//             yield return StartCoroutine(_newState.InvokeEnterStateFunctions());
+// //            Debug.Log("State Transition from " + CurrentState.stateName + " to " + _newState.stateName + " Finished" );
+            
+//             if (_newState._isFinalState == true) {
+//             StateChangeLocked = true;
+//             }
+//             else {
+//             StateChangeLocked = false;
+//             }
+//         }
+//         else {
+//             Debug.Log("State change lock is : " + StateChangeLocked.ToString());
+//         }
+//         yield break;
+//     }
     
 
     

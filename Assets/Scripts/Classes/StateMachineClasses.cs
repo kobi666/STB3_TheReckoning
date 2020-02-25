@@ -12,6 +12,8 @@ public abstract class States {
 [System.Serializable]
 public class UnitState : IEquatable<UnitState> {
 
+    public bool StateTransitionInterrupted;
+
     public bool Equals(UnitState other)
    {
       if (other == null)
@@ -106,9 +108,17 @@ public class UnitState : IEquatable<UnitState> {
         
         Delegate[] delegates = OnEnterState.GetInvocationList();
         for (int i = 0 ; i <  delegates.Length ; i++) {
-                var x = delegates[i] as Func<IEnumerator>;
-                yield return exec.StartCoroutine(x.Invoke());
+                if (StateTransitionInterrupted == false) {
+                    var x = delegates[i] as Func<IEnumerator>;
+                    yield return exec.StartCoroutine(x.Invoke());
+                }
+                else {
+                    break;
+                }
             }
+        }
+        if (StateTransitionInterrupted == true) {
+            StateTransitionInterrupted = false;
         }
         yield break;
     }
@@ -117,13 +127,46 @@ public class UnitState : IEquatable<UnitState> {
         if (OnExitState != null) {
         Delegate[] delegates = OnExitState.GetInvocationList();
         for (int i = 0 ; i <  delegates.Length ; i++) {
-                var x = delegates[i] as Func<IEnumerator>;
-                yield return exec.StartCoroutine(x.Invoke());
+                if (StateTransitionInterrupted == false) {
+                    var x = delegates[i] as Func<IEnumerator>;
+                    yield return exec.StartCoroutine(x.Invoke());
+                }
+                else {
+                    break;
+                }
             }
+        }
+        if (StateTransitionInterrupted == true) {
+            StateTransitionInterrupted = false;
         }
         yield break;
     }
 
+    // public IEnumerator InvokeEnterStateFunctions() {
+    //     if (OnEnterState != null) {
+        
+    //     Delegate[] delegates = OnEnterState.GetInvocationList();
+    //     for (int i = 0 ; i <  delegates.Length ; i++) {
+                
+    //             var x = delegates[i] as Func<IEnumerator>;
+    //             yield return exec.StartCoroutine(x.Invoke());
+    //         }
+    //     }
+    //     yield break;
+    // }
+
+    // public IEnumerator InvokeExitStateFunctions() {
+    //     if (OnExitState != null) {
+    //     Delegate[] delegates = OnExitState.GetInvocationList();
+    //     for (int i = 0 ; i <  delegates.Length ; i++) {
+    //             var x = delegates[i] as Func<IEnumerator>;
+    //             yield return exec.StartCoroutine(x.Invoke());
+    //         }
+    //     }
+    //     yield break;
+    // }
+
+   
     
 
 

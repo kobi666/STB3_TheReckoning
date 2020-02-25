@@ -90,7 +90,17 @@ public class PlayerUnitController2 : MonoBehaviour
     }
 
     public void OnTargetDeath() {
-        SM.SetState(states.Default);
+        SM.StateChangeLocked = false;
+        SM.SetState(states.Default, true);
+    }
+
+    public bool TargetStillExists() {
+        if (Data.Target != null) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     
@@ -124,13 +134,15 @@ public class PlayerUnitController2 : MonoBehaviour
 
     public void StartPreBattleSequnece(GameObject _dummyGO) {
         if(SM.CurrentState == states.Default) {
+        SM.StateChangeLocked = false;
         SM.SetState(states.PreBattle);
         }
     }
 
-    public void Battle() {
-        if (Data.Target == null) { 
-            SM.SetState(states.Default);
+    public void DetermineIfBattleOrDefault() {
+        if (Data.Target == null) {
+            SM.StateChangeLocked = false; 
+            SM.SetState(states.Default, true);
         }
         else {
             if (CurrentState == states.PreBattle) {
@@ -173,9 +185,19 @@ public class PlayerUnitController2 : MonoBehaviour
         yield return StartCoroutine(MoveToBattlePosition());
     }
 
+    public IEnumerator CheckIfIShouldStayInBattle() {
+        if (Data.Target == null) {
+            SM.StateChangeLocked = false;
+            SM.SetState(states.Default);
+        }
+        yield break;
+    }
+
     public IEnumerator MoveToBattlePosition() {
-        Vector2 TargetPosition = PlayerUnitUtils.FindPositionNextToUnit(gameObject, Data.Target);
-        yield return StartCoroutine(Utils.MoveToTargetWithEvent(gameObject, transform.position, TargetPosition, Data.speed, ReachedTarget));
+        if (Data.Target != null) {
+            Vector2 TargetPosition = PlayerUnitUtils.FindPositionNextToUnit(gameObject, Data.Target);
+            yield return StartCoroutine(Utils.MoveToTargetWithEventAndCondition(gameObject, transform.position, TargetPosition, Data.speed, ReachedTarget, TargetStillExists()));
+        }
     }
 
     public bool StillInDefaultState() {
@@ -200,6 +222,10 @@ public class PlayerUnitController2 : MonoBehaviour
             EnemyEnteredProximity(other.gameObject);
         }
     }
+
+    
+
+    
 
     public IEnumerator ReturnToSetPosition() {
         yield return StartCoroutine(Utils.MoveToTargetWithCondition(gameObject, transform.position, Data.SetPosition, Data.speed, StillInDefaultState()));
@@ -231,7 +257,7 @@ public class PlayerUnitController2 : MonoBehaviour
         onAttack += Attack;
         
 
-        reachedTarget += Battle;
+        reachedTarget += DetermineIfBattleOrDefault;
         enemyEnteredProximity += SetEnemyTarget;
         enemyEnteredProximity += StartPreBattleSequnece;
 
@@ -241,11 +267,11 @@ public class PlayerUnitController2 : MonoBehaviour
 
         states.PreBattle.OnEnterState += EmptyCoroutine;
         states.PreBattle.OnEnterState += PreBattleSequence;
-        states.PreBattle.OnExitState += EmptyCoroutine;
+        states.PreBattle.OnExitState += PreBattleSequence;
 
         states.InBattle.OnEnterState += EmptyCoroutine;
         states.InBattle.OnEnterState += StartAttack;
-        states.InBattle.OnExitState += EmptyCoroutine;
+        states.InBattle.OnExitState += CheckIfIShouldStayInBattle;
 
         states.Death.OnEnterState += EmptyCoroutine;
         states.Death.OnEnterState += PreDeathSequence;

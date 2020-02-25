@@ -89,11 +89,13 @@ public class EnemyUnitController2 : MonoBehaviour
     }
 
     public void Battle() {
-        if (Data.Target == null) { 
-            SM.SetState(states.Default);
-        }
-        else {
-            SM.SetState(states.InBattle);
+        if (Data.Target == null) {
+            if (CurrentState.IsFinalState == false) {        
+                SM.SetState(states.Default);
+            }
+            else {
+                SM.SetState(states.InBattle);
+            }
         }
     }
 
@@ -123,6 +125,9 @@ public class EnemyUnitController2 : MonoBehaviour
     }
 
     public IEnumerator Die() {
+        if (Data.Target != null) {
+            TargetController.reachedTarget -= Battle;
+        }
         Destroy(gameObject);
         yield break;
     }

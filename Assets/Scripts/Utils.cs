@@ -49,7 +49,7 @@ public class Utils
             Self.transform.position = Vector2.Lerp(OriginPosition, TargetPosition, t);
             yield return new WaitForFixedUpdate();
         }
-        Self.transform.position = TargetPosition;
+        
     }
 
 
@@ -63,6 +63,17 @@ public class Utils
         }
         Self.transform.position = TargetPosition;
         _actionEvent.Invoke();
+    }
+
+    public static IEnumerator MoveToTargetWithEventAndCondition(GameObject self, Vector2 originPosition, Vector2 targetPosition, float speed, Action actionEvent, bool condition) {
+        float step = (speed / (originPosition - targetPosition).magnitude * Time.fixedDeltaTime );
+        float t = 0;
+        while (t <= 1.0f && condition) {
+            t += step;
+            self.transform.position = Vector2.Lerp(originPosition, targetPosition, t);
+            yield return new WaitForFixedUpdate();
+        }
+        actionEvent.Invoke();
     }
 
     public static IEnumerator MoveTowardsTargetWithEvent(GameObject _selfGO, GameObject _targetGO, float _speed, Action _actionEvent) {
