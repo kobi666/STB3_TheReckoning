@@ -41,6 +41,18 @@ public class Utils
         Self.transform.position = TargetPosition;
     }
 
+    public static IEnumerator MoveToTargetWithCondition(GameObject Self, Vector2 OriginPosition, Vector2 TargetPosition, float _speed, bool conditon) {
+        float step = (_speed / (OriginPosition - TargetPosition).magnitude * Time.fixedDeltaTime );
+        float t = 0;
+        while (t <= 1.0f && conditon == true) {
+            t += step;
+            Self.transform.position = Vector2.Lerp(OriginPosition, TargetPosition, t);
+            yield return new WaitForFixedUpdate();
+        }
+        Self.transform.position = TargetPosition;
+    }
+
+
     public static IEnumerator MoveToTargetWithEvent(GameObject Self, Vector2 OriginPosition, Vector2 TargetPosition, float _speed, Action _actionEvent) {
         float step = (_speed / (OriginPosition - TargetPosition).magnitude * Time.fixedDeltaTime );
         float t = 0;
@@ -151,7 +163,7 @@ public class Utils
         GameObject target = null;
         float LowestProximity = 999.0f;
         foreach (GameObject Enemy in GetEnemiesInRange(self, _collisions)) {
-            if (Enemy.GetComponent<BezierSolution.UnitWalker>().ProximityToEndOfSpline < LowestProximity) {
+            if (Enemy.GetComponent<BezierSolution.UnitWalker>().ProximityToEndOfSpline < LowestProximity && Enemy.GetComponent<EnemyUnitController2>().IsTargetable == true) {
                 target = Enemy;
                 LowestProximity = Enemy.GetComponent<BezierSolution.UnitWalker>().ProximityToEndOfSpline;
             }

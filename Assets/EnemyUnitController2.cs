@@ -5,11 +5,30 @@ using System;
 
 public class EnemyUnitController2 : MonoBehaviour
 {
+    public event Action unitDied;
+    public void UnitDied() {
+        if (unitDied != null) {
+            unitDied.Invoke();
+        }
+    }
+    public IEnumerator AnnounceDeath() {
+        UnitDied();
+        yield break;
+    }
     UnitState CurrentState { get => SM.CurrentState;}
     public event Action onAttack;
     public void OnAttack(){
         if (onAttack != null){
             onAttack.Invoke();
+        }
+    }
+
+    public bool IsTargetable {
+        get {
+            if(CurrentState == states.Death) { 
+                return false;
+            }
+            else {return true;}
         }
     }
 
@@ -79,7 +98,7 @@ public class EnemyUnitController2 : MonoBehaviour
     }
 
     public void Attack() {
-        Debug.Log("Attacking " + Data.Target.name);
+       // Debug.Log("Attacking " + Data.Target.name);
         TargetController.LifeManager.DamageToUnit(UnityEngine.Random.Range(Data.DamageRange.min,Data.DamageRange.max), Data.damageType);
     }
 
@@ -95,6 +114,7 @@ public class EnemyUnitController2 : MonoBehaviour
     public void StartDying() {
         SM.StateChangeLocked = false;
         SM.SetState(states.Death);
+        
     }
 
     public IEnumerator PreDeathSequence() {
@@ -131,7 +151,7 @@ public class EnemyUnitController2 : MonoBehaviour
         states.InBattle.OnEnterState += StartAttack;
         states.InBattle.OnExitState += EmptyCoroutine;
 
-        states.Death.OnEnterState += EmptyCoroutine;
+        states.Death.OnEnterState += AnnounceDeath;
         states.Death.OnEnterState += PreDeathSequence;
         states.Death.OnEnterState += Die;
         states.Death.OnExitState += EmptyCoroutine;

@@ -42,6 +42,7 @@ public class StateMachine : MonoBehaviour
         if (StateChangeLocked == false && ConditionToChangeToNewState(CurrentState, _newState) == true) {
             StateChangeLocked = true;
             CurrentState = _newState;
+//            Debug.Log("Changed to State :" + _newState.stateName);
             yield return StartCoroutine(CurrentState.InvokeExitStateFunctions());
             yield return StartCoroutine(_newState.InvokeEnterStateFunctions());
 //            Debug.Log("State Transition from " + CurrentState.stateName + " to " + _newState.stateName + " Finished" );

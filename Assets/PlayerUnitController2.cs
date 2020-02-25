@@ -89,19 +89,13 @@ public class PlayerUnitController2 : MonoBehaviour
         yield break;
     }
 
-    public void DetermineWhatToDoWhenTargetDies() {
-        GameObject TentativeTarget = Utils.FindEnemyNearestToEndOfPath(gameObject, collisions);
-        if (Data.Target == null || TargetStateMachine.CurrentState == TargetStates.Death) {
-            if (Utils.FindEnemyNearestToEndOfPath(gameObject, collisions) == null) {
-                SM.SetState(states.Default);
-            }
-            else {
-                Data.Target = TentativeTarget;
-                TargetController.LifeManager.onUnitDeath += DetermineWhatToDoWhenTargetDies;
-                StartPreBattleSequnece(Data.Target);
-            }
-        }
+    public void OnTargetDeath() {
+        SM.SetState(states.Default);
     }
+
+    
+
+
 
     public bool TargetIsInBattleWithThisUnit {
         get {
@@ -121,8 +115,10 @@ public class PlayerUnitController2 : MonoBehaviour
     }
     public void SetEnemyTarget(GameObject target) {
         if (TargetSlotIsEmpty) {
+            
             Data.Target = Utils.FindEnemyNearestToEndOfPath(gameObject, collisions);
-            TargetController.LifeManager.onUnitDeath += DetermineWhatToDoWhenTargetDies;
+            Debug.Log("Current Target name :" + Data.Target.name);
+            TargetController.unitDied += OnTargetDeath;
         }
     }
 
@@ -181,6 +177,15 @@ public class PlayerUnitController2 : MonoBehaviour
         Vector2 TargetPosition = PlayerUnitUtils.FindPositionNextToUnit(gameObject, Data.Target);
         yield return StartCoroutine(Utils.MoveToTargetWithEvent(gameObject, transform.position, TargetPosition, Data.speed, ReachedTarget));
     }
+
+    public bool StillInDefaultState() {
+            if (CurrentState == states.Default){
+                return true;
+            }
+            else {
+                return false;
+            }
+    }
     
 
     public event Action<GameObject> enemyEnteredProximity;
@@ -190,17 +195,23 @@ public class PlayerUnitController2 : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerStay2D(Collider2D other) {
         if (other.gameObject.CompareTag("Enemy") && CurrentState == states.Default) {
             EnemyEnteredProximity(other.gameObject);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
-        
+    public IEnumerator ReturnToSetPosition() {
+        yield return StartCoroutine(Utils.MoveToTargetWithCondition(gameObject, transform.position, Data.SetPosition, Data.speed, StillInDefaultState()));
+        yield break;
     }
 
     public IEnumerator EmptyCoroutine() {
+        yield break;
+    }
+
+    public IEnumerator WaitForSmallAmountOfTime() {
+        yield return new WaitForSeconds(0.01f);
         yield break;
     }
 
@@ -224,7 +235,8 @@ public class PlayerUnitController2 : MonoBehaviour
         enemyEnteredProximity += SetEnemyTarget;
         enemyEnteredProximity += StartPreBattleSequnece;
 
-        states.Default.OnEnterState += EmptyCoroutine;
+        states.Default.OnEnterState += ReturnToSetPosition;
+        //states.Default.OnEnterState += LookForNewEnemy;
         states.Default.OnExitState += EmptyCoroutine;
 
         states.PreBattle.OnEnterState += EmptyCoroutine;
