@@ -6,9 +6,8 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 
-public class PlayerUnitController2 : MonoBehaviour
+public class PlayerUnitControllerStaging : MonoBehaviour
 {
-    
     float attackCounter;
     public float AttackCounter {
         get => attackCounter;
@@ -61,8 +60,6 @@ public class PlayerUnitController2 : MonoBehaviour
     }
 
     
-
-    
     public EnemyUnitController2 TargetController { get => Data.Target.GetComponent<EnemyUnitController2>();}
     public UnitData TargetData { get => TargetController.Data;}
     public NormalUnitStates TargetStates { get => TargetController.states;}
@@ -106,6 +103,9 @@ public class PlayerUnitController2 : MonoBehaviour
         }
     }
 
+    public void MovementManager() {
+        
+    }
     
 
 
@@ -230,8 +230,6 @@ public class PlayerUnitController2 : MonoBehaviour
 
     
 
-    
-
     public IEnumerator ReturnToSetPosition() {
         yield return StartCoroutine(Utils.MoveToTargetWithCondition(gameObject, transform.position, Data.SetPosition, Data.speed, StillInDefaultState()));
         yield break;
@@ -246,23 +244,16 @@ public class PlayerUnitController2 : MonoBehaviour
         yield break;
     }
 
-    public void ChangeDisplayStats(int _hp) {
-        Data.HP = _hp;
+    public void ChangeDisplayStats(int hp) {
+        Data.HP = LifeManager.HP;
         Data.Armor = LifeManager.Armor;
         Data.SpecialArmor = LifeManager.SpecialArmor;
     }
 
-    private void Awake() {
+    private void Start() {
         LifeManager = new UnitLifeManager(Data.HP, Data.Armor, Data.SpecialArmor);
         LifeManager.hp_changed += ChangeDisplayStats;
         LifeManager.onUnitDeath += StartDying;
-    }
-
-    private void Start() {
-        Debug.Log("Parent Started");
-        // LifeManager = new UnitLifeManager(Data.HP, Data.Armor, Data.SpecialArmor);
-        // LifeManager.hp_changed += ChangeDisplayStats;
-        // LifeManager.onUnitDeath += StartDying;
         SM = GetComponent<StateMachine>();
         Data.unitType = new UnitType(this, SM);
         Data.SetPosition = transform.position;

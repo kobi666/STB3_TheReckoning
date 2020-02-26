@@ -121,8 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed402ea4c57e01d41a273a54170295b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateTransitionInterrupted: 0
     _isFinalState: 0
     stateName: 
 --- !u!114 &-7116810997858055835
@@ -142,9 +144,9 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 12
     DamageRange:
-      min: 0
-      max: 0
-    HP: 100
+      min: 10
+      max: 20
+    HP: 300
     Armor: 0
     SpecialArmor: 0
     speed: 5

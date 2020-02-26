@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System;
 
 [System.Serializable]
-public class UnitLifeManager
+public class UnitLifeManager 
 {
-    public event Action hp_changed;
-    public void HP_changed() {
+    
+    public event Action<int> hp_changed;
+    public event Action<int> damageTaken;
+    
+    public void HP_changed(int _hp) {
         if (hp_changed != null) {
-            hp_changed.Invoke();
+            hp_changed.Invoke(HP);
         }
     }
     public UnitLifeManager(int hp, int armor, int special_armor) {
@@ -31,12 +34,12 @@ public class UnitLifeManager
     public int HP {get => _HP ; set {
         if (value <= 0) {
             _HP = value;
-            HP_changed();
+            HP_changed(value);
             OnUnitDeath();
         }
         else {
             _HP = value;
-            HP_changed();
+            HP_changed(value);
         }
     }}
     int _armor;
@@ -50,27 +53,29 @@ public class UnitLifeManager
     int _fireResistence;
     int _poisonResistence;
     public void DamageToUnit(int _damage, Damage_Type _damageType) {
+        int damageDelta = 0;
         switch (_damageType.DamageType)
         {
             case "normal":
                 if ((_damage - Armor) <= 1) {
-                    HP -= 1;
+                    damageDelta = 1;
                     break;
                 }
                 else {
-                    HP -= (_damage - Armor);
+                    damageDelta = (_damage - Armor);
                     break;
                 }
             case "special":
                 if ((_damage - (Armor / 2) - SpecialArmor) <= 1) {
-                    HP -= 1;
+                    damageDelta = 1;
                     break;
                 }
                 else {
-                    HP -= (_damage - (Armor /2) - SpecialArmor);
+                    damageDelta = (_damage - (Armor /2) - SpecialArmor);
                     break;
                 }
         }
-
+        HP -= damageDelta;
+        damageTaken?.Invoke(damageDelta);
     }
 }

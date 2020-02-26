@@ -62,8 +62,8 @@ public class EnemyUnitController2 : MonoBehaviour
     public NormalUnitStates states {get => Data.unitType.states;}
     public PlayerUnitController2 TargetController { get => Data.Target.GetComponent<PlayerUnitController2>();}
 
-    public void ChangeDisplayStats() {
-        Data.HP = LifeManager.HP;
+    public void ChangeDisplayStats(int hp) {
+        Data.HP = hp;
         Data.Armor = LifeManager.Armor;
         Data.SpecialArmor = LifeManager.SpecialArmor;
     }
@@ -92,11 +92,11 @@ public class EnemyUnitController2 : MonoBehaviour
         if (Data.Target == null) {
             if (CurrentState.IsFinalState == false) {        
                 SM.SetState(states.Default);
-            }
-            else {
+            }  
+        }
+        else {
                 SM.SetState(states.InBattle);
             }
-        }
     }
 
     public void Attack() {
@@ -120,7 +120,7 @@ public class EnemyUnitController2 : MonoBehaviour
     }
 
     public IEnumerator PreDeathSequence() {
-        Debug.Log("OMG " + gameObject.name + " is dying...");
+//        Debug.Log("OMG " + gameObject.name + " is dying...");
         yield break;
     }
 
