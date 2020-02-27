@@ -32,7 +32,7 @@ public class OldStateMachine : MonoBehaviour
             yield return StartCoroutine(_newState.InvokeEnterStateFunctions());
             Debug.Log("State Transition from " + CurrentState.stateName + " to " + _newState.stateName + " Finished" );
             CurrentState = _newState;
-            if (_newState._isFinalState == true) {
+            if (_newState.isFinalState == true) {
             StateChangeLocked = true;
             }
             else {

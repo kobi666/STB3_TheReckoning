@@ -16,23 +16,33 @@ public class LifeBarmanager : MonoBehaviour
         get => LifeBarMask.gameObject.transform;
     }
     float LifeBarSize;
+
+    
     
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Child Started");
+        
         initialX = LifeBarMaskPositon.position.x;
         maxLife = gameObject.GetComponentInParent<PlayerUnitController2>().Data.HP;
         Life = gameObject.GetComponentInParent<PlayerUnitController2>().LifeManager;
         Life.damageTaken += UpdateLifeBar;
         LifeBarSize = GetComponent<SpriteRenderer>().sprite.bounds.size.x * transform.localScale.x;
-        Debug.Log(gameObject.GetComponentInParent<PlayerUnitController2>().Data.HP);
+        //ResizeLifeBarToUnitSpriteSize();
     }
+
+    public void ResizeLifeBarToUnitSpriteSize() {
+        float ParentSpriteSize = GetComponentInParent<SpriteRenderer>().sprite.bounds.size.x * GetComponentInParent<Transform>().localScale.x;
+        float ratio = LifeBarSize / ParentSpriteSize;
+        Vector2 newScale = new Vector2(ratio, transform.localScale.y);
+        gameObject.transform.localScale = newScale;
+    }
+
+
 
     public void UpdateLifeBar(int damageTaken) {
         float hitPercentageOfLife = ((float)damageTaken / (float)maxLife);
         float amountToMove = (LifeBarSize * hitPercentageOfLife);
-        Debug.Log(LifeBarMaskPositon.position.x - amountToMove);
         LifeBarMaskPositon.Translate(Vector2.left * amountToMove);    
     }
 

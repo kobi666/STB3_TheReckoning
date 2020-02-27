@@ -15,12 +15,43 @@ public class EnemyUnitController2 : MonoBehaviour
         UnitDied();
         yield break;
     }
+
+    public IEnumerator ReturnToWalkingOnPath() {
+        Walker.ReturnWalking();
+        yield break;
+    }
+
+    public void OnTargetDeath() {
+        if (SM != null) {
+        SM.StateChangeLocked = false;
+        SM.SetState(states.Default, true);
+        }
+    }
     UnitState CurrentState { get => SM.CurrentState;}
     public event Action onAttack;
     public void OnAttack(){
         if (onAttack != null){
             onAttack.Invoke();
         }
+    }
+
+    public IEnumerator UnSubscribeToTargetDeath() {
+         if (Data.Target != null) {
+            if (TargetController.TargetIsInBattleWithThisUnit) {
+            TargetController.unitDied -= OnTargetDeath;
+            }
+        }
+        yield break;
+    }
+
+    public IEnumerator SubscribeToTargetDeath() {
+        if (Data.Target != null) {
+            if (TargetController.TargetIsInBattleWithThisUnit) {
+            TargetController.unitDied += OnTargetDeath;
+            }
+        }
+        
+        yield break;
     }
 
     public bool IsTargetable {
@@ -90,18 +121,24 @@ public class EnemyUnitController2 : MonoBehaviour
 
     public void Battle() {
         if (Data.Target == null) {
-            if (CurrentState.IsFinalState == false) {        
+            if (CurrentState.IsFinalState == false) {
+                SM.StateChangeLocked = false;        
                 SM.SetState(states.Default);
             }  
         }
         else {
+                SM.StateChangeLocked = false;
                 SM.SetState(states.InBattle);
             }
     }
 
+    
+
     public void Attack() {
        // Debug.Log("Attacking " + Data.Target.name);
+       if (Data.Target != null) {
         TargetController.LifeManager.DamageToUnit(UnityEngine.Random.Range(Data.DamageRange.min,Data.DamageRange.max), Data.damageType);
+        }
     }
 
     public void StartAttackRoutine() {
@@ -145,7 +182,7 @@ public class EnemyUnitController2 : MonoBehaviour
         LifeManager.onUnitDeath += StartDying;
         onAttack += Attack;
 
-        states.Default.OnEnterState += EmptyCoroutine;
+        states.Default.OnEnterState += ReturnToWalkingOnPath;
         states.Default.OnExitState += EmptyCoroutine;
 
         states.PreBattle.OnEnterState += EmptyCoroutine;
@@ -153,9 +190,11 @@ public class EnemyUnitController2 : MonoBehaviour
         states.PreBattle.OnExitState += EmptyCoroutine;
 
         states.InBattle.OnEnterState += EmptyCoroutine;
+        states.InBattle.OnEnterState += SubscribeToTargetDeath;
         states.InBattle.OnEnterState += StartAttack;
-        states.InBattle.OnExitState += EmptyCoroutine;
+        states.InBattle.OnExitState += UnSubscribeToTargetDeath;
 
+        states.Death.OnEnterState += UnSubscribeToTargetDeath;
         states.Death.OnEnterState += AnnounceDeath;
         states.Death.OnEnterState += PreDeathSequence;
         states.Death.OnEnterState += Die;

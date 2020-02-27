@@ -8,7 +8,18 @@ using UnityEngine.EventSystems;
 
 public class PlayerUnitController2 : MonoBehaviour
 {
+    public event Action unitDied;
+
     
+    public void UnitDied() {
+        if (unitDied != null) {
+            unitDied.Invoke();
+        }
+    }
+    public IEnumerator AnnounceDeath() {
+        UnitDied();
+        yield break;
+    }
     float attackCounter;
     public float AttackCounter {
         get => attackCounter;
@@ -87,14 +98,18 @@ public class PlayerUnitController2 : MonoBehaviour
         yield break;
     }
 
+    
+
     public IEnumerator Die() {
         Destroy(gameObject);
         yield break;
     }
 
     public void OnTargetDeath() {
+        if (SM != null) {
         SM.StateChangeLocked = false;
         SM.SetState(states.Default, true);
+        }
     }
 
     public bool TargetStillExists() {
@@ -113,7 +128,7 @@ public class PlayerUnitController2 : MonoBehaviour
     public bool TargetIsInBattleWithThisUnit {
         get {
             if (Data.Target != null) {
-                if (Data.Target.GetComponent<UnitData>().Target.name == gameObject.name) {
+                if (TargetController.Data.Target.name == gameObject.name) {
                     return true;
                 }
                 else {
@@ -130,7 +145,7 @@ public class PlayerUnitController2 : MonoBehaviour
         if (TargetSlotIsEmpty) {
             
             Data.Target = Utils.FindEnemyNearestToEndOfPath(gameObject, collisions);
-            Debug.Log("Current Target name :" + Data.Target.name);
+//            Debug.Log("Current Target name :" + Data.Target.name);
             TargetController.unitDied += OnTargetDeath;
         }
     }
@@ -259,7 +274,7 @@ public class PlayerUnitController2 : MonoBehaviour
     }
 
     private void Start() {
-        Debug.Log("Parent Started");
+//        Debug.Log("Parent Started");
         // LifeManager = new UnitLifeManager(Data.HP, Data.Armor, Data.SpecialArmor);
         // LifeManager.hp_changed += ChangeDisplayStats;
         // LifeManager.onUnitDeath += StartDying;
@@ -285,9 +300,9 @@ public class PlayerUnitController2 : MonoBehaviour
         states.InBattle.OnEnterState += StartAttack;
         states.InBattle.OnEnterState += CheckIfIShouldStayInBattle;
         states.InBattle.OnExitState += CheckIfIShouldStayInBattle;
+        
 
-        states.Death.OnEnterState += EmptyCoroutine;
-        states.Death.OnEnterState += PreDeathSequence;
+        states.Death.OnEnterState += AnnounceDeath;
         states.Death.OnEnterState += Die;
         states.Death.OnExitState += EmptyCoroutine;
 

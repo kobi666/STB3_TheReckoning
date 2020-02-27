@@ -7,18 +7,22 @@ public class StateMachine : MonoBehaviour
 {
     public bool StateInTransition = false;
     public void SetState(UnitState _newState) {
-        if (StateChangeLocked != true) {
-        StartCoroutine(StateChangeTransition(_newState));
-        }
-        else {
-            if (CurrentState.IsFinalState == true) {
-                Debug.Log(CurrentState.stateName + " is a final state");
-            }
+        if (CurrentState.IsFinalState != true) {
+            if (StateChangeLocked != true) {
+                StartCoroutine(StateChangeTransition(_newState));
+                }
             else {
-            Debug.Log("Could not change state from " + CurrentState.stateName + " to " + _newState.stateName + " because STATE CHANGE LOCK is active");
+                if (CurrentState.IsFinalState == true) 
+                {
+                    Debug.Log(CurrentState.stateName + " is a final state");
+                    }
+                else 
+                {
+                Debug.Log("Could not change state from " + CurrentState.stateName + " to " + _newState.stateName + " because STATE CHANGE LOCK is active");
+                    }
+                }
             }
         }
-    }
 
     public void SetState(UnitState _newState, bool interrupt) {
         if (StateChangeLocked != true) {
@@ -64,7 +68,7 @@ public class StateMachine : MonoBehaviour
             yield return StartCoroutine(_newState.InvokeEnterStateFunctions());
 //            Debug.Log("State Transition from " + CurrentState.stateName + " to " + _newState.stateName + " Finished" );
             
-            if (_newState._isFinalState == true) {
+            if (_newState.isFinalState == true) {
             StateChangeLocked = true;
             }
             else {

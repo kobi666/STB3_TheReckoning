@@ -195,7 +195,7 @@ public class Utils
             yield return new WaitForFixedUpdate();
         }
         counter = counterMax;
-        Debug.Log("Finished Incrementing");
+        //Debug.Log("Finished Incrementing");
         yield break;
     }
 

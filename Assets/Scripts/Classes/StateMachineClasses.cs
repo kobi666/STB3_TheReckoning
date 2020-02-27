@@ -78,7 +78,7 @@ public class UnitState : IEquatable<UnitState> {
         }
     }
     public UnitState(bool _isfinalState, string _name, MonoBehaviour _self ) {
-        IsFinalState = _isFinalState;
+        IsFinalState = _isfinalState;
         StateName = _name;
         exec = _self;
     }
@@ -89,9 +89,9 @@ public class UnitState : IEquatable<UnitState> {
 
     //public event Action ExitStateActions;
     //public event Action EnterStateActions;
-    public bool _isFinalState;
-    public virtual bool IsFinalState { get => _isFinalState ; set {
-        _isFinalState = value;
+    public bool isFinalState;
+    public bool IsFinalState { get => isFinalState ; set {
+        isFinalState = value;
     }}
     [SerializeField]
     public string stateName;
@@ -104,6 +104,7 @@ public class UnitState : IEquatable<UnitState> {
     public event Func<IEnumerator> OnExitState;
 
     public IEnumerator InvokeEnterStateFunctions() {
+        if (exec != null) {
         if (OnEnterState != null) {
         
         Delegate[] delegates = OnEnterState.GetInvocationList();
@@ -120,25 +121,28 @@ public class UnitState : IEquatable<UnitState> {
         if (StateTransitionInterrupted == true) {
             StateTransitionInterrupted = false;
         }
+        }
         yield break;
     }
 
     public IEnumerator InvokeExitStateFunctions() {
-        if (OnExitState != null) {
-        Delegate[] delegates = OnExitState.GetInvocationList();
-        for (int i = 0 ; i <  delegates.Length ; i++) {
-                if (StateTransitionInterrupted == false) {
-                    var x = delegates[i] as Func<IEnumerator>;
-                    yield return exec.StartCoroutine(x.Invoke());
-                }
-                else {
-                    break;
+        if (exec != null) {
+            if (OnExitState != null) {
+            Delegate[] delegates = OnExitState.GetInvocationList();
+            for (int i = 0 ; i <  delegates.Length ; i++) {
+                    if (StateTransitionInterrupted == false) {
+                        var x = delegates[i] as Func<IEnumerator>;
+                        yield return exec.StartCoroutine(x.Invoke());
+                    }
+                    else {
+                        break;
+                    }
                 }
             }
-        }
-        if (StateTransitionInterrupted == true) {
-            StateTransitionInterrupted = false;
-        }
+            if (StateTransitionInterrupted == true) {
+                StateTransitionInterrupted = false;
+            }
+            }
         yield break;
     }
 
