@@ -25,18 +25,18 @@ public class LifeBarmanager : MonoBehaviour
     {
         ParentSpriteRenderer = transform.parent.GetComponent<SpriteRenderer>();
         initialX = LifeBarMaskPositon.position.x;
-        maxLife = gameObject.GetComponentInParent<PlayerUnitController2>().Data.HP;
-        Life = gameObject.GetComponentInParent<PlayerUnitController2>().LifeManager;
+        maxLife = transform.parent.GetComponent<UnitController>().Data.HP;
+        Life = transform.parent.GetComponent<UnitController>().LifeManager;
         Life.damageTaken += UpdateLifeBar;
-        LifeBarSize = GetComponent<SpriteRenderer>().sprite.bounds.size.x * transform.localScale.x;
+        LifeBarSize = GetComponent<SpriteRenderer>().sprite.bounds.size.x;
         ResizeLifeBarToUnitSpriteSize();
     }
 
     public void ResizeLifeBarToUnitSpriteSize() {
-        float ParentSpriteSize = ParentSpriteRenderer.sprite.bounds.size.x * transform.parent.transform.localScale.x;
+        float ParentSpriteSize = ParentSpriteRenderer.sprite.bounds.size.x;
         //Debug.Log("Parent Bound size " + ParentSpriteRenderer.sprite.bounds.size.x);
         //Debug.Log("LIFE Bound size " + GetComponent<SpriteRenderer>().sprite.bounds.size.x);
-        float ratio =   ParentSpriteSize / LifeBarSize;
+        float ratio = ParentSpriteSize / LifeBarSize;
         Vector2 newScale = new Vector2(ratio, transform.localScale.y);
         gameObject.transform.localScale = newScale;
     }
