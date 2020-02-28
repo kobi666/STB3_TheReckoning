@@ -49,10 +49,6 @@ public class LifeBarmanager : MonoBehaviour
         LifeBarMaskPositon.Translate(Vector2.left * amountToMove);    
     }
 
-    private void Update() {
-       
-    }
-
     // Update is called once per frame
     
 }

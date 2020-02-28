@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 
-public class PlayerUnitController2 : MonoBehaviour
+public class PlayerUnitController2 : UnitController
 {
     public event Action unitDied;
 
@@ -51,14 +51,13 @@ public class PlayerUnitController2 : MonoBehaviour
     }
     Collider2D[] collisions;
 
-    public UnitData Data;
     public event Action reachedTarget; 
     public void ReachedTarget() {
         if (reachedTarget != null) {
             reachedTarget.Invoke();
+            }
         }
-    }
-    public UnitLifeManager LifeManager;
+        
     public StateMachine SM;
     public bool TargetSlotIsEmpty {
         get {

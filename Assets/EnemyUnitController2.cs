@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class EnemyUnitController2 : MonoBehaviour
+public class EnemyUnitController2 : UnitController
 {
     public event Action unitDied;
     public void UnitDied() {
@@ -87,8 +87,6 @@ public class EnemyUnitController2 : MonoBehaviour
     }
     public UnitType unitType;
     public BezierSolution.UnitWalker Walker;
-    public UnitData Data;
-    public UnitLifeManager LifeManager;
     public StateMachine SM;
     public NormalUnitStates states {get => Data.unitType.states;}
     public PlayerUnitController2 TargetController { get => Data.Target.GetComponent<PlayerUnitController2>();}

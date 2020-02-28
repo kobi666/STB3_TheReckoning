@@ -5,6 +5,6 @@ using UnityEngine;
 public class UnitController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public UnitType unitType;
-    public NormalUnitStates states {get => unitType.states;}
+    public UnitLifeManager LifeManager;
+    public UnitData Data;
 }
