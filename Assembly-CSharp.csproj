@@ -68,7 +68,11 @@
      <Compile Include="Assets\Scripts\Utils.cs" />
      <Compile Include="Assets\Scripts\WaveManager.cs" />
      <Compile Include="Assets\Scripts\WeaponController.cs" />
+     <Compile Include="Assets\SelectorTest.cs" />
+     <Compile Include="Assets\TestingVectors.cs" />
      <Compile Include="Assets\TestScript.cs" />
+     <Compile Include="Assets\TowerTestScript.cs" />
+     <Compile Include="Assets\TowerUtils.cs" />
      <Compile Include="Assets\UnitData.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>E:/_UnityProjects/Super Tower Brothers 3 - The Reckoning/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

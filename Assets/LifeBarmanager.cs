@@ -39,6 +39,7 @@ public class LifeBarmanager : MonoBehaviour
         float ratio = ParentSpriteSize / LifeBarSize;
         Vector2 newScale = new Vector2(ratio, transform.localScale.y);
         gameObject.transform.localScale = newScale;
+        LifeBarSize = LifeBarSize * transform.localScale.x;
     }
 
 
