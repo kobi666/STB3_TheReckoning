@@ -44,7 +44,10 @@
     <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
-  <ItemGroup>     <Compile Include="Assets\EnemyUnitController2.cs" />
+  <ItemGroup>     <Compile Include="Assets\DebugText.cs" />
+     <Compile Include="Assets\EnemyUnitController2.cs" />
+     <Compile Include="Assets\ExternalUtils\Direction.cs" />
+     <Compile Include="Assets\LevelManager.cs" />
      <Compile Include="Assets\LifeBarmanager.cs" />
      <Compile Include="Assets\PlayerUnitController2.cs" />
      <Compile Include="Assets\PlayerUnitControllerStaging.cs" />

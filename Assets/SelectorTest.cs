@@ -5,11 +5,19 @@ using System;
 
 public class SelectorTest : MonoBehaviour
 {
-    Dictionary<Vector2, GameObject> towersWithPositions;
+    public Dictionary<Vector2, GameObject> towersWithPositions;
+    public static SelectorTest instance;
 
-
-    private void Start() {
+    private void Awake() {
+        instance = this;
         towersWithPositions = TowerUtils.TowersWithPositionsFromParent(GameObject.FindGameObjectWithTag("TowerParent"));
+        foreach (var item in towersWithPositions) {
+//            Debug.Log(item.Value.name);
+        }
+    }
+    private void Start() {
+        
+        
     }
     
     

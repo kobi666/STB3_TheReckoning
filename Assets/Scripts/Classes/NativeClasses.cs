@@ -19,31 +19,7 @@ public struct StringAndBool {
     }
 }
 
-[System.Serializable]
-public class TowerAndPosition {
-    GameObject towerGO;
-    Vector2 towerPosition;
-    public GameObject TowerGO {
-        get => towerGO;
-        set {
-            if (value == null) {
-                Debug.Log("Tower set to null");
-            }
-            towerGO = value;
-            }
-    
-        }
-    public Vector2 TowerPosition {
-        get => towerPosition;
-        set {
-            towerPosition = value;
-        }
-    }
-    public TowerAndPosition(GameObject _towerGO) {
-        TowerGO = _towerGO;
-        TowerPosition = (Vector2)_towerGO.transform.position;
-    }
-}
+
 
 [System.Serializable]
 public class Subwave {

@@ -5,30 +5,7 @@ using System;
 
 public class Utils
 {
-
     
-    // Start is called before the first frame update
-    // public static GameObject FindObjectNearestToEndToEndOfSplineInGOLayer (GameObject SelfGO, Collider2D otherGO)
-    // {
-    //     GameObject TargetGO = new GameObject();
-    //     LayerMask lm = LayerMask.NameToLayer(otherGO.gameObject.GetComponent<SpriteRenderer>().sortingLayerName);
-    //     float Proximity = 999.0f;
-    //     Collider2D[] Collisions = new Collider2D[200];
-    //     // Collider2D[] Collisions = Physics2D.OverlapCircleAll(GO.transform.position, GO.GetComponent<CircleCollider2D>().radius - 0.2f, 1 << lm);
-    //     Physics2D.OverlapCircleNonAlloc(SelfGO.transform.position, SelfGO.GetComponent<CircleCollider2D>().radius, Collisions, 1 << lm);
-    //     foreach (Collider2D collision in Collisions)
-    //     {
-    //         if (collision == null) {
-    //             continue;
-    //         }
-    //         if (collision.GetComponent<BezierSolution.UnitWalker>().ProximityToEndOfSpline < Proximity)
-    //         {
-    //             TargetGO = collision.gameObject;
-    //             Proximity = collision.gameObject.GetComponent<BezierSolution.UnitWalker>().ProximityToEndOfSpline;
-    //         }
-    //     }
-    //     return TargetGO;
-    // }
 
     public static IEnumerator MoveToTarget(GameObject Self, Vector2 OriginPosition, Vector2 TargetPosition, float _speed) {
         float step = (_speed / (OriginPosition - TargetPosition).magnitude * Time.fixedDeltaTime );
