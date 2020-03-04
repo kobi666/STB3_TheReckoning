@@ -197,7 +197,6 @@ public class TowerAndPosition {
 
     public static bool IsAngleIn45Range(float angleToCheck, float angleToObject) {
         bool in360Range = false;
-        bool in180Range = false;
         float AngleRange =  22.5f + 7.5f;       //350
         float delta;
         float min = angleToCheck - AngleRange;
