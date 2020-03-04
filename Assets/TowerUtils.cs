@@ -10,6 +10,9 @@ public class TowerUtils : MonoBehaviour
         Dictionary<Vector2, GameObject> allTowersUnderParentObject = new Dictionary<Vector2, GameObject>();
         for (int i = 0 ; i < towerParent.transform.childCount ; i++) {
             //if (towerParent.transform.GetChild(i).CompareTag("Tower")){
+                if (allTowersUnderParentObject.ContainsKey((Vector2)towerParent.transform.GetChild(i).transform.position)) {
+                    continue;
+                }
                 allTowersUnderParentObject.Add((Vector2)towerParent.transform.GetChild(i).transform.position, towerParent.transform.GetChild(i).gameObject);
             //}
         }
@@ -134,48 +137,56 @@ public class TowerAndPosition {
                 float angle = FindAngleBetweenTwoObjects(myPosition, item.Key);
                 if (IsAngleIn45Range(180, angle)) {
                   if (distance < l_d) {
-                      up = new TowerAndPosition(item.Value);
+                      l_d = distance;
+                      left = new TowerAndPosition(item.Value);
                       mylist[0] = (new TowerAndPosition(item.Value));  
                   }
                 }
                 if (IsAngleIn45Range(135, angle)) {
                     if (distance < lu_d) {
+                        lu_d = distance;
                         up_left = new TowerAndPosition(item.Value);
                         mylist[1] =(new TowerAndPosition(item.Value));
                     }
                 }
                 if (IsAngleIn45Range(90, angle)) {
                     if (distance < u_d) {
+                        u_d = distance;
                         up = new TowerAndPosition(item.Value);
                         mylist[2] =(new TowerAndPosition(item.Value));
                     }
                 }
                 if (IsAngleIn45Range(45, angle)) {
                     if (distance < ur_d) {
+                        ur_d = distance;
                         up_right = new TowerAndPosition(item.Value);
                         mylist[3] =(new TowerAndPosition(item.Value));
                     }
                 }
                 if (IsAngleIn45Range(360, angle)) {
                     if (distance < r_d) {
+                        r_d = distance;
                         right = new TowerAndPosition(item.Value);
                         mylist[4] =(new TowerAndPosition(item.Value));
                     }
                 }
                 if (IsAngleIn45Range(315, angle)) {
                     if (distance < rd_d) {
+                        rd_d = distance;
                         down_right = new TowerAndPosition(item.Value);
                         mylist[5] =(new TowerAndPosition(item.Value));
                     }
                 }
                 if (IsAngleIn45Range(270, angle)) {
                     if (distance < d_d) {
+                        d_d = distance;
                         down = new TowerAndPosition(item.Value);
                         mylist[6] =(new TowerAndPosition(item.Value));
                     }
                 }
                 if (IsAngleIn45Range(215, angle)) {
                     if (distance < dl_d) {
+                        dl_d = distance;
                         down_left = new TowerAndPosition(item.Value);
                         mylist[7] =(new TowerAndPosition(item.Value));
                     }
@@ -185,15 +196,37 @@ public class TowerAndPosition {
     }
 
     public static bool IsAngleIn45Range(float angleToCheck, float angleToObject) {
-        bool over360 = false;
-        bool below360 = false;
-        float min = angleToCheck - 22.5f;
-        if (min < 0) { min = 360 - 22.5f; }
-        float max = angleToCheck + 22.5f;
-        if (max > 360) {max = 0 + 22.5f;}
-        
+        bool in360Range = false;
+        bool in180Range = false;
+        float AngleRange =  22.5f + 7.5f;       //350
+        float delta;
+        float min = angleToCheck - AngleRange;
+        float max = angleToCheck + AngleRange;
+        if (min < 0) {
+            delta = 0 + min;
+            in360Range = true;
+            min = delta;
+        }
+        if (max > 360) {
+            max = max - 360;
+            in360Range = true;
+        }
 
         
+
+        if (in360Range) {
+            if (angleToObject <= max) {
+                    return true;
+            }
+            if (angleToObject >= min) {
+                return true;
+            }
+        }
+
+
+        
+
+
         
 
         if (angleToObject >= min && angleToObject <= max) {
@@ -205,9 +238,7 @@ public class TowerAndPosition {
             }
     }
 
-    public bool AngleCheck2(float angleTocheck, float angle) {
-        return true;
-    }
+    
 
 
     public static float FindAngleBetweenTwoObjects(Vector2 myPosition, Vector2 targetPosition){
