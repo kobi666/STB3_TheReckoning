@@ -4,6 +4,14 @@ using UnityEngine;
 using System;
 
 [System.Serializable]
+public struct DebugTowerPositionData {
+    [SerializeField]
+    public GameObject GO;
+    public Vector2 Position;
+    public float Distance;
+}
+
+[System.Serializable]
 public struct StringAndBool {
     [SerializeField]
     public string StateName;

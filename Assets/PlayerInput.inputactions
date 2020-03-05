@@ -2,14 +2,30 @@
     "name": "PlayerInput",
     "maps": [
         {
-            "name": "PlayerInput",
+            "name": "GamePlay",
             "id": "c6057c45-71e0-4285-8e36-ed78742c4d27",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "PassThrough",
-                    "id": "92a1d72d-5d86-4811-886b-6f4dd3381006",
-                    "expectedControlType": "Vector2",
+                    "name": "MoveTowerCursor",
+                    "type": "Button",
+                    "id": "e76c0444-f393-46fb-85f1-395fc048084e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "TestAction",
+                    "type": "Button",
+                    "id": "9dfef5cc-736c-4622-8fa5-33fb24cead64",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MoveTargetCursor",
+                    "type": "Button",
+                    "id": "c1328339-d94b-4093-8077-96f7596175f5",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 }
@@ -17,17 +33,62 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "2f2e42ca-a5f2-41df-b0bc-f4c6e2ea93d5",
-                    "path": "",
+                    "id": "bba52b7a-e5b8-4949-8987-bdfb8fcea259",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "MoveTowerCursor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8f92220e-8a7e-4355-8c95-ab0cc40529c6",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "TestAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc1e21bf-5ba2-4ae5-9a31-b7c413120916",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "MoveTargetCursor",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "GamePad",
+            "bindingGroup": "GamePad",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }
