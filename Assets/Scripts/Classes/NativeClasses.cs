@@ -5,7 +5,7 @@ using System;
 
 [System.Serializable]
 public struct DebugTowerPositionData {
-    [SerializeField]
+    public string Direction;
     public GameObject GO;
     public Vector2 Position;
     public float Distance;

@@ -38,7 +38,7 @@ public class TowerPositionData {
         get => towerGO;
         set {
             if (value == null) {
-                Debug.Log("Tower set to null");
+                //Debug.Log("Tower set to null");
             }
             towerGO = value;
             }
@@ -81,6 +81,7 @@ public class TowerPositionData {
 
     public static Vector2[] DirectionsClockwise = { new Vector2(0,1), new Vector2(1,1),new Vector2(1,0),new Vector2(1,-1),new Vector2(0,-1),new Vector2(-1,-1),new Vector2(-1,0),new Vector2(-1,1)};
     public static float[] AnglesClockwise = {90,45,360,315,270,225,180,135};
+    public static string[] DirectionNamesClockWise = {"UP","UP_RIGHT","RIGHT","DOWN_RIGHT","DOWN","DOWN_LEFT","LEFT","UP_LEFT"};
     
        
     
