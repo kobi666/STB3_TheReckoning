@@ -178,6 +178,15 @@ public class Utils
         yield break;
     }
 
+    public static IEnumerator IncrementCounterBySeconds(float counter, float counterMax) {
+        counter = 0.0f;
+        while (counter <= counterMax) {
+            counter += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        yield break;
+    }
+
 
 
 

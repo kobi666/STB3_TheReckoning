@@ -9,6 +9,8 @@ public struct DebugTowerPositionData {
     public GameObject GO;
     public Vector2 Position;
     public float Distance;
+    public GameObject ClockWiseTower;
+    public GameObject CounterClockWiseTower;
 }
 
 [System.Serializable]

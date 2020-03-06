@@ -20,10 +20,10 @@ public class @PlayerInput : IInputActionCollection, IDisposable
             ""actions"": [
                 {
                     ""name"": ""MoveTowerCursor"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""e76c0444-f393-46fb-85f1-395fc048084e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": ""StickDeadzone"",
                     ""interactions"": """"
                 },
                 {

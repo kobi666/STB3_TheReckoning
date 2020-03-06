@@ -7,6 +7,79 @@ using UnityEngine.InputSystem;
 public class SelectorTest : MonoBehaviour
 {
     public PlayerInput PlayerControl;
+    public float MoveLock;
+    
+    
+    [SerializeField]
+    GameObject selectedTower;
+
+    public GameObject SelectedTower {
+        get => selectedTower;
+        set {
+            selectedTower = value;
+            TowerController = value.GetComponent<TowerTestScript>() ?? null;
+        }
+    }
+
+    Dictionary<Vector2, TowerUtils.TowerPositionData> cardinalTowers = new Dictionary<Vector2, TowerUtils.TowerPositionData>();
+    public Dictionary<Vector2, TowerUtils.TowerPositionData> CardinalTowers {
+        get => cardinalTowers = TowerController.towersByDirections ?? null;
+    }
+
+    public void MoveToNewTower(Vector2 cardinalDirectionV2, Vector2 NextClosestV2) {
+        
+        if (cardinalDirectionV2 == Vector2.zero) {
+            return;
+        }
+        //Debug.Log(cardinalDirectionV2 + " : " + NextClosestV2);
+        if (MoveLock >= 0.15f) {
+            MoveLock = 0.0f;
+            GameObject towerGO = CardinalTowers[cardinalDirectionV2].TowerGO;
+            GameObject AdjecentTower = null;
+            if (cardinalDirectionV2 == Vector2.zero) {
+                return;
+            }
+            if (towerGO != null) {
+            transform.position = CardinalTowers[cardinalDirectionV2].TowerPosition;
+            SelectedTower = CardinalTowers[cardinalDirectionV2].TowerGO;
+            }
+            if (towerGO == null) {
+                Vector2 CW = TowerUtils.DirectionsClockwise[CardinalTowers[cardinalDirectionV2].ClockWiseIndex];
+                Vector2 CCW = TowerUtils.DirectionsClockwise[CardinalTowers[cardinalDirectionV2].CounterClockwiseIndex];
+                //  float distanceClockWise = Vector2.Distance(CW, NextClosestV2);
+                //  float DistanceCounterClockWise = Vector2.Distance(CCW, NextClosestV2);
+                 float distanceClockWise = Vector2.Distance(CardinalTowers[CW].TowerPosition + CW, NextClosestV2 + (Vector2)transform.position);
+                 float DistanceCounterClockWise = Vector2.Distance(CardinalTowers[CCW].TowerPosition + CCW, (Vector2)transform.position + NextClosestV2);
+                if (distanceClockWise < DistanceCounterClockWise) {
+                    if (CardinalTowers[CW].TowerGO != null) {
+                    
+                    AdjecentTower = CardinalTowers[CW].TowerGO;
+                    }
+                }
+                else {
+                    if (CardinalTowers[CCW].TowerGO != null) {
+                    AdjecentTower = CardinalTowers[CCW].TowerGO;
+                    }
+                }
+                if (AdjecentTower != null) {
+                transform.position = AdjecentTower.transform.position;
+                SelectedTower = AdjecentTower;
+                }
+            }
+            
+            
+        }
+        
+    }
+
+
+
+    
+
+
+    public TowerTestScript TowerController;
+
+
     public Dictionary<Vector2, GameObject> towersWithPositions;
     public static SelectorTest instance;
 
@@ -26,6 +99,7 @@ public class SelectorTest : MonoBehaviour
     }
 
     private void Awake() {
+        MoveLock = 1.0f;
         PlayerControl = new PlayerInput();
         instance = this;
         towersWithPositions = TowerUtils.TowersWithPositionsFromParent(GameObject.FindGameObjectWithTag("TowerParent"));
@@ -33,30 +107,28 @@ public class SelectorTest : MonoBehaviour
 //            Debug.Log(item.Value.name);
         }
         PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => Move = ctx.ReadValue<Vector2>();
-        PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => Move = GetCardinalDirectionFromAxis(Move);
+        //PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => GetCardinalDirectionFromAxis(Move)
+        PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => MoveToNewTower(GetCardinalDirectionFromAxis(ctx.ReadValue<Vector2>()), ctx.ReadValue<Vector2>());
+        //PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => Move = GetCardinalDirectionFromAxis(Move);
         
         PlayerControl.GamePlay.MoveTowerCursor.canceled += ctx => Move = Vector2.zero;
 
         //PlayerControl.GamePlay.TestAction.performed += TestFunction;
     }
     private void Start() {
-        
-        
+        int random = UnityEngine.Random.Range(1, towersWithPositions.Count);
+        SelectedTower = GameObject.FindGameObjectWithTag("TowerParent").transform.GetChild(random).gameObject;
+        transform.position = SelectedTower.transform.position;
     }
 
-    void NormalizeValueFromMovement(Vector2 movementInput) {
-        
-        float Nx = movementInput.x * 1.00f;
-        float Ny = movementInput.y * 1.00f;
-        Debug.Log(Nx + " " + Ny);
-    }
+    
 
     public Vector2 GetCardinalDirectionFromAxis(Vector2 movementInput) {
         Vector2 NormalizedVector = new Vector2();
-        if (movementInput.x > 0.2f) {
+        if (movementInput.x > 0.4f) {
             NormalizedVector.x = 1;
         }
-        if (movementInput.x < -0.2f) {
+        if (movementInput.x < -0.4f) {
             NormalizedVector.x = -1;
         }
         if (movementInput.y > 0.4f) {
@@ -65,12 +137,17 @@ public class SelectorTest : MonoBehaviour
         if (movementInput.y < -0.4f) {
             NormalizedVector.y = -1;
         }
+        if (!CardinalTowers.ContainsKey(NormalizedVector)) {
+            NormalizedVector.x = 0;
+            NormalizedVector.y = 0;
+        }
         return NormalizedVector;
     }
 
     private void Update() {
-        Vector2 m = new Vector2 (Move.x, Move.y) * Time.deltaTime * speed;
-        transform.Translate(m, Space.World);
+        if (MoveLock < 1.0f) {
+            MoveLock += Time.deltaTime;
+        }
     }
     
     

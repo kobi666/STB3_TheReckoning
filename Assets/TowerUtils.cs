@@ -29,6 +29,7 @@ public class TowerPositionData {
             distance = value;
         }
     }
+    public int CardinalIndex;
     [SerializeField]
     GameObject towerGO;
     
@@ -50,7 +51,16 @@ public class TowerPositionData {
             towerPosition = value;
         }
     }
-    public TowerPositionData(GameObject _towerGO, float _distance) {
+
+    public int ClockWiseIndex;
+    
+
+    public int CounterClockwiseIndex;
+    
+
+    
+
+    public TowerPositionData(GameObject _towerGO, float _distance, int cardinalIndex) {
         TowerGO = _towerGO;
         if (_towerGO != null) {
         TowerPosition = (Vector2)_towerGO.transform.position;
@@ -59,25 +69,25 @@ public class TowerPositionData {
     }
 }
 
-    public static TowerPositionData FindNearestTowerToCardinalPoint(Dictionary<Vector2,GameObject> allTowers, Vector2 position, Vector2 direction) {
-        TowerPositionData nearestTower = null;
-        Dictionary<Vector2,GameObject> alltowersButMyself = new Dictionary<Vector2, GameObject>();
-        alltowersButMyself = allTowers;
-        Vector2 newPosition = position + direction;
-        if (alltowersButMyself.ContainsKey(position)) {
-            alltowersButMyself.Remove(position);
-        }
+    // public static TowerPositionData FindNearestTowerToCardinalPoint(Dictionary<Vector2,GameObject> allTowers, Vector2 position, Vector2 direction) {
+    //     TowerPositionData nearestTower = null;
+    //     Dictionary<Vector2,GameObject> alltowersButMyself = new Dictionary<Vector2, GameObject>();
+    //     alltowersButMyself = allTowers;
+    //     Vector2 newPosition = position + direction;
+    //     if (alltowersButMyself.ContainsKey(position)) {
+    //         alltowersButMyself.Remove(position);
+    //     }
         
-        float distance = 999;
-        foreach (KeyValuePair<Vector2,GameObject> tower in allTowers) {
-            float t = Vector2.Distance(newPosition, (Vector2)tower.Value.transform.position) ;
-                if (t < distance) {
-                    distance = t;
-                    nearestTower = new TowerPositionData(tower.Value, t);
-                }
-            }
-        return nearestTower;
-    }
+    //     float distance = 999;
+    //     foreach (KeyValuePair<Vector2,GameObject> tower in allTowers) {
+    //         float t = Vector2.Distance(newPosition, (Vector2)tower.Value.transform.position) ;
+    //             if (t < distance) {
+    //                 distance = t;
+    //                 nearestTower = new TowerPositionData(tower.Value, t);
+    //             }
+    //         }
+    //     return nearestTower;
+    // }
 
     public static Vector2[] DirectionsClockwise = { new Vector2(0,1), new Vector2(1,1),new Vector2(1,0),new Vector2(1,-1),new Vector2(0,-1),new Vector2(-1,-1),new Vector2(-1,0),new Vector2(-1,1)};
     public static float[] AnglesClockwise = {90,45,360,315,270,225,180,135};
@@ -93,7 +103,7 @@ public class TowerPositionData {
         string name = self.name;
         Vector2 myPosition = self.transform.position;
         for (int i = 0 ; i < 8 ; i++) {
-            dict.Add(DirectionsClockwise[i], new TowerPositionData(null, 999f));
+            dict.Add(DirectionsClockwise[i], new TowerPositionData(null, 999f, i));
         }
         foreach (var item in allTowers)
         {
@@ -109,167 +119,34 @@ public class TowerPositionData {
             for (int i = 0 ; i < 8 ; i++) {
                 if (IsAngleIn45Range(AnglesClockwise[i], angle)) {
                     if(dict[DirectionsClockwise[i]].Distance > distance) {
-                        dict[DirectionsClockwise[i]] = new TowerPositionData(item.Value, distance);
+                        dict[DirectionsClockwise[i]] = new TowerPositionData(item.Value, distance, i);
                     }
+                }
+            }
+            for (int i = 0 ; i < 8 ; i++) {
+                if (i == 0) {
+                    dict[DirectionsClockwise[i]].ClockWiseIndex = i+1;
+                    dict[DirectionsClockwise[i]].CounterClockwiseIndex = 7;
+                    continue;
+                }
+                if (i == 7) {
+                    dict[DirectionsClockwise[i]].ClockWiseIndex = 0;
+                    dict[DirectionsClockwise[i]].CounterClockwiseIndex = i-1;
+                    continue;
+                }
+                else {
+                    dict[DirectionsClockwise[i]].ClockWiseIndex = i+1;
+                    dict[DirectionsClockwise[i]].CounterClockwiseIndex = i-1;
                 }
             }
             
         }
         return dict;
-    }   
-
-
-
-    
-
-    // public class TTowersByCardinalDirections : IEnumerable<TowerPositionData> {
-
-    //     public Dictionary<Vector2, TowerPositionData> towerDict = new Dictionary<Vector2, TowerPositionData>();
-
-    //     List<TowerPositionData> mylist = new List<TowerPositionData>();
-        
-    //     public TowerPositionData this[int index] {
-    //         get { return mylist[index];}
-    //         set { mylist[index] = value;}
-    //     }
-    //     public IEnumerator<TowerPositionData> GetEnumerator()
-    //     {
-    //         return mylist.GetEnumerator();
-    //     }
-
-    //     IEnumerator IEnumerable.GetEnumerator()
-    //     {
-    //         return this.GetEnumerator();
-    //     }
-
-    //     [SerializeField]
-    //     TowerPositionData up;
-    //     public TowerPositionData UP {get => up;}
-    //     [SerializeField]
-    //     TowerPositionData up_right;
-    //     public TowerPositionData UP_RIGHT {get => up_right;}
-    //     [SerializeField]
-    //     TowerPositionData right;
-    //     public TowerPositionData RIGHT {get => right;}
-    //     [SerializeField]
-    //     TowerPositionData down_right;
-    //     public TowerPositionData DOWN_RIGHT {get => down_right;}
-    //     [SerializeField]
-    //     TowerPositionData down;
-    //     public TowerPositionData DOWN {get => down;}
-    //     [SerializeField]
-    //     TowerPositionData down_left;
-    //     public TowerPositionData DOWN_LEFT {get => down_left;}
-    //     [SerializeField]
-    //     TowerPositionData left;
-    //     public TowerPositionData LEFT {get => left;}
-    //     [SerializeField]
-    //     TowerPositionData up_left;
-    //     public TowerPositionData UP_LEFT {get => up_left;}
-
-    //     public TTowersByCardinalDirections(Dictionary<Vector2, GameObject> allTowers, GameObject self) {
-
-    //         for (int i = 0 ; i <= 8 ; i++) {
-    //         mylist.Add(null);
-    //         }
-    //         Vector2 myPosition = (Vector2)self.transform.position;
-    //         string name = self.name;
-    //         float u_d = 999;
-    //         float ur_d = 999;
-    //         float r_d = 999;
-    //         float rd_d = 999;
-    //         float d_d = 999;
-    //         float dl_d = 999;
-    //         float l_d = 999;
-    //         float lu_d = 999;
-    //         foreach (var item in allTowers)
-    //         {
-    //             if (item.Value.name == name) {
-    //                 continue;
-    //             }
-    //             if (item.Value == null) {
-    //                 continue;
-    //             }
-    //             float distance = Vector2.Distance(myPosition, item.Key);
-    //             float angle = FindAngleBetweenTwoObjects(myPosition, item.Key);
-    //             if (IsAngleIn45Range(180, angle)) {
-    //               if (distance < l_d) {
-    //                   l_d = distance;
-                      
-    //                   left = new TowerPositionData(item.Value, l_d);
-    //                   mylist[0] = (new TowerPositionData(item.Value));  
-    //                   towerDict.Add(new Vector2(-1,0), left);
-    //               }
-    //             }
-    //             if (IsAngleIn45Range(135, angle)) {
-    //                 if (distance < lu_d) {
-    //                     lu_d = distance;
-    //                     up_left = new TowerPositionData(item.Value);
-    //                     mylist[1] =(new TowerPositionData(item.Value));
-    //                     towerDict.Add(new Vector2(-1, 1), up_left);
-    //                 }
-    //             }
-    //             if (IsAngleIn45Range(90, angle)) {
-    //                 if (distance < u_d) {
-    //                     u_d = distance;
-    //                     up = new TowerPositionData(item.Value);
-    //                     mylist[2] =(new TowerPositionData(item.Value));
-    //                     towerDict.Add(new Vector2(0, 1), up);
-    //                 }
-    //             }
-    //             if (IsAngleIn45Range(45, angle)) {
-    //                 if (distance < ur_d) {
-    //                     ur_d = distance;
-    //                     up_right = new TowerPositionData(item.Value);
-    //                     mylist[3] =(new TowerPositionData(item.Value));
-    //                     towerDict.Add(new Vector2(1, 1), up_right);
-    //                 }
-    //             }
-    //             if (IsAngleIn45Range(360, angle)) {
-    //                 if (distance < r_d) {
-    //                     r_d = distance;
-    //                     right = new TowerPositionData(item.Value);
-    //                     mylist[4] =(new TowerPositionData(item.Value));
-    //                     towerDict.Add(new Vector2(1, 0), right);
-    //                 }
-    //             }
-    //             if (IsAngleIn45Range(315, angle)) {
-    //                 if (distance < rd_d) {
-    //                     rd_d = distance;
-    //                     down_right = new TowerPositionData(item.Value);
-    //                     mylist[5] =(new TowerPositionData(item.Value));
-    //                     towerDict.Add(new Vector2(1, -1), down_right);
-    //                 }
-    //             }
-    //             if (IsAngleIn45Range(270, angle)) {
-    //                 if (distance < d_d) {
-    //                     d_d = distance;
-    //                     down = new TowerPositionData(item.Value);
-    //                     mylist[6] =(new TowerPositionData(item.Value));
-    //                     towerDict.Add(new Vector2(0, -1), down);
-    //                 }
-    //             }
-    //             if (IsAngleIn45Range(215, angle)) {
-    //                 if (distance < dl_d) {
-    //                     dl_d = distance;
-    //                     down_left = new TowerPositionData(item.Value);
-    //                     mylist[7] =(new TowerPositionData(item.Value));
-    //                     towerDict.Add(new Vector2(-1, -1), down_left);
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-
-    public static TowerPositionData GetTowerFromNormalizedDirection(Vector2 Nd, Dictionary<Vector2, TowerPositionData> _towers) {
-        TowerPositionData tower = new TowerPositionData(null, 0.0f);
-        
-        return tower;
     }
 
     public static bool IsAngleIn45Range(float angleToCheck, float angleToObject) {
         bool in360Range = false;
-        float AngleRange =  22.5f + 7.5f;       //350
+        float AngleRange =  22.5f + 5f;       //350
         float delta;
         float min = angleToCheck - AngleRange;
         float max = angleToCheck + AngleRange;
