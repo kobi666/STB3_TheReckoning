@@ -26,7 +26,8 @@ public class TowerTestScript : MonoBehaviour
         //     }
         // }
 
-        towersByDirections4 = TowerUtils.TowersByCardinalDirections(gameObject, SelectorTest.instance.towersWithPositions, TowerUtils.Cardinal4);
+        //towersByDirections4 = TowerUtils.TowersByCardinalDirections(gameObject, SelectorTest.instance.towersWithPositions, TowerUtils.Cardinal4);
+        towersByDirections4 = TowerUtils.CardinalTowersNoAngles(gameObject, SelectorTest2.instance.towersWithPositions, TowerUtils.Cardinal4);
         // foreach (var item in towersByDirections8)
         // {
         //     if (item.Value.TowerGO != null) {

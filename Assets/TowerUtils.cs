@@ -5,6 +5,23 @@ using System;
 
 public class TowerUtils : MonoBehaviour
 {
+    public static Vector2 GetCardinalDirectionFromAxis(Vector2 movementInput) {
+        //Debug.Log(movementInput);
+        Vector2 NormalizedVector = Vector2.zero;
+        if (movementInput.x > 0.1f) {
+            NormalizedVector.x = 1;
+        }
+        if (movementInput.x < -0.1f) {
+            NormalizedVector.x = -1;
+        }
+        if (movementInput.y > 0.1f) {
+            NormalizedVector.y = 1;
+        }
+        if (movementInput.y < -0.1f) {
+            NormalizedVector.y = -1;
+        }
+        return NormalizedVector;
+    }
     // Start is called before the first frame update
     public static Dictionary<Vector2, GameObject> TowersWithPositionsFromParent (GameObject towerParent) {
         Dictionary<Vector2, GameObject> allTowersUnderParentObject = new Dictionary<Vector2, GameObject>();
@@ -18,6 +35,76 @@ public class TowerUtils : MonoBehaviour
         }
         return allTowersUnderParentObject;
     }
+
+public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAngles(GameObject self, Dictionary<Vector2, GameObject> allTowers, CardinalSet cardinalSet) {
+    Dictionary<Vector2, TowerPositionData> dict = new Dictionary<Vector2, TowerPositionData>();
+    Vector2 selfPosition = self.transform.position;
+    float towerDiscoveryRange = 1f;
+    Vector2 towerDiscoveryRangeY = new Vector2(0, towerDiscoveryRange);
+    Vector2 towerDiscoveryRangeX = new Vector2(towerDiscoveryRange, 0);
+    for (int i =0 ; i < cardinalSet.length ; i++ ) {
+        dict.Add(cardinalSet.directionsClockwise[i], new TowerPositionData(null, 999f, i));
+    }
+    foreach (var item in allTowers)
+    {
+        if (item.Value.name == self.name || item.Value == null) {
+            continue;
+        }
+        //Get UP tower
+        if (item.Key.y >= selfPosition.y + towerDiscoveryRange) {
+            if (FindIfTowerInStraightPositionRangeXorY(selfPosition.x, item.Key.x, towerDiscoveryRange)) {
+                if (dict[DirectionsClockwise4[0]].Distance > Vector2.Distance(item.Key, selfPosition + towerDiscoveryRangeY)) {
+                    dict[DirectionsClockwise4[0]] = new TowerPositionData(item.Value, Vector2.Distance(item.Key, selfPosition + towerDiscoveryRangeY), 0);
+                }
+            }
+        }
+        //Get RIGHT tower
+        if (item.Key.x >= selfPosition.x + towerDiscoveryRange) {
+            if (FindIfTowerInStraightPositionRangeXorY(selfPosition.y, item.Key.y, towerDiscoveryRange)) {
+                if (dict[DirectionsClockwise4[1]].Distance > Vector2.Distance(item.Key, selfPosition + towerDiscoveryRangeX)) {
+                    dict[DirectionsClockwise4[1]] = new TowerPositionData(item.Value, Vector2.Distance(item.Key, selfPosition + towerDiscoveryRangeX), 1);
+                }
+            }
+        }
+        //get DOWN tower
+        if (item.Key.y <= selfPosition.y - towerDiscoveryRange) {
+            if (FindIfTowerInStraightPositionRangeXorY(selfPosition.x, item.Key.x, towerDiscoveryRange)) {
+                if (dict[DirectionsClockwise4[2]].Distance > Vector2.Distance(item.Key, selfPosition - towerDiscoveryRangeY)) {
+                    dict[DirectionsClockwise4[2]] = new TowerPositionData(item.Value, Vector2.Distance(item.Key, selfPosition - towerDiscoveryRangeY), 2);
+                }
+            }
+        }
+        //Get LEFT tower
+        if (item.Key.x <= selfPosition.x - towerDiscoveryRange) {
+            if (FindIfTowerInStraightPositionRangeXorY(selfPosition.y, item.Key.y, towerDiscoveryRange)) {
+                if (dict[DirectionsClockwise4[3]].Distance > Vector2.Distance(item.Key, selfPosition - towerDiscoveryRangeX)) {
+                    dict[DirectionsClockwise4[3]] = new TowerPositionData(item.Value, Vector2.Distance(item.Key, selfPosition - towerDiscoveryRangeX), 3);
+                }
+            }
+        }
+       
+        
+
+        
+        
+    }
+    return dict;
+}
+
+public static bool FindIfTowerInStraightPositionRangeXorY(float myPosXorY, float targetPosXorY, float posRange) {
+    float max = myPosXorY + posRange;
+    float min = myPosXorY - posRange;
+    if (targetPosXorY >= min) {
+        if(targetPosXorY <= max) {
+            return true;
+        }
+    }
+    return false;
+}
+
+ 
+
+
 
 [System.Serializable]
 public class TowerPositionData {
@@ -68,26 +155,6 @@ public class TowerPositionData {
         Distance = _distance;
     }
 }
-
-    // public static TowerPositionData FindNearestTowerToCardinalPoint(Dictionary<Vector2,GameObject> allTowers, Vector2 position, Vector2 direction) {
-    //     TowerPositionData nearestTower = null;
-    //     Dictionary<Vector2,GameObject> alltowersButMyself = new Dictionary<Vector2, GameObject>();
-    //     alltowersButMyself = allTowers;
-    //     Vector2 newPosition = position + direction;
-    //     if (alltowersButMyself.ContainsKey(position)) {
-    //         alltowersButMyself.Remove(position);
-    //     }
-        
-    //     float distance = 999;
-    //     foreach (KeyValuePair<Vector2,GameObject> tower in allTowers) {
-    //         float t = Vector2.Distance(newPosition, (Vector2)tower.Value.transform.position) ;
-    //             if (t < distance) {
-    //                 distance = t;
-    //                 nearestTower = new TowerPositionData(tower.Value, t);
-    //             }
-    //         }
-    //     return nearestTower;
-    // }
 
     public static Vector2[] DirectionsClockwise8 = { new Vector2(0,1), new Vector2(1,1),new Vector2(1,0),new Vector2(1,-1),new Vector2(0,-1),new Vector2(-1,-1),new Vector2(-1,0),new Vector2(-1,1)};
     public static Vector2[] DirectionsClockwise4 = { new Vector2(0,1),new Vector2(1,0),new Vector2(0,-1),new Vector2(-1,0)};
