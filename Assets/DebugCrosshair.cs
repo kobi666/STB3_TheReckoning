@@ -5,28 +5,33 @@ using UnityEngine;
 public class DebugCrosshair : MonoBehaviour
 {
     
-    Vector2 movement = Vector2.zero;
+    Vector2 movement;
     PlayerInput PlayerControl;
     public GameObject originPos;
-    Vector2 currentPos {
-        get => originPos.transform.position;
-    }
+    Vector2 currentPos;
+    
+    Vector2 pos;
     // Start is called before the first frame update
     public float speed;
-    void MoveInRange(Vector2 Movement) {
-        transform.Translate(movement.x * speed * Time.deltaTime, movement.y * speed * Time.deltaTime, 0 );
+    void MoveCursor(Vector2 Movement) {
+        Vector2 newPos = new Vector2(transform.position.x  + movement.x , transform.position.y + movement.y);
+        newPos.x = Mathf.Clamp(newPos.x, currentPos.x - 1.5f, currentPos.x + 1.5f);
+        newPos.y = Mathf.Clamp(newPos.y, currentPos.y - 1.5f, currentPos.y + 1.5f);
+        transform.position = Vector2.MoveTowards(transform.position, newPos, 0.2f);
     }
 
     void returnToOrigin() {
         Debug.Log("Cancelled");
-        movement = currentPos;
-        //transform.Translate(currentPos.x * speed * Time.deltaTime, currentPos.y * speed * Time.deltaTime,0);
+        transform.position = Vector2.MoveTowards(transform.position, currentPos, 0.2f);
+       
     }
 
     private void Awake() {
+        currentPos = transform.position;
+        movement = Vector2.zero;
         PlayerControl = new PlayerInput();
         PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => movement = ctx.ReadValue<Vector2>();
-        PlayerControl.GamePlay.MoveTowerCursor.canceled += ctx => returnToOrigin();
+        PlayerControl.GamePlay.MoveTowerCursor.canceled += ctx => movement = Vector2.zero;
     }
     private void OnEnable() {
         PlayerControl.GamePlay.Enable();
@@ -43,7 +48,12 @@ public class DebugCrosshair : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //MoveInRange(movement);
-        transform.position = new Vector2(Mathf.Clamp(movement.x, currentPos.x - 1.5f, currentPos.x + 1.5f), Mathf.Clamp(movement.y, currentPos.y - 1.5f, currentPos.y + 1.5f));
+        if(movement != Vector2.zero) {
+            MoveCursor(movement);
+        }
+        else {
+            returnToOrigin();
+        }
+        Debug.DrawRay(transform.position, currentPos - (Vector2)transform.position, Color.yellow);
     }
 }
