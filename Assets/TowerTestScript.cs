@@ -17,31 +17,9 @@ public class TowerTestScript : MonoBehaviour
     int _index = 0;
     void Start()
     {
-        // towersByDirections8 = TowerUtils.TowersByCardinalDirections8(gameObject, SelectorTest.instance.towersWithPositions);
-        // foreach (var item in towersByDirections8)
-        // {
-        //     if (item.Value.TowerGO != null) {
-        //         item.Value.TowerGO.GetComponent<LineRenderer>().SetPosition(0, item.Value.TowerGO.transform.position);
-        //         item.Value.TowerGO.GetComponent<LineRenderer>().SetPosition(1, transform.position);
-        //     }
-        // }
-
-        //towersByDirections4 = TowerUtils.TowersByCardinalDirections(gameObject, SelectorTest.instance.towersWithPositions, TowerUtils.Cardinal4);
+        
         towersByDirections4 = TowerUtils.CardinalTowersNoAngles(gameObject, SelectorTest2.instance.towersWithPositions, TowerUtils.Cardinal4);
-        // foreach (var item in towersByDirections8)
-        // {
-        //     if (item.Value.TowerGO != null) {
-        //         item.Value.TowerGO.GetComponent<LineRenderer>().SetPosition(0, item.Value.TowerGO.transform.position);
-        //         item.Value.TowerGO.GetComponent<LineRenderer>().SetPosition(1, transform.position);
-        //     }
-        // }
-    
-        // for(int i = 0 ; i < 8 ; i++) {
-        //     TowersDebug[i].GO = towersByDirections8[TowerUtils.DirectionsClockwise8[i]].TowerGO;
-        //     TowersDebug[i].Direction = TowerUtils.DirectionNamesClockWise8[i];
-        //     TowersDebug[i].Position = towersByDirections8[TowerUtils.DirectionsClockwise8[i]].TowerPosition;
-        //     TowersDebug[i].Distance = towersByDirections8[TowerUtils.DirectionsClockwise8[i]].Distance;
-        // }
+        
 
         for(int i = 0 ; i < 4 ; i++) {
             TowersDebug[i].GO = towersByDirections4[TowerUtils.Cardinal4.directionsClockwise[i]].TowerGO;

@@ -99,7 +99,13 @@ public static bool FindIfTowerInStraightPositionRangeXorY(float myPosXorY, float
             return true;
         }
     }
+
     return false;
+}
+
+public static bool FindIfTowerInAngledDirectionWithMaxDistance(Vector2 myPos, Vector2 targetPos, float maxDistance) {
+    
+    return true;
 }
 
  
