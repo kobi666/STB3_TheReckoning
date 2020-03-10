@@ -44,7 +44,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""MoveTowerDebug"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""a6ae0765-cc03-439b-a515-869d878105b3"",
                     ""expectedControlType"": """",
                     ""processors"": """",

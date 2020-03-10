@@ -40,7 +40,8 @@ public class TowerUtils : MonoBehaviour
 public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoop(GameObject self, Dictionary<Vector2, GameObject> allTowers, CardinalSet cardinalSet) {
     Dictionary<Vector2, TowerPositionData> dict = new Dictionary<Vector2, TowerPositionData>();
     Vector2 selfPosition = self.transform.position;
-    float towerDiscoveryRange = 0.9f;
+    float towerDiscoveryRange = SelectorTest2.instance.FirstDiscoveryRange;
+    float SecondTowerDiscoveryRange = SelectorTest2.instance.SecondDiscoveryRange;
     Vector2 towerDiscoveryRangeY = new Vector2(0, towerDiscoveryRange);
     Vector2 towerDiscoveryRangeX = new Vector2(towerDiscoveryRange, 0);
     for (int i =0 ; i < cardinalSet.length ; i++ ) {
@@ -156,10 +157,6 @@ public static bool FindIfTowerInStraightPositionRangeXorY(float myPosXorY, float
     return false;
 }
 
-public static bool FindIfTowerInAngledDirectionWithMaxDistance(Vector2 myPos, Vector2 targetPos, float maxDistance) {
-    
-    return true;
-}
 
  
 
@@ -426,7 +423,7 @@ public class TowerPositionData {
     }
 
     public static bool GetUpTower(TowerPositionQuery tq) {
-        if (tq.TargetTower.y > tq.ThisTower.y) {
+        if (tq.TargetTower.y > tq.ThisTower.y + (tq.Assistingfloat1 / 2)) {
             return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.x, tq.TargetTower.x, tq.Assistingfloat1);
         }
         return false;
@@ -442,7 +439,7 @@ public class TowerPositionData {
     }
 
     public static bool GetRightTower(TowerPositionQuery tq) {
-        if (tq.TargetTower.x > tq.ThisTower.x) {
+        if (tq.TargetTower.x > tq.ThisTower.x + (tq.Assistingfloat1 / 2)) {
         return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.y, tq.TargetTower.y, tq.Assistingfloat1);
         }
         return false;
@@ -459,7 +456,7 @@ public class TowerPositionData {
     }
 
     public static bool GetDownTower(TowerPositionQuery tq) {
-        if (tq.TargetTower.y < tq.ThisTower.y) {
+        if (tq.TargetTower.y < tq.ThisTower.y - (tq.Assistingfloat1 / 2)) {
             return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.x, tq.TargetTower.x, tq.Assistingfloat1);
         }
         return false;
@@ -476,8 +473,8 @@ public class TowerPositionData {
     }
 
     public static bool GetLeftTower(TowerPositionQuery tq) {
-        if (tq.TargetTower.x < tq.ThisTower.x) {
-            return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.y, tq.ThisTower.y, tq.Assistingfloat1);
+        if (tq.TargetTower.x < tq.ThisTower.x - (tq.Assistingfloat1 / 2)) {
+            return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.y, tq.TargetTower.y, tq.Assistingfloat1);
         }
         return false;
     }

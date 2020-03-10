@@ -21,7 +21,7 @@ public class DebugCrosshair : MonoBehaviour
     }
 
     void returnToOrigin() {
-        Debug.Log("Cancelled");
+//        Debug.Log("Cancelled");
         transform.position = Vector2.MoveTowards(transform.position, currentPos, 0.2f);
        
     }

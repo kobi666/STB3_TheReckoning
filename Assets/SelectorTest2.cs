@@ -4,6 +4,31 @@ using UnityEngine;
 
 public class SelectorTest2 : MonoBehaviour
 {
+    public GameObject H1;
+    public float FirstDiscoveryRange;
+    public float SecondDiscoveryRangeMultiplier;
+    public float SecondDiscoveryRange;
+        
+    
+    public float DiscoveryRangeWithLineWidth;
+    public float SecondDiscoveryRangeWithLineWidth;
+    
+    LineRenderer H1L;
+    LineRenderer H2L;
+    LineRenderer H3L;
+    LineRenderer H4L;
+    LineRenderer V1L;
+    LineRenderer V2L;
+    LineRenderer V3L;
+    LineRenderer V4L;
+    public GameObject H2;
+    public GameObject H3;
+    public GameObject H4;
+
+    public GameObject V1;
+    public GameObject V2;
+    public GameObject V3;
+    public GameObject V4;
 
     public PlayerInput PlayerControl;
     public float MoveLock;
@@ -42,6 +67,7 @@ public class SelectorTest2 : MonoBehaviour
         instance = this;
         PlayerControl = new PlayerInput();
         towersWithPositions = TowerUtils.TowersWithPositionsFromParent(GameObject.FindGameObjectWithTag("TowerParent"));
+        
 
         //PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => Move = ctx.ReadValue<Vector2>();
         //PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => DebugAxis(ctx.ReadValue<Vector2>(), TowerUtils.GetCardinalDirectionFromAxis(ctx.ReadValue<Vector2>()));
@@ -74,7 +100,7 @@ public class SelectorTest2 : MonoBehaviour
 
         }
         else {
-            Debug.Log("Move lock was less then 0.1");
+            //Debug.Log("Move lock was less then 0.1");
         }
     }
 
@@ -87,9 +113,20 @@ public class SelectorTest2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        V1L = V1.GetComponent<LineRenderer>();
+        V2L = V2.GetComponent<LineRenderer>();
+        V3L = V3.GetComponent<LineRenderer>();
+        V4L = V4.GetComponent<LineRenderer>();
+        H1L = H1.GetComponent<LineRenderer>();
+        H2L = H2.GetComponent<LineRenderer>();
+        H3L = H3.GetComponent<LineRenderer>();
+        H4L = H4.GetComponent<LineRenderer>();
+        DiscoveryRangeWithLineWidth = FirstDiscoveryRange + 0.10f;
         int random = UnityEngine.Random.Range(1, towersWithPositions.Count);
         SelectedTower = GameObject.FindGameObjectWithTag("TowerParent").transform.GetChild(random).gameObject;
         transform.position = SelectedTower.transform.position;
+        SecondDiscoveryRange = FirstDiscoveryRange * SecondDiscoveryRangeMultiplier;
+        SecondDiscoveryRangeWithLineWidth = SecondDiscoveryRange + 0.10f;
     }
 
     // Update is called once per frame
@@ -98,5 +135,25 @@ public class SelectorTest2 : MonoBehaviour
         if (MoveLock < 1.0f) {
             MoveLock += Time.deltaTime;
         }
+        H1L.SetPosition(0, new Vector2(-10, SelectedTower.transform.position.y + DiscoveryRangeWithLineWidth));
+        H1L.SetPosition(1, new Vector2(10, SelectedTower.transform.position.y + DiscoveryRangeWithLineWidth));
+        H2L.SetPosition(0, new Vector2(-10, SelectedTower.transform.position.y - DiscoveryRangeWithLineWidth));
+        H2L.SetPosition(1, new Vector2(10, SelectedTower.transform.position.y - DiscoveryRangeWithLineWidth));
+        H3L.SetPosition(0, new Vector2(-10, SelectedTower.transform.position.y + SecondDiscoveryRangeWithLineWidth));
+        H3L.SetPosition(1, new Vector2(10, SelectedTower.transform.position.y + SecondDiscoveryRangeWithLineWidth));
+        H4L.SetPosition(0, new Vector2(-10, SelectedTower.transform.position.y - SecondDiscoveryRangeWithLineWidth));
+        H4L.SetPosition(1, new Vector2(10, SelectedTower.transform.position.y - SecondDiscoveryRangeWithLineWidth));
+        V1L.SetPosition(0, new Vector2(SelectedTower.transform.position.x + DiscoveryRangeWithLineWidth, -6));
+        V1L.SetPosition(1, new Vector2(SelectedTower.transform.position.x + DiscoveryRangeWithLineWidth, 6));
+        V2L.SetPosition(0, new Vector2(SelectedTower.transform.position.x - DiscoveryRangeWithLineWidth, -6));
+        V2L.SetPosition(1, new Vector2(SelectedTower.transform.position.x - DiscoveryRangeWithLineWidth, 6));
+        V3L.SetPosition(0, new Vector2(SelectedTower.transform.position.x + SecondDiscoveryRangeWithLineWidth, -6));
+        V3L.SetPosition(1, new Vector2(SelectedTower.transform.position.x + SecondDiscoveryRangeWithLineWidth, 6));
+        V4L.SetPosition(0, new Vector2(SelectedTower.transform.position.x - SecondDiscoveryRangeWithLineWidth, -6));
+        V4L.SetPosition(1, new Vector2(SelectedTower.transform.position.x - SecondDiscoveryRangeWithLineWidth, 6));
+        
+        
+        
+
     }
 }
