@@ -5,6 +5,7 @@ using System;
 
 public class TowerUtils : MonoBehaviour
 {
+    
     public static Vector2 GetCardinalDirectionFromAxis(Vector2 movementInput) {
         //Debug.Log(movementInput);
         Vector2 NormalizedVector = Vector2.zero;
@@ -36,6 +37,58 @@ public class TowerUtils : MonoBehaviour
         return allTowersUnderParentObject;
     }
 
+public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoop(GameObject self, Dictionary<Vector2, GameObject> allTowers, CardinalSet cardinalSet) {
+    Dictionary<Vector2, TowerPositionData> dict = new Dictionary<Vector2, TowerPositionData>();
+    Vector2 selfPosition = self.transform.position;
+    float towerDiscoveryRange = 0.9f;
+    Vector2 towerDiscoveryRangeY = new Vector2(0, towerDiscoveryRange);
+    Vector2 towerDiscoveryRangeX = new Vector2(towerDiscoveryRange, 0);
+    for (int i =0 ; i < cardinalSet.length ; i++ ) {
+        dict.Add(cardinalSet.directionsClockwise[i], new TowerPositionData(null, 999f, i));
+    }
+    foreach (var item in allTowers)
+    {
+            if (item.Value.name == self.name || item.Value == null) {
+                continue;
+            }
+            
+            TowerPositionQuery tq = new TowerPositionQuery(selfPosition, item.Key, towerDiscoveryRange);
+            for(int i = 0 ; i < cardinalSet.length ; i++) {
+                if (cardinalSet.discoveryConditionsClockwise[i](tq)) {
+                    float d = Vector2.Distance(selfPosition, item.Key);
+                    if (dict[cardinalSet.directionsClockwise[i]].Distance > d) {
+                        dict[cardinalSet.directionsClockwise[i]] = new TowerPositionData(item.Value, d, i);
+                    }
+                }
+            }
+            
+    }
+    // Second check with extended range for vertical/horizontal towers to make sure we are catching horizontal towers with priority to shorter vertical/horizontal range area.
+    foreach (var item in allTowers)
+    {
+            if (item.Value.name == self.name || item.Value == null) {
+                continue;
+            }
+            //dict[DirectionsClockwise4[0]] = new TowerPositionData(item.Value, Vector2.Distance(item.Key, selfPosition + towerDiscoveryRangeY), 0);
+            //Get UP tower
+            TowerPositionQuery tq = new TowerPositionQuery(selfPosition, item.Key, towerDiscoveryRange * 1.3f);
+            for(int i = 0 ; i < cardinalSet.length ; i+=2) {
+                if(dict[cardinalSet.directionsClockwise[i]].TowerGO == null) {
+                    if (cardinalSet.discoveryConditionsClockwise[i](tq)) {
+                        float d = Vector2.Distance(selfPosition, item.Key);
+                        if (dict[cardinalSet.directionsClockwise[i]].Distance > d) {
+                            dict[cardinalSet.directionsClockwise[i]] = new TowerPositionData(item.Value, d, i);
+                        }
+                    }
+                }
+            }
+            
+    } 
+    return dict;
+    }
+    
+
+
 public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAngles(GameObject self, Dictionary<Vector2, GameObject> allTowers, CardinalSet cardinalSet) {
     Dictionary<Vector2, TowerPositionData> dict = new Dictionary<Vector2, TowerPositionData>();
     Vector2 selfPosition = self.transform.position;
@@ -53,7 +106,7 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAngles(Game
         //Get UP tower
         if (item.Key.y >= selfPosition.y + towerDiscoveryRange) {
             if (FindIfTowerInStraightPositionRangeXorY(selfPosition.x, item.Key.x, towerDiscoveryRange)) {
-                if (dict[DirectionsClockwise4[0]].Distance > Vector2.Distance(item.Key, selfPosition + towerDiscoveryRangeY)) {
+                if (dict[DirectionsClockwise4[0]].Distance > Vector2.Distance(item.Key, selfPosition)) {
                     dict[DirectionsClockwise4[0]] = new TowerPositionData(item.Value, Vector2.Distance(item.Key, selfPosition + towerDiscoveryRangeY), 0);
                 }
             }
@@ -69,7 +122,7 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAngles(Game
         //get DOWN tower
         if (item.Key.y <= selfPosition.y - towerDiscoveryRange) {
             if (FindIfTowerInStraightPositionRangeXorY(selfPosition.x, item.Key.x, towerDiscoveryRange)) {
-                if (dict[DirectionsClockwise4[2]].Distance > Vector2.Distance(item.Key, selfPosition - towerDiscoveryRangeY)) {
+                if (dict[DirectionsClockwise4[2]].Distance > Vector2.Distance(item.Key, selfPosition)) {
                     dict[DirectionsClockwise4[2]] = new TowerPositionData(item.Value, Vector2.Distance(item.Key, selfPosition - towerDiscoveryRangeY), 2);
                 }
             }
@@ -77,7 +130,7 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAngles(Game
         //Get LEFT tower
         if (item.Key.x <= selfPosition.x - towerDiscoveryRange) {
             if (FindIfTowerInStraightPositionRangeXorY(selfPosition.y, item.Key.y, towerDiscoveryRange)) {
-                if (dict[DirectionsClockwise4[3]].Distance > Vector2.Distance(item.Key, selfPosition - towerDiscoveryRangeX)) {
+                if (dict[DirectionsClockwise4[3]].Distance > Vector2.Distance(item.Key, selfPosition)) {
                     dict[DirectionsClockwise4[3]] = new TowerPositionData(item.Value, Vector2.Distance(item.Key, selfPosition - towerDiscoveryRangeX), 3);
                 }
             }
@@ -168,23 +221,28 @@ public class TowerPositionData {
     public static float[] AnglesClockwise4 = {90,360,270,180};
     public static string[] DirectionNamesClockWise8 = {"UP","UP_RIGHT","RIGHT","DOWN_RIGHT","DOWN","DOWN_LEFT","LEFT","UP_LEFT"};
     public static string[] DirectionNamesClockWise4 = {"UP","RIGHT","DOWN","LEFT"};
+    public static Predicate<TowerPositionQuery>[] DiscoveryConditions8 = {GetUpTower, GetUpRightTower,GetRightTower,GetDownRightTower,GetDownTower,GetDownLeftTower,GetLeftTower,GetUpLeftTower};
+    
 
     public class CardinalSet {
         public Vector2[] directionsClockwise;
         public float[] anglesClockwise;
         public string[] directionNamesClockwise;
+        public Predicate<TowerPositionQuery>[] discoveryConditionsClockwise;
         public int length {
             get => directionsClockwise.Length;
         }
-        public CardinalSet (Vector2[] dirs, float[] angles, string[] dirNames) {
+        public CardinalSet (Vector2[] dirs, float[] angles, string[] dirNames, Predicate<TowerPositionQuery>[] discoveryConditions) {
             directionsClockwise = dirs;
             anglesClockwise = angles;
             directionNamesClockwise = dirNames;
+            discoveryConditionsClockwise = discoveryConditions;
+
         }
     }
 
-    public static CardinalSet Cardinal4 = new CardinalSet(DirectionsClockwise4, AnglesClockwise4, DirectionNamesClockWise4);
-    public static CardinalSet Cardinal8 = new CardinalSet(DirectionsClockwise8, AnglesClockwise8, DirectionNamesClockWise8);
+    public static CardinalSet Cardinal4 = new CardinalSet(DirectionsClockwise4, AnglesClockwise4, DirectionNamesClockWise4, DiscoveryConditions8);
+    public static CardinalSet Cardinal8 = new CardinalSet(DirectionsClockwise8, AnglesClockwise8, DirectionNamesClockWise8, DiscoveryConditions8);
     
        
     
@@ -367,6 +425,72 @@ public class TowerPositionData {
             }
     }
 
+    public static bool GetUpTower(TowerPositionQuery tq) {
+        if (tq.TargetTower.y > tq.ThisTower.y) {
+            return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.x, tq.TargetTower.x, tq.Assistingfloat1);
+        }
+        return false;
+    }
+    public static bool GetUpRightTower(TowerPositionQuery tq) {
+        Vector2 pos = new Vector2(tq.ThisTower.x + tq.Assistingfloat1, tq.ThisTower.y + tq.Assistingfloat1);
+        if (tq.TargetTower.y > pos.y) {
+            if (tq.TargetTower.x > pos.x) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static bool GetRightTower(TowerPositionQuery tq) {
+        if (tq.TargetTower.x > tq.ThisTower.x) {
+        return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.y, tq.TargetTower.y, tq.Assistingfloat1);
+        }
+        return false;
+    }
+
+    public static bool GetDownRightTower(TowerPositionQuery tq) {
+        Vector2 pos = new Vector2(tq.ThisTower.x + tq.Assistingfloat1, tq.ThisTower.y - tq.Assistingfloat1);
+        if (tq.TargetTower.y < pos.y) {
+            if (tq.TargetTower.x > pos.x) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static bool GetDownTower(TowerPositionQuery tq) {
+        if (tq.TargetTower.y < tq.ThisTower.y) {
+            return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.x, tq.TargetTower.x, tq.Assistingfloat1);
+        }
+        return false;
+    }
+
+    public static bool GetDownLeftTower(TowerPositionQuery tq) {
+        Vector2 pos = new Vector2(tq.ThisTower.x - tq.Assistingfloat1, tq.ThisTower.y - tq.Assistingfloat1);
+        if (tq.TargetTower.y < pos.y ) {
+            if (tq.TargetTower.x < pos.x) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static bool GetLeftTower(TowerPositionQuery tq) {
+        if (tq.TargetTower.x < tq.ThisTower.x) {
+            return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.y, tq.ThisTower.y, tq.Assistingfloat1);
+        }
+        return false;
+    }
+
+    public static bool GetUpLeftTower(TowerPositionQuery tq) {
+        Vector2 pos = new Vector2(tq.ThisTower.x - tq.Assistingfloat1, tq.ThisTower.y + tq.Assistingfloat1);
+        if (tq.TargetTower.y > pos.y) {
+            if (tq.TargetTower.x < pos.x) {
+                return true;
+            }
+        }
+        return false;
+    }
     
 
 

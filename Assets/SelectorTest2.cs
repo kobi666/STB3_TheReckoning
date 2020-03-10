@@ -22,7 +22,7 @@ public class SelectorTest2 : MonoBehaviour
     public TowerTestScript TowerController;
 
     public Dictionary<Vector2, TowerUtils.TowerPositionData> CardinalTowers {
-        get => TowerController?.towersByDirections4 ?? null;
+        get => TowerController?.towersByDirections8 ?? null;
     }
 
     public Dictionary<Vector2, GameObject> towersWithPositions;
@@ -44,7 +44,7 @@ public class SelectorTest2 : MonoBehaviour
         towersWithPositions = TowerUtils.TowersWithPositionsFromParent(GameObject.FindGameObjectWithTag("TowerParent"));
 
         //PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => Move = ctx.ReadValue<Vector2>();
-        PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => DebugAxis(ctx.ReadValue<Vector2>(), TowerUtils.GetCardinalDirectionFromAxis(ctx.ReadValue<Vector2>()));
+        //PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => DebugAxis(ctx.ReadValue<Vector2>(), TowerUtils.GetCardinalDirectionFromAxis(ctx.ReadValue<Vector2>()));
         PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => MoveToNewTower4(TowerUtils.GetCardinalDirectionFromAxis(ctx.ReadValue<Vector2>() ) );
         
         

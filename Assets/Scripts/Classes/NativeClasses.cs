@@ -4,6 +4,28 @@ using UnityEngine;
 using System;
 
 [System.Serializable]
+public class TowerPositionQuery {
+    public Vector2 ThisTower;
+    public Vector2 TargetTower;
+    public float Assistingfloat1;
+    public float Assistingfloat2;
+
+    public TowerPositionQuery(Vector2 thisTower, Vector2 targetTower, float assistingFloat) {
+        ThisTower = thisTower;
+        TargetTower = targetTower;
+        Assistingfloat1 = assistingFloat;
+    }
+
+    public TowerPositionQuery(Vector2 thisTower, Vector2 targetTower, float assistingFloat1, float assistingFloat2) {
+        ThisTower = thisTower;
+        TargetTower = targetTower;
+        Assistingfloat1 = assistingFloat1;
+        Assistingfloat2 = assistingFloat2;
+    }
+
+}
+
+[System.Serializable]
 public struct DebugTowerPositionData {
     public string Direction;
     public GameObject GO;
