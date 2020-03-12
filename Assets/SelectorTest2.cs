@@ -5,7 +5,7 @@ using UnityEngine;
 public class SelectorTest2 : MonoBehaviour
 {
     public GameObject H1;
-    public float FirstDiscoveryRange;
+    float FirstDiscoveryRange;
     public float SecondDiscoveryRangeMultiplier;
     public float SecondDiscoveryRange;
         
@@ -64,6 +64,7 @@ public class SelectorTest2 : MonoBehaviour
     }
 
     private void Awake() {
+        
         instance = this;
         PlayerControl = new PlayerInput();
         towersWithPositions = TowerUtils.TowersWithPositionsFromParent(GameObject.FindGameObjectWithTag("TowerParent"));
@@ -113,6 +114,7 @@ public class SelectorTest2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FirstDiscoveryRange = StaticObjects.instance.TowerSize;
         V1L = V1.GetComponent<LineRenderer>();
         V2L = V2.GetComponent<LineRenderer>();
         V3L = V3.GetComponent<LineRenderer>();

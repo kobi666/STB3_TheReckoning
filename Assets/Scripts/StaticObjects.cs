@@ -9,12 +9,14 @@ public class StaticObjects : MonoBehaviour
     public float GameTime;
     // Start is called before the first frame update
     public static Transform PPH;
-    public StaticObjects instance;
+    public static StaticObjects instance;
+    public float TowerSize;
+    public Sprite TowerSprite;
     void Awake()
     {
         instance = this;
         GameTime = Time.time;
-
+        TowerSize = TowerSprite.bounds.size.x;
     }
 
     private void Start() {

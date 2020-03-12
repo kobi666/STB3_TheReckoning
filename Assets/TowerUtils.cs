@@ -40,7 +40,7 @@ public class TowerUtils : MonoBehaviour
 public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoop(GameObject self, Dictionary<Vector2, GameObject> allTowers, CardinalSet cardinalSet) {
     Dictionary<Vector2, TowerPositionData> dict = new Dictionary<Vector2, TowerPositionData>();
     Vector2 selfPosition = self.transform.position;
-    float towerDiscoveryRange = SelectorTest2.instance.FirstDiscoveryRange;
+    float towerDiscoveryRange = StaticObjects.instance.TowerSize;
     float SecondTowerDiscoveryRange = SelectorTest2.instance.SecondDiscoveryRange;
     Vector2 towerDiscoveryRangeY = new Vector2(0, towerDiscoveryRange);
     Vector2 towerDiscoveryRangeX = new Vector2(towerDiscoveryRange, 0);
@@ -72,7 +72,7 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoop(
             }
             //dict[DirectionsClockwise4[0]] = new TowerPositionData(item.Value, Vector2.Distance(item.Key, selfPosition + towerDiscoveryRangeY), 0);
             //Get UP tower
-            TowerPositionQuery tq = new TowerPositionQuery(selfPosition, item.Key, towerDiscoveryRange * 1.3f);
+            TowerPositionQuery tq = new TowerPositionQuery(selfPosition, item.Key, towerDiscoveryRange * 1.5f);
             for(int i = 0 ; i < cardinalSet.length ; i+=2) {
                 if(dict[cardinalSet.directionsClockwise[i]].TowerGO == null) {
                     if (cardinalSet.discoveryConditionsClockwise[i](tq)) {
@@ -148,12 +148,17 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAngles(Game
 public static bool FindIfTowerInStraightPositionRangeXorY(float myPosXorY, float targetPosXorY, float posRange) {
     float max = myPosXorY + posRange;
     float min = myPosXorY - posRange;
-    if (targetPosXorY >= min) {
-        if(targetPosXorY <= max) {
+    float halfTowerSize = posRange / 2;
+    if (targetPosXorY - halfTowerSize >= min) {
+        if(targetPosXorY - halfTowerSize <= max) {
             return true;
         }
     }
-
+    if (targetPosXorY + halfTowerSize >= min) {
+        if(targetPosXorY + halfTowerSize <= max) {
+            return true;
+        }
+    }
     return false;
 }
 
