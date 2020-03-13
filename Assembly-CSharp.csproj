@@ -47,6 +47,7 @@
   <ItemGroup>     <Compile Include="Assets\CursorUtils.cs" />
      <Compile Include="Assets\DebugCrosshair.cs" />
      <Compile Include="Assets\DebugText.cs" />
+     <Compile Include="Assets\EmptyTowerSlot.cs" />
      <Compile Include="Assets\EnemyUnitController2.cs" />
      <Compile Include="Assets\ExternalUtils\Direction.cs" />
      <Compile Include="Assets\LevelManager.cs" />
@@ -79,7 +80,9 @@
      <Compile Include="Assets\SelectorTest2.cs" />
      <Compile Include="Assets\TestingVectors.cs" />
      <Compile Include="Assets\TestScript.cs" />
-     <Compile Include="Assets\TowerActionManager.cs" />
+     <Compile Include="Assets\TowerArsenal.cs" />
+     <Compile Include="Assets\TowerController.cs" />
+     <Compile Include="Assets\TowerSlotManager.cs" />
      <Compile Include="Assets\TowerTestScript.cs" />
      <Compile Include="Assets\TowerUtils.cs" />
      <Compile Include="Assets\UnitData.cs" />

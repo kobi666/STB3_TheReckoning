@@ -3,6 +3,57 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
+[System.Serializable]
+public class TowerItem : ScriptableObject {
+    [SerializeField]
+    public GameObject TowerPrefab;
+    [SerializeField]
+    public int Price;
+    
+    TowerSlotActions actions;
+    public TowerSlotActions Actions {
+        get {
+            if (actions != null) {
+                return actions;
+            }
+            else {
+                actions = TowerPrefab.GetComponent<TowerController>().TowerActions;
+                return actions;
+            }
+        }
+    }
+}
+
+[System.Serializable]
+public class TowerSlotActions : ScriptableObject {
+    public TowerSlotAction ButtonNorth;
+    public TowerSlotAction ButtonEast;
+    public TowerSlotAction ButtonSouth;
+    public TowerSlotAction ButtonWest;
+
+    public TowerSlotActions(TowerSlotAction north, TowerSlotAction east, TowerSlotAction south, TowerSlotAction west) {
+        ButtonWest = west;
+        ButtonEast = east;
+        ButtonNorth = north;
+        ButtonSouth = south;
+    }
+}
+
+public class TowerSlotAction {
+    public string ActionDescription;
+    public Sprite ButtonSprite;
+    public Action ActionFunction;
+    public TowerSlotAction(string actionDescription, Sprite buttonSprite, Action actionFunction) {
+        ActionDescription = actionDescription;
+        ButtonSprite = buttonSprite;
+        ActionFunction = actionFunction;
+    }
+}
+
+
+
+
 [System.Serializable]
 public class TowerPositionQuery {
     public Vector2 ThisTower;

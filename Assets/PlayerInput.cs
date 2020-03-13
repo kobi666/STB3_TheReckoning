@@ -49,6 +49,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""TowerSlotActions"",
+                    ""type"": ""Button"",
+                    ""id"": ""448b01a1-3eb4-43f5-84bf-22310b306f36"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -139,6 +147,50 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""MoveTowerDebug"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ebea01d-eeca-4544-90af-5aa8596e3b7f"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""TowerSlotActions"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6beaf68-9c51-47b6-ab68-20a2eaae3ce9"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""TowerSlotActions"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d3f9bb6-51b1-4df9-9727-fbbc7017b8a0"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""TowerSlotActions"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a26f405d-adf7-4c94-91cd-2ab2ecb50cea"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""TowerSlotActions"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -174,6 +226,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_GamePlay_TestAction = m_GamePlay.FindAction("TestAction", throwIfNotFound: true);
         m_GamePlay_MoveTargetCursor = m_GamePlay.FindAction("MoveTargetCursor", throwIfNotFound: true);
         m_GamePlay_MoveTowerDebug = m_GamePlay.FindAction("MoveTowerDebug", throwIfNotFound: true);
+        m_GamePlay_TowerSlotActions = m_GamePlay.FindAction("TowerSlotActions", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -227,6 +280,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_GamePlay_TestAction;
     private readonly InputAction m_GamePlay_MoveTargetCursor;
     private readonly InputAction m_GamePlay_MoveTowerDebug;
+    private readonly InputAction m_GamePlay_TowerSlotActions;
     public struct GamePlayActions
     {
         private @PlayerInput m_Wrapper;
@@ -235,6 +289,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @TestAction => m_Wrapper.m_GamePlay_TestAction;
         public InputAction @MoveTargetCursor => m_Wrapper.m_GamePlay_MoveTargetCursor;
         public InputAction @MoveTowerDebug => m_Wrapper.m_GamePlay_MoveTowerDebug;
+        public InputAction @TowerSlotActions => m_Wrapper.m_GamePlay_TowerSlotActions;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -256,6 +311,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @MoveTowerDebug.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMoveTowerDebug;
                 @MoveTowerDebug.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMoveTowerDebug;
                 @MoveTowerDebug.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMoveTowerDebug;
+                @TowerSlotActions.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnTowerSlotActions;
+                @TowerSlotActions.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnTowerSlotActions;
+                @TowerSlotActions.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnTowerSlotActions;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -272,6 +330,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @MoveTowerDebug.started += instance.OnMoveTowerDebug;
                 @MoveTowerDebug.performed += instance.OnMoveTowerDebug;
                 @MoveTowerDebug.canceled += instance.OnMoveTowerDebug;
+                @TowerSlotActions.started += instance.OnTowerSlotActions;
+                @TowerSlotActions.performed += instance.OnTowerSlotActions;
+                @TowerSlotActions.canceled += instance.OnTowerSlotActions;
             }
         }
     }
@@ -300,5 +361,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnTestAction(InputAction.CallbackContext context);
         void OnMoveTargetCursor(InputAction.CallbackContext context);
         void OnMoveTowerDebug(InputAction.CallbackContext context);
+        void OnTowerSlotActions(InputAction.CallbackContext context);
     }
 }

@@ -5,6 +5,10 @@ using System;
 
 public class TowerUtils : MonoBehaviour
 {
+
+    public static TowerSlotActions DefaultSlotActions = new TowerSlotActions(null,null,null,null);
+
+    
     
     public static Vector2 GetCardinalDirectionFromAxis(Vector2 movementInput) {
         //Debug.Log(movementInput);
