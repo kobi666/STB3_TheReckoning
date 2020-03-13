@@ -42,8 +42,7 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoop(
     Vector2 selfPosition = self.transform.position;
     float towerDiscoveryRange = StaticObjects.instance.TowerSize;
     float SecondTowerDiscoveryRange = SelectorTest2.instance.SecondDiscoveryRange;
-    Vector2 towerDiscoveryRangeY = new Vector2(0, towerDiscoveryRange);
-    Vector2 towerDiscoveryRangeX = new Vector2(towerDiscoveryRange, 0);
+    
     for (int i =0 ; i < cardinalSet.length ; i++ ) {
         dict.Add(cardinalSet.directionsClockwise[i], new TowerPositionData(null, 999f, i));
     }

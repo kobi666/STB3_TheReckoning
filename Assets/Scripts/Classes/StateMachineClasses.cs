@@ -146,29 +146,7 @@ public class UnitState : IEquatable<UnitState> {
         yield break;
     }
 
-    // public IEnumerator InvokeEnterStateFunctions() {
-    //     if (OnEnterState != null) {
-        
-    //     Delegate[] delegates = OnEnterState.GetInvocationList();
-    //     for (int i = 0 ; i <  delegates.Length ; i++) {
-                
-    //             var x = delegates[i] as Func<IEnumerator>;
-    //             yield return exec.StartCoroutine(x.Invoke());
-    //         }
-    //     }
-    //     yield break;
-    // }
-
-    // public IEnumerator InvokeExitStateFunctions() {
-    //     if (OnExitState != null) {
-    //     Delegate[] delegates = OnExitState.GetInvocationList();
-    //     for (int i = 0 ; i <  delegates.Length ; i++) {
-    //             var x = delegates[i] as Func<IEnumerator>;
-    //             yield return exec.StartCoroutine(x.Invoke());
-    //         }
-    //     }
-    //     yield break;
-    // }
+    
 
    
     
