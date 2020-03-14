@@ -8,7 +8,18 @@ public class TowerUtils : MonoBehaviour
 
     public static TowerSlotActions DefaultSlotActions = new TowerSlotActions(null,null,null,null);
 
-    
+    public static void PlaceTowerInSlot(TowerItem tower, GameObject TargetSlotObject, GameObject towerSlotParent) {
+        TargetSlotObject = Instantiate(tower.TowerPrefab,towerSlotParent.transform.position, Quaternion.identity, towerSlotParent.transform);
+        TargetSlotObject.name = (tower.TowerPrefab.name + UnityEngine.Random.Range(10000, 99999).ToString());
+    }
+
+    public static GameObject PlaceTowerInSlotGO(TowerItem tower, GameObject towerSlotParent) {
+        GameObject newGO = GameObject.Instantiate(tower.TowerPrefab,towerSlotParent.transform.position, Quaternion.identity, towerSlotParent.transform);
+        newGO.name = (tower.TowerPrefab.name + UnityEngine.Random.Range(10000, 99999).ToString());
+        return newGO;
+    }
+
+
     
     public static Vector2 GetCardinalDirectionFromAxis(Vector2 movementInput) {
         //Debug.Log(movementInput);
@@ -75,7 +86,27 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoop(
             }
             //dict[DirectionsClockwise4[0]] = new TowerPositionData(item.Value, Vector2.Distance(item.Key, selfPosition + towerDiscoveryRangeY), 0);
             //Get UP tower
-            TowerPositionQuery tq = new TowerPositionQuery(selfPosition, item.Key, towerDiscoveryRange * 1.5f);
+            TowerPositionQuery tq = new TowerPositionQuery(selfPosition, item.Key, SecondTowerDiscoveryRange);
+            for(int i = 0 ; i < cardinalSet.length ; i+=2) {
+                if(dict[cardinalSet.directionsClockwise[i]].TowerGO == null) {
+                    if (cardinalSet.discoveryConditionsClockwise[i](tq)) {
+                        float d = Vector2.Distance(selfPosition, item.Key);
+                        if (dict[cardinalSet.directionsClockwise[i]].Distance > d) {
+                            dict[cardinalSet.directionsClockwise[i]] = new TowerPositionData(item.Value, d, i);
+                        }
+                    }
+                }
+            }
+            
+    }
+    foreach (var item in allTowers)
+    {
+            if (item.Value.name == self.name || item.Value == null) {
+                continue;
+            }
+            //dict[DirectionsClockwise4[0]] = new TowerPositionData(item.Value, Vector2.Distance(item.Key, selfPosition + towerDiscoveryRangeY), 0);
+            //Get UP tower
+            TowerPositionQuery tq = new TowerPositionQuery(selfPosition, item.Key, SecondTowerDiscoveryRange * 1.2f);
             for(int i = 0 ; i < cardinalSet.length ; i+=2) {
                 if(dict[cardinalSet.directionsClockwise[i]].TowerGO == null) {
                     if (cardinalSet.discoveryConditionsClockwise[i](tq)) {

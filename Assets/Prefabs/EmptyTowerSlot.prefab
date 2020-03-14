@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1675830002011122983}
   - component: {fileID: 4344787683947181734}
-  - component: {fileID: -6418345777381749385}
+  - component: {fileID: 104591601388329238}
   m_Layer: 0
   m_Name: EmptyTowerSlot
   m_TagString: Untagged
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 43f439af395afb241be9b86b4e040865, type: 3}
-  m_Color: {r: 0.35684776, g: 0, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-6418345777381749385
+--- !u!114 &104591601388329238
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,3 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94451eb8f64a914484a074f7c089aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TowerSprite: {fileID: 0}
+  TowerSpriteRenderer: {fileID: 0}
+  TowerActions: {fileID: 0}

@@ -5,7 +5,7 @@ using System;
 
 
 [System.Serializable]
-public class TowerItem : ScriptableObject {
+public class TowerItem {
     [SerializeField]
     public GameObject TowerPrefab;
     [SerializeField]
@@ -23,10 +23,23 @@ public class TowerItem : ScriptableObject {
             }
         }
     }
+
+    Sprite towerSprite;
+    public Sprite TowerSprite {
+        get {
+            if (towerSprite != null) {
+                return towerSprite;
+            }
+            else {
+                towerSprite = TowerPrefab.GetComponent<SpriteRenderer>().sprite;
+                return towerSprite;
+            }
+        }
+    }
 }
 
 [System.Serializable]
-public class TowerSlotActions : ScriptableObject {
+public class TowerSlotActions  {
     public TowerSlotAction ButtonNorth;
     public TowerSlotAction ButtonEast;
     public TowerSlotAction ButtonSouth;
@@ -43,11 +56,10 @@ public class TowerSlotActions : ScriptableObject {
 public class TowerSlotAction {
     public string ActionDescription;
     public Sprite ButtonSprite;
-    public Action ActionFunction;
-    public TowerSlotAction(string actionDescription, Sprite buttonSprite, Action actionFunction) {
+    public event Action<GameObject,GameObject> ActionFunctions;
+    public TowerSlotAction(string actionDescription, Sprite buttonSprite) {
         ActionDescription = actionDescription;
         ButtonSprite = buttonSprite;
-        ActionFunction = actionFunction;
     }
 }
 
