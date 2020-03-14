@@ -38,9 +38,33 @@
                     "interactions": ""
                 },
                 {
-                    "name": "TowerSlotActions",
+                    "name": "NorthButton",
                     "type": "Button",
-                    "id": "448b01a1-3eb4-43f5-84bf-22310b306f36",
+                    "id": "6f066d78-1552-48cf-8ba3-3e73a75168f8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "EastButton",
+                    "type": "Button",
+                    "id": "e6491ba1-beb9-430a-a267-154aedcc29c8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "SouthButton",
+                    "type": "Button",
+                    "id": "982254e0-43ea-40a8-99cb-319772a0361b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "WestButton",
+                    "type": "Button",
+                    "id": "c0a302f4-aa3b-4eac-a994-872907014648",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -137,45 +161,45 @@
                 },
                 {
                     "name": "",
-                    "id": "5ebea01d-eeca-4544-90af-5aa8596e3b7f",
+                    "id": "04948eeb-592e-432a-ba2d-4c5f1310c6a2",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "GamePad",
-                    "action": "TowerSlotActions",
+                    "groups": "",
+                    "action": "NorthButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "a6beaf68-9c51-47b6-ab68-20a2eaae3ce9",
+                    "id": "0bfe330d-e5c6-4113-972b-af84a6ef9788",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
-                    "groups": "GamePad",
-                    "action": "TowerSlotActions",
+                    "groups": "",
+                    "action": "EastButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "3d3f9bb6-51b1-4df9-9727-fbbc7017b8a0",
+                    "id": "503baedc-089d-42ee-b2ca-6ff4ef50da73",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "GamePad",
-                    "action": "TowerSlotActions",
+                    "groups": "",
+                    "action": "SouthButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "a26f405d-adf7-4c94-91cd-2ab2ecb50cea",
+                    "id": "c018e32c-245e-4b2d-a68d-89e3bd89a00d",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "GamePad",
-                    "action": "TowerSlotActions",
+                    "groups": "",
+                    "action": "WestButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

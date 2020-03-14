@@ -61,6 +61,9 @@ public class TowerSlotAction {
         ActionDescription = actionDescription;
         ButtonSprite = buttonSprite;
     }
+    public void ExecuteFunction(GameObject TowerSlot, GameObject self) {
+        ActionFunctions?.Invoke(TowerSlot, self);
+    }
 }
 
 

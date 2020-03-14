@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class TowerSlotManager : MonoBehaviour
 {
@@ -22,30 +23,51 @@ public class TowerSlotManager : MonoBehaviour
             if (value == null) {
                 towerSlot = value;
                 towerController = null;
-                
             }
             else {
                 towerSlot = value;
-                towerController = towerSlot.GetComponent<TowerController>();
-                
+                towerController = TowerSlot.GetComponent<TowerController>();
             }
         }
     }
     public TowerController towerController;
 
+   
     public TowerSlotActions SlotActions {
-        get {
-            if (towerController == null) {
-                return TowerUtils.DefaultSlotActions;
-            }
-            else {
-                return towerController.TowerActions;
-            }
-        }
+        get => towerController.TowerActions;
     }
 
     public TowerSlotActions DefaultActions;
     
+    public void ExecNorth() {
+        SlotActions.ButtonNorth?.ExecuteFunction(TowerSlot, gameObject);
+    }
+    public event Action onExecNorth;
+    public void OnExecNorth() {
+        onExecNorth?.Invoke();
+    }
+    public void ExecEast() {
+        SlotActions.ButtonEast?.ExecuteFunction(TowerSlot,gameObject);
+    }
+    public event Action onExecEast;
+    public void OnExecEast() {
+        onExecEast?.Invoke();
+    }
+    public void ExecSouth() {
+        SlotActions.ButtonSouth?.ExecuteFunction(TowerSlot, gameObject);
+    }
+    public event Action onExecSouth;
+    public void OnExecSouth() {
+        onExecSouth?.Invoke();
+    }
+    public void ExecWest() {
+        SlotActions.ButtonWest?.ExecuteFunction(TowerSlot, gameObject);
+    }
+    public event Action onExecWest;
+    public void OnExecWest() {
+        onExecWest?.Invoke();
+    }
+
 
     
     
@@ -54,6 +76,11 @@ public class TowerSlotManager : MonoBehaviour
         if (!TowerSlotOccupied) {
            TowerSlot = TowerUtils.PlaceTowerInSlotGO(TowerArsenal.arsenal.EmptyTowerSlot, gameObject);
         }
+        onExecNorth += ExecNorth;
+        onExecEast += ExecEast;
+        onExecSouth += ExecSouth;
+        onExecWest += ExecWest;
+
     }
 
     

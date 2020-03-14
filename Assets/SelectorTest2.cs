@@ -45,6 +45,8 @@ public class SelectorTest2 : MonoBehaviour
     }
 
     public TowerSlotManager TowerSlotController;
+    public TowerController towerController { get => TowerSlotController?.towerController ?? null;}
+    public TowerSlotActions TowerActions { get => TowerSlotController?.SlotActions ?? null;}
 
     public Dictionary<Vector2, TowerUtils.TowerPositionData> CardinalTowers {
         get => TowerSlotController?.towerController.towersByDirections8 ?? null;
@@ -76,11 +78,22 @@ public class SelectorTest2 : MonoBehaviour
         
         
         PlayerControl.GamePlay.MoveTowerCursor.canceled += ctx => resetMoveCounter();
+        //PlayerControl.GamePlay.NorthButton.performed += ctx => TowerActions.ButtonNorth.ExecuteFunction(TowerSlotController.TowerSlot, TowerSlotController.gameObject);
+        PlayerControl.GamePlay.NorthButton.performed += ctx => TowerSlotController.OnExecNorth();
+        PlayerControl.GamePlay.EastButton.performed += ctx => TowerSlotController.OnExecEast();
+        PlayerControl.GamePlay.SouthButton.performed += ctx => TowerSlotController.OnExecSouth();
+        PlayerControl.GamePlay.WestButton.performed += ctx => TowerSlotController.OnExecWest();
     }
+
+
+
+
 
     public void DebugAxis(Vector2 real, Vector2 normalized ) {
         Debug.Log("Real :" + real + ",  Normalized : " + normalized);
     }
+
+
 
     public void MoveToNewTower4(Vector2 cardinalDirectionV2) {
         if (MoveLock >= 0.20f) {
@@ -89,14 +102,14 @@ public class SelectorTest2 : MonoBehaviour
                 Debug.Log("Didn't move cause Vector2 was ZERO");
                 return;
             }
-            GameObject towerGO = null;
+            GameObject towerSlotGO = null;
             if (CardinalTowers.ContainsKey(cardinalDirectionV2)) {
-                towerGO = CardinalTowers[cardinalDirectionV2].TowerGO;
-                Debug.Log("Moved to " + cardinalDirectionV2);
+                towerSlotGO = CardinalTowers[cardinalDirectionV2].TowerGO;
+                //Debug.Log("Moved to " + cardinalDirectionV2);
             }
-            if (towerGO != null) {
-            transform.position = towerGO.transform.position;
-            SelectedTowerSlot = towerGO;
+            if (towerSlotGO != null) {
+            transform.position = towerSlotGO.transform.position;
+            SelectedTowerSlot = towerSlotGO;
             }
 
         }
@@ -109,7 +122,6 @@ public class SelectorTest2 : MonoBehaviour
         PlayerControl.GamePlay.Disable();
         MoveLock = 0.7f;
         PlayerControl = new PlayerInput();
-        instance = this;
     }
     // Start is called before the first frame update
     void Start()

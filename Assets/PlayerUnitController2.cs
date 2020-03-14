@@ -73,7 +73,7 @@ public class PlayerUnitController2 : UnitController
     
 
     
-    public EnemyUnitController2 TargetController { get => Data.Target.GetComponent<EnemyUnitController2>();}
+    public EnemyUnitController2 TargetController { get => Data.Target?.GetComponent<EnemyUnitController2>() ?? null;}
     public UnitData TargetData { get => TargetController.Data;}
     public NormalUnitStates TargetStates { get => TargetController.states;}
     public NormalUnitStates states {get => Data.unitType.states;}
@@ -145,7 +145,9 @@ public class PlayerUnitController2 : UnitController
             
             Data.Target = Utils.FindEnemyNearestToEndOfPath(gameObject, collisions);
 //            Debug.Log("Current Target name :" + Data.Target.name);
+            if (TargetController != null) {
             TargetController.unitDied += OnTargetDeath;
+            }
         }
     }
 

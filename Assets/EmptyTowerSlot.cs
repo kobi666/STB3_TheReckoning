@@ -5,17 +5,21 @@ using UnityEngine;
 public class EmptyTowerSlot : TowerController
 {
     public void PlaceTestTower1(GameObject targetSlot, GameObject TowerSlotParent) {
-       TowerUtils.PlaceTowerInSlot(TowerArsenal.arsenal.TestTower1, targetSlot, TowerSlotParent);
+       Destroy(targetSlot);
+       targetSlot = TowerUtils.PlaceTowerInSlotGO(TowerArsenal.arsenal.TestTower1, TowerSlotParent);
     }
 
     public void PlaceTestTower2(GameObject targetSlot, GameObject TowerSlotParent) {
-        TowerUtils.PlaceTowerInSlot(TowerArsenal.arsenal.TestTower2, targetSlot, TowerSlotParent);
+       Destroy(targetSlot);
+        targetSlot = TowerUtils.PlaceTowerInSlotGO(TowerArsenal.arsenal.TestTower2, TowerSlotParent);
     }
     public void PlaceTestTower3(GameObject targetSlot, GameObject TowerSlotParent) {
-        TowerUtils.PlaceTowerInSlot(TowerArsenal.arsenal.TestTower3, targetSlot, TowerSlotParent);
+        Destroy(targetSlot);
+        targetSlot = TowerUtils.PlaceTowerInSlotGO(TowerArsenal.arsenal.TestTower3, TowerSlotParent);
     }
     public void PlaceTestTower4(GameObject targetSlot, GameObject TowerSlotParent) {
-        TowerUtils.PlaceTowerInSlot(TowerArsenal.arsenal.TestTower4, targetSlot, TowerSlotParent);
+        Destroy(targetSlot);
+        targetSlot = TowerUtils.PlaceTowerInSlotGO(TowerArsenal.arsenal.TestTower4, TowerSlotParent);
     }
     // Start is called before the first frame update
     public override void PostStart() {

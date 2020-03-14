@@ -51,9 +51,33 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""TowerSlotActions"",
+                    ""name"": ""NorthButton"",
                     ""type"": ""Button"",
-                    ""id"": ""448b01a1-3eb4-43f5-84bf-22310b306f36"",
+                    ""id"": ""6f066d78-1552-48cf-8ba3-3e73a75168f8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""EastButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""e6491ba1-beb9-430a-a267-154aedcc29c8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SouthButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""982254e0-43ea-40a8-99cb-319772a0361b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""WestButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""c0a302f4-aa3b-4eac-a994-872907014648"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -150,45 +174,45 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""5ebea01d-eeca-4544-90af-5aa8596e3b7f"",
+                    ""id"": ""04948eeb-592e-432a-ba2d-4c5f1310c6a2"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""GamePad"",
-                    ""action"": ""TowerSlotActions"",
+                    ""groups"": """",
+                    ""action"": ""NorthButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a6beaf68-9c51-47b6-ab68-20a2eaae3ce9"",
+                    ""id"": ""0bfe330d-e5c6-4113-972b-af84a6ef9788"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""GamePad"",
-                    ""action"": ""TowerSlotActions"",
+                    ""groups"": """",
+                    ""action"": ""EastButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3d3f9bb6-51b1-4df9-9727-fbbc7017b8a0"",
+                    ""id"": ""503baedc-089d-42ee-b2ca-6ff4ef50da73"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""GamePad"",
-                    ""action"": ""TowerSlotActions"",
+                    ""groups"": """",
+                    ""action"": ""SouthButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a26f405d-adf7-4c94-91cd-2ab2ecb50cea"",
+                    ""id"": ""c018e32c-245e-4b2d-a68d-89e3bd89a00d"",
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""GamePad"",
-                    ""action"": ""TowerSlotActions"",
+                    ""groups"": """",
+                    ""action"": ""WestButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -226,7 +250,10 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_GamePlay_TestAction = m_GamePlay.FindAction("TestAction", throwIfNotFound: true);
         m_GamePlay_MoveTargetCursor = m_GamePlay.FindAction("MoveTargetCursor", throwIfNotFound: true);
         m_GamePlay_MoveTowerDebug = m_GamePlay.FindAction("MoveTowerDebug", throwIfNotFound: true);
-        m_GamePlay_TowerSlotActions = m_GamePlay.FindAction("TowerSlotActions", throwIfNotFound: true);
+        m_GamePlay_NorthButton = m_GamePlay.FindAction("NorthButton", throwIfNotFound: true);
+        m_GamePlay_EastButton = m_GamePlay.FindAction("EastButton", throwIfNotFound: true);
+        m_GamePlay_SouthButton = m_GamePlay.FindAction("SouthButton", throwIfNotFound: true);
+        m_GamePlay_WestButton = m_GamePlay.FindAction("WestButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -280,7 +307,10 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_GamePlay_TestAction;
     private readonly InputAction m_GamePlay_MoveTargetCursor;
     private readonly InputAction m_GamePlay_MoveTowerDebug;
-    private readonly InputAction m_GamePlay_TowerSlotActions;
+    private readonly InputAction m_GamePlay_NorthButton;
+    private readonly InputAction m_GamePlay_EastButton;
+    private readonly InputAction m_GamePlay_SouthButton;
+    private readonly InputAction m_GamePlay_WestButton;
     public struct GamePlayActions
     {
         private @PlayerInput m_Wrapper;
@@ -289,7 +319,10 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @TestAction => m_Wrapper.m_GamePlay_TestAction;
         public InputAction @MoveTargetCursor => m_Wrapper.m_GamePlay_MoveTargetCursor;
         public InputAction @MoveTowerDebug => m_Wrapper.m_GamePlay_MoveTowerDebug;
-        public InputAction @TowerSlotActions => m_Wrapper.m_GamePlay_TowerSlotActions;
+        public InputAction @NorthButton => m_Wrapper.m_GamePlay_NorthButton;
+        public InputAction @EastButton => m_Wrapper.m_GamePlay_EastButton;
+        public InputAction @SouthButton => m_Wrapper.m_GamePlay_SouthButton;
+        public InputAction @WestButton => m_Wrapper.m_GamePlay_WestButton;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -311,9 +344,18 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @MoveTowerDebug.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMoveTowerDebug;
                 @MoveTowerDebug.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMoveTowerDebug;
                 @MoveTowerDebug.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMoveTowerDebug;
-                @TowerSlotActions.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnTowerSlotActions;
-                @TowerSlotActions.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnTowerSlotActions;
-                @TowerSlotActions.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnTowerSlotActions;
+                @NorthButton.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnNorthButton;
+                @NorthButton.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnNorthButton;
+                @NorthButton.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnNorthButton;
+                @EastButton.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnEastButton;
+                @EastButton.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnEastButton;
+                @EastButton.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnEastButton;
+                @SouthButton.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnSouthButton;
+                @SouthButton.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnSouthButton;
+                @SouthButton.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnSouthButton;
+                @WestButton.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnWestButton;
+                @WestButton.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnWestButton;
+                @WestButton.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnWestButton;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -330,9 +372,18 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @MoveTowerDebug.started += instance.OnMoveTowerDebug;
                 @MoveTowerDebug.performed += instance.OnMoveTowerDebug;
                 @MoveTowerDebug.canceled += instance.OnMoveTowerDebug;
-                @TowerSlotActions.started += instance.OnTowerSlotActions;
-                @TowerSlotActions.performed += instance.OnTowerSlotActions;
-                @TowerSlotActions.canceled += instance.OnTowerSlotActions;
+                @NorthButton.started += instance.OnNorthButton;
+                @NorthButton.performed += instance.OnNorthButton;
+                @NorthButton.canceled += instance.OnNorthButton;
+                @EastButton.started += instance.OnEastButton;
+                @EastButton.performed += instance.OnEastButton;
+                @EastButton.canceled += instance.OnEastButton;
+                @SouthButton.started += instance.OnSouthButton;
+                @SouthButton.performed += instance.OnSouthButton;
+                @SouthButton.canceled += instance.OnSouthButton;
+                @WestButton.started += instance.OnWestButton;
+                @WestButton.performed += instance.OnWestButton;
+                @WestButton.canceled += instance.OnWestButton;
             }
         }
     }
@@ -361,6 +412,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnTestAction(InputAction.CallbackContext context);
         void OnMoveTargetCursor(InputAction.CallbackContext context);
         void OnMoveTowerDebug(InputAction.CallbackContext context);
-        void OnTowerSlotActions(InputAction.CallbackContext context);
+        void OnNorthButton(InputAction.CallbackContext context);
+        void OnEastButton(InputAction.CallbackContext context);
+        void OnSouthButton(InputAction.CallbackContext context);
+        void OnWestButton(InputAction.CallbackContext context);
     }
 }
