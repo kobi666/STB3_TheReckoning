@@ -6,23 +6,15 @@ public class TestTowerController : TowerController
 {
     // Start is called before the first frame update
 
-    public void TestChangeColor(GameObject self, GameObject parent) {
-        TowerSpriteRenderer.color = new Color
-            (
-            Random.Range(0f, 1f), 
-            Random.Range(0f, 1f), 
-            Random.Range(0f, 1f)
-            );
-    }
+    
 
-    public void Test(GameObject game, GameObject gasd) {
+    public void Test() {
         Debug.Log("asdasdasd");
     }
     public override void PostStart()
     {
+        TowerActions = TowerUtils.DefaultSlotActions;
         TowerSpriteRenderer = GetComponent<SpriteRenderer>();
-        TowerActions.ButtonSouth = new TowerSlotAction("Change Color", TowerSprite);
-        TowerActions.ButtonSouth.ActionFunctions += TestChangeColor;
         TowerActions.ButtonNorth = new TowerSlotAction("asdfasd", TowerSprite);
         TowerActions.ButtonNorth.ActionFunctions += Test;
     }

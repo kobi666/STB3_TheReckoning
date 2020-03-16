@@ -40,16 +40,15 @@ public class SelectorTest2 : MonoBehaviour
         get => selectedTowerSlot;
         set {
             selectedTowerSlot = value;
-            TowerSlotController = value.GetComponent<TowerSlotManager>() ?? null;
+            SlotManager = selectedTowerSlot?.GetComponent<TowerSlotManager>() ?? null;
         }
     }
 
-    public TowerSlotManager TowerSlotController;
-    public TowerController towerController { get => TowerSlotController?.towerController ?? null;}
-    public TowerSlotActions TowerActions { get => TowerSlotController?.SlotActions ?? null;}
+    public TowerSlotManager SlotManager;
+    public TowerSlotActions TowerActions { get => SlotManager.Actions;}
 
     public Dictionary<Vector2, TowerUtils.TowerPositionData> CardinalTowers {
-        get => TowerSlotController?.towerController.towersByDirections8 ?? null;
+        get => SlotManager?.TowerSlotController.towersByDirections8 ?? null;
     }
 
     public Dictionary<Vector2, GameObject> towersWithPositions;
@@ -79,10 +78,10 @@ public class SelectorTest2 : MonoBehaviour
         
         PlayerControl.GamePlay.MoveTowerCursor.canceled += ctx => resetMoveCounter();
         //PlayerControl.GamePlay.NorthButton.performed += ctx => TowerActions.ButtonNorth.ExecuteFunction(TowerSlotController.TowerSlot, TowerSlotController.gameObject);
-        PlayerControl.GamePlay.NorthButton.performed += ctx => TowerSlotController.OnExecNorth();
-        PlayerControl.GamePlay.EastButton.performed += ctx => TowerSlotController.OnExecEast();
-        PlayerControl.GamePlay.SouthButton.performed += ctx => TowerSlotController.OnExecSouth();
-        PlayerControl.GamePlay.WestButton.performed += ctx => TowerSlotController.OnExecWest();
+        PlayerControl.GamePlay.NorthButton.performed += ctx => SlotManager.OnExecNorth();
+        PlayerControl.GamePlay.EastButton.performed += ctx => SlotManager.OnExecEast();
+        PlayerControl.GamePlay.SouthButton.performed += ctx => SlotManager.OnExecSouth();
+        PlayerControl.GamePlay.WestButton.performed += ctx => SlotManager.OnExecWest();
     }
 
 
@@ -105,7 +104,6 @@ public class SelectorTest2 : MonoBehaviour
             GameObject towerSlotGO = null;
             if (CardinalTowers.ContainsKey(cardinalDirectionV2)) {
                 towerSlotGO = CardinalTowers[cardinalDirectionV2].TowerGO;
-                //Debug.Log("Moved to " + cardinalDirectionV2);
             }
             if (towerSlotGO != null) {
             transform.position = towerSlotGO.transform.position;

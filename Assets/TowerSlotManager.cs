@@ -5,82 +5,93 @@ using System;
 
 public class TowerSlotManager : MonoBehaviour
 {
-
-    public bool TowerSlotOccupied {
-        get {
-            if (TowerSlot != null) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-    }
+    TowerSlotManager self;
+    [SerializeField]
+    GameObject OldTowerSlot;
+    [SerializeField]
     GameObject towerSlot = null;
     public GameObject TowerSlot {
         get => towerSlot;
         set {
-            if (value == null) {
-                towerSlot = value;
-                towerController = null;
-            }
-            else {
-                towerSlot = value;
-                towerController = TowerSlot.GetComponent<TowerController>();
-            }
+            towerSlot = value;
         }
     }
-    public TowerController towerController;
-
-   
-    public TowerSlotActions SlotActions {
-        get => towerController.TowerActions;
+    [SerializeField]
+    TowerController towerSlotController;
+    public TowerController TowerSlotController {
+        get => towerSlotController;
+        set {
+            towerSlotController = value;
+        }
     }
 
-    public TowerSlotActions DefaultActions;
+    public TowerSlotActions Actions {
+        get => TowerSlotController.TowerActions;
+    }
     
     public void ExecNorth() {
-        SlotActions.ButtonNorth?.ExecuteFunction(TowerSlot, gameObject);
+        Actions.ButtonNorth?.ExecuteFunction();
     }
     public event Action onExecNorth;
     public void OnExecNorth() {
         onExecNorth?.Invoke();
     }
     public void ExecEast() {
-        SlotActions.ButtonEast?.ExecuteFunction(TowerSlot,gameObject);
+        Actions.ButtonEast?.ExecuteFunction();
     }
     public event Action onExecEast;
     public void OnExecEast() {
         onExecEast?.Invoke();
     }
     public void ExecSouth() {
-        SlotActions.ButtonSouth?.ExecuteFunction(TowerSlot, gameObject);
+        Actions.ButtonSouth?.ExecuteFunction();
     }
     public event Action onExecSouth;
     public void OnExecSouth() {
         onExecSouth?.Invoke();
     }
     public void ExecWest() {
-        SlotActions.ButtonWest?.ExecuteFunction(TowerSlot, gameObject);
+        Actions.ButtonWest?.ExecuteFunction();
     }
     public event Action onExecWest;
     public void OnExecWest() {
         onExecWest?.Invoke();
     }
 
+    event Action onReplaceTower;
+    public void OnReplaceTower() {
+        onReplaceTower?.Invoke();
+    }
 
-    
+    public void TowerReplacementSequence(GameObject newTowerPrefab) {
+        OldTowerSlot = TowerSlot;
+        TowerSlot = Instantiate(newTowerPrefab, transform.position,Quaternion.identity, gameObject.transform);
+        TowerSlot.name = (towerSlot.name + UnityEngine.Random.Range(10000, 99999).ToString());
+        TowerSlotController = TowerSlot.GetComponent<TowerController>();
+        TowerSlotController.SlotManager = self;
+        Destroy(OldTowerSlot);
+        OnReplaceTower();
+    }
+
+
+    void DBG() {
+        Debug.Log("TestSSTT");
+    }
     
     void Start()
     {
-        if (!TowerSlotOccupied) {
-           TowerSlot = TowerUtils.PlaceTowerInSlotGO(TowerArsenal.arsenal.EmptyTowerSlot, gameObject);
-        }
+        self = gameObject.GetComponent<TowerSlotManager>();
         onExecNorth += ExecNorth;
         onExecEast += ExecEast;
         onExecSouth += ExecSouth;
         onExecWest += ExecWest;
-
+        onReplaceTower += DBG;
+        GetComponent<SpriteRenderer>().sprite = null;
+        
+        if (TowerSlot == null) {
+           TowerReplacementSequence(TowerArsenal.arsenal.EmptyTowerSlot.TowerPrefab);
+        }
+        
     }
 
     

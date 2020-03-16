@@ -6,6 +6,15 @@ public class TowerController : MonoBehaviour
 {
     public Dictionary<Vector2, TowerUtils.TowerPositionData> towersByDirections8 = new Dictionary<Vector2, TowerUtils.TowerPositionData>();
     public DebugTowerPositionData[] TowersDebug = new DebugTowerPositionData[8];
+    
+    [SerializeField]
+    TowerSlotManager slotManager;
+    public TowerSlotManager SlotManager {
+        get => slotManager;
+        set {
+            slotManager = value;
+        }
+    }
     public Sprite TowerSprite;
     public SpriteRenderer TowerSpriteRenderer;
     public TowerSlotActions TowerActions;

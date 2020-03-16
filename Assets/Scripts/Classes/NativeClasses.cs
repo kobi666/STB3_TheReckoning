@@ -56,13 +56,13 @@ public class TowerSlotActions  {
 public class TowerSlotAction {
     public string ActionDescription;
     public Sprite ButtonSprite;
-    public event Action<GameObject,GameObject> ActionFunctions;
+    public event Action ActionFunctions;
     public TowerSlotAction(string actionDescription, Sprite buttonSprite) {
         ActionDescription = actionDescription;
         ButtonSprite = buttonSprite;
     }
-    public void ExecuteFunction(GameObject TowerSlot, GameObject self) {
-        ActionFunctions?.Invoke(TowerSlot, self);
+    public void ExecuteFunction() {
+        ActionFunctions?.Invoke();
     }
 }
 
