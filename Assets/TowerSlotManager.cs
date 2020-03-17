@@ -68,7 +68,6 @@ public class TowerSlotManager : MonoBehaviour
         TowerSlot = Instantiate(newTowerPrefab, transform.position,Quaternion.identity, gameObject.transform);
         TowerSlot.name = (towerSlot.name + UnityEngine.Random.Range(10000, 99999).ToString());
         TowerSlotController = TowerSlot.GetComponent<TowerController>();
-        TowerSlotController.SlotManager = self;
         Destroy(OldTowerSlot);
         OnReplaceTower();
     }

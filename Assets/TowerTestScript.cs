@@ -18,11 +18,11 @@ public class TowerTestScript : MonoBehaviour
     void Start()
     {
         
-        towersByDirections8 = TowerUtils.CardinalTowersNoAnglesLoop(gameObject, SelectorTest2.instance.towersWithPositions, TowerUtils.Cardinal8);
+        towersByDirections8 = TowerUtils.CardinalTowersNoAnglesLoop(gameObject, SelectorTest2.instance.TowerSlotsWithPositions, TowerUtils.Cardinal8);
         
 
         for(int i = 0 ; i < 8 ; i++) {
-            TowersDebug[i].GO = towersByDirections8[TowerUtils.Cardinal8.directionsClockwise[i]].TowerGO;
+            TowersDebug[i].GO = towersByDirections8[TowerUtils.Cardinal8.directionsClockwise[i]].TowerSlotGo;
             TowersDebug[i].Direction = TowerUtils.Cardinal8.directionNamesClockwise[i];
             TowersDebug[i].Position = towersByDirections8[TowerUtils.Cardinal8.directionsClockwise[i]].TowerPosition;
             TowersDebug[i].Distance = towersByDirections8[TowerUtils.Cardinal8.directionsClockwise[i]].Distance;

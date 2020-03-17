@@ -35,23 +35,28 @@ public class SelectorTest2 : MonoBehaviour
 
     [SerializeField]
     GameObject selectedTowerSlot;
+    TowerController TowerObjectController;
 
     public GameObject SelectedTowerSlot {
         get => selectedTowerSlot;
         set {
             selectedTowerSlot = value;
-            SlotManager = selectedTowerSlot?.GetComponent<TowerSlotManager>() ?? null;
+            SlotController = selectedTowerSlot?.GetComponent<TowerSlotController>() ?? null;
+            TowerObject = SlotController.TowerObject;
+            TowerObjectController = SlotController.TowerObjectController;
         }
     }
 
-    public TowerSlotManager SlotManager;
-    public TowerSlotActions TowerActions { get => SlotManager.Actions;}
+    public GameObject TowerObject;
 
-    public Dictionary<Vector2, TowerUtils.TowerPositionData> CardinalTowers {
-        get => SlotManager?.TowerSlotController.towersByDirections8 ?? null;
+    public TowerSlotController SlotController;
+    public TowerSlotActions TowerActions { get => SlotController.TowerObjectController.TowerActions;}
+
+    public Dictionary<Vector2, TowerUtils.TowerPositionData> CardinalTowerSlots {
+        get => SlotController?.TowerSlotsByDirections8 ?? null;
     }
 
-    public Dictionary<Vector2, GameObject> towersWithPositions;
+    public Dictionary<Vector2, GameObject> TowerSlotsWithPositions;
     public static SelectorTest2 instance;
     public float speed;
     Vector2 Move;
@@ -68,7 +73,7 @@ public class SelectorTest2 : MonoBehaviour
         
         instance = this;
         PlayerControl = new PlayerInput();
-        towersWithPositions = TowerUtils.TowersWithPositionsFromParent(GameObject.FindGameObjectWithTag("TowerParent"));
+        TowerSlotsWithPositions = TowerUtils.TowerSlotsWithPositionsFromParent(GameObject.FindGameObjectWithTag("TowerParent"));
         
 
         //PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => Move = ctx.ReadValue<Vector2>();
@@ -78,10 +83,10 @@ public class SelectorTest2 : MonoBehaviour
         
         PlayerControl.GamePlay.MoveTowerCursor.canceled += ctx => resetMoveCounter();
         //PlayerControl.GamePlay.NorthButton.performed += ctx => TowerActions.ButtonNorth.ExecuteFunction(TowerSlotController.TowerSlot, TowerSlotController.gameObject);
-        PlayerControl.GamePlay.NorthButton.performed += ctx => SlotManager.OnExecNorth();
-        PlayerControl.GamePlay.EastButton.performed += ctx => SlotManager.OnExecEast();
-        PlayerControl.GamePlay.SouthButton.performed += ctx => SlotManager.OnExecSouth();
-        PlayerControl.GamePlay.WestButton.performed += ctx => SlotManager.OnExecWest();
+        PlayerControl.GamePlay.NorthButton.performed += ctx => TowerActions.ButtonNorth.ExecuteFunction();
+        PlayerControl.GamePlay.EastButton.performed += ctx => TowerActions.ButtonEast.ExecuteFunction();
+        PlayerControl.GamePlay.SouthButton.performed += ctx => TowerActions.ButtonSouth.ExecuteFunction();
+        PlayerControl.GamePlay.WestButton.performed += ctx => TowerActions.ButtonWest.ExecuteFunction();
     }
 
 
@@ -102,8 +107,8 @@ public class SelectorTest2 : MonoBehaviour
                 return;
             }
             GameObject towerSlotGO = null;
-            if (CardinalTowers.ContainsKey(cardinalDirectionV2)) {
-                towerSlotGO = CardinalTowers[cardinalDirectionV2].TowerGO;
+            if (CardinalTowerSlots.ContainsKey(cardinalDirectionV2)) {
+                towerSlotGO = CardinalTowerSlots[cardinalDirectionV2].TowerSlotGo;
             }
             if (towerSlotGO != null) {
             transform.position = towerSlotGO.transform.position;
@@ -134,7 +139,7 @@ public class SelectorTest2 : MonoBehaviour
         H3L = H3.GetComponent<LineRenderer>();
         H4L = H4.GetComponent<LineRenderer>();
         DiscoveryRangeWithLineWidth = FirstDiscoveryRange + 0.10f;
-        int random = UnityEngine.Random.Range(1, towersWithPositions.Count);
+        int random = UnityEngine.Random.Range(1, TowerSlotsWithPositions.Count);
         SelectedTowerSlot = GameObject.FindGameObjectWithTag("TowerParent").transform.GetChild(random).gameObject;
         transform.position = SelectedTowerSlot.transform.position;
         SecondDiscoveryRange = FirstDiscoveryRange * SecondDiscoveryRangeMultiplier;

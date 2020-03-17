@@ -6,20 +6,21 @@ public class EmptyTowerSlot : TowerController
 {
     public void PlaceTestTower1() {
         Debug.Log("1");
-       SlotManager.TowerReplacementSequence(TowerArsenal.arsenal.TestTower1.TowerPrefab);
+        SlotManager.PlaceTower(TowerArsenal.arsenal.TestTower1.TowerPrefab);
+       
     }
 
     public void PlaceTestTower2() {
        Debug.Log("2");
-       SlotManager.TowerReplacementSequence(TowerArsenal.arsenal.TestTower2.TowerPrefab);
+       SlotManager.PlaceTower(TowerArsenal.arsenal.TestTower2.TowerPrefab);
     }
     public void PlaceTestTower3() {
         Debug.Log("3");
-        SlotManager.TowerReplacementSequence(TowerArsenal.arsenal.TestTower3.TowerPrefab);
+        SlotManager.PlaceTower(TowerArsenal.arsenal.TestTower3.TowerPrefab);
     }
     public void PlaceTestTower4() {
         Debug.Log("4");
-        SlotManager.TowerReplacementSequence(TowerArsenal.arsenal.TestTower4.TowerPrefab);
+        SlotManager.PlaceTower(TowerArsenal.arsenal.TestTower4.TowerPrefab);
     }
     // Start is called before the first frame update
     public override void PostStart() {

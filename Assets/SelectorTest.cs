@@ -34,14 +34,14 @@ public class SelectorTest : MonoBehaviour
         //Debug.Log(cardinalDirectionV2 + " : " + NextClosestV2);
         if (MoveLock >= 0.15f) {
             MoveLock = 0.0f;
-            GameObject towerGO = CardinalTowers[cardinalDirectionV2].TowerGO;
+            GameObject towerGO = CardinalTowers[cardinalDirectionV2].TowerSlotGo;
             GameObject AdjecentTower = null;
             if (cardinalDirectionV2 == Vector2.zero) {
                 return;
             }
             if (towerGO != null) {
             transform.position = CardinalTowers[cardinalDirectionV2].TowerPosition;
-            SelectedTower = CardinalTowers[cardinalDirectionV2].TowerGO;
+            SelectedTower = CardinalTowers[cardinalDirectionV2].TowerSlotGo;
             }
             if (towerGO == null) {
                 Vector2 CW = TowerUtils.DirectionsClockwise8[CardinalTowers[cardinalDirectionV2].ClockWiseIndex];
@@ -51,14 +51,14 @@ public class SelectorTest : MonoBehaviour
                  float distanceClockWise = Vector2.Distance(CardinalTowers[CW].TowerPosition + CW, NextClosestV2 + (Vector2)transform.position);
                  float DistanceCounterClockWise = Vector2.Distance(CardinalTowers[CCW].TowerPosition + CCW, (Vector2)transform.position + NextClosestV2);
                 if (distanceClockWise < DistanceCounterClockWise) {
-                    if (CardinalTowers[CW].TowerGO != null) {
+                    if (CardinalTowers[CW].TowerSlotGo != null) {
                     
-                    AdjecentTower = CardinalTowers[CW].TowerGO;
+                    AdjecentTower = CardinalTowers[CW].TowerSlotGo;
                     }
                 }
                 else {
-                    if (CardinalTowers[CCW].TowerGO != null) {
-                    AdjecentTower = CardinalTowers[CCW].TowerGO;
+                    if (CardinalTowers[CCW].TowerSlotGo != null) {
+                    AdjecentTower = CardinalTowers[CCW].TowerSlotGo;
                     }
                 }
                 if (AdjecentTower != null) {
@@ -80,14 +80,14 @@ public class SelectorTest : MonoBehaviour
         //Debug.Log(cardinalDirectionV2 + " : " + NextClosestV2);
         if (MoveLock >= 0.15f) {
             MoveLock = 0.0f;
-            GameObject towerGO = CardinalTowers[cardinalDirectionV2].TowerGO;
+            GameObject towerGO = CardinalTowers[cardinalDirectionV2].TowerSlotGo;
             GameObject AdjecentTower = null;
             if (cardinalDirectionV2 == Vector2.zero) {
                 return;
             }
             if (towerGO != null) {
             transform.position = CardinalTowers[cardinalDirectionV2].TowerPosition;
-            SelectedTower = CardinalTowers[cardinalDirectionV2].TowerGO;
+            SelectedTower = CardinalTowers[cardinalDirectionV2].TowerSlotGo;
             }
             if (towerGO == null) {
                 Vector2 CW = TowerUtils.DirectionsClockwise4[CardinalTowers[cardinalDirectionV2].ClockWiseIndex];
@@ -97,14 +97,14 @@ public class SelectorTest : MonoBehaviour
                  float distanceClockWise = Vector2.Distance(CardinalTowers[CW].TowerPosition + CW, NextClosestV2 + (Vector2)transform.position);
                  float DistanceCounterClockWise = Vector2.Distance(CardinalTowers[CCW].TowerPosition + CCW, (Vector2)transform.position + NextClosestV2);
                 if (distanceClockWise < DistanceCounterClockWise) {
-                    if (CardinalTowers[CW].TowerGO != null) {
+                    if (CardinalTowers[CW].TowerSlotGo != null) {
                     
-                    AdjecentTower = CardinalTowers[CW].TowerGO;
+                    AdjecentTower = CardinalTowers[CW].TowerSlotGo;
                     }
                 }
                 else {
-                    if (CardinalTowers[CCW].TowerGO != null) {
-                    AdjecentTower = CardinalTowers[CCW].TowerGO;
+                    if (CardinalTowers[CCW].TowerSlotGo != null) {
+                    AdjecentTower = CardinalTowers[CCW].TowerSlotGo;
                     }
                 }
                 if (AdjecentTower != null) {
@@ -148,7 +148,7 @@ public class SelectorTest : MonoBehaviour
         MoveLock = 1.0f;
         PlayerControl = new PlayerInput();
         instance = this;
-        towersWithPositions = TowerUtils.TowersWithPositionsFromParent(GameObject.FindGameObjectWithTag("TowerParent"));
+        towersWithPositions = TowerUtils.TowerSlotsWithPositionsFromParent(GameObject.FindGameObjectWithTag("TowerParent"));
         foreach (var item in towersWithPositions) {
 //            Debug.Log(item.Value.name);
         }

@@ -19,6 +19,13 @@ public class TowerUtils : MonoBehaviour
         return newGO;
     }
 
+    public static void PlaceTowerObjectAndDestroyOldObject(GameObject newTowerPrefab, GameObject towerObject, GameObject oldObjectForDestruction, GameObject towerSlot) {
+        oldObjectForDestruction = towerObject;
+        towerObject = Instantiate(newTowerPrefab, towerSlot.transform.position, Quaternion.identity, towerSlot.transform);
+        towerObject.name = (newTowerPrefab.name + UnityEngine.Random.Range(10000, 99999).ToString());
+        Destroy(oldObjectForDestruction);
+    }
+
 
     
     public static Vector2 GetCardinalDirectionFromAxis(Vector2 movementInput) {
@@ -39,15 +46,18 @@ public class TowerUtils : MonoBehaviour
         return NormalizedVector;
     }
     // Start is called before the first frame update
-    public static Dictionary<Vector2, GameObject> TowersWithPositionsFromParent (GameObject towerParent) {
+    public static Dictionary<Vector2, GameObject> TowerSlotsWithPositionsFromParent (GameObject towerParent) {
         Dictionary<Vector2, GameObject> allTowersUnderParentObject = new Dictionary<Vector2, GameObject>();
         for (int i = 0 ; i < towerParent.transform.childCount ; i++) {
-            //if (towerParent.transform.GetChild(i).CompareTag("Tower")){
+            
                 if (allTowersUnderParentObject.ContainsKey((Vector2)towerParent.transform.GetChild(i).transform.position)) {
                     continue;
                 }
+                if (!towerParent.transform.GetChild(i).CompareTag("TowerSlot")) {
+                    continue;
+                }
                 allTowersUnderParentObject.Add((Vector2)towerParent.transform.GetChild(i).transform.position, towerParent.transform.GetChild(i).gameObject);
-            //}
+            
         }
         return allTowersUnderParentObject;
     }
@@ -57,6 +67,7 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoop(
     Vector2 selfPosition = self.transform.position;
     float towerDiscoveryRange = StaticObjects.instance.TowerSize;
     float SecondTowerDiscoveryRange = SelectorTest2.instance.SecondDiscoveryRange;
+    float RangeMultiplier = SelectorTest2.instance.SecondDiscoveryRangeMultiplier;
     
     for (int i =0 ; i < cardinalSet.length ; i++ ) {
         dict.Add(cardinalSet.directionsClockwise[i], new TowerPositionData(null, 999f, i));
@@ -88,7 +99,7 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoop(
             //Get UP tower
             TowerPositionQuery tq = new TowerPositionQuery(selfPosition, item.Key, SecondTowerDiscoveryRange);
             for(int i = 0 ; i < cardinalSet.length ; i+=2) {
-                if(dict[cardinalSet.directionsClockwise[i]].TowerGO == null) {
+                if(dict[cardinalSet.directionsClockwise[i]].TowerSlotGo == null) {
                     if (cardinalSet.discoveryConditionsClockwise[i](tq)) {
                         float d = Vector2.Distance(selfPosition, item.Key);
                         if (dict[cardinalSet.directionsClockwise[i]].Distance > d) {
@@ -106,9 +117,9 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoop(
             }
             //dict[DirectionsClockwise4[0]] = new TowerPositionData(item.Value, Vector2.Distance(item.Key, selfPosition + towerDiscoveryRangeY), 0);
             //Get UP tower
-            TowerPositionQuery tq = new TowerPositionQuery(selfPosition, item.Key, SecondTowerDiscoveryRange * 1.2f);
+            TowerPositionQuery tq = new TowerPositionQuery(selfPosition, item.Key, SecondTowerDiscoveryRange * RangeMultiplier);
             for(int i = 0 ; i < cardinalSet.length ; i+=2) {
-                if(dict[cardinalSet.directionsClockwise[i]].TowerGO == null) {
+                if(dict[cardinalSet.directionsClockwise[i]].TowerSlotGo == null) {
                     if (cardinalSet.discoveryConditionsClockwise[i](tq)) {
                         float d = Vector2.Distance(selfPosition, item.Key);
                         if (dict[cardinalSet.directionsClockwise[i]].Distance > d) {
@@ -182,7 +193,7 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAngles(Game
 public static bool FindIfTowerInStraightPositionRangeXorY(float myPosXorY, float targetPosXorY, float posRange) {
     float max = myPosXorY + posRange;
     float min = myPosXorY - posRange;
-    float halfTowerSize = posRange / 2;
+    float halfTowerSize = posRange;
     if (targetPosXorY - halfTowerSize >= min) {
         if(targetPosXorY - halfTowerSize <= max) {
             return true;
@@ -213,17 +224,17 @@ public class TowerPositionData {
     }
     public int CardinalIndex;
     [SerializeField]
-    GameObject towerGO;
+    GameObject towerSlotGO;
     
     [SerializeField]
     Vector2 towerPosition;
-    public GameObject TowerGO {
-        get => towerGO;
+    public GameObject TowerSlotGo {
+        get => towerSlotGO;
         set {
             if (value == null) {
                 //Debug.Log("Tower set to null");
             }
-            towerGO = value;
+            towerSlotGO = value;
             }
     
         }
@@ -243,7 +254,7 @@ public class TowerPositionData {
     
 
     public TowerPositionData(GameObject _towerGO, float _distance, int cardinalIndex) {
-        TowerGO = _towerGO;
+        TowerSlotGo = _towerGO;
         if (_towerGO != null) {
         TowerPosition = (Vector2)_towerGO.transform.position;
         }

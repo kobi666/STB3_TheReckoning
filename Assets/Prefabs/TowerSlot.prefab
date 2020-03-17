@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7921043470084178604}
-  - component: {fileID: 5583244589944787136}
   - component: {fileID: 8996652684618427095}
+  - component: {fileID: 7617903755165906964}
   m_Layer: 0
   m_Name: TowerSlot
-  m_TagString: Tower
+  m_TagString: TowerSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,19 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5583244589944787136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7921043470084178605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd08f13f1a7a3af459034b3f845b4a96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerController: {fileID: 0}
 --- !u!212 &8996652684618427095
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -94,3 +81,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7617903755165906964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7921043470084178605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb2823df6abd0f54ea46ea77b86df63a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OldTowerObject: {fileID: 0}
+  towerController: {fileID: 0}
