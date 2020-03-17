@@ -40,9 +40,13 @@ public class TowerItem {
 
 [System.Serializable]
 public class TowerSlotActions  {
+    [SerializeField]
     public TowerSlotAction ButtonNorth;
+    [SerializeField]
     public TowerSlotAction ButtonEast;
+    [SerializeField]
     public TowerSlotAction ButtonSouth;
+    [SerializeField]
     public TowerSlotAction ButtonWest;
 
     public TowerSlotActions(TowerSlotAction north, TowerSlotAction east, TowerSlotAction south, TowerSlotAction west) {
@@ -54,8 +58,11 @@ public class TowerSlotActions  {
 }
 
 public class TowerSlotAction {
+    [SerializeField]
     public string ActionDescription;
+    [SerializeField]
     public Sprite ButtonSprite;
+    [SerializeField]
     public event Action ActionFunctions;
     public TowerSlotAction(string actionDescription, Sprite buttonSprite) {
         ActionDescription = actionDescription;

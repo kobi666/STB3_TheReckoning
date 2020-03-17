@@ -44,13 +44,14 @@ public class SelectorTest2 : MonoBehaviour
             SlotController = selectedTowerSlot?.GetComponent<TowerSlotController>() ?? null;
             TowerObject = SlotController.TowerObject;
             TowerObjectController = SlotController.TowerObjectController;
+            TowerActions = TowerObjectController.TowerActions;
         }
     }
 
     public GameObject TowerObject;
 
     public TowerSlotController SlotController;
-    public TowerSlotActions TowerActions { get => SlotController.TowerObjectController.TowerActions;}
+    public TowerSlotActions TowerActions;
 
     public Dictionary<Vector2, TowerUtils.TowerPositionData> CardinalTowerSlots {
         get => SlotController?.TowerSlotsByDirections8 ?? null;
@@ -83,10 +84,10 @@ public class SelectorTest2 : MonoBehaviour
         
         PlayerControl.GamePlay.MoveTowerCursor.canceled += ctx => resetMoveCounter();
         //PlayerControl.GamePlay.NorthButton.performed += ctx => TowerActions.ButtonNorth.ExecuteFunction(TowerSlotController.TowerSlot, TowerSlotController.gameObject);
-        PlayerControl.GamePlay.NorthButton.performed += ctx => TowerActions.ButtonNorth.ExecuteFunction();
-        PlayerControl.GamePlay.EastButton.performed += ctx => TowerActions.ButtonEast.ExecuteFunction();
-        PlayerControl.GamePlay.SouthButton.performed += ctx => TowerActions.ButtonSouth.ExecuteFunction();
-        PlayerControl.GamePlay.WestButton.performed += ctx => TowerActions.ButtonWest.ExecuteFunction();
+        PlayerControl.GamePlay.NorthButton.performed += ctx => SlotController.ExecNorth();
+        PlayerControl.GamePlay.EastButton.performed += ctx =>  SlotController.ExecEast();
+        PlayerControl.GamePlay.SouthButton.performed += ctx => SlotController.ExecSouth();
+        PlayerControl.GamePlay.WestButton.performed += ctx => SlotController.ExecWest();
     }
 
 
@@ -113,6 +114,7 @@ public class SelectorTest2 : MonoBehaviour
             if (towerSlotGO != null) {
             transform.position = towerSlotGO.transform.position;
             SelectedTowerSlot = towerSlotGO;
+            
             }
 
         }
@@ -129,6 +131,12 @@ public class SelectorTest2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Vector2 FirstKey = Vector2.zero;
+        foreach (var item in TowerSlotsWithPositions)
+        {
+            FirstKey = item.Key;
+            break;
+        }
         FirstDiscoveryRange = StaticObjects.instance.TowerSize;
         V1L = V1.GetComponent<LineRenderer>();
         V2L = V2.GetComponent<LineRenderer>();
@@ -140,7 +148,7 @@ public class SelectorTest2 : MonoBehaviour
         H4L = H4.GetComponent<LineRenderer>();
         DiscoveryRangeWithLineWidth = FirstDiscoveryRange + 0.10f;
         int random = UnityEngine.Random.Range(1, TowerSlotsWithPositions.Count);
-        SelectedTowerSlot = GameObject.FindGameObjectWithTag("TowerParent").transform.GetChild(random).gameObject;
+        SelectedTowerSlot = TowerSlotsWithPositions[FirstKey];
         transform.position = SelectedTowerSlot.transform.position;
         SecondDiscoveryRange = FirstDiscoveryRange * SecondDiscoveryRangeMultiplier;
         SecondDiscoveryRangeWithLineWidth = SecondDiscoveryRange + 0.10f;

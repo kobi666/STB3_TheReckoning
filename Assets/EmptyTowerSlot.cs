@@ -22,8 +22,8 @@ public class EmptyTowerSlot : TowerController
         Debug.Log("4");
         SlotManager.PlaceTower(TowerArsenal.arsenal.TestTower4.TowerPrefab);
     }
-    // Start is called before the first frame update
-    public override void PostStart() {
+
+    private void Awake() {
         TowerActions.ButtonNorth = new TowerSlotAction("Place tower : " + TowerArsenal.arsenal.TestTower1, TowerArsenal.arsenal.TestTower1.TowerSprite);
         TowerActions.ButtonNorth.ActionFunctions += PlaceTestTower1;
         TowerActions.ButtonEast = new TowerSlotAction("Place tower : " + TowerArsenal.arsenal.TestTower2, TowerArsenal.arsenal.TestTower2.TowerSprite);
@@ -32,6 +32,12 @@ public class EmptyTowerSlot : TowerController
         TowerActions.ButtonSouth.ActionFunctions += PlaceTestTower3;
         TowerActions.ButtonWest = new TowerSlotAction("Place tower : " + TowerArsenal.arsenal.TestTower4, TowerArsenal.arsenal.TestTower4.TowerSprite);
         TowerActions.ButtonWest.ActionFunctions += PlaceTestTower4;
+    }
+
+
+    // Start is called before the first frame update
+    public override void PostStart() {
+        
     }
 
 

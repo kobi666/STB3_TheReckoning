@@ -56,6 +56,9 @@ public class TowerUtils : MonoBehaviour
                 if (!towerParent.transform.GetChild(i).CompareTag("TowerSlot")) {
                     continue;
                 }
+                if (towerParent.transform.GetChild(i).gameObject.activeSelf == false) {
+                    continue;
+                }
                 allTowersUnderParentObject.Add((Vector2)towerParent.transform.GetChild(i).transform.position, towerParent.transform.GetChild(i).gameObject);
             
         }

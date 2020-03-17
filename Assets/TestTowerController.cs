@@ -15,6 +15,10 @@ public class TestTowerController : TowerController
     {
         TowerActions = TowerUtils.DefaultSlotActions;
         TowerSpriteRenderer = GetComponent<SpriteRenderer>();
+        
+    }
+
+    private void Awake() {
         TowerActions.ButtonNorth = new TowerSlotAction("asdfasd", TowerSprite);
         TowerActions.ButtonNorth.ActionFunctions += Test;
     }

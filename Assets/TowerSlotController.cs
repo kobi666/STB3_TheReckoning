@@ -20,8 +20,24 @@ public class TowerSlotController : MonoBehaviour
     public TowerController TowerObjectController;
     public TowerSlotActions Actions;
 
+    public void ExecNorth() {
+        Actions.ButtonNorth?.ExecuteFunction();
+    }
+
+    public void ExecEast() {
+        Actions.ButtonEast?.ExecuteFunction();
+    }
+
+    public void ExecSouth() {
+        Actions.ButtonSouth?.ExecuteFunction();
+    }
+
+    public void ExecWest() {
+        Actions.ButtonWest?.ExecuteFunction();
+    }
+
     public void PlaceTower(GameObject TowerPrefab) {
-        TowerObject = OldTowerObject;
+        OldTowerObject = TowerObject;
         TowerObject = Instantiate(TowerPrefab, transform.position, Quaternion.identity, gameObject.transform);
         TowerObject.name = (TowerPrefab.name + UnityEngine.Random.Range(10000, 99999).ToString());
         TowerObjectController = TowerObject.GetComponent<TowerController>();
