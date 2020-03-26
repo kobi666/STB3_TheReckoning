@@ -93,6 +93,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94451eb8f64a914484a074f7c089aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TowersDebug:
+  - Direction: 
+    GO: {fileID: 0}
+    Position: {x: 0, y: 0}
+    Distance: 0
+    ClockWiseTower: {fileID: 0}
+    CounterClockWiseTower: {fileID: 0}
+  - Direction: 
+    GO: {fileID: 0}
+    Position: {x: 0, y: 0}
+    Distance: 0
+    ClockWiseTower: {fileID: 0}
+    CounterClockWiseTower: {fileID: 0}
+  - Direction: 
+    GO: {fileID: 0}
+    Position: {x: 0, y: 0}
+    Distance: 0
+    ClockWiseTower: {fileID: 0}
+    CounterClockWiseTower: {fileID: 0}
+  - Direction: 
+    GO: {fileID: 0}
+    Position: {x: 0, y: 0}
+    Distance: 0
+    ClockWiseTower: {fileID: 0}
+    CounterClockWiseTower: {fileID: 0}
+  - Direction: 
+    GO: {fileID: 0}
+    Position: {x: 0, y: 0}
+    Distance: 0
+    ClockWiseTower: {fileID: 0}
+    CounterClockWiseTower: {fileID: 0}
+  - Direction: 
+    GO: {fileID: 0}
+    Position: {x: 0, y: 0}
+    Distance: 0
+    ClockWiseTower: {fileID: 0}
+    CounterClockWiseTower: {fileID: 0}
+  - Direction: 
+    GO: {fileID: 0}
+    Position: {x: 0, y: 0}
+    Distance: 0
+    ClockWiseTower: {fileID: 0}
+    CounterClockWiseTower: {fileID: 0}
+  - Direction: 
+    GO: {fileID: 0}
+    Position: {x: 0, y: 0}
+    Distance: 0
+    ClockWiseTower: {fileID: 0}
+    CounterClockWiseTower: {fileID: 0}
+  slotManager: {fileID: 0}
+  SlotManagerObject: {fileID: 0}
   TowerSprite: {fileID: 0}
   TowerSpriteRenderer: {fileID: 0}
-  TowerActions: {fileID: 0}

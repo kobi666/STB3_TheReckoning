@@ -44,7 +44,8 @@
     <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
-  <ItemGroup>     <Compile Include="Assets\CursorUtils.cs" />
+  <ItemGroup>     <Compile Include="Assets\CrosshairTest.cs" />
+     <Compile Include="Assets\CursorUtils.cs" />
      <Compile Include="Assets\DebugCrosshair.cs" />
      <Compile Include="Assets\DebugText.cs" />
      <Compile Include="Assets\EmptyTowerSlot.cs" />
@@ -78,9 +79,13 @@
      <Compile Include="Assets\Scripts\WeaponController.cs" />
      <Compile Include="Assets\SelectorTest.cs" />
      <Compile Include="Assets\SelectorTest2.cs" />
+     <Compile Include="Assets\SlotController.cs" />
+     <Compile Include="Assets\SlotParentManager.cs" />
      <Compile Include="Assets\TestingVectors.cs" />
      <Compile Include="Assets\TestScript.cs" />
      <Compile Include="Assets\TestTowerController.cs" />
+     <Compile Include="Assets\TowerAction.cs" />
+     <Compile Include="Assets\TowerActionsContainer.cs" />
      <Compile Include="Assets\TowerArsenal.cs" />
      <Compile Include="Assets\TowerController.cs" />
      <Compile Include="Assets\TowerSlotController.cs" />

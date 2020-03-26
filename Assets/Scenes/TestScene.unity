@@ -1981,6 +1981,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerSlot (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2204,6 +2209,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TowerSlot (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
@@ -2670,6 +2680,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerSlot (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2894,6 +2909,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TowerSlot (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
@@ -3278,6 +3298,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerSlot (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3520,6 +3545,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TowerSlot (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
@@ -3985,11 +4015,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28357eec19cb4242891a4e0436a641e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  H1: {fileID: 1728790386}
   SecondDiscoveryRangeMultiplier: 2.2
   SecondDiscoveryRange: 0
   DiscoveryRangeWithLineWidth: 0
   SecondDiscoveryRangeWithLineWidth: 0
+  H1: {fileID: 1728790386}
   H2: {fileID: 1494623009}
   H3: {fileID: 1406627488}
   H4: {fileID: 279879695}
@@ -4000,7 +4030,6 @@ MonoBehaviour:
   MoveLock: 0
   selectedTowerSlot: {fileID: 0}
   TowerObject: {fileID: 0}
-  SlotController: {fileID: 0}
   speed: 0
 --- !u!212 &1764259584
 SpriteRenderer:
@@ -4204,6 +4233,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerSlot (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4405,6 +4439,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TowerSlot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}

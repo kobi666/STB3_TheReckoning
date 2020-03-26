@@ -7,7 +7,6 @@ public class EmptyTowerSlot : TowerController
     public void PlaceTestTower1() {
         Debug.Log("1");
         SlotManager.PlaceTower(TowerArsenal.arsenal.TestTower1.TowerPrefab);
-       
     }
 
     public void PlaceTestTower2() {
@@ -16,7 +15,7 @@ public class EmptyTowerSlot : TowerController
     }
     public void PlaceTestTower3() {
         Debug.Log("3");
-        SlotManager.PlaceTower(TowerArsenal.arsenal.TestTower3.TowerPrefab);
+        SlotManager.PlaceTower(TowerArsenal.arsenal.EmptyTowerSlot.TowerPrefab);
     }
     public void PlaceTestTower4() {
         Debug.Log("4");
@@ -26,7 +25,7 @@ public class EmptyTowerSlot : TowerController
     private void Awake() {
         TowerActions.ButtonNorth = new TowerSlotAction("Place tower : " + TowerArsenal.arsenal.TestTower1, TowerArsenal.arsenal.TestTower1.TowerSprite);
         TowerActions.ButtonNorth.ActionFunctions += PlaceTestTower1;
-        TowerActions.ButtonEast = new TowerSlotAction("Place tower : " + TowerArsenal.arsenal.TestTower2, TowerArsenal.arsenal.TestTower2.TowerSprite);
+        TowerActions.ButtonEast = new TowerSlotAction("Place tower : " + TowerArsenal.arsenal.EmptyTowerSlot, TowerArsenal.arsenal.TestTower2.TowerSprite);
         TowerActions.ButtonEast.ActionFunctions += PlaceTestTower2;
         TowerActions.ButtonSouth = new TowerSlotAction("Place tower : " + TowerArsenal.arsenal.TestTower3, TowerArsenal.arsenal.TestTower3.TowerSprite);
         TowerActions.ButtonSouth.ActionFunctions += PlaceTestTower3;

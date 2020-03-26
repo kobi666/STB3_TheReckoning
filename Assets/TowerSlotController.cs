@@ -14,6 +14,7 @@ public class TowerSlotController : MonoBehaviour
         get => towerObject;
         set {
             towerObject = value;
+            TowerObjectController = value.GetComponent<TowerController>();
         }
     }
 
@@ -30,6 +31,7 @@ public class TowerSlotController : MonoBehaviour
 
     public void ExecSouth() {
         Actions.ButtonSouth?.ExecuteFunction();
+        //Debug.LogWarning(Actions.ButtonSouth.ActionDescription);
     }
 
     public void ExecWest() {
@@ -37,17 +39,16 @@ public class TowerSlotController : MonoBehaviour
     }
 
     public void PlaceTower(GameObject TowerPrefab) {
-        OldTowerObject = TowerObject;
+        if (TowerObject != null) {
+            Destroy(TowerObject);
+        }
         TowerObject = Instantiate(TowerPrefab, transform.position, Quaternion.identity, gameObject.transform);
         TowerObject.name = (TowerPrefab.name + UnityEngine.Random.Range(10000, 99999).ToString());
-        TowerObjectController = TowerObject.GetComponent<TowerController>();
-        TowerObjectController.SlotManagerObject = gameObject;
-        TowerObjectController.SlotManager = TowerObjectController.SlotManagerObject.GetComponent<TowerSlotController>();
-        Actions = TowerObjectController.TowerActions;
+        SelectorTest2.instance.SelectedTowerSlot = this.gameObject;
+    }
 
-        if (OldTowerObject != null) {
-            Destroy(OldTowerObject);
-        }
+    private void Update() {
+        
     }
    
 

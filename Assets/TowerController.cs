@@ -31,7 +31,7 @@ public class TowerController : MonoBehaviour
             TowersDebug[i].Position = TowerSlotsByDirections8[TowerUtils.Cardinal8.directionsClockwise[i]].TowerPosition;
             TowersDebug[i].Distance = TowerSlotsByDirections8[TowerUtils.Cardinal8.directionsClockwise[i]].Distance;
         }
-        TowerActions = TowerUtils.DefaultSlotActions;
+        
 
         PostStart();
     }

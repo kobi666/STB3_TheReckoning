@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SelectorTest2 : MonoBehaviour
 {
-    public GameObject H1;
+
     float FirstDiscoveryRange;
     public float SecondDiscoveryRangeMultiplier;
     public float SecondDiscoveryRange;
@@ -21,6 +22,7 @@ public class SelectorTest2 : MonoBehaviour
     LineRenderer V2L;
     LineRenderer V3L;
     LineRenderer V4L;
+    public GameObject H1;
     public GameObject H2;
     public GameObject H3;
     public GameObject H4;
@@ -35,22 +37,49 @@ public class SelectorTest2 : MonoBehaviour
 
     [SerializeField]
     GameObject selectedTowerSlot;
-    TowerController TowerObjectController;
+    TowerController TowerObjectController {
+        get => SlotController.TowerObjectController;
+    }
 
     public GameObject SelectedTowerSlot {
         get => selectedTowerSlot;
         set {
             selectedTowerSlot = value;
-            SlotController = selectedTowerSlot?.GetComponent<TowerSlotController>() ?? null;
-            TowerObject = SlotController.TowerObject;
-            TowerObjectController = SlotController.TowerObjectController;
-            TowerActions = TowerObjectController.TowerActions;
+            TowerObjectController.SlotManager = SlotController;
+            Debug.LogWarning("On Set : " + TowerObjectController.TowerActions.ButtonSouth.ActionDescription);
         }
+    }
+
+    
+
+    
+
+
+
+    public void ExecNorth() {
+        TowerObjectController.TowerActions.ButtonNorth?.ExecuteFunction();
+    }
+
+    public void ExecEast() {
+        
+        TowerObjectController.TowerActions.ButtonEast?.ExecuteFunction();
+    }
+
+    public void ExecSouth() {
+
+        TowerObjectController.TowerActions.ButtonSouth?.ExecuteFunction();
+    }
+
+    public void ExecWest() {
+        
+        TowerObjectController.TowerActions.ButtonWest?.ExecuteFunction();
     }
 
     public GameObject TowerObject;
 
-    public TowerSlotController SlotController;
+    public TowerSlotController SlotController {
+        get => SelectedTowerSlot.GetComponent<TowerSlotController>();
+    }
     public TowerSlotActions TowerActions;
 
     public Dictionary<Vector2, TowerUtils.TowerPositionData> CardinalTowerSlots {
@@ -84,10 +113,7 @@ public class SelectorTest2 : MonoBehaviour
         
         PlayerControl.GamePlay.MoveTowerCursor.canceled += ctx => resetMoveCounter();
         //PlayerControl.GamePlay.NorthButton.performed += ctx => TowerActions.ButtonNorth.ExecuteFunction(TowerSlotController.TowerSlot, TowerSlotController.gameObject);
-        PlayerControl.GamePlay.NorthButton.performed += ctx => SlotController.ExecNorth();
-        PlayerControl.GamePlay.EastButton.performed += ctx =>  SlotController.ExecEast();
-        PlayerControl.GamePlay.SouthButton.performed += ctx => SlotController.ExecSouth();
-        PlayerControl.GamePlay.WestButton.performed += ctx => SlotController.ExecWest();
+        
     }
 
 
@@ -114,7 +140,10 @@ public class SelectorTest2 : MonoBehaviour
             if (towerSlotGO != null) {
             transform.position = towerSlotGO.transform.position;
             SelectedTowerSlot = towerSlotGO;
+            Debug.LogWarning("On Move : " + TowerObjectController.TowerActions.ButtonSouth.ActionDescription);
             
+            
+            //Debug.LogWarning(TowerActions.ButtonSouth.ActionDescription);
             }
 
         }
@@ -131,6 +160,10 @@ public class SelectorTest2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerControl.GamePlay.NorthButton.performed += ctx => ExecNorth();
+        PlayerControl.GamePlay.EastButton.performed += ctx =>  ExecEast();
+        PlayerControl.GamePlay.SouthButton.performed += ctx => ExecSouth();
+        PlayerControl.GamePlay.WestButton.performed += ctx => ExecWest();
         Vector2 FirstKey = Vector2.zero;
         foreach (var item in TowerSlotsWithPositions)
         {
