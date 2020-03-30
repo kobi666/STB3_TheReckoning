@@ -1,7 +1,133 @@
 fileFormatVersion: 2
 guid: 12dfa9344dcf5bd41a51eeb5c6487ed5
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -7227839632320035530
+    second: AkumaFullSpriteSheet_0
+  - first:
+      213: -3350396941912798185
+    second: AkumaFullSpriteSheet_1
+  - first:
+      213: -5779958438393810433
+    second: AkumaFullSpriteSheet_2
+  - first:
+      213: -8137996391258233856
+    second: AkumaFullSpriteSheet_3
+  - first:
+      213: 5228264721538136629
+    second: AkumaFullSpriteSheet_4
+  - first:
+      213: -3473084855566325502
+    second: AkumaFullSpriteSheet_5
+  - first:
+      213: 9193576081735011794
+    second: AkumaFullSpriteSheet_6
+  - first:
+      213: 1031640920956760439
+    second: AkumaFullSpriteSheet_7
+  - first:
+      213: 1539674274847437293
+    second: AkumaFullSpriteSheet_8
+  - first:
+      213: 1872950349141279941
+    second: AkumaFullSpriteSheet_9
+  - first:
+      213: -5275726661436877727
+    second: AkumaFullSpriteSheet_10
+  - first:
+      213: 6909652242104793075
+    second: AkumaFullSpriteSheet_11
+  - first:
+      213: 5744269345961322664
+    second: AkumaFullSpriteSheet_12
+  - first:
+      213: 378268064555698156
+    second: AkumaFullSpriteSheet_13
+  - first:
+      213: 7475993497190939128
+    second: AkumaFullSpriteSheet_14
+  - first:
+      213: -8255719439071096520
+    second: AkumaFullSpriteSheet_15
+  - first:
+      213: 4201477812909901177
+    second: AkumaFullSpriteSheet_16
+  - first:
+      213: -5269851038711482325
+    second: AkumaFullSpriteSheet_17
+  - first:
+      213: 5242581261698525093
+    second: AkumaFullSpriteSheet_18
+  - first:
+      213: -5975775010652389921
+    second: AkumaFullSpriteSheet_19
+  - first:
+      213: -630563005770972848
+    second: AkumaFullSpriteSheet_20
+  - first:
+      213: 4207152597182082466
+    second: AkumaFullSpriteSheet_21
+  - first:
+      213: 7432535085547905873
+    second: AkumaFullSpriteSheet_22
+  - first:
+      213: 3774101377471716116
+    second: AkumaFullSpriteSheet_23
+  - first:
+      213: 3232098808946425338
+    second: AkumaFullSpriteSheet_24
+  - first:
+      213: -4225051574218046952
+    second: AkumaFullSpriteSheet_25
+  - first:
+      213: -652458476832396777
+    second: AkumaFullSpriteSheet_26
+  - first:
+      213: -4342658124871554855
+    second: AkumaFullSpriteSheet_27
+  - first:
+      213: -2576539228286750123
+    second: AkumaFullSpriteSheet_28
+  - first:
+      213: -1974890206362859082
+    second: AkumaFullSpriteSheet_29
+  - first:
+      213: 6125529082632326618
+    second: AkumaFullSpriteSheet_30
+  - first:
+      213: 6408724036344366626
+    second: AkumaFullSpriteSheet_31
+  - first:
+      213: -6240417344985397736
+    second: AkumaFullSpriteSheet_32
+  - first:
+      213: 7547941437785439696
+    second: AkumaFullSpriteSheet_33
+  - first:
+      213: -2504437305538986220
+    second: AkumaFullSpriteSheet_34
+  - first:
+      213: 7862474032103012576
+    second: AkumaFullSpriteSheet_35
+  - first:
+      213: -8609428485255635030
+    second: AkumaFullSpriteSheet_36
+  - first:
+      213: -6645072680081361809
+    second: AkumaFullSpriteSheet_37
+  - first:
+      213: 3867387896238741901
+    second: AkumaFullSpriteSheet_38
+  - first:
+      213: -5376984517543207619
+    second: AkumaFullSpriteSheet_39
+  - first:
+      213: -8726902418346797832
+    second: AkumaFullSpriteSheet_40
+  - first:
+      213: -9021848542198470364
+    second: AkumaFullSpriteSheet_41
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +166,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,9 +196,927 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 335
+        width: 61
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62e52208ee982ee4f9904ad286406db6
+      internalID: -7227839632320035530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 336
+        width: 61
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f149da6d9b618f046b8f3343b2dc4601
+      internalID: -3350396941912798185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 335
+        width: 61
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15d32637ac489094b86986d2b41c1f7b
+      internalID: -5779958438393810433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 335
+        width: 62
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51f94a8517011dc45a5051636b1c37c9
+      internalID: -8137996391258233856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 335
+        width: 63
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4404e8123c5e8fc4ab9e1ebda4263b13
+      internalID: 5228264721538136629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 335
+        width: 64
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d2ebc14dd8fad54caf84ff203c45788
+      internalID: -3473084855566325502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 335
+        width: 64
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99196523a37af9c4d9424c521f5bccb8
+      internalID: 9193576081735011794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 335
+        width: 62
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee1550bf47ebe234a8a38102058eb784
+      internalID: 1031640920956760439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 335
+        width: 61
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d43ff69e9f74234c912e91bbf5f6c0e
+      internalID: 1539674274847437293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 314
+        width: 122
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43ce4713b276c6f448d101d5489c3bfa
+      internalID: 1872950349141279941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 260
+        width: 58
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44cd5c52090ddd44db29880f6b6b3719
+      internalID: -5275726661436877727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 260
+        width: 49
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f187d0db1545aa4cb2de0d5c90918ce
+      internalID: 6909652242104793075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 260
+        width: 48
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e470aa089b58c794ca3aa4ebb7b91af5
+      internalID: 5744269345961322664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 260
+        width: 47
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e21847e46d6fb654fb27bbb01f21b44a
+      internalID: 378268064555698156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 260
+        width: 50
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d56db8fc13d965641b90de0d07c9d2a5
+      internalID: 7475993497190939128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 260
+        width: 52
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fc9190c468c1e944b2ed307c4c26316
+      internalID: -8255719439071096520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 260
+        width: 52
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8df85b5282101104084f773eefcd7eb5
+      internalID: 4201477812909901177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 260
+        width: 54
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7006091c5fe5147469dc26aa3a8ed69b
+      internalID: -5269851038711482325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 184
+        width: 54
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 030badf01545f7f40a467ad8a5f631f8
+      internalID: 5242581261698525093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 184
+        width: 52
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b96619c5d3bd8649869409831c0a06d
+      internalID: -5975775010652389921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 184
+        width: 52
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa3fce45a7b2eb1498537ce8a5afc72d
+      internalID: -630563005770972848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 184
+        width: 50
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6d5ce8fd780d2549a21355a62e40a48
+      internalID: 4207152597182082466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 184
+        width: 47
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01490d5cdae50ce4a8bb99b4c3a9a9a3
+      internalID: 7432535085547905873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 184
+        width: 48
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfb1d53dc85200e4aa4e2033d393205b
+      internalID: 3774101377471716116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 184
+        width: 49
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8749ce85d1b9c494d9bc4e7690cf2f27
+      internalID: 3232098808946425338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 184
+        width: 58
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da417fa276137904f847ffb87268a074
+      internalID: -4225051574218046952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 101
+        width: 72
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6336ea11cc8ea4949a89715c968d009f
+      internalID: -652458476832396777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 101
+        width: 60
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 348af5628ace65940948273758cd1a4c
+      internalID: -4342658124871554855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 101
+        width: 67
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 276b33fedc719944c9ee8a10933f604b
+      internalID: -2576539228286750123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 101
+        width: 57
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc2fd41b79eb00b4595c307e92824a13
+      internalID: -1974890206362859082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 101
+        width: 57
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1203d38619dde7e4394f9700d5578e52
+      internalID: 6125529082632326618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_31
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 101
+        width: 57
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09b12bfb0d65a6b4485b0b9e39ef4779
+      internalID: 6408724036344366626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_32
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 101
+        width: 82
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5605bdf1439d932458f00f14dedccdbb
+      internalID: -6240417344985397736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_33
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 101
+        width: 90
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ec743e351766ff4c980b63df7af14d2
+      internalID: 7547941437785439696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_34
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 101
+        width: 87
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbfad7861d84d0749a75d2d75f21b8ca
+      internalID: -2504437305538986220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_35
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 0
+        width: 71
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5cc887b40eb2f743bbf8cfa6e99bc1b
+      internalID: 7862474032103012576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_36
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 0
+        width: 66
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d734af6edf8c0184f81c27d17dcbdf6e
+      internalID: -8609428485255635030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_37
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 0
+        width: 54
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d836553d9af372445ae6ff6d8692487b
+      internalID: -6645072680081361809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_38
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 0
+        width: 73
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f9839fb8339cd64e8bb15afc648c83c
+      internalID: 3867387896238741901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_39
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 0
+        width: 69
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40bc94bd6e84a664e87f952907c49fba
+      internalID: -5376984517543207619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_40
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 0
+        width: 74
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 556d902be3a8d1046820584c105bfd74
+      internalID: -8726902418346797832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AkumaFullSpriteSheet_41
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 0
+        width: 74
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d65f486d13dfee94ba16b5ae021ff0cd
+      internalID: -9021848542198470364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

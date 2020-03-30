@@ -20,7 +20,7 @@ public class StaticObjects : MonoBehaviour
     }
 
     private void Start() {
-        PPH = GameObject.FindGameObjectWithTag("PPH").transform;
+        PPH = GameObject.FindGameObjectWithTag("PPH")?.transform ?? null;
     }
 
     private void FixedUpdate() {

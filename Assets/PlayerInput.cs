@@ -217,6 +217,71 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""TestButtons"",
+            ""id"": ""f7397da4-4cb4-4d0f-a776-d16bef6f8071"",
+            ""actions"": [
+                {
+                    ""name"": ""TestWalking"",
+                    ""type"": ""Button"",
+                    ""id"": ""5e80d883-3bfb-4c36-a464-a18b6065e087"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""TestAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""fb1d43cd-6b4b-46c8-994f-8a33eacb47de"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""TestDeath"",
+                    ""type"": ""Button"",
+                    ""id"": ""18ab84fa-0593-438b-bbce-39cb13885a58"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f3115d40-fba4-43e2-b28b-f7fcca7cb011"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""TestWalking"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""85ff7aac-4834-4d78-8907-b06fab0ebc45"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TestAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90acd05d-8b24-4a7f-93f8-199b5f39581e"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TestDeath"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -254,6 +319,11 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_GamePlay_EastButton = m_GamePlay.FindAction("EastButton", throwIfNotFound: true);
         m_GamePlay_SouthButton = m_GamePlay.FindAction("SouthButton", throwIfNotFound: true);
         m_GamePlay_WestButton = m_GamePlay.FindAction("WestButton", throwIfNotFound: true);
+        // TestButtons
+        m_TestButtons = asset.FindActionMap("TestButtons", throwIfNotFound: true);
+        m_TestButtons_TestWalking = m_TestButtons.FindAction("TestWalking", throwIfNotFound: true);
+        m_TestButtons_TestAttack = m_TestButtons.FindAction("TestAttack", throwIfNotFound: true);
+        m_TestButtons_TestDeath = m_TestButtons.FindAction("TestDeath", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -388,6 +458,55 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         }
     }
     public GamePlayActions @GamePlay => new GamePlayActions(this);
+
+    // TestButtons
+    private readonly InputActionMap m_TestButtons;
+    private ITestButtonsActions m_TestButtonsActionsCallbackInterface;
+    private readonly InputAction m_TestButtons_TestWalking;
+    private readonly InputAction m_TestButtons_TestAttack;
+    private readonly InputAction m_TestButtons_TestDeath;
+    public struct TestButtonsActions
+    {
+        private @PlayerInput m_Wrapper;
+        public TestButtonsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @TestWalking => m_Wrapper.m_TestButtons_TestWalking;
+        public InputAction @TestAttack => m_Wrapper.m_TestButtons_TestAttack;
+        public InputAction @TestDeath => m_Wrapper.m_TestButtons_TestDeath;
+        public InputActionMap Get() { return m_Wrapper.m_TestButtons; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TestButtonsActions set) { return set.Get(); }
+        public void SetCallbacks(ITestButtonsActions instance)
+        {
+            if (m_Wrapper.m_TestButtonsActionsCallbackInterface != null)
+            {
+                @TestWalking.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnTestWalking;
+                @TestWalking.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnTestWalking;
+                @TestWalking.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnTestWalking;
+                @TestAttack.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnTestAttack;
+                @TestAttack.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnTestAttack;
+                @TestAttack.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnTestAttack;
+                @TestDeath.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnTestDeath;
+                @TestDeath.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnTestDeath;
+                @TestDeath.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnTestDeath;
+            }
+            m_Wrapper.m_TestButtonsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @TestWalking.started += instance.OnTestWalking;
+                @TestWalking.performed += instance.OnTestWalking;
+                @TestWalking.canceled += instance.OnTestWalking;
+                @TestAttack.started += instance.OnTestAttack;
+                @TestAttack.performed += instance.OnTestAttack;
+                @TestAttack.canceled += instance.OnTestAttack;
+                @TestDeath.started += instance.OnTestDeath;
+                @TestDeath.performed += instance.OnTestDeath;
+                @TestDeath.canceled += instance.OnTestDeath;
+            }
+        }
+    }
+    public TestButtonsActions @TestButtons => new TestButtonsActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -416,5 +535,11 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnEastButton(InputAction.CallbackContext context);
         void OnSouthButton(InputAction.CallbackContext context);
         void OnWestButton(InputAction.CallbackContext context);
+    }
+    public interface ITestButtonsActions
+    {
+        void OnTestWalking(InputAction.CallbackContext context);
+        void OnTestAttack(InputAction.CallbackContext context);
+        void OnTestDeath(InputAction.CallbackContext context);
     }
 }

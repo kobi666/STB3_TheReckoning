@@ -320,8 +320,8 @@ MonoBehaviour:
     AttackRate: 12
     DamageRange:
       min: 20
-      max: 40
-    HP: 150
+      max: 30
+    HP: 200
     Armor: 0
     SpecialArmor: 0
     speed: 1
@@ -539,9 +539,9 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 12
     DamageRange:
-      min: 5
-      max: 20
-    HP: 150
+      min: 20
+      max: 30
+    HP: 200
     Armor: 0
     SpecialArmor: 0
     speed: 1
@@ -763,9 +763,9 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 12
     DamageRange:
-      min: 5
-      max: 20
-    HP: 150
+      min: 20
+      max: 30
+    HP: 200
     Armor: 0
     SpecialArmor: 0
     speed: 1
@@ -1984,7 +1984,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
@@ -2213,7 +2213,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
@@ -2395,9 +2395,9 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 12
     DamageRange:
-      min: 5
-      max: 20
-    HP: 150
+      min: 20
+      max: 30
+    HP: 200
     Armor: 0
     SpecialArmor: 0
     speed: 1
@@ -2557,9 +2557,9 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 12
     DamageRange:
-      min: 10
+      min: 20
       max: 30
-    HP: 150
+    HP: 200
     Armor: 0
     SpecialArmor: 0
     speed: 1
@@ -2683,7 +2683,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
@@ -2913,7 +2913,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
@@ -3301,7 +3301,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
@@ -3677,12 +3677,12 @@ PrefabInstance:
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.63
+      value: 5.42
       objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.53
+      value: -0.58
       objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
@@ -4236,7 +4236,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}

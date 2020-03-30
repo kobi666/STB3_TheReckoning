@@ -5,6 +5,7 @@ using System;
 
 public class EnemyUnitController2 : UnitController
 {
+    Animation DeathAnimation;
     public event Action unitDied;
     public void UnitDied() {
         if (unitDied != null) {
@@ -18,6 +19,7 @@ public class EnemyUnitController2 : UnitController
 
     public IEnumerator ReturnToWalkingOnPath() {
         Walker.ReturnWalking();
+        animationController.TriggerWalking();
         yield break;
     }
 
@@ -27,10 +29,13 @@ public class EnemyUnitController2 : UnitController
         SM.SetState(states.Default, true);
         }
     }
+
+    AnimationTest animationController;
     UnitState CurrentState { get => SM.CurrentState;}
     public event Action onAttack;
     public void OnAttack(){
         if (onAttack != null){
+    //            Debug.LogWarning("Attack event invoked");
             onAttack.Invoke();
         }
     }
@@ -66,7 +71,9 @@ public class EnemyUnitController2 : UnitController
     public bool CanAttack {
         get {
             if (CurrentState == states.InBattle) {
+                
                 if (Data.Target != null) {
+                    
                     return true;
                 }
                 else {
@@ -77,6 +84,22 @@ public class EnemyUnitController2 : UnitController
                 return false;
             }
         }
+    }
+
+    public bool CanAttackFunc() {
+        if (CurrentState == states.InBattle) {
+                
+                if (Data.Target != null) {
+                    
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            else {
+                return false;
+            }
     }
     private float attackCounter;
     public float AttackCounter {
@@ -108,6 +131,7 @@ public class EnemyUnitController2 : UnitController
 
     public IEnumerator StartBattleSequence() {
         Walker.StopWalking();
+        animationController.TriggerWalking();
         if (Data.Target != null) {
             TargetController.reachedTarget += Battle;
         }
@@ -130,18 +154,33 @@ public class EnemyUnitController2 : UnitController
             }
     }
 
-    
+    bool attackLock = false;
 
     public void Attack() {
        // Debug.Log("Attacking " + Data.Target.name);
-       if (Data.Target != null) {
+       //Debug.LogWarning("Attack triggered");
+       if (Data.Target != null && attackLock == false) {
+//        Debug.LogWarning("Attack animation Triggered");
+        animationController.TriggerAttack();
         TargetController.LifeManager.DamageToUnit(UnityEngine.Random.Range(Data.DamageRange.min,Data.DamageRange.max), Data.damageType);
         }
     }
 
     public void StartAttackRoutine() {
-        StartCoroutine(Utils.IncrementCounterOverTimeAndInvokeAction(AttackCounter, 1.0f, Data.AttackRate / 10, CanAttack, OnAttack ));
-    } 
+        //StartCoroutine(Utils.IncrementCounterOverTimeAndInvokeAction(AttackCounter, 3.0f, Data.AttackRate / 10, CanAttackFunc(), OnAttack ));
+    }
+
+    void AttackInUpdate() {
+        if (CanAttackFunc()) {
+            if (AttackCounter >= 3.0f) {
+                OnAttack();
+                AttackCounter = 0.0f;
+            }
+        }
+        if (AttackCounter < 3.0f) {
+            attackCounter += Time.deltaTime * Data.AttackRate / 10;
+        }
+    }
 
     public IEnumerator StartAttack() {
         StartAttackRoutine();
@@ -154,8 +193,11 @@ public class EnemyUnitController2 : UnitController
         
     }
 
+    
+
     public IEnumerator PreDeathSequence() {
-//        Debug.Log("OMG " + gameObject.name + " is dying...");
+        animationController.TriggerDeath();
+        yield return new WaitForSeconds(1.5f);
         yield break;
     }
 
@@ -172,6 +214,7 @@ public class EnemyUnitController2 : UnitController
     // Start is called before the first frame update
     void Start()
     {
+        animationController = GetComponent<AnimationTest>();
         Walker = GetComponent<BezierSolution.UnitWalker>();
         SM = GetComponent<StateMachine>();
         Data.unitType = new UnitType(this, SM);
@@ -181,6 +224,7 @@ public class EnemyUnitController2 : UnitController
         onAttack += Attack;
 
         states.Default.OnEnterState += ReturnToWalkingOnPath;
+        
         states.Default.OnExitState += EmptyCoroutine;
 
         states.PreBattle.OnEnterState += EmptyCoroutine;
@@ -204,6 +248,6 @@ public class EnemyUnitController2 : UnitController
     // Update is called once per frame
     void Update()
     {
-        
+        AttackInUpdate();
     }
 }

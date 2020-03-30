@@ -204,6 +204,71 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "TestButtons",
+            "id": "f7397da4-4cb4-4d0f-a776-d16bef6f8071",
+            "actions": [
+                {
+                    "name": "TestWalking",
+                    "type": "Button",
+                    "id": "5e80d883-3bfb-4c36-a464-a18b6065e087",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "TestAttack",
+                    "type": "Button",
+                    "id": "fb1d43cd-6b4b-46c8-994f-8a33eacb47de",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "TestDeath",
+                    "type": "Button",
+                    "id": "18ab84fa-0593-438b-bbce-39cb13885a58",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f3115d40-fba4-43e2-b28b-f7fcca7cb011",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "TestWalking",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "85ff7aac-4834-4d78-8907-b06fab0ebc45",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90acd05d-8b24-4a7f-93f8-199b5f39581e",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestDeath",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

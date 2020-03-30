@@ -165,11 +165,13 @@ public class Utils
     }
 
     public static IEnumerator IncrementCounterOverTimeAndInvokeAction(float counter, float counterMax, float IncrementMultiplier, bool condition, Action action) {
-        while (condition) {
+        while (condition == true) {
+            
             counter += Time.fixedDeltaTime * IncrementMultiplier;
             if (counter >= counterMax) {
-                action.Invoke();
                 counter = 0.0f;
+                action.Invoke();
+                yield return new WaitForFixedUpdate();
             }
             yield return new WaitForFixedUpdate();
         }
