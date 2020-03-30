@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine;
 
 [System.Serializable]
 public class UnitLifeManager 
@@ -27,7 +28,7 @@ public class UnitLifeManager
         }
     }
 
-   
+    [SerializeField]
     int _HP;
     
     
@@ -42,10 +43,14 @@ public class UnitLifeManager
             HP_changed(value);
         }
     }}
+
+    [SerializeField]
     int _armor;
     public int Armor {get => _armor ; set {
         _armor = value;
     }}
+
+    [SerializeField]
     int _specialArmor;
     public int SpecialArmor {get => _specialArmor ; set {
         _specialArmor = value;

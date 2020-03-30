@@ -56,6 +56,7 @@
      <Compile Include="Assets\LevelManager.cs" />
      <Compile Include="Assets\LifeBarmanager.cs" />
      <Compile Include="Assets\PlayerInput.cs" />
+     <Compile Include="Assets\PlayerUnit3.cs" />
      <Compile Include="Assets\PlayerUnitController2.cs" />
      <Compile Include="Assets\PlayerUnitControllerStaging.cs" />
      <Compile Include="Assets\Samples\Input System\1.0.0-preview.5\Custom Binding Composite\CustomComposite.cs" />
@@ -120,14 +121,14 @@
  <Reference Include="Unity.Rider.Editor">
  <HintPath>E:/_UnityProjects/Super Tower Brothers 3 - The Reckoning/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.2D.Sprite.Editor">
+ <HintPath>E:/_UnityProjects/Super Tower Brothers 3 - The Reckoning/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.TextMeshPro">
  <HintPath>E:/_UnityProjects/Super Tower Brothers 3 - The Reckoning/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>E:/_UnityProjects/Super Tower Brothers 3 - The Reckoning/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.2D.Sprite.Editor">
- <HintPath>E:/_UnityProjects/Super Tower Brothers 3 - The Reckoning/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -675,14 +676,6 @@
       <Project>{F2133080-A887-9134-7B79-790C00807D1A}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.InputSystem.VirtualMouseInput.csproj">
-      <Project>{0F9576B9-6CF5-9040-2F96-20FFE76ADB47}</Project>
-      <Name>Unity.InputSystem.VirtualMouseInput</Name>
-    </ProjectReference>
-    <ProjectReference Include="InputSystem.Samples.Visualizers.csproj">
-      <Project>{EB87803C-DFF2-DCD2-FA8C-DAF63311AC71}</Project>
-      <Name>InputSystem.Samples.Visualizers</Name>
-    </ProjectReference>
     <ProjectReference Include="Animancer.Examples.csproj">
       <Project>{9A93A13A-5FF7-BE4F-39B6-05C6E96076EE}</Project>
       <Name>Animancer.Examples</Name>
@@ -690,6 +683,14 @@
     <ProjectReference Include="Animancer.FSM.csproj">
       <Project>{DB694841-2C8D-12B1-8C47-5DD35E9C1DC0}</Project>
       <Name>Animancer.FSM</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.InputSystem.VirtualMouseInput.csproj">
+      <Project>{0F9576B9-6CF5-9040-2F96-20FFE76ADB47}</Project>
+      <Name>Unity.InputSystem.VirtualMouseInput</Name>
+    </ProjectReference>
+    <ProjectReference Include="InputSystem.Samples.Visualizers.csproj">
+      <Project>{EB87803C-DFF2-DCD2-FA8C-DAF63311AC71}</Project>
+      <Name>InputSystem.Samples.Visualizers</Name>
     </ProjectReference>
     <ProjectReference Include="Animancer.csproj">
       <Project>{742D7ADB-E70B-C6E7-9056-378666444B0C}</Project>
