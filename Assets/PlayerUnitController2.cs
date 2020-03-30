@@ -9,6 +9,12 @@ using UnityEngine.EventSystems;
 public class PlayerUnitController2 : UnitController
 {
     public event Action unitDied;
+    UnitAnimationController animationController;
+
+    public event Action targetDied;
+    public void TargetDied() {
+        targetDied?.Invoke();
+    }
 
     
     public void UnitDied() {
@@ -93,7 +99,8 @@ public class PlayerUnitController2 : UnitController
     }
 
     public IEnumerator PreDeathSequence() {
-        Debug.Log("OMG " + gameObject.name + " is dying...");
+        animationController.TriggerDeath();
+        yield return new WaitForSeconds(2.5f);
         yield break;
     }
 
@@ -108,6 +115,7 @@ public class PlayerUnitController2 : UnitController
         if (SM != null) {
         SM.StateChangeLocked = false;
         SM.SetState(states.Default, true);
+        
         }
     }
 
@@ -146,9 +154,45 @@ public class PlayerUnitController2 : UnitController
             Data.Target = Utils.FindEnemyNearestToEndOfPath(gameObject, collisions);
 //            Debug.Log("Current Target name :" + Data.Target.name);
             if (TargetController != null) {
-            TargetController.unitDied += OnTargetDeath;
+            //TargetController.unitDied += OnTargetDeath;
+
             }
         }
+    }
+
+    bool InBattle;
+    bool InBattleFunc() {
+        return InBattle;
+    }
+
+    public IEnumerator SetInBattleBooltoFalse() {
+        InBattle = false;
+        yield break;
+    }
+
+    public IEnumerator SetInBattleBooltoTrue() {
+        InBattle = true;
+        yield break;
+    }
+
+    
+    
+    public IEnumerator TargetCheck() {
+        while(InBattleFunc()) {
+            if (Data.Target == null) {
+                {
+                    SM.StateChangeLocked = false;
+                    SM?.SetState(states.Default, true);
+                }
+            }
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    public void ReleaseTarget() {
+        SM.StateChangeLocked = false;
+        SM?.SetState(states.Default, true);
+        targetDied = null;
     }
 
     public void StartPreBattleSequnece(GameObject _dummyGO) {
@@ -173,12 +217,13 @@ public class PlayerUnitController2 : UnitController
 
     public void Attack() {
         if (Data.Target != null) {
+        animationController.TriggerAttack();
         TargetController.LifeManager.DamageToUnit(UnityEngine.Random.Range(Data.DamageRange.min,Data.DamageRange.max), Data.damageType);
         }
     }
 
     public void StartAttackRoutine() {
-        StartCoroutine(Utils.IncrementCounterOverTimeAndInvokeAction(AttackCounter, 1.0f, Data.AttackRate / 10, CanAttack, OnAttack ));
+        //StartCoroutine(Utils.IncrementCounterOverTimeAndInvokeAction(AttackCounter, 1.0f, Data.AttackRate / 10, CanAttack, OnAttack ));
     } 
 
     public IEnumerator StartAttack() {
@@ -269,12 +314,42 @@ public class PlayerUnitController2 : UnitController
     }
 
     private void Awake() {
+        animationController = GetComponent<UnitAnimationController>();
         LifeManager = new UnitLifeManager(Data.HP, Data.Armor, Data.SpecialArmor);
         LifeManager.hp_changed += ChangeDisplayStats;
         LifeManager.onUnitDeath += StartDying;
     }
 
+    public bool CanAttackFunc() {
+        if (CurrentState == states.InBattle) {
+                
+                if (Data.Target != null) {
+                    
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            else {
+                return false;
+            }
+    }
+
+    void AttackInUpdate() {
+        if (CanAttackFunc()) {
+            if (AttackCounter >= 3.0f) {
+                OnAttack();
+                AttackCounter = 0.0f;
+            }
+        }
+        if (AttackCounter < 3.0f) {
+            attackCounter += Time.deltaTime * Data.AttackRate / 10;
+        }
+    }
+
     private void Start() {
+        StartCoroutine(TargetCheck());
 //        Debug.Log("Parent Started");
         // LifeManager = new UnitLifeManager(Data.HP, Data.Armor, Data.SpecialArmor);
         // LifeManager.hp_changed += ChangeDisplayStats;
@@ -289,11 +364,13 @@ public class PlayerUnitController2 : UnitController
         enemyEnteredProximity += SetEnemyTarget;
         enemyEnteredProximity += StartPreBattleSequnece;
 
+        states.Default.OnEnterState += SetInBattleBooltoFalse;
         states.Default.OnEnterState += ReturnToSetPosition;
         //states.Default.OnEnterState += LookForNewEnemy;
         states.Default.OnExitState += EmptyCoroutine;
 
         states.PreBattle.OnEnterState += EmptyCoroutine;
+        states.PreBattle.OnEnterState += SetInBattleBooltoTrue;
         states.PreBattle.OnEnterState += PreBattleSequence;
         states.PreBattle.OnExitState += PreBattleSequence;
 
@@ -310,10 +387,12 @@ public class PlayerUnitController2 : UnitController
         SM.SetState(states.Default);
     }
 
+    private void Update() {
+        AttackInUpdate();
+    }
+
     
 
-    private void FixedUpdate() {
-        
-    }
+
     
 }

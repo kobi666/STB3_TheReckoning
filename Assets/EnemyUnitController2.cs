@@ -12,6 +12,8 @@ public class EnemyUnitController2 : UnitController
             unitDied.Invoke();
         }
     }
+
+    
     public IEnumerator AnnounceDeath() {
         UnitDied();
         yield break;
@@ -159,7 +161,7 @@ public class EnemyUnitController2 : UnitController
     public void Attack() {
        // Debug.Log("Attacking " + Data.Target.name);
        //Debug.LogWarning("Attack triggered");
-       if (Data.Target != null && attackLock == false) {
+       if (Data.Target != null) {
 //        Debug.LogWarning("Attack animation Triggered");
         animationController.TriggerAttack();
         TargetController.LifeManager.DamageToUnit(UnityEngine.Random.Range(Data.DamageRange.min,Data.DamageRange.max), Data.damageType);
