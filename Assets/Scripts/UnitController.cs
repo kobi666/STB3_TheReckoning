@@ -38,7 +38,7 @@ public class UnitController : MonoBehaviour
     
     private void Awake() {
         LifeManager.onUnitDeath += AnnounceDeath;
-        TargetBank = GetComponent<EnemyTargetBank>() ?? null;
+        TargetBank = GetComponentInChildren<EnemyTargetBank>();
         SM = GetComponent<StateMachine>() ?? null;
         States = new NormalUnitStates(this);
         Walker = GetComponent<BezierSolution.UnitWalker>() ?? null;
