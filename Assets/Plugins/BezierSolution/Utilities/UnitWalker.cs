@@ -6,6 +6,9 @@ namespace BezierSolution
 	public class UnitWalker : BezierWalker
 	{
 		public float ProximityToEndOfSpline;
+		public float ProximityToEndOfSplineFunc() {
+			return ProximityToEndOfSpline;
+		}
         public float SplineLength;
 
 		public BezierSpline spline;

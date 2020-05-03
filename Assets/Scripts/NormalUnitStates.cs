@@ -21,15 +21,18 @@ public class NormalUnitStates : States
     UnitState _default;
     public UnitState Default {get => _default;}
     UnitState berserk;
-    UnitState Berserk {get => berserk;}
+    public UnitState Berserk {get => berserk;}
+    UnitState postBattle;
+    public UnitState PostBattle {get => postBattle;}
 
-    public NormalUnitStates (MonoBehaviour _mono) {
-        berserk = new UnitState(false, "Berserk", _mono);
-        _default = new UnitState(false, "Default", _mono);
-        frozen = new UnitState(false, "Frozen", _mono);
-        death = new UnitState(true, "Death", _mono);
-        preBattle = new UnitState(false, "PreBattle", _mono);
-        inBattle = new UnitState(false, "InBattle", _mono);
+    public NormalUnitStates (MonoBehaviour mono) {
+        berserk = new UnitState(false, "Berserk", mono);
+        _default = new UnitState(false, "Default", mono);
+        frozen = new UnitState(false, "Frozen", mono);
+        death = new UnitState(true, "Death", mono);
+        preBattle = new UnitState(false, "PreBattle", mono);
+        inBattle = new UnitState(false, "InBattle", mono);
+        postBattle = new UnitState(false, "PostBattle", mono);
     }
    
 }

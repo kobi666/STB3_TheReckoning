@@ -111,8 +111,7 @@ public class EnemyUnitController2 : UnitController
         }
     }
     public UnitType unitType;
-    public BezierSolution.UnitWalker Walker;
-    public StateMachine SM;
+    //public BezierSolution.UnitWalker Walker;
     public NormalUnitStates states {get => Data.unitType.states;}
     public PlayerUnitController2 TargetController { get => Data.Target.GetComponent<PlayerUnitController2>();}
 
@@ -217,10 +216,9 @@ public class EnemyUnitController2 : UnitController
     void Start()
     {
         animationController = GetComponent<AnimationTest>();
-        Walker = GetComponent<BezierSolution.UnitWalker>();
-        SM = GetComponent<StateMachine>();
+        //Walker = GetComponent<BezierSolution.UnitWalker>();
         Data.unitType = new UnitType(this, SM);
-        LifeManager = new UnitLifeManager(Data.HP, Data.Armor, Data.SpecialArmor);
+        LifeManager = new UnitLifeManager(Data.HP, Data.Armor, Data.SpecialArmor, gameObject.tag, gameObject.name);
         LifeManager.hp_changed += ChangeDisplayStats;
         LifeManager.onUnitDeath += StartDying;
         onAttack += Attack;

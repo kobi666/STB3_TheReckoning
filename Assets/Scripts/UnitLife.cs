@@ -7,6 +7,8 @@ using UnityEngine;
 public class UnitLifeManager 
 {
     
+    public string unitTag;
+    public string unitName;
     public event Action<int> hp_changed;
     public event Action<int> damageTaken;
     
@@ -15,16 +17,19 @@ public class UnitLifeManager
             hp_changed.Invoke(HP);
         }
     }
-    public UnitLifeManager(int hp, int armor, int special_armor) {
+    public UnitLifeManager(int hp, int armor, int special_armor, string tag, string name) {
         HP = hp;
         Armor = armor;
         SpecialArmor = special_armor;
+        unitTag = tag;
+        unitName = name;
+
     }
     public event Action onUnitDeath;
     public void OnUnitDeath() {
         if (onUnitDeath != null) {
             onUnitDeath.Invoke();
-            
+            DeathManager.instance.OnUnitDeath(unitTag, unitName);
         }
     }
 

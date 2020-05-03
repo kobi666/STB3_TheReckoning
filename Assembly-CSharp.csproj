@@ -48,9 +48,12 @@
      <Compile Include="Assets\AnimationTest.cs" />
      <Compile Include="Assets\CrosshairTest.cs" />
      <Compile Include="Assets\CursorUtils.cs" />
+     <Compile Include="Assets\DeathManager.cs" />
      <Compile Include="Assets\DebugCrosshair.cs" />
      <Compile Include="Assets\DebugText.cs" />
      <Compile Include="Assets\EmptyTowerSlot.cs" />
+     <Compile Include="Assets\EnemyController3.cs" />
+     <Compile Include="Assets\EnemyTargetBank.cs" />
      <Compile Include="Assets\EnemyUnitController2.cs" />
      <Compile Include="Assets\ExternalUtils\Direction.cs" />
      <Compile Include="Assets\LevelManager.cs" />
@@ -63,8 +66,10 @@
      <Compile Include="Assets\Scripts\Classes\GO_PRXM.cs" />
      <Compile Include="Assets\Scripts\Classes\NativeClasses.cs" />
      <Compile Include="Assets\Scripts\Classes\StateMachineClasses.cs" />
+     <Compile Include="Assets\Scripts\EnemyUnitController.cs" />
      <Compile Include="Assets\Scripts\NormalUnitStates.cs" />
      <Compile Include="Assets\Scripts\OldStateMachine.cs" />
+     <Compile Include="Assets\Scripts\PlayerUnitController.cs" />
      <Compile Include="Assets\Scripts\PlayerUnitUtils.cs" />
      <Compile Include="Assets\Scripts\ProjectileController.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
@@ -84,6 +89,7 @@
      <Compile Include="Assets\SelectorTest2.cs" />
      <Compile Include="Assets\SlotController.cs" />
      <Compile Include="Assets\SlotParentManager.cs" />
+     <Compile Include="Assets\testEnemyController.cs" />
      <Compile Include="Assets\TestingVectors.cs" />
      <Compile Include="Assets\TestScript.cs" />
      <Compile Include="Assets\TestTowerController.cs" />

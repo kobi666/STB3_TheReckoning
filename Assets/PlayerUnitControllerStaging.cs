@@ -251,7 +251,7 @@ public class PlayerUnitControllerStaging : MonoBehaviour
     }
 
     private void Start() {
-        LifeManager = new UnitLifeManager(Data.HP, Data.Armor, Data.SpecialArmor);
+        LifeManager = new UnitLifeManager(Data.HP, Data.Armor, Data.SpecialArmor, gameObject.tag, gameObject.name);
         LifeManager.hp_changed += ChangeDisplayStats;
         LifeManager.onUnitDeath += StartDying;
         SM = GetComponent<StateMachine>();

@@ -192,6 +192,28 @@ public class  DamageRange {
     public int max;
 }
 
+[System.Serializable]
+public class TargetWithProximityToEndOfSpline {
+
+    GameObject go;
+    public GameObject GO {
+        get => go ;
+        set {
+            if (value != null) {
+            Proximity =  value.GetComponent<BezierSolution.UnitWalker>()?.ProximityToEndOfSplineFunc() ?? 999.0f;
+            go = value;
+            if (Proximity == 999.0f) {
+                go = null;
+            }
+            }
+        }
+    }
+    public float Proximity = 999.0f;
+    public TargetWithProximityToEndOfSpline(GameObject _go) {
+        GO = _go;
+    }
+}
+
     [System.Serializable]
     public class Damage_Type {
         public static List<string> DamageTypes = new List<string> (new string[] {"normal", "special", "fire", "poison", "armorShred"});

@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
+
 
 
 public class PlayerUnitController2 : UnitController
@@ -64,7 +63,7 @@ public class PlayerUnitController2 : UnitController
             }
         }
         
-    public StateMachine SM;
+    
     public bool TargetSlotIsEmpty {
         get {
             if (Data.Target == null) {
@@ -315,7 +314,7 @@ public class PlayerUnitController2 : UnitController
 
     private void Awake() {
         animationController = GetComponent<UnitAnimationController>();
-        LifeManager = new UnitLifeManager(Data.HP, Data.Armor, Data.SpecialArmor);
+        LifeManager = new UnitLifeManager(Data.HP, Data.Armor, Data.SpecialArmor, gameObject.tag, gameObject.name);
         LifeManager.hp_changed += ChangeDisplayStats;
         LifeManager.onUnitDeath += StartDying;
     }
@@ -354,7 +353,6 @@ public class PlayerUnitController2 : UnitController
         // LifeManager = new UnitLifeManager(Data.HP, Data.Armor, Data.SpecialArmor);
         // LifeManager.hp_changed += ChangeDisplayStats;
         // LifeManager.onUnitDeath += StartDying;
-        SM = GetComponent<StateMachine>();
         Data.unitType = new UnitType(this, SM);
         Data.SetPosition = transform.position;
         onAttack += Attack;
