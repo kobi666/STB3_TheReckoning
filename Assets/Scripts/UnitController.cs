@@ -42,6 +42,7 @@ public class UnitController : MonoBehaviour
         SM = GetComponent<StateMachine>() ?? null;
         States = new NormalUnitStates(this);
         Walker = GetComponent<BezierSolution.UnitWalker>() ?? null;
+        Data = new UnitData();
     }
 
     

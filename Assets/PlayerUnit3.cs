@@ -6,15 +6,6 @@ using UnitUtilities;
 
 public class PlayerUnit3 : PlayerUnitController
 {
-    
-    
-    // Start is called before the first frame update
-    
-
-    
-    
-
-    
 
 
 }

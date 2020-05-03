@@ -20,9 +20,7 @@ public class PlayerUnitController : UnitController
 
     void checkOrSetSingleTarget(string targetName) {
         if (isEnemyTargetSlotEmpty) {
-            if (Data.EnemyTarget.name != targetName) {
                 Data.EnemyTarget = TargetBank.FindSingleTargetNearestToEndOfSpline();
-            }
         }
     }
 

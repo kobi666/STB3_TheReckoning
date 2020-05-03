@@ -61,7 +61,7 @@ namespace BezierSolution
 		}
 
 		private void Start() {
-			SplineLength = spline.Length;
+			SplineLength = spline?.Length ?? 90210.0f;
 		}
 
 		public override void Execute( float deltaTime )
