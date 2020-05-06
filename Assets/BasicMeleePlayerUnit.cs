@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BasicMeleePlayerUnit : PlayerUnitController
 {
     
     public override IEnumerator OnEnterPreBattle() {
-        //Data.EnemyTarget.SM.SetState()
+        if (PlayerUnitUtils.CheckIfEnemyIsInBattleWithOtherUnit(Target) == false) {
+            yield return StartCoroutine(PlayerUnitUtils.TellEnemyToPrepareFor1on1battleWithMe(Target, this));
+            yield return StartCoroutine(PlayerUnitUtils.MoveToTargetAndInvokeAction(transform, PlayerUnitUtils.FindPositionNextToUnit(this, Target), Data.speed, (Target != null), Target.InitiateBattle));
+        }
+        else {
+
+        }
         yield break;
     }
 

@@ -1,10 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 
 public class PlayerUnitUtils
 {
+    public static IEnumerator MoveToTargetAndInvokeAction(Transform self, Vector2 targetPos, float speed, bool condition, Action action) {
+         while((Vector2)self.position != targetPos && condition) {
+            self.Translate(targetPos * StaticObjects.instance.DeltaGameTime * speed);
+        }
+        action.Invoke();
+        yield break;
+    }
     public static bool CheckIfEnemyIsInBattleWithOtherUnit(EnemyUnitController ec) {
         if (ec.SM.CurrentState == ec.States.PreBattle || ec.SM.CurrentState == ec.States.InBattle) {
             return true;
@@ -16,8 +23,8 @@ public class PlayerUnitUtils
 
     public static IEnumerator TellEnemyToPrepareFor1on1battleWithMe(EnemyUnitController ec, PlayerUnitController pc) {
         if (ec.CurrentState == ec.States.Default) {
-            ec.SM.SetState(ec.States.PreBattle);
             ec.Data.PlayerTarget = pc;
+            ec.SM.SetState(ec.States.PreBattle);
         }
         yield break;
     }

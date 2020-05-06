@@ -5,10 +5,11 @@ using UnityEngine;
 public class StaticObjects : MonoBehaviour
 {
     
-    public float GameTimeMultiplier = 1.0f;
-    public float GameTime;
+    public float GameTimeMultiplier = 1.0000f;
+    public float GameTime = 0.0000f;
     // Start is called before the first frame update
     public static Transform PPH;
+    public float DeltaGameTime;
     public static StaticObjects instance;
     public float TowerSize;
     public Sprite TowerSprite;
@@ -23,8 +24,9 @@ public class StaticObjects : MonoBehaviour
         PPH = GameObject.FindGameObjectWithTag("PPH")?.transform ?? null;
     }
 
-    private void FixedUpdate() {
+    private void update() {
         GameTime = (Time.time * GameTimeMultiplier);
+        DeltaGameTime = Time.deltaTime * GameTimeMultiplier;
     }
 
     // Update is called once per frame
