@@ -58,7 +58,7 @@ public class EnemyTargetBank : MonoBehaviour
     public EnemyUnitController FindSingleTargetNearestToEndOfSpline() {
         clearNullsFromList();
         EnemyUnitController ec = null;
-        float p = 999.0f;
+        float p = 999999.0f;
         foreach (var item in targets)
         {
             float tp = item.Value.Proximity;

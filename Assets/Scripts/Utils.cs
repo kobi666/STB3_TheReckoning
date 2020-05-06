@@ -153,7 +153,7 @@ public class Utils
         GameObject target = null;
         float LowestProximity = 999.0f;
         foreach (GameObject Enemy in GetEnemiesInRange(self, _collisions)) {
-            if (Enemy.GetComponent<BezierSolution.UnitWalker>().ProximityToEndOfSpline < LowestProximity && Enemy.GetComponent<EnemyUnitController2>().IsTargetable == true) {
+            if (Enemy.GetComponent<BezierSolution.UnitWalker>().ProximityToEndOfSpline < LowestProximity && Enemy.GetComponent<EnemyUnitController>().IsTargetable == true) {
                 target = Enemy;
                 LowestProximity = Enemy.GetComponent<BezierSolution.UnitWalker>().ProximityToEndOfSpline;
             }

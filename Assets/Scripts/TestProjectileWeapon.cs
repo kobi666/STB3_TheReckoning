@@ -70,14 +70,14 @@ public class TestProjectileWeapon : WeaponController
     }
 
     [SerializeField]
-    private GameObject _EnemyTarget;
-    public GameObject EnemyTarget { get => _EnemyTarget ;  set {
+    private UnitController enemyTarget;
+    public UnitController EnemyTarget { get => enemyTarget ;  set {
         if (value != null) {
-            _EnemyTarget = value;
+            enemyTarget = value;
             EnemyTargetIdentified();
         }
         if (value == null) {
-            _EnemyTarget = value;
+            enemyTarget = value;
             EnemyTargetRelease();
         }
     }}

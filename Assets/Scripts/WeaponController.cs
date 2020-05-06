@@ -19,31 +19,31 @@ public class WeaponController : MonoBehaviour
     
 
 
-    public GameObject[] GetCollidingObjectsOfType (GameObject SelfGO, string ObjectType)
+    public UnitController[] GetCollidingUnitsOfType (GameObject SelfGO, string ObjectType)
     {
         
         LayerMask lm = LayerMask.NameToLayer(ObjectType);
         Collisions = Physics2D.OverlapCircleAll(SelfGO.transform.position, SelfGO.GetComponent<CircleCollider2D>().radius, 1 << lm);
         // Collider2D[] Collisions = Physics2D.OverlapCircleAll(GO.transform.position, GO.GetComponent<CircleCollider2D>().radius - 0.2f, 1 << lm);
-        GameObject[] GOs = new GameObject[Collisions.Length];
+        UnitController[] GOs = new UnitController[Collisions.Length];
         for (int i = 0 ; i <= Collisions.Length-1 ; i++) {
             if (Collisions[i] == null) {
                 continue;
             }
-            GOs[i] = Collisions[i].gameObject;
+            GOs[i] = Collisions[i].GetComponent<UnitController>();
         }
         return GOs;
     }
 
-    public GameObject[] GetEnemiesInRange(GameObject _self) {
-        GameObject[] Enemies = GetCollidingObjectsOfType(_self, "Enemy");
+    public UnitController[] GetEnemiesInRange(GameObject _self) {
+        UnitController[] Enemies = GetCollidingUnitsOfType(_self, "Enemy");
         return Enemies;
     }
 
-    public GameObject FindEnemyNearestToEndOfPath(GameObject self) {
-        GameObject target = null;
+    public UnitController FindEnemyNearestToEndOfPath(GameObject self) {
+        UnitController target = null;
         float LowestProximity = 999.0f;
-        foreach (GameObject Enemy in GetEnemiesInRange(self)) {
+        foreach (UnitController Enemy in GetEnemiesInRange(self)) {
             if (Enemy.GetComponent<BezierSolution.UnitWalker>().ProximityToEndOfSpline < LowestProximity) {
                 target = Enemy;
                 LowestProximity = Enemy.GetComponent<BezierSolution.UnitWalker>().ProximityToEndOfSpline;

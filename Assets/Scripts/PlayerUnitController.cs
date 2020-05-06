@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PlayerUnitController : UnitController
+public abstract class PlayerUnitController : UnitController
 {
+    public EnemyUnitController Target { get => Data.EnemyTarget ?? null;}
     // Start is called before the first frame update
     public bool isEnemyTargetSlotEmpty {
         get {
@@ -18,28 +19,41 @@ public class PlayerUnitController : UnitController
         }
     }
 
-    void checkOrSetSingleTarget(string targetName) {
+    
+
+    
+
+    event Action onTargetEnteredRange;
+    public void OnTargetEnteredRange(string targetName) {
+        onTargetEnteredRange?.Invoke();
+    }
+
+    void checkOrSetSingleTarget() {
         if (isEnemyTargetSlotEmpty) {
                 Data.EnemyTarget = TargetBank.FindSingleTargetNearestToEndOfSpline();
         }
     }
 
-    void Test(string s) {
-        Debug.LogWarning("Target found, its name is : " + s);
+    void Test() {
+        Debug.LogWarning("Target found, its name is : " + (Data.EnemyTarget?.name ?? "No Object"));
     }
 
     
-
+    public abstract void LateStart();
     
 
     private void Start() {
-        TargetBank.targetEnteredRange += checkOrSetSingleTarget;
-        TargetBank.targetEnteredRange += Test;
+        TargetBank.targetEnteredRange += OnTargetEnteredRange;
+        onTargetEnteredRange += checkOrSetSingleTarget;
+        onTargetEnteredRange += Test;
+        
+
+        LateStart();
     }
     
     
     
 
-    // Update is called once per frame
+    
     
 }

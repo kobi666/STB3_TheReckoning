@@ -2,12 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerUnitUtils
 {
+    public static bool CheckIfEnemyIsInBattleWithOtherUnit(EnemyUnitController ec) {
+        if (ec.SM.CurrentState == ec.States.PreBattle || ec.SM.CurrentState == ec.States.InBattle) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
+    public static IEnumerator TellEnemyToPrepareFor1on1battleWithMe(EnemyUnitController ec, PlayerUnitController pc) {
+        if (ec.CurrentState == ec.States.Default) {
+            ec.SM.SetState(ec.States.PreBattle);
+            ec.Data.PlayerTarget = pc;
+        }
+        yield break;
+    }
 
     public static string FindIfTargetIsLeftOrRightOfSelf ( GameObject _self, GameObject _target) {
         if (_self.transform.position.x < _target.transform.position.x ) {
+            return "left";
+        }
+        else 
+        { 
+            return "right";
+        }
+    }
+
+    public static string FindIfTargetIsLeftOrRightOfSelf ( PlayerUnitController pc, EnemyUnitController ec) {
+        if (pc.transform.position.x < ec.transform.position.x ) {
             return "left";
         }
         else 
@@ -40,6 +66,33 @@ public class PlayerUnitUtils
         else {
             Debug.Log("Couldn't find if object is left or right.. Default to self transform.position...");
             pos = _self.transform.position;
+        }
+        return pos;
+        }
+
+        public static Vector2 FindPositionNextToUnit(PlayerUnitController pc, EnemyUnitController ec) {
+        Vector2 TargetSpriteExtent = ec.SR.sprite.bounds.extents;
+        Vector2 SelfSpriteExtent = pc.SR.sprite.bounds.extents;
+        SelfSpriteExtent.x *= pc.transform.localScale.x;
+        SelfSpriteExtent.y *= pc.transform.localScale.y;
+        TargetSpriteExtent.x *= ec.transform.localScale.x;
+        TargetSpriteExtent.y *= ec.transform.localScale.y;
+        Vector2 TargetGOPos = ec.transform.position;
+        Vector2 SelfPos = pc.transform.position;
+        string LoR = (FindIfTargetIsLeftOrRightOfSelf(pc, ec));
+
+        Vector2 pos = SelfPos;
+        if (LoR == "left") {
+            pos.x = (TargetGOPos.x - TargetSpriteExtent.x - 0.1f - SelfSpriteExtent.x);
+            pos.y = (TargetGOPos.y - TargetSpriteExtent.y + SelfSpriteExtent.y);
+        }
+        else if (LoR == "right") {
+            pos.x = (TargetGOPos.x + TargetSpriteExtent.x + 0.1f + SelfSpriteExtent.x);
+            pos.y = (TargetGOPos.y - TargetSpriteExtent.y + SelfSpriteExtent.y);
+        }
+        else {
+            Debug.Log("Couldn't find if object is left or right.. Default to self transform.position...");
+            pos = pc.transform.position;
         }
         return pos;
         }

@@ -46,6 +46,7 @@
   </PropertyGroup>
   <ItemGroup>     <Compile Include="Assets\AnimancerTest.cs" />
      <Compile Include="Assets\AnimationTest.cs" />
+     <Compile Include="Assets\BasicMeleePlayerUnit.cs" />
      <Compile Include="Assets\CrosshairTest.cs" />
      <Compile Include="Assets\CursorUtils.cs" />
      <Compile Include="Assets\DeathManager.cs" />
@@ -55,6 +56,7 @@
      <Compile Include="Assets\EnemyController3.cs" />
      <Compile Include="Assets\EnemyTargetBank.cs" />
      <Compile Include="Assets\EnemyUnitController2.cs" />
+     <Compile Include="Assets\EnemyUnitUtils.cs" />
      <Compile Include="Assets\ExternalUtils\Direction.cs" />
      <Compile Include="Assets\LevelManager.cs" />
      <Compile Include="Assets\LifeBarmanager.cs" />
@@ -62,6 +64,7 @@
      <Compile Include="Assets\PlayerUnit3.cs" />
      <Compile Include="Assets\PlayerUnitController2.cs" />
      <Compile Include="Assets\PlayerUnitControllerStaging.cs" />
+     <Compile Include="Assets\Samples\BasicEnemyMeleeUnit.cs" />
      <Compile Include="Assets\Samples\Input System\1.0.0-preview.5\Custom Binding Composite\CustomComposite.cs" />
      <Compile Include="Assets\Scripts\Classes\GO_PRXM.cs" />
      <Compile Include="Assets\Scripts\Classes\NativeClasses.cs" />

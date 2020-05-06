@@ -4,8 +4,10 @@ using UnityEngine;
 using System;
 using UnitUtilities;
 
-public class PlayerUnit3 : PlayerUnitController
+public class PlayerUnit3 : MonoBehaviour
 {
 
+
+    
 
 }

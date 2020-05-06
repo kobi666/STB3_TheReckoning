@@ -22,4 +22,5 @@ public class UnitData
     public EnemyUnitController EnemyTarget;
     public UnitType unitType;
     public Damage_Type damageType = new Damage_Type("normal");
+    public List<PlayerUnitController> PlayerUnitsFightingMe = new List<PlayerUnitController>();
 }
