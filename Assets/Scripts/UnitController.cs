@@ -48,8 +48,8 @@ public abstract class UnitController : MonoBehaviour
 
     public abstract IEnumerator OnEnterPreBattle();
     public abstract IEnumerator OnExitPreBattle();
-    public abstract IEnumerator OnEnterInBattle();
-    public abstract IEnumerator OnExitInBattle();
+    public abstract IEnumerator OnEnterInDirectBattle();
+    public abstract IEnumerator OnExitInDirectBattle();
     public abstract IEnumerator OnEnterDefault();
     public abstract IEnumerator OnExitDefault();
     public abstract IEnumerator OnEnterPostBattle();
@@ -70,7 +70,6 @@ public abstract class UnitController : MonoBehaviour
         SM = GetComponent<StateMachine>() ?? null;
         States = new NormalUnitStates(this);
         Walker = GetComponent<BezierSolution.UnitWalker>() ?? null;
-        Data = new UnitData();
         SR = GetComponent<SpriteRenderer>() ?? null;
 
         States.InitialState.OnEnterState += OnEnterInitialState;
@@ -79,8 +78,8 @@ public abstract class UnitController : MonoBehaviour
         States.Default.OnExitState += OnExitDefault;
         States.PreBattle.OnEnterState += OnEnterPreBattle;
         States.PreBattle.OnExitState += OnExitPreBattle;
-        States.InDirectBattle.OnEnterState += OnEnterInBattle;
-        States.InDirectBattle.OnExitState += OnExitInBattle;
+        States.InDirectBattle.OnEnterState += OnEnterInDirectBattle;
+        States.InDirectBattle.OnExitState += OnExitInDirectBattle;
         States.PostBattle.OnEnterState += OnEnterPostBattle;
         States.PostBattle.OnExitState += OnExitPostBattle;
         SM.CurrentState = States.InitialState;

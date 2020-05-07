@@ -5,23 +5,27 @@ using System;
 
 public class PlayerUnitUtils
 {
+     
+
     public static bool StandardEnterBattleCondition(UnitState us, EnemyUnitController ec, NormalUnitStates states) {
         if (us == states.Default || us == states.PostBattle) {
-            if (ec != null) {
                 return true;
-            }
         }
         return false;
     }
-    public static IEnumerator MoveToTargetAndInvokeAction(UnitController uc, Vector2 targetPos, float speed, bool stopCondition, Action action) {
-        uc.SM.InitilizeMovementCoroutine(moveToTargetAndInvokeAction(uc.transform, targetPos, speed, stopCondition, action));
-        yield return uc.SM.StartCoroutine(uc.SM.MovementCoroutine);
+
+    
+    public static IEnumerator MoveToTargetAndInvokeAction(UnitController self, Vector2 targetPos, float speed, bool stopCondition, Action action) {
+        self.SM.InitilizeMovementCoroutine(moveToTargetAndInvokeAction(self.transform, targetPos, speed, stopCondition, action));
+        yield return self.SM.StartCoroutine(self.SM.MovementCoroutine);
         yield break;
     }
 
     static IEnumerator moveToTargetAndInvokeAction(Transform self, Vector2 targetPos, float speed, bool stopCondition, Action action) {
          while((Vector2)self.position != targetPos && stopCondition == false) {
-            self.Translate(targetPos * StaticObjects.instance.DeltaGameTime * speed);
+            Debug.LogWarning("SALKDJASLKDJASLKJD");
+            self.position = Vector2.MoveTowards(self.position, targetPos, speed * StaticObjects.instance.DeltaGameTime);
+            yield return new WaitForFixedUpdate();
         }
         action.Invoke();
         yield break;

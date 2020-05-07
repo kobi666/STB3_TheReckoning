@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class BasicMeleePlayerUnit : PlayerUnitController
 {
-    public override bool CanEnterBattle() {
-        return PlayerUnitUtils.StandardEnterBattleCondition(CurrentState, Data.EnemyTarget, States);
+    public override bool CanEnterNewBattle() {
+        if (CurrentState == States.Default || CurrentState == States.JoinBattle ) {
+            return true;
+        }
+        return false;
     }
     public override IEnumerator OnEnterPreBattle() {
         if (PlayerUnitUtils.CheckIfEnemyIsInBattleWithOtherUnit(Target) == false) {
@@ -16,6 +19,13 @@ public class BasicMeleePlayerUnit : PlayerUnitController
             SM.SetState(States.JoinBattle);
         }
         yield break;
+    }
+
+    public override void OnTargetEnteredRange(EnemyUnitController ec) {
+        if (CanEnterNewBattle()) {
+            Data.EnemyTarget = ec;
+            SM.SetState(States.PreBattle);
+        }
     }
 
     public override IEnumerator OnEnterJoinBattle() {
@@ -38,11 +48,13 @@ public class BasicMeleePlayerUnit : PlayerUnitController
         yield break;
     }
 
-    public override IEnumerator OnEnterInBattle() {
+    public override IEnumerator OnEnterInDirectBattle() {
+        yield return StartCoroutine(PlayerUnitUtils.TellEnemyToPrepareFor1on1battleWithMe(Data.EnemyTarget, this));
+        yield return StartCoroutine(PlayerUnitUtils.MoveToTargetAndInvokeAction(this, Target.transform.position, Data.speed, (Target == null), Target.OnBattleInitiate));
         yield break;
     }
 
-    public override IEnumerator OnExitInBattle() {
+    public override IEnumerator OnExitInDirectBattle() {
         yield break;
     }
 

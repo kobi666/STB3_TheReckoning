@@ -6,7 +6,7 @@ using System;
 public abstract class PlayerUnitController : UnitController
 {
     public IEnumerator MovementCoroutine;
-    public abstract bool CanEnterBattle();
+    public abstract bool CanEnterNewBattle();
     public EnemyUnitController Target { get => Data.EnemyTarget ?? null;}
     
     // Start is called before the first frame update
@@ -22,6 +22,8 @@ public abstract class PlayerUnitController : UnitController
         }
     }
 
+    
+
     public abstract IEnumerator OnEnterJoinBattle();
     public abstract IEnumerator OnExitJoinBattle();
 
@@ -29,16 +31,16 @@ public abstract class PlayerUnitController : UnitController
 
     
 
-    event Action onTargetEnteredRange;
-    public void OnTargetEnteredRange(string targetName) {
-        onTargetEnteredRange?.Invoke();
-    }
+    
+    public abstract void OnTargetEnteredRange(EnemyUnitController ec);
+        
+    
 
-    void checkOrSetSingleTarget() {
-        if (isEnemyTargetSlotEmpty) {
-                Data.EnemyTarget = TargetBank.FindSingleTargetNearestToEndOfSpline();
-        }
-    }
+    // void checkOrSetSingleTarget() {
+    //     if (isEnemyTargetSlotEmpty) {
+    //             Data.EnemyTarget = TargetBank.FindSingleTargetNearestToEndOfSpline();
+    //     }
+    // }
 
     void Test() {
         Debug.LogWarning("Target found, its name is : " + (Data.EnemyTarget?.name ?? "No Object"));
@@ -51,7 +53,6 @@ public abstract class PlayerUnitController : UnitController
 
     private void Start() {
         TargetBank.targetEnteredRange += OnTargetEnteredRange;
-        onTargetEnteredRange += checkOrSetSingleTarget;
         States.JoinBattle.OnEnterState += OnEnterJoinBattle;
         States.JoinBattle.OnExitState += OnExitJoinBattle;
         

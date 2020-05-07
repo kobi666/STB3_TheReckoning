@@ -5,6 +5,10 @@ using System;
 
 public class BasicEnemyMeleeUnit : EnemyUnitController
 {
+    public override event Action onBattleInitiate;
+    public override void OnBattleInitiate() {
+        onBattleInitiate?.Invoke();
+    }
     public override void Test2() { Debug.LogWarning("TESTTT");}
     public override bool CannotInitiateBattleWithThisUnit() {
         return false;
@@ -13,6 +17,7 @@ public class BasicEnemyMeleeUnit : EnemyUnitController
     public override IEnumerator OnEnterPreBattle() {
         yield return StartCoroutine(EnemyUnitUtils.StopWalkingOnPath(Walker));
     }
+
 
     public override IEnumerator OnExitPreBattle() {
         yield break;
@@ -26,11 +31,11 @@ public class BasicEnemyMeleeUnit : EnemyUnitController
         yield break;
     }
 
-    public override IEnumerator OnEnterInBattle() {
+    public override IEnumerator OnEnterInDirectBattle() {
         yield break;
     }
 
-    public override IEnumerator OnExitInBattle() {
+    public override IEnumerator OnExitInDirectBattle() {
         yield break;
     }
 
@@ -43,6 +48,7 @@ public class BasicEnemyMeleeUnit : EnemyUnitController
     }
 
     public override void LateStart() {
-
+        SM.SetState(States.Default);
+        onBattleInitiate += delegate { SM.SetState(States.InDirectBattle);};
     }
 }

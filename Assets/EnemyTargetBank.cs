@@ -5,14 +5,14 @@ using System;
 
 public class EnemyTargetBank : MonoBehaviour
 {
-    
+    EnemyUnitController tempEc;
     SortedList<string, EnemyUnitController> targets = new SortedList<string, EnemyUnitController>();
-    public event Action<string> targetEnteredRange;
+    public event Action<EnemyUnitController> targetEnteredRange;
     public event Action<string> targetLeftRange;
-    public void AddObjectToTargets(GameObject go) {
-        if (go.CompareTag("Enemy")) {
+    public void AddObjectToTargets(EnemyUnitController ec) {
+        if (ec.CompareTag("Enemy")) {
             try {
-            targets.Add(go.name, go.GetComponent<EnemyUnitController>());
+            targets.Add(ec.name, ec);
             Debug.LogWarning("TargetAdded");
             }
             catch(Exception e) {
@@ -32,8 +32,9 @@ public class EnemyTargetBank : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        AddObjectToTargets(other.gameObject);
-        targetEnteredRange?.Invoke(other.name);
+        tempEc = other.gameObject.GetComponent<EnemyUnitController>() ?? null;
+        AddObjectToTargets(tempEc);
+        targetEnteredRange?.Invoke(tempEc);
     }
 
     private void OnTriggerExit2D(Collider2D other) {
@@ -70,9 +71,7 @@ public class EnemyTargetBank : MonoBehaviour
         return ec;
     }
 
-    private void Awake() {
-        
-    }
+    
 
     
 }

@@ -9,8 +9,9 @@ public class StateMachine : MonoBehaviour
     public void InitilizeMovementCoroutine(IEnumerator mc) {
         if (MovementCoroutine != null) {
             StopCoroutine(MovementCoroutine);
-            MovementCoroutine = mc;
+            
         }
+        MovementCoroutine = mc;
     }
     public bool StateInTransition = false;
     public void SetState(UnitState _newState) {
@@ -67,7 +68,6 @@ public class StateMachine : MonoBehaviour
 
     public IEnumerator StateChangeTransition(UnitState _newState) {
         if (StateChangeLocked == false && ConditionToChangeToNewState(CurrentState, _newState) == true) {
-            StateChangeLocked = true;
             CurrentState = _newState;
             StateInTransition = true;
 //            Debug.Log("Changed to State :" + _newState.stateName);

@@ -9,7 +9,11 @@ public class StaticObjects : MonoBehaviour
     public float GameTime = 0.0000f;
     // Start is called before the first frame update
     public static Transform PPH;
-    public float DeltaGameTime;
+    public float DeltaGameTime {
+        get {
+            return Time.deltaTime * GameTimeMultiplier;
+        }
+    }
     public static StaticObjects instance;
     public float TowerSize;
     public Sprite TowerSprite;
@@ -26,7 +30,7 @@ public class StaticObjects : MonoBehaviour
 
     private void update() {
         GameTime = (Time.time * GameTimeMultiplier);
-        DeltaGameTime = Time.deltaTime * GameTimeMultiplier;
+        
     }
 
     // Update is called once per frame
