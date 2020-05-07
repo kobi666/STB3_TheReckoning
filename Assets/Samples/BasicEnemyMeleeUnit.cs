@@ -5,7 +5,7 @@ using System;
 
 public class BasicEnemyMeleeUnit : EnemyUnitController
 {
-    
+    public override void Test2() { Debug.LogWarning("TESTTT");}
     public override bool CannotInitiateBattleWithThisUnit() {
         return false;
     }

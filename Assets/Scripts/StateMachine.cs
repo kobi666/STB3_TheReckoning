@@ -5,6 +5,13 @@ using System;
 
 public class StateMachine : MonoBehaviour
 {
+    public IEnumerator MovementCoroutine;
+    public void InitilizeMovementCoroutine(IEnumerator mc) {
+        if (MovementCoroutine != null) {
+            StopCoroutine(MovementCoroutine);
+            MovementCoroutine = mc;
+        }
+    }
     public bool StateInTransition = false;
     public void SetState(UnitState _newState) {
         if (CurrentState.IsFinalState != true) {

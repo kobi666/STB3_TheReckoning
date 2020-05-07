@@ -14,25 +14,34 @@ public class NormalUnitStates : States
     public UnitState Death {get => death;}
     UnitState preBattle;
     public UnitState PreBattle {get => preBattle;}
-    UnitState inBattle;
-    public UnitState InBattle {get => inBattle;}
+    UnitState inDirectBattle;
+    public UnitState InDirectBattle {get => inDirectBattle;}
     UnitState frozen;
     public UnitState Frozen {get => frozen;}
     UnitState _default;
     public UnitState Default {get => _default;}
+    UnitState initialState;
+    public UnitState InitialState {get => initialState;}
     UnitState berserk;
     public UnitState Berserk {get => berserk;}
     UnitState postBattle;
     public UnitState PostBattle {get => postBattle;}
 
+    UnitState joinBattle;
+    public UnitState JoinBattle {get => joinBattle;}
+
     public NormalUnitStates (MonoBehaviour mono) {
+
         berserk = new UnitState(false, "Berserk", mono);
+        initialState = new UnitState(false, "InitialState", mono);
         _default = new UnitState(false, "Default", mono);
         frozen = new UnitState(false, "Frozen", mono);
         death = new UnitState(true, "Death", mono);
         preBattle = new UnitState(false, "PreBattle", mono);
-        inBattle = new UnitState(false, "InBattle", mono);
+        inDirectBattle = new UnitState(false, "InDirectBattle", mono);
+        joinBattle = new UnitState(false, "JoinBattle", mono);
         postBattle = new UnitState(false, "PostBattle", mono);
+
     }
    
 }

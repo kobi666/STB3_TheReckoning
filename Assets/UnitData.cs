@@ -22,5 +22,41 @@ public class UnitData
     public EnemyUnitController EnemyTarget;
     public UnitType unitType;
     public Damage_Type damageType = new Damage_Type("normal");
-    public List<PlayerUnitController> PlayerUnitsFightingMe = new List<PlayerUnitController>();
+    Dictionary<string, PlayerUnitController> playerUnitsFightingMe = new Dictionary<string, PlayerUnitController>();
+
+    public Dictionary<string, PlayerUnitController> PlayerUnitsFightingMe {
+        get {
+            foreach (var item in playerUnitsFightingMe)
+            {
+                if(item.Value == null) {
+                    playerUnitsFightingMe.Remove(item.Key);
+                }
+            }
+            return playerUnitsFightingMe;
+        }
+    }
+
+    public void AddUnitToPlayerUnitsFightingDictionary(PlayerUnitController pc) {
+        if (!PlayerUnitsFightingMe.ContainsKey(pc.name)) {
+            PlayerUnitsFightingMe.Add(pc.name, pc);
+        }
+    }
+
+    public void RemoveUnitFromPlayerUnitsFightingDictionary(PlayerUnitController pc) {
+        try {
+            PlayerUnitsFightingMe.Remove(pc.name);
+        }
+        catch {
+            Debug.LogWarning("No unit name " + pc?.name ?? "NULL" + " in dictionary");
+        }
+    }
+
+    public void RemoveUnitFromPlayerUnitsFightingDictionary(string unitName) {
+        try {
+            PlayerUnitsFightingMe.Remove(unitName);
+        }
+        catch {
+            Debug.LogWarning("No unit name " + unitName ?? "NULL" + " in dictionary");
+        }
+    }
 }

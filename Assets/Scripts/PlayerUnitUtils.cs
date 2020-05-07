@@ -5,15 +5,29 @@ using System;
 
 public class PlayerUnitUtils
 {
-    public static IEnumerator MoveToTargetAndInvokeAction(Transform self, Vector2 targetPos, float speed, bool condition, Action action) {
-         while((Vector2)self.position != targetPos && condition) {
+    public static bool StandardEnterBattleCondition(UnitState us, EnemyUnitController ec, NormalUnitStates states) {
+        if (us == states.Default || us == states.PostBattle) {
+            if (ec != null) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static IEnumerator MoveToTargetAndInvokeAction(UnitController uc, Vector2 targetPos, float speed, bool stopCondition, Action action) {
+        uc.SM.InitilizeMovementCoroutine(moveToTargetAndInvokeAction(uc.transform, targetPos, speed, stopCondition, action));
+        yield return uc.SM.StartCoroutine(uc.SM.MovementCoroutine);
+        yield break;
+    }
+
+    static IEnumerator moveToTargetAndInvokeAction(Transform self, Vector2 targetPos, float speed, bool stopCondition, Action action) {
+         while((Vector2)self.position != targetPos && stopCondition == false) {
             self.Translate(targetPos * StaticObjects.instance.DeltaGameTime * speed);
         }
         action.Invoke();
         yield break;
     }
     public static bool CheckIfEnemyIsInBattleWithOtherUnit(EnemyUnitController ec) {
-        if (ec.SM.CurrentState == ec.States.PreBattle || ec.SM.CurrentState == ec.States.InBattle) {
+        if (ec.SM.CurrentState == ec.States.PreBattle || ec.SM.CurrentState == ec.States.InDirectBattle) {
             return true;
         }
         else {

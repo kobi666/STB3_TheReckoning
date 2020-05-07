@@ -54,10 +54,17 @@ public abstract class UnitController : MonoBehaviour
     public abstract IEnumerator OnExitDefault();
     public abstract IEnumerator OnEnterPostBattle();
     public abstract IEnumerator OnExitPostBattle();
-
+    public IEnumerator OnEnterInitialState() {
+        yield break;
+    }
+    public IEnumerator OnExitInitialState() {
+        yield break;
+    }
+    public abstract void Test2();
     
     
     private void Awake() {
+        Test2();
         LifeManager.onUnitDeath += AnnounceDeath;
         TargetBank = GetComponentInChildren<EnemyTargetBank>();
         SM = GetComponent<StateMachine>() ?? null;
@@ -66,15 +73,17 @@ public abstract class UnitController : MonoBehaviour
         Data = new UnitData();
         SR = GetComponent<SpriteRenderer>() ?? null;
 
-
+        States.InitialState.OnEnterState += OnEnterInitialState;
+        States.InitialState.OnExitState += OnExitInitialState;
         States.Default.OnEnterState += OnEnterDefault;
         States.Default.OnExitState += OnExitDefault;
         States.PreBattle.OnEnterState += OnEnterPreBattle;
         States.PreBattle.OnExitState += OnExitPreBattle;
-        States.InBattle.OnEnterState += OnEnterInBattle;
-        States.InBattle.OnExitState += OnExitInBattle;
+        States.InDirectBattle.OnEnterState += OnEnterInBattle;
+        States.InDirectBattle.OnExitState += OnExitInBattle;
         States.PostBattle.OnEnterState += OnEnterPostBattle;
         States.PostBattle.OnExitState += OnExitPostBattle;
+        SM.CurrentState = States.InitialState;
     }
 
     

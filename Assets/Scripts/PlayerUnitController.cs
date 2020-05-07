@@ -5,6 +5,8 @@ using System;
 
 public abstract class PlayerUnitController : UnitController
 {
+    public IEnumerator MovementCoroutine;
+    public abstract bool CanEnterBattle();
     public EnemyUnitController Target { get => Data.EnemyTarget ?? null;}
     
     // Start is called before the first frame update
@@ -19,6 +21,9 @@ public abstract class PlayerUnitController : UnitController
             }
         }
     }
+
+    public abstract IEnumerator OnEnterJoinBattle();
+    public abstract IEnumerator OnExitJoinBattle();
 
     
 
@@ -40,13 +45,16 @@ public abstract class PlayerUnitController : UnitController
     }
 
     
+    
     public abstract void LateStart();
     
 
     private void Start() {
         TargetBank.targetEnteredRange += OnTargetEnteredRange;
         onTargetEnteredRange += checkOrSetSingleTarget;
-        onTargetEnteredRange += Test;
+        States.JoinBattle.OnEnterState += OnEnterJoinBattle;
+        States.JoinBattle.OnExitState += OnExitJoinBattle;
+        
         
 
         LateStart();
