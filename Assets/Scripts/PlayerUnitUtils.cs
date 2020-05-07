@@ -23,7 +23,6 @@ public class PlayerUnitUtils
 
     static IEnumerator moveToTargetAndInvokeAction(Transform self, Vector2 targetPos, float speed, bool stopCondition, Action action) {
          while((Vector2)self.position != targetPos && stopCondition == false) {
-            Debug.LogWarning("SALKDJASLKDJASLKJD");
             self.position = Vector2.MoveTowards(self.position, targetPos, speed * StaticObjects.instance.DeltaGameTime);
             yield return new WaitForFixedUpdate();
         }
@@ -68,16 +67,16 @@ public class PlayerUnitUtils
     }
     
     //Battle Position Finder
-    public static Vector2 FindPositionNextToUnit(GameObject _self, GameObject _target) {
-        Vector2 TargetSpriteExtent = _target.GetComponent<SpriteRenderer>().sprite.bounds.extents;
-        Vector2 SelfSpriteExtent = _self.GetComponent<SpriteRenderer>().sprite.bounds.extents;
-        SelfSpriteExtent.x *= _self.transform.localScale.x;
-        SelfSpriteExtent.y *= _self.transform.localScale.y;
-        TargetSpriteExtent.x *= _target.transform.localScale.x;
-        TargetSpriteExtent.y *= _target.transform.localScale.y;
-        Vector2 TargetGOPos = _target.transform.position;
-        Vector2 SelfPos = _self.transform.position;
-        string LoR = (FindIfTargetIsLeftOrRightOfSelf(_self, _target));
+    public static Vector2 FindPositionNextToUnit(SpriteRenderer selfSR, SpriteRenderer targetSR) {
+        Vector2 TargetSpriteExtent = targetSR.sprite.bounds.extents;
+        Vector2 SelfSpriteExtent = selfSR.sprite.bounds.extents;
+        SelfSpriteExtent.x *= selfSR.transform.localScale.x;
+        SelfSpriteExtent.y *= selfSR.transform.localScale.y;
+        TargetSpriteExtent.x *= targetSR.transform.localScale.x;
+        TargetSpriteExtent.y *= targetSR.transform.localScale.y;
+        Vector2 TargetGOPos = targetSR.transform.position;
+        Vector2 SelfPos = selfSR.transform.position;
+        string LoR = (FindIfTargetIsLeftOrRightOfSelf(selfSR.gameObject, targetSR.gameObject));
 
         Vector2 pos = SelfPos;
         if (LoR == "left") {
@@ -90,7 +89,7 @@ public class PlayerUnitUtils
         }
         else {
             Debug.Log("Couldn't find if object is left or right.. Default to self transform.position...");
-            pos = _self.transform.position;
+            pos = selfSR.transform.position;
         }
         return pos;
         }

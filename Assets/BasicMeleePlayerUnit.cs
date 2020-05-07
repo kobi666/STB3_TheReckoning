@@ -50,7 +50,8 @@ public class BasicMeleePlayerUnit : PlayerUnitController
 
     public override IEnumerator OnEnterInDirectBattle() {
         yield return StartCoroutine(PlayerUnitUtils.TellEnemyToPrepareFor1on1battleWithMe(Data.EnemyTarget, this));
-        yield return StartCoroutine(PlayerUnitUtils.MoveToTargetAndInvokeAction(this, Target.transform.position, Data.speed, (Target == null), Target.OnBattleInitiate));
+        yield return StartCoroutine(PlayerUnitUtils.MoveToTargetAndInvokeAction(this, PlayerUnitUtils.FindPositionNextToUnit(SR, Target.SR),
+        Data.speed, (Target == null), Target.OnBattleInitiate));
         yield break;
     }
 
