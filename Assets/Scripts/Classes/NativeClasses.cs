@@ -4,6 +4,12 @@ using UnityEngine;
 using System;
 
 
+
+[System.Serializable]
+public class FloatMultiplier {
+
+}
+
 [System.Serializable]
 public class TowerItem {
     [SerializeField]

@@ -6,6 +6,9 @@ using System;
 
 public class PlayerUnitUtils
 {
+    public static void AttackEnemy(EnemyUnitController ec) {
+        
+    }
     
     public static bool StandardIsTargetable(PlayerUnitController pc) {
         if (pc.CurrentState != pc.States.Death) {
