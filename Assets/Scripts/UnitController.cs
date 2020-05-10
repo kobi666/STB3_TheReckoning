@@ -6,14 +6,9 @@ using System;
 public abstract class UnitController : MonoBehaviour
 {
     
-    public bool IsTargetable {
-         get {
-            if(CurrentState == States.Death) { 
-                return false;
-             }
-            else {return true;}
-         }
-     }
+    public abstract event Action onAttack;
+    public abstract void OnAttack();
+    public abstract bool IsTargetable();
     [SerializeField]
     public UnitLifeManager LifeManager;
     public NormalUnitStates States;

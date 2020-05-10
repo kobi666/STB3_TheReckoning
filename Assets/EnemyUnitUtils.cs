@@ -9,4 +9,11 @@ public class EnemyUnitUtils : MonoBehaviour
         walker.StopWalking();
         yield break;
     }
+
+    public static bool StandardIsTargetable(EnemyUnitController ec) {
+        if (ec.CurrentState != ec.States.Death) {
+            return true;
+        }
+        return false;
+    }
 }

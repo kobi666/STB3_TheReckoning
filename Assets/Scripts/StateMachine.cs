@@ -6,12 +6,19 @@ using System;
 public class StateMachine : MonoBehaviour
 {
     public IEnumerator MovementCoroutine;
+    public IEnumerator AttackCoroutine;
     public void InitilizeMovementCoroutine(IEnumerator mc) {
         if (MovementCoroutine != null) {
             StopCoroutine(MovementCoroutine);
             
         }
         MovementCoroutine = mc;
+    }
+    public void InitilizeAttackCoroutine(IEnumerator ac) {
+        if (AttackCoroutine != null) {
+            StopCoroutine(AttackCoroutine); 
+        }
+        AttackCoroutine = ac;
     }
     public bool StateInTransition = false;
     public void SetState(UnitState _newState) {

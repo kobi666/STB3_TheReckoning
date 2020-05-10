@@ -3,17 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
 public class PlayerUnitUtils
 {
-     
+    
+    public static bool StandardIsTargetable(PlayerUnitController pc) {
+        if (pc.CurrentState != pc.States.Death) {
+            return true;
+        }
+        return false;
+    }
 
-    public static bool StandardEnterBattleCondition(UnitState us, EnemyUnitController ec, NormalUnitStates states) {
+    public static bool StandardConditionToAttack(PlayerUnitController pc) {
+        
+        if (pc.CurrentState == pc.States.InDirectBattle || pc.CurrentState == pc.States.JoinBattle) {
+            if (pc.Target.IsTargetable()) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static bool StandardEnterDirectBattleCondition(UnitState us, EnemyUnitController ec, NormalUnitStates states) {
         if (us == states.Default || us == states.PostBattle) {
                 return true;
         }
         return false;
     }
 
+    static IEnumerator meleeAttackCoroutineAndInvokeAction(bool stopCondition, float attackRate, Action attackAction) {
+        float maxCounter = 1.0f;
+        while (stopCondition == false) {
+            Debug.LogWarning(maxCounter);
+            if (maxCounter >= 1.0f) {
+            attackAction?.Invoke();
+            maxCounter = 0.0f;
+            }
+            maxCounter += ((StaticObjects.instance.DeltaGameTime * (PlayerUnitAfterEffects.instance.MeleeAttackRateWithMultiplier(attackRate)) / 10.0F));
+            yield return new WaitForFixedUpdate();
+        }
+        yield break;
+    }
+
+    public static IEnumerator MeleeAttackCoroutineAndInvokeAction(UnitController self, bool stopCondition, float attackRate, Action attackAction) {
+        self.SM.InitilizeAttackCoroutine(meleeAttackCoroutineAndInvokeAction(stopCondition, attackRate, attackAction));
+        yield return self.SM.StartCoroutine(self.SM.AttackCoroutine);
+        yield break;
+    }
     
     public static IEnumerator MoveToTargetAndInvokeAction(UnitController self, Vector2 targetPos, float speed, bool stopCondition, Action action) {
         self.SM.InitilizeMovementCoroutine(moveToTargetAndInvokeAction(self.transform, targetPos, speed, stopCondition, action));
@@ -121,6 +156,8 @@ public class PlayerUnitUtils
         return pos;
         }
 
+
+        
         
     
     

@@ -5,6 +5,13 @@ using System;
 
 public class BasicEnemyMeleeUnit : EnemyUnitController
 {
+    public override bool IsTargetable() {
+        return EnemyUnitUtils.StandardIsTargetable(this);
+    }
+    public override event Action onAttack;
+    public override void OnAttack() {
+        onAttack?.Invoke();
+    }
     public override event Action onBattleInitiate;
     public override void OnBattleInitiate() {
         onBattleInitiate?.Invoke();
@@ -32,6 +39,7 @@ public class BasicEnemyMeleeUnit : EnemyUnitController
     }
 
     public override IEnumerator OnEnterInDirectBattle() {
+        
         yield break;
     }
 

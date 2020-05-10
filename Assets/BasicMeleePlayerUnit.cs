@@ -1,10 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 
 public class BasicMeleePlayerUnit : PlayerUnitController
 {
+    public override bool IsTargetable() {
+        return PlayerUnitUtils.StandardIsTargetable(this);
+    }
+    public override event Action onAttack;
+    public override void OnAttack() {
+        onAttack?.Invoke();
+    }
     public override bool CanEnterNewBattle() {
         if (CurrentState == States.Default || CurrentState == States.JoinBattle ) {
             return true;
@@ -51,7 +59,8 @@ public class BasicMeleePlayerUnit : PlayerUnitController
     public override IEnumerator OnEnterInDirectBattle() {
         yield return StartCoroutine(PlayerUnitUtils.TellEnemyToPrepareFor1on1battleWithMe(Data.EnemyTarget, this));
         yield return StartCoroutine(PlayerUnitUtils.MoveToTargetAndInvokeAction(this, PlayerUnitUtils.FindPositionNextToUnit(SR, Target.SR),
-        Data.speed, (Target == null), Target.OnBattleInitiate));
+                                    Data.speed, (Target == null), Target.OnBattleInitiate));
+        yield return StartCoroutine(PlayerUnitUtils.MeleeAttackCoroutineAndInvokeAction(this, !PlayerUnitUtils.StandardConditionToAttack(this), Data.AttackRate, OnAttack));
         yield break;
     }
 
