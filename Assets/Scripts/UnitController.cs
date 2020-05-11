@@ -6,7 +6,6 @@ using System;
 public abstract class UnitController : MonoBehaviour
 {
     
-    public abstract event Action onAttack;
     public abstract void OnAttack();
     public abstract bool IsTargetable();
     [SerializeField]
@@ -49,10 +48,12 @@ public abstract class UnitController : MonoBehaviour
     public abstract IEnumerator OnExitDefault();
     public abstract IEnumerator OnEnterPostBattle();
     public abstract IEnumerator OnExitPostBattle();
-    public IEnumerator OnEnterInitialState() {
+    public abstract IEnumerator OnEnterDeath();
+    public abstract IEnumerator OnExitDeath();
+    public virtual IEnumerator OnEnterInitialState() {
         yield break;
     }
-    public IEnumerator OnExitInitialState() {
+    public virtual IEnumerator OnExitInitialState() {
         yield break;
     }
     public abstract void Test2();
@@ -60,7 +61,7 @@ public abstract class UnitController : MonoBehaviour
     
     private void Awake() {
         Test2();
-        LifeManager.onUnitDeath += AnnounceDeath;
+        LifeManager.HP = Data.HP;
         TargetBank = GetComponentInChildren<EnemyTargetBank>();
         SM = GetComponent<StateMachine>() ?? null;
         States = new NormalUnitStates(this);
@@ -77,7 +78,12 @@ public abstract class UnitController : MonoBehaviour
         States.InDirectBattle.OnExitState += OnExitInDirectBattle;
         States.PostBattle.OnEnterState += OnEnterPostBattle;
         States.PostBattle.OnExitState += OnExitPostBattle;
+        States.Death.OnEnterState += OnEnterDeath;
+        States.Death.OnExitState += OnExitDeath;
         SM.CurrentState = States.InitialState;
+        LifeManager.onUnitDeath += AnnounceDeath;
+        LifeManager.onUnitDeath += delegate {SM.SetState(States.Death);};
+         
     }
 
     

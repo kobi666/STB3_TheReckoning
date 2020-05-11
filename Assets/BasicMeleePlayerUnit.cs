@@ -9,9 +9,9 @@ public class BasicMeleePlayerUnit : PlayerUnitController
     public override bool IsTargetable() {
         return PlayerUnitUtils.StandardIsTargetable(this);
     }
-    public override event Action onAttack;
+    public override event Action<PlayerUnitController> onAttack;
     public override void OnAttack() {
-        onAttack?.Invoke();
+        onAttack?.Invoke(this);
     }
     public override bool CanEnterNewBattle() {
         if (CurrentState == States.Default || CurrentState == States.JoinBattle ) {
@@ -56,11 +56,20 @@ public class BasicMeleePlayerUnit : PlayerUnitController
         yield break;
     }
 
+    public override IEnumerator OnEnterDeath() {
+        yield break;
+    }
+
+    public override IEnumerator OnExitDeath() {
+        yield break;
+    }
+
     public override IEnumerator OnEnterInDirectBattle() {
         yield return StartCoroutine(PlayerUnitUtils.TellEnemyToPrepareFor1on1battleWithMe(Data.EnemyTarget, this));
         yield return StartCoroutine(PlayerUnitUtils.MoveToTargetAndInvokeAction(this, PlayerUnitUtils.FindPositionNextToUnit(SR, Target.SR),
                                     Data.speed, (Target == null), Target.OnBattleInitiate));
         yield return StartCoroutine(PlayerUnitUtils.MeleeAttackCoroutineAndInvokeAction(this, !PlayerUnitUtils.StandardConditionToAttack(this), Data.AttackRate, OnAttack));
+        SM.SetState(States.PostBattle);
         yield break;
     }
 
@@ -69,6 +78,7 @@ public class BasicMeleePlayerUnit : PlayerUnitController
     }
 
     public override IEnumerator OnEnterPostBattle() {
+        yield return StartCoroutine(PlayerUnitUtils.StandardPostBattleCheck(this));
         yield break;
     }
 
@@ -81,5 +91,6 @@ public class BasicMeleePlayerUnit : PlayerUnitController
     // Start is called before the first frame update
     public override void LateStart() {
         SM.SetState(States.Default);
+        onAttack += PlayerUnitUtils.AttackEnemyUnit;
     }
 }

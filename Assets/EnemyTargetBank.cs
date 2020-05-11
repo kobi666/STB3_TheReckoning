@@ -5,18 +5,26 @@ using System;
 
 public class EnemyTargetBank : MonoBehaviour
 {
+    public bool TargetExists() {
+        if (targets.Count > 0) {
+            return true;
+        }
+        return false;
+    }
     EnemyUnitController tempEc;
     SortedList<string, EnemyUnitController> targets = new SortedList<string, EnemyUnitController>();
     public event Action<EnemyUnitController> targetEnteredRange;
     public event Action<string> targetLeftRange;
     public void AddObjectToTargets(EnemyUnitController ec) {
         if (ec.CompareTag("Enemy")) {
-            try {
-            targets.Add(ec.name, ec);
-            Debug.LogWarning("TargetAdded");
-            }
-            catch(Exception e) {
-                Debug.LogWarning(e.Message);
+            if (ec.IsTargetable()) {
+                try {
+                targets.Add(ec.name, ec);
+                Debug.LogWarning("TargetAdded");
+                }
+                catch(Exception e) {
+                    Debug.LogWarning(e.Message);
+                }
             }
 
         }

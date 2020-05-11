@@ -7,6 +7,8 @@ public abstract class PlayerUnitController : UnitController
 {
     public IEnumerator MovementCoroutine;
     public abstract bool CanEnterNewBattle();
+
+    public abstract event Action<PlayerUnitController> onAttack;
     public EnemyUnitController Target { get => Data.EnemyTarget ?? null;}
     
     

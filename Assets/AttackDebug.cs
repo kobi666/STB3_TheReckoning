@@ -5,6 +5,7 @@ using TMPro;
 
 public class AttackDebug : MonoBehaviour
 {
+    PlayerUnitController pc;
     TextMeshPro textobj;
     Color32 color;
 
@@ -14,16 +15,17 @@ public class AttackDebug : MonoBehaviour
            textobj.faceColor = new Color32(color.r, color.g, color.b, 1);
         }
 
-    public  void TextDebugFlicker() {
+    public void TextDebugFlicker(PlayerUnitController pc) {
             Debug.LogWarning("attack");
-            StartCoroutine(textDebugFlickerCR());
+            
         }
     // Start is called before the first frame update
     void Start()
     {
         textobj = GetComponent<TextMeshPro>();
         color = textobj.color;
-        transform.parent.GetComponent<UnitController>().onAttack += TextDebugFlicker;
+        pc = transform.parent.GetComponent<PlayerUnitController>() ?? null;
+        pc.onAttack += TextDebugFlicker;
     }
 
     // Update is called once per frame

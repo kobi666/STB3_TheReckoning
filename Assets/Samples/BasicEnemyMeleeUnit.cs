@@ -8,9 +8,9 @@ public class BasicEnemyMeleeUnit : EnemyUnitController
     public override bool IsTargetable() {
         return EnemyUnitUtils.StandardIsTargetable(this);
     }
-    public override event Action onAttack;
+    public override event Action<EnemyUnitController> onAttack;
     public override void OnAttack() {
-        onAttack?.Invoke();
+        onAttack?.Invoke(this);
     }
     public override event Action onBattleInitiate;
     public override void OnBattleInitiate() {
@@ -52,6 +52,14 @@ public class BasicEnemyMeleeUnit : EnemyUnitController
     }
 
     public override IEnumerator OnExitPostBattle() {
+        yield break;
+    }
+
+    public override IEnumerator OnEnterDeath() {
+        yield break;
+    }
+
+    public override IEnumerator OnExitDeath() {
         yield break;
     }
 

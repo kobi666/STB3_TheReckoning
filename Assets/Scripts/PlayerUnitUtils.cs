@@ -6,8 +6,22 @@ using System;
 
 public class PlayerUnitUtils
 {
-    public static void AttackEnemy(EnemyUnitController ec) {
+    public static IEnumerator StandardPostBattleCheck(PlayerUnitController pc) {
+        if (pc.TargetBank.TargetExists()) {
+            if (pc.CanEnterNewBattle()) {
+                pc.Data.EnemyTarget = pc.TargetBank.FindSingleTargetNearestToEndOfSpline();
+                pc.SM.SetState(pc.States.PreBattle);
+            }
+        }
+        else {
+            pc.SM.SetState(pc.States.Default);
+        }
         
+        yield break;
+    }
+
+    public static void AttackEnemyUnit(PlayerUnitController self) {
+        self.Target?.LifeManager.DamageToUnit(UnityEngine.Random.Range(self.Data.DamageRange.min,self.Data.DamageRange.max), self.Data.damageType);
     }
     
     public static bool StandardIsTargetable(PlayerUnitController pc) {
@@ -36,7 +50,6 @@ public class PlayerUnitUtils
     static IEnumerator meleeAttackCoroutineAndInvokeAction(bool stopCondition, float attackRate, Action attackAction) {
         float maxCounter = 1.0f;
         while (stopCondition == false) {
-            Debug.LogWarning(maxCounter);
             if (maxCounter >= 1.0f) {
             attackAction?.Invoke();
             maxCounter = 0.0f;

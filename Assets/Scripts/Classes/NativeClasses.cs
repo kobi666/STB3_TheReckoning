@@ -4,10 +4,61 @@ using UnityEngine;
 using System;
 
 
+public class Effect<T>  {
+    Buffs<T> buffs;
+    Nerfs<T> nerfs;
+
+    public void AddBuff(string buffName, T buff) {
+        if (buffs.BuffStack.ContainsKey(buffName)) {
+        buffs.BuffStack.Add(buffName, buff);
+        }
+    }
+    public void AddNerf(string nerfName, T nerf) {
+        if (nerfs.NerfStack.ContainsKey(nerfName)) {
+        nerfs.NerfStack.Add(nerfName, nerf);
+        }
+    }
+
+    public void RemoveBuff(string buffName) {
+        if (buffs.BuffStack.ContainsKey(buffName)) {
+        buffs.BuffStack.Remove(buffName);
+        }
+    }
+
+    public void RemoveNerf(string nerfName) {
+        if (nerfs.NerfStack.ContainsKey(nerfName)) {
+        nerfs.NerfStack.Remove(nerfName);
+        }
+    }
+
+    public Effect(T t) {
+        buffs = new Buffs<T>(t);
+        nerfs = new Nerfs<T>(t);
+    }
+}
+
+public interface IEffect<T> {
+    
+    void GetValue(T t);
+    void GetValues(List<T> t);
+    T ApplyEffect(T t);
+}
 
 [System.Serializable]
-public class FloatMultiplier {
+public class Buffs<T> {
 
+    public Dictionary<string, T> BuffStack;
+    public Buffs(T t) {
+        BuffStack = new Dictionary<string, T>();
+    }
+}
+
+public class Nerfs<T> {
+
+    public Dictionary<string, T> NerfStack;
+    public Nerfs(T t) {
+        NerfStack = new Dictionary<string, T>();
+    }
 }
 
 [System.Serializable]
