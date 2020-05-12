@@ -4,8 +4,14 @@ using UnityEngine;
 using System;
 
 
+
 public class PlayerUnitUtils
 {
+    public static IEnumerator ReturnToBattlePosition(PlayerUnitController self) {
+        yield return self.SM.StartCoroutine(MoveToTargetAndInvokeAction(self, self.Data.SetPosition, self.Data.speed, false, null));
+        yield break;
+    }
+
     public static IEnumerator StandardPostBattleCheck(PlayerUnitController pc) {
         if (pc.TargetBank.TargetExists()) {
             if (pc.CanEnterNewBattle()) {
@@ -16,7 +22,6 @@ public class PlayerUnitUtils
         else {
             pc.SM.SetState(pc.States.Default);
         }
-        
         yield break;
     }
 
@@ -47,9 +52,9 @@ public class PlayerUnitUtils
         return false;
     }
 
-    static IEnumerator meleeAttackCoroutineAndInvokeAction(bool stopCondition, float attackRate, Action attackAction) {
+    static IEnumerator meleeAttackCoroutineAndInvokeAction(PlayerUnitController self, bool stopCondition, float attackRate, Action attackAction) {
         float maxCounter = 1.0f;
-        while (stopCondition == false) {
+        while (self.Target?.IsTargetable() ?? false) {
             if (maxCounter >= 1.0f) {
             attackAction?.Invoke();
             maxCounter = 0.0f;
@@ -60,8 +65,8 @@ public class PlayerUnitUtils
         yield break;
     }
 
-    public static IEnumerator MeleeAttackCoroutineAndInvokeAction(UnitController self, bool stopCondition, float attackRate, Action attackAction) {
-        self.SM.InitilizeAttackCoroutine(meleeAttackCoroutineAndInvokeAction(stopCondition, attackRate, attackAction));
+    public static IEnumerator MeleeAttackCoroutineAndInvokeAction(PlayerUnitController self, bool stopCondition, float attackRate, Action attackAction) {
+        self.SM.InitilizeAttackCoroutine(meleeAttackCoroutineAndInvokeAction(self, stopCondition, attackRate, attackAction));
         yield return self.SM.StartCoroutine(self.SM.AttackCoroutine);
         yield break;
     }
@@ -77,7 +82,7 @@ public class PlayerUnitUtils
             self.position = Vector2.MoveTowards(self.position, targetPos, speed * StaticObjects.instance.DeltaGameTime);
             yield return new WaitForFixedUpdate();
         }
-        action.Invoke();
+        action?.Invoke();
         yield break;
     }
     public static bool CheckIfEnemyIsInBattleWithOtherUnit(EnemyUnitController ec) {

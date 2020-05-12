@@ -46,13 +46,20 @@ public class EnemyTargetBank : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        RemoveObjectFromTargets(other.gameObject);
+        RemoveFromTargetsGO(other.gameObject);
         targetLeftRange?.Invoke(other.name);
     }
 
-    
+    public void RemoveFromTargetsString(String name) {
+        try {
+            targets.Remove(name);
+        }
+        catch (Exception e) {
+            Debug.LogWarning(e.Message);
+        }
+    }
 
-    public void RemoveObjectFromTargets(GameObject go) {
+    public void RemoveFromTargetsGO(GameObject go) {
         if (go.CompareTag("Enemy")) {
             try {
                 targets.Remove(go.name);
@@ -77,6 +84,10 @@ public class EnemyTargetBank : MonoBehaviour
             }
         }
         return ec;
+    }
+
+    void Start() {
+        DeathManager.instance.onEnemyUnitDeath += RemoveFromTargetsString;
     }
 
     

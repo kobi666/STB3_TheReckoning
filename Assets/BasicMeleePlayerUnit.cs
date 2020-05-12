@@ -14,7 +14,7 @@ public class BasicMeleePlayerUnit : PlayerUnitController
         onAttack?.Invoke(this);
     }
     public override bool CanEnterNewBattle() {
-        if (CurrentState == States.Default || CurrentState == States.JoinBattle ) {
+        if (CurrentState == States.Default || CurrentState == States.JoinBattle || CurrentState == States.PostBattle ) {
             return true;
         }
         return false;
@@ -49,6 +49,7 @@ public class BasicMeleePlayerUnit : PlayerUnitController
     }
 
     public override IEnumerator OnEnterDefault() {
+        yield return StartCoroutine(PlayerUnitUtils.ReturnToBattlePosition(this));
         yield break;
     }
 
@@ -92,5 +93,6 @@ public class BasicMeleePlayerUnit : PlayerUnitController
     public override void LateStart() {
         SM.SetState(States.Default);
         onAttack += PlayerUnitUtils.AttackEnemyUnit;
+        Data.SetPosition = transform.position;
     }
 }
