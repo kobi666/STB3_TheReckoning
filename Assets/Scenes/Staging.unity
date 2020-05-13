@@ -166,8 +166,8 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 100
-      max: 200
+      min: 15
+      max: 25
     HP: 300
     Armor: 0
     SpecialArmor: 0
@@ -492,10 +492,10 @@ MonoBehaviour:
   SR: {fileID: 0}
   Data:
     CanBeStoppedByOtherUnit: 0
-    AttackRate: 0
+    AttackRate: 5
     DamageRange:
-      min: 0
-      max: 0
+      min: 26
+      max: 46
     HP: 300
     Armor: 0
     SpecialArmor: 0
@@ -1217,8 +1217,8 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 100
-      max: 200
+      min: 15
+      max: 25
     HP: 300
     Armor: 0
     SpecialArmor: 0
@@ -1535,7 +1535,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611612743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.78, y: 4.376523, z: 0}
+  m_LocalPosition: {x: -8.351081, y: 7.026252, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 130479579}
@@ -1553,11 +1553,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cf9c5931a3b3c4ba456c8213d7ebfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_position: {x: -10.779999, y: 4.1998663, z: 0.00000029802322}
+  m_position: {x: -8.35108, y: 6.849595, z: 0.00000029802322}
   m_precedingControlPointLocalPosition: {x: -1, y: -0, z: -0}
-  m_precedingControlPointPosition: {x: -11.779999, y: 4.1998663, z: 0.00000029802322}
+  m_precedingControlPointPosition: {x: -9.35108, y: 6.849595, z: 0.00000029802322}
   m_followingControlPointLocalPosition: {x: 1, y: 0, z: 0}
-  m_followingControlPointPosition: {x: -9.779999, y: 4.1998663, z: 0.00000029802322}
+  m_followingControlPointPosition: {x: -7.351081, y: 6.849595, z: 0.00000029802322}
   m_handleMode: 2
   extraData:
     c1: 0
@@ -1610,10 +1610,10 @@ MonoBehaviour:
   SR: {fileID: 0}
   Data:
     CanBeStoppedByOtherUnit: 0
-    AttackRate: 0
+    AttackRate: 5
     DamageRange:
-      min: 0
-      max: 0
+      min: 26
+      max: 46
     HP: 300
     Armor: 0
     SpecialArmor: 0
@@ -1636,7 +1636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProximityToEndOfSpline: 0
   SplineLength: 0
-  spline: {fileID: 1242006019}
+  spline: {fileID: 130479580}
   travelMode: 0
   isWalking: 1
   speed: 5
@@ -1903,7 +1903,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1006523082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.223864, y: 2.8279884, z: 0}
+  m_LocalPosition: {x: -13.839168, y: 0.579734, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1242006018}
@@ -1921,11 +1921,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cf9c5931a3b3c4ba456c8213d7ebfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_position: {x: -4.223864, y: 2.8129196, z: 0.00000029802322}
+  m_position: {x: -13.839167, y: 0.5646653, z: 0.00000029802322}
   m_precedingControlPointLocalPosition: {x: -1, y: -0, z: -0}
-  m_precedingControlPointPosition: {x: -5.223864, y: 2.8129196, z: 0.00000029802322}
+  m_precedingControlPointPosition: {x: -14.839167, y: 0.5646653, z: 0.00000029802322}
   m_followingControlPointLocalPosition: {x: 1, y: 0, z: 0}
-  m_followingControlPointPosition: {x: -3.223864, y: 2.8129196, z: 0.00000029802322}
+  m_followingControlPointPosition: {x: -12.839167, y: 0.5646653, z: 0.00000029802322}
   m_handleMode: 2
   extraData:
     c1: 0
@@ -3628,7 +3628,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1.5
 --- !u!114 &1846695629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4011,7 +4011,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1.5
 --- !u!1 &2104899650
 GameObject:
   m_ObjectHideFlags: 0

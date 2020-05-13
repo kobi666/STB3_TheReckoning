@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 
 
+
 [System.Serializable]
 public class UnitData
 {
@@ -23,6 +24,13 @@ public class UnitData
     public UnitType unitType;
     public Damage_Type damageType = new Damage_Type("normal");
     Dictionary<string, PlayerUnitController> playerUnitsFightingMe = new Dictionary<string, PlayerUnitController>();
+
+    public void RemovePlayerUnitTarget(string unitName) {
+        if (PlayerTarget?.name == unitName) {
+            PlayerTarget = null;
+        }
+        RemoveUnitFromPlayerUnitsFightingDictionary(unitName);
+    }
 
     public Dictionary<string, PlayerUnitController> PlayerUnitsFightingMe {
         get {

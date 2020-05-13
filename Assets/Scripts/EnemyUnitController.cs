@@ -7,6 +7,7 @@ public abstract class EnemyUnitController : UnitController
 {
 
 
+
     public PlayerUnitController Target { get => Data.PlayerTarget ?? null;}
 
     public abstract event Action<EnemyUnitController> onAttack;
@@ -22,6 +23,8 @@ public abstract class EnemyUnitController : UnitController
     public abstract void LateStart();
 
     private void Start() {
+        DeathManager.instance.onPlayerUnitDeath += Data.RemovePlayerUnitTarget;
+        
         LateStart();
     }
     

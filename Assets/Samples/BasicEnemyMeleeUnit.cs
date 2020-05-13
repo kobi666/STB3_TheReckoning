@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
+
 public class BasicEnemyMeleeUnit : EnemyUnitController
 {
     public override bool IsTargetable() {
@@ -31,6 +33,7 @@ public class BasicEnemyMeleeUnit : EnemyUnitController
     }
 
     public override IEnumerator OnEnterDefault() {
+        Walker.ReturnWalking();
         yield break;
     }
 
@@ -39,7 +42,8 @@ public class BasicEnemyMeleeUnit : EnemyUnitController
     }
 
     public override IEnumerator OnEnterInDirectBattle() {
-        
+        yield return StartCoroutine(EnemyUnitUtils.MeleeAttackCoroutineAndInvokeAction(this));
+        SM.SetState(States.PostBattle);
         yield break;
     }
 
@@ -66,5 +70,6 @@ public class BasicEnemyMeleeUnit : EnemyUnitController
     public override void LateStart() {
         SM.SetState(States.Default);
         onBattleInitiate += delegate { SM.SetState(States.InDirectBattle);};
+        onAttack += EnemyUnitUtils.AttackPlayerUnit;
     }
 }
