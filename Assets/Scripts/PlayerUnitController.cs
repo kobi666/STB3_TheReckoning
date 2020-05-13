@@ -12,6 +12,7 @@ public abstract class PlayerUnitController : UnitController
     public EnemyUnitController Target { get => Data.EnemyTarget ?? null;}
     
     
+    
     // Start is called before the first frame update
     public bool isEnemyTargetSlotEmpty {
         get {

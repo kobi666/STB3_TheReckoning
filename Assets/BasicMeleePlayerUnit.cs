@@ -74,6 +74,7 @@ public class BasicMeleePlayerUnit : PlayerUnitController
         yield break;
     }
 
+
     public override IEnumerator OnExitInDirectBattle() {
         yield break;
     }

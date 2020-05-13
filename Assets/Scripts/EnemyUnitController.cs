@@ -6,6 +6,7 @@ using System;
 public abstract class EnemyUnitController : UnitController
 {
 
+
     public PlayerUnitController Target { get => Data.PlayerTarget ?? null;}
 
     public abstract event Action<EnemyUnitController> onAttack;
