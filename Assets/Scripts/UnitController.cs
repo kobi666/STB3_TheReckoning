@@ -58,16 +58,20 @@ public abstract class UnitController : MonoBehaviour
     }
     public abstract void Test2();
     
+    /////TESTTTTT DELETE MEEEE
+    public IEnumerator DieAfterTwoSeconds() {
+        yield return new WaitForSeconds(2.0f);
+        Destroy(gameObject);
+    }
     
     private void Awake() {
-        Test2();
+        //Test2();
         LifeManager.HP = Data.HP;
         TargetBank = GetComponentInChildren<EnemyTargetBank>();
         SM = GetComponent<StateMachine>() ?? null;
         States = new NormalUnitStates(this);
         Walker = GetComponent<BezierSolution.UnitWalker>() ?? null;
         SR = GetComponent<SpriteRenderer>() ?? null;
-
         States.InitialState.OnEnterState += OnEnterInitialState;
         States.InitialState.OnExitState += OnExitInitialState;
         States.Default.OnEnterState += OnEnterDefault;

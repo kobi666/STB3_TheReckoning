@@ -16,6 +16,7 @@ public class DeathManager : MonoBehaviour
         if (unitTag == "Enemy") {
             onEnemyUnitDeath?.Invoke(unitName);
         }
+        onUnitDeath?.Invoke(unitTag, unitName);
     }
     public static DeathManager instance;
 

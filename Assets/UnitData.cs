@@ -32,6 +32,14 @@ public class UnitData
         RemoveUnitFromPlayerUnitsFightingDictionary(unitName);
     }
 
+    public void SetEnemyTargetToNull(string unitName) {
+        if (EnemyTarget != null) {
+            if (EnemyTarget.name == unitName) {
+                EnemyTarget = null;
+            }
+        }
+    }
+
     public Dictionary<string, PlayerUnitController> PlayerUnitsFightingMe {
         get {
             foreach (var item in playerUnitsFightingMe)
@@ -42,6 +50,23 @@ public class UnitData
             }
             return playerUnitsFightingMe;
         }
+    }
+
+    public bool AreTherePlayerUnitsFightingMe() {
+        if (PlayerUnitsFightingMe.Count > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public PlayerUnitController GetFirstPlayerUnitControllerFromList() {
+        foreach (var item in PlayerUnitsFightingMe)
+        {
+            if (item.Value != null && item.Value.IsTargetable()) {
+                return item.Value;
+            }
+        }
+        return null;
     }
 
     public void AddUnitToPlayerUnitsFightingDictionary(PlayerUnitController pc) {

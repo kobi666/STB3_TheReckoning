@@ -5,11 +5,32 @@ using System;
 
 public class EnemyUnitUtils : MonoBehaviour
 {
-    public static bool StandardCheckIfMorePlayerUnitsAreFightingme(EnemyUnitController self) {
-        if (self.Data.PlayerUnitsFightingMe.Count > 0) {
-            return true;
+    
+
+    public static PlayerUnitController GetRandomPlayerUnitFromList(EnemyUnitController ec) {
+        return ec.Data.GetFirstPlayerUnitControllerFromList();
+    }
+
+// public static IEnumerator TellEnemyToPrepareFor1on1battleWithMe(EnemyUnitController ec, PlayerUnitController pc) {
+//         if (ec.CurrentState == ec.States.Default) {
+//             ec.Data.PlayerTarget = pc;
+//             ec.SM.SetState(ec.States.PreBattle);
+//         }
+//         yield break;
+//     }
+    public static IEnumerator StandardPostBattleCheck(EnemyUnitController self) {
+        if (self.Data.GetFirstPlayerUnitControllerFromList() != null) {
+            yield return self.StartCoroutine(TellPlayerUnitToInitiateForDirectBattleWithMe(self.Data.GetFirstPlayerUnitControllerFromList()));
         }
-        return false;
+        else {
+            self.SM.SetState(self.States.Default);
+        }
+        yield break;
+    }
+
+    public static IEnumerator TellPlayerUnitToInitiateForDirectBattleWithMe(PlayerUnitController pc) {
+        pc.SM.SetState(pc.States.PreBattle);
+        yield break;
     }
     static IEnumerator meleeAttackCoroutineAndInvokeAction(EnemyUnitController self) {
         float maxCounter = 1.0f;

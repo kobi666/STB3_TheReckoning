@@ -7,6 +7,10 @@ public class StateMachine : MonoBehaviour
 {
     public IEnumerator MovementCoroutine;
     public IEnumerator AttackCoroutine;
+    public event Action onStateChange;
+    public void OnStateChange() {
+        onStateChange?.Invoke();
+    }
     public void InitilizeMovementCoroutine(IEnumerator mc) {
         if (MovementCoroutine != null) {
             StopCoroutine(MovementCoroutine);
@@ -75,6 +79,7 @@ public class StateMachine : MonoBehaviour
 
     public IEnumerator StateChangeTransition(UnitState _newState) {
         if (StateChangeLocked == false && ConditionToChangeToNewState(CurrentState, _newState) == true) {
+            OnStateChange();
             InitilizeAttackCoroutine(null);
             InitilizeMovementCoroutine(null);
             CurrentState = _newState;

@@ -2,25 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UnitUtilities {
     public class UnitUtils : MonoBehaviour
     {
+
         // Start is called before the first frame update
-        public static IEnumerator DestroyGameObject(GameObject _go) {
-            Destroy(_go);
-            yield break;
+        public static void MakeUnitSpriteLookRight(SpriteRenderer sr) {
+            if (sr != null) {
+                sr.flipX = false;
+            }
         }
 
-        public static IEnumerator StopWalkingOnPath(BezierSolution.UnitWalker _walker) {
-            _walker.StopWalking();
-            yield break;
-        }
-
-        public static IEnumerator ReturnToWalkPath(BezierSolution.UnitWalker _walker) {
-            _walker.ReturnWalking();
-            yield break;
+        public static void MakeUnitSpriteLookLeft(SpriteRenderer sr) {
+            if (sr != null) {
+                sr.flipX = true;
+            }
         }
 
         
+
+        
     }
-}

@@ -12,6 +12,8 @@ public abstract class States {
 [System.Serializable]
 public class UnitState : IEquatable<UnitState> {
 
+
+    public Color textColor;
     public bool StateTransitionInterrupted;
 
     public bool Equals(UnitState other)
@@ -77,10 +79,11 @@ public class UnitState : IEquatable<UnitState> {
             return false;
         }
     }
-    public UnitState(bool _isfinalState, string _name, MonoBehaviour _self ) {
+    public UnitState(bool _isfinalState, string _name, MonoBehaviour _self, Color color) {
         IsFinalState = _isfinalState;
         StateName = _name;
         exec = _self;
+        textColor = color; 
     }
 
     MonoBehaviour exec;

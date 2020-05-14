@@ -56,10 +56,12 @@ public class BasicEnemyMeleeUnit : EnemyUnitController
     }
 
     public override IEnumerator OnExitPostBattle() {
+        yield return StartCoroutine(EnemyUnitUtils.StandardPostBattleCheck(this));
         yield break;
     }
 
     public override IEnumerator OnEnterDeath() {
+        yield return StartCoroutine(DieAfterTwoSeconds());
         yield break;
     }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
+    public GameObject TestPrefab;
     Wave TestWave = new Wave(3);
     public static WaveManager Instance;
     public List<GameObject> Paths;
@@ -51,11 +52,9 @@ public class WaveManager : MonoBehaviour
 
     private void Start() {
 
-
-
         InitilizeEnemiesDict();
         InitilizeSpawners();
-        TestSubwavePackage = new SubWavePackage(2.0f, 20, EnemisDict["Akuma"], "random");
+        TestSubwavePackage = new SubWavePackage(2.0f, 20, TestPrefab, "random");
         // Spawners[0].SpawnSubWave(TestSubwave);
         Spawners[0].SpawnSubWave(TestSubwavePackage);
         for (int i = 0 ; i < TestWave.Subwaves.Length ; i++) {

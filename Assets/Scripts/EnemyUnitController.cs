@@ -24,7 +24,9 @@ public abstract class EnemyUnitController : UnitController
 
     private void Start() {
         DeathManager.instance.onPlayerUnitDeath += Data.RemovePlayerUnitTarget;
-        
+        if (tag == "Untagged") {
+            tag = "Enemy";
+        }
         LateStart();
     }
     

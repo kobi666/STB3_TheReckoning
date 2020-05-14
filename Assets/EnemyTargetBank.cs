@@ -20,7 +20,7 @@ public class EnemyTargetBank : MonoBehaviour
             if (ec.IsTargetable()) {
                 try {
                 targets.Add(ec.name, ec);
-                Debug.LogWarning("TargetAdded");
+//                Debug.LogWarning("TargetAdded");
                 }
                 catch(Exception e) {
                     Debug.LogWarning(e.Message);
@@ -63,7 +63,7 @@ public class EnemyTargetBank : MonoBehaviour
         if (go.CompareTag("Enemy")) {
             try {
                 targets.Remove(go.name);
-                Debug.LogWarning("TargetRemoved");
+//                Debug.LogWarning("TargetRemoved");
             }
             catch(Exception e) {
                 Debug.LogWarning(e.Message);

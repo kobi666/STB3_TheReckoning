@@ -32,15 +32,15 @@ public class NormalUnitStates : States
 
     public NormalUnitStates (MonoBehaviour mono) {
 
-        berserk = new UnitState(false, "Berserk", mono);
-        initialState = new UnitState(false, "InitialState", mono);
-        _default = new UnitState(false, "Default", mono);
-        frozen = new UnitState(false, "Frozen", mono);
-        death = new UnitState(true, "Death", mono);
-        preBattle = new UnitState(false, "PreBattle", mono);
-        inDirectBattle = new UnitState(false, "InDirectBattle", mono);
-        joinBattle = new UnitState(false, "JoinBattle", mono);
-        postBattle = new UnitState(false, "PostBattle", mono);
+        berserk = new UnitState(false, "Berserk", mono, Color.red);
+        initialState = new UnitState(false, "InitialState", mono, Color.black);
+        _default = new UnitState(false, "Default", mono, Color.green);
+        frozen = new UnitState(false, "Frozen", mono, Color.blue);
+        death = new UnitState(true, "Death", mono, Color.black);
+        preBattle = new UnitState(false, "PreBattle", mono, Color.magenta);
+        inDirectBattle = new UnitState(false, "InDirectBattle", mono, Color.red);
+        joinBattle = new UnitState(false, "JoinBattle", mono, Color.yellow);
+        postBattle = new UnitState(false, "PostBattle", mono, Color.cyan);
 
     }
    
