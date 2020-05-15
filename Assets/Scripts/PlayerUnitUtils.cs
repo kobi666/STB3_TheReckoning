@@ -27,7 +27,6 @@ public class PlayerUnitUtils
         yield break;
     }
 
-
     public static void AttackEnemyUnit(PlayerUnitController self) {
         self.Target?.LifeManager.DamageToUnit(UnityEngine.Random.Range(self.Data.DamageRange.min,self.Data.DamageRange.max), self.Data.damageType);
     }

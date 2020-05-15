@@ -210,7 +210,7 @@
             "id": "f7397da4-4cb4-4d0f-a776-d16bef6f8071",
             "actions": [
                 {
-                    "name": "TestWalking",
+                    "name": "W",
                     "type": "Button",
                     "id": "5e80d883-3bfb-4c36-a464-a18b6065e087",
                     "expectedControlType": "",
@@ -218,7 +218,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "TestAttack",
+                    "name": "S",
                     "type": "Button",
                     "id": "fb1d43cd-6b4b-46c8-994f-8a33eacb47de",
                     "expectedControlType": "",
@@ -226,9 +226,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "TestDeath",
+                    "name": "D",
                     "type": "Button",
                     "id": "18ab84fa-0593-438b-bbce-39cb13885a58",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "F",
+                    "type": "Button",
+                    "id": "4091e07e-f9fb-47c2-a29b-397a431d4899",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -242,7 +250,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "TestWalking",
+                    "action": "W",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -252,8 +260,8 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "TestAttack",
+                    "groups": "Keyboard",
+                    "action": "S",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -263,8 +271,19 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "TestDeath",
+                    "groups": "Keyboard",
+                    "action": "D",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bc385316-518f-4ae1-bdd5-e81cb50f85b4",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "F",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -46,9 +46,9 @@ public class AnimationTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PI.TestButtons.TestWalking.performed += ctx => TriggerWalking();
-        PI.TestButtons.TestAttack.performed += ctx => TriggerAttack();
-        PI.TestButtons.TestDeath.performed += ctx => TriggerDeath();
+        // PI.TestButtons.TestWalking.performed += ctx => TriggerWalking();
+        // PI.TestButtons.TestAttack.performed += ctx => TriggerAttack();
+        // PI.TestButtons.TestDeath.performed += ctx => TriggerDeath();
     }
 
     // Update is called once per frame

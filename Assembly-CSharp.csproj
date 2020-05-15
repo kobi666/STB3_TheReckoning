@@ -44,7 +44,9 @@
     <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
-  <ItemGroup>     <Compile Include="Assets\AnimancerTest.cs" />
+  <ItemGroup>     <Compile Include="Assets\ACT.cs" />
+     <Compile Include="Assets\AnimancerTest.cs" />
+     <Compile Include="Assets\AnimationcontrollerTest.cs" />
      <Compile Include="Assets\AnimationTest.cs" />
      <Compile Include="Assets\AttackDebug.cs" />
      <Compile Include="Assets\BasicMeleePlayerUnit.cs" />

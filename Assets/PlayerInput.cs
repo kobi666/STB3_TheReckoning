@@ -223,7 +223,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
             ""id"": ""f7397da4-4cb4-4d0f-a776-d16bef6f8071"",
             ""actions"": [
                 {
-                    ""name"": ""TestWalking"",
+                    ""name"": ""W"",
                     ""type"": ""Button"",
                     ""id"": ""5e80d883-3bfb-4c36-a464-a18b6065e087"",
                     ""expectedControlType"": """",
@@ -231,7 +231,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""TestAttack"",
+                    ""name"": ""S"",
                     ""type"": ""Button"",
                     ""id"": ""fb1d43cd-6b4b-46c8-994f-8a33eacb47de"",
                     ""expectedControlType"": """",
@@ -239,9 +239,17 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""TestDeath"",
+                    ""name"": ""D"",
                     ""type"": ""Button"",
                     ""id"": ""18ab84fa-0593-438b-bbce-39cb13885a58"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""F"",
+                    ""type"": ""Button"",
+                    ""id"": ""4091e07e-f9fb-47c2-a29b-397a431d4899"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -255,7 +263,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""TestWalking"",
+                    ""action"": ""W"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -265,8 +273,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TestAttack"",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""S"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -276,8 +284,19 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TestDeath"",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""D"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bc385316-518f-4ae1-bdd5-e81cb50f85b4"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""F"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -321,9 +340,10 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_GamePlay_WestButton = m_GamePlay.FindAction("WestButton", throwIfNotFound: true);
         // TestButtons
         m_TestButtons = asset.FindActionMap("TestButtons", throwIfNotFound: true);
-        m_TestButtons_TestWalking = m_TestButtons.FindAction("TestWalking", throwIfNotFound: true);
-        m_TestButtons_TestAttack = m_TestButtons.FindAction("TestAttack", throwIfNotFound: true);
-        m_TestButtons_TestDeath = m_TestButtons.FindAction("TestDeath", throwIfNotFound: true);
+        m_TestButtons_W = m_TestButtons.FindAction("W", throwIfNotFound: true);
+        m_TestButtons_S = m_TestButtons.FindAction("S", throwIfNotFound: true);
+        m_TestButtons_D = m_TestButtons.FindAction("D", throwIfNotFound: true);
+        m_TestButtons_F = m_TestButtons.FindAction("F", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -462,16 +482,18 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     // TestButtons
     private readonly InputActionMap m_TestButtons;
     private ITestButtonsActions m_TestButtonsActionsCallbackInterface;
-    private readonly InputAction m_TestButtons_TestWalking;
-    private readonly InputAction m_TestButtons_TestAttack;
-    private readonly InputAction m_TestButtons_TestDeath;
+    private readonly InputAction m_TestButtons_W;
+    private readonly InputAction m_TestButtons_S;
+    private readonly InputAction m_TestButtons_D;
+    private readonly InputAction m_TestButtons_F;
     public struct TestButtonsActions
     {
         private @PlayerInput m_Wrapper;
         public TestButtonsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @TestWalking => m_Wrapper.m_TestButtons_TestWalking;
-        public InputAction @TestAttack => m_Wrapper.m_TestButtons_TestAttack;
-        public InputAction @TestDeath => m_Wrapper.m_TestButtons_TestDeath;
+        public InputAction @W => m_Wrapper.m_TestButtons_W;
+        public InputAction @S => m_Wrapper.m_TestButtons_S;
+        public InputAction @D => m_Wrapper.m_TestButtons_D;
+        public InputAction @F => m_Wrapper.m_TestButtons_F;
         public InputActionMap Get() { return m_Wrapper.m_TestButtons; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -481,28 +503,34 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_TestButtonsActionsCallbackInterface != null)
             {
-                @TestWalking.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnTestWalking;
-                @TestWalking.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnTestWalking;
-                @TestWalking.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnTestWalking;
-                @TestAttack.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnTestAttack;
-                @TestAttack.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnTestAttack;
-                @TestAttack.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnTestAttack;
-                @TestDeath.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnTestDeath;
-                @TestDeath.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnTestDeath;
-                @TestDeath.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnTestDeath;
+                @W.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnW;
+                @W.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnW;
+                @W.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnW;
+                @S.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnS;
+                @S.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnS;
+                @S.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnS;
+                @D.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnD;
+                @D.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnD;
+                @D.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnD;
+                @F.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnF;
+                @F.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnF;
+                @F.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnF;
             }
             m_Wrapper.m_TestButtonsActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @TestWalking.started += instance.OnTestWalking;
-                @TestWalking.performed += instance.OnTestWalking;
-                @TestWalking.canceled += instance.OnTestWalking;
-                @TestAttack.started += instance.OnTestAttack;
-                @TestAttack.performed += instance.OnTestAttack;
-                @TestAttack.canceled += instance.OnTestAttack;
-                @TestDeath.started += instance.OnTestDeath;
-                @TestDeath.performed += instance.OnTestDeath;
-                @TestDeath.canceled += instance.OnTestDeath;
+                @W.started += instance.OnW;
+                @W.performed += instance.OnW;
+                @W.canceled += instance.OnW;
+                @S.started += instance.OnS;
+                @S.performed += instance.OnS;
+                @S.canceled += instance.OnS;
+                @D.started += instance.OnD;
+                @D.performed += instance.OnD;
+                @D.canceled += instance.OnD;
+                @F.started += instance.OnF;
+                @F.performed += instance.OnF;
+                @F.canceled += instance.OnF;
             }
         }
     }
@@ -538,8 +566,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     }
     public interface ITestButtonsActions
     {
-        void OnTestWalking(InputAction.CallbackContext context);
-        void OnTestAttack(InputAction.CallbackContext context);
-        void OnTestDeath(InputAction.CallbackContext context);
+        void OnW(InputAction.CallbackContext context);
+        void OnS(InputAction.CallbackContext context);
+        void OnD(InputAction.CallbackContext context);
+        void OnF(InputAction.CallbackContext context);
     }
 }
