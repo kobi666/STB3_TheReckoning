@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Animancer;
 
 public abstract class PlayerUnitController : UnitController
 {
-    public IEnumerator MovementCoroutine;
+    public AnimationClip IdleAnimation;
+    public AnimationClip WalkingAnimation;
+    public AnimationClip AttackAnimation;
     public abstract bool CanEnterNewBattle();
 
     public abstract event Action<PlayerUnitController> onAttack;
     public EnemyUnitController Target { get => Data.EnemyTarget ?? null;}
-    
-    
     
     // Start is called before the first frame update
     public bool isEnemyTargetSlotEmpty {
@@ -63,6 +64,8 @@ public abstract class PlayerUnitController : UnitController
             tag = "Player_Unit";
         }
         DeathManager.instance.onEnemyUnitDeath += Data.SetEnemyTargetToNull;
+        States.Default.StateAnimation = IdleAnimation;
+        States.PreBattle.StateAnimation = WalkingAnimation;
         
         
 

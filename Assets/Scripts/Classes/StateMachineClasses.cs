@@ -12,7 +12,7 @@ public abstract class States {
 [System.Serializable]
 public class UnitState : IEquatable<UnitState> {
 
-
+    public AnimationClip StateAnimation = null;
     public Color textColor;
     public bool StateTransitionInterrupted;
 

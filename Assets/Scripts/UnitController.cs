@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Animancer;
 
 public abstract class UnitController : MonoBehaviour
 {
     
+
+    public AnimancerComponent Animancer;
     public abstract void OnAttack();
     public abstract bool IsTargetable();
     [SerializeField]
@@ -66,8 +69,9 @@ public abstract class UnitController : MonoBehaviour
     
     private void Awake() {
         //Test2();
+        Animancer = GetComponent<AnimancerComponent>() ?? null;
         LifeManager.HP = Data.HP;
-        TargetBank = GetComponentInChildren<EnemyTargetBank>();
+        TargetBank = GetComponentInChildren<EnemyTargetBank>() ?? null;
         SM = GetComponent<StateMachine>() ?? null;
         States = new NormalUnitStates(this);
         Walker = GetComponent<BezierSolution.UnitWalker>() ?? null;

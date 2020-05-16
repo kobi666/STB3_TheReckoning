@@ -19,8 +19,30 @@ public class UnitData
     public int speed;
     public Vector2 SetPosition;
     public GameObject Target;
-    public PlayerUnitController PlayerTarget;
-    public EnemyUnitController EnemyTarget;
+    private PlayerUnitController playerTarget;
+    public PlayerUnitController PlayerTarget {
+        get {
+            if (playerTarget?.gameObject.activeSelf == false) {
+                return null;
+            }
+            return playerTarget;
+        }
+        set {
+            playerTarget = value;
+        }
+    }
+    public EnemyUnitController enemyTarget;
+    public EnemyUnitController EnemyTarget {
+        get {
+            if (enemyTarget?.gameObject.activeSelf == false) {
+                return null;
+            }
+            return enemyTarget;
+        }
+        set {
+            enemyTarget = value;
+        }
+    }
     public UnitType unitType;
     public Damage_Type damageType = new Damage_Type("normal");
     Dictionary<string, PlayerUnitController> playerUnitsFightingMe = new Dictionary<string, PlayerUnitController>();

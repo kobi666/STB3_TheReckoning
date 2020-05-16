@@ -5,6 +5,12 @@ using Animancer;
 
 public class AnimationcontrollerTest : MonoBehaviour
 {
+    void PlayAnimation(AnimancerComponent animancer, AnimationClip clip)
+    {
+    // Play the animation and control its state:
+    var state = animancer.Play(clip);
+}
+
     [SerializeField]
     AnimancerComponent animancer;
     public AnimationClip moveAnimation;
