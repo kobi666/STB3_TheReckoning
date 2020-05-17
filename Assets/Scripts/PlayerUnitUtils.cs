@@ -6,6 +6,7 @@ using System;
 
 
 
+
 public class PlayerUnitUtils
 {
     
@@ -123,9 +124,37 @@ public class PlayerUnitUtils
             return "right";
         }
     }
+
+    public static Vector2 FindJoinBattlePosition(SpriteRenderer selfSR, SpriteRenderer targetSR) {
+        Vector2 TargetSpriteExtent = targetSR.sprite.bounds.extents;
+        Vector2 SelfSpriteExtent = selfSR.sprite.bounds.extents;
+        SelfSpriteExtent.x *= selfSR.transform.localScale.x;
+        SelfSpriteExtent.y *= selfSR.transform.localScale.y;
+        TargetSpriteExtent.x *= targetSR.transform.localScale.x;
+        TargetSpriteExtent.y *= targetSR.transform.localScale.y;
+        Vector2 TargetGOPos = targetSR.transform.position;
+        Vector2 SelfPos = selfSR.transform.position;
+        string LoR = (FindIfTargetIsLeftOrRightOfSelf(selfSR.gameObject, targetSR.gameObject));
+        float randY = UnityEngine.Random.Range(-0.3f, 0.3f);
+        float randX = UnityEngine.Random.Range(-0.1f, 0.1f);
+        Vector2 pos = SelfPos;
+        if (LoR == "left") {
+            pos.x = (TargetGOPos.x - TargetSpriteExtent.x - 0.1f - SelfSpriteExtent.x + randX);
+            pos.y = (TargetGOPos.y - TargetSpriteExtent.y + SelfSpriteExtent.y + randY);
+        }
+        else if (LoR == "right") {
+            pos.x = (TargetGOPos.x + TargetSpriteExtent.x + 0.1f + SelfSpriteExtent.x + randX);
+            pos.y = (TargetGOPos.y - TargetSpriteExtent.y + SelfSpriteExtent.y + randY);
+        }
+        else {
+            Debug.Log("Couldn't find if object is left or right.. Default to self transform.position...");
+            pos = selfSR.transform.position;
+        }
+        return pos;
+    }
     
     //Battle Position Finder
-    public static Vector2 FindPositionNextToUnit(SpriteRenderer selfSR, SpriteRenderer targetSR) {
+    public static Vector2 FindDirectBattlePosition(SpriteRenderer selfSR, SpriteRenderer targetSR) {
         Vector2 TargetSpriteExtent = targetSR.sprite.bounds.extents;
         Vector2 SelfSpriteExtent = selfSR.sprite.bounds.extents;
         SelfSpriteExtent.x *= selfSR.transform.localScale.x;

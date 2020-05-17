@@ -34,8 +34,10 @@ public class UnitData
     public EnemyUnitController enemyTarget;
     public EnemyUnitController EnemyTarget {
         get {
-            if (enemyTarget?.gameObject.activeSelf == false) {
-                return null;
+            if (enemyTarget != null) {
+                if (enemyTarget.gameObject.activeSelf == false) {
+                    return null;
+                }
             }
             return enemyTarget;
         }

@@ -306,11 +306,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -335,6 +330,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: 1.7846327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
@@ -370,9 +370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animancer: {fileID: 0}
   LifeManager:
-    unitTag: 
-    unitName: 
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -384,16 +383,18 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 50
-      max: 75
-    HP: 300
+      min: 26
+      max: 56
+    HP: 350
     Armor: 0
     SpecialArmor: 0
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
+    enemyTarget: {fileID: 0}
+  IdleAnimation: {fileID: 0}
+  WalkingAnimation: {fileID: 0}
+  AttackAnimation: {fileID: 0}
 --- !u!61 &65858664
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -484,6 +485,7 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
     textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
@@ -597,9 +599,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animancer: {fileID: 0}
   LifeManager:
-    unitTag: 
-    unitName: 
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -611,16 +612,18 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 15
-      max: 25
-    HP: 300
+      min: 26
+      max: 56
+    HP: 350
     Armor: 0
     SpecialArmor: 0
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
+    enemyTarget: {fileID: 0}
+  IdleAnimation: {fileID: 0}
+  WalkingAnimation: {fileID: 0}
+  AttackAnimation: {fileID: 0}
 --- !u!61 &71179185
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -711,6 +714,7 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
     textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
@@ -849,11 +853,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -878,6 +877,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: 1.7846327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
@@ -1167,9 +1171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animancer: {fileID: 0}
   LifeManager:
-    unitTag: 
-    unitName: 
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -1181,16 +1184,18 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 50
-      max: 75
-    HP: 300
+      min: 26
+      max: 56
+    HP: 350
     Armor: 0
     SpecialArmor: 0
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
+    enemyTarget: {fileID: 0}
+  IdleAnimation: {fileID: 0}
+  WalkingAnimation: {fileID: 0}
+  AttackAnimation: {fileID: 0}
 --- !u!61 &159340260
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1281,6 +1286,7 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
     textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
@@ -1425,11 +1431,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1454,6 +1455,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: 1.7846327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
@@ -1643,11 +1649,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1672,6 +1673,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: 1.7846327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
@@ -2392,9 +2398,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animancer: {fileID: 0}
   LifeManager:
-    unitTag: 
-    unitName: 
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -2406,16 +2411,18 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 50
-      max: 75
-    HP: 300
+      min: 26
+      max: 56
+    HP: 350
     Armor: 0
     SpecialArmor: 0
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
+    enemyTarget: {fileID: 0}
+  IdleAnimation: {fileID: 0}
+  WalkingAnimation: {fileID: 0}
+  AttackAnimation: {fileID: 0}
 --- !u!61 &493863043
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2506,6 +2513,7 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
     textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
@@ -2637,6 +2645,7 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
     textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
@@ -2653,9 +2662,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animancer: {fileID: 0}
   LifeManager:
-    unitTag: 
-    unitName: 
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -2675,8 +2683,10 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
+    enemyTarget: {fileID: 0}
+  IdleAnimation: {fileID: 0}
+  WalkingAnimation: {fileID: 0}
+  AttackAnimation: {fileID: 0}
 --- !u!4 &513794836
 Transform:
   m_ObjectHideFlags: 0
@@ -2940,11 +2950,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -2969,6 +2974,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: 1.7846327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
@@ -3167,9 +3177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animancer: {fileID: 0}
   LifeManager:
-    unitTag: 
-    unitName: 
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -3181,16 +3190,18 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 50
-      max: 75
-    HP: 300
+      min: 26
+      max: 56
+    HP: 350
     Armor: 0
     SpecialArmor: 0
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
+    enemyTarget: {fileID: 0}
+  IdleAnimation: {fileID: 0}
+  WalkingAnimation: {fileID: 0}
+  AttackAnimation: {fileID: 0}
 --- !u!61 &575431160
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3281,6 +3292,7 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
     textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
@@ -3633,9 +3645,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animancer: {fileID: 0}
   LifeManager:
-    unitTag: 
-    unitName: 
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -3647,16 +3658,18 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 50
-      max: 75
-    HP: 300
+      min: 26
+      max: 56
+    HP: 350
     Armor: 0
     SpecialArmor: 0
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
+    enemyTarget: {fileID: 0}
+  IdleAnimation: {fileID: 0}
+  WalkingAnimation: {fileID: 0}
+  AttackAnimation: {fileID: 0}
 --- !u!61 &711739358
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3747,6 +3760,7 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
     textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
@@ -3800,9 +3814,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animancer: {fileID: 0}
   LifeManager:
-    unitTag: 
-    unitName: 
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -3814,16 +3827,18 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 50
-      max: 75
-    HP: 300
+      min: 26
+      max: 56
+    HP: 350
     Armor: 0
     SpecialArmor: 0
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
+    enemyTarget: {fileID: 0}
+  IdleAnimation: {fileID: 0}
+  WalkingAnimation: {fileID: 0}
+  AttackAnimation: {fileID: 0}
 --- !u!61 &712915136
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3914,6 +3929,7 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
     textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
@@ -4160,11 +4176,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -4189,6 +4200,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: 1.7846327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
@@ -4230,9 +4246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animancer: {fileID: 0}
   LifeManager:
-    unitTag: 
-    unitName: 
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -4244,16 +4259,18 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 50
-      max: 75
-    HP: 300
+      min: 26
+      max: 56
+    HP: 350
     Armor: 0
     SpecialArmor: 0
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
+    enemyTarget: {fileID: 0}
+  IdleAnimation: {fileID: 0}
+  WalkingAnimation: {fileID: 0}
+  AttackAnimation: {fileID: 0}
 --- !u!61 &849852307
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4344,6 +4361,7 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
     textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
@@ -4488,11 +4506,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -4517,6 +4530,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: 1.7846327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
@@ -4612,9 +4630,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animancer: {fileID: 0}
   LifeManager:
-    unitTag: 
-    unitName: 
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -4626,16 +4643,18 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 50
-      max: 75
-    HP: 300
+      min: 48
+      max: 56
+    HP: 350
     Armor: 0
     SpecialArmor: 0
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
+    enemyTarget: {fileID: 0}
+  IdleAnimation: {fileID: 0}
+  WalkingAnimation: {fileID: 0}
+  AttackAnimation: {fileID: 0}
 --- !u!61 &923352980
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4726,6 +4745,7 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
     textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
@@ -4926,9 +4946,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animancer: {fileID: 0}
   LifeManager:
-    unitTag: 
-    unitName: 
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -4940,16 +4959,18 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 50
-      max: 75
-    HP: 300
+      min: 26
+      max: 56
+    HP: 350
     Armor: 0
     SpecialArmor: 0
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
+    enemyTarget: {fileID: 0}
+  IdleAnimation: {fileID: 0}
+  WalkingAnimation: {fileID: 0}
+  AttackAnimation: {fileID: 0}
 --- !u!61 &1013257611
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5040,6 +5061,7 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
     textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
@@ -5339,11 +5361,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -5368,6 +5385,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: 1.7846327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
@@ -5591,9 +5613,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animancer: {fileID: 0}
   LifeManager:
-    unitTag: 
-    unitName: 
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -5605,16 +5626,18 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 50
-      max: 75
-    HP: 300
+      min: 26
+      max: 56
+    HP: 350
     Armor: 0
     SpecialArmor: 0
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
+    enemyTarget: {fileID: 0}
+  IdleAnimation: {fileID: 0}
+  WalkingAnimation: {fileID: 0}
+  AttackAnimation: {fileID: 0}
 --- !u!61 &1257995487
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5705,6 +5728,7 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
     textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
@@ -5764,9 +5788,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animancer: {fileID: 0}
   LifeManager:
-    unitTag: 
-    unitName: 
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -5778,16 +5801,18 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 50
-      max: 75
-    HP: 300
+      min: 26
+      max: 56
+    HP: 350
     Armor: 0
     SpecialArmor: 0
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
+    enemyTarget: {fileID: 0}
+  IdleAnimation: {fileID: 0}
+  WalkingAnimation: {fileID: 0}
+  AttackAnimation: {fileID: 0}
 --- !u!61 &1294011000
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5878,6 +5903,7 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
     textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
@@ -6413,11 +6439,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -6442,6 +6463,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: 1.7846327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
@@ -6562,11 +6588,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -6591,6 +6612,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: 1.7846327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
@@ -6755,9 +6781,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animancer: {fileID: 0}
   LifeManager:
-    unitTag: 
-    unitName: 
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -6769,16 +6794,18 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 50
-      max: 75
-    HP: 300
+      min: 26
+      max: 56
+    HP: 350
     Armor: 0
     SpecialArmor: 0
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
+    enemyTarget: {fileID: 0}
+  IdleAnimation: {fileID: 0}
+  WalkingAnimation: {fileID: 0}
+  AttackAnimation: {fileID: 0}
 --- !u!61 &1472382640
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6869,6 +6896,7 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
     textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
@@ -7061,11 +7089,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -7090,6 +7113,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: 1.7846327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
@@ -7433,9 +7461,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animancer: {fileID: 0}
   LifeManager:
-    unitTag: 
-    unitName: 
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -7447,16 +7474,18 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 50
-      max: 75
-    HP: 300
+      min: 26
+      max: 56
+    HP: 350
     Armor: 0
     SpecialArmor: 0
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
+    enemyTarget: {fileID: 0}
+  IdleAnimation: {fileID: 0}
+  WalkingAnimation: {fileID: 0}
+  AttackAnimation: {fileID: 0}
 --- !u!61 &1640532730
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7547,6 +7576,7 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
     textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
@@ -7685,11 +7715,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -7714,6 +7739,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: 1.7846327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
@@ -7749,9 +7779,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animancer: {fileID: 0}
   LifeManager:
-    unitTag: 
-    unitName: 
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -7763,16 +7792,18 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 50
-      max: 75
-    HP: 300
+      min: 26
+      max: 56
+    HP: 350
     Armor: 0
     SpecialArmor: 0
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
+    enemyTarget: {fileID: 0}
+  IdleAnimation: {fileID: 0}
+  WalkingAnimation: {fileID: 0}
+  AttackAnimation: {fileID: 0}
 --- !u!61 &1650881512
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7863,6 +7894,7 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
     textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
@@ -8199,11 +8231,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -8228,6 +8255,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: 1.7846327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
@@ -8269,9 +8301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animancer: {fileID: 0}
   LifeManager:
-    unitTag: 
-    unitName: 
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -8283,16 +8314,18 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 50
-      max: 75
-    HP: 300
+      min: 26
+      max: 56
+    HP: 350
     Armor: 0
     SpecialArmor: 0
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
+    enemyTarget: {fileID: 0}
+  IdleAnimation: {fileID: 0}
+  WalkingAnimation: {fileID: 0}
+  AttackAnimation: {fileID: 0}
 --- !u!61 &1721532052
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8383,6 +8416,7 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
     textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
@@ -8575,11 +8609,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -8604,6 +8633,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: 1.7846327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
@@ -8784,11 +8818,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -8813,6 +8842,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: 1.7846327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
@@ -8933,11 +8967,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -8962,6 +8991,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: 1.7846327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
@@ -9510,11 +9544,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -9539,6 +9568,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: 1.7846327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
@@ -9785,11 +9819,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -9814,6 +9843,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.y
       value: 1.7846327
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
@@ -9978,9 +10012,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animancer: {fileID: 0}
   LifeManager:
-    unitTag: 
-    unitName: 
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -9992,16 +10025,18 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 50
-      max: 75
-    HP: 300
+      min: 26
+      max: 56
+    HP: 350
     Armor: 0
     SpecialArmor: 0
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
+    enemyTarget: {fileID: 0}
+  IdleAnimation: {fileID: 0}
+  WalkingAnimation: {fileID: 0}
+  AttackAnimation: {fileID: 0}
 --- !u!61 &2125185313
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10092,6 +10127,7 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
     textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
