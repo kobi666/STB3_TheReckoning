@@ -3,6 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+public class PoolObjectQueue<T> where T : Component {
+    public Queue<T> ObjectQueue;
+    public T ObjectPrefab;
+    GameObject PoolParentObject;
+    public T Get() {
+
+        if (ObjectQueue.Count == 0) {
+            AddObjectsToQueue(5);
+        }
+
+        return ObjectQueue.Dequeue();
+    }
+
+    void AddObjectsToQueue(int numOfObjects) {
+        for (int i = 0 ; i < numOfObjects ; i++) 
+        {
+                T PooledObject = GameObject.Instantiate(ObjectPrefab);
+                PooledObject.transform.parent = PoolParentObject.transform;
+                PooledObject.gameObject.SetActive(false);
+                ObjectQueue.Enqueue(PooledObject);
+        }
+    }
+
+    public PoolObjectQueue(T objectPrefab, int initialNumberOfObjects, GameObject poolPlaceHolder) {
+        PoolParentObject = poolPlaceHolder;
+        ObjectPrefab = objectPrefab;
+        ObjectQueue = new Queue<T>();
+        AddObjectsToQueue(initialNumberOfObjects);
+    }
+}
+
 
 public class Effect<T>  {
     Buffs<T> buffs;
