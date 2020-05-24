@@ -72,6 +72,7 @@
      <Compile Include="Assets\Projectile.cs" />
      <Compile Include="Assets\Samples\BasicEnemyMeleeUnit.cs" />
      <Compile Include="Assets\Samples\Input System\1.0.0-preview.5\Custom Binding Composite\CustomComposite.cs" />
+     <Compile Include="Assets\Samples\TowerComponent.cs" />
      <Compile Include="Assets\Scripts\Classes\GO_PRXM.cs" />
      <Compile Include="Assets\Scripts\Classes\NativeClasses.cs" />
      <Compile Include="Assets\Scripts\Classes\NativeInterfaces.cs" />
@@ -83,11 +84,12 @@
      <Compile Include="Assets\Scripts\PlayerUnitAfterEffects.cs" />
      <Compile Include="Assets\Scripts\PlayerUnitController.cs" />
      <Compile Include="Assets\Scripts\PlayerUnitUtils.cs" />
-     <Compile Include="Assets\Scripts\ProjectileController.cs" />
+     <Compile Include="Assets\Scripts\ProjectileUtils.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\StateMachine.cs" />
      <Compile Include="Assets\Scripts\StaticObjects.cs" />
      <Compile Include="Assets\Scripts\TestProjectileWeapon.cs" />
+     <Compile Include="Assets\Scripts\TProjectileController.cs" />
      <Compile Include="Assets\Scripts\UnitController.cs" />
      <Compile Include="Assets\Scripts\UnitLife.cs" />
      <Compile Include="Assets\Scripts\UnitStates.cs" />
@@ -97,6 +99,8 @@
      <Compile Include="Assets\Scripts\Utils.cs" />
      <Compile Include="Assets\Scripts\WaveManager.cs" />
      <Compile Include="Assets\Scripts\WeaponController.cs" />
+     <Compile Include="Assets\Scripts\WeaponData.cs" />
+     <Compile Include="Assets\Scripts\WeaponUtils.cs" />
      <Compile Include="Assets\SelectorTest.cs" />
      <Compile Include="Assets\SelectorTest2.cs" />
      <Compile Include="Assets\SlotController.cs" />
