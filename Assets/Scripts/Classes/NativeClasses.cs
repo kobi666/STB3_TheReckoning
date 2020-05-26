@@ -229,10 +229,6 @@ public class PlayerUnitStateMachine {
     
 }
 
-public abstract class ObjectState {
-
-}
-
 [System.Serializable]
 public class Wave {
     public Subwave[] Subwaves;

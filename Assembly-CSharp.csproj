@@ -79,7 +79,6 @@
      <Compile Include="Assets\Scripts\Classes\NativeClasses.cs" />
      <Compile Include="Assets\Scripts\Classes\NativeInterfaces.cs" />
      <Compile Include="Assets\Scripts\Classes\PerksAndNerfs.cs" />
-     <Compile Include="Assets\Scripts\Classes\StateMachineClasses.cs" />
      <Compile Include="Assets\Scripts\EnemyUnitController.cs" />
      <Compile Include="Assets\Scripts\NormalUnitStates.cs" />
      <Compile Include="Assets\Scripts\OldStateMachine.cs" />
@@ -108,7 +107,9 @@
      <Compile Include="Assets\SelectorTest2.cs" />
      <Compile Include="Assets\SlotController.cs" />
      <Compile Include="Assets\SlotParentManager.cs" />
+     <Compile Include="Assets\sometest.cs" />
      <Compile Include="Assets\StateDebug.cs" />
+     <Compile Include="Assets\StateMachineClasses.cs" />
      <Compile Include="Assets\testEnemyController.cs" />
      <Compile Include="Assets\TestingVectors.cs" />
      <Compile Include="Assets\TestScript.cs" />

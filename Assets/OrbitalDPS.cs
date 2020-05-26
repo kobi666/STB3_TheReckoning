@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class OrbitalDPS : Tower
 {
-    // Start is called before the first frame update
+    public Dictionary<int, TowerComponent> Orbitals = new Dictionary<int, TowerComponent>();
+
     
 }
