@@ -10,13 +10,13 @@ public abstract class States {
 
 
 [System.Serializable]
-public class UnitState : IEquatable<UnitState> {
+public class ObjectState : IEquatable<ObjectState> {
 
     public AnimationClip StateAnimation = null;
     public Color textColor;
     public bool StateTransitionInterrupted;
 
-    public bool Equals(UnitState other)
+    public bool Equals(ObjectState other)
    {
       if (other == null)
          return false;
@@ -34,14 +34,14 @@ public class UnitState : IEquatable<UnitState> {
       if (obj == null)
          return false;
 
-      UnitState otherUnitState = obj as UnitState;
+      ObjectState otherUnitState = obj as ObjectState;
       if (otherUnitState == null)
          return false;
       else
          return Equals(otherUnitState);
    }
 
-    public static bool operator == (UnitState thisUnitState, UnitState otherUnitState)
+    public static bool operator == (ObjectState thisUnitState, ObjectState otherUnitState)
    {
       if (((object)thisUnitState) == null || ((object)otherUnitState) == null) {
          return System.Object.Equals(thisUnitState, otherUnitState);
@@ -50,7 +50,7 @@ public class UnitState : IEquatable<UnitState> {
       return thisUnitState.Equals(otherUnitState);
    }
 
-   public static bool operator != (UnitState thisUnitState, UnitState otherUnitState)
+   public static bool operator != (ObjectState thisUnitState, ObjectState otherUnitState)
    {
       if (((object)thisUnitState) == null || ((object)otherUnitState) == null) {
          return ! System.Object.Equals(thisUnitState, otherUnitState);
@@ -79,7 +79,7 @@ public class UnitState : IEquatable<UnitState> {
             return false;
         }
     }
-    public UnitState(bool _isfinalState, string _name, MonoBehaviour _self, Color color) {
+    public ObjectState(bool _isfinalState, string _name, MonoBehaviour _self, Color color) {
         IsFinalState = _isfinalState;
         StateName = _name;
         exec = _self;

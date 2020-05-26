@@ -65,6 +65,8 @@
      <Compile Include="Assets\GameObjectPool.cs" />
      <Compile Include="Assets\LevelManager.cs" />
      <Compile Include="Assets\LifeBarmanager.cs" />
+     <Compile Include="Assets\NormalTowerComponentStates.cs" />
+     <Compile Include="Assets\OrbitalDPS.cs" />
      <Compile Include="Assets\PlayerInput.cs" />
      <Compile Include="Assets\PlayerUnit3.cs" />
      <Compile Include="Assets\PlayerUnitController2.cs" />
@@ -89,6 +91,7 @@
      <Compile Include="Assets\Scripts\StateMachine.cs" />
      <Compile Include="Assets\Scripts\StaticObjects.cs" />
      <Compile Include="Assets\Scripts\TestProjectileWeapon.cs" />
+     <Compile Include="Assets\Scripts\Tower.cs" />
      <Compile Include="Assets\Scripts\TProjectileController.cs" />
      <Compile Include="Assets\Scripts\UnitController.cs" />
      <Compile Include="Assets\Scripts\UnitLife.cs" />

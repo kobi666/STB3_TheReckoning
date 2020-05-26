@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TowerSlotController : MonoBehaviour
 {
+    
     public Dictionary<Vector2, TowerUtils.TowerPositionData> TowerSlotsByDirections8 = new Dictionary<Vector2, TowerUtils.TowerPositionData>();
     public DebugTowerPositionData[] TowersDebug = new DebugTowerPositionData[8];
     // Start is called before the first frame update

@@ -13,19 +13,19 @@ public class OldStateMachine : MonoBehaviour
         else {Debug.Log("State change lock is active");
         }
     }
-    public void AddState(UnitState _unitstate) {
+    public void AddState(ObjectState _unitstate) {
         if (_unitstate != null) {
         States.Add(_unitstate.stateName, _unitstate);
         }
     }
-    public void RemoveState(UnitState _unitstate) {
+    public void RemoveState(ObjectState _unitstate) {
         States.Remove(_unitstate.stateName);
     }
     public bool StateChangeLocked;
     
     
 
-    public IEnumerator StateChangeTransition(UnitState _newState) {
+    public IEnumerator StateChangeTransition(ObjectState _newState) {
         if (StateChangeLocked == false) {
             StateChangeLocked = true;
             yield return StartCoroutine(CurrentState.InvokeExitStateFunctions());
@@ -46,11 +46,11 @@ public class OldStateMachine : MonoBehaviour
     }
 
     
-    public Dictionary<string, UnitState> States = new Dictionary<string, UnitState>();
-    public UnitState CurrentState;
+    public Dictionary<string, ObjectState> States = new Dictionary<string, ObjectState>();
+    public ObjectState CurrentState;
 
-    public void InitilizeStateMachine(UnitState[] _states) {
-        foreach(UnitState _unitstate in _states) {
+    public void InitilizeStateMachine(ObjectState[] _states) {
+        foreach(ObjectState _unitstate in _states) {
             AddState(_unitstate);
         }
     }

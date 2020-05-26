@@ -18,6 +18,7 @@ public class StateMachine : MonoBehaviour
         }
         MovementCoroutine = mc;
     }
+
     public void InitilizeAttackCoroutine(IEnumerator ac) {
         if (AttackCoroutine != null) {
             StopCoroutine(AttackCoroutine); 
@@ -25,7 +26,7 @@ public class StateMachine : MonoBehaviour
         AttackCoroutine = ac;
     }
     public bool StateInTransition = false;
-    public void SetState(UnitState _newState) {
+    public void SetState(ObjectState _newState) {
         if (CurrentState.IsFinalState != true) {
             if (StateChangeLocked != true) {
                 StartCoroutine(StateChangeTransition(_newState));
@@ -43,7 +44,7 @@ public class StateMachine : MonoBehaviour
             }
         }
 
-    public void SetState(UnitState _newState, bool interrupt) {
+    public void SetState(ObjectState _newState, bool interrupt) {
         if (StateChangeLocked != true) {
         CurrentState.StateTransitionInterrupted = true;
         StartCoroutine(StateChangeTransition(_newState));
@@ -61,7 +62,7 @@ public class StateMachine : MonoBehaviour
    
     public bool StateChangeLocked;
     
-    public bool ConditionToChangeToNewState (UnitState _cur, UnitState _new) {
+    public bool ConditionToChangeToNewState (ObjectState _cur, ObjectState _new) {
         if (CurrentState.ExitEventIsNotEmpty()) {
             if (_new.EnterEventIsNotEmpty()) {
                 return true;
@@ -77,7 +78,7 @@ public class StateMachine : MonoBehaviour
         }
     }
 
-    public IEnumerator StateChangeTransition(UnitState _newState) {
+    public IEnumerator StateChangeTransition(ObjectState _newState) {
         if (StateChangeLocked == false && ConditionToChangeToNewState(CurrentState, _newState) == true) {
             OnStateChange();
             InitilizeAttackCoroutine(null);
@@ -127,7 +128,7 @@ public class StateMachine : MonoBehaviour
 
     
     
-    public UnitState CurrentState;
+    public ObjectState CurrentState;
 
     
     }

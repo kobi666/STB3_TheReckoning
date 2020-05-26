@@ -48,7 +48,7 @@ public class PlayerUnitUtils
         }
         return false;
     }
-    public static bool StandardEnterDirectBattleCondition(UnitState us, EnemyUnitController ec, NormalUnitStates states) {
+    public static bool StandardEnterDirectBattleCondition(ObjectState us, EnemyUnitController ec, NormalUnitStates states) {
         if (us == states.Default || us == states.PostBattle) {
                 return true;
         }
@@ -67,6 +67,7 @@ public class PlayerUnitUtils
         }
         yield break;
     }
+
 
     public static IEnumerator MeleeAttackCoroutineAndInvokeAction(PlayerUnitController self, bool stopCondition, float attackRate, Action attackAction) {
         self.SM.InitilizeAttackCoroutine(meleeAttackCoroutineAndInvokeAction(self, stopCondition, attackRate, attackAction));

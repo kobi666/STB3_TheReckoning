@@ -229,7 +229,7 @@ public class PlayerUnitStateMachine {
     
 }
 
-public abstract class State {
+public abstract class ObjectState {
 
 }
 

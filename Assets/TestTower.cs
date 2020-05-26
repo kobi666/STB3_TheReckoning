@@ -13,7 +13,7 @@ public class TestTower : MonoBehaviour
         pool = GameObjectPool.Instance.GetProjectilePool(proj);
         TestProj = pool.Get();
         TestProj.gameObject.SetActive(true);
-        TestProj.TestTarget = this.gameObject;
+        //TestProj.TestTarget = this.gameObject;
     }
 
 

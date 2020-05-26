@@ -23,7 +23,7 @@ public abstract class UnitController : MonoBehaviour
     [SerializeField]
     public UnitData Data;
 
-    public UnitState CurrentState {
+    public ObjectState CurrentState {
         get => SM?.CurrentState ?? null;
     }
 

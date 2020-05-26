@@ -4,43 +4,44 @@ using UnityEngine;
 
 public class NormalUnitStates : States
 {
+
     // states[0] = new StringAndBool("Death", true);
     //     states[1] = new StringAndBool("Default");
     //     states[2] = new StringAndBool("PreBattle");
     //     states[3] = new StringAndBool("InBattle");
     //     states[4] = new StringAndBool("Frozen");
     //     states[5] = new StringAndBool("Berserk");
-    UnitState death;
-    public UnitState Death {get => death;}
-    UnitState preBattle;
-    public UnitState PreBattle {get => preBattle;}
-    UnitState inDirectBattle;
-    public UnitState InDirectBattle {get => inDirectBattle;}
-    UnitState frozen;
-    public UnitState Frozen {get => frozen;}
-    UnitState _default;
-    public UnitState Default {get => _default;}
-    UnitState initialState;
-    public UnitState InitialState {get => initialState;}
-    UnitState berserk;
-    public UnitState Berserk {get => berserk;}
-    UnitState postBattle;
-    public UnitState PostBattle {get => postBattle;}
+    ObjectState death;
+    public ObjectState Death {get => death;}
+    ObjectState preBattle;
+    public ObjectState PreBattle {get => preBattle;}
+    ObjectState inDirectBattle;
+    public ObjectState InDirectBattle {get => inDirectBattle;}
+    ObjectState frozen;
+    public ObjectState Frozen {get => frozen;}
+    ObjectState _default;
+    public ObjectState Default {get => _default;}
+    ObjectState initialState;
+    public ObjectState InitialState {get => initialState;}
+    ObjectState berserk;
+    public ObjectState Berserk {get => berserk;}
+    ObjectState postBattle;
+    public ObjectState PostBattle {get => postBattle;}
 
-    UnitState joinBattle;
-    public UnitState JoinBattle {get => joinBattle;}
+    ObjectState joinBattle;
+    public ObjectState JoinBattle {get => joinBattle;}
 
     public NormalUnitStates (MonoBehaviour mono) {
 
-        berserk = new UnitState(false, "Berserk", mono, Color.red);
-        initialState = new UnitState(false, "InitialState", mono, Color.black);
-        _default = new UnitState(false, "Default", mono, Color.green);
-        frozen = new UnitState(false, "Frozen", mono, Color.blue);
-        death = new UnitState(true, "Death", mono, Color.black);
-        preBattle = new UnitState(false, "PreBattle", mono, Color.magenta);
-        inDirectBattle = new UnitState(false, "InDirectBattle", mono, Color.red);
-        joinBattle = new UnitState(false, "JoinBattle", mono, Color.yellow);
-        postBattle = new UnitState(false, "PostBattle", mono, Color.cyan);
+        berserk = new ObjectState(false, "Berserk", mono, Color.red);
+        initialState = new ObjectState(false, "InitialState", mono, Color.black);
+        _default = new ObjectState(false, "Default", mono, Color.green);
+        frozen = new ObjectState(false, "Frozen", mono, Color.blue);
+        death = new ObjectState(true, "Death", mono, Color.black);
+        preBattle = new ObjectState(false, "PreBattle", mono, Color.magenta);
+        inDirectBattle = new ObjectState(false, "InDirectBattle", mono, Color.red);
+        joinBattle = new ObjectState(false, "JoinBattle", mono, Color.yellow);
+        postBattle = new ObjectState(false, "PostBattle", mono, Color.cyan);
 
     }
    

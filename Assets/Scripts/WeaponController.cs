@@ -8,6 +8,9 @@ using TMPro;
 
 public abstract class WeaponController : TowerComponent
 {
+    public Tower ParentTower;
+    public SpriteRenderer SR;
+    public abstract Vector2 ProjectileExitPoint {get;}
     public AnimancerComponent Animancer;
     public IEnumerator<WeaponController> AttackCoroutine = null;
     public WeaponData Data;
@@ -17,17 +20,21 @@ public abstract class WeaponController : TowerComponent
     }
 
     public abstract event Action onAttack;
-    
 
-
-
-     
-    
+    public abstract void OnAttack();
     public EnemyTargetBank TargetBank {get ; private set;}
 
     private void Awake() {
-        TargetBank = GetComponent<EnemyTargetBank>() ?? transform.parent.GetComponent<EnemyTargetBank>() ?? null;
+        SR = GetComponent<SpriteRenderer>() ?? null;
         Animancer = GetComponent<AnimancerComponent>() ?? null;
     }
+
+    
+
+    private void Start() {
+        TargetBank = GetComponentInChildren<EnemyTargetBank>() ?? ParentTower?.TargetBank ?? null;
+        PostStart();
+    }
+    public abstract void PostStart();
 
 }

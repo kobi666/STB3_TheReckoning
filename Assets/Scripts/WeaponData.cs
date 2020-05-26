@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class WeaponData 
 {
+    public Projectile projectilePrefab;
     
     [SerializeField]
     public DamageRange damageRange;
