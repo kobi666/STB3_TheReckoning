@@ -10,9 +10,9 @@ public class TestTower : MonoBehaviour
     PoolObjectQueue<Projectile> pool;
 
     private void Start() {
-        pool = GameObjectPool.Instance.GetProjectilePool(proj);
-        TestProj = pool.Get();
-        TestProj.gameObject.SetActive(true);
+        //pool = GameObjectPool.Instance.GetProjectilePool(proj);
+        //TestProj = pool.Get();
+        //TestProj.gameObject.SetActive(true);
         //TestProj.TestTarget = this.gameObject;
     }
 

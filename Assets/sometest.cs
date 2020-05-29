@@ -8,7 +8,7 @@ public class sometest : MonoBehaviour
     public GameObject root;
     public Quaternion ZeroAngle = new Quaternion(0,0,0,0);
     public Quaternion angle;
-
+    public bool b;
     
 
 

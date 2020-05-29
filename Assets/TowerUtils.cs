@@ -267,6 +267,7 @@ public class TowerPositionData {
 
     public static Vector2[] DirectionsClockwise8 = { new Vector2(0,1), new Vector2(1,1),new Vector2(1,0),new Vector2(1,-1),new Vector2(0,-1),new Vector2(-1,-1),new Vector2(-1,0),new Vector2(-1,1)};
     public static Vector2[] DirectionsClockwise4 = { new Vector2(0,1),new Vector2(1,0),new Vector2(0,-1),new Vector2(-1,0)};
+    public static Vector2[] DirectionsClockwise6 = {new Vector2(1,1),new Vector2(1,0),new Vector2(1,-1),new Vector2(-1,-1),new Vector2(-1,0),new Vector2(-1,1)};
     public static float[] AnglesClockwise8 = {90,45,360,315,270,225,180,135};
     public static float[] AnglesClockwise4 = {90,360,270,180};
     public static string[] DirectionNamesClockWise8 = {"UP","UP_RIGHT","RIGHT","DOWN_RIGHT","DOWN","DOWN_LEFT","LEFT","UP_LEFT"};

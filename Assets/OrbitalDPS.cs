@@ -3,9 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class OrbitalDPS : Tower
+public abstract class OrbitalDPS : TowerComponent
 {
-    public Dictionary<int, TowerComponent> Orbitals = new Dictionary<int, TowerComponent>();
+    public abstract Vector2[] OrbitalPositions {get;}
+    
+    public Vector2 myPos {get {
+        return transform.position;
+    }}
+    public abstract WeaponController[] Orbitals {get;set;}
 
+    
+    
+
+    public override void PostStart() {
+    }
     
 }
