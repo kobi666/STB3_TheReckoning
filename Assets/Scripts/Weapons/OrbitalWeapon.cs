@@ -12,12 +12,13 @@ public class OrbitalWeapon : WeaponController
     public GameObject referenceGOforRotation {get;set;}
 
     public void StartRotating() {
-        
+        roationCoroutine = Gutils.OrbitAroundTransformNoRotation()
     }
-    public void StopRotating() {
+    public  void StopRotating() {
 
     }
-    IEnumerator roationCoroutine;
+    public IEnumerator roationCoroutine; 
+    
     
     public override Vector2 ProjectileExitPoint {get => transform.position;}
 
