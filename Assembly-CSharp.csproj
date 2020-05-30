@@ -63,6 +63,7 @@
      <Compile Include="Assets\EnemyUnitUtils.cs" />
      <Compile Include="Assets\ExternalUtils\Direction.cs" />
      <Compile Include="Assets\GameObjectPool.cs" />
+     <Compile Include="Assets\Gutils.cs" />
      <Compile Include="Assets\LevelManager.cs" />
      <Compile Include="Assets\LifeBarmanager.cs" />
      <Compile Include="Assets\NormalTowerComponentStates.cs" />
@@ -72,6 +73,7 @@
      <Compile Include="Assets\PlayerUnitController2.cs" />
      <Compile Include="Assets\PlayerUnitControllerStaging.cs" />
      <Compile Include="Assets\Projectile.cs" />
+     <Compile Include="Assets\Rotator.cs" />
      <Compile Include="Assets\Samples\BasicEnemyMeleeUnit.cs" />
      <Compile Include="Assets\Samples\Input System\1.0.0-preview.5\Custom Binding Composite\CustomComposite.cs" />
      <Compile Include="Assets\Samples\TowerComponent.cs" />

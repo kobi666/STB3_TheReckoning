@@ -8,12 +8,30 @@ public class sometest : MonoBehaviour
     public GameObject root;
     public Quaternion ZeroAngle = new Quaternion(0,0,0,0);
     public Quaternion angle;
+
+    
     public bool b;
+    public bool btest() {
+        return b;
+    }
+
+    Vector3 postest() {
+        return root.transform.position;
+    }
+
+    IEnumerator testCoroutine(Vector3 pos) {
+        while (btest()) {
+            Debug.LogWarning(pos);
+            yield return new WaitForFixedUpdate();
+        }
+        yield break;
+    }
     
 
 
     private void Start() {
         angle = ZeroAngle;
+        StartCoroutine(testCoroutine(postest()));
     }
     // Update is called once per frame
     void Update()

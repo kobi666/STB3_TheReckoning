@@ -5,7 +5,20 @@ using System;
 
 public class OrbitalWeapon : WeaponController
 {
-    public OrbitalDPS ParentOrbitalComponent;
+    
+    public Transform OrbitBase{get;set;}
+    public float RoatationSpeed {get;set;}
+    public float DistanceFromOrbitalBase {get;set;}
+    public GameObject referenceGOforRotation {get;set;}
+
+    public void StartRotating() {
+        
+    }
+    public void StopRotating() {
+
+    }
+    IEnumerator roationCoroutine;
+    
     public override Vector2 ProjectileExitPoint {get => transform.position;}
 
     public override event Action onAttack;

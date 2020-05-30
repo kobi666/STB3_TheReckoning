@@ -12,7 +12,13 @@ public interface IHasOrbitals
 }
 
 public interface IOrbital {
+
+    public Transform OrbitBase{get;set;}
     float RoatationSpeed {get;set;}
     float DistanceFromOrbitalBase {get;set;}
+    GameObject referenceGOforRotation {get;set;}
+
+    void StartRotating();
+    void StopRotating();
 }
 
