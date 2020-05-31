@@ -6,7 +6,15 @@ using System;
 public class Utils
 {
 
-    
+    public static Vector3 V2toV3(Vector2 v) {
+        Vector3 v3 = new Vector3(v.x, v.y, 0);
+        return v3;
+    }
+
+    public static Vector2 V3toV2(Vector3 v) {
+        Vector2 v2 = new Vector2(v.x, v.y);
+        return v2;
+    }
 
    
     

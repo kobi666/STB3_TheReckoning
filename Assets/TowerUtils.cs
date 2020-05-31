@@ -5,7 +5,7 @@ using System;
 
 public class TowerUtils : MonoBehaviour
 {
-    
+
 
 
     public static TowerSlotActions DefaultSlotActions = new TowerSlotActions(null,null,null,null);
@@ -266,7 +266,20 @@ public class TowerPositionData {
         Distance = _distance;
     }
 }
-
+    public static Vector2[] GetDirections(int numOfDirections) {
+        switch (numOfDirections) {
+            case 4 :
+                return DirectionsClockwise4;
+            case 6 :
+                return DirectionsClockwise6;
+            case 8 :
+                return DirectionsClockwise8;
+            default:
+                Debug.LogWarning("No Direction set defined for " + numOfDirections);
+                break;
+        }
+        return new Vector2[0];
+    }
     public static Vector2[] DirectionsClockwise8 = { new Vector2(0,1), new Vector2(1,1),new Vector2(1,0),new Vector2(1,-1),new Vector2(0,-1),new Vector2(-1,-1),new Vector2(-1,0),new Vector2(-1,1)};
     public static Vector2[] DirectionsClockwise4 = { new Vector2(0,1),new Vector2(1,0),new Vector2(0,-1),new Vector2(-1,0)};
     public static Vector2[] DirectionsClockwise6 = {new Vector2(1,1),new Vector2(1,0),new Vector2(1,-1),new Vector2(-1,-1),new Vector2(-1,0),new Vector2(-1,1)};

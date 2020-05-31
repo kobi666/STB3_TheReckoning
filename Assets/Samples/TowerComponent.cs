@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class TowerComponent : MonoBehaviour
 {
     // Start is called before the first frame update
+    public TowerComponentData Data;
     public Tower ParentTower;
     public EnemyTargetBank TargetBank {get ; private set;}
 

@@ -8,12 +8,10 @@ using TMPro;
 
 public abstract class WeaponController : TowerComponent
 {
-    
     public SpriteRenderer SR;
     public abstract Vector2 ProjectileExitPoint {get;}
     public AnimancerComponent Animancer;
     public IEnumerator<WeaponController> AttackCoroutine = null;
-    public WeaponData Data;
     
     public EnemyUnitController Target {
         get => Data.EnemyTarget;

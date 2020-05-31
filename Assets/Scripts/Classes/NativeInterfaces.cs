@@ -11,14 +11,19 @@ public interface IHasOrbitals
     
 }
 
-public interface IOrbital {
+public interface IOrbital<T> {
 
-    public Transform OrbitBase{get;set;}
+    Transform OrbitalTransform {get;}
+    string OrbitalName {get;}
+    bool ShouldRotate {get;set;}
+    Transform OrbitBase{get;set;}
     float RoatationSpeed {get;set;}
     float DistanceFromOrbitalBase {get;set;}
     GameObject referenceGOforRotation {get;set;}
 
-    void StartRotating();
-    void StopRotating();
+    void StartOrbiting(IEnumerator placeHolderCoroutine);
+    void StopOrbiting();
+        
+    IEnumerator RotationCoroutine {get;set;}
 }
 
