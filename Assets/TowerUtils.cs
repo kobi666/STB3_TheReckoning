@@ -6,7 +6,7 @@ using System;
 public class TowerUtils : MonoBehaviour
 {
 
-
+    public static void AddOrbitalGun(OrbitalDPS self, WeaponRotator rotator, OrbitalWeapon gun)
 
     public static TowerSlotActions DefaultSlotActions = new TowerSlotActions(null,null,null,null);
 

@@ -12,6 +12,10 @@ public class TowerComponentData
             numOfOrbitals = value;
         }
     }
+
+    public OrbitalWeapon OrbitalGunPrefab;
+
+    public int MaxNumberOfOrbitals;
     public Projectile projectilePrefab;
     
     [SerializeField]

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class WeaponRotator : Rotator<OrbitalWeapon>
 {
-    TowerComponent parentTowerComponent;
+    OrbitalDPS parentTowerComponent;
     public TowerComponent ParentTowerComponent {get=> parentTowerComponent;set { ParentTowerComponent = value;}}
     // Start is called before the first frame update
     public override int MaxNumOfOrbitals {
-        get => ParentTowerComponent.Data.NumOfOrbitals;
+        get => ParentTowerComponent.Data.MaxNumberOfOrbitals;
     }
 }

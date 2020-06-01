@@ -51,23 +51,33 @@ public abstract class Rotator<T> : MonoBehaviour where T : IOrbital<T>
     }
 
     public void AddOrbital(T t) {
-        if (OrbitalList.ContainsKey(t.OrbitalName)) {
-            return;
+        if (OrbitalList.Count <= MaxNumOfOrbitals) {
+            if (OrbitalList.ContainsKey(t.OrbitalName)) {
+                return;
+            }
+            else {
+                OrbitalList.Add(t.OrbitalName, (t, true));
+            }
+            for (int i = 0 ; i <= OrbitalList.Count ; i++) {
+                OrbitalList.Values[i].Item1.OrbitalTransform.position = Utils.V2toV3(OrbitalDirections(MaxNumOfOrbitals)[i]);
+            }
         }
         else {
-            OrbitalList.Add(t.OrbitalName, (t, true));
-        }
-        for (int i = 0 ; i <= OrbitalList.Count ; i++) {
-            OrbitalList.Values[i].Item1.OrbitalTransform.position = Utils.V2toV3(OrbitalDirections(MaxNumOfOrbitals)[i]);
+            Debug.LogWarning("Max num of Orbitals Reached");
         }
     }
 
     public void RemoveOrbital(T t) {
-        if (OrbitalList.ContainsKey(t.OrbitalName)) {
-            OrbitalList.Remove(t.OrbitalName);
-            for (int i = 0 ; i <= OrbitalList.Count ; i++) {
-            OrbitalList.Values[i].Item1.OrbitalTransform.position = Utils.V2toV3(OrbitalDirections(MaxNumOfOrbitals)[i]);
-                }
+        if (OrbitalList.Count >= 0) {
+            if (OrbitalList.ContainsKey(t.OrbitalName)) {
+                OrbitalList.Remove(t.OrbitalName);
+                for (int i = 0 ; i <= OrbitalList.Count ; i++) {
+                OrbitalList.Values[i].Item1.OrbitalTransform.position = Utils.V2toV3(OrbitalDirections(MaxNumOfOrbitals)[i]);
+                    }
+            }
+        }
+        else {
+            Debug.LogWarning("Min number of Orbitals Reached");
         }
     }
 
