@@ -19,7 +19,7 @@ public class TestInput : MonoBehaviour
         float[] degrees = {0,60,120,180,240,300,360};
         foreach (var item in degrees)
         {
-            Debug.LogWarning(DegreeToVector2(item) * distance);
+            //GameObject n = Instantiate(new GameObject, DegreeToVector2)
         }
     }
     public static TestInput instance;
