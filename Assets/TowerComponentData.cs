@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class TowerComponentData 
 {
+    public float distanceFromRotatorBase;
+    public float RoatationSpeed;
     int numOfOrbitals;
     public int NumOfOrbitals {
         get => numOfOrbitals;

@@ -5,6 +5,7 @@ using System;
 
 public class TestInput : MonoBehaviour
 {
+    public static TestInput instance;
     PlayerInput playerInput;
     // Start is called before the first frame update
     public event Action onW;
@@ -19,9 +20,15 @@ public class TestInput : MonoBehaviour
     
     void Start()
     {
+        
+        instance = this;
         playerInput.TestButtons.W.performed += ctx => OnW();
         playerInput.TestButtons.D.performed += ctx => OnD();
 
+    }
+
+    private void Awake() {
+        playerInput = new PlayerInput();
     }
 
     private void OnEnable() {

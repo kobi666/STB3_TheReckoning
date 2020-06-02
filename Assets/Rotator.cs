@@ -50,6 +50,8 @@ public abstract class Rotator<T> : MonoBehaviour where T : IOrbital<T>
         get => orbitalList;
     }
 
+    
+
     public void AddOrbital(T t) {
         if (OrbitalList.Count <= MaxNumOfOrbitals) {
             if (OrbitalList.ContainsKey(t.OrbitalName)) {
@@ -58,8 +60,11 @@ public abstract class Rotator<T> : MonoBehaviour where T : IOrbital<T>
             else {
                 OrbitalList.Add(t.OrbitalName, (t, true));
             }
-            for (int i = 0 ; i <= OrbitalList.Count ; i++) {
-                OrbitalList.Values[i].Item1.OrbitalTransform.position = Utils.V2toV3(OrbitalDirections(MaxNumOfOrbitals)[i]);
+            for (int i = 0 ; i < OrbitalList.Count ; i++) {
+                T orb = OrbitalList.Values[i].Item1;
+                Vector2 v = new Vector2(OrbitalDirections(MaxNumOfOrbitals)[i].x * orb.DistanceFromOrbitalBase, OrbitalDirections(MaxNumOfOrbitals)[i].y * orb.DistanceFromOrbitalBase);
+                orb.OrbitalTransform.position = orb.OrbitBase.position + Utils.V2toV3(v);
+                EnableRotationForOrbital(orb.OrbitalName);
             }
         }
         else {
