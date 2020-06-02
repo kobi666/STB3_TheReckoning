@@ -10,6 +10,7 @@ public class Gutils
         while (true) {
             self.RotateAround(basePosTransform.position, rotationDirection, rotationSpeed * StaticObjects.instance.DeltaGameTime);
             self.rotation = zero;
+            yield return new WaitForFixedUpdate();
         }
     }
 
@@ -17,6 +18,7 @@ public class Gutils
         while (true) {
             self.RotateAround(basePosTransform.position, rotationDirection, rotationSpeed * StaticObjects.instance.DeltaGameTime);
             self.rotation = rotationAngleTransform.rotation;
+            yield return new WaitForFixedUpdate();
         }
     }
 }

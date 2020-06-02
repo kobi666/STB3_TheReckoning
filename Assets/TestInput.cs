@@ -5,6 +5,23 @@ using System;
 
 public class TestInput : MonoBehaviour
 {
+    public float Distance = 1;
+    public static Vector2 RadianToVector2(float radian)
+        {
+            return new Vector2(Mathf.Cos(radian), Mathf.Sin(radian));
+        }
+    public static Vector2 DegreeToVector2(float degree)
+        {
+            return RadianToVector2(degree * Mathf.Deg2Rad);
+        }
+
+    public void PrintPositions(float distance) {
+        float[] degrees = {0,60,120,180,240,300,360};
+        foreach (var item in degrees)
+        {
+            Debug.LogWarning(DegreeToVector2(item) * distance);
+        }
+    }
     public static TestInput instance;
     PlayerInput playerInput;
     // Start is called before the first frame update
@@ -20,7 +37,7 @@ public class TestInput : MonoBehaviour
     
     void Start()
     {
-        
+        PrintPositions(Distance);
         instance = this;
         playerInput.TestButtons.W.performed += ctx => OnW();
         playerInput.TestButtons.D.performed += ctx => OnD();
