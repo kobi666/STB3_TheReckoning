@@ -22,6 +22,29 @@ public class TestInput : MonoBehaviour
             //GameObject n = Instantiate(new GameObject, DegreeToVector2)
         }
     }
+
+    float ff;
+    public float FF {
+        get=>ff;
+        set {
+            if (value > 3) {
+                ff = 0;
+            }
+        }
+    }
+
+    public float getFF() {
+        return FF;
+    }
+
+    public IEnumerator testCoroutine(float initialF) {
+        //WeaponUtils.AngleFloat af = new WeaponUtils.AngleFloat(initialF);
+        while (true) {
+            //af.F += Time.deltaTime;
+            //Debug.LogWarning(af.F);
+            yield return new WaitForFixedUpdate();
+        }
+    }
     public static TestInput instance;
     PlayerInput playerInput;
     // Start is called before the first frame update
@@ -34,13 +57,17 @@ public class TestInput : MonoBehaviour
     public void OnD(){
         onD?.Invoke();
     }
+
+    
     
     void Start()
     {
         PrintPositions(Distance);
         instance = this;
+        FF += Time.deltaTime;
         playerInput.TestButtons.W.performed += ctx => OnW();
         playerInput.TestButtons.D.performed += ctx => OnD();
+        StartCoroutine(testCoroutine(FF));
 
     }
 
