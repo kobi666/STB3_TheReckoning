@@ -27,6 +27,7 @@ public class TestInput : MonoBehaviour
     public float FF {
         get=>ff;
         set {
+            ff = value;
             if (value > 3) {
                 ff = 0;
             }
@@ -37,11 +38,11 @@ public class TestInput : MonoBehaviour
         return FF;
     }
 
-    public IEnumerator testCoroutine(float initialF) {
+    public IEnumerator testCoroutine(float fff) {
         //WeaponUtils.AngleFloat af = new WeaponUtils.AngleFloat(initialF);
         while (true) {
-            //af.F += Time.deltaTime;
-            //Debug.LogWarning(af.F);
+            fff += Time.deltaTime;
+            Debug.LogWarning(fff);
             yield return new WaitForFixedUpdate();
         }
     }

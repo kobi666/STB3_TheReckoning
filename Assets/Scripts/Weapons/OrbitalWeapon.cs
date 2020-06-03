@@ -27,6 +27,8 @@ public abstract class OrbitalWeapon : WeaponController, IOrbital<OrbitalWeapon>
         }
     }
 
+    
+
     public Vector2 AngleToPosition(float angle) {
         return WeaponUtils.DegreeToVector2(angle);
     }
