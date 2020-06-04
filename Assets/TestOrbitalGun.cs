@@ -6,8 +6,9 @@ using System;
 public class TestOrbitalGun : OrbitalWeapon
 {
     // Start is called before the first frame update
+    
     public override GameObject referenceGOforRotation {get;set;}
-    public override float RoatationSpeed {get => Data.RoatationSpeed; set { Data.RoatationSpeed = value;}}
+    public override float OrbitingSpeed {get => Data.RoatationSpeed; set { Data.RoatationSpeed = value;}}
     public override bool ShouldRotate {get; set;}
 
     public override event Action onAttack;
@@ -21,6 +22,10 @@ public class TestOrbitalGun : OrbitalWeapon
     public override float DistanceFromOrbitalBase {get => Data.distanceFromRotatorBase;set {Data.distanceFromRotatorBase = value;}}
 
     public override void PostStart() {
+
+    }
+
+    public override void PostAwake() {
 
     }
 

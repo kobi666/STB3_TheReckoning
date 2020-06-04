@@ -5,6 +5,7 @@ using System;
 using UnityEngine.Events;
 public class TestProjectileWeapon : WeaponController
 {
+    
     Vector2 projectileExitPoint;
     public override Vector2 ProjectileExitPoint {
         get => ProjectileExitPoint;
@@ -12,6 +13,10 @@ public class TestProjectileWeapon : WeaponController
     public override event Action onAttack;
     public override void OnAttack() {
         onAttack?.Invoke();
+    }
+
+    public override void PostAwake() {
+
     }
 
     public override void PostStart() {

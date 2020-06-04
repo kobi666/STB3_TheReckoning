@@ -40,14 +40,18 @@ public class EnemyTargetBank : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.CompareTag("Enemy")) {
         tempEc = other.gameObject.GetComponent<EnemyUnitController>() ?? null;
         AddObjectToTargets(tempEc);
         targetEnteredRange?.Invoke(tempEc);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        RemoveFromTargetsGO(other.gameObject);
+        if (other.gameObject.CompareTag("Enemy")) {
+        RemoveFromTargetsString(other.name);
         targetLeftRange?.Invoke(other.name);
+        }
     }
 
     public void RemoveFromTargetsString(String name) {
@@ -60,7 +64,6 @@ public class EnemyTargetBank : MonoBehaviour
     }
 
     public void RemoveFromTargetsGO(GameObject go) {
-        if (go.CompareTag("Enemy")) {
             try {
                 targets.Remove(go.name);
 //                Debug.LogWarning("TargetRemoved");
@@ -68,7 +71,6 @@ public class EnemyTargetBank : MonoBehaviour
             catch(Exception e) {
                 Debug.LogWarning(e.Message);
             }
-        }
     }
 
     public EnemyUnitController FindSingleTargetNearestToEndOfSpline() {

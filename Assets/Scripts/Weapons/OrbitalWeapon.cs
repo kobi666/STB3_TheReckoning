@@ -11,7 +11,7 @@ public abstract class OrbitalWeapon : WeaponController, IOrbital<OrbitalWeapon>
     
     Transform orbitBase;
     public Transform OrbitBase{get => orbitBase;set { orbitBase = value;}}
-    public abstract float RoatationSpeed {get;set;}
+    public abstract float OrbitingSpeed {get;set;}
     public abstract float DistanceFromOrbitalBase {get;set;}
     public abstract GameObject referenceGOforRotation {get;set;}
 
@@ -50,7 +50,7 @@ public abstract class OrbitalWeapon : WeaponController, IOrbital<OrbitalWeapon>
 
     public virtual IEnumerator DefaultOrbitCoroutine() {
         while (true) {
-            AngleForOrbit += StaticObjects.instance.DeltaGameTime * RoatationSpeed;
+            AngleForOrbit += StaticObjects.instance.DeltaGameTime * OrbitingSpeed;
             transform.position = (Vector2)OrbitBase.position + (WeaponUtils.DegreeToVector2(AngleForOrbit) * DistanceFromOrbitalBase);
             yield return new WaitForFixedUpdate();
         }

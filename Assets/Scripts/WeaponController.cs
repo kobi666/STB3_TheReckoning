@@ -8,23 +8,44 @@ using TMPro;
 
 public abstract class WeaponController : TowerComponent
 {
-    public SpriteRenderer SR;
+    public override event Action<EnemyUnitController> onEnemyEnteredRange;
+    public override void OnEnemyEnteredRange(EnemyUnitController ec) {
+        onEnemyEnteredRange?.Invoke(ec);
+    }
     public abstract Vector2 ProjectileExitPoint {get;}
-    public AnimancerComponent Animancer;
+    
     public IEnumerator<WeaponController> AttackCoroutine = null;
     
     public EnemyUnitController Target {
         get => Data.EnemyTarget;
     }
 
+    public event Action onAttackInitiate;
+    public void OnAttackInitiate() {
+        onAttackInitiate?.Invoke();
+    }
+
+    public event Action<string> onEnemyLeftRange;
+    public void OnEnemyLeftRange(string enemyName) {
+        onEnemyLeftRange?.Invoke(enemyName);
+    }
+
+    public virtual void GetEnemyTarget(EnemyUnitController ec) {
+        if (Data.EnemyTarget == null) {
+
+        }
+    }
+
+    
+
     public abstract event Action onAttack;
 
     public abstract void OnAttack();
     
-
-    private void Awake() {
-        SR = GetComponent<SpriteRenderer>() ?? null;
-        Animancer = GetComponent<AnimancerComponent>() ?? null;
+    public abstract void PostStart();
+    private void Start() {
+        TargetBank.targetEnteredRange += OnEnemyEnteredRange;
+        PostStart();
     }
 
     
