@@ -29,7 +29,7 @@ public abstract class Rotator<T> : MonoBehaviour where T : IOrbital<T>
             }
         }
         if (!OrbitalsOrbitBound) {
-            OrbitalList[orbName].Item1.StartOrbiting(OrbitalList[orbName].Item1.RotationCoroutine);
+            OrbitalList[orbName].Item1.ReStartOrbiting();
         }
     }
 
@@ -62,13 +62,13 @@ public abstract class Rotator<T> : MonoBehaviour where T : IOrbital<T>
             else {
                 OrbitalList.Add(t.OrbitalName, (t, true));
             }
-            var degreesbetween = 360 / MaxNumOfOrbitals;
+            //var degreesbetween = 360 / MaxNumOfOrbitals;
             for (int i = 0 ; i < OrbitalList.Count ; i++) {
                 T orb = OrbitalList.Values[i].Item1;
-                //var orbPosition = 
-                Vector2 v = OrbitalDirections(MaxNumOfOrbitals)[i] * orb.DistanceFromOrbitalBase;
-                orb.OrbitalTransform.position = orb.OrbitBase.position + Utils.V2toV3(v);
-                
+                orb.AngleForOrbit = WeaponUtils.GetOrbRotationDegrees(MaxNumOfOrbitals)[i];
+                //Vector2 v = OrbitalDirections(MaxNumOfOrbitals)[i] * orb.DistanceFromOrbitalBase;
+                orb.OrbitalTransform.position = WeaponUtils.DegreeToVector2(orb.AngleForOrbit) * orb.DistanceFromOrbitalBase;
+                EnableRotationForOrbital(orb.OrbitalName);
             }
         }
         else {
@@ -93,7 +93,7 @@ public abstract class Rotator<T> : MonoBehaviour where T : IOrbital<T>
     public void StartRotationAllOrbitals() {
         foreach (var item in OrbitalList)
         {
-                item.Value.Item1.StartOrbiting(item.Value.Item1.RotationCoroutine);
+                item.Value.Item1.ReStartOrbiting();
         }
     }
 

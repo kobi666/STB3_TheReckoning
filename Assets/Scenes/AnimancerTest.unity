@@ -962,7 +962,7 @@ MonoBehaviour:
     distanceFromRotatorBase: 0
     RoatationSpeed: 0
     OrbitalGunPrefab: {fileID: 1253742724}
-    MaxNumberOfOrbitals: 6
+    MaxNumberOfOrbitals: 3
     projectilePrefab: {fileID: 0}
     damageRange:
       min: 0
@@ -1438,7 +1438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data:
-    distanceFromRotatorBase: 2
+    distanceFromRotatorBase: 1.6
     RoatationSpeed: 90
     OrbitalGunPrefab: {fileID: 0}
     MaxNumberOfOrbitals: 0

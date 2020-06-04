@@ -21,9 +21,11 @@ public interface IOrbital<T> {
     float DistanceFromOrbitalBase {get;set;}
     GameObject referenceGOforRotation {get;set;}
 
-    void StartOrbiting(IEnumerator placeHolderCoroutine);
+    float AngleForOrbit {get;set;}
+
+    void ReStartOrbiting();
     void StopOrbiting();
         
-    IEnumerator RotationCoroutine {get;set;}
+    IEnumerator OrbitingCoroutine {get;set;}
 }
 

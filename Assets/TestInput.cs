@@ -42,7 +42,7 @@ public class TestInput : MonoBehaviour
         //WeaponUtils.AngleFloat af = new WeaponUtils.AngleFloat(initialF);
         while (true) {
             fff += Time.deltaTime;
-            Debug.LogWarning(fff);
+//            Debug.LogWarning(fff);
             yield return new WaitForFixedUpdate();
         }
     }
@@ -63,17 +63,19 @@ public class TestInput : MonoBehaviour
     
     void Start()
     {
+        
+
+    }
+
+    private void Awake() {
+        playerInput = new PlayerInput();
+        instance = this;
         PrintPositions(Distance);
         instance = this;
         FF += Time.deltaTime;
         playerInput.TestButtons.W.performed += ctx => OnW();
         playerInput.TestButtons.D.performed += ctx => OnD();
         StartCoroutine(testCoroutine(FF));
-
-    }
-
-    private void Awake() {
-        playerInput = new PlayerInput();
     }
 
     private void OnEnable() {
