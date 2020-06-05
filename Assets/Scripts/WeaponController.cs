@@ -44,7 +44,9 @@ public abstract class WeaponController : TowerComponent
     
     public abstract void PostStart();
     private void Start() {
+        if (TargetBank != null) {
         TargetBank.targetEnteredRange += OnEnemyEnteredRange;
+        }
         PostStart();
     }
 

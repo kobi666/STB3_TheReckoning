@@ -29,4 +29,8 @@ public class TestOrbitalGun : OrbitalWeapon
 
     }
 
+    private void Update() {
+        
+    }
+
 }

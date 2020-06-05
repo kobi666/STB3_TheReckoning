@@ -647,6 +647,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d38ed56a53f37439a96cd2912d2676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SR: {fileID: 0}
+  Animancer: {fileID: 0}
   Data:
     distanceFromRotatorBase: 0
     RoatationSpeed: 0
@@ -659,8 +661,6 @@ MonoBehaviour:
     FireRate: 0
     playerTarget: {fileID: 0}
   ParentTower: {fileID: 0}
-  SR: {fileID: 0}
-  Animancer: {fileID: 0}
 --- !u!1 &507441354
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,11 +958,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9963f3ac0b6d3ad4785e17e773311784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SR: {fileID: 0}
+  Animancer: {fileID: 0}
   Data:
     distanceFromRotatorBase: 0
     RoatationSpeed: 0
     OrbitalGunPrefab: {fileID: 1253742724}
-    MaxNumberOfOrbitals: 3
+    MaxNumberOfOrbitals: 6
     projectilePrefab: {fileID: 0}
     damageRange:
       min: 0
@@ -1103,7 +1105,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1084299347
+--- !u!1 &1112874949
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1111,9 +1113,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1084299350}
-  - component: {fileID: 1084299349}
-  - component: {fileID: 1084299348}
+  - component: {fileID: 1112874952}
+  - component: {fileID: 1112874951}
+  - component: {fileID: 1112874950}
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
@@ -1121,26 +1123,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1084299348
+--- !u!114 &1112874950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1084299347}
+  m_GameObject: {fileID: 1112874949}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c88bb94591fd88a4e990222a5192ae92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Distance: 3
---- !u!114 &1084299349
+--- !u!114 &1112874951
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1084299347}
+  m_GameObject: {fileID: 1112874949}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9ee36a49ba1b434bb28dfe7f792ce98, type: 3}
@@ -1148,13 +1150,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TestProj: {fileID: 0}
   proj: {fileID: 0}
---- !u!4 &1084299350
+--- !u!4 &1112874952
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1084299347}
+  m_GameObject: {fileID: 1112874949}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.6025016, y: 0.3655453, z: -0.8183594}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -1437,6 +1439,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f6edec5d6f56c4d8415ada3460241b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SR: {fileID: 0}
+  Animancer: {fileID: 0}
   Data:
     distanceFromRotatorBase: 1.6
     RoatationSpeed: 90
@@ -1449,8 +1453,6 @@ MonoBehaviour:
     FireRate: 50
     playerTarget: {fileID: 0}
   ParentTower: {fileID: 0}
-  SR: {fileID: 0}
-  Animancer: {fileID: 0}
   projectileExitPoint: {x: 0, y: 0}
 --- !u!4 &1253742725
 Transform:
