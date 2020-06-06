@@ -5,6 +5,7 @@ using System;
 
 public abstract class OrbitalWeapon : WeaponController, IOrbital<OrbitalWeapon>
 {
+    
     public string OrbitalName {get => name;}
     public Transform OrbitalTransform {get => transform;}
     public abstract bool ShouldRotate {get;set;}

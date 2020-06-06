@@ -2,8 +2,6 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <CscToolPath>C:\Program Files\Unity\Hub\Editor\2019.2.12f1\Editor\Data\Tools\RoslynScripts</CscToolPath>
-    <CscToolExe>unity_csc.bat</CscToolExe>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -46,16 +44,7 @@
     <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="UnityEngine">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2019.2.12f1\Editor\Data\Managed/UnityEngine/UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2019.2.12f1\Editor\Data\Managed/UnityEditor.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-     <Compile Include="Assets\ACT.cs" />
+  <ItemGroup>     <Compile Include="Assets\ACT.cs" />
      <Compile Include="Assets\AnimancerTest.cs" />
      <Compile Include="Assets\AnimationcontrollerTest.cs" />
      <Compile Include="Assets\AnimationTest.cs" />
@@ -129,6 +118,7 @@
      <Compile Include="Assets\TestInput.cs" />
      <Compile Include="Assets\TestOrbitalGun.cs" />
      <Compile Include="Assets\TestOrbitalGunsController.cs" />
+     <Compile Include="Assets\testRotation.cs" />
      <Compile Include="Assets\TestScript.cs" />
      <Compile Include="Assets\TestTower.cs" />
      <Compile Include="Assets\TestTowerController.cs" />
@@ -194,6 +184,9 @@
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>E:/_UnityProjects/Super Tower Brothers 3 - The Reckoning/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine">
+ <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -371,6 +364,9 @@
  </Reference>
  <Reference Include="UnityEngine.XRModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor">
+ <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.12f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
  </Reference>
  <Reference Include="Animancer.Lite">
  <HintPath>E:/_UnityProjects/Super Tower Brothers 3 - The Reckoning/Assets/Plugins/Animancer/Animancer.Lite.dll</HintPath>

@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using Animancer;
 using TMPro;
 
+
 public abstract class WeaponController : TowerComponent
 {
     public override event Action<EnemyUnitController> onEnemyEnteredRange;
@@ -20,9 +21,15 @@ public abstract class WeaponController : TowerComponent
         get => Data.EnemyTarget;
     }
 
-    public event Action onAttackInitiate;
-    public void OnAttackInitiate() {
-        onAttackInitiate?.Invoke();
+    public event Action<WeaponController, EnemyUnitController> onAttackInitiate;
+    public void OnAttackInitiate(EnemyUnitController ec) {
+        onAttackInitiate?.Invoke(this, ec);
+    }
+
+    public event Action onAttackCease;
+
+    public void OnAttackCease() {
+        onAttackCease?.Invoke();
     }
 
     public event Action<string> onEnemyLeftRange;

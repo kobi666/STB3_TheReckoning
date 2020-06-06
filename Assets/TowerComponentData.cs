@@ -28,7 +28,15 @@ public class TowerComponentData
     
     [SerializeField]
     public EnemyUnitController EnemyTarget {
-        get => enemyTarget;
+        get { if (enemyTarget.IsTargetable()) 
+            {
+                return enemyTarget;
+            }
+            else
+            {
+                return null;
+            }
+}
         set {
             enemyTarget = value;
         }

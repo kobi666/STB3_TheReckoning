@@ -5,6 +5,44 @@ using System;
 
 public class WeaponUtils 
 {
+    public static void StandardOnEnemyEnteredRange(WeaponController self, EnemyUnitController newEnemy) {
+        EnemyUnitController currentTarget = self.Data.EnemyTarget;
+        if (currentTarget == null) {
+            self.Data.EnemyTarget = newEnemy;
+            self.OnAttackInitiate(self.Data.EnemyTarget);
+        }
+        if (currentTarget != null) {
+            if (newEnemy.Proximity < currentTarget.Proximity) {
+                self.Data.EnemyTarget = newEnemy;
+                self.OnAttackInitiate(self.Data.EnemyTarget);
+            }
+        }
+    }
+
+    public static IEnumerator RotateTowardsEnemyTargetUnit(Transform self, EnemyUnitController target, float rotationSpeed) {
+        Transform targetTransform = target.transform;
+        while (target.IsTargetable()) {
+            Vector2 vecToTarget = targetTransform.position - self.position;
+            float angleToTarget = Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg;
+            Quaternion q = Quaternion.AngleAxis(angleToTarget, Vector3.forward);
+            self.rotation = Quaternion.Slerp(self.rotation, q, StaticObjects.instance.DeltaGameTime * rotationSpeed);
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    public static IEnumerator RotateTowardsTargetGO(Transform self, Transform target, float rotationSpeed) {
+        while (true) {
+            Vector2 vecToTarget = target.position - self.position;
+            float angleToTarget = Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg;
+            Quaternion q = Quaternion.AngleAxis(angleToTarget, Vector3.forward);
+            self.rotation = Quaternion.Slerp(self.rotation, q, StaticObjects.instance.DeltaGameTime * rotationSpeed);
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    public static IEnumerator IdleRotation() {
+        yield break;
+    }
 
     public static Vector2 RadianToVector2(float radian)
         {

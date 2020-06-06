@@ -964,7 +964,7 @@ MonoBehaviour:
     distanceFromRotatorBase: 0
     RoatationSpeed: 0
     OrbitalGunPrefab: {fileID: 1253742724}
-    MaxNumberOfOrbitals: 6
+    MaxNumberOfOrbitals: 4
     projectilePrefab: {fileID: 0}
     damageRange:
       min: 0
@@ -1104,65 +1104,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1112874949
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1112874952}
-  - component: {fileID: 1112874951}
-  - component: {fileID: 1112874950}
-  m_Layer: 0
-  m_Name: Test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1112874950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1112874949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c88bb94591fd88a4e990222a5192ae92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Distance: 3
---- !u!114 &1112874951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1112874949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9ee36a49ba1b434bb28dfe7f792ce98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TestProj: {fileID: 0}
-  proj: {fileID: 0}
---- !u!4 &1112874952
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1112874949}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6025016, y: 0.3655453, z: -0.8183594}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1120075565
 GameObject:
@@ -1420,6 +1361,7 @@ GameObject:
   - component: {fileID: 1253742725}
   - component: {fileID: 1253742724}
   - component: {fileID: 1253742726}
+  - component: {fileID: 1253742727}
   m_Layer: 0
   m_Name: OrbitalGun
   m_TagString: Untagged
@@ -1517,6 +1459,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1253742727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253742723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec7f16d0dddcb74798da19a5ec0d505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationTarget: {fileID: 1005598593}
+  rspeed: 50
 --- !u!1 &1303220752
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,6 +1925,65 @@ MonoBehaviour:
   moveAnimation: {fileID: 7400000, guid: 762a51d0b0b971b42a87510ef05f9363, type: 2}
   AttackAnimation: {fileID: 7400000, guid: d19cc2901ea37fe4da479f230e1f5f2a, type: 2}
   IdleAnimation: {fileID: 7400000, guid: b7d179834f365ce44964566074c1c437, type: 2}
+--- !u!1 &1918679619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1918679622}
+  - component: {fileID: 1918679621}
+  - component: {fileID: 1918679620}
+  m_Layer: 0
+  m_Name: Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1918679620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918679619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88bb94591fd88a4e990222a5192ae92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Distance: 3
+--- !u!114 &1918679621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918679619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9ee36a49ba1b434bb28dfe7f792ce98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TestProj: {fileID: 0}
+  proj: {fileID: 0}
+--- !u!4 &1918679622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918679619}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.6025016, y: 0.3655453, z: -0.8183594}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2008910479
 GameObject:
   m_ObjectHideFlags: 0
