@@ -9,9 +9,9 @@ using TMPro;
 
 public abstract class WeaponController : TowerComponent
 {
-    public override event Action<EnemyUnitController> onEnemyEnteredRange;
-    public override void OnEnemyEnteredRange(EnemyUnitController ec) {
-        onEnemyEnteredRange?.Invoke(ec);
+    public event Action<WeaponController,EnemyUnitController> onEnemyEnteredRange;
+    public virtual void OnEnemyEnteredRange(EnemyUnitController ec) {
+        onEnemyEnteredRange?.Invoke(this,ec);
     }
     public abstract Vector2 ProjectileExitPoint {get;}
     
@@ -53,6 +53,7 @@ public abstract class WeaponController : TowerComponent
     private void Start() {
         if (TargetBank != null) {
         TargetBank.targetEnteredRange += OnEnemyEnteredRange;
+        onEnemyEnteredRange += WeaponUtils.StandardOnEnemyEnteredRange;
         }
         PostStart();
     }

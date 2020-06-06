@@ -5,14 +5,19 @@ using System;
 
 public abstract class OrbitalWeapon : WeaponController, IOrbital<OrbitalWeapon>
 {
-    
+    [SerializeField]
+    float orbitingSpeed;
+    public float OrbitingSpeed {get => orbitingSpeed; set {orbitingSpeed = value;}}
+
+    [SerializeField]
+    float rotationSpeed;
+    public float RotationSpeed {get => rotationSpeed; set {rotationSpeed =value;}}
     public string OrbitalName {get => name;}
     public Transform OrbitalTransform {get => transform;}
     public abstract bool ShouldRotate {get;set;}
     
     Transform orbitBase;
     public Transform OrbitBase{get => orbitBase;set { orbitBase = value;}}
-    public abstract float OrbitingSpeed {get;set;}
     public abstract float DistanceFromOrbitalBase {get;set;}
     public abstract GameObject referenceGOforRotation {get;set;}
 
@@ -69,7 +74,31 @@ public abstract class OrbitalWeapon : WeaponController, IOrbital<OrbitalWeapon>
         }
         OrbitingCoroutine = null;
     }
+
+    public virtual void StartRotatingTowardsTarget() {
+        StopRotating();
+        RotationCoroutine = WeaponUtils.RotateTowardsEnemyTargetUnit(transform, Data.EnemyTarget, RotationSpeed);
+        StartCoroutine(RotationCoroutine);
+    }
+
+    public virtual void StartIdleRotation() {
+        StopOrbiting();
+        RotationCoroutine = WeaponUtils.IdleRotation();
+    }
+
+    public virtual void StopRotating() {
+        if (RotationCoroutine != null) {
+            StopCoroutine(RotationCoroutine);
+        }
+        RotationCoroutine = null;
+    }
+
+
     IEnumerator orbitingCoroutine;
     public IEnumerator OrbitingCoroutine {get => orbitingCoroutine;set {orbitingCoroutine = value;}}
+
+    IEnumerator rotationCoroutine;
+
+    public IEnumerator RotationCoroutine {get => rotationCoroutine; set {rotationCoroutine = value;}}
     
 }

@@ -13,9 +13,6 @@ public abstract class TowerComponent : MonoBehaviour
     public Tower ParentTower;
     public EnemyTargetBank TargetBank {get ; private set;}
 
-    public abstract event Action<EnemyUnitController> onEnemyEnteredRange;
-    public abstract void OnEnemyEnteredRange(EnemyUnitController ec);
-
         
 
     private void Awake() {

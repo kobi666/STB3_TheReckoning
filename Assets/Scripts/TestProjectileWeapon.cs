@@ -5,7 +5,6 @@ using System;
 using UnityEngine.Events;
 public class TestProjectileWeapon : WeaponController
 {
-    
     Vector2 projectileExitPoint;
     public override Vector2 ProjectileExitPoint {
         get => ProjectileExitPoint;
