@@ -6,7 +6,8 @@ using UnityEngine;
 public class TowerComponentData 
 {
     public float distanceFromRotatorBase;
-    public float RoatationSpeed;
+    public float OrbitingSpeed;
+    public float RotationSpeed;
     int numOfOrbitals;
     public int NumOfOrbitals {
         get => numOfOrbitals;
@@ -24,11 +25,12 @@ public class TowerComponentData
     public DamageRange damageRange;
     public float FireRate;
 
+    [SerializeField]
     EnemyUnitController enemyTarget;
     
     [SerializeField]
     public EnemyUnitController EnemyTarget {
-        get { if (enemyTarget.IsTargetable()) 
+        get { if (enemyTarget?.IsTargetable() ?? false) 
             {
                 return enemyTarget;
             }

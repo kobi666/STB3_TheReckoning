@@ -9,6 +9,7 @@ using TMPro;
 
 public abstract class WeaponController : TowerComponent
 {
+
     public event Action<WeaponController,EnemyUnitController> onEnemyEnteredRange;
     public virtual void OnEnemyEnteredRange(EnemyUnitController ec) {
         onEnemyEnteredRange?.Invoke(this,ec);
@@ -19,6 +20,20 @@ public abstract class WeaponController : TowerComponent
     
     public EnemyUnitController Target {
         get => Data.EnemyTarget;
+    }
+
+    bool attacking;
+    public bool Attacking {
+        get => attacking;
+        set {
+            attacking = value;
+            if (value == true) {
+                OnAttackInitiate(Data.EnemyTarget);
+            }
+            if (value == false) {
+                OnAttackCease();
+            }
+        }
     }
 
     public event Action<WeaponController, EnemyUnitController> onAttackInitiate;

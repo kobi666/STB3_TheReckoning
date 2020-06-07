@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
 public abstract class OrbitalWeapon : WeaponController, IOrbital<OrbitalWeapon>
 {
     [SerializeField]
-    float orbitingSpeed;
-    public float OrbitingSpeed {get => orbitingSpeed; set {orbitingSpeed = value;}}
+    
+    public float OrbitingSpeed {get => Data.OrbitingSpeed; set {Data.OrbitingSpeed = value;}}
 
     [SerializeField]
-    float rotationSpeed;
-    public float RotationSpeed {get => rotationSpeed; set {rotationSpeed =value;}}
+    public float RotationSpeed {get => Data.RotationSpeed; set {Data.RotationSpeed =value;}}
     public string OrbitalName {get => name;}
     public Transform OrbitalTransform {get => transform;}
     public abstract bool ShouldRotate {get;set;}
