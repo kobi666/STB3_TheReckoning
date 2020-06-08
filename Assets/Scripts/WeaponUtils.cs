@@ -9,19 +9,36 @@ public class WeaponUtils
         EnemyUnitController currentTarget = self.Data.EnemyTarget;
         if (currentTarget == null) {
             self.Data.EnemyTarget = newEnemy;
-            self.OnAttackInitiate(self.Data.EnemyTarget);
+            self.Attacking = true;
         }
         if (currentTarget != null) {
             if (newEnemy.Proximity < currentTarget.Proximity) {
                 self.Data.EnemyTarget = newEnemy;
-                self.OnAttackInitiate(self.Data.EnemyTarget);
+                self.Attacking = true;
             }
         }
     }
 
+    public static void StandardOnTargetDeathCheck(WeaponController self) {
+        EnemyUnitController ec = self.TargetBank.FindSingleTargetNearestToEndOfSpline();
+        if (ec != null) {
+            self.Data.EnemyTarget = ec;
+            self.ReStartAttacking(self);
+        }
+    }
+
+    public static IEnumerator TestAttack(WeaponController self, EnemyUnitController ec) {
+        while (ec?.IsTargetable() ?? false) {
+            Debug.DrawLine(self.ProjectileExitPoint, ec.transform.position);   
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    
+
     public static IEnumerator RotateTowardsEnemyTargetUnit(Transform self, EnemyUnitController target, float rotationSpeed) {
         Transform targetTransform = target.transform;
-        while (target.IsTargetable()) {
+        while (target?.IsTargetable() ?? false) {
             Vector2 vecToTarget = targetTransform.position - self.position;
             float angleToTarget = Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg;
             Quaternion q = Quaternion.AngleAxis(angleToTarget, Vector3.forward);
@@ -99,14 +116,7 @@ public class WeaponUtils
     }
     
     
-    public static void StartOrbitalsRotation(WeaponController[] orbitalGuns, Transform rootTower) {
-        
-        
-    }
-
-    public static IEnumerator RotateOrbital(Transform orbitalGun) {
-        
-        yield break;
-    }
+    
+    
     
 }

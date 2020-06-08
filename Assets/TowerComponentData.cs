@@ -5,7 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class TowerComponentData 
 {
-    public float distanceFromRotatorBase;
+    public Vector2 ProjectileExitPoint = Vector2.zero;
+    public float DistanceFromRotatorBase;
     public float OrbitingSpeed;
     public float RotationSpeed;
     int numOfOrbitals;

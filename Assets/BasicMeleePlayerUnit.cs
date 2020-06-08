@@ -51,7 +51,7 @@ public class BasicMeleePlayerUnit : PlayerUnitController
     }
 
     public override IEnumerator OnEnterJoinBattle() {
-        yield return StartCoroutine(PlayerUnitUtils.MeleeAttackCoroutineAndInvokeAction(this, !PlayerUnitUtils.StandardConditionToAttack(this), Data.AttackRate, OnAttack));
+        yield return StartCoroutine(PlayerUnitUtils.AttackCoroutineAndInvokeAction(this, !PlayerUnitUtils.StandardConditionToAttack(this), Data.AttackRate, OnAttack));
         SM.SetState(States.PostBattle);
         yield break;
     }
@@ -89,7 +89,7 @@ public class BasicMeleePlayerUnit : PlayerUnitController
         yield return StartCoroutine(PlayerUnitUtils.TellEnemyToPrepareFor1on1battleWithMe(Data.EnemyTarget, this));
         // yield return StartCoroutine(PlayerUnitUtils.MoveToTargetAndInvokeAction(this, PlayerUnitUtils.FindPositionNextToUnit(SR, Target.SR),
         //                             Data.speed, (Target == null), Target.OnBattleInitiate));
-        yield return StartCoroutine(PlayerUnitUtils.MeleeAttackCoroutineAndInvokeAction(this, !PlayerUnitUtils.StandardConditionToAttack(this), Data.AttackRate, OnAttack));
+        yield return StartCoroutine(PlayerUnitUtils.AttackCoroutineAndInvokeAction(this, !PlayerUnitUtils.StandardConditionToAttack(this), Data.AttackRate, OnAttack));
         }
         SM.SetState(States.PostBattle);
         yield break;

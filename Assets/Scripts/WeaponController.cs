@@ -10,13 +10,39 @@ using TMPro;
 public abstract class WeaponController : TowerComponent
 {
 
+    bool canAttack;
+    public bool CanAttack {
+        get => canAttack;
+        set {
+            canAttack = value;
+            if (value == false) {
+            OnAttackCease();
+            }
+        }
+    }
+
+
     public event Action<WeaponController,EnemyUnitController> onEnemyEnteredRange;
     public virtual void OnEnemyEnteredRange(EnemyUnitController ec) {
         onEnemyEnteredRange?.Invoke(this,ec);
     }
-    public abstract Vector2 ProjectileExitPoint {get;}
+    public Vector2 ProjectileExitPoint {get => (Vector2)transform.position + Data.ProjectileExitPoint; set {Data.ProjectileExitPoint = value;}}
     
-    public IEnumerator<WeaponController> AttackCoroutine = null;
+    public IEnumerator AttackCoroutinePlaceHolder;
+    public abstract IEnumerator AttackCoroutine {get;set;}
+
+    public void ReStartAttacking(WeaponController self) {
+        StopAttacking();
+        AttackCoroutinePlaceHolder = AttackCoroutine;
+        StartCoroutine(AttackCoroutinePlaceHolder);
+    }
+
+    public void StopAttacking() {
+        if (AttackCoroutinePlaceHolder != null) {
+            StopCoroutine(AttackCoroutinePlaceHolder);
+        }
+        AttackCoroutinePlaceHolder = null;
+    }
     
     public EnemyUnitController Target {
         get => Data.EnemyTarget;
@@ -28,10 +54,10 @@ public abstract class WeaponController : TowerComponent
         set {
             attacking = value;
             if (value == true) {
-                OnAttackInitiate(Data.EnemyTarget);
+                ReStartAttacking(this);
             }
             if (value == false) {
-                OnAttackCease();
+                StopAttacking();
             }
         }
     }
@@ -70,6 +96,7 @@ public abstract class WeaponController : TowerComponent
         TargetBank.targetEnteredRange += OnEnemyEnteredRange;
         onEnemyEnteredRange += WeaponUtils.StandardOnEnemyEnteredRange;
         }
+        
         PostStart();
     }
 

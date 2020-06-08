@@ -31,7 +31,7 @@ public class UnitData
             playerTarget = value;
         }
     }
-    public EnemyUnitController enemyTarget;
+    private EnemyUnitController enemyTarget;
     public EnemyUnitController EnemyTarget {
         get {
             if (enemyTarget != null) {

@@ -55,7 +55,7 @@ public class PlayerUnitUtils
         return false;
     }
 
-    static IEnumerator meleeAttackCoroutineAndInvokeAction(PlayerUnitController self, bool stopCondition, float attackRate, Action attackAction) {
+    static IEnumerator attackCoroutineAndInvokeAction(PlayerUnitController self, bool stopCondition, float attackRate, Action attackAction) {
         float maxCounter = 1.0f;
         while (self.Target?.IsTargetable() ?? false) {
             if (maxCounter >= 1.0f) {
@@ -69,8 +69,8 @@ public class PlayerUnitUtils
     }
 
 
-    public static IEnumerator MeleeAttackCoroutineAndInvokeAction(PlayerUnitController self, bool stopCondition, float attackRate, Action attackAction) {
-        self.SM.InitilizeAttackCoroutine(meleeAttackCoroutineAndInvokeAction(self, stopCondition, attackRate, attackAction));
+    public static IEnumerator AttackCoroutineAndInvokeAction(PlayerUnitController self, bool stopCondition, float attackRate, Action attackAction) {
+        self.SM.InitilizeAttackCoroutine(attackCoroutineAndInvokeAction(self, stopCondition, attackRate, attackAction));
         yield return self.SM.StartCoroutine(self.SM.AttackCoroutine);
         yield break;
     }

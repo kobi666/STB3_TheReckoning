@@ -6,7 +6,8 @@ using System;
 public class TestOrbitalGun : OrbitalWeapon
 {
     // Start is called before the first frame update
-    
+    IEnumerator attackCoroutine;
+    public override IEnumerator AttackCoroutine {get => attackCoroutine; set {attackCoroutine = value;}}
     public override GameObject referenceGOforRotation {get;set;}
     public override bool ShouldRotate {get; set;}
 
@@ -15,13 +16,8 @@ public class TestOrbitalGun : OrbitalWeapon
         onAttack?.Invoke();
     }
 
-    public Vector2 projectileExitPoint;
-    public override Vector2 ProjectileExitPoint {get => projectileExitPoint;}
-    
-    public override float DistanceFromOrbitalBase {get => Data.distanceFromRotatorBase;set {Data.distanceFromRotatorBase = value;}}
-
     public override void PostStart() {
-
+        //onAttackInitiate += 
     }
 
     public override void PostAwake() {
