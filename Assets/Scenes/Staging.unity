@@ -391,7 +391,6 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    enemyTarget: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}
@@ -620,7 +619,6 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    enemyTarget: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}
@@ -1192,7 +1190,6 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    enemyTarget: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}
@@ -2419,7 +2416,6 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    enemyTarget: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}
@@ -2683,7 +2679,6 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    enemyTarget: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}
@@ -3198,7 +3193,6 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    enemyTarget: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}
@@ -3666,7 +3660,6 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    enemyTarget: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}
@@ -3835,7 +3828,6 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    enemyTarget: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}
@@ -4267,7 +4259,6 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    enemyTarget: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}
@@ -4651,7 +4642,6 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    enemyTarget: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}
@@ -4967,7 +4957,6 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    enemyTarget: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}
@@ -5329,7 +5318,8 @@ MonoBehaviour:
   SR: {fileID: 0}
   Animancer: {fileID: 0}
   Data:
-    distanceFromRotatorBase: 1.6
+    ProjectileExitPoint: {x: 0, y: 0}
+    DistanceFromRotatorBase: 1
     OrbitingSpeed: 90
     RotationSpeed: 90
     OrbitalGunPrefab: {fileID: 0}
@@ -5339,9 +5329,11 @@ MonoBehaviour:
       min: 30
       max: 40
     FireRate: 50
+    enemyTarget: {fileID: 0}
     playerTarget: {fileID: 0}
   ParentTower: {fileID: 0}
-  projectileExitPoint: {x: 0, y: 0}
+  canAttack: 1
+  attacking: 0
 --- !u!4 &1084548183
 Transform:
   m_ObjectHideFlags: 0
@@ -5350,10 +5342,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1084548179}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.25, y: 3.35, z: -0.57312965}
+  m_LocalPosition: {x: -5.08, y: 4.23, z: -0.57312965}
   m_LocalScale: {x: 0.294, y: 0.294, z: 0.294}
   m_Children:
   - {fileID: 1953293142}
+  - {fileID: 1541203224}
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5759,7 +5752,6 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    enemyTarget: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}
@@ -5981,7 +5973,6 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    enemyTarget: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}
@@ -6974,7 +6965,6 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    enemyTarget: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}
@@ -7144,6 +7134,49 @@ MonoBehaviour:
     c2: 0
     c3: 0
     c4: 0
+--- !u!1 &1541203223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1541203224}
+  - component: {fileID: 1541203225}
+  m_Layer: 0
+  m_Name: ProjectileExitPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1541203224
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541203223}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.83, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1084548183}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1541203225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541203223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0e162f14b01c34d8215408fd521263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1567369103
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7762,7 +7795,6 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    enemyTarget: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}
@@ -8080,7 +8112,6 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    enemyTarget: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}
@@ -8602,7 +8633,6 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    enemyTarget: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}
@@ -9496,7 +9526,8 @@ MonoBehaviour:
   SR: {fileID: 0}
   Animancer: {fileID: 0}
   Data:
-    distanceFromRotatorBase: 0
+    ProjectileExitPoint: {x: 0, y: 0}
+    DistanceFromRotatorBase: 0
     OrbitingSpeed: 0
     RotationSpeed: 0
     OrbitalGunPrefab: {fileID: 1084548182}
@@ -9506,6 +9537,7 @@ MonoBehaviour:
       min: 0
       max: 0
     FireRate: 0
+    enemyTarget: {fileID: 0}
     playerTarget: {fileID: 0}
   ParentTower: {fileID: 0}
 --- !u!4 &1853461063
@@ -9927,7 +9959,7 @@ PrefabInstance:
     - target: {fileID: 5571463877980706032, guid: f71d351a86f3649418ab40686242e282,
         type: 3}
       propertyPath: m_Radius
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f71d351a86f3649418ab40686242e282, type: 3}
@@ -10717,7 +10749,6 @@ MonoBehaviour:
     speed: 2
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
-    enemyTarget: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}

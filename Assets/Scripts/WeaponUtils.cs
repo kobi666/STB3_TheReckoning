@@ -23,7 +23,7 @@ public class WeaponUtils
         EnemyUnitController ec = self.TargetBank.FindSingleTargetNearestToEndOfSpline();
         if (ec != null) {
             self.Data.EnemyTarget = ec;
-            self.ReStartAttacking(self);
+            self.OnAttackInitiate();
         }
     }
 
@@ -32,6 +32,10 @@ public class WeaponUtils
             Debug.DrawLine(self.ProjectileExitPoint, ec.transform.position);   
             yield return new WaitForFixedUpdate();
         }
+    }
+
+    public static void InitiateTestAttack(WeaponController self, EnemyUnitController ec) {
+        self.ReStartAttacking(self, TestAttack(self, ec));
     }
 
     

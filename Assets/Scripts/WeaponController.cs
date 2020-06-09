@@ -9,8 +9,8 @@ using TMPro;
 
 public abstract class WeaponController : TowerComponent
 {
-
-    bool canAttack;
+    [SerializeField]
+    bool canAttack = true;
     public bool CanAttack {
         get => canAttack;
         set {
@@ -26,14 +26,24 @@ public abstract class WeaponController : TowerComponent
     public virtual void OnEnemyEnteredRange(EnemyUnitController ec) {
         onEnemyEnteredRange?.Invoke(this,ec);
     }
-    public Vector2 ProjectileExitPoint {get => (Vector2)transform.position + Data.ProjectileExitPoint; set {Data.ProjectileExitPoint = value;}}
+    ProjectileExitPoint projectileExitPoint;
+    public Vector2 ProjectileExitPoint {
+        get {
+            if (projectileExitPoint == null) {
+                return transform.position;
+            }
+            else {
+                return projectileExitPoint.transform.position;
+            }
+        }
+    }
     
     public IEnumerator AttackCoroutinePlaceHolder;
     public abstract IEnumerator AttackCoroutine {get;set;}
 
-    public void ReStartAttacking(WeaponController self) {
+    public void ReStartAttacking(WeaponController self, IEnumerator attackSequence) {
         StopAttacking();
-        AttackCoroutinePlaceHolder = AttackCoroutine;
+        AttackCoroutinePlaceHolder = attackSequence;
         StartCoroutine(AttackCoroutinePlaceHolder);
     }
 
@@ -46,26 +56,32 @@ public abstract class WeaponController : TowerComponent
     
     public EnemyUnitController Target {
         get => Data.EnemyTarget;
+        set {
+            Data.EnemyTarget = value;
+        }
     }
-
+    [SerializeField]
     bool attacking;
     public bool Attacking {
         get => attacking;
         set {
             attacking = value;
             if (value == true) {
-                ReStartAttacking(this);
+                OnAttackInitiate();
             }
             if (value == false) {
-                StopAttacking();
+                OnAttackCease();
             }
         }
     }
 
-    public event Action<WeaponController, EnemyUnitController> onAttackInitiate;
-    public void OnAttackInitiate(EnemyUnitController ec) {
-        onAttackInitiate?.Invoke(this, ec);
+    public event Action onAttackInitiate;
+    public void OnAttackInitiate() {
+        onAttackInitiate?.Invoke();
     }
+
+    public abstract void InitiateAttackSequence();
+    public abstract void CeaseAttackSequence();
 
     public event Action onAttackCease;
 
@@ -93,8 +109,11 @@ public abstract class WeaponController : TowerComponent
     public abstract void PostStart();
     private void Start() {
         if (TargetBank != null) {
+        projectileExitPoint = GetComponentInChildren<ProjectileExitPoint>() ?? null;
         TargetBank.targetEnteredRange += OnEnemyEnteredRange;
-        onEnemyEnteredRange += WeaponUtils.StandardOnEnemyEnteredRange;
+        onEnemyEnteredRange += WeaponUtils.StandardOnEnemyEnteredRange; 
+        onAttackInitiate += InitiateAttackSequence;
+        onAttackCease += CeaseAttackSequence;
         }
         
         PostStart();
