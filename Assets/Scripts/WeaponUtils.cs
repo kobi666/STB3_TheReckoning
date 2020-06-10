@@ -27,6 +27,17 @@ public class WeaponUtils
         }
     }
 
+    public static void StandardOnTargetRemovedCheck(WeaponController self) {
+        EnemyUnitController target = self.TargetBank?.FindSingleTargetNearestToEndOfSpline() ?? null;
+        if (target == null) {
+            self.Attacking = false;
+        }
+        if (target != null) {
+            self.Target = target;
+            self.Attacking = true;
+        }
+    }
+
     public static IEnumerator TestAttack(WeaponController self, EnemyUnitController ec) {
         while (ec?.IsTargetable() ?? false) {
             Debug.DrawLine(self.ProjectileExitPoint, ec.transform.position);   

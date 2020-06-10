@@ -37,6 +37,9 @@ public abstract class WeaponController : TowerComponent
             }
         }
     }
+
+    public event Action<WeaponController> onTargetRemoved;
+    public void OnTargetRemoved() {}
     
     public IEnumerator AttackCoroutinePlaceHolder;
     public abstract IEnumerator AttackCoroutine {get;set;}
@@ -44,7 +47,13 @@ public abstract class WeaponController : TowerComponent
     public void ReStartAttacking(WeaponController self, IEnumerator attackSequence) {
         StopAttacking();
         AttackCoroutinePlaceHolder = attackSequence;
-        StartCoroutine(AttackCoroutinePlaceHolder);
+        StartCoroutine(InitilizeAttackWithTargetCheck());
+    }
+
+    public IEnumerator InitilizeAttackWithTargetCheck() {
+        yield return StartCoroutine(AttackCoroutinePlaceHolder);
+        WeaponUtils.StandardOnTargetRemovedCheck(this);
+        yield break;
     }
 
     public void StopAttacking() {
