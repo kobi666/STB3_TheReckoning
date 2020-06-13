@@ -11,22 +11,41 @@ public class EnemyTargetBank : MonoBehaviour
         }
         return false;
     }
+
+    public EnemyUnitController CurrentLowestProximityTarget;
+
+    public event Action EnemyWithLowerProximityDetected;
+    
     EnemyUnitController tempEc;
-    SortedList<string, EnemyUnitController> targets = new SortedList<string, EnemyUnitController>();
+    public SortedList<string, EnemyUnitController> targets = new SortedList<string, EnemyUnitController>();
     public event Action<EnemyUnitController> targetEnteredRange;
     public event Action<string> targetLeftRange;
     public void AddObjectToTargets(EnemyUnitController ec) {
+        clearNullsFromList();
         if (ec.CompareTag("Enemy")) {
             if (ec.IsTargetable()) {
                 try {
                 targets.Add(ec.name, ec);
-//                Debug.LogWarning("TargetAdded");
+                Debug.LogWarning(ec.name);
+                CurrentLowestProximityTarget = FindSingleTargetNearestToEndOfSpline();
                 }
                 catch(Exception e) {
                     Debug.LogWarning(e.Message);
                 }
             }
 
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other) {
+        if (targets.Count > 1) {
+            foreach (EnemyUnitController ec in targets.Values)
+            {
+                if (ec.Proximity < CurrentLowestProximityTarget.Proximity) {
+                    Debug.LogWarning("New target has lower Proximity:: " + ec.name);
+                    //targetEnteredRange(ec);
+                }
+            }
         }
     }
 
@@ -38,6 +57,27 @@ public class EnemyTargetBank : MonoBehaviour
             }
         }
     }
+    IEnumerator proxyCheckPH;
+
+    public void initProxyCheck() {
+        StopCoroutine(proxyCheckPH);
+        StartCoroutine(proxyCheckPH);
+    }
+    // public IEnumerator LiveProximtyCheck() {
+    //     if (targets.Count > 1) {
+    //         float currentLowestProximty = 999.0f; 
+    //         while (targets.Count > 1) {
+    //             foreach (var item in targets)
+    //             {
+    //                 if (item.Value.Proximity < currentLowestProximty) {
+    //                     Debug.LogWarning(item.Value.name + " Has lower Proximity");
+    //                 }
+    //             }
+    //             yield return new WaitForFixedUpdate();
+    //         }
+    //     }
+    //     yield break;
+    // }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Enemy")) {
@@ -55,8 +95,10 @@ public class EnemyTargetBank : MonoBehaviour
     }
 
     public void RemoveFromTargetsString(String name) {
+        clearNullsFromList();
         try {
             targets.Remove(name);
+            CurrentLowestProximityTarget = FindSingleTargetNearestToEndOfSpline();
         }
         catch (Exception e) {
             Debug.LogWarning(e.Message);

@@ -8,6 +8,7 @@ public class TowerComponentData
     public float DistanceFromRotatorBase;
     public float OrbitingSpeed;
     public float RotationSpeed;
+    public Transform OrbitBase;
     int numOfOrbitals;
     public int NumOfOrbitals {
         get => numOfOrbitals;

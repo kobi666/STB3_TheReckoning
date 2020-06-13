@@ -16,8 +16,7 @@ public abstract class OrbitalWeapon : WeaponController, IOrbital<OrbitalWeapon>
     public Transform OrbitalTransform {get => transform;}
     public abstract bool ShouldRotate {get;set;}
     
-    Transform orbitBase;
-    public Transform OrbitBase{get => orbitBase;set { orbitBase = value;}}
+    public Transform OrbitBase{get => Data.OrbitBase;set { Data.OrbitBase = value;}}
     public float DistanceFromOrbitalBase {get => Data.DistanceFromRotatorBase;set { DistanceFromOrbitalBase = value;}}
     public abstract GameObject referenceGOforRotation {get;set;}
 

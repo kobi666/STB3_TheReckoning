@@ -42,6 +42,7 @@
      <Compile Include="Assets\AnimationcontrollerTest.cs" />
      <Compile Include="Assets\AttackDebug.cs" />
      <Compile Include="Assets\BasicMeleePlayerUnit.cs" />
+     <Compile Include="Assets\CoroutineTest.cs" />
      <Compile Include="Assets\CrosshairTest.cs" />
      <Compile Include="Assets\CubeTestingScript.cs" />
      <Compile Include="Assets\CursorUtils.cs" />
@@ -112,6 +113,7 @@
      <Compile Include="Assets\TestScript.cs" />
      <Compile Include="Assets\TestTower.cs" />
      <Compile Include="Assets\TestTowerController.cs" />
+     <Compile Include="Assets\TestYieldWeaponController.cs" />
      <Compile Include="Assets\TestingVectors.cs" />
      <Compile Include="Assets\TowerAction.cs" />
      <Compile Include="Assets\TowerActionsContainer.cs" />
@@ -124,6 +126,7 @@
      <Compile Include="Assets\TowerUtils.cs" />
      <Compile Include="Assets\UnitAnimationController.cs" />
      <Compile Include="Assets\UnitData.cs" />
+     <Compile Include="Assets\WeaponControllerYield.cs" />
      <Compile Include="Assets\WeaponRotator.cs" />
      <Compile Include="Assets\sometest.cs" />
      <Compile Include="Assets\testEnemyController.cs" />

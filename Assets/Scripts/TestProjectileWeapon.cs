@@ -11,8 +11,11 @@ public class TestProjectileWeapon : WeaponController
     public override void CeaseAttackSequence() {
 
     }
-    IEnumerator attackCoroutine;
-    public override IEnumerator AttackCoroutine {get => attackCoroutine ; set {attackCoroutine = value;}}
+    //IEnumerator attackCoroutine;
+    public override IEnumerator AttackCoroutine(WeaponController wp) {
+        yield return StartCoroutine(WeaponUtils.TestAttack(wp, wp.Target));
+        yield break;
+    }
     public override event Action onAttack;
     public override void OnAttack() {
         onAttack?.Invoke();

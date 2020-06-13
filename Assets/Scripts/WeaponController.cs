@@ -38,11 +38,15 @@ public abstract class WeaponController : TowerComponent
         }
     }
 
-    public event Action<WeaponController> onTargetRemoved;
-    public void OnTargetRemoved() {}
+    public event Action<WeaponController, string> onTargetLeftRange;
+    public void OnTargetLeftRange(string targetName) {
+        if (targetName == Target?.name) {
+            onTargetLeftRange?.Invoke(this, targetName);
+        }
+    }
     
     public IEnumerator AttackCoroutinePlaceHolder;
-    public abstract IEnumerator AttackCoroutine {get;set;}
+    public abstract IEnumerator AttackCoroutine(WeaponController wc);
 
     public void ReStartAttacking(WeaponController self, IEnumerator attackSequence) {
         StopAttacking();
@@ -52,7 +56,7 @@ public abstract class WeaponController : TowerComponent
 
     public IEnumerator InitilizeAttackWithTargetCheck() {
         yield return StartCoroutine(AttackCoroutinePlaceHolder);
-        WeaponUtils.StandardOnTargetRemovedCheck(this);
+        WeaponUtils.StandardOnTargetRemovedCheck(this, Target.name); 
         yield break;
     }
 
@@ -82,6 +86,25 @@ public abstract class WeaponController : TowerComponent
                 OnAttackCease();
             }
         }
+    }
+
+    public void Attack() {
+
+       
+    }
+
+    public IEnumerator InitializeAttackSequence() {
+        StopCoroutine(AttackCoroutinePlaceHolder);
+        AttackCoroutinePlaceHolder = AttackCoroutine(this);
+        if (Target?.IsTargetable() ?? false) {
+            StartCoroutine(AttackCoroutinePlaceHolder);
+        }
+        while (Target?.IsTargetable() ?? false) {
+            Debug.LogWarning("Attacking " + Target.name);
+            yield return new WaitForFixedUpdate();
+        }
+        StopCoroutine(AttackCoroutinePlaceHolder);
+        yield break;
     }
 
     public event Action onAttackInitiate;
@@ -120,6 +143,8 @@ public abstract class WeaponController : TowerComponent
         if (TargetBank != null) {
         projectileExitPoint = GetComponentInChildren<ProjectileExitPoint>() ?? null;
         TargetBank.targetEnteredRange += OnEnemyEnteredRange;
+        TargetBank.targetLeftRange += OnTargetLeftRange;
+        onTargetLeftRange += WeaponUtils.StandardOnTargetRemovedCheck;
         onEnemyEnteredRange += WeaponUtils.StandardOnEnemyEnteredRange; 
         onAttackInitiate += InitiateAttackSequence;
         onAttackCease += CeaseAttackSequence;

@@ -6,14 +6,14 @@ using System;
 public class WeaponUtils 
 {
     public static void StandardOnEnemyEnteredRange(WeaponController self, EnemyUnitController newEnemy) {
-        EnemyUnitController currentTarget = self.Data.EnemyTarget;
-        if (currentTarget == null) {
+        if (self.Target == null) {
             self.Data.EnemyTarget = newEnemy;
             self.Attacking = true;
         }
-        if (currentTarget != null) {
-            if (newEnemy.Proximity < currentTarget.Proximity) {
-                self.Data.EnemyTarget = newEnemy;
+        else if (self.Target != null) {
+            if (newEnemy.Proximity < self.Target.Proximity) {
+                self.Target = newEnemy;
+                self.Attacking = false;
                 self.Attacking = true;
             }
         }
@@ -27,20 +27,30 @@ public class WeaponUtils
         }
     }
 
-    public static void StandardOnTargetRemovedCheck(WeaponController self) {
-        EnemyUnitController target = self.TargetBank?.FindSingleTargetNearestToEndOfSpline() ?? null;
-        if (target == null) {
-            self.Attacking = false;
+    public static void StandardOnTargetRemovedCheck(WeaponController self, string targetName) {
+        // EnemyUnitController target = self.TargetBank.FindSingleTargetNearestToEndOfSpline();
+        // if (target == null) {
+        //     self.Attacking = false;
+        // }
+        // if (target != null) {
+        //     self.Target = target;
+        //     self.Attacking = true;
+        // }
+        if (self.Target.name == targetName) {
+            self.Target = null;
         }
-        if (target != null) {
-            self.Target = target;
+        self.Target = self.TargetBank.FindSingleTargetNearestToEndOfSpline();
+        if (self.Target != null) {
             self.Attacking = true;
         }
     }
 
     public static IEnumerator TestAttack(WeaponController self, EnemyUnitController ec) {
-        while (ec?.IsTargetable() ?? false) {
-            Debug.DrawLine(self.ProjectileExitPoint, ec.transform.position);   
+        while (self.Target != null )  {
+            while (ec?.IsTargetable() ?? false) {
+                Debug.DrawLine(self.ProjectileExitPoint, ec.transform.position);   
+                yield return new WaitForFixedUpdate();
+            }
             yield return new WaitForFixedUpdate();
         }
     }

@@ -7,7 +7,10 @@ public class TestOrbitalGun : OrbitalWeapon
 {
     // Start is called before the first frame update
     IEnumerator attackCoroutine;
-    public override IEnumerator AttackCoroutine {get => attackCoroutine; set {attackCoroutine = value;}}
+    public override IEnumerator AttackCoroutine(WeaponController wp) {
+        yield return StartCoroutine(WeaponUtils.TestAttack(wp, wp.Target));
+        yield break;
+    }
     public override GameObject referenceGOforRotation {get;set;}
     public override bool ShouldRotate {get; set;}
 
