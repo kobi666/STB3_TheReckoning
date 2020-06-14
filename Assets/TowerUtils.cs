@@ -12,6 +12,7 @@ public class TowerUtils : MonoBehaviour
         OrbitalWeapon ow =  Instantiate(gunPrefab,self.transform.position,Quaternion.identity) as OrbitalWeapon;
         ow.transform.parent = self.transform;
         ow.OrbitBase = self.transform;
+        ow.Rotator = rotator;
         ow.name = gunPrefab.name + UnityEngine.Random.Range(10,100000);
         self.OrbitalGuns.Add(ow);
         rotator.AddOrbital(ow);

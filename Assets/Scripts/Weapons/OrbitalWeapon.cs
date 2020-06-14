@@ -7,7 +7,8 @@ using System;
 
 public abstract class OrbitalWeapon : WeaponController, IOrbital<OrbitalWeapon>
 {
-    public abstract WeaponRotator Rotator {get;set;}
+    WeaponRotator rotator;
+    public WeaponRotator Rotator {get => rotator;set { rotator = value;}}
     [SerializeField]
     public float OrbitingSpeed {get => Data.OrbitingSpeed; set {Data.OrbitingSpeed = value;}}
 
