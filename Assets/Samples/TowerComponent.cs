@@ -14,7 +14,7 @@ public abstract class TowerComponent : MonoBehaviour
     public EnemyTargetBank TargetBank {get ; private set;}
 
         
-
+    public abstract void PostAwake();
     private void Awake() {
         TargetBank = GetComponentInChildren<EnemyTargetBank>() ?? ParentTower?.TargetBank ?? null;
         SR = GetComponent<SpriteRenderer>() ?? null;
@@ -22,6 +22,6 @@ public abstract class TowerComponent : MonoBehaviour
         PostAwake();
     }
 
-    public abstract void PostAwake();
+    
     
 }

@@ -13,10 +13,10 @@ public abstract class Rotator<T> : MonoBehaviour where T : IOrbital<T>
 
     public void EnableRotationForOrbital(string orbName) {
         if (OrbitalList.ContainsKey(orbName)) {
+            if (OrbitalList[orbName].Item1 != null) {
             (T, bool) t = (OrbitalList[orbName].Item1, true);
             OrbitalList[orbName] = t;
-        }
-        if (OrbitalsOrbitBound) {
+            if (OrbitalsOrbitBound) {
             bool b = true;
             foreach (var item in OrbitalList)
             {
@@ -31,6 +31,9 @@ public abstract class Rotator<T> : MonoBehaviour where T : IOrbital<T>
         if (!OrbitalsOrbitBound) {
             OrbitalList[orbName].Item1.ReStartOrbiting();
         }
+            }
+        }
+        
     }
 
     public void DisableRotationForOrbital(string orbName) {

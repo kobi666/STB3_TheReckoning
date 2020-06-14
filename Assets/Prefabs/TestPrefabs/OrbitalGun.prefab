@@ -52,11 +52,12 @@ MonoBehaviour:
   Data:
     DistanceFromRotatorBase: 1
     OrbitingSpeed: 90
-    RotationSpeed: 90
+    RotationSpeed: 31.21
     OrbitBase: {fileID: 0}
     OrbitalGunPrefab: {fileID: 0}
     MaxNumberOfOrbitals: 0
-    projectilePrefab: {fileID: 0}
+    ProjectilePrefab: {fileID: 2175439711903959826, guid: 420d9a71ac6e26746b22c7997885c117,
+      type: 3}
     damageRange:
       min: 30
       max: 40
@@ -64,8 +65,9 @@ MonoBehaviour:
     enemyTarget: {fileID: 0}
     playerTarget: {fileID: 0}
   ParentTower: {fileID: 0}
-  canAttack: 1
-  attacking: 0
+  AttackCounter: 0
+  ExternalAttackLock: 0
+  inAttackState: 0
 --- !u!212 &9140078121220912567
 SpriteRenderer:
   m_ObjectHideFlags: 0

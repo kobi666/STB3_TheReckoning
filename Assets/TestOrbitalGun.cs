@@ -12,11 +12,21 @@ public class TestOrbitalGun : OrbitalWeapon
     }
     
     public override GameObject referenceGOforRotation {get;set;}
-    public override bool ShouldRotate {get; set;}
+    public override bool ShouldRotate {get {
+        if (CanAttack()) {
+            if (InAttackState == true) {
+                return true;
+                }
+            }
+                return false;
+        }
+        set {}
+    }
     public override void PostStart() {
-        Debug.LogWarning("Thiasdaslkdjaklsd");
         onAttackInitiate += DisableOrbitingInRotator;
+        onAttackInitiate += StartAsyncRotation;
         onAttackCease += EnableOrbitingInRotator;
+        onAttackCease += StopAsyncRotation;
     }
 
 

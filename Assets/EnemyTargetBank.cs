@@ -13,6 +13,7 @@ public class EnemyTargetBank : MonoBehaviour
     }
 
     public EnemyUnitController CurrentLowestProximityTarget;
+    public string CurrentLowestProximtyTargetName;
 
     public event Action EnemyWithLowerProximityDetected;
     
@@ -26,7 +27,7 @@ public class EnemyTargetBank : MonoBehaviour
             if (ec.IsTargetable()) {
                 try {
                 targets.Add(ec.name, ec);
-                Debug.LogWarning(ec.name);
+//                Debug.LogWarning(ec.name);
                 CurrentLowestProximityTarget = FindSingleTargetNearestToEndOfSpline();
                 }
                 catch(Exception e) {
@@ -37,15 +38,29 @@ public class EnemyTargetBank : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other) {
-        if (targets.Count > 1) {
-            foreach (EnemyUnitController ec in targets.Values)
+    private void ConcurrentProximtyCheck() {
+        if (targets.Count >= 1) {
+            foreach (var item in targets)
             {
-                if (ec.Proximity < CurrentLowestProximityTarget.Proximity) {
-                    Debug.LogWarning("New target has lower Proximity:: " + ec.name);
-                    //targetEnteredRange(ec);
+                
+                if (CurrentLowestProximtyTargetName == item.Value.name) {
+                    continue;
+                }
+                if (CurrentLowestProximtyTargetName == "NULL") {
+                    Debug.LogWarning("There's a target in the targets list while the current lowest proximity target is NULL");
+                }
+                else if (targets.ContainsKey(CurrentLowestProximtyTargetName)) {
+                    if (item.Value.Proximity < targets[CurrentLowestProximtyTargetName].Proximity) {
+                        Debug.LogWarning("Target " + item.Value.name + " has a lower proximity than last found target");
+                    }
                 }
             }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other) {
+        if (targets.Count >= 1) {
+            ConcurrentProximtyCheck();
         }
     }
 
@@ -127,6 +142,7 @@ public class EnemyTargetBank : MonoBehaviour
                 ec = item.Value;
             }
         }
+        CurrentLowestProximtyTargetName = ec?.name ?? "NULL";
         return ec;
     }
 

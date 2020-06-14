@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Threading.Tasks;
+
 
 
 
@@ -49,6 +51,31 @@ public abstract class OrbitalWeapon : WeaponController, IOrbital<OrbitalWeapon>
         }
     }
 
+    bool AsyncRotationInProgress = false;
+
+    public void StopAsyncRotation() {
+        AsyncRotationInProgress = false;
+    }
+    public async void StartAsyncRotation() {
+        if (AsyncRotationInProgress == true) {
+            AsyncRotationInProgress = false;
+            await Task.Yield();
+        }
+        AsyncRotationInProgress = true;
+        while (ShouldRotate && AsyncRotationInProgress == true) {
+            DefaultRotationFunction();
+            await Task.Yield();
+        }
+        AsyncRotationInProgress = false;
+        InAttackState = false;
+    }
+
+    public virtual void DefaultRotationFunction() {
+        Vector2 vecToTarget = Target.transform.position - transform.position;
+        float angleToTarget = Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg;
+        Quaternion q = Quaternion.AngleAxis(angleToTarget, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, q, StaticObjects.instance.DeltaGameTime * Data.RotationSpeed);
+    }
     
 
     public Vector2 AngleToPosition(float angle) {
@@ -77,7 +104,12 @@ public abstract class OrbitalWeapon : WeaponController, IOrbital<OrbitalWeapon>
     }
 
     public void EnableOrbitingInRotator() {
+        try {
         Rotator?.EnableRotationForOrbital(name);
+        }
+        catch(Exception e) {
+            Debug.LogWarning(e.Message);
+        }
         if (Rotator == null) {
             Debug.LogWarning("Rotator is Null!!");
         }
