@@ -5,19 +5,7 @@ using System;
 
 public class WeaponUtils 
 {
-    public static void StandardOnEnemyEnteredRange(WeaponController self, EnemyUnitController newEnemy) {
-        if (self.Target == null) {
-            self.Data.EnemyTarget = newEnemy;
-            self.Attacking = true;
-        }
-        else if (self.Target != null) {
-            if (newEnemy.Proximity < self.Target.Proximity) {
-                self.Target = newEnemy;
-                self.Attacking = false;
-                self.Attacking = true;
-            }
-        }
-    }
+    
 
     public static void StandardOnTargetDeathCheck(WeaponController self) {
         EnemyUnitController ec = self.TargetBank.FindSingleTargetNearestToEndOfSpline();
@@ -27,23 +15,7 @@ public class WeaponUtils
         }
     }
 
-    public static void StandardOnTargetRemovedCheck(WeaponController self, string targetName) {
-        // EnemyUnitController target = self.TargetBank.FindSingleTargetNearestToEndOfSpline();
-        // if (target == null) {
-        //     self.Attacking = false;
-        // }
-        // if (target != null) {
-        //     self.Target = target;
-        //     self.Attacking = true;
-        // }
-        if (self.Target.name == targetName) {
-            self.Target = null;
-        }
-        self.Target = self.TargetBank.FindSingleTargetNearestToEndOfSpline();
-        if (self.Target != null) {
-            self.Attacking = true;
-        }
-    }
+    
 
     public static IEnumerator TestAttack(WeaponController self, EnemyUnitController ec) {
         while (self.Target != null )  {
@@ -55,9 +27,7 @@ public class WeaponUtils
         }
     }
 
-    public static void InitiateTestAttack(WeaponController self, EnemyUnitController ec) {
-        self.ReStartAttacking(self, TestAttack(self, ec));
-    }
+    
 
     
 

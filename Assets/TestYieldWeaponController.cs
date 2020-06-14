@@ -2,25 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestYieldWeaponController : WeaponControllerYield
+public class TestYieldWeaponController : WeaponController
 {
     int TestCounter = 0;
     public override void MainAttackFunction() {
-        Debug.DrawLine(transform.position, Target.transform.position);
-        Debug.LogWarning(TestCounter);
+        TowerWeaponAttacks.TestDebugRay(this);
     }
 
     void incCounter() {
         TestCounter += 1;
-    }
-
-    public override bool CanAttack() {
-        if (ExternalAttackLock == false) {
-            if (Target != null) {
-                return true;
-            }
-        }
-        return false;
     }
 
 

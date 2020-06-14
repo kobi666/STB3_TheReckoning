@@ -6,12 +6,20 @@ using System;
 
 
 public class PoolObjectQueue<T> where T : Component {
+
+    int objectCounter = 0;
+    int ObjectCounter {
+        get {
+            objectCounter += 1;
+            return objectCounter;
+        }
+    }
     public Queue<T> ObjectQueue;
     public T ObjectPrefab;
     GameObject PoolParentObject;
     public T Get() {
 
-        if (ObjectQueue.Count == 0) {
+        if (ObjectQueue.Count < 5) {
             AddObjectsToQueue(5);
         }
 
@@ -23,6 +31,7 @@ public class PoolObjectQueue<T> where T : Component {
         {
                 T PooledObject = GameObject.Instantiate(ObjectPrefab);
                 PooledObject.transform.parent = PoolParentObject.transform;
+                PooledObject.name = ObjectPrefab.name + "_" + ObjectCounter;
                 PooledObject.gameObject.SetActive(false);
                 ObjectQueue.Enqueue(PooledObject);
         }

@@ -87,7 +87,6 @@
      <Compile Include="Assets\Scripts\StateMachine.cs" />
      <Compile Include="Assets\Scripts\StaticObjects.cs" />
      <Compile Include="Assets\Scripts\TProjectileController.cs" />
-     <Compile Include="Assets\Scripts\TestProjectileWeapon.cs" />
      <Compile Include="Assets\Scripts\Tower.cs" />
      <Compile Include="Assets\Scripts\UnitController.cs" />
      <Compile Include="Assets\Scripts\UnitLife.cs" />
@@ -124,9 +123,9 @@
      <Compile Include="Assets\TowerSlotManager.cs" />
      <Compile Include="Assets\TowerTestScript.cs" />
      <Compile Include="Assets\TowerUtils.cs" />
+     <Compile Include="Assets\TowerWeaponAttacks.cs" />
      <Compile Include="Assets\UnitAnimationController.cs" />
      <Compile Include="Assets\UnitData.cs" />
-     <Compile Include="Assets\WeaponControllerYield.cs" />
      <Compile Include="Assets\WeaponRotator.cs" />
      <Compile Include="Assets\sometest.cs" />
      <Compile Include="Assets\testEnemyController.cs" />

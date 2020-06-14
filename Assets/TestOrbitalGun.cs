@@ -6,41 +6,21 @@ using System;
 public class TestOrbitalGun : OrbitalWeapon
 {
     // Start is called before the first frame update
-    IEnumerator attackCoroutine;
-    public override IEnumerator AttackCoroutine(WeaponController wp) {
-        yield return StartCoroutine(WeaponUtils.TestAttack(wp, wp.Target));
-        yield break;
+    WeaponRotator rotator;
+    public override WeaponRotator Rotator {get => rotator; set { rotator = value;}}
+    public override void MainAttackFunction() {
+        TowerWeaponAttacks.TestDebugRay(this);
     }
+    
     public override GameObject referenceGOforRotation {get;set;}
     public override bool ShouldRotate {get; set;}
-
-    public override void InitiateAttackSequence() {
-        if (CanAttack) {
-        ReStartAttacking(this, WeaponUtils.TestAttack(this, Target));
-        }
-        StopOrbiting();
-    }
-
-    public override void CeaseAttackSequence() {
-        StopAttacking();
-        ReStartOrbiting();
-    }
-
-    public override event Action onAttack;
-    public override void OnAttack() {
-        onAttack?.Invoke();
-    }
-
     public override void PostStart() {
-        
+        Rotator = transform.parent.GetComponent<WeaponRotator>() ?? null;
+        onAttackInitiate += DisableOrbitingInRotator;
+        onAttackCease += EnableOrbitingInRotator;
     }
 
-    public override void PostAwake() {
 
-    }
-
-    private void Update() {
-        
-    }
+    
 
 }

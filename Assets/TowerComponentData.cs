@@ -20,7 +20,7 @@ public class TowerComponentData
     public OrbitalWeapon OrbitalGunPrefab;
 
     public int MaxNumberOfOrbitals;
-    public Projectile projectilePrefab;
+    public Projectile ProjectilePrefab;
     
     [SerializeField]
     public DamageRange damageRange;

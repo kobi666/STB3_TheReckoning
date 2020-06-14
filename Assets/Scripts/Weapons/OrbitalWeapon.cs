@@ -4,10 +4,11 @@ using UnityEngine;
 using System;
 
 
+
 public abstract class OrbitalWeapon : WeaponController, IOrbital<OrbitalWeapon>
 {
+    public abstract WeaponRotator Rotator {get;set;}
     [SerializeField]
-    
     public float OrbitingSpeed {get => Data.OrbitingSpeed; set {Data.OrbitingSpeed = value;}}
 
     [SerializeField]
@@ -72,6 +73,20 @@ public abstract class OrbitalWeapon : WeaponController, IOrbital<OrbitalWeapon>
         StopCoroutine(OrbitingCoroutine);
         }
         OrbitingCoroutine = null;
+    }
+
+    public void EnableOrbitingInRotator() {
+        Rotator?.EnableRotationForOrbital(name);
+        if (Rotator == null) {
+            Debug.LogWarning("Rotator is Null!!");
+        }
+    }
+
+    public void DisableOrbitingInRotator() {
+        Rotator?.DisableRotationForOrbital(name);
+        if (Rotator == null) {
+            Debug.LogWarning("Rotator is Null!!");
+        }
     }
 
     public virtual void StartRotatingTowardsTarget() {

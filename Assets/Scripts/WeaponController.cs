@@ -5,156 +5,139 @@ using System;
 using UnityEngine.Events;
 using Animancer;
 using TMPro;
+using System.Threading.Tasks;
+
 
 
 public abstract class WeaponController : TowerComponent
 {
-    [SerializeField]
-    bool canAttack = true;
-    public bool CanAttack {
-        get => canAttack;
-        set {
-            canAttack = value;
-            if (value == false) {
-            OnAttackCease();
+    public float AttackCounter;
+    public PoolObjectQueue<Projectile> ProjectilePool;
+    public bool ExternalAttackLock = false;
+    public virtual bool CanAttack() {
+        if (ExternalAttackLock == false) {
+            if (Target != null) {
+                return true;
             }
         }
+        return false;
+    }
+    public event Action<WeaponController, EnemyUnitController> onEnemyEnteredRange;
+    public void OnEnemyEnteredRange(EnemyUnitController ec) {
+        onEnemyEnteredRange?.Invoke(this, ec);
     }
 
-
-    public event Action<WeaponController,EnemyUnitController> onEnemyEnteredRange;
-    public virtual void OnEnemyEnteredRange(EnemyUnitController ec) {
-        onEnemyEnteredRange?.Invoke(this,ec);
-    }
     ProjectileExitPoint projectileExitPoint;
+
     public Vector2 ProjectileExitPoint {
         get {
-            if (projectileExitPoint == null) {
-                return transform.position;
+            return projectileExitPoint?.transform.position ?? transform.position;
+        }
+    }
+
+    public virtual void StandardOnTargetEnteredRange(WeaponController self, EnemyUnitController ec) {
+        if (Target == null) {
+            Target = ec;
+            InAttackState = true;
+        }
+        if (Target != null) {
+            if (ec.Proximity < Target.Proximity) {
+                Target = ec;
+                InAttackState = true;
             }
-            else {
-                return projectileExitPoint.transform.position;
-            }
         }
     }
 
-    public event Action<WeaponController, string> onTargetLeftRange;
-    public void OnTargetLeftRange(string targetName) {
-        if (targetName == Target?.name) {
-            onTargetLeftRange?.Invoke(this, targetName);
+    public virtual void StandardOnTargetLeftRange(string targetName) {
+        if (Target.name == targetName) {
+            Target = TargetBank.FindSingleTargetNearestToEndOfSpline() ?? null;
         }
     }
-    
-    public IEnumerator AttackCoroutinePlaceHolder;
-    public abstract IEnumerator AttackCoroutine(WeaponController wc);
 
-    public void ReStartAttacking(WeaponController self, IEnumerator attackSequence) {
-        StopAttacking();
-        AttackCoroutinePlaceHolder = attackSequence;
-        StartCoroutine(InitilizeAttackWithTargetCheck());
+    bool AsyncAttackInProgress = false;
+
+    public void StopAsyncAttack() {
+        AsyncAttackInProgress = false;
     }
-
-    public IEnumerator InitilizeAttackWithTargetCheck() {
-        yield return StartCoroutine(AttackCoroutinePlaceHolder);
-        WeaponUtils.StandardOnTargetRemovedCheck(this, Target.name); 
-        yield break;
-    }
-
-    public void StopAttacking() {
-        if (AttackCoroutinePlaceHolder != null) {
-            StopCoroutine(AttackCoroutinePlaceHolder);
+    public async void StartAsyncAttack() {
+        if (AsyncAttackInProgress == true) {
+            AsyncAttackInProgress = false;
+            await Task.Yield();
         }
-        AttackCoroutinePlaceHolder = null;
+        AsyncAttackInProgress = true;
+        while (CanAttack() && AsyncAttackInProgress == true) {
+            MainAttackFunction();
+            await Task.Yield();
+        }
+        AsyncAttackInProgress = false;
+        InAttackState = false;
     }
-    
+
+    public abstract void MainAttackFunction();
+
+
+
+    public event Action<string> onEnemyLeftRange;
+    public void OnEnemyLeftRange(string targetName) {
+        onEnemyLeftRange?.Invoke(targetName);
+    }
+
     public EnemyUnitController Target {
         get => Data.EnemyTarget;
         set {
             Data.EnemyTarget = value;
         }
     }
+
     [SerializeField]
-    bool attacking;
-    public bool Attacking {
-        get => attacking;
+    bool inAttackState = false;
+    public bool InAttackState {
+        get => inAttackState;
         set {
-            attacking = value;
             if (value == true) {
-                OnAttackInitiate();
+                if (CanAttack()) {
+                    inAttackState = value;
+                    OnAttackInitiate();
+                }
+                else
+                {
+                    Debug.LogWarning("Attack state set to true, but conditions to attack are False.");
+                }
             }
             if (value == false) {
+                inAttackState = value;
                 OnAttackCease();
             }
+            
         }
-    }
-
-    public void Attack() {
-
-       
-    }
-
-    public IEnumerator InitializeAttackSequence() {
-        StopCoroutine(AttackCoroutinePlaceHolder);
-        AttackCoroutinePlaceHolder = AttackCoroutine(this);
-        if (Target?.IsTargetable() ?? false) {
-            StartCoroutine(AttackCoroutinePlaceHolder);
-        }
-        while (Target?.IsTargetable() ?? false) {
-            Debug.LogWarning("Attacking " + Target.name);
-            yield return new WaitForFixedUpdate();
-        }
-        StopCoroutine(AttackCoroutinePlaceHolder);
-        yield break;
     }
 
     public event Action onAttackInitiate;
     public void OnAttackInitiate() {
-        onAttackInitiate?.Invoke();
+            onAttackInitiate?.Invoke();
     }
-
-    public abstract void InitiateAttackSequence();
-    public abstract void CeaseAttackSequence();
-
     public event Action onAttackCease;
-
     public void OnAttackCease() {
         onAttackCease?.Invoke();
     }
 
-    public event Action<string> onEnemyLeftRange;
-    public void OnEnemyLeftRange(string enemyName) {
-        onEnemyLeftRange?.Invoke(enemyName);
-    }
-
-    public virtual void GetEnemyTarget(EnemyUnitController ec) {
-        if (Data.EnemyTarget == null) {
-
+    
+    public override void PostAwake() {
+        if (TargetBank != null) {
+            TargetBank.targetEnteredRange += OnEnemyEnteredRange;
+            TargetBank.targetLeftRange += OnEnemyLeftRange;
         }
+        onAttackInitiate += StartAsyncAttack;
+        onAttackCease += StopAsyncAttack;
+        onEnemyEnteredRange += StandardOnTargetEnteredRange;
+        onEnemyLeftRange += StandardOnTargetLeftRange;
     }
 
-    
-
-    public abstract event Action onAttack;
-
-    public abstract void OnAttack();
-    
     public abstract void PostStart();
     private void Start() {
-        if (TargetBank != null) {
+        ProjectilePool = GameObjectPool.Instance.GetProjectilePool(Data.ProjectilePrefab) ?? null;
         projectileExitPoint = GetComponentInChildren<ProjectileExitPoint>() ?? null;
-        TargetBank.targetEnteredRange += OnEnemyEnteredRange;
-        TargetBank.targetLeftRange += OnTargetLeftRange;
-        onTargetLeftRange += WeaponUtils.StandardOnTargetRemovedCheck;
-        onEnemyEnteredRange += WeaponUtils.StandardOnEnemyEnteredRange; 
-        onAttackInitiate += InitiateAttackSequence;
-        onAttackCease += CeaseAttackSequence;
-        }
-        
         PostStart();
     }
-
-    
-
-    
 
 }
