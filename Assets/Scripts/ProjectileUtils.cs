@@ -14,11 +14,29 @@ public class ProjectileUtils
         proj.TargetUnit = targetUnit;
     }
 
-    public static void SpawnProjectileWithTargetPosition(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition) {
+    public static Projectile SpawnProjectileWithTargetPosition(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition) {
         Projectile proj = SpawnProjectileFromPool(pool);
         proj.transform.position = exitPoint;
         proj.TargetPosition = targetPosition;
+        return proj;
     }
+
+    public static Projectile SpawnTargetPositionFacingProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, Quaternion direction) {
+        Projectile proj = SpawnProjectileWithTargetPosition(pool, exitPoint, targetPosition);
+        proj.transform.rotation = direction;
+        return proj;
+    }
+
+    public static void SpawnDirectHitTargetFacingProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, Quaternion direction, EnemyTargetBank targetBank) {
+        DirectHitProjectile proj = SpawnTargetPositionFacingProjectile(pool,exitPoint,targetPosition,direction) as DirectHitProjectile;
+        proj.TargetBank = targetBank;
+    }
+
+    
+
+
+
+
 
 
     

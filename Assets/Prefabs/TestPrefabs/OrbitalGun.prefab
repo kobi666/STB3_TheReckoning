@@ -52,7 +52,7 @@ MonoBehaviour:
   Data:
     DistanceFromRotatorBase: 1
     OrbitingSpeed: 90
-    RotationSpeed: 31.21
+    RotationSpeed: 4
     OrbitBase: {fileID: 0}
     OrbitalGunPrefab: {fileID: 0}
     MaxNumberOfOrbitals: 0
@@ -67,6 +67,7 @@ MonoBehaviour:
   ParentTower: {fileID: 0}
   AttackCounter: 0
   ExternalAttackLock: 0
+  canattackFieldPH: 0
   inAttackState: 0
 --- !u!212 &9140078121220912567
 SpriteRenderer:

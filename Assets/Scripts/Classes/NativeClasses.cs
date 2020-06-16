@@ -5,7 +5,7 @@ using System;
 
 
 
-public class PoolObjectQueue<T> where T : Component {
+public class PoolObjectQueue<T> where T : Component, IQueueable<T> {
 
     int objectCounter = 0;
     int ObjectCounter {
@@ -22,8 +22,9 @@ public class PoolObjectQueue<T> where T : Component {
         if (ObjectQueue.Count < 5) {
             AddObjectsToQueue(5);
         }
-
-        return ObjectQueue.Dequeue();
+        T t = ObjectQueue.Dequeue();
+        t.Pool = this;
+        return t;
     }
 
     void AddObjectsToQueue(int numOfObjects) {

@@ -23,7 +23,13 @@ public class EnemyTargetBank : MonoBehaviour
     public event Action EnemyWithLowerProximityDetected;
     
     EnemyUnitController tempEc;
-    public SortedList<string, EnemyUnitController> targets = new SortedList<string, EnemyUnitController>();
+    SortedList<string, EnemyUnitController> targets = new SortedList<string, EnemyUnitController>();
+    public SortedList<string, EnemyUnitController> Targets {
+        get {
+            clearNullsFromList();
+            return targets;
+        }
+    }
     public event Action<EnemyUnitController> targetEnteredRange;
     public event Action<string> targetLeftRange;
     public void AddObjectToTargets(EnemyUnitController ec) {
@@ -177,9 +183,9 @@ public class EnemyTargetBank : MonoBehaviour
     }
 
     private void Update() {
-        if (onConcurrentProximityCheck != null) {
-        ConcurrentProximityCheckInUpdate();
-        }
+        // if (onConcurrentProximityCheck != null) {
+        // ConcurrentProximityCheckInUpdate();
+        // }
     }
 
     

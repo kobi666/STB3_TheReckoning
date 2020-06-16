@@ -6,7 +6,7 @@ public class GameObjectPool : MonoBehaviour
 {
     public Dictionary<string, PoolObjectQueue<Projectile>> ProjectilesPool = new Dictionary<string, PoolObjectQueue<Projectile>>();
 
-    void CreateNewPool<T> (Dictionary<string,PoolObjectQueue<T>> dict, T prefab) where T : Component {
+    void CreateNewPool<T> (Dictionary<string,PoolObjectQueue<T>> dict, T prefab) where T : Component,IQueueable<T> {
         GameObject placeholder = Instantiate(new GameObject());
         placeholder.transform.parent = this.transform;
         placeholder.name = "_PlaceHolder_" + prefab.gameObject.name;

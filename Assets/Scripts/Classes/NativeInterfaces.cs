@@ -21,3 +21,7 @@ public interface IOrbital<T> {
     IEnumerator OrbitingCoroutine {get;set;}
 }
 
+public interface IQueueable<T> where T : Component, IQueueable<T> {
+    PoolObjectQueue<T> Pool {get;set;}
+}
+
