@@ -12,6 +12,11 @@ public class EnemyTargetBank : MonoBehaviour
         return false;
     }
 
+    public event Action<EnemyUnitController> onConcurrentProximityCheck;
+    public void OnConcurrentProximityCheck(EnemyUnitController ec) {
+        onConcurrentProximityCheck?.Invoke(ec);
+    }
+
     public EnemyUnitController CurrentLowestProximityTarget;
     public string CurrentLowestProximtyTargetName;
 
@@ -53,6 +58,27 @@ public class EnemyTargetBank : MonoBehaviour
                     if (item.Value.Proximity < targets[CurrentLowestProximtyTargetName].Proximity) {
                         Debug.LogWarning("Target " + item.Value.name + " has a lower proximity than last found target");
                     }
+                }
+            }
+        }
+    }
+
+    private void ConcurrentProximityCheckInUpdate() {
+        if (targets.Count >= 1) {
+            clearNullsFromList();
+            if (CurrentLowestProximityTarget == null) {
+                CurrentLowestProximityTarget = targets.Values[0];
+            }
+            foreach (var item in targets)
+            {
+                if (item.Value.name == CurrentLowestProximityTarget.name) {
+                    OnConcurrentProximityCheck(CurrentLowestProximityTarget);
+                    continue;
+                }
+                if (item.Value.Proximity < CurrentLowestProximityTarget.Proximity) {
+                    CurrentLowestProximityTarget = item.Value;
+                    OnConcurrentProximityCheck(CurrentLowestProximityTarget);
+                    Debug.LogWarning("New Target found and replaced old target.");
                 }
             }
         }
@@ -148,6 +174,12 @@ public class EnemyTargetBank : MonoBehaviour
 
     void Start() {
         DeathManager.instance.onEnemyUnitDeath += RemoveFromTargetsString;
+    }
+
+    private void Update() {
+        if (onConcurrentProximityCheck != null) {
+        ConcurrentProximityCheckInUpdate();
+        }
     }
 
     

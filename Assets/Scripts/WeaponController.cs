@@ -14,14 +14,21 @@ public abstract class WeaponController : TowerComponent
     public float AttackCounter;
     public PoolObjectQueue<Projectile> ProjectilePool;
     public bool ExternalAttackLock = false;
+
+    [SerializeField]
+    public bool canattackFieldPH;
     public virtual bool CanAttack() {
         if (ExternalAttackLock == false) {
             if (Target != null) {
+                canattackFieldPH = true;
                 return true;
             }
         }
+        canattackFieldPH = false;
         return false;
     }
+
+
     public event Action<WeaponController, EnemyUnitController> onEnemyEnteredRange;
     public void OnEnemyEnteredRange(EnemyUnitController ec) {
         onEnemyEnteredRange?.Invoke(this, ec);
@@ -44,6 +51,21 @@ public abstract class WeaponController : TowerComponent
             if (ec.Proximity < Target.Proximity) {
                 Target = ec;
                 InAttackState = true;
+            }
+        }
+    }
+
+    public void OnConcurrentTargetCheck(EnemyUnitController ec) {
+        if (ec.name == Target.name) {
+            Debug.LogWarning("Same Target, attack state is : " + InAttackState);
+             if (CanAttack() && InAttackState == false) {
+                 InAttackState = true;
+            }
+        }
+        if (ec.name != Target.name) {
+            Target = ec;
+            if (CanAttack()) {
+                inAttackState = true;
             }
         }
     }
@@ -71,6 +93,10 @@ public abstract class WeaponController : TowerComponent
         }
         AsyncAttackInProgress = false;
         InAttackState = false;
+        Target = TargetBank.FindSingleTargetNearestToEndOfSpline();
+        if (CanAttack()) {
+            InAttackState = true;
+        }
     }
 
     public abstract void MainAttackFunction();
@@ -126,6 +152,7 @@ public abstract class WeaponController : TowerComponent
         if (TargetBank != null) {
             TargetBank.targetEnteredRange += OnEnemyEnteredRange;
             TargetBank.targetLeftRange += OnEnemyLeftRange;
+            //TargetBank.onConcurrentProximityCheck += OnConcurrentTargetCheck;
         }
         onAttackInitiate += StartAsyncAttack;
         onAttackCease += StopAsyncAttack;

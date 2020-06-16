@@ -11,6 +11,11 @@ public class TestOrbitalGun : OrbitalWeapon
         TowerWeaponAttacks.TestDebugRay(this);
     }
     
+    [field: SerializeField]
+    public bool CanAttackField {
+        get => canattackFieldPH;
+    }
+
     public override GameObject referenceGOforRotation {get;set;}
     public override bool ShouldRotate {get {
         if (CanAttack()) {

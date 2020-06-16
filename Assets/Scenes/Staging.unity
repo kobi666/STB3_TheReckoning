@@ -569,6 +569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!1 &71179183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,6 +1018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!224 &105043707 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8235032105786296607, guid: ec259e872a517f74cb948b51b068b026,
@@ -1084,6 +1086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!224 &114364122 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8235032105786296607, guid: ec259e872a517f74cb948b51b068b026,
@@ -1746,6 +1749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!4 &245465478 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6857228081308957647, guid: eec082e4a5501b540a7926b58d7acb72,
@@ -1819,6 +1823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!1001 &304299678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1966,6 +1971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!224 &355977956 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8235032105786296607, guid: ec259e872a517f74cb948b51b068b026,
@@ -2039,6 +2045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!1001 &432027886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2212,6 +2219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!1 &468223642
 GameObject:
   m_ObjectHideFlags: 0
@@ -2456,6 +2464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!1 &493863041
 GameObject:
   m_ObjectHideFlags: 0
@@ -3236,6 +3245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!1 &575431158
 GameObject:
   m_ObjectHideFlags: 0
@@ -4164,6 +4174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!1 &803923650
 GameObject:
   m_ObjectHideFlags: 0
@@ -4734,6 +4745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!1 &923352978
 GameObject:
   m_ObjectHideFlags: 0
@@ -6939,6 +6951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!1001 &1462603713
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8347,6 +8360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!1001 &1668482182
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9073,6 +9087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!1001 &1780462276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9273,6 +9288,7 @@ MonoBehaviour:
   ParentTower: {fileID: 0}
   AttackCounter: 0
   ExternalAttackLock: 0
+  canattackFieldPH: 0
   inAttackState: 0
 --- !u!65 &1792817553
 BoxCollider:
@@ -9618,6 +9634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!1 &1853461059
 GameObject:
   m_ObjectHideFlags: 0
@@ -9740,7 +9757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853461059}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.028996944, y: 2.5316007, z: -0.57312965}
+  m_LocalPosition: {x: -1.54, y: 2.99, z: -0.57312965}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9759,6 +9776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!1001 &1885407099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10134,6 +10152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!1001 &1971886513
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10388,6 +10407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!58 &2049597741
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -11024,6 +11044,7 @@ MonoBehaviour:
   ParentTower: {fileID: 0}
   AttackCounter: 0
   ExternalAttackLock: 0
+  canattackFieldPH: 0
   inAttackState: 0
 --- !u!65 &2141968799
 BoxCollider:
