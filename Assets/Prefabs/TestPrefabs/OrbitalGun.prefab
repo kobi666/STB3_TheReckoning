@@ -56,8 +56,7 @@ MonoBehaviour:
     OrbitBase: {fileID: 0}
     OrbitalGunPrefab: {fileID: 0}
     MaxNumberOfOrbitals: 0
-    ProjectilePrefab: {fileID: 2175439711903959826, guid: 420d9a71ac6e26746b22c7997885c117,
-      type: 3}
+    ProjectilePrefab: {fileID: 0}
     damageRange:
       min: 30
       max: 40
@@ -66,9 +65,12 @@ MonoBehaviour:
     playerTarget: {fileID: 0}
   ParentTower: {fileID: 0}
   AttackCounter: 0
+  CounterMax: 3
   ExternalAttackLock: 0
   canattackFieldPH: 0
   inAttackState: 0
+  projtest: {fileID: 5882499641662690262, guid: f21a1d072317d5a428476205f0acd37a,
+    type: 3}
 --- !u!212 &9140078121220912567
 SpriteRenderer:
   m_ObjectHideFlags: 0

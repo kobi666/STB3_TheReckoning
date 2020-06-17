@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 public abstract class WeaponController : TowerComponent
 {
     public float AttackCounter;
+    public float CounterMax = 3;
     public PoolObjectQueue<Projectile> ProjectilePool;
     public bool ExternalAttackLock = false;
 
@@ -88,7 +89,11 @@ public abstract class WeaponController : TowerComponent
         }
         AsyncAttackInProgress = true;
         while (CanAttack() && AsyncAttackInProgress == true) {
-            MainAttackFunction();
+            AttackCounter += (StaticObjects.instance.DeltaGameTime * Data.FireRate) / 10;
+            if (AttackCounter >= CounterMax) {
+                MainAttackFunction();
+                AttackCounter = 0;
+                }
             await Task.Yield();
         }
         AsyncAttackInProgress = false;
@@ -100,6 +105,10 @@ public abstract class WeaponController : TowerComponent
     }
 
     public abstract void MainAttackFunction();
+
+    public void DefaultAttack() {
+
+    }
 
 
 

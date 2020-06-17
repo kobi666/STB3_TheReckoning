@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ProjectileUtils 
 {
@@ -30,6 +31,15 @@ public class ProjectileUtils
     public static void SpawnDirectHitTargetFacingProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, Quaternion direction, EnemyTargetBank targetBank) {
         DirectHitProjectile proj = SpawnTargetPositionFacingProjectile(pool,exitPoint,targetPosition,direction) as DirectHitProjectile;
         proj.TargetBank = targetBank;
+    }
+
+    public static void MoveUntilReachedTargetPosition(Transform self, Vector2 targetPosition, float speed, Action onTargetPositionReach) {
+        if ((Vector2)self.position != targetPosition) {
+        self.position = Vector2.MoveTowards(self.position,targetPosition,speed * StaticObjects.instance.DeltaGameTime);
+        }
+        else if ((Vector2)self.position == targetPosition) {
+            onTargetPositionReach.Invoke();
+        }
     }
 
     
