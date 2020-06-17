@@ -8,7 +8,7 @@ public class TestOrbitalGun : OrbitalWeapon
     // Start is called before the first frame update
     public override void MainAttackFunction() {
         TowerWeaponAttacks.TestDebugRay(this);
-        ProjectileUtils.SpawnDirectHitTargetFacingProjectile(ProjectilePool,ProjectileExitPoint,Target.transform.position,transform.rotation, TargetBank);
+        ProjectileUtils.SpawnDirectHitTargetFacingProjectile(ProjectilePool,ProjectileExitPoint,ProjectileFinalPointV2,transform.rotation, TargetBank);
     }
     
     [field: SerializeField]

@@ -10,24 +10,33 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>
     public void OnHit(EnemyUnitController ec) {
         onHit?.Invoke(ec);
     }
+    public EnemyTargetBank TargetBank {get;set;}
     PoolObjectQueue<Projectile> pool;
     public PoolObjectQueue<Projectile> Pool {get => pool;set{pool = value;}}
     // Start is called before the first frame update
     UnitController targetUnit;
     public UnitController TargetUnit { get => targetUnit ; set { targetUnit = value;}}
 
-    Vector2 targetPosition;
-    public Vector2 TargetPosition { get => targetPosition; set {targetPosition = value;}}
+    Vector2 targetPosition = Vector2.zero;
+    public Vector2 TargetPosition { get => targetPosition; set {
+        targetPosition = value;
+        targetPositionSet = true;
+        }}
+    public bool targetPositionSet = false;
 
     public float speed = 5;
 
-    public abstract void OnDisableActions();
+    public abstract void AdditionalOnDisableActions();
 
     private void OnDisable() {
         TargetPosition = transform.position;
+        targetPositionSet = false;
         TargetUnit = null;
         Pool.ObjectQueue.Enqueue(this);
-        OnDisableActions();
+        TargetBank = null;
+        AdditionalOnDisableActions();
     }
+
+    
 
 }

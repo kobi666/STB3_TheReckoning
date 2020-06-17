@@ -28,9 +28,10 @@ public class ProjectileUtils
         return proj;
     }
 
-    public static void SpawnDirectHitTargetFacingProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, Quaternion direction, EnemyTargetBank targetBank) {
-        DirectHitProjectile proj = SpawnTargetPositionFacingProjectile(pool,exitPoint,targetPosition,direction) as DirectHitProjectile;
+    public static Projectile SpawnDirectHitTargetFacingProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, Quaternion direction, EnemyTargetBank targetBank) {
+        Projectile proj = SpawnTargetPositionFacingProjectile(pool,exitPoint,targetPosition,direction);
         proj.TargetBank = targetBank;
+        return proj;
     }
 
     public static void MoveUntilReachedTargetPosition(Transform self, Vector2 targetPosition, float speed, Action onTargetPositionReach) {

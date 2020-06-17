@@ -1,16 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class TargetFacingStraightShotDirectHitProjectile : DirectHitProjectile
+public class TargetFacingStraightShotDirectHitProjectile : Projectile
 {
-    // Start is called before the first frame update
-   public override void MovementFunction() {
-       ProjectileUtils.MoveUntilReachedTargetPosition(transform, TargetPosition,speed,OnTargetPositionReached);
-   }
+    public SortedList<string, EnemyUnitController> PossibleTargets {get => TargetBank.Targets;}
+    
+    public override void MovementFunction() {
+        if (targetPositionSet == true) {
+            ProjectileUtils.MoveUntilReachedTargetPosition(transform,TargetPosition,speed,OnTargetPositionReached);
+        }
+    }
 
-   private void Awake() {
-       onTargetPositionReached += delegate {Debug.LogWarning("Reached Position");};
-       onTargetPositionReached += delegate {gameObject.SetActive(false);};
-   }
+    public event Action onTargetPositionReached;
+    public void OnTargetPositionReached() {
+        onTargetPositionReached?.Invoke();
+    }
+
+    public override void AdditionalOnDisableActions() {
+        TargetBank = null;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (PossibleTargets.ContainsKey(other.name)) {
+            if (PossibleTargets[other.name].IsTargetable())
+            OnHit(PossibleTargets[other.name]);
+        }
+    }
+
+    private void Awake() {
+        onTargetPositionReached += delegate {gameObject.SetActive(false);};
+    }
+
+    private void Update() {
+        MovementFunction();
+    }
+    
 }

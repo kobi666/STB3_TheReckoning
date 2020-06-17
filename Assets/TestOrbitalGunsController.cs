@@ -15,6 +15,10 @@ public class TestOrbitalGunsController : OrbitalGunsController
         Rotator = GetComponent<WeaponRotator>() ?? null;
         Rotator.parentTowerComponent = this;
         OrbitalGuns =  new List<OrbitalWeapon>();
+        
+    }
+
+    private void Start() {
         TestInput.instance.onW += AddOrbitalGun;
     }
 }

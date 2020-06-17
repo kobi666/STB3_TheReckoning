@@ -7,10 +7,10 @@ public class DirectHitProjectile : Projectile
 {
     public SortedList<string, EnemyUnitController> PossibleTargets {get => TargetBank.Targets;}
 
-    public EnemyTargetBank TargetBank;
+    
     
     public override void MovementFunction() {
-        
+
     }
 
     public event Action onTargetPositionReached;
@@ -18,7 +18,7 @@ public class DirectHitProjectile : Projectile
         onTargetPositionReached?.Invoke();
     }
 
-    public override void OnDisableActions() {
+    public override void AdditionalOnDisableActions() {
         TargetBank = null;
     }
 

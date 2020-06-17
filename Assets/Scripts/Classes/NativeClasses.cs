@@ -23,7 +23,7 @@ public class PoolObjectQueue<T> where T : Component, IQueueable<T> {
             AddObjectsToQueue(5);
         }
         T t = ObjectQueue.Dequeue();
-        t.Pool = this;
+        t.gameObject.SetActive(true);
         return t;
     }
 
@@ -33,6 +33,7 @@ public class PoolObjectQueue<T> where T : Component, IQueueable<T> {
                 T PooledObject = GameObject.Instantiate(ObjectPrefab);
                 PooledObject.transform.parent = PoolParentObject.transform;
                 PooledObject.name = ObjectPrefab.name + "_" + ObjectCounter;
+                PooledObject.Pool = this;
                 PooledObject.gameObject.SetActive(false);
                 ObjectQueue.Enqueue(PooledObject);
         }

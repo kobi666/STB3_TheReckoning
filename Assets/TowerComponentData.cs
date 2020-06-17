@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class TowerComponentData 
 {
+    public float Radius = 0;
     public float DistanceFromRotatorBase;
     public float OrbitingSpeed;
     public float RotationSpeed;

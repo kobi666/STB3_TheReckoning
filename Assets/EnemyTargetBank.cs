@@ -12,6 +12,8 @@ public class EnemyTargetBank : MonoBehaviour
         return false;
     }
 
+    public CircleCollider2D RangeCollider;
+
     public event Action<EnemyUnitController> onConcurrentProximityCheck;
     public void OnConcurrentProximityCheck(EnemyUnitController ec) {
         onConcurrentProximityCheck?.Invoke(ec);
@@ -178,8 +180,13 @@ public class EnemyTargetBank : MonoBehaviour
         return ec;
     }
 
+    private void Awake() {
+        RangeCollider = GetComponent<CircleCollider2D>();
+    }
+
     void Start() {
         DeathManager.instance.onEnemyUnitDeath += RemoveFromTargetsString;
+        
     }
 
     private void Update() {

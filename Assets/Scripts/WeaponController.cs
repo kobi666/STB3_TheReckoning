@@ -36,10 +36,18 @@ public abstract class WeaponController : TowerComponent
     }
 
     ProjectileExitPoint projectileExitPoint;
+    
 
     public Vector2 ProjectileExitPoint {
         get {
             return projectileExitPoint?.transform.position ?? transform.position;
+        }
+    }
+    ProjectileFinalPoint projectileFinalPoint;
+    public Transform ProjectileFinalPointTransform { get => projectileFinalPoint.transform;}
+    public Vector2 ProjectileFinalPointV2 {
+        get {
+            return projectileFinalPoint?.transform.position ?? Target?.transform.position ?? transform.position;
         }
     }
 
@@ -173,6 +181,15 @@ public abstract class WeaponController : TowerComponent
     private void Start() {
         ProjectilePool = GameObjectPool.Instance.GetProjectilePool(Data.ProjectilePrefab) ?? null;
         projectileExitPoint = GetComponentInChildren<ProjectileExitPoint>() ?? null;
+        projectileFinalPoint = GetComponentInChildren<ProjectileFinalPoint>() ?? null;
+        if (TargetBank != null) {
+            if (Data.Radius == 0) {
+                Data.Radius = TargetBank.RangeCollider.radius;
+            }
+            else if (Data.Radius != 0) {
+                TargetBank.RangeCollider.radius = Data.Radius;
+            }
+        }
         PostStart();
     }
 
