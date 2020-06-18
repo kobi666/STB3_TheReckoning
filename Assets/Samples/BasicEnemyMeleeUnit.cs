@@ -61,6 +61,7 @@ public class BasicEnemyMeleeUnit : EnemyUnitController
     }
 
     public override IEnumerator OnEnterDeath() {
+        yield return StartCoroutine(EnemyUnitUtils.StopWalkingOnPath(Walker));
         yield return StartCoroutine(DieAfterTwoSeconds());
         yield break;
     }

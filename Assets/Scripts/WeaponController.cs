@@ -11,6 +11,11 @@ using System.Threading.Tasks;
 
 public abstract class WeaponController : TowerComponent
 {
+    public int Damage {
+        get {
+            return UnityEngine.Random.Range(Data.damageRange.min, Data.damageRange.max);
+        }
+    }
     public float AttackCounter;
     public float CounterMax = 3;
     public PoolObjectQueue<Projectile> ProjectilePool;
@@ -80,7 +85,7 @@ public abstract class WeaponController : TowerComponent
     }
 
     public virtual void StandardOnTargetLeftRange(string targetName) {
-        if (Target.name == targetName) {
+        if (Target?.name == targetName) {
             Target = TargetBank.FindSingleTargetNearestToEndOfSpline() ?? null;
         }
     }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5096018125011336475}
   - component: {fileID: 5096018125011336476}
   - component: {fileID: 5882499641662690262}
+  - component: {fileID: 1256630961709108832}
   m_Layer: 0
   m_Name: RightArrow
   m_TagString: Untagged
@@ -95,5 +96,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPositionSet: 0
-  speed: 12
-  TargetBank: {fileID: 0}
+  speed: 16
+  Damage: 0
+--- !u!68 &1256630961709108832
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5096018125011336477}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.084349796, y: 0.1209974}
+  - {x: -0.087741226, y: 0.12459775}
+  - {x: -0.07615922, y: 0.07707031}
+  - {x: 0.03801965, y: -0.0081331795}
+  - {x: -0.0958233, y: -0.08491467}
+  - {x: -0.09517762, y: -0.119489625}
+  - {x: -0.061768327, y: -0.11954014}
+  - {x: 0.105200894, y: -0.016171725}
+  - {x: -0.06140585, y: 0.12137355}
+  - {x: -0.08561274, y: 0.121373564}

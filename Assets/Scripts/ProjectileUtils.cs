@@ -28,9 +28,10 @@ public class ProjectileUtils
         return proj;
     }
 
-    public static Projectile SpawnDirectHitTargetFacingProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, Quaternion direction, EnemyTargetBank targetBank) {
+    public static Projectile SpawnDirectHitTargetFacingProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, Quaternion direction, EnemyTargetBank targetBank, int damage) {
         Projectile proj = SpawnTargetPositionFacingProjectile(pool,exitPoint,targetPosition,direction);
         proj.TargetBank = targetBank;
+        proj.Damage = damage;
         return proj;
     }
 

@@ -27,6 +27,7 @@ public abstract class EnemyUnitController : UnitController
         if (tag == "Untagged") {
             tag = "Enemy";
         }
+        //States.Death.OnEnterState += Unit
         LateStart();
     }
     

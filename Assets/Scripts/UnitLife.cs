@@ -81,4 +81,16 @@ public class UnitLifeManager
         HP -= damageDelta;
         damageTaken?.Invoke(damageDelta);
     }
+
+    public void DamageToUnit(int _damage) {
+        int damageDelta = 0;
+                if ((_damage - Armor) <= 1) {
+                    damageDelta = 1;
+                }
+                else {
+                    damageDelta = (_damage - Armor);
+                }
+        HP -= damageDelta;
+        damageTaken?.Invoke(damageDelta);
+    }
 }

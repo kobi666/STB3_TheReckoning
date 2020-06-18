@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class TargetFacingStraightShotDirectHitProjectile : Projectile
+public class TargetFacingStraightShotDirectHitProjectile : DirectHitProjectile
 {
-    public SortedList<string, EnemyUnitController> PossibleTargets {get => TargetBank.Targets;}
     
     public override void MovementFunction() {
         if (targetPositionSet == true) {
@@ -13,24 +12,18 @@ public class TargetFacingStraightShotDirectHitProjectile : Projectile
         }
     }
 
-    public event Action onTargetPositionReached;
-    public void OnTargetPositionReached() {
-        onTargetPositionReached?.Invoke();
-    }
-
     public override void AdditionalOnDisableActions() {
         TargetBank = null;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (PossibleTargets.ContainsKey(other.name)) {
-            if (PossibleTargets[other.name].IsTargetable())
-            OnHit(PossibleTargets[other.name]);
-        }
+    private void Awake() {
+        
+        onTargetPositionReached += delegate {gameObject.SetActive(false);};
     }
 
-    private void Awake() {
-        onTargetPositionReached += delegate {gameObject.SetActive(false);};
+    public override void PostStart() {
+      onHit += delegate(EnemyUnitController ec) { ec.LifeManager.DamageToUnit(Damage);};
+      Debug.LogWarning(Damage);  
     }
 
     private void Update() {

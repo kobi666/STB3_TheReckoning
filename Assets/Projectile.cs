@@ -5,6 +5,7 @@ using System;
 
 public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>
 {
+
     public abstract void MovementFunction();
     public event Action<EnemyUnitController> onHit;
     public void OnHit(EnemyUnitController ec) {
@@ -25,6 +26,7 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>
     public bool targetPositionSet = false;
 
     public float speed = 5;
+    public int Damage;
 
     public abstract void AdditionalOnDisableActions();
 
