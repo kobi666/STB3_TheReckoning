@@ -6,7 +6,7 @@ using System;
 public class DirectHitProjectile : Projectile
 {
 
-    public SortedList<string, EnemyUnitController> PossibleTargets {get => TargetBank.Targets;}
+    public SortedList<string, EnemyUnitController> PossibleTargets {get => TargetBank.Targets ?? null;}
 
     public int HitCounter = 1;
     public event Action onHitCounterZero;
