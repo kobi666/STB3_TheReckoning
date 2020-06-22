@@ -70,6 +70,7 @@ public abstract class OrbitalWeapon : WeaponController, IOrbital<OrbitalWeapon>
         InAttackState = false;
     }
 
+
     public virtual void DefaultRotationFunction() {
         Vector2 vecToTarget = Target.transform.position - transform.position;
         float angleToTarget = Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg;

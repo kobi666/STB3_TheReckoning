@@ -9,6 +9,9 @@ public class TowerComponentData
     public float DistanceFromRotatorBase;
     public float OrbitingSpeed;
     public float RotationSpeed;
+    public PlayerUnitController PlayerUnitPrefab;
+    public int MaxUnits;
+    public float PlayerUnitSpawnTime;
     public Transform OrbitBase;
     int numOfOrbitals;
     public int NumOfOrbitals {

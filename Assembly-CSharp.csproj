@@ -66,7 +66,10 @@
      <Compile Include="Assets\PlayerUnit3.cs" />
      <Compile Include="Assets\PlayerUnitController2.cs" />
      <Compile Include="Assets\PlayerUnitControllerStaging.cs" />
+     <Compile Include="Assets\PlayerUnitRallyPoint.cs" />
      <Compile Include="Assets\PlayerUnitSpawner.cs" />
+     <Compile Include="Assets\PlayerUnitSpawnerUtils.cs" />
+     <Compile Include="Assets\PlayerUnitSpawningPoint.cs" />
      <Compile Include="Assets\Projectile.cs" />
      <Compile Include="Assets\ProjectileExitPoint.cs" />
      <Compile Include="Assets\ProjectileFinalPoint.cs" />
@@ -112,6 +115,7 @@
      <Compile Include="Assets\TestInput.cs" />
      <Compile Include="Assets\TestOrbitalGun.cs" />
      <Compile Include="Assets\TestOrbitalGunsController.cs" />
+     <Compile Include="Assets\TestPlayerUnitSpawner.cs" />
      <Compile Include="Assets\TestScript.cs" />
      <Compile Include="Assets\TestTower.cs" />
      <Compile Include="Assets\TestTowerController.cs" />

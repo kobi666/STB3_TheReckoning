@@ -65,6 +65,9 @@ public class WeaponUtils
             return RadianToVector2(degree * Mathf.Deg2Rad);
         }
 
+    public static float[] orbRotationDegrees1 = {180f};
+
+    public static float[] orbRotationDegrees2 = {0f,180f};
     public static float[] orbRotationDegrees3 = {0f,120f,240f};
     public static float[] orbRotationDegrees4 = {0f,180f,270f,90f};
     public static float[] orbRotationDegrees5 = {0f, 144f, 288f,72f,216f};
@@ -72,6 +75,10 @@ public class WeaponUtils
 
     public static float[] GetOrbRotationDegrees(int maxOrbs) {
         switch (maxOrbs) {
+            case 1:
+                return orbRotationDegrees1;
+            case 2:
+                return orbRotationDegrees2;
             case 3: 
                 return orbRotationDegrees3;
             case 4:
@@ -84,19 +91,6 @@ public class WeaponUtils
                 Debug.LogWarning("undefined max number of orbs " + maxOrbs +  " , Defaulting to calculated degrees");
                 return OrbRotationDegrees(maxOrbs);
         }
-    }
-
-    // public static float AngleFloat (float f)
-    //     float
-        
-        
-
-    public static IEnumerator OrbitGunAround(OrbitalWeapon self, Transform orbitBase, float angle, float distanceFromBase) {
-        // while (true) {
-        //     //self.transform.position = 
-        //     //yield return new WaitForFixedUpdate();
-        // }
-        yield break;
     }
     
     

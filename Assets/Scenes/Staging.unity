@@ -190,6 +190,49 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eec082e4a5501b540a7926b58d7acb72, type: 3}
+--- !u!1 &26451483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 26451484}
+  - component: {fileID: 26451485}
+  m_Layer: 0
+  m_Name: SpawningPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &26451484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26451483}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1498655298}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &26451485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26451483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f56afe8d587c9844b16a2ed6a69fddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &36564631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3533,6 +3576,50 @@ MonoBehaviour:
     c2: 0
     c3: 0
     c4: 0
+--- !u!1 &605329107
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 605329108}
+  - component: {fileID: 605329109}
+  m_Layer: 0
+  m_Name: RallyPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &605329108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605329107}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1498655298}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &605329109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605329107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3a747f746746f4298f5bfac5acd6b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DistanceFromRallyPoint: 1.5
 --- !u!1 &611612743
 GameObject:
   m_ObjectHideFlags: 0
@@ -7267,8 +7354,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1498655298}
   - component: {fileID: 1498655297}
+  - component: {fileID: 1498655299}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: UnitSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7332,12 +7420,48 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498655296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1286273, y: -1.9220805, z: -3.588103}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 605329108}
+  - {fileID: 26451484}
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1498655299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498655296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0906223ef5fd03e47af621c393ed91dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SR: {fileID: 0}
+  Animancer: {fileID: 0}
+  Data:
+    Radius: 0
+    DistanceFromRotatorBase: 0
+    OrbitingSpeed: 0
+    RotationSpeed: 0
+    PlayerUnitPrefab: {fileID: 0}
+    MaxUnits: 0
+    PlayerUnitSpawnRate: 0
+    OrbitBase: {fileID: 0}
+    OrbitalGunPrefab: {fileID: 0}
+    MaxNumberOfOrbitals: 0
+    ProjectilePrefab: {fileID: 0}
+    damageRange:
+      min: 0
+      max: 0
+    FireRate: 0
+    enemyTarget: {fileID: 0}
+    playerTarget: {fileID: 0}
+  ParentTower: {fileID: 0}
+  RangeCollider: {fileID: 0}
 --- !u!1001 &1567369103
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9372,6 +9496,9 @@ MonoBehaviour:
     DistanceFromRotatorBase: 0
     OrbitingSpeed: 0
     RotationSpeed: 0
+    PlayerUnitPrefab: {fileID: 0}
+    MaxUnits: 0
+    PlayerUnitSpawnRate: 0
     OrbitBase: {fileID: 0}
     OrbitalGunPrefab: {fileID: 0}
     MaxNumberOfOrbitals: 0
@@ -9838,6 +9965,9 @@ MonoBehaviour:
     DistanceFromRotatorBase: 0
     OrbitingSpeed: 0
     RotationSpeed: 0
+    PlayerUnitPrefab: {fileID: 0}
+    MaxUnits: 0
+    PlayerUnitSpawnRate: 0
     OrbitBase: {fileID: 0}
     OrbitalGunPrefab: {fileID: 9140078121220912564, guid: 902e54a590cc5ac4ba2e368165662c9c,
       type: 3}
@@ -11137,6 +11267,9 @@ MonoBehaviour:
     DistanceFromRotatorBase: 0
     OrbitingSpeed: 0
     RotationSpeed: 0
+    PlayerUnitPrefab: {fileID: 0}
+    MaxUnits: 0
+    PlayerUnitSpawnRate: 0
     OrbitBase: {fileID: 0}
     OrbitalGunPrefab: {fileID: 0}
     MaxNumberOfOrbitals: 0

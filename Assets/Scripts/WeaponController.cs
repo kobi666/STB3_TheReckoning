@@ -119,9 +119,7 @@ public abstract class WeaponController : TowerComponent
 
     public abstract void MainAttackFunction();
 
-    public void DefaultAttack() {
-
-    }
+    
 
 
 

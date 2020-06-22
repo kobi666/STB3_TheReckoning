@@ -6,6 +6,13 @@ using Animancer;
 
 public abstract class PlayerUnitController : UnitController
 {
+    private int unitBaseIndex = 0;
+    public int UnitBaseIndex {
+        get => unitBaseIndex;
+        set {
+            unitBaseIndex = value;
+        }
+    }
     public AnimationClip IdleAnimation;
     public AnimationClip WalkingAnimation;
     public AnimationClip AttackAnimation;
