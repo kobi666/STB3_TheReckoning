@@ -189,6 +189,7 @@ namespace BezierSolution
 				if( transform.hasChanged )
 					Revalidate();
 
+
 				return m_precedingControlPointPosition;
 			}
 			set

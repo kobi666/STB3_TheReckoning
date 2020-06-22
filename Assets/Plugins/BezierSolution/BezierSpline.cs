@@ -520,6 +520,7 @@ namespace BezierSolution
 			return GetPoint( normalizedT );
 		}
 
+
 		public void ConstructLinearPath()
 		{
 			for( int i = 0; i < endPoints.Count; i++ )

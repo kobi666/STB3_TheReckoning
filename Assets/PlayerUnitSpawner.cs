@@ -18,19 +18,45 @@ public abstract class PlayerUnitSpawner : TowerComponent
     public void OnUnitDeath(string unitName) {
         onUnitDeath?.Invoke(unitName);
     }
-    public event Action onUnitSpawn;
-    public void OnUnitSpawn() {
-        onUnitSpawn?.Invoke();
+
+    void invokeSpawnOnUnitDeath(string unitName) {
+        if (unitsIndex.ContainsKey(unitName)) {
+            OnUnitSpawn(unitsIndex[unitName].Item2);
+        }
+    }
+    public event Action<int> onUnitSpawn;
+    public void OnUnitSpawn(int unitBaseIndex) {
+        onUnitSpawn?.Invoke(unitBaseIndex);
     }
 
-    Dictionary<string, (PlayerUnitController,int)> unitsIndex;
+    public Dictionary<string, (PlayerUnitController,int)> unitsIndex = new Dictionary<string, (PlayerUnitController, int)>();
 
-    public void AddUnitToIndex(PlayerUnitController puc) {
+    void AddUnitToIndex(PlayerUnitController puc) {
         if (unitsIndex.Count < Data.MaxUnits) {
             if (CanSpawn()) {
                 unitsIndex.Add(puc.name,(puc,puc.UnitBaseIndex));
             }
         }
+    }
+
+    public void StopSpwaningCoroutines() {
+        foreach (var item in SpawningCoroutines)
+        {
+            try {
+                StopCoroutine(item.Value);
+            }
+            catch (Exception e) {
+                Debug.LogWarning(e.Message);
+            }
+        }
+    }
+
+    public void SpawnUnitOnDeath(int unitBaseIndex) {
+        if (SpawningCoroutines.ContainsKey(unitBaseIndex)) {
+            SpawningCoroutines.Remove(unitBaseIndex);
+        }
+        SpawningCoroutines.Add(unitBaseIndex, SpawnPlayerUnitAfterCounterAndAddToIndexWithCounter(unitBaseIndex));
+        StartCoroutine(SpawningCoroutines[unitBaseIndex]);
     }
 
     public void RemoveUnitFromIndex(string unitName) {
@@ -39,7 +65,8 @@ public abstract class PlayerUnitSpawner : TowerComponent
         }
     }
 
-    IEnumerator SpawnPlayerUnitAfterCounterAndAddToIndex(int unitBaseIndex) {
+    Dictionary<int,IEnumerator> SpawningCoroutines = new Dictionary<int, IEnumerator>();
+    IEnumerator SpawnPlayerUnitAfterCounterAndAddToIndexWithCounter(int unitBaseIndex) {
         float counter = 0;
         while (this != null) {
             counter += StaticObjects.instance.DeltaGameTime;
@@ -57,8 +84,19 @@ public abstract class PlayerUnitSpawner : TowerComponent
         }
     }
 
+    public void SpawnPlayerUnitAndAddToIndex(int unitBaseIndex) {
+            PlayerUnitController puc = PlayerUnitSpawnerUtils.SpawnPlayerUnit(Data.PlayerUnitPrefab, SpawningPointPosition, unitBaseIndex);
+            puc.Data.SetPosition = GetRallyPoint(unitBaseIndex);
+            try {
+            AddUnitToIndex(puc);
+            }
+            catch (Exception e) {
+                Debug.LogWarning(e.Message);
+            }
+    }
 
 
+    public PlayerUnitRallyPoint RallyPoint {get => rallyPoint; private set { rallyPoint = value;}}
     PlayerUnitRallyPoint rallyPoint;
     public Vector2 GetRallyPoint(int unitBaseIndex) {
         return rallyPoint.GetRallyPoint(unitBaseIndex, Data.MaxUnits);
@@ -76,9 +114,15 @@ public abstract class PlayerUnitSpawner : TowerComponent
 //    Dictionary<string, (int,float,PlayerUnitController)> Units;
     public abstract void PostStart();
     private void Start() {
+        onUnitDeath += invokeSpawnOnUnitDeath;
+        onUnitSpawn += SpawnUnitOnDeath;
         DeathManager.instance.onPlayerUnitDeath += OnUnitDeath;
-        rallyPoint = GetComponentInChildren<PlayerUnitRallyPoint>() ?? null;
+        onUnitDeath += RemoveUnitFromIndex;
+        RallyPoint = GetComponentInChildren<PlayerUnitRallyPoint>() ?? null;
         SpawningPointComponent = GetComponentInChildren<PlayerUnitSpawningPoint>() ?? null;
+        for (int i = 0 ; i < Data.MaxUnits ; i++) {
+            SpawnPlayerUnitAndAddToIndex(i);
+        }
         PostStart();
     }
     

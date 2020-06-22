@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class TestPlayerUnitSpawner : PlayerUnitSpawner
 {
-    // Start is called before the first frame update
+    private void Update() {
+        for (int i = 0; i < Data.MaxUnits ; i++) {
+            Debug.DrawLine(RallyPoint.transform.position, GetRallyPoint(i));
+        }
+
+    }
     
     public override void PostAwake() {
 

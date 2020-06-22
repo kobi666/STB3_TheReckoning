@@ -10,7 +10,7 @@ public class DeathManager : MonoBehaviour
     public event Action<string> onPlayerUnitDeath;
 
     public void OnUnitDeath(string unitTag, string unitName) {
-        if (unitTag == "Player") {
+        if (unitTag == "Player_Unit") {
             onPlayerUnitDeath?.Invoke(unitName);
         }
         if (unitTag == "Enemy") {

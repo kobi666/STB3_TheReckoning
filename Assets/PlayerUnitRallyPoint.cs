@@ -10,8 +10,8 @@ public class PlayerUnitRallyPoint : MonoBehaviour
     Vector2[] RallyPoints(int maxUnits) {
         Vector2[] rallyPoints;
             float[] rallyPointsDegrees = PlayerUnitSpawnerUtils.GetUnitPositionDegrees(maxUnits);
-            rallyPoints = new Vector2[maxUnits -1];
-            for (int i = 0 ; i < maxUnits -1 ; i++) {
+            rallyPoints = new Vector2[maxUnits];
+            for (int i = 0 ; i < maxUnits ; i++) {
                 rallyPoints[i] = (Vector2)transform.position + (PlayerUnitSpawnerUtils.DegreeToVector2(rallyPointsDegrees[i]) * DistanceFromRallyPoint);
             }
             return rallyPoints;

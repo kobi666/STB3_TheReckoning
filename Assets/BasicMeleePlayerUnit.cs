@@ -112,6 +112,6 @@ public class BasicMeleePlayerUnit : PlayerUnitController
     public override void LateStart() {
         SM.SetState(States.Default);
         onAttack += PlayerUnitUtils.AttackEnemyUnit;
-        Data.SetPosition = transform.position;
+        //Data.SetPosition = transform.position;
     }
 }
