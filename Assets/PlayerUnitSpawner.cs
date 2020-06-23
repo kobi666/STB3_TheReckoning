@@ -71,7 +71,7 @@ public abstract class PlayerUnitSpawner : TowerComponent
         while (this != null) {
             counter += StaticObjects.instance.DeltaGameTime;
             if (counter >= Data.PlayerUnitSpawnTime) {
-                PlayerUnitController puc = PlayerUnitSpawnerUtils.SpawnPlayerUnit(Data.PlayerUnitPrefab, GetRallyPoint(unitBaseIndex), unitBaseIndex);
+                PlayerUnitController puc = PlayerUnitSpawnerUtils.SpawnPlayerUnitFromSpawner(this, unitBaseIndex);
                 try {
                 AddUnitToIndex(puc);
                 }

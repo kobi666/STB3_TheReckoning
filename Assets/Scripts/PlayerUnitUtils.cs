@@ -38,7 +38,7 @@ public class PlayerUnitUtils
     public static bool StandardConditionToAttack(PlayerUnitController pc) {
         
         if (pc.CurrentState == pc.States.InDirectBattle || pc.CurrentState == pc.States.JoinBattle) {
-            if (pc.Target.IsTargetable()) {
+            if (pc.Target?.IsTargetable() ?? false) {
                 return true;
             }
         }

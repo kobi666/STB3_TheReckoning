@@ -6,7 +6,11 @@ using System;
 public class DirectHitProjectile : Projectile
 {
 
-    public SortedList<string, EnemyUnitController> PossibleTargets {get => TargetBank.Targets ?? null;}
+    public SortedList<string, EnemyUnitController> PossibleTargets {
+        get {
+         TargetBank?.clearNullsFromList();
+         return TargetBank?.Targets; }
+         }
 
     public int HitCounter = 1;
     public event Action onHitCounterZero;
@@ -28,7 +32,7 @@ public class DirectHitProjectile : Projectile
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
-        if (PossibleTargets.ContainsKey(other.name)) {
+        if (PossibleTargets?.ContainsKey(other.name) ?? false) {
             if (PossibleTargets[other.name].IsTargetable())
             OnHit(PossibleTargets[other.name]);
             HitCounter -= 1;

@@ -98,7 +98,7 @@ public class EnemyTargetBank : MonoBehaviour
         }
     }
 
-    private void clearNullsFromList() {
+    public void clearNullsFromList() {
         foreach (var item in targets)
         {
             if (item.Value == null) {
