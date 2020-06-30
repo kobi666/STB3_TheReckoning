@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/PlayerInput.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/PlayerInput 1.inputactions'
 
 using System;
 using System.Collections;
@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class @PlayerInput : IInputActionCollection, IDisposable
+public class @PlayerInput1 : IInputActionCollection, IDisposable
 {
     public InputActionAsset asset { get; }
-    public @PlayerInput()
+    public @PlayerInput1()
     {
         asset = InputActionAsset.FromJson(@"{
-    ""name"": ""PlayerInput"",
+    ""name"": ""PlayerInput 1"",
     ""maps"": [
         {
             ""name"": ""GamePlay"",
@@ -76,9 +76,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""MovePlayer"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""81a5adcc-4645-4e2c-a627-6f6f43accf22"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -222,7 +222,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/rightStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""GamePad;Keyboard"",
+                    ""groups"": ""GamePad"",
                     ""action"": ""MovePlayer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -233,7 +233,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/rightStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""GamePad;Keyboard"",
+                    ""groups"": ""GamePad"",
                     ""action"": ""MovePlayer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -244,7 +244,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/rightStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""GamePad;Keyboard"",
+                    ""groups"": ""GamePad"",
                     ""action"": ""MovePlayer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -255,7 +255,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/rightStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""GamePad;Keyboard"",
+                    ""groups"": ""GamePad"",
                     ""action"": ""MovePlayer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -447,8 +447,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_GamePlay_MovePlayer;
     public struct GamePlayActions
     {
-        private @PlayerInput m_Wrapper;
-        public GamePlayActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        private @PlayerInput1 m_Wrapper;
+        public GamePlayActions(@PlayerInput1 wrapper) { m_Wrapper = wrapper; }
         public InputAction @MoveTowerCursor => m_Wrapper.m_GamePlay_MoveTowerCursor;
         public InputAction @TestAction => m_Wrapper.m_GamePlay_TestAction;
         public InputAction @MoveTargetCursor => m_Wrapper.m_GamePlay_MoveTargetCursor;
@@ -532,8 +532,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_TestButtons_F;
     public struct TestButtonsActions
     {
-        private @PlayerInput m_Wrapper;
-        public TestButtonsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        private @PlayerInput1 m_Wrapper;
+        public TestButtonsActions(@PlayerInput1 wrapper) { m_Wrapper = wrapper; }
         public InputAction @W => m_Wrapper.m_TestButtons_W;
         public InputAction @S => m_Wrapper.m_TestButtons_S;
         public InputAction @D => m_Wrapper.m_TestButtons_D;

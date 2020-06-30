@@ -20,5 +20,8 @@ public class TestOrbitalGunsController : OrbitalGunsController
 
     private void Start() {
         TestInput.instance.onW += AddOrbitalGun;
+        for (int i =0 ; i < Data.MaxNumberOfOrbitals ; i++) {
+            AddOrbitalGun();
+        }
     }
 }

@@ -63,9 +63,9 @@
                 },
                 {
                     "name": "MovePlayer",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "81a5adcc-4645-4e2c-a627-6f6f43accf22",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 }
@@ -209,7 +209,7 @@
                     "path": "<Gamepad>/rightStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "GamePad;Keyboard",
+                    "groups": "GamePad",
                     "action": "MovePlayer",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -220,7 +220,7 @@
                     "path": "<Gamepad>/rightStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "GamePad;Keyboard",
+                    "groups": "GamePad",
                     "action": "MovePlayer",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -231,7 +231,7 @@
                     "path": "<Gamepad>/rightStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "GamePad;Keyboard",
+                    "groups": "GamePad",
                     "action": "MovePlayer",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -242,7 +242,7 @@
                     "path": "<Gamepad>/rightStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "GamePad;Keyboard",
+                    "groups": "GamePad",
                     "action": "MovePlayer",
                     "isComposite": false,
                     "isPartOfComposite": true
