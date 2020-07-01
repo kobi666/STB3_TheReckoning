@@ -76,7 +76,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""MovePlayer"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""81a5adcc-4645-4e2c-a627-6f6f43accf22"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -208,7 +208,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 {
                     ""name"": ""2D Vector"",
                     ""id"": ""f2deb9ce-d482-4bae-a5f4-4ef65d7103f2"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

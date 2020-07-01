@@ -125,7 +125,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.63, y: 0.84}
+    oldSize: {x: 0.57272726, y: 0.76363635}
     newSize: {x: 0.63, y: 0.84}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -191,6 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae46cd04cde76034ca01eb8128b3afc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
     _HP: 0
@@ -206,7 +207,7 @@ MonoBehaviour:
     DamageRange:
       min: 50
       max: 75
-    HP: 300
+    HP: 800
     Armor: 0
     SpecialArmor: 0
     speed: 0

@@ -62,6 +62,9 @@
      <Compile Include="Assets\LifeBarmanager.cs" />
      <Compile Include="Assets\NormalTowerComponentStates.cs" />
      <Compile Include="Assets\OrbitalGunsController.cs" />
+     <Compile Include="Assets\PlayerController.cs" />
+     <Compile Include="Assets\PlayerControllerUtilis.cs" />
+     <Compile Include="Assets\PlayerData.cs" />
      <Compile Include="Assets\PlayerInput 1.cs" />
      <Compile Include="Assets\PlayerInput.cs" />
      <Compile Include="Assets\PlayerUnit3.cs" />
@@ -74,6 +77,9 @@
      <Compile Include="Assets\Projectile.cs" />
      <Compile Include="Assets\ProjectileExitPoint.cs" />
      <Compile Include="Assets\ProjectileFinalPoint.cs" />
+     <Compile Include="Assets\RoomBorder.cs" />
+     <Compile Include="Assets\RoomController.cs" />
+     <Compile Include="Assets\RoomManager.cs" />
      <Compile Include="Assets\Rotator.cs" />
      <Compile Include="Assets\Samples\BasicEnemyMeleeUnit.cs" />
      <Compile Include="Assets\Samples\Input System\1.0.0-preview.5\Custom Binding Composite\CustomComposite.cs" />

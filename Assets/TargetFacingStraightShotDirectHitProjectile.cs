@@ -23,7 +23,6 @@ public class TargetFacingStraightShotDirectHitProjectile : DirectHitProjectile
 
     public override void PostStart() {
       onHit += delegate(EnemyUnitController ec) { ec.LifeManager.DamageToUnit(Damage);};
-      Debug.LogWarning(Damage);  
     }
 
     private void Update() {

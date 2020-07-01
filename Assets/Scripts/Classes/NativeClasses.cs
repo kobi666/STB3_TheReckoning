@@ -3,6 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[System.Serializable]
+public class RoomLimits {
+    [SerializeField]
+    public float MaxX;
+    [SerializeField]
+    public float MaxY;
+    [SerializeField]
+    public float MinX;
+    [SerializeField]
+    public float MinY;
+    public RoomLimits (float maxX,float maxY, float minX, float minY) {
+        MaxX = maxX;
+        MaxY = maxY;
+        MinX = minX;
+        MinY = minY;
+    }
+}
+
+[System.Serializable]
+public class RoomBorders {
+    [SerializeField]
+    public RoomBorder Top;
+    [SerializeField]
+    public RoomBorder Bottom;
+    [SerializeField]
+    public RoomBorder Left;
+    [SerializeField]
+    public RoomBorder Right;
+}
 
 
 public class PoolObjectQueue<T> where T : Component, IQueueable<T> {

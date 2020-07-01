@@ -7,7 +7,8 @@ using Animancer;
 public abstract class UnitController : MonoBehaviour
 {
     
-
+    Rigidbody2D body;
+    public Collider2D UnitCollider;
     public AnimancerComponent Animancer;
     public abstract void OnAttack();
     public abstract bool IsTargetable();
@@ -68,7 +69,8 @@ public abstract class UnitController : MonoBehaviour
     }
     
     private void Awake() {
-        //Test2();
+        UnitCollider = GetComponent<Collider2D>();
+        body = GetComponent<Rigidbody2D>();
         Animancer = GetComponent<AnimancerComponent>() ?? null;
         LifeManager.HP = Data.HP;
         TargetBank = GetComponentInChildren<EnemyTargetBank>() ?? null;
@@ -94,7 +96,13 @@ public abstract class UnitController : MonoBehaviour
          
     }
 
-    
+    private void OnEnable() {
+        UnitCollider.enabled = true;
+    }
+
+    private void OnDisable() {
+        
+    }
 
     
 
