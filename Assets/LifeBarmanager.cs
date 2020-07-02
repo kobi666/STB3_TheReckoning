@@ -25,9 +25,11 @@ public class LifeBarmanager : MonoBehaviour
     {
         ParentSpriteRenderer = transform.parent.GetComponent<SpriteRenderer>();
         initialX = LifeBarMaskPositon.position.x;
-        maxLife = transform.parent.GetComponent<UnitController>().Data.HP;
-        Life = transform.parent.GetComponent<UnitController>().LifeManager;
-        Life.damageTaken += UpdateLifeBar;
+        maxLife = transform.parent.GetComponent<UnitController>()?.Data.HP ?? 0 ;
+        Life = transform.parent.GetComponent<UnitController>()?.LifeManager ?? null;
+        if (Life != null) {
+            Life.damageTaken += UpdateLifeBar; 
+        }
         LifeBarSize = GetComponent<SpriteRenderer>().sprite.bounds.size.x;
         ResizeLifeBarToUnitSpriteSize();
     }

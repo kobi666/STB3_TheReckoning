@@ -138,8 +138,9 @@ public class SelectorTest2 : MonoBehaviour
                 towerSlotGO = CardinalTowerSlots[cardinalDirectionV2].TowerSlotGo;
             }
             if (towerSlotGO != null) {
-            transform.position = towerSlotGO.transform.position;
+            //transform.position = towerSlotGO.transform.position;
             SelectedTowerSlot = towerSlotGO;
+            StartCoroutine(SelectorUtils.SmoothMove(transform,towerSlotGO.transform.position));
             Debug.LogWarning("On Move : " + TowerObjectController.TowerActions.ButtonSouth.ActionDescription);
             
             
@@ -209,9 +210,6 @@ public class SelectorTest2 : MonoBehaviour
         V3L.SetPosition(1, new Vector2(SelectedTowerSlot.transform.position.x + SecondDiscoveryRangeWithLineWidth, 6));
         V4L.SetPosition(0, new Vector2(SelectedTowerSlot.transform.position.x - SecondDiscoveryRangeWithLineWidth, -6));
         V4L.SetPosition(1, new Vector2(SelectedTowerSlot.transform.position.x - SecondDiscoveryRangeWithLineWidth, 6));
-        
-        
-        
 
     }
 }

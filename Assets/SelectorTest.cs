@@ -40,6 +40,7 @@ public class SelectorTest : MonoBehaviour
                 return;
             }
             if (towerGO != null) {
+            
             transform.position = CardinalTowers[cardinalDirectionV2].TowerPosition;
             SelectedTower = CardinalTowers[cardinalDirectionV2].TowerSlotGo;
             }
@@ -86,7 +87,8 @@ public class SelectorTest : MonoBehaviour
                 return;
             }
             if (towerGO != null) {
-            transform.position = CardinalTowers[cardinalDirectionV2].TowerPosition;
+            StartCoroutine(SelectorUtils.SmoothMove(transform,CardinalTowers[cardinalDirectionV2].TowerPosition));
+            //transform.position = CardinalTowers[cardinalDirectionV2].TowerPosition;
             SelectedTower = CardinalTowers[cardinalDirectionV2].TowerSlotGo;
             }
             if (towerGO == null) {
@@ -108,7 +110,8 @@ public class SelectorTest : MonoBehaviour
                     }
                 }
                 if (AdjecentTower != null) {
-                transform.position = AdjecentTower.transform.position;
+                StartCoroutine(SelectorUtils.SmoothMove(transform,CardinalTowers[cardinalDirectionV2].TowerPosition));
+                //transform.position = AdjecentTower.transform.position;
                 SelectedTower = AdjecentTower;
                 }
             }
