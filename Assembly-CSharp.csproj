@@ -99,7 +99,6 @@
      <Compile Include="Assets\Scripts\StateMachine.cs" />
      <Compile Include="Assets\Scripts\StaticObjects.cs" />
      <Compile Include="Assets\Scripts\TProjectileController.cs" />
-     <Compile Include="Assets\Scripts\Tower.cs" />
      <Compile Include="Assets\Scripts\UnitController.cs" />
      <Compile Include="Assets\Scripts\UnitLife.cs" />
      <Compile Include="Assets\Scripts\UnitStates.cs" />
@@ -130,11 +129,17 @@
      <Compile Include="Assets\TestTowerController.cs" />
      <Compile Include="Assets\TestYieldWeaponController.cs" />
      <Compile Include="Assets\TestingVectors.cs" />
+     <Compile Include="Assets\Tower.cs" />
      <Compile Include="Assets\TowerAction.cs" />
+     <Compile Include="Assets\TowerActionManager.cs" />
      <Compile Include="Assets\TowerActionsContainer.cs" />
      <Compile Include="Assets\TowerArsenal.cs" />
      <Compile Include="Assets\TowerComponentData.cs" />
      <Compile Include="Assets\TowerController.cs" />
+     <Compile Include="Assets\TowerCrosshairData.cs" />
+     <Compile Include="Assets\TowerCrosshairManager.cs" />
+     <Compile Include="Assets\TowerCrosshairMovementController.cs" />
+     <Compile Include="Assets\TowerSlot.cs" />
      <Compile Include="Assets\TowerSlotController.cs" />
      <Compile Include="Assets\TowerSlotManager.cs" />
      <Compile Include="Assets\TowerTestScript.cs" />

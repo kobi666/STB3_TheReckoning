@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -204,6 +205,7 @@ LineRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -380,6 +382,7 @@ LineRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -513,6 +516,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -874,16 +878,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 713513683}
     m_Modifications:
-    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
-        type: 3}
-      propertyPath: m_Name
-      value: TowerSlot (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -938,6 +932,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_Name
+      value: TowerSlot (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
@@ -1011,6 +1015,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1103,16 +1108,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 713513683}
     m_Modifications:
-    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
-        type: 3}
-      propertyPath: m_Name
-      value: TowerSlot (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1168,6 +1163,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_Name
+      value: TowerSlot (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
 --- !u!4 &966341003 stripped
@@ -1183,16 +1188,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 713513683}
     m_Modifications:
-    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
-        type: 3}
-      propertyPath: m_Name
-      value: TowerSlot (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1248,6 +1243,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_Name
+      value: TowerSlot (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
 --- !u!1 &1227197835
@@ -1281,29 +1286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77a71cc7afd44d4cb399837888dfdbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LifeManager:
-    unitTag: 
-    unitName: 
-    _HP: 0
-    _armor: 0
-    _specialArmor: 0
-  Walker: {fileID: 0}
-  TargetBank: {fileID: 0}
-  SM: {fileID: 0}
-  Data:
-    CanBeStoppedByOtherUnit: 0
-    AttackRate: 0
-    DamageRange:
-      min: 0
-      max: 0
-    HP: 0
-    Armor: 0
-    SpecialArmor: 0
-    speed: 0
-    SetPosition: {x: 0, y: 0}
-    Target: {fileID: 0}
-    PlayerTarget: {fileID: 0}
-    EnemyTarget: {fileID: 0}
 --- !u!4 &1227197837
 Transform:
   m_ObjectHideFlags: 0
@@ -1330,6 +1312,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd4c4d6b43156b14584cdf4699cca5c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RangeCollider: {fileID: 0}
+  CurrentLowestProximityTarget: {fileID: 0}
+  CurrentLowestProximtyTargetName: 
 --- !u!114 &1227197839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1345,6 +1330,8 @@ MonoBehaviour:
   StateInTransition: 0
   StateChangeLocked: 0
   CurrentState:
+    StateAnimation: {fileID: 0}
+    textColor: {r: 0, g: 0, b: 0, a: 0}
     StateTransitionInterrupted: 0
     isFinalState: 0
     stateName: 
@@ -1355,16 +1342,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 713513683}
     m_Modifications:
-    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
-        type: 3}
-      propertyPath: m_Name
-      value: TowerSlot (9)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1420,6 +1397,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_Name
+      value: TowerSlot (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
 --- !u!4 &1309689468 stripped
@@ -1459,6 +1446,7 @@ LineRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1670,6 +1658,7 @@ LineRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1773,16 +1762,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 713513683}
     m_Modifications:
-    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
-        type: 3}
-      propertyPath: m_Name
-      value: TowerSlot (8)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1838,6 +1817,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_Name
+      value: TowerSlot (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
 --- !u!4 &1518960677 stripped
@@ -1846,6 +1835,65 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1282032432}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1560966267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1560966270}
+  - component: {fileID: 1560966269}
+  - component: {fileID: 1560966268}
+  m_Layer: 0
+  m_Name: TowerCrosshair
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1560966268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560966267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de2f52d3b03ad2742aa7e95d07dbc297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1560966269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560966267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840a1b8cd6ca90d44afb2cdacf6b5140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Data:
+    MovementDuration: 0
+    CurrentTowerSlot: {fileID: 0}
+--- !u!4 &1560966270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560966267}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.9869396, y: 1.7888391, z: -5.4179688}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 29
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1627909527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1853,16 +1901,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 713513683}
     m_Modifications:
-    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
-        type: 3}
-      propertyPath: m_Name
-      value: TowerSlot (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1918,6 +1956,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_Name
+      value: TowerSlot (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
 --- !u!1001 &1662653241
@@ -1927,11 +1975,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 713513683}
     m_Modifications:
-    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
-        type: 3}
-      propertyPath: m_Name
-      value: TowerSlot
-      objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1987,6 +2030,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_Name
+      value: TowerSlot
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
 --- !u!1 &1728790386
@@ -2020,6 +2068,7 @@ LineRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2147,6 +2196,7 @@ LineRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2303,6 +2353,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2383,6 +2434,7 @@ LineRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2570,16 +2622,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 713513683}
     m_Modifications:
-    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
-        type: 3}
-      propertyPath: m_Name
-      value: TowerSlot (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2635,6 +2677,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_Name
+      value: TowerSlot (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
 --- !u!4 &1804152882 stripped
@@ -2674,6 +2726,7 @@ LineRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2820,16 +2873,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 713513683}
     m_Modifications:
-    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
-        type: 3}
-      propertyPath: m_Name
-      value: TowerSlot (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2884,6 +2927,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_Name
+      value: TowerSlot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
@@ -2960,6 +3013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34019037c33d41247b22df63a769449d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TestPrefab: {fileID: 0}
   Paths: []
   TestSubwavePackage:
     _intervalBetweenSpawns: 0
@@ -2978,16 +3032,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7194456980094505919, guid: 44fd75bfdc979e74db3864817b932320,
-        type: 3}
-      propertyPath: m_Name
-      value: Akuma
-      objectReference: {fileID: 0}
-    - target: {fileID: 7194456980094505919, guid: 44fd75bfdc979e74db3864817b932320,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7194456980094505905, guid: 44fd75bfdc979e74db3864817b932320,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3041,6 +3085,16 @@ PrefabInstance:
     - target: {fileID: 7194456980094505905, guid: 44fd75bfdc979e74db3864817b932320,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194456980094505919, guid: 44fd75bfdc979e74db3864817b932320,
+        type: 3}
+      propertyPath: m_Name
+      value: Akuma
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194456980094505919, guid: 44fd75bfdc979e74db3864817b932320,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
