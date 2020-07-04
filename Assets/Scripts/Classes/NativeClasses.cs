@@ -188,17 +188,28 @@ public class TowerSlotActions  {
 }
 
 public class TowerSlotAction {
+    public TowerComponent TowerComponent = null;
     [SerializeField]
-    public string ActionDescription;
+    public string ActionDescription = "Empty Action";
     [SerializeField]
-    public Sprite ButtonSprite;
+    public Sprite ButtonSprite = null;
     [SerializeField]
-    public event Action ActionFunctions;
-    public TowerSlotAction(string actionDescription, Sprite buttonSprite) {
+    public event Action ActionFunctions = null;
+
+    public Predicate<TowerComponent> ExecutionCondition = null;
+    public TowerSlotAction(TowerComponent towerComponent, string actionDescription, Sprite buttonSprite, Action action) {
+        TowerComponent = towerComponent;
         ActionDescription = actionDescription;
         ButtonSprite = buttonSprite;
+        ActionFunctions += action;
+    }
+
+    //for empty functions
+    public TowerSlotAction() {
+
     }
     public void ExecuteFunction() {
+        if (ExecutionCondition != null && ExecutionCondition.Invoke(TowerComponent) == true )
         ActionFunctions?.Invoke();
     }
 }

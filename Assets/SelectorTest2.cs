@@ -45,7 +45,7 @@ public class SelectorTest2 : MonoBehaviour
         get => selectedTowerSlot;
         set {
             selectedTowerSlot = value;
-            TowerObjectController.SlotManager = SlotController;
+            TowerObjectController.SlotController = SlotController;
 //            Debug.LogWarning("On Set : " + TowerObjectController.TowerActions.ButtonSouth.ActionDescription);
         }
     }

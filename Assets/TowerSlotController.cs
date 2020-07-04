@@ -15,7 +15,7 @@ public class TowerSlotController : MonoBehaviour
         get => towerObject;
         set {
             towerObject = value;
-            TowerObjectController = value.GetComponent<TowerController>();
+            TowerObjectController = value?.GetComponent<TowerController>() ?? null;
         }
     }
 
@@ -39,19 +39,25 @@ public class TowerSlotController : MonoBehaviour
         Actions.ButtonWest?.ExecuteFunction();
     }
 
-    public void PlaceTower(GameObject TowerPrefab) {
+    public void PlaceNewTower(GameObject TowerPrefab) {
         if (TowerObject != null) {
-            Destroy(TowerObject);
+            OldTowerObject = TowerObject;
+            TowerObject = null;
         }
-        TowerObject = Instantiate(TowerPrefab, transform.position, Quaternion.identity, gameObject.transform);
+        GameObject newTower = Instantiate(TowerPrefab, transform.position, Quaternion.identity, gameObject.transform);
+        TowerObject = newTower;
         TowerObject.name = (TowerPrefab.name + UnityEngine.Random.Range(10000, 99999).ToString());
         SelectorTest2.instance.SelectedTowerSlot = this.gameObject;
+        if (OldTowerObject != null) {
+            Destroy(OldTowerObject);
+        }
     }
 
     private void Update() {
         
     }
-   
+    
+    
 
     private void Start() {
         TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoop(gameObject, SelectorTest2.instance.TowerSlotsWithPositions, TowerUtils.Cardinal8);
@@ -63,8 +69,9 @@ public class TowerSlotController : MonoBehaviour
         }
 
         if (TowerObject == null) {
-            PlaceTower(TowerArsenal.arsenal.EmptyTowerSlot.TowerPrefab);
+            PlaceNewTower(TowerArsenal.arsenal.EmptyTowerSlot.TowerPrefab);
         }
+
     }
 
 }

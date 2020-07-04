@@ -1,36 +1,74 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EmptyTowerSlot : TowerController
 {
     public void PlaceTestTower1() {
         Debug.Log("1");
-        SlotManager.PlaceTower(TowerArsenal.arsenal.TestTower1.TowerPrefab);
+        SlotController.PlaceNewTower(TowerArsenal.arsenal.TestTower1.TowerPrefab);
     }
+
+    public override TowerSlotAction NorthAction() {
+        TowerSlotAction tc = new TowerSlotAction(null,"place test tower 1",null,PlaceTestTower1);
+        return tc;
+    }
+
+    public override TowerSlotAction EastAction() {
+        TowerSlotAction tc = new TowerSlotAction(null,"",null,PlaceTestTower2);
+        return tc;
+    }
+
+    public override TowerSlotAction SouthAction() {
+        TowerSlotAction tc = new TowerSlotAction(null,"",null,PlaceTestTower3);
+        return tc;
+    }
+
+    public override TowerSlotAction WestAction() {
+        TowerSlotAction tc = new TowerSlotAction(null,"",null,PlaceTestTower4);
+        return tc;
+    }
+
+
+    public override bool NorthExecutionCondition(TowerComponent tc) {
+        return true;
+    }
+    public override bool EastExecutionCondition(TowerComponent tc) {
+        return true;
+    }
+
+    public override bool SouthExecutionCondition(TowerComponent tc) {
+        return true;
+    }
+    public override bool WestExecutionCondition(TowerComponent tc) {
+        return true;
+    }
+
+    
 
     public void PlaceTestTower2() {
        Debug.Log("2");
-       SlotManager.PlaceTower(TowerArsenal.arsenal.TestTower2.TowerPrefab);
+       SlotController.PlaceNewTower(TowerArsenal.arsenal.TestTower2.TowerPrefab);
     }
     public void PlaceTestTower3() {
         Debug.Log("3");
-        SlotManager.PlaceTower(TowerArsenal.arsenal.EmptyTowerSlot.TowerPrefab);
+        SlotController.PlaceNewTower(TowerArsenal.arsenal.EmptyTowerSlot.TowerPrefab);
     }
     public void PlaceTestTower4() {
         Debug.Log("4");
-        SlotManager.PlaceTower(TowerArsenal.arsenal.TestTower4.TowerPrefab);
+        SlotController.PlaceNewTower(TowerArsenal.arsenal.TestTower4.TowerPrefab);
     }
 
-    private void Awake() {
-        TowerActions.ButtonNorth = new TowerSlotAction("Place tower : " + TowerArsenal.arsenal.TestTower1, TowerArsenal.arsenal.TestTower1.TowerSprite);
-        TowerActions.ButtonNorth.ActionFunctions += PlaceTestTower1;
-        TowerActions.ButtonEast = new TowerSlotAction("Place tower : " + TowerArsenal.arsenal.EmptyTowerSlot, TowerArsenal.arsenal.TestTower2.TowerSprite);
-        TowerActions.ButtonEast.ActionFunctions += PlaceTestTower2;
-        TowerActions.ButtonSouth = new TowerSlotAction("Place tower : " + TowerArsenal.arsenal.TestTower3, TowerArsenal.arsenal.TestTower3.TowerSprite);
-        TowerActions.ButtonSouth.ActionFunctions += PlaceTestTower3;
-        TowerActions.ButtonWest = new TowerSlotAction("Place tower : " + TowerArsenal.arsenal.TestTower4, TowerArsenal.arsenal.TestTower4.TowerSprite);
-        TowerActions.ButtonWest.ActionFunctions += PlaceTestTower4;
+    public override void PostAwake() {
+        // TowerActions.ButtonNorth = new TowerSlotAction("Place tower : " + TowerArsenal.arsenal.TestTower1, TowerArsenal.arsenal.TestTower1.TowerSprite, PlaceTestTower1);
+        
+        // TowerActions.ButtonEast = new TowerSlotAction("Place tower : " + TowerArsenal.arsenal.EmptyTowerSlot, TowerArsenal.arsenal.TestTower2.TowerSprite, PlaceTestTower2);
+        
+        // TowerActions.ButtonSouth = new TowerSlotAction("Place tower : " + TowerArsenal.arsenal.TestTower3, TowerArsenal.arsenal.TestTower3.TowerSprite, PlaceTestTower3);
+        
+        // TowerActions.ButtonWest = new TowerSlotAction("Place tower : " + TowerArsenal.arsenal.TestTower4, TowerArsenal.arsenal.TestTower4.TowerSprite, PlaceTestTower4);
+        
     }
 
 
