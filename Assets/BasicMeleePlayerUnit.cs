@@ -9,10 +9,7 @@ public class BasicMeleePlayerUnit : PlayerUnitController
     public override bool IsTargetable() {
         return PlayerUnitUtils.StandardIsTargetable(this);
     }
-    public override event Action<PlayerUnitController> onAttack;
-    public override void OnAttack() {
-        onAttack?.Invoke(this);
-    }
+    
     public override bool CanEnterNewBattle() {
         if (CurrentState == States.Default || CurrentState == States.JoinBattle || CurrentState == States.PostBattle ) {
             return true;
@@ -23,11 +20,13 @@ public class BasicMeleePlayerUnit : PlayerUnitController
         if (Target != null) {
             if (!PlayerUnitUtils.CheckIfEnemyIsInBattleWithOtherUnit(Target)) {
                 yield return StartCoroutine(PlayerUnitUtils.TellEnemyToPrepareFor1on1battleWithMe(Target, this));
+                animationController.OnWalking();
                 yield return StartCoroutine(PlayerUnitUtils.MoveToTargetAndInvokeAction(this, PlayerUnitUtils.FindDirectBattlePosition(SR, Target.SR),
                 Data.speed, (Target == null), Target.OnBattleInitiate));
                 SM.SetState(States.InDirectBattle);
             }
             else {
+                animationController.OnWalking();
                 yield return StartCoroutine(PlayerUnitUtils.MoveToTargetAndInvokeAction(this, PlayerUnitUtils.FindJoinBattlePosition(SR, Target.SR),
                 Data.speed, (Target == null), null));
                 SM.SetState(States.JoinBattle);
@@ -48,6 +47,7 @@ public class BasicMeleePlayerUnit : PlayerUnitController
     }
 
     public override IEnumerator OnEnterJoinBattle() {
+        animationController.OnIdle();
         yield return StartCoroutine(PlayerUnitUtils.AttackCoroutineAndInvokeAction(this, !PlayerUnitUtils.StandardConditionToAttack(this), Data.AttackRate, OnAttack));
         SM.SetState(States.PostBattle);
         yield break;
@@ -64,6 +64,7 @@ public class BasicMeleePlayerUnit : PlayerUnitController
     public override IEnumerator OnEnterDefault() {
         Data.EnemyTarget = null;
         yield return StartCoroutine(PlayerUnitUtils.ReturnToBattlePosition(this));
+        animationController.OnIdle();
         yield break;
     }
 
@@ -72,6 +73,7 @@ public class BasicMeleePlayerUnit : PlayerUnitController
     }
 
     public override IEnumerator OnEnterDeath() {
+        animationController.OnDeath();
         yield return StartCoroutine(DieAfterTwoSeconds());
         yield break;
     }
@@ -83,6 +85,7 @@ public class BasicMeleePlayerUnit : PlayerUnitController
     public override IEnumerator OnEnterInDirectBattle() {
         Target?.OnBattleInitiate();
         if (Target != null) {
+        animationController.OnIdle();
         yield return StartCoroutine(PlayerUnitUtils.TellEnemyToPrepareFor1on1battleWithMe(Data.EnemyTarget, this));
         // yield return StartCoroutine(PlayerUnitUtils.MoveToTargetAndInvokeAction(this, PlayerUnitUtils.FindPositionNextToUnit(SR, Target.SR),
         //                             Data.speed, (Target == null), Target.OnBattleInitiate));

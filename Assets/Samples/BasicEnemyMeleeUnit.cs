@@ -10,10 +10,7 @@ public class BasicEnemyMeleeUnit : EnemyUnitController
     public override bool IsTargetable() {
         return EnemyUnitUtils.StandardIsTargetable(this);
     }
-    public override event Action<EnemyUnitController> onAttack;
-    public override void OnAttack() {
-        onAttack?.Invoke(this);
-    }
+    
     public override event Action onBattleInitiate;
     public override void OnBattleInitiate() {
         onBattleInitiate?.Invoke();
@@ -24,6 +21,7 @@ public class BasicEnemyMeleeUnit : EnemyUnitController
     }
     // Start is called before the first frame update
     public override IEnumerator OnEnterPreBattle() {
+        animationController.OnIdle();
         yield return StartCoroutine(EnemyUnitUtils.StopWalkingOnPath(Walker));
     }
 
@@ -33,6 +31,7 @@ public class BasicEnemyMeleeUnit : EnemyUnitController
     }
 
     public override IEnumerator OnEnterDefault() {
+        animationController.OnWalking();
         Walker.ReturnWalking();
         yield break;
     }
@@ -42,6 +41,7 @@ public class BasicEnemyMeleeUnit : EnemyUnitController
     }
 
     public override IEnumerator OnEnterInDirectBattle() {
+        animationController.OnIdle();
         yield return StartCoroutine(EnemyUnitUtils.MeleeAttackCoroutineAndInvokeAction(this));
         SM.SetState(States.PostBattle);
         yield break;
@@ -63,6 +63,7 @@ public class BasicEnemyMeleeUnit : EnemyUnitController
     public override IEnumerator OnEnterDeath() {
         UnitCollider.enabled = false;
         yield return StartCoroutine(EnemyUnitUtils.StopWalkingOnPath(Walker));
+        animationController.OnDeath();
         yield return StartCoroutine(DieAfterTwoSeconds());
         yield break;
     }

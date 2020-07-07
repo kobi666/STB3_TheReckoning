@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 8455382016201061947}
   - component: {fileID: 8455382016201061924}
   - component: {fileID: 8455382016201061925}
+  - component: {fileID: 7919928291453572044}
+  - component: {fileID: 639670356935253530}
+  - component: {fileID: 18904421458291104}
   m_Layer: 0
   m_Name: EnemyUnitTest2
   m_TagString: Enemy
@@ -191,6 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae46cd04cde76034ca01eb8128b3afc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
@@ -213,6 +217,59 @@ MonoBehaviour:
     speed: 0
     SetPosition: {x: 0, y: 0}
     Target: {fileID: 0}
+--- !u!114 &7919928291453572044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8455382016201061926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Animator: {fileID: 0}
+  _ActionOnDisable: 0
+--- !u!114 &639670356935253530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8455382016201061926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b744ad22e0dd098438e3a05191a74faf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WalkingAnimation: {fileID: 7400000, guid: 103d48b133d0b4e4fb3c33386ee4faca, type: 2}
+  IdleAnimation: {fileID: 7400000, guid: b03ec98c7ec079144946774163a71bae, type: 2}
+  DirectBattleAttackAnimation: {fileID: 7400000, guid: 7241e38e632d4724399778a857c86ca1,
+    type: 2}
+  DeathAnimation: {fileID: 7400000, guid: a0615fb79f6548448b93a41b77e2fafe, type: 2}
+  SpecialAttackAnimation1: {fileID: 0}
+  SpecialAttackAnimation2: {fileID: 0}
+  ShootingAnimation: {fileID: 0}
+--- !u!95 &18904421458291104
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8455382016201061926}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &8455382015743396817
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -338,7 +395,7 @@ PrefabInstance:
     - target: {fileID: 8235032105786296606, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296607, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}

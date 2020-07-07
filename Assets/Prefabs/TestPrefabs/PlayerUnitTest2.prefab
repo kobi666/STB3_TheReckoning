@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 3209448747754013989}
   - component: {fileID: 3209448747754013990}
   - component: {fileID: 3209448747754013985}
+  - component: {fileID: 3508614502044999803}
+  - component: {fileID: 7618180881788510907}
+  - component: {fileID: 5318504327395039823}
   m_Layer: 0
   m_Name: PlayerUnitTest2
   m_TagString: Player_Unit
@@ -124,7 +127,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6181818, y: 0.6363636}
+    oldSize: {x: 0.68, y: 0.7}
     newSize: {x: 0.68, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -145,6 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
+  UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
     _HP: 300
@@ -169,6 +174,59 @@ MonoBehaviour:
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
   AttackAnimation: {fileID: 0}
+--- !u!95 &3508614502044999803
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3209448747754013987}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7618180881788510907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3209448747754013987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Animator: {fileID: 3508614502044999803}
+  _ActionOnDisable: 0
+--- !u!114 &5318504327395039823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3209448747754013987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b744ad22e0dd098438e3a05191a74faf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WalkingAnimation: {fileID: 7400000, guid: 762a51d0b0b971b42a87510ef05f9363, type: 2}
+  IdleAnimation: {fileID: 7400000, guid: b7d179834f365ce44964566074c1c437, type: 2}
+  DirectBattleAttackAnimation: {fileID: 7400000, guid: d19cc2901ea37fe4da479f230e1f5f2a,
+    type: 2}
+  DeathAnimation: {fileID: 7400000, guid: 5cc28f97f0e29b94095e705d161929b4, type: 2}
+  SpecialAttackAnimation1: {fileID: 0}
+  SpecialAttackAnimation2: {fileID: 0}
+  ShootingAnimation: {fileID: 0}
 --- !u!1 &3209448748212471577
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,6 +331,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StateDebug
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296606, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296607, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}

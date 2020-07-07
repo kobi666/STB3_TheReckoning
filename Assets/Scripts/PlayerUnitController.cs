@@ -18,7 +18,10 @@ public abstract class PlayerUnitController : UnitController
     public AnimationClip AttackAnimation;
     public abstract bool CanEnterNewBattle();
 
-    public abstract event Action<PlayerUnitController> onAttack;
+    public event Action<PlayerUnitController> onAttack;
+    public  void OnAttack() {
+        onAttack?.Invoke(this);
+    }
     public EnemyUnitController Target { get => Data.EnemyTarget ?? null;}
     
     // Start is called before the first frame update
@@ -32,6 +35,10 @@ public abstract class PlayerUnitController : UnitController
                 return false;
             }
         }
+    }
+
+    private void PlayAttackAnimation(PlayerUnitController pc) {
+        animationController.OnDirectBattleAttack();
     }
 
     
@@ -73,6 +80,7 @@ public abstract class PlayerUnitController : UnitController
         DeathManager.instance.onEnemyUnitDeath += Data.SetEnemyTargetToNull;
         States.Default.StateAnimation = IdleAnimation;
         States.PreBattle.StateAnimation = WalkingAnimation;
+        onAttack += PlayAttackAnimation;
         
         
 

@@ -4,13 +4,14 @@ using UnityEngine;
 using System;
 using Animancer;
 
+[RequireComponent(typeof(UnitAnimationController))]
+
 public abstract class UnitController : MonoBehaviour
 {
-    
+    public UnitAnimationController animationController;
     Rigidbody2D body;
     public Collider2D UnitCollider;
     public AnimancerComponent Animancer;
-    public abstract void OnAttack();
     public abstract bool IsTargetable();
     [SerializeField]
     public UnitLifeManager LifeManager;
@@ -69,6 +70,7 @@ public abstract class UnitController : MonoBehaviour
     }
     
     private void Awake() {
+        animationController = GetComponent<UnitAnimationController>() ?? null;
         UnitCollider = GetComponent<Collider2D>();
         body = GetComponent<Rigidbody2D>();
         Animancer = GetComponent<AnimancerComponent>() ?? null;
@@ -92,8 +94,7 @@ public abstract class UnitController : MonoBehaviour
         States.Death.OnExitState += OnExitDeath;
         SM.CurrentState = States.InitialState;
         LifeManager.onUnitDeath += AnnounceDeath;
-        LifeManager.onUnitDeath += delegate {SM.SetState(States.Death);};
-         
+        LifeManager.onUnitDeath += delegate {SM.SetState(States.Death);}; 
     }
 
     private void OnEnable() {
