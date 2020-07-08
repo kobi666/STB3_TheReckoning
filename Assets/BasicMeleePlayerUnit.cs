@@ -47,8 +47,16 @@ public class BasicMeleePlayerUnit : PlayerUnitController
     }
 
     public override IEnumerator OnEnterJoinBattle() {
+        if (Target != null) {
+        if (Target.transform.position.x > transform.position.x) {
+            SetXdirection(false);
+        }
+        if (Target.transform.position.x < transform.position.x) {
+            SetXdirection(true);
+        }
         animationController.OnIdle();
         yield return StartCoroutine(PlayerUnitUtils.AttackCoroutineAndInvokeAction(this, !PlayerUnitUtils.StandardConditionToAttack(this), Data.AttackRate, OnAttack));
+        }
         SM.SetState(States.PostBattle);
         yield break;
     }
@@ -63,6 +71,7 @@ public class BasicMeleePlayerUnit : PlayerUnitController
 
     public override IEnumerator OnEnterDefault() {
         Data.EnemyTarget = null;
+        animationController.OnWalking();
         yield return StartCoroutine(PlayerUnitUtils.ReturnToBattlePosition(this));
         animationController.OnIdle();
         yield break;
@@ -85,6 +94,12 @@ public class BasicMeleePlayerUnit : PlayerUnitController
     public override IEnumerator OnEnterInDirectBattle() {
         Target?.OnBattleInitiate();
         if (Target != null) {
+        if (Target.transform.position.x > transform.position.x) {
+            SetXdirection(false);
+        }
+        if (Target.transform.position.x < transform.position.x) {
+            SetXdirection(true);
+        }
         animationController.OnIdle();
         yield return StartCoroutine(PlayerUnitUtils.TellEnemyToPrepareFor1on1battleWithMe(Data.EnemyTarget, this));
         // yield return StartCoroutine(PlayerUnitUtils.MoveToTargetAndInvokeAction(this, PlayerUnitUtils.FindPositionNextToUnit(SR, Target.SR),

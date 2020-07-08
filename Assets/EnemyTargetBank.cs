@@ -92,11 +92,11 @@ public class EnemyTargetBank : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other) {
-        if (targets.Count >= 1) {
-            ConcurrentProximtyCheck();
-        }
-    }
+    // private void OnTriggerStay2D(Collider2D other) {
+    //     if (targets.Count >= 1) {
+    //         ConcurrentProximtyCheck();
+    //     }
+    // }
 
     public void clearNullsFromList() {
         foreach (var item in targets)

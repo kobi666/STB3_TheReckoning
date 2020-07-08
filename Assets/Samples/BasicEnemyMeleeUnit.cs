@@ -10,11 +10,6 @@ public class BasicEnemyMeleeUnit : EnemyUnitController
     public override bool IsTargetable() {
         return EnemyUnitUtils.StandardIsTargetable(this);
     }
-    
-    public override event Action onBattleInitiate;
-    public override void OnBattleInitiate() {
-        onBattleInitiate?.Invoke();
-    }
     public override void Test2() { Debug.LogWarning("TESTTT");}
     public override bool CannotInitiateBattleWithThisUnit() {
         return false;
@@ -52,11 +47,12 @@ public class BasicEnemyMeleeUnit : EnemyUnitController
     }
 
     public override IEnumerator OnEnterPostBattle() {
+        yield return StartCoroutine(EnemyUnitUtils.StandardPostBattleCheck(this));
         yield break;
     }
 
     public override IEnumerator OnExitPostBattle() {
-        yield return StartCoroutine(EnemyUnitUtils.StandardPostBattleCheck(this));
+       // yield return StartCoroutine(EnemyUnitUtils.StandardPostBattleCheck(this));
         yield break;
     }
 

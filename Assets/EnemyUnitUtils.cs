@@ -19,8 +19,11 @@ public class EnemyUnitUtils : MonoBehaviour
 //         yield break;
 //     }
     public static IEnumerator StandardPostBattleCheck(EnemyUnitController self) {
-        if (self.Data.GetFirstPlayerUnitControllerFromList() != null) {
+        PlayerUnitController pc = self.Data.GetFirstPlayerUnitControllerFromList();
+        if (pc != null) {
             yield return self.StartCoroutine(TellPlayerUnitToInitiateForDirectBattleWithMe(self.Data.GetFirstPlayerUnitControllerFromList()));
+            self.Target = pc;
+            self.SM.SetState(self.States.PreBattle);
         }
         else {
             self.SM.SetState(self.States.Default);

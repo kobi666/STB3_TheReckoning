@@ -8,14 +8,25 @@ public abstract class EnemyUnitController : UnitController
 
 
 
-    public PlayerUnitController Target { get => Data.PlayerTarget ?? null;}
+    public PlayerUnitController Target { get => Data.PlayerTarget ?? null; set { Data.PlayerTarget = value;}}
 
     public event Action<EnemyUnitController> onAttack;
     public void OnAttack() {
         onAttack?.Invoke(this);
     }
-    public abstract event Action onBattleInitiate;
-    public abstract void OnBattleInitiate();
+    public event Action onBattleInitiate;
+    public void OnBattleInitiate() {
+        onBattleInitiate?.Invoke();
+    }
+
+    void SetXDirectionInBattle() {
+        if (Target?.transform.position.x > transform.position.x) {
+            SetXdirection(false);
+        }
+        if (Target?.transform.position.x < transform.position.x) {
+            SetXdirection(true);
+        }
+    }
       
     // Start is called before the first frame update
     public float Proximity {
@@ -35,6 +46,7 @@ public abstract class EnemyUnitController : UnitController
             tag = "Enemy";
         }
         onAttack += PlayAttackAnimation;
+        onBattleInitiate += SetXDirectionInBattle;
         //States.Death.OnEnterState += Unit
         LateStart();
     }

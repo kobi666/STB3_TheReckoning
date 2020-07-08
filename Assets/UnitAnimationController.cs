@@ -9,7 +9,6 @@ public class UnitAnimationController : MonoBehaviour
 {
     // Start is called before the first frame update
     AnimancerComponent animancer;
-    PlayerInput input;
     event Action onDirectBattleAttack;
     public void OnDirectBattleAttack() {
         onDirectBattleAttack?.Invoke();
@@ -82,14 +81,11 @@ public class UnitAnimationController : MonoBehaviour
         onDeath += delegate {PlayFiniteAnimation(DeathAnimation);};
         onIdle += delegate {PlayLoopingAnimation(IdleAnimation);};
         animancer = GetComponent<AnimancerComponent>();
-        input = new PlayerInput();
-        input.GamePlay.EastButton.performed += ctx => OnWalking();
-        input.GamePlay.SouthButton.performed += ctx => OnDirectBattleAttack();
-        input.GamePlay.WestButton.performed += ctx => OnDeath();
-        input.GamePlay.NorthButton.performed += ctx => OnIdle();
+        
+        
     }
 
     private void OnEnable() {
-        input.GamePlay.Enable();
+        
     }
 }

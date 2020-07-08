@@ -1,10 +1,25 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using System;
 
 namespace BezierSolution
 {
 	public class UnitWalker : BezierWalker
 	{
+		public event Action<bool> xDirectionChanged;
+		public void XDirectionChanged(bool xdirection) {
+			xDirectionChanged?.Invoke(xdirection);
+		}
+		bool xDirection = false;
+		public bool XDirection {
+			get => xDirection;
+			set {
+				if (value != xDirection) {
+					XDirectionChanged(value);
+				}
+				xDirection = value;
+			}
+		}
 		public float ProximityToEndOfSpline;
 		public float ProximityToEndOfSplineFunc() {
 			return ProximityToEndOfSpline;
@@ -70,7 +85,12 @@ namespace BezierSolution
 			float targetSpeed = ( isGoingForward ) ? speed : -speed;
 
 			Vector3 targetPos = spline.MoveAlongSpline( ref m_normalizedT, targetSpeed * deltaTime );
-
+			if (targetPos.x > transform.position.x) { 
+				XDirection = false;
+			}
+			else if (targetPos.x < transform.position.x) {
+				XDirection = true;
+			}
 			transform.position = targetPos;
 			//transform.position = Vector3.Lerp( transform.position, targetPos, movementLerpModifier * deltaTime );
 

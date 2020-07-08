@@ -163,8 +163,8 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 15
-      max: 25
+      min: 30
+      max: 60
     HP: 300
     Armor: 0
     SpecialArmor: 0
@@ -289,7 +289,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.9
+  m_Radius: 1.35
 --- !u!1001 &3209448748169496031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -335,7 +335,7 @@ PrefabInstance:
     - target: {fileID: 8235032105786296606, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296607, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}

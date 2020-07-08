@@ -8,6 +8,23 @@ using Animancer;
 
 public abstract class UnitController : MonoBehaviour
 {
+    bool spriteXDirection;
+    public bool SpriteXDirection {
+        get => spriteXDirection;
+        set {
+            if (value == true) {
+                SR.flipX = true;
+            }
+            if (value == false) {
+                SR.flipX = false;
+            }
+            spriteXDirection = value;
+        }
+    }
+
+    public void SetXdirection(bool xdirection) {
+        SpriteXDirection = xdirection;
+    }
     public UnitAnimationController animationController;
     Rigidbody2D body;
     public Collider2D UnitCollider;
@@ -79,6 +96,9 @@ public abstract class UnitController : MonoBehaviour
         SM = GetComponent<StateMachine>() ?? null;
         States = new NormalUnitStates(this);
         Walker = GetComponent<BezierSolution.UnitWalker>() ?? null;
+        if (Walker != null) {
+            Walker.xDirectionChanged += SetXdirection;
+        }
         SR = GetComponent<SpriteRenderer>() ?? null;
         States.InitialState.OnEnterState += OnEnterInitialState;
         States.InitialState.OnExitState += OnExitInitialState;

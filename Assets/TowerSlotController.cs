@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TowerSlotController : MonoBehaviour
 {
-    
+    SpriteRenderer SR;
     public Dictionary<Vector2, TowerUtils.TowerPositionData> TowerSlotsByDirections8 = new Dictionary<Vector2, TowerUtils.TowerPositionData>();
     public DebugTowerPositionData[] TowersDebug = new DebugTowerPositionData[8];
     // Start is called before the first frame update
@@ -51,6 +51,7 @@ public class TowerSlotController : MonoBehaviour
         if (OldTowerObject != null) {
             Destroy(OldTowerObject);
         }
+        SR.sprite = null;
     }
 
     private void Update() {
@@ -60,6 +61,7 @@ public class TowerSlotController : MonoBehaviour
     
 
     private void Start() {
+        SR = GetComponent<SpriteRenderer>();
         TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoop(gameObject, SelectorTest2.instance.TowerSlotsWithPositions, TowerUtils.Cardinal8);
         for(int i = 0 ; i < 8 ; i++) {
             TowersDebug[i].GO = TowerSlotsByDirections8[TowerUtils.Cardinal8.directionsClockwise[i]].TowerSlotGo;

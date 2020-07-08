@@ -73,14 +73,21 @@ public class PlayerUnitUtils
     }
     
     public static IEnumerator MoveToTargetAndInvokeAction(UnitController self, Vector2 targetPos, float speed, bool stopCondition, Action action) {
-        self.SM.InitilizeMovementCoroutine(moveToTargetAndInvokeAction(self.transform, targetPos, speed, stopCondition, action));
+        self.SM.InitilizeMovementCoroutine(moveToTargetAndInvokeAction(self, targetPos, speed, stopCondition, action));
         yield return self.SM.StartCoroutine(self.SM.MovementCoroutine);
         yield break;
     }
 
-    static IEnumerator moveToTargetAndInvokeAction(Transform self, Vector2 targetPos, float speed, bool stopCondition, Action action) {
-         while((Vector2)self.position != targetPos && stopCondition == false) {
-            self.position = Vector2.MoveTowards(self.position, targetPos, speed * StaticObjects.instance.DeltaGameTime);
+    static IEnumerator moveToTargetAndInvokeAction(UnitController self, Vector2 targetPos, float speed, bool stopCondition, Action action) {
+        Transform selfTransform = self.transform;
+         while((Vector2)selfTransform.position != targetPos && stopCondition == false) {
+             if (targetPos.x > selfTransform.position.x) {
+                 self.SetXdirection(false);
+             }
+             if (targetPos.x < selfTransform.position.x) {
+                 self.SetXdirection(true);
+             }
+            selfTransform.position = Vector2.MoveTowards(selfTransform.position, targetPos, speed * StaticObjects.instance.DeltaGameTime);
             yield return new WaitForFixedUpdate();
         }
         action?.Invoke();
