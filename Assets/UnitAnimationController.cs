@@ -5,10 +5,9 @@ using System;
 using Animancer;
 
 [RequireComponent(typeof(AnimancerComponent))]
-public class UnitAnimationController : MonoBehaviour
+public class UnitAnimationController : AnimationController
 {
     // Start is called before the first frame update
-    AnimancerComponent animancer;
     event Action onDirectBattleAttack;
     public void OnDirectBattleAttack() {
         onDirectBattleAttack?.Invoke();
@@ -31,37 +30,7 @@ public class UnitAnimationController : MonoBehaviour
         onIdle?.Invoke();
     }
 
-    AnimancerState CurrentAnimationState;
-
-    private void PlaySingleAnimation(AnimationClip clip) {
-        if (clip != null) {
-            AnimancerState a_state = animancer.Play(clip);
-            a_state.Events.OnEnd += ReturnToCurrentStateFromSingleAnimation;
-        }
-    }
-
-    private void ReturnToCurrentStateFromSingleAnimation() {
-        if (CurrentAnimationState != null) {
-        animancer.Play(CurrentAnimationState);
-        }
-        else {
-            animancer.Stop();
-        }
-    }
-
-    private void PlayLoopingAnimation(AnimationClip clip) {
-        if (clip != null) {
-        CurrentAnimationState = animancer.Play(clip);
-        }
-    }
-
-    private void PlayFiniteAnimation(AnimationClip clip) {
-        if (clip != null) {
-        CurrentAnimationState.Stop();
-        var state = animancer.Play(clip);
-        state.Events.OnEnd += delegate { state.IsPlaying = false;};
-        }
-    }
+    
 
 
 
@@ -75,7 +44,7 @@ public class UnitAnimationController : MonoBehaviour
     public AnimationClip ShootingAnimation;
 
 
-    private void Awake() {
+    public override void PostAwake() {
         onDirectBattleAttack += delegate {PlaySingleAnimation(DirectBattleAttackAnimation);};
         onWalking += delegate {PlayLoopingAnimation(WalkingAnimation);};
         onDeath += delegate {PlayFiniteAnimation(DeathAnimation);};

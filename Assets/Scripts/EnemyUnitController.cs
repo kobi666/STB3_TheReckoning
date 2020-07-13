@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public abstract class EnemyUnitController : UnitController
+public abstract class EnemyUnitController : UnitController,ITypeTag
 {
-
-
-
+    [NonSerialized]
+    public static string Tag = "Enemy";
+    public string TypeTag {get => Tag;}
+    
     public PlayerUnitController Target { get => Data.PlayerTarget ?? null; set { Data.PlayerTarget = value;}}
 
     public event Action<EnemyUnitController> onAttack;
@@ -41,6 +42,7 @@ public abstract class EnemyUnitController : UnitController
     public abstract void LateStart();
 
     private void Start() {
+        gameObject.tag = TypeTag;
         DeathManager.instance.onPlayerUnitDeath += Data.RemovePlayerUnitTarget;
         if (tag == "Untagged") {
             tag = "Enemy";

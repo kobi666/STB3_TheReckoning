@@ -3,6 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
+public interface IDamageable
+{
+    bool CanTakeDamage();
+    void TakeDamage(int damageAmount);
+}
+
+public interface IPoisionable
+{
+    bool CanGetPoisioned();
+    void GetPosioned(float poisionAmount);
+}
+
+public interface IExplosionEffect
+{
+    bool CanBeAffectedByExplosion();
+    void OnExplosion(int damage, float explosionPhysicsValue);
+}
+
+public interface IFreezable
+{
+    bool CanBeFrozen();
+    void Freeze(float freezeAmount);
+    void Freeze(float freezeAmount, bool permanent);
+}
+
+public interface IVanishable
+{
+    bool CanVanish();
+    void Vanish();
+}
+
+
+
+
+public interface ITypeTag
+{
+    string TypeTag {get;}
+}
+
+public interface ITargetBank<T>
+{
+    SortedList<string,T> Targets {get;}
+}
+
 public interface IOrbital<T> {
 
     Transform OrbitalTransform {get;}

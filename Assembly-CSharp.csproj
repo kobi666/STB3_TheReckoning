@@ -37,9 +37,12 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\ACT.cs" />
+     <Compile Include="Assets\AOETowerController.cs" />
      <Compile Include="Assets\AnimancerTest.cs" />
+     <Compile Include="Assets\AnimationController.cs" />
      <Compile Include="Assets\AnimationTest.cs" />
      <Compile Include="Assets\AnimationcontrollerTest.cs" />
+     <Compile Include="Assets\AreaOfEffectController.cs" />
      <Compile Include="Assets\BasicMeleePlayerUnit.cs" />
      <Compile Include="Assets\CoroutineTest.cs" />
      <Compile Include="Assets\CrosshairTest.cs" />
@@ -54,8 +57,10 @@
      <Compile Include="Assets\EnemyTargetBank.cs" />
      <Compile Include="Assets\EnemyUnitController2.cs" />
      <Compile Include="Assets\EnemyUnitUtils.cs" />
+     <Compile Include="Assets\ExplosionController.cs" />
      <Compile Include="Assets\ExternalUtils\Direction.cs" />
      <Compile Include="Assets\GameObjectPool.cs" />
+     <Compile Include="Assets\GenericTargetBank.cs" />
      <Compile Include="Assets\Gutils.cs" />
      <Compile Include="Assets\LevelManager.cs" />
      <Compile Include="Assets\LifeBarmanager.cs" />

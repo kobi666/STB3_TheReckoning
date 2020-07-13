@@ -371,6 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
@@ -413,7 +414,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6181818, y: 0.6363636}
+    oldSize: {x: 0.68, y: 0.7}
     newSize: {x: 0.68, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -604,6 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
@@ -646,7 +648,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6181818, y: 0.6363636}
+    oldSize: {x: 0.68, y: 0.7}
     newSize: {x: 0.68, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -960,6 +962,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eec082e4a5501b540a7926b58d7acb72, type: 3}
+--- !u!4 &88735551 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5571463877980706038, guid: f71d351a86f3649418ab40686242e282,
+    type: 3}
+  m_PrefabInstance: {fileID: 1819556151}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &103983589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,6 +1106,36 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 541692754}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &129809782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 129809783}
+  m_Layer: 0
+  m_Name: AOEWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &129809783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129809782}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1269648825}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &130479578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,6 +1221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
@@ -1225,7 +1264,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6181818, y: 0.6363636}
+    oldSize: {x: 0.68, y: 0.7}
     newSize: {x: 0.68, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2737,6 +2776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
@@ -2779,7 +2819,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6181818, y: 0.6363636}
+    oldSize: {x: 0.68, y: 0.7}
     newSize: {x: 0.68, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3342,6 +3382,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eec082e4a5501b540a7926b58d7acb72, type: 3}
+--- !u!1 &554252194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 554252196}
+  - component: {fileID: 554252195}
+  m_Layer: 0
+  m_Name: Explosion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &554252195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554252194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81cf38d24eee3d042b5f78dc29b29911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExplosionAnimation: {fileID: 0}
+--- !u!4 &554252196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554252194}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.18933077, y: -0.061997987, z: -1.8300781}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 88735551}
+  m_Father: {fileID: 0}
+  m_RootOrder: 28
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &571495784
 GameObject:
   m_ObjectHideFlags: 0
@@ -3437,6 +3522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
@@ -3479,7 +3565,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6181818, y: 0.6363636}
+    oldSize: {x: 0.68, y: 0.7}
     newSize: {x: 0.68, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3992,6 +4078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
@@ -4034,7 +4121,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6181818, y: 0.6363636}
+    oldSize: {x: 0.68, y: 0.7}
     newSize: {x: 0.68, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4162,6 +4249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
@@ -4204,7 +4292,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6181818, y: 0.6363636}
+    oldSize: {x: 0.68, y: 0.7}
     newSize: {x: 0.68, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4598,6 +4686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
@@ -4640,7 +4729,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6181818, y: 0.6363636}
+    oldSize: {x: 0.68, y: 0.7}
     newSize: {x: 0.68, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5044,6 +5133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
@@ -5086,7 +5176,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6181818, y: 0.6363636}
+    oldSize: {x: 0.68, y: 0.7}
     newSize: {x: 0.68, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5413,6 +5503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
@@ -5455,7 +5546,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6181818, y: 0.6363636}
+    oldSize: {x: 0.68, y: 0.7}
     newSize: {x: 0.68, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -6356,6 +6447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
@@ -6398,7 +6490,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6181818, y: 0.6363636}
+    oldSize: {x: 0.68, y: 0.7}
     newSize: {x: 0.68, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -6547,6 +6639,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 472945617}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1269648823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1269648825}
+  - component: {fileID: 1269648824}
+  m_Layer: 0
+  m_Name: AOETower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1269648824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269648823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c43a69313a7944fb0f406ac3a1273a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1269648825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269648823}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.18933077, y: -0.061997987, z: -1.8300781}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 129809783}
+  m_Father: {fileID: 0}
+  m_RootOrder: 27
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1281259887
 GameObject:
   m_ObjectHideFlags: 0
@@ -6665,6 +6801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
@@ -6707,7 +6844,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6181818, y: 0.6363636}
+    oldSize: {x: 0.68, y: 0.7}
     newSize: {x: 0.68, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -7736,6 +7873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
@@ -7778,7 +7916,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6181818, y: 0.6363636}
+    oldSize: {x: 0.68, y: 0.7}
     newSize: {x: 0.68, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -8837,6 +8975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
@@ -8879,7 +9018,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6181818, y: 0.6363636}
+    oldSize: {x: 0.68, y: 0.7}
     newSize: {x: 0.68, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -9156,6 +9295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
@@ -9198,7 +9338,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6181818, y: 0.6363636}
+    oldSize: {x: 0.68, y: 0.7}
     newSize: {x: 0.68, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -9682,6 +9822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
@@ -9724,7 +9865,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6181818, y: 0.6363636}
+    oldSize: {x: 0.68, y: 0.7}
     newSize: {x: 0.68, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -10369,6 +10510,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
+--- !u!1001 &1819556151
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 554252196}
+    m_Modifications:
+    - target: {fileID: 5571463877980706038, guid: f71d351a86f3649418ab40686242e282,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571463877980706038, guid: f71d351a86f3649418ab40686242e282,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571463877980706038, guid: f71d351a86f3649418ab40686242e282,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571463877980706038, guid: f71d351a86f3649418ab40686242e282,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571463877980706038, guid: f71d351a86f3649418ab40686242e282,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571463877980706038, guid: f71d351a86f3649418ab40686242e282,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571463877980706038, guid: f71d351a86f3649418ab40686242e282,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571463877980706038, guid: f71d351a86f3649418ab40686242e282,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571463877980706038, guid: f71d351a86f3649418ab40686242e282,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571463877980706038, guid: f71d351a86f3649418ab40686242e282,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571463877980706038, guid: f71d351a86f3649418ab40686242e282,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571463877980706039, guid: f71d351a86f3649418ab40686242e282,
+        type: 3}
+      propertyPath: m_Name
+      value: RangeObject
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f71d351a86f3649418ab40686242e282, type: 3}
 --- !u!1 &1843060154
 GameObject:
   m_ObjectHideFlags: 0
@@ -11674,6 +11884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067393816dd055e4d969ff78cd464ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
@@ -11716,7 +11927,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6181818, y: 0.6363636}
+    oldSize: {x: 0.68, y: 0.7}
     newSize: {x: 0.68, y: 0.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

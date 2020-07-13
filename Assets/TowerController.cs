@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public abstract class TowerController : MonoBehaviour
+public abstract class TowerController : MonoBehaviour,ITypeTag
 {
+    static string Tag = "Tower";
+    public string TypeTag {get => Tag;}
     public abstract TowerSlotAction NorthAction();
     public abstract bool NorthExecutionCondition(TowerComponent tc);
     public abstract TowerSlotAction EastAction();
@@ -46,6 +48,7 @@ public abstract class TowerController : MonoBehaviour
     }
 
     private void Awake() {
+        gameObject.tag = TypeTag;
         PostAwake();
     }
 

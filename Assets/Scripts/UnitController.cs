@@ -8,6 +8,7 @@ using Animancer;
 
 public abstract class UnitController : MonoBehaviour
 {
+    
     bool spriteXDirection;
     public bool SpriteXDirection {
         get => spriteXDirection;

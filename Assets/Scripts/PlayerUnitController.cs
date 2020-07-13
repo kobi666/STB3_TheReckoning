@@ -4,8 +4,10 @@ using UnityEngine;
 using System;
 using Animancer;
 
-public abstract class PlayerUnitController : UnitController
+public abstract class PlayerUnitController : UnitController,ITypeTag
 {
+    static string Tag = "Player_Unit";
+    public string TypeTag {get => Tag;}
     private int unitBaseIndex = 0;
     public int UnitBaseIndex {
         get => unitBaseIndex;
@@ -71,6 +73,7 @@ public abstract class PlayerUnitController : UnitController
     
 
     private void Start() {
+        gameObject.tag = TypeTag;
         TargetBank.targetEnteredRange += OnTargetEnteredRange;
         States.JoinBattle.OnEnterState += OnEnterJoinBattle;
         States.JoinBattle.OnExitState += OnExitJoinBattle;
