@@ -4,18 +4,6 @@ using UnityEngine;
 using System;
 
 
-public interface IDamageable
-{
-    bool CanTakeDamage();
-    void TakeDamage(int damageAmount);
-}
-
-public interface IPoisionable
-{
-    bool CanGetPoisioned();
-    void GetPosioned(float poisionAmount);
-}
-
 public interface IExplosionEffect
 {
     bool CanBeAffectedByExplosion();
