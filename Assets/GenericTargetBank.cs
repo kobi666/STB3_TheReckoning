@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-
-
 [RequireComponent(typeof(CircleCollider2D))]
 public abstract class GenericTargetBank<T> : MonoBehaviour, ITargetBank<T> where T : Component
 {
