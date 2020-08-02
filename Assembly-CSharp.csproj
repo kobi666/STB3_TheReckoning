@@ -123,10 +123,12 @@
      <Compile Include="Assets\Scripts\WeaponUtils.cs" />
      <Compile Include="Assets\Scripts\Weapons\OrbitalWeapon.cs" />
      <Compile Include="Assets\Scripts\Weapons\RangeDetection\Effector.cs" />
+     <Compile Include="Assets\Scripts\Weapons\RangeDetection\EffectorTargetBank.cs" />
      <Compile Include="Assets\Scripts\Weapons\RangeDetection\RangeDetector.cs" />
      <Compile Include="Assets\Scripts\Weapons\RangeDetection\TagSelectorAttribute.cs" />
      <Compile Include="Assets\Scripts\Weapons\RangeDetection\TagSelectorPropertyDrawer.cs" />
      <Compile Include="Assets\Scripts\Weapons\RangeDetection\TargetBank.cs" />
+     <Compile Include="Assets\Scripts\Weapons\RangeDetection\UnitEffector.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponInterfaces.cs" />
      <Compile Include="Assets\SelectorTest.cs" />
      <Compile Include="Assets\SelectorTest2.cs" />

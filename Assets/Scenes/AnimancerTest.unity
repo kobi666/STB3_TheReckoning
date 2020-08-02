@@ -907,32 +907,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 607765498}
-  - component: {fileID: 607765497}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: RangeDetectorTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &607765497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 607765496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d45e3e4dba7d88844960d76ea319698e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DiscoverableTags:
-  - Enemy
-  - Player_Unit
-  - 
-  - 
-  - 
 --- !u!4 &607765498
 Transform:
   m_ObjectHideFlags: 0

@@ -3,6 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+public interface IInterface
+{
+    GameObject GetGameObject();
+}
+public interface IEffector : IInterface
+{
+    void Damage(int damageAmount);
+    void Explosion(float explosionValue);
+     void Poision(int poisionAmount, float poisionDuration);
+     void Freeze(float FreezeAmount, float TotalFreezeProbability);
+}
+
 
 public interface IExplosionEffect
 {

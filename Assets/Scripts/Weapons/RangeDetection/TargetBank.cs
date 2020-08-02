@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 [RequireComponent(typeof(RangeDetector))]
 public abstract class TargetBank<T> : MonoBehaviour where T : Component
+
 {
     RangeDetector rangeDetector;
     public event Action<GameObject> onTargetAdd;
@@ -26,10 +27,13 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     T TryToGetTargetOfType(GameObject GO) {
         T t = null;
         try {
-            t = GO.GetComponent<T>() ?? null;
+            t = GO.GetComponent<T>();
         }
         catch (Exception e) {
             Debug.LogWarning(e.Message);
+        }
+        if (t != null) {
+            return t;
         }
         return t;
     }
@@ -37,7 +41,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     void AddTarget(GameObject targetGO) {
         T t = TryToGetTargetOfType(targetGO);
         if (t != null) {
-            Targets.Add(t.name, t);
+            Targets.Add(targetGO.name, t);
         }
     }
 
@@ -50,7 +54,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     void clearNulls() {
         foreach (var item in targets)
         {
-            if (item.Value == null || item.Value.gameObject.activeSelf == false) {
+            if (item.Value == null) {
                 targets.Remove(item.Key);
             }
         }
