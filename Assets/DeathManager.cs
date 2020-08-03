@@ -22,6 +22,8 @@ public class DeathManager : MonoBehaviour
 
     private void Awake() {
         instance = this;
+        onPlayerUnitDeath += GameObjectPool.Instance.RemoveObjectFromAllPools;
+        onEnemyUnitDeath += GameObjectPool.Instance.RemoveObjectFromAllPools;
     }
     // Start is called before the first frame update
     

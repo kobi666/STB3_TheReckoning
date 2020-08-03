@@ -182,7 +182,7 @@ public abstract class WeaponController : TowerComponent
 
     public abstract void PostStart();
     private void Start() {
-        ProjectilePool = GameObjectPool.Instance.GetProjectilePool(Data.ProjectilePrefab) ?? null;
+        ProjectilePool = GameObjectPool.Instance.GetProjectileQueue(Data.ProjectilePrefab) ?? null;
         projectileExitPoint = GetComponentInChildren<ProjectileExitPoint>() ?? null;
         projectileFinalPoint = GetComponentInChildren<ProjectileFinalPoint>() ?? null;
         if (TargetBank != null) {

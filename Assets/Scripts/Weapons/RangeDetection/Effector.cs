@@ -1,13 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
-public abstract class Effector : MonoBehaviour
+
+public class Effector : MonoBehaviour
 {
-    public abstract void OnDamage(int damageAmount);
-    public abstract void OnExplosion(float explosionValue);
-    public abstract void OnPoision(int poisionAmount, float poisionDuration);
-    public abstract void OnFreeze(float FreezeAmount, float TotalFreezeProbability);
-    
+    public  void Damage(Effectable effectableObject, int damageAmount) {
+        effectableObject.OnDamage(damageAmount);
+    }
+    public void Poision(Effectable effectable, int poisionAmount, float poisionDuration) {
+        effectable.OnPoision(poisionAmount,poisionDuration);
+    }
+
+    public void Freeze(Effectable effectable, float freezeAmount, float totalFreezeProbability) {
+        effectable.OnFreeze(freezeAmount,totalFreezeProbability);
+    }
+
+    public void Explode(Effectable effectable, float explosionEffectValue) {
+        effectable.OnExplosion(explosionEffectValue);
+    }
+
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class UnitLifeManager 
 {
+    public bool UnitInVaulenrable = false;
     public event Action<int> hp_changed;
     public event Action<int> damageTaken;
     
@@ -56,6 +57,7 @@ public class UnitLifeManager
     int _fireResistence;
     int _poisonResistence;
     public void DamageToUnit(int _damage, Damage_Type _damageType) {
+        if (!UnitInVaulenrable) {
         int damageDelta = 0;
         switch (_damageType.DamageType)
         {
@@ -80,6 +82,8 @@ public class UnitLifeManager
         }
         HP -= damageDelta;
         damageTaken?.Invoke(damageDelta);
+        }
+        
     }
 
     public void DamageToUnit(int _damage) {

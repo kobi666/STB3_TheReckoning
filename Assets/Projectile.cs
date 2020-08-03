@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>
+public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActiveObject<Projectile>
 {
-
+    ActiveObjectPool<Projectile> activePool;
+    public ActiveObjectPool<Projectile> ActivePool { get => activePool; set { activePool = value;}}
+    string TypeTag = "Projectile";
     public abstract void MovementFunction();
     public event Action<EnemyUnitController> onHit;
     public void OnHit(EnemyUnitController ec) {
@@ -13,7 +15,7 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>
     }
     public EnemyTargetBank TargetBank {get;set;}
     PoolObjectQueue<Projectile> pool;
-    public PoolObjectQueue<Projectile> Pool {get => pool;set{pool = value;}}
+    public PoolObjectQueue<Projectile> QueuePool {get => pool;set{pool = value;}}
     // Start is called before the first frame update
     UnitController targetUnit;
     public UnitController TargetUnit { get => targetUnit ; set { targetUnit = value;}}
@@ -30,13 +32,24 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>
 
     public abstract void AdditionalOnDisableActions();
 
+
+    void OnEnable()
+    {
+        ActivePool.AddObjectToActiveObjectPool(this);
+    }
+    void Awake()
+    {
+        gameObject.tag = TypeTag;    
+    }
+
     private void OnDisable() {
         TargetPosition = transform.position;
         targetPositionSet = false;
         TargetUnit = null;
-        Pool.ObjectQueue.Enqueue(this);
+        QueuePool.ObjectQueue.Enqueue(this);
         TargetBank = null;
         AdditionalOnDisableActions();
+        GameObjectPool.Instance.RemoveObjectFromAllPools(name);
     }
 
     

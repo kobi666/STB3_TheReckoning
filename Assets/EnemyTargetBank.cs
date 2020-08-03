@@ -15,9 +15,6 @@ public class EnemyTargetBank : MonoBehaviour
     public CircleCollider2D RangeCollider;
 
     public event Action<EnemyUnitController> onConcurrentProximityCheck;
-    public void OnConcurrentProximityCheck(EnemyUnitController ec) {
-        onConcurrentProximityCheck?.Invoke(ec);
-    }
 
     public EnemyUnitController CurrentLowestProximityTarget;
     public string CurrentLowestProximtyTargetName;
@@ -51,53 +48,6 @@ public class EnemyTargetBank : MonoBehaviour
         }
     }
 
-    // private void ConcurrentProximtyCheck() {
-    //     if (targets.Count >= 1) {
-    //         foreach (var item in targets)
-    //         {
-                
-    //             if (CurrentLowestProximtyTargetName == item.Value.name) {
-    //                 continue;
-    //             }
-    //             if (CurrentLowestProximtyTargetName == "NULL") {
-    //                 Debug.LogWarning("There's a target in the targets list while the current lowest proximity target is NULL");
-    //             }
-    //             else if (targets.ContainsKey(CurrentLowestProximtyTargetName)) {
-    //                 if (item.Value.Proximity < targets[CurrentLowestProximtyTargetName].Proximity) {
-    //                     Debug.LogWarning("Target " + item.Value.name + " has a lower proximity than last found target");
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-
-    // private void ConcurrentProximityCheckInUpdate() {
-    //     if (targets.Count >= 1) {
-    //         clearNullsFromList();
-    //         if (CurrentLowestProximityTarget == null) {
-    //             CurrentLowestProximityTarget = targets.Values[0];
-    //         }
-    //         foreach (var item in targets)
-    //         {
-    //             if (item.Value.name == CurrentLowestProximityTarget.name) {
-    //                 OnConcurrentProximityCheck(CurrentLowestProximityTarget);
-    //                 continue;
-    //             }
-    //             if (item.Value.Proximity < CurrentLowestProximityTarget.Proximity) {
-    //                 CurrentLowestProximityTarget = item.Value;
-    //                 OnConcurrentProximityCheck(CurrentLowestProximityTarget);
-    //                 Debug.LogWarning("New Target found and replaced old target.");
-    //             }
-    //         }
-    //     }
-    // }
-
-    // private void OnTriggerStay2D(Collider2D other) {
-    //     if (targets.Count >= 1) {
-    //         ConcurrentProximtyCheck();
-    //     }
-    // }
-
     public void clearNullsFromList() {
         foreach (var item in targets)
         {
@@ -130,7 +80,7 @@ public class EnemyTargetBank : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Enemy")) {
-        tempEc = other.gameObject.GetComponent<EnemyUnitController>() ?? null;
+        tempEc = GameObjectPool.Instance.ActiveUnitPool.Pool[other.name] as EnemyUnitController ;
         AddObjectToTargets(tempEc);
         targetEnteredRange?.Invoke(tempEc);
         }

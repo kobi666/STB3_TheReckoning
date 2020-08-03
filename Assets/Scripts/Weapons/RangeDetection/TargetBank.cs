@@ -16,7 +16,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     public void OnTargetRemove(string targetName) {
         onTargetRemove?.Invoke(targetName);
     }
-    Dictionary <string,T> targets;
+    Dictionary <string,T> targets = new Dictionary<string, T>();
     public Dictionary<string,T> Targets {
         get {
             clearNulls();
@@ -52,10 +52,12 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     }
 
     void clearNulls() {
-        foreach (var item in targets)
-        {
-            if (item.Value == null) {
-                targets.Remove(item.Key);
+        if (targets.Count > 0) {
+            foreach (var item in targets)
+            {
+                if (item.Value == null) {
+                    targets.Remove(item.Key);
+                }
             }
         }
     }
@@ -63,7 +65,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     
     void Awake()
     {
-        rangeDetector = GetComponent<RangeDetector>() ?? null;
+        rangeDetector = transform.parent.GetComponent<RangeDetector>() ?? GetComponent<RangeDetector>() ?? null;
         onTargetAdd += AddTarget;
         onTargetRemove += RemoveTarget;
         

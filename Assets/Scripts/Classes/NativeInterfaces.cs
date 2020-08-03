@@ -67,6 +67,15 @@ public interface IOrbital<T> {
 }
 
 public interface IQueueable<T> where T : Component, IQueueable<T> {
-    PoolObjectQueue<T> Pool {get;set;}
+    PoolObjectQueue<T> QueuePool {get;set;}
+}
+
+public interface IActiveObject<T> where T : Component,IActiveObject<T> {
+    ActiveObjectPool<T> ActivePool {get;set;}
+}
+
+public interface IInGameObject<T> {
+    void Register(T t);
+    void UnRegister(T t);
 }
 

@@ -11,7 +11,6 @@ public class TestOrbitalGun : OrbitalWeapon
         ProjectileUtils.SpawnDirectHitTargetFacingProjectile(ProjectilePool,ProjectileExitPoint,ProjectileFinalPointV2,transform.rotation, TargetBank, Damage);
     }
     
-    [field: SerializeField]
     public bool CanAttackField {
         get => canattackFieldPH;
     }

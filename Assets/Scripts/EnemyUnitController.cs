@@ -30,9 +30,7 @@ public abstract class EnemyUnitController : UnitController,ITypeTag
     }
       
     // Start is called before the first frame update
-    public float Proximity {
-        get => Walker.ProximityToEndOfSplineFunc();
-    }
+    
 
     private void PlayAttackAnimation(EnemyUnitController ec) {
         animationController.OnDirectBattleAttack();
@@ -45,7 +43,7 @@ public abstract class EnemyUnitController : UnitController,ITypeTag
         gameObject.tag = TypeTag;
         DeathManager.instance.onPlayerUnitDeath += Data.RemovePlayerUnitTarget;
         if (tag == "Untagged") {
-            tag = "Enemy";
+            tag = Tag;
         }
         onAttack += PlayAttackAnimation;
         onBattleInitiate += SetXDirectionInBattle;

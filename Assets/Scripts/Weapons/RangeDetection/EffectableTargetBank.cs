@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectorTargetBank : TargetBank<Effector>
+[RequireComponent(typeof(RangeDetector))]
+public class EffectableTargetBank : TargetBank<Effectable>
 {
     public override void PostStart() {
-        
+
     }
 
 }

@@ -6,9 +6,18 @@ using Animancer;
 
 [RequireComponent(typeof(UnitAnimationController))]
 
-public abstract class UnitController : MonoBehaviour
+public abstract class UnitController : MonoBehaviour,IQueueable<UnitController>,IActiveObject<UnitController>
 {
-    
+    ActiveObjectPool<UnitController> activePool;
+    public ActiveObjectPool<UnitController> ActivePool {get => activePool;set { activePool = value;}}
+
+    public float Proximity {
+        get => Walker?.ProximityToEndOfSplineFunc() ?? 90210.0f;
+    }
+
+
+    PoolObjectQueue<UnitController> pool;
+    public PoolObjectQueue<UnitController> QueuePool {get => pool;set{pool = value;}}
     bool spriteXDirection;
     public bool SpriteXDirection {
         get => spriteXDirection;
@@ -88,6 +97,8 @@ public abstract class UnitController : MonoBehaviour
     }
     
     private void Awake() {
+        activePool = GameObjectPool.Instance.ActiveUnitPool;
+        QueuePool = GameObjectPool.Instance.GetUnitQueue(this);
         animationController = GetComponent<UnitAnimationController>() ?? null;
         UnitCollider = GetComponent<Collider2D>();
         body = GetComponent<Rigidbody2D>();
@@ -119,11 +130,13 @@ public abstract class UnitController : MonoBehaviour
     }
 
     private void OnEnable() {
+        activePool.AddObjectToActiveObjectPool(this);
         UnitCollider.enabled = true;
+
     }
 
     private void OnDisable() {
-        
+        GameObjectPool.Instance.RemoveObjectFromAllPools(name);
     }
 
     

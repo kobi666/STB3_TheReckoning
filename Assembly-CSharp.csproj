@@ -38,6 +38,7 @@
   <ItemGroup>
      <Compile Include="Assets\ACT.cs" />
      <Compile Include="Assets\AOETowerController.cs" />
+     <Compile Include="Assets\ActiveObjectPool.cs" />
      <Compile Include="Assets\AnimancerTest.cs" />
      <Compile Include="Assets\AnimationController.cs" />
      <Compile Include="Assets\AnimationTest.cs" />
@@ -62,6 +63,8 @@
      <Compile Include="Assets\GameObjectPool.cs" />
      <Compile Include="Assets\GenericTargetBank.cs" />
      <Compile Include="Assets\Gutils.cs" />
+     <Compile Include="Assets\InGameObjectDictionary.cs" />
+     <Compile Include="Assets\InGameObjectManager.cs" />
      <Compile Include="Assets\LevelManager.cs" />
      <Compile Include="Assets\LifeBarmanager.cs" />
      <Compile Include="Assets\NormalTowerComponentStates.cs" />
@@ -79,6 +82,7 @@
      <Compile Include="Assets\PlayerUnitSpawner.cs" />
      <Compile Include="Assets\PlayerUnitSpawnerUtils.cs" />
      <Compile Include="Assets\PlayerUnitSpawningPoint.cs" />
+     <Compile Include="Assets\PoolObjectQueue.cs" />
      <Compile Include="Assets\Projectile.cs" />
      <Compile Include="Assets\ProjectileExitPoint.cs" />
      <Compile Include="Assets\ProjectileFinalPoint.cs" />
@@ -122,13 +126,14 @@
      <Compile Include="Assets\Scripts\WeaponController.cs" />
      <Compile Include="Assets\Scripts\WeaponUtils.cs" />
      <Compile Include="Assets\Scripts\Weapons\OrbitalWeapon.cs" />
+     <Compile Include="Assets\Scripts\Weapons\RangeDetection\DefaultEffectableUnit.cs" />
+     <Compile Include="Assets\Scripts\Weapons\RangeDetection\Effectable.cs" />
+     <Compile Include="Assets\Scripts\Weapons\RangeDetection\EffectableTargetBank.cs" />
      <Compile Include="Assets\Scripts\Weapons\RangeDetection\Effector.cs" />
-     <Compile Include="Assets\Scripts\Weapons\RangeDetection\EffectorTargetBank.cs" />
      <Compile Include="Assets\Scripts\Weapons\RangeDetection\RangeDetector.cs" />
      <Compile Include="Assets\Scripts\Weapons\RangeDetection\TagSelectorAttribute.cs" />
      <Compile Include="Assets\Scripts\Weapons\RangeDetection\TagSelectorPropertyDrawer.cs" />
      <Compile Include="Assets\Scripts\Weapons\RangeDetection\TargetBank.cs" />
-     <Compile Include="Assets\Scripts\Weapons\RangeDetection\UnitEffector.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponInterfaces.cs" />
      <Compile Include="Assets\SelectorTest.cs" />
      <Compile Include="Assets\SelectorTest2.cs" />
