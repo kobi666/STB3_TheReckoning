@@ -10,6 +10,7 @@ public class TowerComponentData
     public float OrbitingSpeed;
     public float RotationSpeed;
     public PlayerUnitController PlayerUnitPrefab;
+    public Effectable EffectableTarget;
     public int MaxUnits;
     public float PlayerUnitSpawnTime;
     public Transform OrbitBase;

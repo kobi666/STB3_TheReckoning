@@ -7,10 +7,9 @@ using Animancer;
 using TMPro;
 using System.Threading.Tasks;
 
-
-
-public abstract class WeaponController : TowerComponent
+public abstract class TestWeaponController : TowerComponent
 {
+    TargetBank<Effectable> TargetBank;
     public int Damage {
         get {
             return UnityEngine.Random.Range(Data.damageRange.min, Data.damageRange.max);
@@ -37,7 +36,7 @@ public abstract class WeaponController : TowerComponent
 
     public event Action<WeaponController, EnemyUnitController> onEnemyEnteredRange;
     public void OnEnemyEnteredRange(EnemyUnitController ec) {
-        onEnemyEnteredRange?.Invoke(this, ec);
+        //onEnemyEnteredRange?.Invoke(this, ec);
     }
 
     ProjectileExitPoint projectileExitPoint;
@@ -169,11 +168,13 @@ public abstract class WeaponController : TowerComponent
 
     
     public override void PostAwake() {
+        RangeDetector = GetComponentInChildren<RangeDetector>() ?? null;
         if (EnemyTargetBank != null) {
             EnemyTargetBank.targetEnteredRange += OnEnemyEnteredRange;
             EnemyTargetBank.targetLeftRange += OnEnemyLeftRange;
             //TargetBank.onConcurrentProximityCheck += OnConcurrentTargetCheck;
         }
+        TargetBank = GetComponent<TargetBank<Effectable>>();
         onAttackInitiate += StartAsyncAttack;
         onAttackCease += StopAsyncAttack;
         onEnemyEnteredRange += StandardOnTargetEnteredRange;

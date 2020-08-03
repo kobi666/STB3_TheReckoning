@@ -8,7 +8,7 @@ public class WeaponUtils
     
 
     public static void StandardOnTargetDeathCheck(WeaponController self) {
-        EnemyUnitController ec = self.TargetBank.FindSingleTargetNearestToEndOfSpline();
+        EnemyUnitController ec = self.EnemyTargetBank.FindSingleTargetNearestToEndOfSpline();
         if (ec != null) {
             self.Data.EnemyTarget = ec;
             self.OnAttackInitiate();

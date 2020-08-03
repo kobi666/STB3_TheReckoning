@@ -144,6 +144,7 @@
      <Compile Include="Assets\StateMachineClasses.cs" />
      <Compile Include="Assets\TargetFacingStraightShotDirectHitProjectile.cs" />
      <Compile Include="Assets\TestActive.cs" />
+     <Compile Include="Assets\TestGunWithGenericRange.cs" />
      <Compile Include="Assets\TestInput.cs" />
      <Compile Include="Assets\TestOrbitalGun.cs" />
      <Compile Include="Assets\TestOrbitalGunsController.cs" />
@@ -152,6 +153,7 @@
      <Compile Include="Assets\TestScript.cs" />
      <Compile Include="Assets\TestTower.cs" />
      <Compile Include="Assets\TestTowerController.cs" />
+     <Compile Include="Assets\TestWeaponController.cs" />
      <Compile Include="Assets\TestYieldWeaponController.cs" />
      <Compile Include="Assets\TestingVectors.cs" />
      <Compile Include="Assets\Tower.cs" />

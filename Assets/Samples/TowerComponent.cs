@@ -12,12 +12,14 @@ public abstract class TowerComponent : MonoBehaviour
     public TowerComponentData Data;
     public Tower ParentTower;
     
-    public EnemyTargetBank TargetBank {get ; private set;}
+    public EnemyTargetBank EnemyTargetBank {get ; private set;}
+
+    public RangeDetector RangeDetector;
 
     public CircleCollider2D RangeCollider;    
     public abstract void PostAwake();
     private void Awake() {
-        TargetBank = GetComponentInChildren<EnemyTargetBank>() ?? ParentTower?.TargetBank ?? null;
+        EnemyTargetBank = GetComponentInChildren<EnemyTargetBank>() ?? ParentTower?.TargetBank ?? null;
         SR = GetComponent<SpriteRenderer>() ?? null;
         Animancer = GetComponent<AnimancerComponent>() ?? null;
         

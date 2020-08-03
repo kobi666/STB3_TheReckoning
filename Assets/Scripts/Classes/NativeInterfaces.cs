@@ -36,6 +36,12 @@ public interface IQueueable<T> where T : Component, IQueueable<T> {
     void OnEnqueue();
 }
 
+public interface ITargetable {
+    bool CanOnlyBeHitOnce{get;set;}
+    bool ExternalTargetableLock {get;set;}
+    bool IsTargetable();
+}
+
 public interface IActiveObject<T> where T : Component,IActiveObject<T> {
     ActiveObjectPool<T> ActivePool {get;set;}
 }
