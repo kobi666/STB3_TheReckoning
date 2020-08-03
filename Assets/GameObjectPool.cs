@@ -36,9 +36,12 @@ public class GameObjectPool : MonoBehaviour
 
 
     public ActiveObjectPool<UnitController> ActiveUnitPool = new ActiveObjectPool<UnitController>();
+    
     public ActiveObjectPool<Effectable> ActiveEffectables = new ActiveObjectPool<Effectable>();
 
     public ActiveObjectPool<Projectile> ActiveProjectiles = new ActiveObjectPool<Projectile>();
+
+    public ActiveObjectPool<TestActive> ActiveTest = new ActiveObjectPool<TestActive>();
     
     public void RemoveObjectFromAllPools(string objectName) {
         ActiveEffectables.RemoveObjectFromPool(objectName);

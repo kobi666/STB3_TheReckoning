@@ -11,8 +11,8 @@ public class WaveManager : MonoBehaviour
     public Dictionary<string, GameObject> PathsDict = new Dictionary<string, GameObject>();
     
     public SubWavePackage TestSubwavePackage;
-    public List<Spawner> Spawners;
-    public Dictionary<string, Spawner> SpawnerDict = new Dictionary<string, Spawner>();
+    public List<SplineSpawner> Spawners;
+    public Dictionary<string, SplineSpawner> SpawnerDict = new Dictionary<string, SplineSpawner>();
     //used for specific Enemy Selection
     public Dictionary<string, GameObject> EnemisDict = new Dictionary<string, GameObject>();
     //used to initilize specific enemy Dictionary and random Enemy selection
@@ -39,7 +39,7 @@ public class WaveManager : MonoBehaviour
 
     void InitilizeSpawners() {
         foreach (GameObject _spawner in GameObject.FindGameObjectsWithTag("Spawner")) {
-            Spawner S = _spawner.GetComponent<Spawner>();
+            SplineSpawner S = _spawner.GetComponent<SplineSpawner>();
             if (S != null) {
                 Spawners.Add(S);
                 SpawnerDict.Add(S.gameObject.transform.parent.name, S);

@@ -5,6 +5,9 @@ using System;
 
 public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActiveObject<Projectile>
 {
+    public void OnEnqueue() {
+        
+    }
     ActiveObjectPool<Projectile> activePool;
     public ActiveObjectPool<Projectile> ActivePool { get => activePool; set { activePool = value;}}
     string TypeTag = "Projectile";
@@ -14,8 +17,8 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActive
         onHit?.Invoke(ec);
     }
     public EnemyTargetBank TargetBank {get;set;}
-    PoolObjectQueue<Projectile> pool;
-    public PoolObjectQueue<Projectile> QueuePool {get => pool;set{pool = value;}}
+    PoolObjectQueue<Projectile> queuePool;
+    public PoolObjectQueue<Projectile> QueuePool {get => queuePool;set{queuePool = value;}}
     // Start is called before the first frame update
     UnitController targetUnit;
     public UnitController TargetUnit { get => targetUnit ; set { targetUnit = value;}}

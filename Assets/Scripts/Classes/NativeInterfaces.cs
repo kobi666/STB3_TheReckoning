@@ -3,41 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public interface IInterface
-{
-    GameObject GetGameObject();
-}
-public interface IEffector : IInterface
-{
-    void Damage(int damageAmount);
-    void Explosion(float explosionValue);
-     void Poision(int poisionAmount, float poisionDuration);
-     void Freeze(float FreezeAmount, float TotalFreezeProbability);
-}
-
-
-public interface IExplosionEffect
-{
-    bool CanBeAffectedByExplosion();
-    void OnExplosion(int damage, float explosionPhysicsValue);
-}
-
-public interface IFreezable
-{
-    bool CanBeFrozen();
-    void Freeze(float freezeAmount);
-    void Freeze(float freezeAmount, bool permanent);
-}
-
-public interface IVanishable
-{
-    bool CanVanish();
-    void Vanish();
-}
-
-
-
-
 public interface ITypeTag
 {
     string TypeTag {get;}
@@ -68,6 +33,7 @@ public interface IOrbital<T> {
 
 public interface IQueueable<T> where T : Component, IQueueable<T> {
     PoolObjectQueue<T> QueuePool {get;set;}
+    void OnEnqueue();
 }
 
 public interface IActiveObject<T> where T : Component,IActiveObject<T> {

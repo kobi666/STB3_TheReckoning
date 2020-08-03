@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class SplineSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
     WaveManager _waveManager = WaveManager.Instance;
@@ -20,6 +20,7 @@ public class Spawner : MonoBehaviour
 
    [SerializeField]
    List<GameObject> _splineGOs;
+   List<BezierSolution.BezierSpline> Splines;
    public List<Vector2> _initialPoints;
    List<Vector2> InitilizeInitPoints(List<GameObject> SplineGoList) {
        List<Vector2> list = new List<Vector2>();
@@ -61,6 +62,13 @@ public class Spawner : MonoBehaviour
        E.GetComponent<BezierSolution.UnitWalker>().spline = _spline.GetComponent<BezierSolution.BezierSpline>();
    }
 
+   public void SpawnEnemyToSplineFromQueue(PoolObjectQueue<UnitController> queue, BezierSolution.BezierSpline spline) {
+       UnitController unit = queue.Get();
+       unit.Walker.spline = spline;
+   }
+
+
+
     public IEnumerator SpawnEnemiesToSplineAtInterval_SingleSpline (int numberOfEnemies, float intervalBetweenSpawns, GameObject _EnemySpawn, int _splinePosition) {
         int pos;
         if (_splinePosition == (-1)) {
@@ -81,8 +89,19 @@ public class Spawner : MonoBehaviour
     public IEnumerator SpawnEnemiesToSplineAtInterval_RandomSpline (int numberOfEnemies, float intervalBetweenSpawns, GameObject _enemySpawn) {
         
         for (int i = 0 ; i < numberOfEnemies ; i++) {
-            int r = Random.Range(0,SplineGOs.Count);
+            int r = Random.Range(0,SplineGOs.Count -1);
             SpawnEnemyToSpline(TestEnemyPrefab, SplineGOs[r],_initialPoints[r]);
+            yield return new WaitForSeconds(intervalBetweenSpawns);
+        }
+        //Debug.Log("Finished");
+        yield break;
+    }
+
+    public IEnumerator SpawnEnemiesToSplineFromQueueAtInterval_RandomSpline (int numberOfEnemies, float intervalBetweenSpawns, UnitController enemyPrefab) {
+        PoolObjectQueue<UnitController> queue = GameObjectPool.Instance.GetUnitQueue(enemyPrefab);
+        for (int i = 0 ; i < numberOfEnemies ; i++) {
+            int r = Random.Range(0,Splines.Count -1);
+            SpawnEnemyToSplineFromQueue(queue, Splines[r]);
             yield return new WaitForSeconds(intervalBetweenSpawns);
         }
         //Debug.Log("Finished");
@@ -94,19 +113,17 @@ public class Spawner : MonoBehaviour
 
    private void Awake() {
        PathsParentObject = gameObject.transform.parent.gameObject;
-       for (int i = 0 ; i <= PathsParentObject.transform.childCount-1 ; i++ ) {
-           if (PathsParentObject.transform.GetChild(i).gameObject.tag == "Spline") {
-           SplineGOs.Add(PathsParentObject.transform.GetChild(i).gameObject);
-           }
-       }
-       
        
    }
 
    private void Start() {
        _initialPoints = InitilizeInitPoints(SplineGOs);
+       foreach (var item in SplineGOs)
+       {
+           Splines.Add(item.GetComponent<BezierSolution.BezierSpline>());
+       }
        //SpawnEnemyToSpline(TestEnemyPrefab,SplineGOs[0],_initialPoints[0]);
-       //StartCoroutine(SpawnEnemiesToSplineAtInterval(6, 2.0f));
+       //StartCoroutine(SpawnEnemiesToSplineAtInterval(6, 2.0f)); 
        //StartCoroutine(SpawnEnemiesToSplineAtInterval_RandomSpline(20, 2.0f));
    }
 

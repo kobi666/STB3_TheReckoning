@@ -33,6 +33,7 @@ public class PoolObjectQueue<T> where T : Component, IQueueable<T> {
                 PooledObject.name = ObjectPrefab.name + "_" + ObjectCounter;
                 PooledObject.QueuePool = this;
                 PooledObject.gameObject.SetActive(false);
+                PooledObject.OnEnqueue();
                 ObjectQueue.Enqueue(PooledObject);
         }
     }
