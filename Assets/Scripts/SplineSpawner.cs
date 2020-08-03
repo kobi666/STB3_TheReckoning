@@ -20,7 +20,7 @@ public class SplineSpawner : MonoBehaviour
 
    [SerializeField]
    List<GameObject> _splineGOs;
-   List<BezierSolution.BezierSpline> Splines;
+   List<BezierSolution.BezierSpline> Splines = new List<BezierSolution.BezierSpline>();
    public List<Vector2> _initialPoints;
    List<Vector2> InitilizeInitPoints(List<GameObject> SplineGoList) {
        List<Vector2> list = new List<Vector2>();
@@ -43,14 +43,14 @@ public class SplineSpawner : MonoBehaviour
    public IEnumerator SpawnSubWave(SubWavePackage _subwave) {
        switch(_subwave._splineOrder) {
         case "random":
-            yield return StartCoroutine(SpawnEnemiesToSplineAtInterval_RandomSpline( _subwave._amountOfUnits, _subwave._intervalBetweenSpawns, _subwave._unitPrefab));
+            yield return StartCoroutine(SpawnEnemiesToSplineFromQueueAtInterval_RandomSpline( _subwave._amountOfUnits, _subwave._intervalBetweenSpawns, _subwave._unitPrefab));
             break;
         case "single":
-            yield return StartCoroutine(SpawnEnemiesToSplineAtInterval_SingleSpline( _subwave._amountOfUnits, _subwave._intervalBetweenSpawns, _subwave._unitPrefab, _subwave._splinePosition));
+            //yield return StartCoroutine(SpawnEnemiesToSplineAtInterval_SingleSpline( _subwave._amountOfUnits, _subwave._intervalBetweenSpawns, _subwave._unitPrefab, _subwave._splinePosition));
             break;
         case null:
             Debug.Log("No Spline order set! Defaulting to Random!");
-            yield return StartCoroutine(SpawnEnemiesToSplineAtInterval_RandomSpline( _subwave._amountOfUnits, _subwave._intervalBetweenSpawns, _subwave._unitPrefab ));
+            //yield return StartCoroutine(SpawnEnemiesToSplineAtInterval_RandomSpline( _subwave._amountOfUnits, _subwave._intervalBetweenSpawns, _subwave._unitPrefab ));
             break;
         }
         //yield return new WaitForSeconds(_subwave._timeToSpawnEntireSubwave());
@@ -113,7 +113,10 @@ public class SplineSpawner : MonoBehaviour
 
    private void Awake() {
        PathsParentObject = gameObject.transform.parent.gameObject;
-       
+       foreach (var item in PathsParentObject.GetComponentsInChildren<BezierSolution.BezierSpline>())
+       {
+           SplineGOs.Add(item.gameObject);
+       }
    }
 
    private void Start() {
