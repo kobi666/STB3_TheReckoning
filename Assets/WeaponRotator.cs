@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponRotator : Rotator<OrbitalWeapon>
+public class WeaponRotator : Rotator<OrbitalWeaponGeneric>
 {
-    public OrbitalGunsController parentTowerComponent;
+    public OrbitalGunsControllerGeneric parentTowerComponent;
     public TowerComponent ParentTowerComponent {get=> parentTowerComponent;set { ParentTowerComponent = value;}}
     // Start is called before the first frame update
     public override int MaxNumOfOrbitals {

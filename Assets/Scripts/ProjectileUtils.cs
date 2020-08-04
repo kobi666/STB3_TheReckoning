@@ -9,10 +9,16 @@ public class ProjectileUtils
         return pool.Get();
     }
 
-    public static void SpawnProjectileWithTargetEnemyController(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, EnemyUnitController targetUnit) {
+    // public static void SpawnProjectileWithTargetEnemyController(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, EnemyUnitController targetUnit) {
+    //     Projectile proj = SpawnProjectileFromPool(pool);
+    //     proj.transform.position = exitPoint;
+    //     proj.TargetUnit = targetUnit;
+    // }
+
+    public static void SpawnProjectileWithTargetEnemyController(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Effectable targetEffectable) {
         Projectile proj = SpawnProjectileFromPool(pool);
         proj.transform.position = exitPoint;
-        proj.TargetUnit = targetUnit;
+        proj.TargetUnit = targetEffectable;
     }
 
     public static Projectile SpawnProjectileWithTargetPosition(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition) {
@@ -28,9 +34,15 @@ public class ProjectileUtils
         return proj;
     }
 
-    public static Projectile SpawnDirectHitTargetFacingProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, Quaternion direction, EnemyTargetBank targetBank, int damage) {
+    // public static Projectile SpawnDirectHitTargetFacingProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, Quaternion direction, EnemyTargetBank targetBank, int damage) {
+    //     Projectile proj = SpawnTargetPositionFacingProjectile(pool,exitPoint,targetPosition,direction);
+    //     proj.TargetBank = targetBank;
+    //     proj.Damage = damage;
+    //     return proj;
+    // }
+
+    public static Projectile SpawnDirectHitTargetFacingProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, Quaternion direction, int damage) {
         Projectile proj = SpawnTargetPositionFacingProjectile(pool,exitPoint,targetPosition,direction);
-        proj.TargetBank = targetBank;
         proj.Damage = damage;
         return proj;
     }

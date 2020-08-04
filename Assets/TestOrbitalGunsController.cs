@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class TestOrbitalGunsController : OrbitalGunsController
+public class TestOrbitalGunsController : OrbitalGunsControllerGeneric
 {
     // Start is called before the first frame update
     public override WeaponRotator Rotator {get; set;}
-    public override List<OrbitalWeapon> OrbitalGuns {get; set;}
+    public override List<OrbitalWeaponGeneric> OrbitalGuns {get; set;}
 
 
     public override void PostAwake() {
         
         Rotator = GetComponent<WeaponRotator>() ?? null;
         Rotator.parentTowerComponent = this;
-        OrbitalGuns =  new List<OrbitalWeapon>();
+        OrbitalGuns =  new List<OrbitalWeaponGeneric>();
         
     }
 
     private void Start() {
         //TestInput.instance.onW += AddOrbitalGun;
-            AddOrbitalGun();
+        AddOrbitalGun();
     }
 }

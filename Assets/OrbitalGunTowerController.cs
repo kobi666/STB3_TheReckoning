@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class OrbitalGunTowerController : TowerController
 {
-    OrbitalGunsController orbitalGunsController;
+    OrbitalGunsControllerGeneric orbitalGunsController;
     
     public override void PostAwake() {
-        orbitalGunsController = GetComponentInChildren<OrbitalGunsController>() ?? null;
+        orbitalGunsController = GetComponentInChildren<OrbitalGunsControllerGeneric>() ?? null;
     }
     public override void PostStart() {
-
+        
     }
 
     public override bool NorthExecutionCondition(TowerComponent tc) {

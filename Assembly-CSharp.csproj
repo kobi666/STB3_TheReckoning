@@ -53,6 +53,7 @@
      <Compile Include="Assets\DebugCrosshair.cs" />
      <Compile Include="Assets\DebugText.cs" />
      <Compile Include="Assets\DirectHitProjectile.cs" />
+     <Compile Include="Assets\EffectableUnit.cs" />
      <Compile Include="Assets\EmptyTowerSlot.cs" />
      <Compile Include="Assets\EnemyController3.cs" />
      <Compile Include="Assets\EnemyTargetBank.cs" />
@@ -70,6 +71,8 @@
      <Compile Include="Assets\NormalTowerComponentStates.cs" />
      <Compile Include="Assets\OrbitalGunTowerController.cs" />
      <Compile Include="Assets\OrbitalGunsController.cs" />
+     <Compile Include="Assets\OrbitalGunsControllerGeneric.cs" />
+     <Compile Include="Assets\OrbitalWeaponGeneric.cs" />
      <Compile Include="Assets\PlayerController.cs" />
      <Compile Include="Assets\PlayerControllerUtilis.cs" />
      <Compile Include="Assets\PlayerData.cs" />
@@ -83,6 +86,8 @@
      <Compile Include="Assets\PlayerUnitSpawnerUtils.cs" />
      <Compile Include="Assets\PlayerUnitSpawningPoint.cs" />
      <Compile Include="Assets\PoolObjectQueue.cs" />
+     <Compile Include="Assets\Prefabs\TargetDetection\EffectableTargetBank.cs" />
+     <Compile Include="Assets\Prefabs\TargetDetection\TargetBank.cs" />
      <Compile Include="Assets\Projectile.cs" />
      <Compile Include="Assets\ProjectileExitPoint.cs" />
      <Compile Include="Assets\ProjectileFinalPoint.cs" />
@@ -128,12 +133,10 @@
      <Compile Include="Assets\Scripts\Weapons\OrbitalWeapon.cs" />
      <Compile Include="Assets\Scripts\Weapons\RangeDetection\DefaultEffectableUnit.cs" />
      <Compile Include="Assets\Scripts\Weapons\RangeDetection\Effectable.cs" />
-     <Compile Include="Assets\Scripts\Weapons\RangeDetection\EffectableTargetBank.cs" />
      <Compile Include="Assets\Scripts\Weapons\RangeDetection\Effector.cs" />
      <Compile Include="Assets\Scripts\Weapons\RangeDetection\RangeDetector.cs" />
      <Compile Include="Assets\Scripts\Weapons\RangeDetection\TagSelectorAttribute.cs" />
      <Compile Include="Assets\Scripts\Weapons\RangeDetection\TagSelectorPropertyDrawer.cs" />
-     <Compile Include="Assets\Scripts\Weapons\RangeDetection\TargetBank.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponInterfaces.cs" />
      <Compile Include="Assets\SelectorTest.cs" />
      <Compile Include="Assets\SelectorTest2.cs" />
@@ -147,7 +150,9 @@
      <Compile Include="Assets\TestGunWithGenericRange.cs" />
      <Compile Include="Assets\TestInput.cs" />
      <Compile Include="Assets\TestOrbitalGun.cs" />
+     <Compile Include="Assets\TestOrbitalGunGeneric.cs" />
      <Compile Include="Assets\TestOrbitalGunsController.cs" />
+     <Compile Include="Assets\TestOrbitalWeapon.cs" />
      <Compile Include="Assets\TestPlayerMovement.cs" />
      <Compile Include="Assets\TestPlayerUnitSpawner.cs" />
      <Compile Include="Assets\TestScript.cs" />

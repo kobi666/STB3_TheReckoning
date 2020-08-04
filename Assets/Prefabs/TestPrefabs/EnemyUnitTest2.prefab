@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7919928291453572044}
   - component: {fileID: 639670356935253530}
   - component: {fileID: 18904421458291104}
+  - component: {fileID: 5116123812295326348}
   m_Layer: 0
   m_Name: EnemyUnitTest2
   m_TagString: Enemy
@@ -198,6 +199,7 @@ MonoBehaviour:
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
+    UnitInVaulenrable: 0
     _HP: 0
     _armor: 0
     _specialArmor: 0
@@ -243,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b744ad22e0dd098438e3a05191a74faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animancer: {fileID: 0}
   WalkingAnimation: {fileID: 7400000, guid: 103d48b133d0b4e4fb3c33386ee4faca, type: 2}
   IdleAnimation: {fileID: 7400000, guid: b03ec98c7ec079144946774163a71bae, type: 2}
   DirectBattleAttackAnimation: {fileID: 7400000, guid: 7241e38e632d4724399778a857c86ca1,
@@ -270,6 +273,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5116123812295326348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8455382016201061926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cfaf404a69f91a458494a5bb4866f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canOnlyBeHitOnce: 0
 --- !u!1001 &8455382015743396817
 PrefabInstance:
   m_ObjectHideFlags: 0

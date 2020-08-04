@@ -10,7 +10,9 @@ public class TowerComponentData
     public float OrbitingSpeed;
     public float RotationSpeed;
     public PlayerUnitController PlayerUnitPrefab;
-    public Effectable EffectableTarget;
+    public Effectable EffectableTarget = null;
+
+    public TargetUnit TargetUnit = null;
     public int MaxUnits;
     public float PlayerUnitSpawnTime;
     public Transform OrbitBase;
@@ -22,7 +24,7 @@ public class TowerComponentData
         }
     }
 
-    public OrbitalWeapon OrbitalGunPrefab;
+    public OrbitalWeaponGeneric OrbitalGunPrefab;
 
     public int MaxNumberOfOrbitals;
     public Projectile ProjectilePrefab;
@@ -49,6 +51,8 @@ public class TowerComponentData
             enemyTarget = value;
         }
     }
+
+
 
     [SerializeField]
     PlayerUnitController playerTarget;

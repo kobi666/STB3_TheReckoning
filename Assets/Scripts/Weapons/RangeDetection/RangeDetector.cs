@@ -6,7 +6,7 @@ using System;
 [RequireComponent(typeof(CircleCollider2D))]
 public class RangeDetector : MonoBehaviour
 {
-
+    public CircleCollider2D RangeCollider;
     [TagSelector]
      public string[] DiscoverableTags = new string[] { };
      public void AddTagToDiscoverableTags(string _tag) {
@@ -50,6 +50,7 @@ public class RangeDetector : MonoBehaviour
 
     void Awake()
     {
+        RangeCollider = GetComponent<CircleCollider2D>() ?? null;
         foreach (string item in DiscoverableTags)
         {
             if (!String.IsNullOrEmpty(item)) {

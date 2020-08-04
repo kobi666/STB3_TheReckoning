@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class TestOrbitalGun : OrbitalWeapon
+public class TestOrbitalGunGeneric : OrbitalWeaponGeneric
 {
     // Start is called before the first frame update
     public override void MainAttackFunction() {
         TowerWeaponAttacks.TestDebugRay(this);
-        //ProjectileUtils.SpawnDirectHitTargetFacingProjectile(ProjectilePool,ProjectileExitPoint,ProjectileFinalPointV2,transform.rotation, EnemyTargetBank, Damage);
+        ProjectileUtils.SpawnDirectHitTargetFacingProjectile(ProjectileQueuePool,ProjectileExitPoint,ProjectileFinalPointV2,transform.rotation, Damage);
     }
     
     public bool CanAttackField {

@@ -8,20 +8,22 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActive
     public void OnEnqueue() {
         
     }
+
+    public Dictionary<string,Effectable> ActiveTargets => GameObjectPool.Instance.ActiveEffectables.Pool;
     ActiveObjectPool<Projectile> activePool;
     public ActiveObjectPool<Projectile> ActivePool { get => activePool; set { activePool = value;}}
     string TypeTag = "Projectile";
     public abstract void MovementFunction();
-    public event Action<EnemyUnitController> onHit;
-    public void OnHit(EnemyUnitController ec) {
-        onHit?.Invoke(ec);
+    public event Action<Effectable> onHit;
+    public void OnHit(Effectable ef) {
+        onHit?.Invoke(ef);
     }
-    public EnemyTargetBank TargetBank {get;set;}
+    public EffectableTargetBank TargetBank {get;set;}
     PoolObjectQueue<Projectile> queuePool;
     public PoolObjectQueue<Projectile> QueuePool {get => queuePool;set{queuePool = value;}}
     // Start is called before the first frame update
-    UnitController targetUnit;
-    public UnitController TargetUnit { get => targetUnit ; set { targetUnit = value;}}
+    Effectable targetUnit;
+    public Effectable TargetUnit { get => targetUnit ; set { targetUnit = value;}}
 
     Vector2 targetPosition = Vector2.zero;
     public Vector2 TargetPosition { get => targetPosition; set {
@@ -49,10 +51,10 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActive
         TargetPosition = transform.position;
         targetPositionSet = false;
         TargetUnit = null;
-        QueuePool.ObjectQueue.Enqueue(this);
         TargetBank = null;
-        AdditionalOnDisableActions();
+        QueuePool.ObjectQueue.Enqueue(this);
         GameObjectPool.Instance.RemoveObjectFromAllPools(name);
+        AdditionalOnDisableActions();
     }
 
     

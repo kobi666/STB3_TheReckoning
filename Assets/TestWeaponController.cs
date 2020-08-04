@@ -17,7 +17,7 @@ public abstract class TestWeaponController : TowerComponent
     }
     public float AttackCounter;
     public float CounterMax = 3;
-    public PoolObjectQueue<Projectile> ProjectilePool;
+    public PoolObjectQueue<Projectile> ProjectileQueuePool;
     public bool ExternalAttackLock = false;
 
     [SerializeField]
@@ -34,9 +34,9 @@ public abstract class TestWeaponController : TowerComponent
     }
 
 
-    public event Action<WeaponController, EnemyUnitController> onEnemyEnteredRange;
-    public void OnEnemyEnteredRange(EnemyUnitController ec) {
-        //onEnemyEnteredRange?.Invoke(this, ec);
+    public event Action<TestWeaponController, Effectable> onEnemyEnteredRange;
+    public void OnEnemyEnteredRange(Effectable ef) {
+        onEnemyEnteredRange?.Invoke(this, ef);
     }
 
     ProjectileExitPoint projectileExitPoint;
@@ -51,42 +51,47 @@ public abstract class TestWeaponController : TowerComponent
     public Transform ProjectileFinalPointTransform { get => projectileFinalPoint.transform;}
     public Vector2 ProjectileFinalPointV2 {
         get {
-            return projectileFinalPoint?.transform.position ?? Target?.transform.position ?? transform.position;
+            return projectileFinalPoint?.transform.position ?? Target?.UnitController.transform.position ?? transform.position;
         }
     }
 
-    public virtual void StandardOnTargetEnteredRange(WeaponController self, EnemyUnitController ec) {
-        if (Target == null) {
-            Target = ec;
+    public virtual void StandardOnTargetEnteredRange(TestWeaponController self, Effectable ef) {
+        TargetUnit tu = GameObjectPool.Instance.GetTargetUnit(ef.name);
+        if (Target?.Effectable == null) {
+            Target = tu;
             InAttackState = true;
         }
-        if (Target != null) {
-            if (ec.Proximity < Target.Proximity) {
-                Target = ec;
+        if (Target?.Effectable != null) {
+            
+            if (tu.Proximity < Target.Proximity) {
+                Target = tu;
                 InAttackState = true;
-            }
-        }
-    }
-
-    public void OnConcurrentTargetCheck(EnemyUnitController ec) {
-        if (ec.name == Target.name) {
-            Debug.LogWarning("Same Target, attack state is : " + InAttackState);
-             if (CanAttack() && InAttackState == false) {
-                 InAttackState = true;
-            }
-        }
-        if (ec.name != Target.name) {
-            Target = ec;
-            if (CanAttack()) {
-                inAttackState = true;
             }
         }
     }
 
     public virtual void StandardOnTargetLeftRange(string targetName) {
         if (Target?.name == targetName) {
-            Target = EnemyTargetBank.FindSingleTargetNearestToEndOfSpline() ?? null;
+            Target = FindSingleTargetNearestToEndOfSpline() ?? null;
         }
+    }
+    string CurrentLowestProximtyTargetName;
+    TargetUnit FindSingleTargetNearestToEndOfSpline() {
+        TargetUnit tu = null;
+        float p = 999999.0f;
+        foreach (var item in TargetBank.Targets)
+        {
+            if (!GameObjectPool.Instance.ActiveUnitPool.Pool.ContainsKey(item.Key)) {
+                continue;
+            }
+            float tp = GameObjectPool.Instance.ActiveUnitPool.Pool[item.Key].Proximity;
+            if (tp < p) {
+                p = tp;
+                tu = GameObjectPool.Instance.GetTargetUnit(item.Key);
+            }
+        }
+        CurrentLowestProximtyTargetName = tu?.name ?? "NULL";
+        return tu;
     }
 
     bool AsyncAttackInProgress = false;
@@ -110,7 +115,7 @@ public abstract class TestWeaponController : TowerComponent
         }
         AsyncAttackInProgress = false;
         InAttackState = false;
-        Target = EnemyTargetBank.FindSingleTargetNearestToEndOfSpline();
+        Target = FindSingleTargetNearestToEndOfSpline();
         if (CanAttack()) {
             InAttackState = true;
         }
@@ -127,10 +132,10 @@ public abstract class TestWeaponController : TowerComponent
         onEnemyLeftRange?.Invoke(targetName);
     }
 
-    public EnemyUnitController Target {
-        get => Data.EnemyTarget;
+    public TargetUnit Target {
+        get => Data.TargetUnit;
         set {
-            Data.EnemyTarget = value;
+            Data.TargetUnit = value;
         }
     }
 
@@ -168,13 +173,14 @@ public abstract class TestWeaponController : TowerComponent
 
     
     public override void PostAwake() {
-        RangeDetector = GetComponentInChildren<RangeDetector>() ?? null;
-        if (EnemyTargetBank != null) {
-            EnemyTargetBank.targetEnteredRange += OnEnemyEnteredRange;
-            EnemyTargetBank.targetLeftRange += OnEnemyLeftRange;
+        
+        TargetBank = GetComponent<EffectableTargetBank>();
+        if (TargetBank != null) {
+            TargetBank.onTargetAdd += OnEnemyEnteredRange;
+            TargetBank.onTargetRemove += OnEnemyLeftRange;
             //TargetBank.onConcurrentProximityCheck += OnConcurrentTargetCheck;
         }
-        TargetBank = GetComponent<TargetBank<Effectable>>();
+        
         onAttackInitiate += StartAsyncAttack;
         onAttackCease += StopAsyncAttack;
         onEnemyEnteredRange += StandardOnTargetEnteredRange;
@@ -183,15 +189,16 @@ public abstract class TestWeaponController : TowerComponent
 
     public abstract void PostStart();
     private void Start() {
-        ProjectilePool = GameObjectPool.Instance.GetProjectileQueue(Data.ProjectilePrefab) ?? null;
+        RangeDetector = GetComponentInChildren<RangeDetector>() ?? null;
+        ProjectileQueuePool = GameObjectPool.Instance.GetProjectileQueue(Data.ProjectilePrefab) ?? null;
         projectileExitPoint = GetComponentInChildren<ProjectileExitPoint>() ?? null;
         projectileFinalPoint = GetComponentInChildren<ProjectileFinalPoint>() ?? null;
-        if (EnemyTargetBank != null) {
+        if (TargetBank != null) {
             if (Data.Radius == 0) {
-                Data.Radius = EnemyTargetBank.RangeCollider.radius;
+                Data.Radius = TargetBank.rangeDetector.RangeCollider.radius;
             }
             else if (Data.Radius != 0) {
-                EnemyTargetBank.RangeCollider.radius = Data.Radius;
+                TargetBank.rangeDetector.RangeCollider.radius = Data.Radius;
             }
         }
         PostStart();

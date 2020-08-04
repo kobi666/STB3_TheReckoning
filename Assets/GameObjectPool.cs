@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameObjectPool : MonoBehaviour
 {
     public Dictionary<string, PoolObjectQueue<Projectile>> ProjectilesObjectPoolQueue = new Dictionary<string, PoolObjectQueue<Projectile>>();
     public Dictionary<string, PoolObjectQueue<UnitController>> UnitObjectPoolQueue = new Dictionary<string, PoolObjectQueue<UnitController>>();
+
+    public event Action<string> onObjectDisable;
+    public void OnObjectDisable(string objectName) {
+        onObjectDisable?.Invoke(objectName);
+    }
 
     void CreateNewObjectQueue<T> (Dictionary<string,PoolObjectQueue<T>> dict, T prefab) where T : Component,IQueueable<T> {
         GameObject placeholder = Instantiate(new GameObject());
@@ -33,7 +39,10 @@ public class GameObjectPool : MonoBehaviour
             return UnitObjectPoolQueue[prefab.name];
         }
     }
-
+    public TargetUnit GetTargetUnit(string targetName) {
+        TargetUnit tu = new TargetUnit(targetName);
+        return tu;
+    }
 
     public ActiveObjectPool<UnitController> ActiveUnitPool = new ActiveObjectPool<UnitController>();
     
@@ -47,6 +56,8 @@ public class GameObjectPool : MonoBehaviour
         ActiveEffectables.RemoveObjectFromPool(objectName);
         ActiveUnitPool.RemoveObjectFromPool(objectName);
         ActiveProjectiles.RemoveObjectFromPool(objectName);
+
+        OnObjectDisable(objectName);
     }
 
 

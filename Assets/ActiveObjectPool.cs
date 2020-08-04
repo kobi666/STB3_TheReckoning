@@ -14,7 +14,7 @@ public class ActiveObjectPool<T> where T : Component,IActiveObject<T>
         if (!Pool.ContainsKey(t.name)) {
             Pool.Add(t.name, t);
         }
-        Debug.LogWarning(Pool.Count);
+        
     }
 
     public void RemoveObjectFromPool(string objectName) {

@@ -3,15 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[RequireComponent(typeof(Effector))]
 public class DirectHitProjectile : Projectile
 {
 
-    public SortedList<string, EnemyUnitController> PossibleTargets {
-        get {
-         TargetBank?.clearNullsFromList();
-         return TargetBank?.Targets; }
-         }
-
+    
     public int HitCounter = 1;
     public event Action onHitCounterZero;
     public void OnHitCounterZero() {
@@ -32,9 +28,9 @@ public class DirectHitProjectile : Projectile
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
-        if (PossibleTargets?.ContainsKey(other.name) ?? false) {
-            if (PossibleTargets[other.name].IsTargetable())
-            OnHit(PossibleTargets[other.name]);
+        if (GameObjectPool.Instance.ActiveEffectables?.Pool.ContainsKey(other.name) ?? false) {
+            if (ActiveTargets[other.name].IsTargetable())
+            OnHit(ActiveTargets[other.name]);
             HitCounter -= 1;
             if (HitCounter == 0) {
                 OnHitCounterZero();

@@ -5,6 +5,8 @@ using System;
 
 public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITargetable
 {
+    
+    bool OnFirstStart = true;
     public bool canOnlyBeHitOnce;
     public bool CanOnlyBeHitOnce {get => canOnlyBeHitOnce;set {canOnlyBeHitOnce = value;}}
     ActiveObjectPool<Effectable> activePool;
@@ -23,21 +25,27 @@ public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITarg
     public abstract void ApplyPoision(int poisionAmount, float poisionDuration);
     public abstract void ApplyFreeze(float FreezeAmount, float TotalFreezeProbability);
 
-    void Awake()
-    {
-        
-    }
-
     void OnEnable()
     {
+        if (OnFirstStart == false) {
         ActivePool.AddObjectToActiveObjectPool(this);
+        }
     }
 
-    /// <summary>
-    /// This function is called when the behaviour becomes disabled or inactive.
-    /// </summary>
+    
+    void Start()
+    {
+        ActivePool = GameObjectPool.Instance.ActiveEffectables;
+        ActivePool.AddObjectToActiveObjectPool(this);
+        OnFirstStart = true;
+        PostStart();
+    }
+
+    public abstract void PostStart();
+
+    
     void OnDisable()
     {
-        ActivePool.RemoveObjectFromPool(name);
+        GameObjectPool.Instance.RemoveObjectFromAllPools(name);
     }
 }

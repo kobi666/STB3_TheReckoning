@@ -96,6 +96,47 @@ public class Nerfs<T> {
 }
 
 [System.Serializable]
+public class TargetUnit {
+
+    [SerializeField]
+    UnitController unitController = null;
+    public UnitController UnitController {
+        get => unitController;
+        set {
+            unitController = value;
+        }
+    }
+    [SerializeField]
+    Effectable effectable = null;
+    public Effectable Effectable {
+        get => effectable;
+        set {
+            effectable = value;
+        }
+    }
+    [SerializeField]
+    public string name {get => Effectable?.name ?? null;}
+    public Transform transform {get => Effectable.transform;}
+    public float Proximity {get => UnitController.Proximity;}
+
+    public TargetUnit(string targetName) {
+        try {
+            UnitController = GameObjectPool.Instance.ActiveUnitPool.Pool[targetName];
+            Effectable = GameObjectPool.Instance.ActiveEffectables.Pool[targetName];
+        }
+        catch(Exception e) {
+            Debug.LogWarning(e.Message);
+        }
+        if (UnitController == null || Effectable == null) {
+            UnitController = null;
+            Effectable = null;
+            Debug.LogWarning("Target did not have either an effectable or a unit controller, null value returned.");
+        }
+    }
+
+}
+
+[System.Serializable]
 public class TowerItem {
     [SerializeField]
     public GameObject TowerPrefab;
