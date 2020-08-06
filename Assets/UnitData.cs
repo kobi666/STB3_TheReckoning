@@ -18,6 +18,8 @@ public class UnitData
     public int SpecialArmor;
     public int speed;
     public Vector2 SetPosition;
+
+    public Effectable EffectableTarget;
     public GameObject Target;
     private PlayerUnitController playerTarget;
     public PlayerUnitController PlayerTarget {
@@ -52,6 +54,7 @@ public class UnitData
     public void RemovePlayerUnitTarget(string unitName) {
         if (PlayerTarget?.name == unitName) {
             PlayerTarget = null;
+            EffectableTarget = null;
         }
         RemoveUnitFromPlayerUnitsFightingDictionary(unitName);
     }

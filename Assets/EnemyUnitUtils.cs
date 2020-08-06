@@ -23,6 +23,7 @@ public class EnemyUnitUtils : MonoBehaviour
         if (pc != null) {
             yield return self.StartCoroutine(TellPlayerUnitToInitiateForDirectBattleWithMe(self.Data.GetFirstPlayerUnitControllerFromList()));
             self.Target = pc;
+            self.Data.EffectableTarget = GameObjectPool.Instance.ActiveEffectables.Pool[pc.name];
             self.SM.SetState(self.States.PreBattle);
         }
         else {
@@ -55,7 +56,8 @@ public class EnemyUnitUtils : MonoBehaviour
     }
 
     public static void AttackPlayerUnit(EnemyUnitController self) {
-        self.Target?.LifeManager.DamageToUnit(UnityEngine.Random.Range(self.Data.DamageRange.min,self.Data.DamageRange.max), self.Data.damageType);
+        self.Data.EffectableTarget.ApplyDamage(self.Data.DamageRange.RandomDamage());
+        //self.Target?.LifeManager.DamageToUnit(UnityEngine.Random.Range(self.Data.DamageRange.min,self.Data.DamageRange.max), self.Data.damageType);
     }
     // Start is called before the first frame update
     public static IEnumerator StopWalkingOnPath(BezierSolution.UnitWalker walker) {

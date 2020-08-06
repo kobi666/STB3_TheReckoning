@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Animancer;
+using System;
 
 public abstract class AnimationController : MonoBehaviour
 {
@@ -34,13 +35,23 @@ public abstract class AnimationController : MonoBehaviour
         CurrentAnimationState.Stop();
         var state = animancer.Play(clip);
         state.Events.OnEnd += delegate { state.IsPlaying = false;};
+        
+        }
+    }
+
+    public void PlayFiniteAnimationWithAction(AnimationClip clip, Action OnEndAction) {
+        if (clip != null) {
+        CurrentAnimationState?.Stop();
+        var state = animancer.Play(clip);
+        state.Events.OnEnd += delegate { state.IsPlaying = false;};
+        state.Events.OnEnd += OnEndAction;
         }
     }
     // Start is called before the first frame update
     public AnimancerComponent animancer;
     public abstract void PostAwake();
     private void Awake() {
-        animancer = GetComponent<AnimancerComponent>();
+        animancer = GetComponent<AnimancerComponent>() ?? null;
         PostAwake();
     }
 }

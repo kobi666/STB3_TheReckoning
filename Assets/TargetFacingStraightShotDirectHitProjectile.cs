@@ -13,7 +13,7 @@ public class TargetFacingStraightShotDirectHitProjectile : DirectHitProjectile
     }
 
     public override void AdditionalOnDisableActions() {
-        TargetBank = null;
+        //TargetBank = null;
     }
 
     private void Awake() {

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3508614502044999803}
   - component: {fileID: 7618180881788510907}
   - component: {fileID: 5318504327395039823}
+  - component: {fileID: 4840932522876198668}
   m_Layer: 0
   m_Name: PlayerUnitTest2
   m_TagString: Player_Unit
@@ -152,6 +153,7 @@ MonoBehaviour:
   UnitCollider: {fileID: 0}
   Animancer: {fileID: 0}
   LifeManager:
+    UnitInVaulenrable: 0
     _HP: 300
     _armor: 0
     _specialArmor: 0
@@ -170,6 +172,7 @@ MonoBehaviour:
     SpecialArmor: 0
     speed: 2
     SetPosition: {x: 0, y: 0}
+    EffectableTarget: {fileID: 0}
     Target: {fileID: 0}
   IdleAnimation: {fileID: 0}
   WalkingAnimation: {fileID: 0}
@@ -219,6 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b744ad22e0dd098438e3a05191a74faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animancer: {fileID: 0}
   WalkingAnimation: {fileID: 7400000, guid: 762a51d0b0b971b42a87510ef05f9363, type: 2}
   IdleAnimation: {fileID: 7400000, guid: b7d179834f365ce44964566074c1c437, type: 2}
   DirectBattleAttackAnimation: {fileID: 7400000, guid: d19cc2901ea37fe4da479f230e1f5f2a,
@@ -227,6 +231,19 @@ MonoBehaviour:
   SpecialAttackAnimation1: {fileID: 0}
   SpecialAttackAnimation2: {fileID: 0}
   ShootingAnimation: {fileID: 0}
+--- !u!114 &4840932522876198668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3209448747754013987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cfaf404a69f91a458494a5bb4866f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canOnlyBeHitOnce: 0
 --- !u!1 &3209448748212471577
 GameObject:
   m_ObjectHideFlags: 0

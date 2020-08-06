@@ -14,9 +14,9 @@ public class ACT : MonoBehaviour
     private void Awake() {
         instance = this;
         playerInput = new PlayerInput();
-        playerInput.TestButtons.W.performed += ctx => TB1?.Invoke();
-        playerInput.TestButtons.S.performed += ctx => TB2?.Invoke();
-        playerInput.TestButtons.D.performed += ctx => TB3?.Invoke();
+        playerInput.TestButtons.T.performed += ctx => TB1?.Invoke();
+        playerInput.TestButtons.Y.performed += ctx => TB2?.Invoke();
+        playerInput.TestButtons.U.performed += ctx => TB3?.Invoke();
     }
 
     void Start()

@@ -140,6 +140,61 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""1bb4c368-0b90-465f-a46d-57223eb20851"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveTowerCursor"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""b066028d-37b2-4afc-bafd-2983fab31fde"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard;GamePad"",
+                    ""action"": ""MoveTowerCursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""65731589-6b2a-4707-8c89-52b489feb68d"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveTowerCursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""ac3fd38c-3dad-4443-a8a2-05e693a26782"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard;GamePad"",
+                    ""action"": ""MoveTowerCursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""82cf5b12-a900-4a70-92da-8544200fcc2b"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard;GamePad"",
+                    ""action"": ""MoveTowerCursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""8f92220e-8a7e-4355-8c95-ab0cc40529c6"",
                     ""path"": ""<Gamepad>/buttonSouth"",
@@ -174,8 +229,30 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""89da2b92-e580-4f3f-ad48-7f1abb929c94"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NorthButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""0bfe330d-e5c6-4113-972b-af84a6ef9788"",
                     ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EastButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6dad54e3-d043-405c-8e91-1f9009a7b8e5"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -196,8 +273,30 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""01527908-623b-4096-ab60-aa8b6cb648d3"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SouthButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""c018e32c-245e-4b2d-a68d-89e3bd89a00d"",
                     ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WestButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4c88f879-3f99-4a68-b974-fba65ee0ca95"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -267,7 +366,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
             ""id"": ""f7397da4-4cb4-4d0f-a776-d16bef6f8071"",
             ""actions"": [
                 {
-                    ""name"": ""W"",
+                    ""name"": ""T"",
                     ""type"": ""Button"",
                     ""id"": ""5e80d883-3bfb-4c36-a464-a18b6065e087"",
                     ""expectedControlType"": """",
@@ -275,7 +374,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""S"",
+                    ""name"": ""Y"",
                     ""type"": ""Button"",
                     ""id"": ""fb1d43cd-6b4b-46c8-994f-8a33eacb47de"",
                     ""expectedControlType"": """",
@@ -283,17 +382,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""D"",
+                    ""name"": ""U"",
                     ""type"": ""Button"",
                     ""id"": ""18ab84fa-0593-438b-bbce-39cb13885a58"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""F"",
-                    ""type"": ""Button"",
-                    ""id"": ""4091e07e-f9fb-47c2-a29b-397a431d4899"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -303,44 +394,33 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f3115d40-fba4-43e2-b28b-f7fcca7cb011"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""<Keyboard>/t"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""W"",
+                    ""action"": ""T"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""85ff7aac-4834-4d78-8907-b06fab0ebc45"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Keyboard>/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""S"",
+                    ""action"": ""Y"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""90acd05d-8b24-4a7f-93f8-199b5f39581e"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Keyboard>/u"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""D"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bc385316-518f-4ae1-bdd5-e81cb50f85b4"",
-                    ""path"": ""<Keyboard>/f"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""F"",
+                    ""action"": ""U"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -384,10 +464,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_GamePlay_MovePlayer = m_GamePlay.FindAction("MovePlayer", throwIfNotFound: true);
         // TestButtons
         m_TestButtons = asset.FindActionMap("TestButtons", throwIfNotFound: true);
-        m_TestButtons_W = m_TestButtons.FindAction("W", throwIfNotFound: true);
-        m_TestButtons_S = m_TestButtons.FindAction("S", throwIfNotFound: true);
-        m_TestButtons_D = m_TestButtons.FindAction("D", throwIfNotFound: true);
-        m_TestButtons_F = m_TestButtons.FindAction("F", throwIfNotFound: true);
+        m_TestButtons_T = m_TestButtons.FindAction("T", throwIfNotFound: true);
+        m_TestButtons_Y = m_TestButtons.FindAction("Y", throwIfNotFound: true);
+        m_TestButtons_U = m_TestButtons.FindAction("U", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -526,18 +605,16 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     // TestButtons
     private readonly InputActionMap m_TestButtons;
     private ITestButtonsActions m_TestButtonsActionsCallbackInterface;
-    private readonly InputAction m_TestButtons_W;
-    private readonly InputAction m_TestButtons_S;
-    private readonly InputAction m_TestButtons_D;
-    private readonly InputAction m_TestButtons_F;
+    private readonly InputAction m_TestButtons_T;
+    private readonly InputAction m_TestButtons_Y;
+    private readonly InputAction m_TestButtons_U;
     public struct TestButtonsActions
     {
         private @PlayerInput m_Wrapper;
         public TestButtonsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @W => m_Wrapper.m_TestButtons_W;
-        public InputAction @S => m_Wrapper.m_TestButtons_S;
-        public InputAction @D => m_Wrapper.m_TestButtons_D;
-        public InputAction @F => m_Wrapper.m_TestButtons_F;
+        public InputAction @T => m_Wrapper.m_TestButtons_T;
+        public InputAction @Y => m_Wrapper.m_TestButtons_Y;
+        public InputAction @U => m_Wrapper.m_TestButtons_U;
         public InputActionMap Get() { return m_Wrapper.m_TestButtons; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -547,34 +624,28 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_TestButtonsActionsCallbackInterface != null)
             {
-                @W.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnW;
-                @W.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnW;
-                @W.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnW;
-                @S.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnS;
-                @S.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnS;
-                @S.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnS;
-                @D.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnD;
-                @D.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnD;
-                @D.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnD;
-                @F.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnF;
-                @F.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnF;
-                @F.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnF;
+                @T.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnT;
+                @T.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnT;
+                @T.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnT;
+                @Y.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnY;
+                @Y.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnY;
+                @Y.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnY;
+                @U.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnU;
+                @U.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnU;
+                @U.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnU;
             }
             m_Wrapper.m_TestButtonsActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @W.started += instance.OnW;
-                @W.performed += instance.OnW;
-                @W.canceled += instance.OnW;
-                @S.started += instance.OnS;
-                @S.performed += instance.OnS;
-                @S.canceled += instance.OnS;
-                @D.started += instance.OnD;
-                @D.performed += instance.OnD;
-                @D.canceled += instance.OnD;
-                @F.started += instance.OnF;
-                @F.performed += instance.OnF;
-                @F.canceled += instance.OnF;
+                @T.started += instance.OnT;
+                @T.performed += instance.OnT;
+                @T.canceled += instance.OnT;
+                @Y.started += instance.OnY;
+                @Y.performed += instance.OnY;
+                @Y.canceled += instance.OnY;
+                @U.started += instance.OnU;
+                @U.performed += instance.OnU;
+                @U.canceled += instance.OnU;
             }
         }
     }
@@ -610,9 +681,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     }
     public interface ITestButtonsActions
     {
-        void OnW(InputAction.CallbackContext context);
-        void OnS(InputAction.CallbackContext context);
-        void OnD(InputAction.CallbackContext context);
-        void OnF(InputAction.CallbackContext context);
+        void OnT(InputAction.CallbackContext context);
+        void OnY(InputAction.CallbackContext context);
+        void OnU(InputAction.CallbackContext context);
     }
 }

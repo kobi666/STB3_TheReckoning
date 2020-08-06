@@ -73,8 +73,8 @@ public class TestInput : MonoBehaviour
         PrintPositions(Distance);
         instance = this;
         FF += Time.deltaTime;
-        playerInput.TestButtons.W.performed += ctx => OnW();
-        playerInput.TestButtons.D.performed += ctx => OnD();
+        playerInput.TestButtons.T.performed += ctx => OnW();
+        playerInput.TestButtons.Y.performed += ctx => OnD();
         StartCoroutine(testCoroutine(FF));
     }
 

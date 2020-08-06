@@ -15,6 +15,7 @@ public class PlayerUnitUtils
         if (pc.TargetBank.TargetExists()) {
             if (pc.CanEnterNewBattle()) {
                 pc.Data.EnemyTarget = pc.TargetBank.FindSingleTargetNearestToEndOfSpline();
+                pc.Data.EffectableTarget = GameObjectPool.Instance.ActiveEffectables.Pool[pc.Data.EnemyTarget.name];
                 pc.SM.SetState(pc.States.PreBattle);
             }
         }
@@ -25,7 +26,8 @@ public class PlayerUnitUtils
     }
 
     public static void AttackEnemyUnit(PlayerUnitController self) {
-        self.Target?.LifeManager.DamageToUnit(UnityEngine.Random.Range(self.Data.DamageRange.min,self.Data.DamageRange.max), self.Data.damageType);
+        self.Data.EffectableTarget?.ApplyDamage(self.Data.DamageRange.RandomDamage());
+        //self.Target?.LifeManager.DamageToUnit(self.Data.DamageRange.RandomDamage());
     }
     
     public static bool StandardIsTargetable(PlayerUnitController pc) {
@@ -105,6 +107,7 @@ public class PlayerUnitUtils
     public static IEnumerator TellEnemyToPrepareFor1on1battleWithMe(EnemyUnitController ec, PlayerUnitController pc) {
         if (ec.CurrentState == ec.States.Default) {
             ec.Data.PlayerTarget = pc;
+            ec.Data.EffectableTarget = GameObjectPool.Instance.ActiveEffectables.Pool[pc.name];
             ec.SM.SetState(ec.States.PreBattle);
         }
         yield break;

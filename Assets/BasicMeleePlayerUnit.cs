@@ -42,6 +42,7 @@ public class BasicMeleePlayerUnit : PlayerUnitController
     public override void OnTargetEnteredRange(EnemyUnitController ec) {
         if (CanEnterNewBattle()) {
             Data.EnemyTarget = ec;
+            Data.EffectableTarget = GameObjectPool.Instance.ActiveEffectables.Pool[ec.name];
             SM.SetState(States.PreBattle);
         }
     }
@@ -71,6 +72,7 @@ public class BasicMeleePlayerUnit : PlayerUnitController
 
     public override IEnumerator OnEnterDefault() {
         Data.EnemyTarget = null;
+        Data.EffectableTarget = null;
         animationController.OnWalking();
         yield return StartCoroutine(PlayerUnitUtils.ReturnToBattlePosition(this));
         animationController.OnIdle();
@@ -102,8 +104,6 @@ public class BasicMeleePlayerUnit : PlayerUnitController
         }
         animationController.OnIdle();
         yield return StartCoroutine(PlayerUnitUtils.TellEnemyToPrepareFor1on1battleWithMe(Data.EnemyTarget, this));
-        // yield return StartCoroutine(PlayerUnitUtils.MoveToTargetAndInvokeAction(this, PlayerUnitUtils.FindPositionNextToUnit(SR, Target.SR),
-        //                             Data.speed, (Target == null), Target.OnBattleInitiate));
         yield return StartCoroutine(PlayerUnitUtils.AttackCoroutineAndInvokeAction(this, !PlayerUnitUtils.StandardConditionToAttack(this), Data.AttackRate, OnAttack));
         }
         SM.SetState(States.PostBattle);

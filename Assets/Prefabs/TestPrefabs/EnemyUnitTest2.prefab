@@ -218,6 +218,7 @@ MonoBehaviour:
     SpecialArmor: 0
     speed: 0
     SetPosition: {x: 0, y: 0}
+    EffectableTarget: {fileID: 0}
     Target: {fileID: 0}
 --- !u!114 &7919928291453572044
 MonoBehaviour:
@@ -411,7 +412,7 @@ PrefabInstance:
     - target: {fileID: 8235032105786296606, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296607, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}

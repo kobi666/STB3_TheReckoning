@@ -18,7 +18,7 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActive
     public void OnHit(Effectable ef) {
         onHit?.Invoke(ef);
     }
-    public EffectableTargetBank TargetBank {get;set;}
+    //public EffectableTargetBank TargetBank {get;set;}
     PoolObjectQueue<Projectile> queuePool;
     public PoolObjectQueue<Projectile> QueuePool {get => queuePool;set{queuePool = value;}}
     // Start is called before the first frame update
@@ -51,7 +51,7 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActive
         TargetPosition = transform.position;
         targetPositionSet = false;
         TargetUnit = null;
-        TargetBank = null;
+        //TargetBank = null;
         QueuePool.ObjectQueue.Enqueue(this);
         GameObjectPool.Instance.RemoveObjectFromAllPools(name);
         AdditionalOnDisableActions();

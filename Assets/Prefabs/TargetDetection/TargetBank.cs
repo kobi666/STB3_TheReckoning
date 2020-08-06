@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+
+[System.Serializable]
 public abstract class TargetBank<T> : MonoBehaviour where T : Component
 
 {
+    [SerializeField]
+    public List<string> debugTargetNames = new List<string>();
     public RangeDetector rangeDetector;
     public event Action<GameObject> onTryToAddTarget;
     public void OnTryToAddTarget(GameObject targetGO) {
@@ -56,11 +60,21 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
         }
     }
 
+    void AddNamesToDebugList(T t) {
+        debugTargetNames.Add(t.name);
+    }
+
+    void removeNameFromDebugList(string s) {
+        debugTargetNames.Remove(s);
+    }
+
     
     void Awake()
     {
         onTryToAddTarget += AddTarget;
         onTargetRemove += RemoveTarget;
+        onTargetAdd += AddNamesToDebugList;
+        onTargetRemove += removeNameFromDebugList;
         
     }
     // Start is called before the first frame update

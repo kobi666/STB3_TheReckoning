@@ -329,6 +329,10 @@ public class  DamageRange {
     public int min;
     [SerializeField]
     public int max;
+
+    public int RandomDamage() {
+        return UnityEngine.Random.Range(min, max);
+    }
 }
 
 [System.Serializable]

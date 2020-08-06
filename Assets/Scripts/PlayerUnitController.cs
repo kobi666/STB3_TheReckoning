@@ -77,16 +77,10 @@ public abstract class PlayerUnitController : UnitController,ITypeTag
         TargetBank.targetEnteredRange += OnTargetEnteredRange;
         States.JoinBattle.OnEnterState += OnEnterJoinBattle;
         States.JoinBattle.OnExitState += OnExitJoinBattle;
-        if (tag == "Untagged") {
-            tag = "Player_Unit";
-        }
         DeathManager.instance.onEnemyUnitDeath += Data.SetEnemyTargetToNull;
         States.Default.StateAnimation = IdleAnimation;
         States.PreBattle.StateAnimation = WalkingAnimation;
         onAttack += PlayAttackAnimation;
-        
-        
-
         LateStart();
     }
     

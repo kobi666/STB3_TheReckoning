@@ -24,7 +24,7 @@ public class DirectHitProjectile : Projectile
     }
 
     public override void AdditionalOnDisableActions() {
-        TargetBank = null;
+        //TargetBank = null;
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
