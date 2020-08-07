@@ -10,8 +10,8 @@ namespace Animancer.Examples.StateMachines.Weapons
     /// Takes the root motion from the <see cref="Animator"/> attached to the same <see cref="GameObject"/> and applies
     /// it to a <see cref="Rigidbody"/> on a different object.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Weapons - Root Motion Redirect")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Weapons/RootMotionRedirect")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Weapons - Root Motion Redirect")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Weapons) + "/" + nameof(RootMotionRedirect))]
     public sealed class RootMotionRedirect : MonoBehaviour
     {
         /************************************************************************************************************************/

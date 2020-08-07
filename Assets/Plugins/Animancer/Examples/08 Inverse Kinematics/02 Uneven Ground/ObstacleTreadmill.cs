@@ -10,8 +10,8 @@ namespace Animancer.Examples.InverseKinematics
     /// <summary>
     /// Spawns a bunch of obstacles and randomises them each time the target moves too far away.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Inverse Kinematics - Obstacle Treadmill")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.InverseKinematics/ObstacleTreadmill")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Inverse Kinematics - Obstacle Treadmill")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(InverseKinematics) + "/" + nameof(ObstacleTreadmill))]
     public sealed class ObstacleTreadmill : MonoBehaviour
     {
         /************************************************************************************************************************/
@@ -87,8 +87,8 @@ namespace Animancer.Examples.InverseKinematics
 
         public float Slope
         {
-            get { return _Ground.localEulerAngles.z; }
-            set { _Ground.localEulerAngles = new Vector3(0, 0, value); }
+            get => _Ground.localEulerAngles.z;
+            set => _Ground.localEulerAngles = new Vector3(0, 0, value);
         }
 
         /************************************************************************************************************************/

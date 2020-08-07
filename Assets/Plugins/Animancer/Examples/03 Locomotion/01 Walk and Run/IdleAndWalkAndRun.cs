@@ -9,8 +9,8 @@ namespace Animancer.Examples.Locomotion
     /// <summary>
     /// Inherits from <see cref="IdleAndWalk"/> and adds the ability to run.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Locomotion - Idle And Walk And Run")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.Locomotion/IdleAndWalkAndRun")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Locomotion - Idle And Walk And Run")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Locomotion) + "/" + nameof(IdleAndWalkAndRun))]
     public class IdleAndWalkAndRun : IdleAndWalk
     {
         /************************************************************************************************************************/
@@ -42,8 +42,8 @@ namespace Animancer.Examples.Locomotion
 
             // If the other one is still fading out, align their NormalizedTime to ensure they stay at the same
             // relative progress through their walk cycle.
-            var otherState = Animancer.States[otherAnimation];
-            if (otherState != null && otherState.IsPlaying)
+            if (Animancer.States.TryGet(otherAnimation, out var otherState)
+                && otherState.IsPlaying)
                 playState.NormalizedTime = otherState.NormalizedTime;
         }
 

@@ -10,8 +10,8 @@ namespace Animancer.Examples.DirectionalSprites
     /// A more complex version of the <see cref="SpriteMovementController"/> which adds running and pushing animations
     /// as well as the ability to actually move around.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Directional Sprites - Sprite Character Controller")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.DirectionalSprites/SpriteCharacterController")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Directional Sprites - Sprite Character Controller")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(DirectionalSprites) + "/" + nameof(SpriteCharacterController))]
     public sealed class SpriteCharacterController : MonoBehaviour
     {
         /************************************************************************************************************************/

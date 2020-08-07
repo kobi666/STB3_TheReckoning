@@ -11,8 +11,8 @@ namespace Animancer.Examples.StateMachines.Weapons
     /// <summary>
     /// A <see cref="CreatureState"/> which managed the currently equipped <see cref="Weapon"/>.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Weapons - Equip State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Weapon/EquipState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Weapons - Equip State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Weapons) + "/" + nameof(EquipState))]
     public sealed class EquipState : CreatureState
     {
         /************************************************************************************************************************/
@@ -51,11 +51,8 @@ namespace Animancer.Examples.StateMachines.Weapons
 
         /************************************************************************************************************************/
 
-        public override bool CanEnterState(CreatureState previousState)
-        {
-            // This state can only be entered by setting the Weapon property.
-            return _Weapon != _EquippingWeapon;
-        }
+        // This state can only be entered by setting the Weapon property.
+        public override bool CanEnterState(CreatureState previousState) => _Weapon != _EquippingWeapon;
 
         /************************************************************************************************************************/
 
@@ -134,10 +131,7 @@ namespace Animancer.Examples.StateMachines.Weapons
 
         /************************************************************************************************************************/
 
-        public override bool CanExitState(CreatureState nextState)
-        {
-            return false;
-        }
+        public override bool CanExitState(CreatureState nextState) => false;
 
         /************************************************************************************************************************/
     }

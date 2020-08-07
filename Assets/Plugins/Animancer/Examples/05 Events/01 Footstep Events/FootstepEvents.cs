@@ -9,8 +9,8 @@ namespace Animancer.Examples.Events
     /// <summary>
     /// Uses Animancer Events to play a sound randomly selected from an array.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Footstep Events - Animancer")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimationEvents/FootstepEvents")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Footstep Events - Animancer")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Events) + "/" + nameof(FootstepEvents))]
     public class FootstepEvents : MonoBehaviour
     {
         /************************************************************************************************************************/

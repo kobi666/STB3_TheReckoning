@@ -10,8 +10,8 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
     /// <summary>
     /// Base class for the various states a <see cref="Brains.Creature"/> can be in and actions they can perform.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Game Kit - Creature State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimatorControllers.GameKit/CreatureState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Game Kit - Creature State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(AnimatorControllers) + "." + nameof(GameKit) + "/" + nameof(CreatureState))]
     public abstract class CreatureState : StateBehaviour<CreatureState>,
         IOwnedState<CreatureState>
     {
@@ -21,10 +21,7 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
         private Creature _Creature;
 
         /// <summary>The <see cref="Brains.Creature"/> that owns this state.</summary>
-        public Creature Creature
-        {
-            get { return _Creature; }
-        }
+        public Creature Creature => _Creature;
 
 #if UNITY_EDITOR
         protected void Reset()
@@ -35,7 +32,7 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
         /************************************************************************************************************************/
 
-        public StateMachine<CreatureState> OwnerStateMachine { get { return _Creature.StateMachine; } }
+        public StateMachine<CreatureState> OwnerStateMachine => _Creature.StateMachine;
 
         /************************************************************************************************************************/
 
@@ -44,20 +41,20 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
         /// become false until after the first update, so we want to make sure the <see cref="Creature"/> won't stick
         /// to the ground during that update.
         /// </summary>
-        public virtual bool StickToGround { get { return true; } }
+        public virtual bool StickToGround => true;
 
         /// <summary>
         /// Some states (such as <see cref="AirborneState"/>) will want to apply their own source of root motion, but
         /// most will just use the root motion from the animations.
         /// </summary>
-        public virtual Vector3 RootMotion { get { return _Creature.Animancer.Animator.deltaPosition; } }
+        public virtual Vector3 RootMotion => _Creature.Animancer.Animator.deltaPosition;
 
         /// <summary>
         /// Indicates whether the root motion applied each frame while this state is active should be constrained to
         /// only move in the specified <see cref="CreatureBrain.Movement"/>. Otherwise the root motion can
         /// move the <see cref="Creature"/> in any direction. Default is true.
         /// </summary>
-        public virtual bool FullMovementControl { get { return true; } }
+        public virtual bool FullMovementControl => true;
 
         /************************************************************************************************************************/
     }

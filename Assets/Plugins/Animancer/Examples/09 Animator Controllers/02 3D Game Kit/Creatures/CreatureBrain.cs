@@ -9,8 +9,8 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
     /// <summary>
     /// Base class for controlling the actions of a <see cref="Brains.Creature"/>.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Game Kit - Creature Brain")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimatorControllers.GameKit/CreatureBrain")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Game Kit - Creature Brain")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(AnimatorControllers) + "." + nameof(GameKit) + "/" + nameof(CreatureBrain))]
     public abstract class CreatureBrain : MonoBehaviour
     {
         /************************************************************************************************************************/
@@ -19,7 +19,7 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
         private Creature _Creature;
         public Creature Creature
         {
-            get { return _Creature; }
+            get => _Creature;
             set
             {
                 if (_Creature == value)

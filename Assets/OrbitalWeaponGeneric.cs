@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 public abstract class OrbitalWeaponGeneric : TestWeaponController, IOrbital<OrbitalWeaponGeneric>
 {
-    
+
     WeaponRotator rotator;
     public WeaponRotator Rotator {get => rotator;set { rotator = value;}}
     [SerializeField]
@@ -113,7 +113,7 @@ public abstract class OrbitalWeaponGeneric : TestWeaponController, IOrbital<Orbi
             Debug.LogWarning(e.Message);
         }
         if (Rotator == null) {
-            Debug.LogWarning("Rotator is Null!!");
+            //Debug.LogWarning("Rotator is Null!!");
         }
     }
 

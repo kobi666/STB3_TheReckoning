@@ -10,8 +10,8 @@ namespace Animancer.Examples.Events
     /// An <see cref="GolfHitController"/> that uses a <see cref="SimpleEventReceiver"/> to recenve an Animation Event
     /// with the function name <c>"Event"</c>.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Golf Events - Animation Simple")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimationEvents/GolfHitControllerAnimationSimple")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Golf Events - Animation Simple")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Events) + "/" + nameof(GolfHitControllerAnimationSimple))]
     public sealed class GolfHitControllerAnimationSimple : GolfHitController
     {
         /************************************************************************************************************************/
@@ -31,7 +31,7 @@ namespace Animancer.Examples.Events
         protected override void Awake()
         {
             base.Awake();
-            _Swing.Events.Sequence.OnEnd = EndSwing;
+            _Swing.Events.OnEnd = EndSwing;
         }
 
         /************************************************************************************************************************/
@@ -52,7 +52,7 @@ namespace Animancer.Examples.Events
 
             // When the Animation Event with the function name "Event" occurs:
             // If the swing animation doesn't have an event with that function name, this will log a warning.
-            _EventReceiver.onEvent.Set(state, (animationEvent) => HitBall());
+            _EventReceiver.OnEvent.Set(state, (animationEvent) => HitBall());
         }
 
         /************************************************************************************************************************/

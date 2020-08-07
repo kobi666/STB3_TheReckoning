@@ -12,39 +12,40 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
     /// A <see cref="CreatureState"/> which moves the creature according to their
     /// <see cref="CreatureBrain.Movement"/>.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Game Kit - Locomotion State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimatorControllers.GameKit/LocomotionState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Game Kit - Locomotion State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(AnimatorControllers) + "." + nameof(GameKit) + "/" + nameof(LocomotionState))]
     public sealed class LocomotionState : CreatureState
     {
         /************************************************************************************************************************/
 
-        [SerializeField] private Float2ControllerState.Transition _LocomotionBlendTree;
+        [SerializeField] private LinearMixerState.Transition _LocomotionMixer;
         [SerializeField] private ClipState.Transition _QuickTurnLeft;
         [SerializeField] private ClipState.Transition _QuickTurnRight;
         [SerializeField] private float _QuickTurnMoveSpeed = 2;
         [SerializeField] private float _QuickTurnAngle = 145;
 
+        private AnimatedFloat _FootFall;
+
         /************************************************************************************************************************/
 
         private void Awake()
         {
-            _QuickTurnLeft.Events.Sequence.OnEnd =
-                _QuickTurnRight.Events.Sequence.OnEnd =
-                () => Creature.Animancer.Play(_LocomotionBlendTree);
+            _QuickTurnLeft.Events.OnEnd =
+                _QuickTurnRight.Events.OnEnd =
+                () => Creature.Animancer.Play(_LocomotionMixer);
+
+            _FootFall = new AnimatedFloat(Creature.Animancer, "FootFall");
         }
 
         /************************************************************************************************************************/
 
-        public override bool CanEnterState(CreatureState previousState)
-        {
-            return Creature.IsGrounded;
-        }
+        public override bool CanEnterState(CreatureState previousState) => Creature.IsGrounded;
 
         /************************************************************************************************************************/
 
         private void OnEnable()
         {
-            Creature.Animancer.Play(_LocomotionBlendTree);
+            Creature.Animancer.Play(_LocomotionMixer);
         }
 
         /************************************************************************************************************************/
@@ -55,10 +56,7 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
                 return;
 
             Creature.UpdateSpeedControl();
-            _LocomotionBlendTree.State.ParameterX = Creature.ForwardSpeed;
-
-            // Or we could set the parameter manually:
-            //_LocomotionBlendTree.State.Playable.SetFloat("Speed", Creature.ForwardSpeed);
+            _LocomotionMixer.State.Parameter = Creature.ForwardSpeed;
 
             UpdateRotation();
             UpdateAudio();
@@ -70,11 +68,10 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
         {
             // If the default locomotion state is not active we must be performing a quick turn.
             // Those animations use root motion to perform the turn so we don't want any scripted rotation during them.
-            if (!_LocomotionBlendTree.State.IsActive)
+            if (!_LocomotionMixer.State.IsActive)
                 return;
 
-            float currentAngle, targetAngle;
-            if (!Creature.GetTurnAngles(Creature.Brain.Movement, out currentAngle, out targetAngle))
+            if (!Creature.GetTurnAngles(Creature.Brain.Movement, out var currentAngle, out var targetAngle))
                 return;
 
             // Check if we should play a quick turn animation:
@@ -114,9 +111,10 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
         /// </remarks>
         private void UpdateAudio()
         {
-            var footFallCurve = _LocomotionBlendTree.State.ParameterY;
+            const float Threshold = 0.01f;
 
-            if (footFallCurve > 0.01f && !_IsPlayingAudio && _CanPlayAudio)
+            var footFallCurve = _FootFall.Value;
+            if (footFallCurve > Threshold && !_IsPlayingAudio && _CanPlayAudio)
             {
                 _IsPlayingAudio = true;
                 _CanPlayAudio = false;
@@ -134,7 +132,7 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
             {
                 _IsPlayingAudio = false;
             }
-            else if (footFallCurve < 0.01f && !_CanPlayAudio)
+            else if (footFallCurve < Threshold && !_CanPlayAudio)
             {
                 _CanPlayAudio = true;
             }

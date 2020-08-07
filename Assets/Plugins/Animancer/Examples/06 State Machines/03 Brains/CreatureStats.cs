@@ -17,22 +17,19 @@ namespace Animancer.Examples.StateMachines.Brains
 
         [SerializeField]
         private float _WalkSpeed = 2;
-        public float WalkSpeed { get { return _WalkSpeed; } }
+        public float WalkSpeed => _WalkSpeed;
 
         [SerializeField]
         private float _RunSpeed = 4;
-        public float RunSpeed { get { return _RunSpeed; } }
+        public float RunSpeed => _RunSpeed;
 
-        public float GetMoveSpeed(bool isRunning)
-        {
-            return isRunning ? _RunSpeed : _WalkSpeed;
-        }
+        public float GetMoveSpeed(bool isRunning) => isRunning ? _RunSpeed : _WalkSpeed;
 
         /************************************************************************************************************************/
 
         [SerializeField]
         private float _TurnSpeed = 360;
-        public float TurnSpeed { get { return _TurnSpeed; } }
+        public float TurnSpeed => _TurnSpeed;
 
         /************************************************************************************************************************/
 

@@ -10,8 +10,8 @@ namespace Animancer.Examples.StateMachines.Brains
     /// <summary>
     /// A <see cref="CreatureBrain"/> which controls the creature using mouse input.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Brains - Mouse Brain")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Brains/MouseBrain")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Brains - Mouse Brain")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Brains) + "/" + nameof(MouseBrain))]
     public sealed class MouseBrain : CreatureBrain
     {
         /************************************************************************************************************************/

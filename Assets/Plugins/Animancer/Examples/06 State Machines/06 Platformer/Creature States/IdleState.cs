@@ -9,8 +9,8 @@ namespace Animancer.Examples.StateMachines.Platformer
     /// <summary>
     /// A <see cref="CreatureState"/> that plays an idle animation.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Platformer - Idle State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Platformer/IdleState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Platformer - Idle State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Platformer) + "/" + nameof(IdleState))]
     public sealed class IdleState : CreatureState
     {
         /************************************************************************************************************************/
@@ -23,10 +23,7 @@ namespace Animancer.Examples.StateMachines.Platformer
 
         /************************************************************************************************************************/
 
-        public override float MovementSpeed
-        {
-            get { return Creature.Brain.IsRunning ? _RunSpeed : _WalkSpeed; }
-        }
+        public override float MovementSpeed => Creature.Brain.IsRunning ? _RunSpeed : _WalkSpeed;
 
         /************************************************************************************************************************/
 

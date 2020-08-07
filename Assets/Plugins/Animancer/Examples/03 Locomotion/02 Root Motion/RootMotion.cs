@@ -10,8 +10,8 @@ namespace Animancer.Examples.Locomotion
     /// <summary>
     /// Demonstrates how to use Root Motion for some animations but not others.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Locomotion - Root Motion")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.Locomotion/RootMotion")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Locomotion - Root Motion")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Locomotion) + "/" + nameof(RootMotion))]
     public sealed class RootMotion : MonoBehaviour
     {
         /************************************************************************************************************************/

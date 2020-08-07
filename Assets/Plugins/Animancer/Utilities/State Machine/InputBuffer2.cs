@@ -18,7 +18,7 @@ namespace Animancer.FSM
             /// <summary>The <see cref="StateMachine{TKey, TState}"/> this buffer is feeding input to.</summary>
             public new StateMachine<TKey, TState> StateMachine
             {
-                get { return _StateMachine; }
+                get => _StateMachine;
                 set
                 {
                     _StateMachine = value;
@@ -60,23 +60,14 @@ namespace Animancer.FSM
             /// <see cref="StateMachine{TState}.InputBuffer.Update"/> is called.
             /// </summary>
             public bool TrySetState(TKey key, float timeOut)
-            {
-                TState state;
-                if (_StateMachine.TryGetValue(key, out state))
-                    return TrySetState(key, state, timeOut);
-                else
-                    return false;
-            }
+                => _StateMachine.TryGetValue(key, out var state) && TrySetState(key, state, timeOut);
 
             /************************************************************************************************************************/
 
             /// <summary>
             /// Attempts to enter the <see cref="BufferedState"/> and returns true if successful.
             /// </summary>
-            protected override bool TryEnterBufferedState()
-            {
-                return _StateMachine.TrySetState(BufferedKey, BufferedState);
-            }
+            protected override bool TryEnterBufferedState() => _StateMachine.TrySetState(BufferedKey, BufferedState);
 
             /************************************************************************************************************************/
         }

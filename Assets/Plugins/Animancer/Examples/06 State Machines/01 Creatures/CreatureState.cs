@@ -10,8 +10,8 @@ namespace Animancer.Examples.StateMachines.Creatures
     /// <summary>
     /// A state for a <see cref="Creature"/> which simply plays an animation.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Creatures - Creature State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Creatures/CreatureState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Creatures - Creature State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Creatures) + "/" + nameof(CreatureState))]
     public sealed class CreatureState : StateBehaviour<CreatureState>
     {
         /************************************************************************************************************************/

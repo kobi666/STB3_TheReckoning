@@ -12,8 +12,8 @@ namespace Animancer.Examples.AnimatorControllers
     /// A <see cref="CreatureState"/> which allows the player to play golf using the
     /// <see cref="Events.GolfHitController"/> script.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Hybrid - Golf Mini Game")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimatorControllers/GolfMiniGame")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Hybrid - Golf Mini Game")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(AnimatorControllers) + "/" + nameof(GolfMiniGame))]
     public sealed class GolfMiniGame : CreatureBrain
     {
         /************************************************************************************************************************/
@@ -115,10 +115,13 @@ namespace Animancer.Examples.AnimatorControllers
         {
             _State = State.Playing;
 
-            // Put the GolfClub in their hand, specifically as a child of the "Holder.R" object which is positioned
+            // Put the GolfClub in their hand, specifically as a child of the "RightHandHolder" object which is positioned
             // correctly for holding objects.
+            const string HolderName = "RightHandHolder";
             var rightHand = Creature.Animancer.Animator.GetBoneTransform(HumanBodyBones.RightHand);
-            rightHand = rightHand.Find("Holder.R");
+            rightHand = rightHand.Find(HolderName);
+            Debug.Assert(rightHand != null, "Unable to find " + HolderName);
+
             _GolfClub.parent = rightHand;
             _GolfClub.localPosition = Vector3.zero;
             _GolfClub.localRotation = Quaternion.identity;

@@ -11,8 +11,8 @@ namespace Animancer.Examples.StateMachines.InterruptManagement
     /// <summary>
     /// A centralised group of references to the common parts of a creature and a state machine for their actions.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Interrupt Management - Creature")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.InterruptManagement/Creature")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Interrupt Management - Creature")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(InterruptManagement) + "/" + nameof(Creature))]
     [DefaultExecutionOrder(-5000)]// Initialise the State Machine early.
     public sealed class Creature : MonoBehaviour
     {
@@ -20,11 +20,11 @@ namespace Animancer.Examples.StateMachines.InterruptManagement
 
         [SerializeField]
         private AnimancerComponent _Animancer;
-        public AnimancerComponent Animancer { get { return _Animancer; } }
+        public AnimancerComponent Animancer => _Animancer;
 
         [SerializeField]
         private CreatureState _Idle;
-        public CreatureState Idle { get { return _Idle; } }
+        public CreatureState Idle => _Idle;
 
         // Rigidbody.
         // Ground Detector.
@@ -64,10 +64,7 @@ namespace Animancer.Examples.StateMachines.InterruptManagement
         /// Calls <see cref="StateMachine{TState}.TrySetState"/>. Normally you would just access the
         /// <see cref="StateMachine"/> directly. This method only exists to be called by UI buttons.
         /// </summary>
-        public void TrySetState(CreatureState state)
-        {
-            StateMachine.TrySetState(state);
-        }
+        public void TrySetState(CreatureState state) => StateMachine.TrySetState(state);
 
         /************************************************************************************************************************/
 #if UNITY_EDITOR

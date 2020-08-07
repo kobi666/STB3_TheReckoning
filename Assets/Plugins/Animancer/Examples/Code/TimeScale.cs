@@ -7,7 +7,8 @@ namespace Animancer.Examples
     /// <summary>
     /// A simple Inspector slider to control <see cref="Time.timeScale"/>.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Time Scale")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Time Scale")]
+    [HelpURL(Strings.APIDocumentationURL + "." + nameof(Examples) + "/" + nameof(TimeScale))]
     public sealed class TimeScale : MonoBehaviour
     {
         /************************************************************************************************************************/
@@ -17,7 +18,7 @@ namespace Animancer.Examples
 
         public float Value
         {
-            get { return _Value; }
+            get => _Value;
             set
             {
                 _Value = value;

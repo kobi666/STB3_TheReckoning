@@ -8,10 +8,11 @@ using UnityEngine;
 namespace Animancer.Examples.AnimatorControllers.GameKit
 {
     /// <summary>
-    /// A <see cref="CreatureState"/> which keeps the creature standing still.
+    /// A <see cref="CreatureState"/> which keeps the creature standing still and occasionally plays alternate
+    /// animations if it remains active for long enough.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Game Kit - Idle State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimatorControllers.GameKit/IdleState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Game Kit - Idle State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(AnimatorControllers) + "." + nameof(GameKit) + "/" + nameof(IdleState))]
     public sealed class IdleState : CreatureState
     {
         /************************************************************************************************************************/
@@ -34,9 +35,9 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
             Action onEnd = PlayMainAnimation;
             for (int i = 0; i < _RandomAnimations.Length; i++)
             {
-                _RandomAnimations[i].Events.Sequence.OnEnd = onEnd;
+                _RandomAnimations[i].Events.OnEnd = onEnd;
 
-                // We could just do `OnEnd = PlayMainAnimation` instead of declaring the delegate first, but that
+                // We could just do `...OnEnd = PlayMainAnimation` instead of declaring the delegate first, but that
                 // assignment is actually shorthand for `new Action(PlayMainAnimation)` which would create a new
                 // delegate object for each animation. This way all animations just share the same object.
             }
@@ -44,10 +45,7 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
         /************************************************************************************************************************/
 
-        public override bool CanEnterState(CreatureState previousState)
-        {
-            return Creature.IsGrounded;
-        }
+        public override bool CanEnterState(CreatureState previousState) => Creature.IsGrounded;
 
         /************************************************************************************************************************/
 
@@ -74,8 +72,9 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
             // We use time where Mecanim used normalized time because choosing a number of seconds is much simpler than
             // finding out how long the animation is and working with multiples of that value.
-            if (Creature.Animancer.States.Current == _MainAnimation.State &&
-                Creature.Animancer.States.Current.Time >= _RandomizeTime)
+            var state = Creature.Animancer.States.Current;
+            if (state == _MainAnimation.State &&
+                state.Time >= _RandomizeTime)
             {
                 PlayRandomAnimation();
             }
@@ -88,6 +87,7 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
             var index = UnityEngine.Random.Range(0, _RandomAnimations.Length);
             var animation = _RandomAnimations[index];
             Creature.Animancer.Play(animation);
+            CustomFade.Apply(Creature.Animancer, Interpolation.Function.SineInOut);
         }
 
         /************************************************************************************************************************/

@@ -11,25 +11,25 @@ namespace Animancer.Examples.StateMachines.Weapons
     /// like damage, damage type, weapon category, etc. It could also inherit from a base Item class for things like
     /// weight, cost, and description.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Weapons - Weapon")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Weapons/Weapon")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Weapons - Weapon")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Weapons) + "/" + nameof(Weapon))]
     public sealed class Weapon : MonoBehaviour
     {
         /************************************************************************************************************************/
 
         [SerializeField]
         private ClipState.Transition[] _AttackAnimations;
-        public ClipState.Transition[] AttackAnimations { get { return _AttackAnimations; } }
+        public ClipState.Transition[] AttackAnimations => _AttackAnimations;
 
         /************************************************************************************************************************/
 
         [SerializeField]
         private ClipState.Transition _EquipAnimation;
-        public ClipState.Transition EquipAnimation { get { return _EquipAnimation; } }
+        public ClipState.Transition EquipAnimation => _EquipAnimation;
 
         [SerializeField]
         private ClipState.Transition _UnequipAnimation;
-        public ClipState.Transition UnequipAnimation { get { return _UnequipAnimation; } }
+        public ClipState.Transition UnequipAnimation => _UnequipAnimation;
 
         /************************************************************************************************************************/
     }

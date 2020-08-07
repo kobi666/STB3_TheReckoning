@@ -9,8 +9,8 @@ namespace Animancer.Examples.Basics
     /// <summary>
     /// Demonstrates the differences between various ways of playing and fading between animations.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Basics - Playing and Fading")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.Basics/PlayingAndFading")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Basics - Playing and Fading")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Basics) + "/" + nameof(PlayingAndFading))]
     public sealed class PlayingAndFading : MonoBehaviour
     {
         /************************************************************************************************************************/

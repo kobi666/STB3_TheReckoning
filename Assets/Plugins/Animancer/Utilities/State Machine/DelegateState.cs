@@ -47,36 +47,22 @@ namespace Animancer.FSM
         /************************************************************************************************************************/
 
         /// <summary>Calls <see cref="canEnter"/> to determine whether this state can be entered.</summary>
-        bool IState<TState>.CanEnterState(TState previousState)
-        {
-            return canEnter == null || canEnter(previousState);
-        }
+        bool IState<TState>.CanEnterState(TState previousState) => canEnter == null || canEnter(previousState);
 
         /************************************************************************************************************************/
 
         /// <summary>Calls <see cref="canExit"/> to determine whether this state can be exited.</summary>
-        bool IState<TState>.CanExitState(TState nextState)
-        {
-            return canExit == null || canExit(nextState);
-        }
+        bool IState<TState>.CanExitState(TState nextState) => canExit == null || canExit(nextState);
 
         /************************************************************************************************************************/
 
         /// <summary>Calls <see cref="onEnter"/> when this state is entered.</summary>
-        void IState<TState>.OnEnterState()
-        {
-            if (onEnter != null)
-                onEnter();
-        }
+        void IState<TState>.OnEnterState() => onEnter?.Invoke();
 
         /************************************************************************************************************************/
 
         /// <summary>Calls <see cref="onExit"/> when this state is exited.</summary>
-        void IState<TState>.OnExitState()
-        {
-            if (onExit != null)
-                onExit();
-        }
+        void IState<TState>.OnExitState() => onExit?.Invoke();
 
         /************************************************************************************************************************/
     }

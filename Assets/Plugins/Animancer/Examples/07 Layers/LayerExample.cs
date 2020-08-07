@@ -10,8 +10,8 @@ namespace Animancer.Examples.Layers
     /// <summary>
     /// Demonstrates how to use layers to play multiple animations at once on different body parts.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Layers - Layer Example")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.Layers/LayerExample")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Layers - Layer Example")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Layers) + "/" + nameof(LayerExample))]
     public sealed class LayerExample : MonoBehaviour
     {
         /************************************************************************************************************************/

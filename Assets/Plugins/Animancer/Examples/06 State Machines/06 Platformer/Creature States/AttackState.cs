@@ -9,8 +9,8 @@ namespace Animancer.Examples.StateMachines.Platformer
     /// <summary>
     /// A <see cref="CreatureState"/> that performs an attack animation then returns to idle.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Platformer - Attack State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Platformer/AttackState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Platformer - Attack State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Platformer) + "/" + nameof(AttackState))]
     public sealed class AttackState : CreatureState
     {
         /************************************************************************************************************************/
@@ -41,10 +41,7 @@ namespace Animancer.Examples.StateMachines.Platformer
         /// but then we would never be able to prevent it from triggering. For example, interacting with an object or
         /// doing something in a cutscene might use a state that should never be interrupted.
         /// </remarks>
-        public override bool CanExitState(CreatureState nextState)
-        {
-            return false;
-        }
+        public override bool CanExitState(CreatureState nextState) => false;
 
         /************************************************************************************************************************/
     }

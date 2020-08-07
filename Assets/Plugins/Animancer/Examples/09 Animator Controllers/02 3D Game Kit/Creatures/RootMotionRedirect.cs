@@ -10,8 +10,8 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
     /// Takes the root motion from the <see cref="Animator"/> attached to the same <see cref="GameObject"/> and applies
     /// it to a <see cref="Creature"/> on a different object.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Game Kit - Root Motion Redirect")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimatorControllers.GameKit/RootMotionRedirect")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Game Kit - Root Motion Redirect")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(AnimatorControllers) + "." + nameof(GameKit) + "/" + nameof(RootMotionRedirect))]
     public sealed class RootMotionRedirect : MonoBehaviour
     {
         /************************************************************************************************************************/

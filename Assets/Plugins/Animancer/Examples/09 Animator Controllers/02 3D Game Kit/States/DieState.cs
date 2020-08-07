@@ -8,8 +8,8 @@ using UnityEngine.Events;
 
 namespace Animancer.Examples.AnimatorControllers.GameKit
 {
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Game Kit - Die State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimatorControllers.GameKit/DieState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Game Kit - Die State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(AnimatorControllers) + "." + nameof(GameKit) + "/" + nameof(DieState))]
     public sealed class DieState : CreatureState
     {
         /************************************************************************************************************************/
@@ -23,7 +23,7 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
         private void Awake()
         {
             // Respawn immediately when the animation ends.
-            _Animation.Events.Sequence.OnEnd = Creature.Respawn.ForceEnterState;
+            _Animation.Events.OnEnd = Creature.Respawn.ForceEnterState;
         }
 
         /************************************************************************************************************************/
@@ -51,14 +51,11 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
         /************************************************************************************************************************/
 
-        public override bool FullMovementControl { get { return false; } }
+        public override bool FullMovementControl => false;
 
         /************************************************************************************************************************/
 
-        public override bool CanExitState(CreatureState nextState)
-        {
-            return false;
-        }
+        public override bool CanExitState(CreatureState nextState) => false;
 
         /************************************************************************************************************************/
     }

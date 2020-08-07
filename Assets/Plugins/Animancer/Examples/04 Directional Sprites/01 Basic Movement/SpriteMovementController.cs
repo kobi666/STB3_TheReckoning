@@ -10,8 +10,8 @@ namespace Animancer.Examples.DirectionalSprites
     /// Animates a character to either stand idle or walk using animations defined in
     /// <see cref="DirectionalAnimationSet"/>s.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Directional Sprites - Sprite Movement Controller")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.DirectionalSprites/SpriteMovementController")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Directional Sprites - Sprite Movement Controller")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(DirectionalSprites) + "/" + nameof(SpriteMovementController))]
     public sealed class SpriteMovementController : MonoBehaviour
     {
         /************************************************************************************************************************/

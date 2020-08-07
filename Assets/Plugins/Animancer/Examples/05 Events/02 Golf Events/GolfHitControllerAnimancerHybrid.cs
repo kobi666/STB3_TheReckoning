@@ -11,8 +11,8 @@ namespace Animancer.Examples.Events
     /// An <see cref="GolfHitController"/> that uses an Animancer Event which has its time set in the Inspector but its
     /// callback left blank so that it can be assigned by code (a "hybrid" between Inspector and Code based systems).
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Golf Events - Animancer Hybrid")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimationEvents/GolfHitControllerAnimancerHybrid")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Golf Events - Animancer Hybrid")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Events) + "/" + nameof(GolfHitControllerAnimancerHybrid))]
     public sealed class GolfHitControllerAnimancerHybrid : GolfHitController
     {
         /************************************************************************************************************************/
@@ -29,13 +29,21 @@ namespace Animancer.Examples.Events
         {
             base.Awake();
 
-            Debug.Assert(_Swing.Events.Sequence.Count == 1, "Expected one event for hitting the ball", this);
-            _Swing.Events.Sequence.Set(0, HitBall);
+            // Set the callback for the event named "Hit".
+            // If no event exists with that name, this would throw an exception.
+            _Swing.Events.SetCallback("Hit", HitBall);
 
-            // If we did not create the event in the Inspector, we could add it here:
-            //_Swing.Events.Sequence.Add(new AnimancerEvent(0.375f, OnHitBall));
+            // If we did not set the event's Name in the Inspector, we could just access it by index:
+            // _Swing.Events.SetCallback(0, HitBall);
+            // But that hard-codes the assumption that there will not be any other events before the one we want.
 
-            _Swing.Events.Sequence.OnEnd = EndSwing;
+            // Or if we did not create the event in the Inspector, we could add it here:
+            // _Swing.Events.Add(new AnimancerEvent(0.375f, OnHitBall));
+
+            // Also set the end event's callback:
+            _Swing.Events.OnEnd = EndSwing;
+            // _Swing.Events.endEvent.callback = EndSwing;// Same thing, but slightly longer.
+            // _Swing.Events.endEvent = new AnimancerEvent(0.7f, EndSwing);
         }
 
         /************************************************************************************************************************/

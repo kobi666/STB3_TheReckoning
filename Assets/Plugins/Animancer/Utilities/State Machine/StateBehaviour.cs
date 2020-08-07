@@ -14,27 +14,27 @@ namespace Animancer.FSM
         /************************************************************************************************************************/
 
         /// <summary>
-        /// Determines whether the <see cref="StateMachine{TState}"/> can enter this state. Always returns true
-        /// unless overridden.
+        /// Determines whether the <see cref="StateMachine{TState}"/> can enter this state.
+        /// Always returns true unless overridden.
         /// </summary>
-        public virtual bool CanEnterState(TState previousState) { return true; }
+        public virtual bool CanEnterState(TState previousState) => true;
 
         /// <summary>
-        /// Determines whether the <see cref="StateMachine{TState}"/> can exit this state. Always returns true
-        /// unless overridden.
+        /// Determines whether the <see cref="StateMachine{TState}"/> can exit this state.
+        /// Always returns true unless overridden.
         /// </summary>
-        public virtual bool CanExitState(TState nextState) { return true; }
+        public virtual bool CanExitState(TState nextState) => true;
 
         /************************************************************************************************************************/
 
         /// <summary>
-        /// Asserts that this component is not already enabled, then enable it.
+        /// Asserts that this component is not already enabled, then enables it.
         /// </summary>
         public virtual void OnEnterState()
         {
 #if UNITY_ASSERTIONS
             if (enabled)
-                Debug.LogError(this + " was already enabled when entering its state", this);
+                Debug.LogError($"{this} was already enabled when entering its state", this);
 #endif
             enabled = true;
         }
@@ -42,7 +42,7 @@ namespace Animancer.FSM
         /************************************************************************************************************************/
 
         /// <summary>
-        /// Asserts that this component is not already disabled, then disable it.
+        /// Asserts that this component is not already disabled, then disables it.
         /// </summary>
         public virtual void OnExitState()
         {
@@ -51,7 +51,7 @@ namespace Animancer.FSM
 
 #if UNITY_ASSERTIONS
             if (!enabled)
-                Debug.LogError(this + " was already disabled when entering its state", this);
+                Debug.LogError($"{this} was already disabled when entering its state", this);
 #endif
 
             enabled = false;

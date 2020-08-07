@@ -18,8 +18,8 @@ namespace Animancer.Examples.FineControl
     /// Attempts to interact with whatever <see cref="IInteractable"/> the cursor is pointing at when the user clicks
     /// the mouse.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Fine Control - Click To Interact")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.FineControl/ClickToInteract")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Fine Control - Click To Interact")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(FineControl) + "/" + nameof(ClickToInteract))]
     public sealed class ClickToInteract : MonoBehaviour
     {
         /************************************************************************************************************************/

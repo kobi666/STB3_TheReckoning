@@ -11,8 +11,8 @@ namespace Animancer.Examples.Events
     /// playing a sound randomly selected from an array, using the Int Parameter of the event as the index to determine
     /// which foot to play the sound on. 0 is the Left Foot and 1 is the Right Foot.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Footstep Events - Animation")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimationEvents/FootstepEventsAnimation")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Footstep Events - Animation")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Events) + "/" + nameof(FootstepEventsAnimation))]
     public sealed class FootstepEventsAnimation : FootstepEvents
     {
         /************************************************************************************************************************/

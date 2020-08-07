@@ -9,7 +9,7 @@ namespace Animancer
     /// determined by the <see cref="Renderer"/> while wrapping the value to keep it as close to 0 as possible.
     /// </summary>
     [AddComponentMenu(Strings.MenuPrefix + "Pixel Perfect Positioning")]
-    [HelpURL(Strings.APIDocumentationURL + "/Pixel Perfect Positioning")]
+    [HelpURL(Strings.APIDocumentationURL + "/" + nameof(PixelPerfectPositioning))]
     public sealed class PixelPerfectPositioning : MonoBehaviour
     {
         /************************************************************************************************************************/
@@ -20,11 +20,7 @@ namespace Animancer
         /// <summary>[<see cref="SerializeField"/>]
         /// The <see cref="SpriteRenderer"/> that will have its position adjusted.
         /// </summary>
-        public SpriteRenderer Renderer
-        {
-            get { return _Renderer; }
-            set { _Renderer = value; }
-        }
+        public ref SpriteRenderer Renderer => ref _Renderer;
 
         /************************************************************************************************************************/
 

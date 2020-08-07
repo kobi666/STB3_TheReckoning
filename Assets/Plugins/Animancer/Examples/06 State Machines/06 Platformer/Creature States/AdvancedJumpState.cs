@@ -9,8 +9,8 @@ namespace Animancer.Examples.StateMachines.Platformer
     /// <summary>
     /// A more complex <see cref="JumpState"/> that allows you to hold the button down to jump higher.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Platformer - Advanced Jump State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Platformer/AdvancedJumpState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Platformer - Advanced Jump State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Platformer) + "/" + nameof(AdvancedJumpState))]
     public sealed class AdvancedJumpState : JumpState
     {
         /************************************************************************************************************************/

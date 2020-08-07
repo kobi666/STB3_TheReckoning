@@ -14,15 +14,15 @@ namespace Animancer.Examples.FineControl
     /// would be useless on its own) and both of those scripts get to share its functionality without needing to copy
     /// the same methods into each of them.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Fine Control - Spider Bot")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.FineControl/SpiderBot")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Fine Control - Spider Bot")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(FineControl) + "/" + nameof(SpiderBot))]
     public abstract class SpiderBot : MonoBehaviour
     {
         /************************************************************************************************************************/
 
         [SerializeField]
         private AnimancerComponent _Animancer;
-        public AnimancerComponent Animancer { get { return _Animancer; } }
+        public AnimancerComponent Animancer => _Animancer;
 
         [SerializeField] private ClipState.Transition _WakeUp;
         [SerializeField] private ClipState.Transition _Sleep;
@@ -45,8 +45,8 @@ namespace Animancer.Examples.FineControl
             _Animancer.Playable.PauseGraph();
 
             // Initialise the OnEnd events here so we don't allocate garbage every time they are used.
-            _WakeUp.Events.Sequence.OnEnd = () => _Animancer.Play(MovementAnimation);
-            _Sleep.Events.Sequence.OnEnd = _Animancer.Playable.PauseGraph;
+            _WakeUp.Events.OnEnd = () => _Animancer.Play(MovementAnimation);
+            _Sleep.Events.OnEnd = _Animancer.Playable.PauseGraph;
         }
 
         /************************************************************************************************************************/

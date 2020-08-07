@@ -8,8 +8,8 @@ using UnityEngine.Events;
 
 namespace Animancer.Examples.AnimatorControllers.GameKit
 {
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Game Kit - Airborne State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimatorControllers.GameKit/AirborneState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Game Kit - Airborne State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(AnimatorControllers) + "." + nameof(GameKit) + "/" + nameof(AirborneState))]
     public sealed class AirborneState : CreatureState
     {
         /************************************************************************************************************************/
@@ -33,20 +33,14 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
         /************************************************************************************************************************/
 
-        public override bool StickToGround { get { return false; } }
+        public override bool StickToGround => false;
 
         /************************************************************************************************************************/
 
         /// <summary>
         /// The airborne animations do not have root motion, so we just let the brain determine which way to go.
         /// </summary>
-        public override Vector3 RootMotion
-        {
-            get
-            {
-                return Creature.Brain.Movement * (Creature.ForwardSpeed * Time.deltaTime);
-            }
-        }
+        public override Vector3 RootMotion => Creature.Brain.Movement * (Creature.ForwardSpeed * Time.deltaTime);
 
         /************************************************************************************************************************/
 
@@ -119,10 +113,7 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
         /************************************************************************************************************************/
 
-        public void CancelJump()
-        {
-            _IsJumping = false;
-        }
+        public void CancelJump() => _IsJumping = false;
 
         /************************************************************************************************************************/
     }

@@ -10,8 +10,8 @@ namespace Animancer.Examples.StateMachines.Weapons
     /// <summary>
     /// A <see cref="CreatureState"/> which can perform <see cref="Weapon.AttackAnimations"/> in sequence.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Weapons - Attack State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Weapon/AttackState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Weapons - Attack State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Weapons) + "/" + nameof(AttackState))]
     public sealed class AttackState : CreatureState
     {
         /************************************************************************************************************************/
@@ -70,10 +70,7 @@ namespace Animancer.Examples.StateMachines.Weapons
 
         /************************************************************************************************************************/
 
-        public override bool CanExitState(CreatureState nextState)
-        {
-            return false;
-        }
+        public override bool CanExitState(CreatureState nextState) => false;
 
         /************************************************************************************************************************/
 

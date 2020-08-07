@@ -119,8 +119,7 @@ namespace Animancer.FSM
         /// </summary>
         public TState TryResetState(TKey key)
         {
-            TState state;
-            if (Dictionary.TryGetValue(key, out state))
+            if (Dictionary.TryGetValue(key, out var state))
             {
                 if (TryResetState(key, state))
                     return state;
@@ -151,8 +150,7 @@ namespace Animancer.FSM
         /// </summary>
         public TState ForceSetState(TKey key)
         {
-            TState state;
-            Dictionary.TryGetValue(key, out state);
+            Dictionary.TryGetValue(key, out var state);
             ForceSetState(key, state);
             return state;
         }
@@ -162,54 +160,54 @@ namespace Animancer.FSM
         /************************************************************************************************************************/
 
         /// <summary>Gets or sets a particular state in the <see cref="Dictionary"/>.</summary>
-        public TState this[TKey key] { get { return Dictionary[key]; } set { Dictionary[key] = value; } }
+        public TState this[TKey key] { get => Dictionary[key]; set => Dictionary[key] = value; }
 
         /// <summary>Gets an <see cref="ICollection{T}"/> containing the keys of the <see cref="Dictionary"/>.</summary>
-        public ICollection<TKey> Keys { get { return Dictionary.Keys; } }
+        public ICollection<TKey> Keys => Dictionary.Keys;
 
         /// <summary>Gets an <see cref="ICollection{T}"/> containing the state of the <see cref="Dictionary"/>.</summary>
-        public ICollection<TState> Values { get { return Dictionary.Values; } }
+        public ICollection<TState> Values => Dictionary.Values;
 
         /// <summary>Gets the number of states contained in the <see cref="Dictionary"/>.</summary>
-        public int Count { get { return Dictionary.Count; } }
+        public int Count => Dictionary.Count;
 
         /// <summary>Indicates whether the <see cref="Dictionary"/> is read-only.</summary>
-        public bool IsReadOnly { get { return Dictionary.IsReadOnly; } }
+        public bool IsReadOnly => Dictionary.IsReadOnly;
 
         /// <summary>Adds a state to the <see cref="Dictionary"/>.</summary>
-        public void Add(TKey key, TState state) { Dictionary.Add(key, state); }
+        public void Add(TKey key, TState state) => Dictionary.Add(key, state);
 
         /// <summary>Removes a state from the <see cref="Dictionary"/>.</summary>
-        public bool Remove(TKey key) { return Dictionary.Remove(key); }
+        public bool Remove(TKey key) => Dictionary.Remove(key);
 
         /// <summary>Removes all state from the <see cref="Dictionary"/>.</summary>
-        public void Clear() { Dictionary.Clear(); }
+        public void Clear() => Dictionary.Clear();
 
         /// <summary>Determines whether the <see cref="Dictionary"/> contains a state with the specified `key`.</summary>
-        public bool ContainsKey(TKey key) { return Dictionary.ContainsKey(key); }
+        public bool ContainsKey(TKey key) => Dictionary.ContainsKey(key);
 
         /// <summary>Gets the state associated with the specified `key` in the <see cref="Dictionary"/>.</summary>
-        public bool TryGetValue(TKey key, out TState state) { return Dictionary.TryGetValue(key, out state); }
+        public bool TryGetValue(TKey key, out TState state) => Dictionary.TryGetValue(key, out state);
 
         /// <summary>Adds a state to the <see cref="Dictionary"/>.</summary>
-        public void Add(KeyValuePair<TKey, TState> item) { Dictionary.Add(item); }
+        public void Add(KeyValuePair<TKey, TState> item) => Dictionary.Add(item);
 
         /// <summary>Removes a state from the <see cref="Dictionary"/>.</summary>
-        public bool Remove(KeyValuePair<TKey, TState> item) { return Dictionary.Remove(item); }
+        public bool Remove(KeyValuePair<TKey, TState> item) => Dictionary.Remove(item);
 
         /// <summary>Determines whether the <see cref="Dictionary"/> contains a specific value.</summary>
-        public bool Contains(KeyValuePair<TKey, TState> item) { return Dictionary.Contains(item); }
+        public bool Contains(KeyValuePair<TKey, TState> item) => Dictionary.Contains(item);
 
         /// <summary>Returns an enumerator that iterates through the <see cref="Dictionary"/>.</summary>
-        public IEnumerator<KeyValuePair<TKey, TState>> GetEnumerator() { return Dictionary.GetEnumerator(); }
+        public IEnumerator<KeyValuePair<TKey, TState>> GetEnumerator() => Dictionary.GetEnumerator();
 
         /// <summary>Returns an enumerator that iterates through the <see cref="Dictionary"/>.</summary>
-        IEnumerator IEnumerable.GetEnumerator() { return Dictionary.GetEnumerator(); }
+        IEnumerator IEnumerable.GetEnumerator() => Dictionary.GetEnumerator();
 
         /// <summary>
-        /// Copies the elements of the <see cref="Dictionary"/> to an `array` starting at the specified `arrayIndex`.
+        /// Copies the contents of the <see cref="Dictionary"/> to an `array` starting at the specified `arrayIndex`.
         /// </summary>
-        public void CopyTo(KeyValuePair<TKey, TState>[] array, int arrayIndex) { Dictionary.CopyTo(array, arrayIndex); }
+        public void CopyTo(KeyValuePair<TKey, TState>[] array, int arrayIndex) => Dictionary.CopyTo(array, arrayIndex);
 
         /************************************************************************************************************************/
         #endregion
@@ -220,8 +218,7 @@ namespace Animancer.FSM
         /// </summary>
         public TState GetState(TKey key)
         {
-            TState state;
-            TryGetValue(key, out state);
+            TryGetValue(key, out var state);
             return state;
         }
 
@@ -241,10 +238,7 @@ namespace Animancer.FSM
         /************************************************************************************************************************/
 
         /// <summary>Sets the <see cref="CurrentKey"/> without actually changing the state.</summary>
-        public void SetFakeKey(TKey key)
-        {
-            CurrentKey = key;
-        }
+        public void SetFakeKey(TKey key) => CurrentKey = key;
 
         /************************************************************************************************************************/
 
@@ -254,7 +248,7 @@ namespace Animancer.FSM
         /// </summary>
         public override string ToString()
         {
-            return GetType().FullName + " -> " + CurrentKey + (CurrentState != null ? (" -> " + CurrentState.ToString()) : " -> null");
+            return $"{GetType().FullName} -> {CurrentKey} -> {(CurrentState != null ? (CurrentState.ToString()) : "null")}";
         }
 
         /************************************************************************************************************************/

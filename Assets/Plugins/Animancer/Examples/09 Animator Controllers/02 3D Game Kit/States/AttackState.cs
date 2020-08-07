@@ -8,8 +8,8 @@ using UnityEngine.Events;
 
 namespace Animancer.Examples.AnimatorControllers.GameKit
 {
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Game Kit - Attack State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimatorControllers.GameKit/AttackState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Game Kit - Attack State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(AnimatorControllers) + "." + nameof(GameKit) + "/" + nameof(AttackState))]
     public sealed class AttackState : CreatureState
     {
         /************************************************************************************************************************/
@@ -32,10 +32,7 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
         /************************************************************************************************************************/
 
-        public override bool CanEnterState(CreatureState previousState)
-        {
-            return Creature.IsGrounded;
-        }
+        public override bool CanEnterState(CreatureState previousState) => Creature.IsGrounded;
 
         /************************************************************************************************************************/
 
@@ -70,7 +67,7 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
         /************************************************************************************************************************/
 
-        public override bool FullMovementControl { get { return false; } }
+        public override bool FullMovementControl => false;
 
         /************************************************************************************************************************/
 

@@ -10,8 +10,8 @@ namespace Animancer.Examples.StateMachines.Platformer
     /// <summary>
     /// Keeps track of the health of an object.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Platformer - Health")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.Platformer/Health")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Platformer - Health")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Platformer) + "/" + nameof(Health))]
     [DefaultExecutionOrder(-5000)]// Initialise the CurrentHealth earlier than anything else will use it.
     public sealed class Health : MonoBehaviour
     {
@@ -19,14 +19,14 @@ namespace Animancer.Examples.StateMachines.Platformer
 
         [SerializeField]
         private int _MaxHealth;
-        public int MaxHealth { get { return _MaxHealth; } }
+        public int MaxHealth => _MaxHealth;
 
         /************************************************************************************************************************/
 
         private int _CurrentHealth;
         public int CurrentHealth
         {
-            get { return _CurrentHealth; }
+            get => _CurrentHealth;
             set
             {
                 _CurrentHealth = Mathf.Clamp(value, 0, _MaxHealth);

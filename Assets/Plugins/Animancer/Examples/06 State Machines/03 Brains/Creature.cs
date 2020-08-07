@@ -11,8 +11,8 @@ namespace Animancer.Examples.StateMachines.Brains
     /// <summary>
     /// A centralised group of references to the common parts of a creature and a state machine for their actions.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Brains - Creature")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Brains/Creature")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Brains - Creature")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Brains) + "/" + nameof(Creature))]
     [DefaultExecutionOrder(-5000)]// Initialise the State Machine early.
     public sealed class Creature : MonoBehaviour
     {
@@ -20,21 +20,21 @@ namespace Animancer.Examples.StateMachines.Brains
 
         [SerializeField]
         private AnimancerComponent _Animancer;
-        public AnimancerComponent Animancer { get { return _Animancer; } }
+        public AnimancerComponent Animancer => _Animancer;
 
         [SerializeField]
         private CreatureState _Idle;
-        public CreatureState Idle { get { return _Idle; } }
+        public CreatureState Idle => _Idle;
 
         [SerializeField]
         private Rigidbody _Rigidbody;
-        public Rigidbody Rigidbody { get { return _Rigidbody; } }
+        public Rigidbody Rigidbody => _Rigidbody;
 
         [SerializeField]
         private CreatureBrain _Brain;
         public CreatureBrain Brain
         {
-            get { return _Brain; }
+            get => _Brain;
             set
             {
                 // The More Brains example uses this to swap between brains at runtime.
@@ -57,7 +57,7 @@ namespace Animancer.Examples.StateMachines.Brains
 
         [SerializeField]
         private CreatureStats _Stats;
-        public CreatureStats Stats { get { return _Stats; } }
+        public CreatureStats Stats => _Stats;
 
         // Ground Detector.
         // Health and Mana.

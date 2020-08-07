@@ -7,8 +7,8 @@ using UnityEngine;
 
 namespace Animancer.Examples.AnimatorControllers.GameKit
 {
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Game Kit - Flinch State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimatorControllers.GameKit/FlinchState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Game Kit - Flinch State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(AnimatorControllers) + "." + nameof(GameKit) + "/" + nameof(FlinchState))]
     public sealed class FlinchState : CreatureState
     {
         /************************************************************************************************************************/
@@ -21,15 +21,12 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
         private void Awake()
         {
-            _Animation.Events.Sequence.OnEnd = Creature.ForceEnterIdleState;
+            _Animation.Events.OnEnd = Creature.ForceEnterIdleState;
         }
 
         /************************************************************************************************************************/
 
-        public void OnDamageReceived()
-        {
-            Creature.StateMachine.ForceSetState(this);
-        }
+        public void OnDamageReceived() => Creature.StateMachine.ForceSetState(this);
 
         /************************************************************************************************************************/
 
@@ -80,14 +77,11 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
         /************************************************************************************************************************/
 
-        public override bool FullMovementControl { get { return false; } }
+        public override bool FullMovementControl => false;
 
         /************************************************************************************************************************/
 
-        public override bool CanExitState(CreatureState nextState)
-        {
-            return false;
-        }
+        public override bool CanExitState(CreatureState nextState) => false;
 
         /************************************************************************************************************************/
     }

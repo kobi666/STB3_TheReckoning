@@ -14,8 +14,8 @@ namespace Animancer.Examples.StateMachines.Weapons
     /// Normally this would be part of the <see cref="CreatureBrain"/>, but since we want to demonstrate both
     /// <see cref="KeyboardBrain"/> and <see cref="MouseBrain"/> in this example we have implemented it separately.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Weapons - Attack Input")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Weapons/AttackInput")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Weapons - Attack Input")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Weapons) + "/" + nameof(AttackInput))]
     public sealed class AttackInput : MonoBehaviour
     {
         /************************************************************************************************************************/

@@ -11,8 +11,8 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
     /// <summary>
     /// A centralised group of references to the common parts of a creature and a state machine for their actions.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Game Kit - Character Selector")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimatorControllers.GameKit/CharacterSelector")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Game Kit - Character Selector")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(AnimatorControllers) + "." + nameof(GameKit) + "/" + nameof(CharacterSelector))]
     public sealed class CharacterSelector : MonoBehaviour
     {
         /************************************************************************************************************************/
@@ -41,11 +41,9 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
         /************************************************************************************************************************/
 
-        private static readonly StringBuilder StringBuilder = new StringBuilder();
-
         private void SelectCharacter(int index)
         {
-            StringBuilder.Length = 0;
+            var text = ObjectPool.AcquireStringBuilder();
 
             for (int i = 0; i < _Characters.Length; i++)
             {
@@ -53,20 +51,20 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
                 _Characters[i].SetActive(active);
 
                 if (i > 0)
-                    StringBuilder.AppendLine();
+                    text.AppendLine();
 
                 if (active)
-                    StringBuilder.Append("<b>");
+                    text.Append("<b>");
 
-                StringBuilder.Append(1 + i)
+                text.Append(1 + i)
                     .Append(" = ")
                     .Append(_Characters[i].name);
 
                 if (active)
-                    StringBuilder.Append("</b>");
+                    text.Append("</b>");
             }
 
-            _Text.text = StringBuilder.ToString();
+            _Text.text = text.ReleaseToString();
         }
 
         /************************************************************************************************************************/

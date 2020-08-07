@@ -11,8 +11,8 @@ namespace Animancer.Examples.StateMachines.InterruptManagement
     /// A state for a <see cref="Creature"/> which plays an animation and uses a <see cref="Priority"/>
     /// enum to determine which other states can interrupt it.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Interrupt Management - Creature State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.InterruptManagement/CreatureState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Interrupt Management - Creature State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(InterruptManagement) + "/" + nameof(CreatureState))]
     public sealed class CreatureState : StateBehaviour<CreatureState>
     {
         /************************************************************************************************************************/

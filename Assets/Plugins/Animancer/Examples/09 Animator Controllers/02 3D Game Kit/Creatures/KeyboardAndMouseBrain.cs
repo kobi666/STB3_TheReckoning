@@ -13,8 +13,8 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
     /// <remarks>
     /// Equivalent to <see cref="PlayerInput"/> from the 3D Game Kit.
     /// </remarks>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Game Kit - Keyboard And Mouse Brain")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimatorControllers.GameKit/KeyboardAndMouseBrain")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Game Kit - Keyboard And Mouse Brain")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(AnimatorControllers) + "." + nameof(GameKit) + "/" + nameof(KeyboardAndMouseBrain))]
     public sealed class KeyboardAndMouseBrain : CreatureBrain
     {
         /************************************************************************************************************************/

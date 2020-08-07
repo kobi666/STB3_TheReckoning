@@ -7,38 +7,34 @@ namespace Animancer.Examples.InverseKinematics
     /// <summary>
     /// Allows the user to drag any object with a collider around on screen with the mouse.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Inverse Kinematics - Mouse Drag")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.InverseKinematics/MouseDrag")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Inverse Kinematics - Mouse Drag")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(InverseKinematics) + "/" + nameof(MouseDrag))]
     public sealed class MouseDrag : MonoBehaviour
     {
         /************************************************************************************************************************/
 
         private Transform _Dragging;
+        private float _Distance;
 
         /************************************************************************************************************************/
 
         private void Update()
         {
-            // On click, do a raycast and grab whatever it hits.
+            // On click, do a raycast and grab whatever it hits and calculate how far away it is.
             if (Input.GetMouseButtonDown(0))
             {
                 var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
+                if (Physics.Raycast(ray, out var hit))
                 {
                     _Dragging = hit.transform;
+                    _Distance = Vector3.Distance(_Dragging.position, Camera.main.transform.position);
                 }
             }
             // While holding the button, move the object in line with the mouse ray.
             else if (_Dragging != null && Input.GetMouseButton(0))
             {
                 var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                var distance =
-                    Vector3.Dot(_Dragging.position, ray.direction) -
-                    Vector3.Dot(ray.origin, ray.direction);
-                _Dragging.position = ray.origin + ray.direction * distance;
+                _Dragging.position = Camera.main.transform.position + ray.direction * _Distance;
             }
             else
             {

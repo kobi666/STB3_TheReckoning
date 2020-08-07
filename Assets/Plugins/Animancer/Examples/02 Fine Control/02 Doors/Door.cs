@@ -9,8 +9,8 @@ namespace Animancer.Examples.FineControl
     /// <summary>
     /// An <see cref="IInteractable"/> door which toggles between open and closed when something interacts with it.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Fine Control - Door")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.FineControl/Door")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Fine Control - Door")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(FineControl) + "/" + nameof(Door))]
     [SelectionBase]
     public sealed class Door : MonoBehaviour, IInteractable
     {

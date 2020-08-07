@@ -4,10 +4,8 @@ using UnityEngine;
 using System;
 
 [RequireComponent(typeof(Effector))]
-public class DirectHitProjectile : Projectile
+public abstract class DirectHitProjectile : Projectile
 {
-
-    
     public int HitCounter = 1;
     public event Action onHitCounterZero;
     public void OnHitCounterZero() {

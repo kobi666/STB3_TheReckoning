@@ -9,8 +9,8 @@ namespace Animancer.Examples.Basics
     /// <summary>
     /// Starts with an idle animation and performs an action when the user clicks the mouse, then returns to idle.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Basics - Play Animation On Click")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.Basics/PlayAnimationOnClick")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Basics - Play Animation On Click")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Basics) + "/" + nameof(PlayAnimationOnClick))]
     public sealed class PlayAnimationOnClick : MonoBehaviour
     {
         /************************************************************************************************************************/

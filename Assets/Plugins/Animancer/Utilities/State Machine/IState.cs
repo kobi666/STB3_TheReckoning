@@ -30,18 +30,14 @@ namespace Animancer.FSM
     /// </summary>
     public interface IOwnedState<TState> : IState<TState> where TState : class, IState<TState>
     {
-        /// <summary>
-        /// The <see cref="StateMachine{TState}"/> that this state is used in.
-        /// </summary>
+        /// <summary>The <see cref="StateMachine{TState}"/> that this state is used in.</summary>
         StateMachine<TState> OwnerStateMachine { get; }
     }
 
     /************************************************************************************************************************/
 
-    /// <summary>
-    /// Various extension methods for <see cref="IOwnedState{TState}"/>.
-    /// </summary>
-    [HelpURL(APIDocumentationURL + "StateExtensions")]
+    /// <summary>Various extension methods for <see cref="IOwnedState{TState}"/>.</summary>
+    [HelpURL(APIDocumentationURL + nameof(StateExtensions))]
     public static class StateExtensions
     {
         /************************************************************************************************************************/
@@ -59,10 +55,9 @@ namespace Animancer.FSM
         /// Checks if the specified `state` is the <see cref="StateMachine{TState}.CurrentState"/> in its
         /// <see cref="IOwnedState{TState}.OwnerStateMachine"/>.
         /// </summary>
-        public static bool IsCurrentState<TState>(this TState state) where TState : class, IOwnedState<TState>
-        {
-            return state.OwnerStateMachine.CurrentState == state;
-        }
+        public static bool IsCurrentState<TState>(this TState state)
+            where TState : class, IOwnedState<TState>
+            => state.OwnerStateMachine.CurrentState == state;
 
         /************************************************************************************************************************/
 
@@ -71,10 +66,9 @@ namespace Animancer.FSM
         /// <see cref="IState{TState}.CanExitState"/> on the <see cref="StateMachine{TState}.CurrentState"/> and
         /// <see cref="IState{TState}.CanEnterState"/> on the specified `state` to both return true.
         /// </summary>
-        public static bool CanEnterState<TState>(this TState state) where TState : class, IOwnedState<TState>
-        {
-            return state.OwnerStateMachine.CanSetState(state);
-        }
+        public static bool CanEnterState<TState>(this TState state)
+            where TState : class, IOwnedState<TState>
+            => state.OwnerStateMachine.CanSetState(state);
 
         /************************************************************************************************************************/
 
@@ -85,10 +79,9 @@ namespace Animancer.FSM
         /// <see cref="StateMachine{TState}.CurrentState"/>. To allow directly re-entering the same state, use
         /// <see cref="TryReEnterState"/> instead.
         /// </summary>
-        public static bool TryEnterState<TState>(this TState state) where TState : class, IOwnedState<TState>
-        {
-            return state.OwnerStateMachine.TrySetState(state);
-        }
+        public static bool TryEnterState<TState>(this TState state)
+            where TState : class, IOwnedState<TState>
+            => state.OwnerStateMachine.TrySetState(state);
 
         /************************************************************************************************************************/
 
@@ -98,10 +91,9 @@ namespace Animancer.FSM
         /// This method does not check if the `state` is already the <see cref="StateMachine{TState}.CurrentState"/>.
         /// To do so, use <see cref="TryEnterState"/> instead.
         /// </summary>
-        public static bool TryReEnterState<TState>(this TState state) where TState : class, IOwnedState<TState>
-        {
-            return state.OwnerStateMachine.TryResetState(state);
-        }
+        public static bool TryReEnterState<TState>(this TState state)
+            where TState : class, IOwnedState<TState>
+            => state.OwnerStateMachine.TryResetState(state);
 
         /************************************************************************************************************************/
 
@@ -112,10 +104,9 @@ namespace Animancer.FSM
         /// This method does not check <see cref="IState{TState}.CanExitState"/> or
         /// <see cref="IState{TState}.CanEnterState"/>. To do that, you should use <see cref="TrySetState"/> instead.
         /// </summary>
-        public static void ForceEnterState<TState>(this TState state) where TState : class, IOwnedState<TState>
-        {
-            state.OwnerStateMachine.ForceSetState(state);
-        }
+        public static void ForceEnterState<TState>(this TState state)
+            where TState : class, IOwnedState<TState>
+            => state.OwnerStateMachine.ForceSetState(state);
 
         /************************************************************************************************************************/
 #pragma warning disable CS1587 // XML comment is not placed on a valid language element.
@@ -128,10 +119,7 @@ namespace Animancer.FSM
         ///// Checks if this state is the <see cref="StateMachine{TState}.CurrentState"/> in its
         ///// <see cref="IOwnedState{TState}.OwnerStateMachine"/>.
         ///// </summary>
-        //public bool IsCurrentState()
-        //{
-        //    return OwnerStateMachine.CurrentState == this;
-        //}
+        //public bool IsCurrentState() => OwnerStateMachine.CurrentState == this;
 
         ///************************************************************************************************************************/
 
@@ -140,10 +128,7 @@ namespace Animancer.FSM
         ///// <see cref="IState{TState}.CanExitState"/> on the <see cref="StateMachine{TState}.CurrentState"/> and
         ///// <see cref="IState{TState}.CanEnterState"/> on this state to both return true.
         ///// </summary>
-        //public bool CanEnterState()
-        //{
-        //    return OwnerStateMachine.CanSetState(this);
-        //}
+        //public bool CanEnterState() => OwnerStateMachine.CanSetState(this);
 
         ///************************************************************************************************************************/
 
@@ -154,10 +139,7 @@ namespace Animancer.FSM
         ///// <see cref="StateMachine{TState}.CurrentState"/>. To allow directly re-entering the same state, use
         ///// <see cref="TryReEnterState"/> instead.
         ///// </summary>
-        //public bool TryEnterState()
-        //{
-        //    return OwnerStateMachine.TrySetState(this);
-        //}
+        //public bool TryEnterState() => OwnerStateMachine.TrySetState(this);
 
         ///************************************************************************************************************************/
 
@@ -167,10 +149,7 @@ namespace Animancer.FSM
         ///// This method does not check if this state is already the <see cref="StateMachine{TState}.CurrentState"/>.
         ///// To do so, use <see cref="TryEnterState"/> instead.
         ///// </summary>
-        //public bool TryReEnterState()
-        //{
-        //    return OwnerStateMachine.TryResetState(this);
-        //}
+        //public bool TryReEnterState() => OwnerStateMachine.TryResetState(this);
 
         ///************************************************************************************************************************/
 
@@ -181,10 +160,7 @@ namespace Animancer.FSM
         ///// This method does not check <see cref="IState{TState}.CanExitState"/> or
         ///// <see cref="IState{TState}.CanEnterState"/>. To do that, you should use <see cref="TrySetState"/> instead.
         ///// </summary>
-        //public void ForceEnterState()
-        //{
-        //    OwnerStateMachine.ForceSetState(this);
-        //}
+        //public void ForceEnterState() => OwnerStateMachine.ForceSetState(this);
 
         ///************************************************************************************************************************/
         //#endregion

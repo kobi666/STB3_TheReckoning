@@ -9,8 +9,8 @@ namespace Animancer.Examples.StateMachines.Brains
     /// <summary>
     /// Base class for controlling the actions of a <see cref="Brains.Creature"/>.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Brains - Creature Brain")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Brains/CreatureBrain")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Brains - Creature Brain")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Brains) + "/" + nameof(CreatureBrain))]
     public abstract class CreatureBrain : MonoBehaviour
     {
         /************************************************************************************************************************/
@@ -19,7 +19,7 @@ namespace Animancer.Examples.StateMachines.Brains
         private Creature _Creature;
         public Creature Creature
         {
-            get { return _Creature; }
+            get => _Creature;
             set
             {
                 // The More Brains example uses this to swap between brains at runtime.

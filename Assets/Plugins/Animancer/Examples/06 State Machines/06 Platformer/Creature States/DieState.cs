@@ -9,8 +9,8 @@ namespace Animancer.Examples.StateMachines.Platformer
     /// <summary>
     /// A <see cref="CreatureState"/> that plays a die animation.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Platformer - Die State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Platformer/DieState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Platformer - Die State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Platformer) + "/" + nameof(DieState))]
     public sealed class DieState : CreatureState
     {
         /************************************************************************************************************************/
@@ -49,10 +49,7 @@ namespace Animancer.Examples.StateMachines.Platformer
 
         /************************************************************************************************************************/
 
-        public override bool CanExitState(CreatureState nextState)
-        {
-            return false;
-        }
+        public override bool CanExitState(CreatureState nextState) => false;
 
         /************************************************************************************************************************/
     }

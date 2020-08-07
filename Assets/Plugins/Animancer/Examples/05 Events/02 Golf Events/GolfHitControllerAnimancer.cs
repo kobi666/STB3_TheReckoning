@@ -9,8 +9,8 @@ namespace Animancer.Examples.Events
     /// <summary>
     /// An <see cref="GolfHitController"/> that uses Animancer Events configured entirely in the Inspector.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Golf Events - Animancer")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimationEvents/GolfHitControllerAnimancer")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Golf Events - Animancer")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Events) + "/" + nameof(GolfHitControllerAnimancer))]
     public sealed class GolfHitControllerAnimancer : GolfHitController
     {
         /************************************************************************************************************************/

@@ -9,8 +9,8 @@ namespace Animancer.Examples.StateMachines.Brains
     /// <summary>
     /// A <see cref="CreatureState"/> which keeps the creature standing still.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Brains - Idle State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Brains/IdleState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Brains - Idle State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Brains) + "/" + nameof(IdleState))]
     public sealed class IdleState : CreatureState
     {
         /************************************************************************************************************************/

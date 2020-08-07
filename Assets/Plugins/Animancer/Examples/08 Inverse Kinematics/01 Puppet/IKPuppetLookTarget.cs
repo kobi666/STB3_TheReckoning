@@ -7,8 +7,8 @@ namespace Animancer.Examples.InverseKinematics
     /// <summary>
     /// An object for a character to look at using Inverse Kinematics (IK).
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Inverse Kinematics - IK Puppet Look Target")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.InverseKinematics/IKPuppetLookTarget")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Inverse Kinematics - IK Puppet Look Target")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(InverseKinematics) + "/" + nameof(IKPuppetLookTarget))]
     public sealed class IKPuppetLookTarget : MonoBehaviour
     {
         /************************************************************************************************************************/

@@ -10,8 +10,8 @@ namespace Animancer.Examples.StateMachines.Brains
     /// <summary>
     /// Base class for the various states a <see cref="Brains.Creature"/> can be in and actions they can perform.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Brains - Creature State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Brains/CreatureState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Brains - Creature State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Brains) + "/" + nameof(CreatureState))]
     public abstract class CreatureState : StateBehaviour<CreatureState>,
         IOwnedState<CreatureState>
     {
@@ -23,7 +23,7 @@ namespace Animancer.Examples.StateMachines.Brains
         /// <summary>The <see cref="Brains.Creature"/> that owns this state.</summary>
         public Creature Creature
         {
-            get { return _Creature; }
+            get => _Creature;
             set
             {
                 // If this was the active state in the previous creature, force it back to Idle.
@@ -44,7 +44,7 @@ namespace Animancer.Examples.StateMachines.Brains
 
         /************************************************************************************************************************/
 
-        public StateMachine<CreatureState> OwnerStateMachine { get { return _Creature.StateMachine; } }
+        public StateMachine<CreatureState> OwnerStateMachine => _Creature.StateMachine;
 
         /************************************************************************************************************************/
     }

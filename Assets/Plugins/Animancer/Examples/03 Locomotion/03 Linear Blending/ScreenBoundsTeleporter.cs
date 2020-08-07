@@ -9,8 +9,8 @@ namespace Animancer.Examples.Locomotion
     /// <summary>
     /// A simple trigger that teleports anything exiting it over to the left.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Locomotion - Screen Bounds Teleporter")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.Locomotion/ScreenBoundsTeleporter")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Locomotion - Screen Bounds Teleporter")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Locomotion) + "/" + nameof(ScreenBoundsTeleporter))]
     public sealed class ScreenBoundsTeleporter : MonoBehaviour
     {
         /************************************************************************************************************************/

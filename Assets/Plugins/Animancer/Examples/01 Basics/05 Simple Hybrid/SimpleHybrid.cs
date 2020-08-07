@@ -10,8 +10,8 @@ namespace Animancer.Examples.Basics
     /// Demonstrates how to use a <see cref="HybridAnimancerComponent"/> to play animations in a
     /// <see cref="RuntimeAnimatorController"/> and separate <see cref="AnimationClip"/>s on the same character.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Basics - Simple Hybrid")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.Basics/SimpleHybrid")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Basics - Simple Hybrid")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Basics) + "/" + nameof(SimpleHybrid))]
     public sealed class SimpleHybrid : MonoBehaviour
     {
         /************************************************************************************************************************/

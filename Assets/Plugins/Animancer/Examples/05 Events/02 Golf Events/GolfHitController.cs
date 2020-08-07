@@ -10,8 +10,8 @@ namespace Animancer.Examples.Events
     /// <summary>
     /// Base class for various scripts that use different event systems to have a character hit a golf ball.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Golf Events - Golf Hit Controller")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimationEvents/GolfHitController")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Golf Events - Golf Hit Controller")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Events) + "/" + nameof(GolfHitController))]
     public abstract class GolfHitController : MonoBehaviour
     {
         /************************************************************************************************************************/
@@ -179,7 +179,7 @@ namespace Animancer.Examples.Events
 
             // Since the swing animation is ending early, we want it to calculate the fade duration to fade out over
             // the remainder of that animation instead of the value specified by the _Idle transition.
-            var fadeDuration = AnimancerPlayable.GetFadeOutDuration();
+            var fadeDuration = EndEventReceiver.GetFadeOutDuration();
             _Animancer.Play(_Idle, fadeDuration);
         }
 

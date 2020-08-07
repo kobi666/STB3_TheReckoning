@@ -17,7 +17,7 @@ namespace Animancer
     /// needing another script to control it, much like Unity's Legacy <see cref="Animation"/> component.
     /// </summary>
     [AddComponentMenu(Strings.MenuPrefix + "Named Animancer Component")]
-    [HelpURL(Strings.APIDocumentationURL + "/NamedAnimancerComponent")]
+    [HelpURL(Strings.APIDocumentationURL + "/" + nameof(NamedAnimancerComponent))]
     public class NamedAnimancerComponent : AnimancerComponent
     {
         /************************************************************************************************************************/
@@ -31,11 +31,7 @@ namespace Animancer
         /// If true, the first clip in the <see cref="Animations"/> array will be automatically played by
         /// <see cref="OnEnable"/>.
         /// </summary>
-        public bool PlayAutomatically
-        {
-            get { return _PlayAutomatically; }
-            set { _PlayAutomatically = value; }
-        }
+        public ref bool PlayAutomatically => ref _PlayAutomatically;
 
         /************************************************************************************************************************/
 
@@ -50,7 +46,7 @@ namespace Animancer
         /// </summary>
         public AnimationClip[] Animations
         {
-            get { return _Animations; }
+            get => _Animations;
             set
             {
                 _Animations = value;
@@ -110,12 +106,12 @@ namespace Animancer
 
                 try
                 {
-                    Validate.NotLegacy(clip);
+                    Validate.AssertNotLegacy(clip);
                     continue;
                 }
-                catch (Exception ex)
+                catch (Exception exception)
                 {
-                    Debug.LogException(ex, clip);
+                    Debug.LogException(exception, clip);
                 }
 
                 Array.Copy(_Animations, i + 1, _Animations, i, _Animations.Length - (i + 1));
@@ -180,10 +176,7 @@ namespace Animancer
         /// Returns the clip's name. This method is used to determine the dictionary key to use for an animation when
         /// none is specified by the user, such as in <see cref="AnimancerComponent.Play(AnimationClip)"/>.
         /// </summary>
-        public override object GetKey(AnimationClip clip)
-        {
-            return clip.name;
-        }
+        public override object GetKey(AnimationClip clip) => clip.name;
 
         /************************************************************************************************************************/
 
@@ -206,13 +199,10 @@ namespace Animancer
 
         /************************************************************************************************************************/
 
-        /// <summary>[Pro-Only] [Coroutine]
+        /// <summary>[Coroutine]
         /// Cross fades between each clip in the <see cref="Animations"/> array one after the other. Mainly useful for
         /// testing and showcasing purposes.
         /// </summary>
-#if !UNITY_EDITOR
-        [System.Obsolete(Validate.ProOnlyMessage)]
-#endif
         public IEnumerator CrossFadeAnimationsInSequence(float fadeDuration = AnimancerPlayable.DefaultFadeDuration)
         {
             for (int i = 0; i < _Animations.Length; i++)

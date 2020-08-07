@@ -9,8 +9,8 @@ namespace Animancer.Examples.StateMachines.Platformer
     /// <summary>
     /// Keeps track of whether or not an object is touching the ground.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Platformer - Ground Detector")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Platformer/GroundDetector")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Platformer - Ground Detector")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Platformer) + "/" + nameof(GroundDetector))]
     public sealed class GroundDetector : MonoBehaviour
     {
         /************************************************************************************************************************/
@@ -40,7 +40,7 @@ namespace Animancer.Examples.StateMachines.Platformer
                 _Contacts = new ContactPoint2D[_Contacts.Length * 2];
 
                 // If you see this message while testing, you should increase the starting size.
-                Debug.LogWarning("_Contacts array is full. Increased size to " + _Contacts.Length);
+                Debug.LogWarning("_Contacts array is full. Increased size to " + _Contacts.Length, this);
 
                 goto GetContacts;
             }

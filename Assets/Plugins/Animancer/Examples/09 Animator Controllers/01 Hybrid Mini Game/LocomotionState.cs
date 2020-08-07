@@ -15,8 +15,8 @@ namespace Animancer.Examples.AnimatorControllers
     /// This class is very similar to <see cref="StateMachines.Brains.LocomotionState"/>, except that it manages a
     /// Blend Tree instead of individual <see cref="AnimationClip"/>s.
     /// </remarks>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Hybrid - Locomotion State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimatorControllers/LocomotionState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Hybrid - Locomotion State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(AnimatorControllers) + "/" + nameof(LocomotionState))]
     public sealed class LocomotionState : CreatureState
     {
         /************************************************************************************************************************/
@@ -114,10 +114,7 @@ namespace Animancer.Examples.AnimatorControllers
         /// <see cref="AnimancerComponent"/> we want, but for the sake of reusing code from the earlier example, we
         /// just use a type cast here.
         /// </summary>
-        private HybridAnimancerComponent Animancer
-        {
-            get { return (HybridAnimancerComponent)Creature.Animancer; }
-        }
+        private HybridAnimancerComponent Animancer => (HybridAnimancerComponent)Creature.Animancer;
 
         /************************************************************************************************************************/
     }

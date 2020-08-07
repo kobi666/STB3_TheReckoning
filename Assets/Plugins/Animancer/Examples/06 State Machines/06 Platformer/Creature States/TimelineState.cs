@@ -13,8 +13,8 @@ namespace Animancer.Examples.StateMachines.Platformer
     /// <see cref="UnityEngine.Timeline.TimelineAsset"/>)
     /// then returns to idle.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Platformer - Timeline State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Platformer/TimelineState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Platformer - Timeline State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Platformer) + "/" + nameof(TimelineState))]
     public sealed class TimelineState : CreatureState
     {
         /************************************************************************************************************************/
@@ -28,7 +28,7 @@ namespace Animancer.Examples.StateMachines.Platformer
         {
             if (_DestroyWhenDone)
             {
-                _Animation.Events.Sequence.OnEnd = () =>
+                _Animation.Events.OnEnd = () =>
                 {
                     Creature.Idle.ForceEnterState();
                     Creature.Animancer.States.Destroy(_Animation);
@@ -37,7 +37,7 @@ namespace Animancer.Examples.StateMachines.Platformer
             }
             else
             {
-                _Animation.Events.Sequence.OnEnd = Creature.ForceEnterIdleState;
+                _Animation.Events.OnEnd = Creature.ForceEnterIdleState;
             }
         }
 

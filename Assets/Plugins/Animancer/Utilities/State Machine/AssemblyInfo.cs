@@ -1,19 +1,14 @@
 // Animancer // Copyright 2020 Kybernetik //
 
-// Assembly Definition files were introduced in Unity 2017.3.
-#if UNITY_2017_3_OR_NEWER
-
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
-using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Animancer.FSM")]
 [assembly: AssemblyDescription("A Finite State Machine system for Unity.")]
-[assembly: AssemblyCompany("Kybernetik")]
 [assembly: AssemblyProduct("Animancer")]
+[assembly: AssemblyCompany("Kybernetik")]
 [assembly: AssemblyCopyright("Copyright © Kybernetik 2020")]
-[assembly: ComVisible(false)]
-[assembly: AssemblyVersion("4.3.0.0")]
+[assembly: AssemblyVersion("5.1.0.0")]
 
 [assembly: SuppressMessage("Style", "IDE0016:Use 'throw' expression",
     Justification = "Not supported by older Unity versions.")]
@@ -71,6 +66,4 @@ using System.Runtime.InteropServices;
     Justification = "No need to pollute the member list of implementing types.")]
 [assembly: SuppressMessage("Microsoft.Usage", "CA2235:MarkAllNonSerializableFields",
     Justification = "UnityEngine.Object is serializable by Unity.")]
-
-#endif
 

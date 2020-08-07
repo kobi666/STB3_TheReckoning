@@ -16,7 +16,7 @@ public class TargetFacingStraightShotDirectHitProjectile : DirectHitProjectile
         //TargetBank = null;
     }
 
-    private void Awake() {
+    public override void PostAwake() {
         
         onTargetPositionReached += delegate {gameObject.SetActive(false);};
     }

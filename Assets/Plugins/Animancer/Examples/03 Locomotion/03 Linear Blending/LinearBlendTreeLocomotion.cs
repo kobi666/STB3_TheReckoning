@@ -11,8 +11,8 @@ namespace Animancer.Examples.Locomotion
     /// An example of how you can wrap a <see cref="RuntimeAnimatorController"/> containing a single blend tree in a
     /// <see cref="Float1ControllerState"/> to easily control its parameter.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Locomotion - Linear Blend Tree Locomotion")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.Locomotion/LinearBlendTreeLocomotion")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Locomotion - Linear Blend Tree Locomotion")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Locomotion) + "/" + nameof(LinearBlendTreeLocomotion))]
     public sealed class LinearBlendTreeLocomotion : MonoBehaviour
     {
         /************************************************************************************************************************/
@@ -47,8 +47,8 @@ namespace Animancer.Examples.Locomotion
         /// </summary>
         public float Speed
         {
-            get { return _State.Parameter; }
-            set { _State.Parameter = value; }
+            get => _State.Parameter;
+            set => _State.Parameter = value;
         }
 
         /************************************************************************************************************************/

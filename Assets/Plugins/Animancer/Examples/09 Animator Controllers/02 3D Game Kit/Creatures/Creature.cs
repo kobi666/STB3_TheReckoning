@@ -11,8 +11,8 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
     /// <summary>
     /// A centralised group of references to the common parts of a creature and a state machine for their actions.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Game Kit - Creature")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimatorControllers.GameKit/Creature")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Game Kit - Creature")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(AnimatorControllers) + "." + nameof(GameKit) + "/" + nameof(Creature))]
     [DefaultExecutionOrder(-5000)]// Initialise the State Machine early.
     public sealed class Creature : MonoBehaviour
     {
@@ -20,17 +20,17 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
         [SerializeField]
         private AnimancerComponent _Animancer;
-        public AnimancerComponent Animancer { get { return _Animancer; } }
+        public AnimancerComponent Animancer => _Animancer;
 
         [SerializeField]
         private CharacterController _CharacterController;
-        public CharacterController CharacterController { get { return _CharacterController; } }
+        public CharacterController CharacterController => _CharacterController;
 
         [SerializeField]
         private CreatureBrain _Brain;
         public CreatureBrain Brain
         {
-            get { return _Brain; }
+            get => _Brain;
             set
             {
                 if (_Brain == value)
@@ -55,26 +55,26 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
         [SerializeField]
         private CreatureStats _Stats;
-        public CreatureStats Stats { get { return _Stats; } }
+        public CreatureStats Stats => _Stats;
 
         /************************************************************************************************************************/
 
         [Header("States")]
         [SerializeField]
         private CreatureState _Respawn;
-        public CreatureState Respawn { get { return _Respawn; } }
+        public CreatureState Respawn => _Respawn;
 
         [SerializeField]
         private CreatureState _Idle;
-        public CreatureState Idle { get { return _Idle; } }
+        public CreatureState Idle => _Idle;
 
         [SerializeField]
         private CreatureState _Locomotion;
-        public CreatureState Locomotion { get { return _Locomotion; } }
+        public CreatureState Locomotion => _Locomotion;
 
         [SerializeField]
         private AirborneState _Airborne;
-        public AirborneState Airborne { get { return _Airborne; } }
+        public AirborneState Airborne => _Airborne;
 
         /************************************************************************************************************************/
 
@@ -236,9 +236,8 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
             const float GroundedRayDistance = 1f;
 
-            RaycastHit hit;
             var ray = new Ray(transform.position + Vector3.up * GroundedRayDistance * 0.5f, -Vector3.up);
-            if (Physics.Raycast(ray, out hit, GroundedRayDistance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+            if (Physics.Raycast(ray, out var hit, GroundedRayDistance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
             {
                 // Rotate the movement to lie along the ground vector.
                 movement = Vector3.ProjectOnPlane(movement, hit.normal);

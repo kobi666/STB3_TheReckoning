@@ -10,8 +10,8 @@ namespace Animancer.Examples.StateMachines.Brains
     /// A <see cref="CreatureState"/> which moves the creature according to their
     /// <see cref="CreatureBrain.MovementDirection"/>.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Brains - Locomotion State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Brains/LocomotionState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Brains - Locomotion State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Brains) + "/" + nameof(LocomotionState))]
     public sealed class LocomotionState : CreatureState
     {
         /************************************************************************************************************************/
@@ -61,8 +61,8 @@ namespace Animancer.Examples.StateMachines.Brains
 
             // If the other one is still fading out, align their NormalizedTime to ensure they stay at the same
             // relative progress through their walk cycle.
-            var otherState = Creature.Animancer.States[otherAnimation];
-            if (otherState != null && otherState.IsPlaying)
+            if (Creature.Animancer.States.TryGet(otherAnimation, out var otherState) &&
+                otherState.IsPlaying)
             {
                 playState.NormalizedTime = otherState.NormalizedTime;
                 otherState.Speed = speed;

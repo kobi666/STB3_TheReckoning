@@ -11,8 +11,8 @@ namespace Animancer.Examples.Locomotion
     /// An example of how you can use a <see cref="LinearMixerState"/> to mix a set of animations based on a
     /// <see cref="Speed"/> parameter.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Locomotion - Linear Mixer Locomotion")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.Locomotion/LinearMixerLocomotion")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Locomotion - Linear Mixer Locomotion")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Locomotion) + "/" + nameof(LinearMixerLocomotion))]
     public sealed class LinearMixerLocomotion : MonoBehaviour
     {
         /************************************************************************************************************************/
@@ -37,8 +37,8 @@ namespace Animancer.Examples.Locomotion
         /// </summary>
         public float Speed
         {
-            get { return _State.Parameter; }
-            set { _State.Parameter = value; }
+            get => _State.Parameter;
+            set => _State.Parameter = value;
         }
 
         /************************************************************************************************************************/

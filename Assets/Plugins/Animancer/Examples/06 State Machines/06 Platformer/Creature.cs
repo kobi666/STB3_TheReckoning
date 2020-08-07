@@ -10,8 +10,8 @@ namespace Animancer.Examples.StateMachines.Platformer
     /// <summary>
     /// A centralised group of references to the common parts of a creature and a state machine for their actions.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Platformer - Creature")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Platformer/Creature")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Platformer - Creature")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Platformer) + "/" + nameof(Creature))]
     [DefaultExecutionOrder(-5000)]// Initialise the State Machine early.
     public sealed class Creature : MonoBehaviour
     {
@@ -19,35 +19,35 @@ namespace Animancer.Examples.StateMachines.Platformer
 
         [SerializeField]
         private AnimancerComponent _Animancer;
-        public AnimancerComponent Animancer { get { return _Animancer; } }
+        public AnimancerComponent Animancer => _Animancer;
 
         [SerializeField]
         private SpriteRenderer _Renderer;
-        public SpriteRenderer Renderer { get { return _Renderer; } }
+        public SpriteRenderer Renderer => _Renderer;
 
         [SerializeField]
         private CreatureBrain _Brain;
-        public CreatureBrain Brain { get { return _Brain; } }
+        public CreatureBrain Brain => _Brain;
 
         [SerializeField]
         private Rigidbody2D _Rigidbody;
-        public Rigidbody2D Rigidbody { get { return _Rigidbody; } }
+        public Rigidbody2D Rigidbody => _Rigidbody;
 
         [SerializeField]
         private GroundDetector _GroundDetector;
-        public GroundDetector GroundDetector { get { return _GroundDetector; } }
+        public GroundDetector GroundDetector => _GroundDetector;
 
         [SerializeField]
         private Health _Health;
-        public Health Health { get { return _Health; } }
+        public Health Health => _Health;
 
         [SerializeField]
         private CreatureState _Introduction;
-        public CreatureState Introduction { get { return _Introduction; } }
+        public CreatureState Introduction => _Introduction;
 
         [SerializeField]
         private CreatureState _Idle;
-        public CreatureState Idle { get { return _Idle; } }
+        public CreatureState Idle => _Idle;
 
         // Stats.
         // Mana.

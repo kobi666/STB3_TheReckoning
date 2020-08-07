@@ -11,6 +11,7 @@ namespace Animancer
     /// A set of up/down/left/right animations.
     /// </summary>
     [CreateAssetMenu(menuName = Strings.MenuPrefix + "Directional Animation Set/4 Directions", order = Strings.AssetMenuOrder + 10)]
+    [HelpURL(Strings.APIDocumentationURL + "/" + nameof(DirectionalAnimationSet))]
     public class DirectionalAnimationSet : ScriptableObject, IAnimationClipSource
     {
         /************************************************************************************************************************/
@@ -19,7 +20,7 @@ namespace Animancer
         private AnimationClip _Up;
 
         /// <summary>[<see cref="SerializeField"/>] The animation facing up.</summary>
-        public AnimationClip Up { get { return _Up; } }
+        public AnimationClip Up => _Up;
 
         /// <summary>Sets the <see cref="Up"/> animation.</summary>
         /// <remarks>This is not simply a property setter because the animations will usually not need to be changed by scripts.</remarks>
@@ -35,7 +36,7 @@ namespace Animancer
         private AnimationClip _Right;
 
         /// <summary>[<see cref="SerializeField"/>] The animation facing right.</summary>
-        public AnimationClip Right { get { return _Right; } }
+        public AnimationClip Right => _Right;
 
         /// <summary>Sets the <see cref="Right"/> animation.</summary>
         /// <remarks>This is not simply a property setter because the animations will usually not need to be changed by scripts.</remarks>
@@ -51,7 +52,7 @@ namespace Animancer
         private AnimationClip _Down;
 
         /// <summary>[<see cref="SerializeField"/>] The animation facing down.</summary>
-        public AnimationClip Down { get { return _Down; } }
+        public AnimationClip Down => _Down;
 
         /// <summary>Sets the <see cref="Down"/> animation.</summary>
         /// <remarks>This is not simply a property setter because the animations will usually not need to be changed by scripts.</remarks>
@@ -67,7 +68,7 @@ namespace Animancer
         private AnimationClip _Left;
 
         /// <summary>[<see cref="SerializeField"/>] The animation facing left.</summary>
-        public AnimationClip Left { get { return _Left; } }
+        public AnimationClip Left => _Left;
 
         /// <summary>Sets the <see cref="Left"/> animation.</summary>
         /// <remarks>This is not simply a property setter because the animations will usually not need to be changed by scripts.</remarks>
@@ -103,7 +104,7 @@ namespace Animancer
         /************************************************************************************************************************/
 
         /// <summary>The number of animations in this set.</summary>
-        public virtual int ClipCount { get { return 4; } }
+        public virtual int ClipCount => 4;
 
         /************************************************************************************************************************/
 
@@ -121,7 +122,7 @@ namespace Animancer
         /************************************************************************************************************************/
 
         /// <summary>Returns the name of the specified `direction`.</summary>
-        protected virtual string GetDirectionName(int direction) { return ((Direction)direction).ToString(); }
+        protected virtual string GetDirectionName(int direction) => ((Direction)direction).ToString();
 
         /************************************************************************************************************************/
 
@@ -139,10 +140,7 @@ namespace Animancer
         }
 
         /// <summary>Returns the animation associated with the specified `direction`.</summary>
-        public virtual AnimationClip GetClip(int direction)
-        {
-            return GetClip((Direction)direction);
-        }
+        public virtual AnimationClip GetClip(int direction) => GetClip((Direction)direction);
 
         /************************************************************************************************************************/
 
@@ -162,10 +160,7 @@ namespace Animancer
         }
 
         /// <summary>Sets the animation associated with the specified `direction`.</summary>
-        public virtual void SetClip(int direction, AnimationClip clip)
-        {
-            SetClip((Direction)direction, clip);
-        }
+        public virtual void SetClip(int direction, AnimationClip clip) => SetClip((Direction)direction, clip);
 
         /************************************************************************************************************************/
         #region Conversion
@@ -185,10 +180,7 @@ namespace Animancer
         }
 
         /// <summary>Returns a vector representing the specified `direction`.</summary>
-        public virtual Vector2 GetDirection(int direction)
-        {
-            return DirectionToVector((Direction)direction);
-        }
+        public virtual Vector2 GetDirection(int direction) => DirectionToVector((Direction)direction);
 
         /************************************************************************************************************************/
 
@@ -223,10 +215,7 @@ namespace Animancer
         }
 
         /// <summary>Returns a copy of the `vector` pointing in the closest direction this set has an animation for.</summary>
-        public virtual Vector2 Snap(Vector2 vector)
-        {
-            return SnapVectorToDirection(vector);
-        }
+        public virtual Vector2 Snap(Vector2 vector) => SnapVectorToDirection(vector);
 
         /************************************************************************************************************************/
         #endregion
@@ -287,7 +276,7 @@ namespace Animancer
 
         /************************************************************************************************************************/
 
-        /// <summary>
+        /// <summary>[Editor-Only]
         /// Attempts to assign the `clip` to one of this set's fields based on its name and returns the direction index
         /// of that field (or -1 if it was unable to determine the direction).
         /// </summary>
@@ -317,7 +306,7 @@ namespace Animancer
 
         /************************************************************************************************************************/
 
-        [UnityEditor.MenuItem("CONTEXT/DirectionalAnimationSet/Find Animations")]
+        [UnityEditor.MenuItem("CONTEXT/" + nameof(DirectionalAnimationSet) + "/Find Animations")]
         private static void FindSimilarAnimations(UnityEditor.MenuCommand command)
         {
             var set = (DirectionalAnimationSet)command.context;
@@ -360,8 +349,7 @@ namespace Animancer
                     name = name.Replace(direction.ToString(), "");
                 }
 
-                List<AnimationClip> clips;
-                if (!nameToAnimations.TryGetValue(name, out clips))
+                if (!nameToAnimations.TryGetValue(name, out var clips))
                 {
                     clips = new List<AnimationClip>();
                     nameToAnimations.Add(name, clips);
@@ -392,7 +380,7 @@ namespace Animancer
 
         /************************************************************************************************************************/
 
-        [UnityEditor.MenuItem("CONTEXT/DirectionalAnimationSet/Toggle Looping")]
+        [UnityEditor.MenuItem("CONTEXT/" + nameof(DirectionalAnimationSet) + "/Toggle Looping")]
         private static void ToggleLooping(UnityEditor.MenuCommand command)
         {
             var set = (DirectionalAnimationSet)command.context;
@@ -405,8 +393,8 @@ namespace Animancer
                     continue;
 
                 var isLooping = !clip.isLooping;
-                Debug.Log("Setting " + set.name + " clips to " + (isLooping ? "Looping" : "Not Looping") +
-                    ". Note that you need to restart Unity for this change to take effect.", set);
+                Debug.Log($"Set {clip.name} to be {(isLooping ? "Looping" : "Not Looping")}." +
+                    " Note that you may need to restart Unity for this change to take effect.", clip);
 
                 for (i = 0; i < count; i++)
                 {

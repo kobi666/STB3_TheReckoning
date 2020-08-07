@@ -9,8 +9,8 @@ namespace Animancer.Examples.StateMachines.Platformer
     /// <summary>
     /// A brain for creatures controlled by local input (keyboard and mouse).
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Platformer - Local Player Brain")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Platformer/LocalPlayerBrain")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Platformer - Local Player Brain")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Platformer) + "/" + nameof(LocalPlayerBrain))]
     public sealed class LocalPlayerBrain : CreatureBrain
     {
         /************************************************************************************************************************/

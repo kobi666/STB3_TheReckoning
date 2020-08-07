@@ -15,31 +15,31 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
         [SerializeField]
         private float _MaxSpeed = 8;
-        public float MaxSpeed { get { return _MaxSpeed; } }
+        public float MaxSpeed => _MaxSpeed;
 
         [SerializeField]
         private float _Acceleration = 20;
-        public float Acceleration { get { return _Acceleration; } }
+        public float Acceleration => _Acceleration;
 
         [SerializeField]
         private float _Deceleration = 25;
-        public float Deceleration { get { return _Deceleration; } }
+        public float Deceleration => _Deceleration;
 
         [SerializeField]
         private float _MinTurnSpeed = 400;
-        public float MinTurnSpeed { get { return _MinTurnSpeed; } }
+        public float MinTurnSpeed => _MinTurnSpeed;
 
         [SerializeField]
         private float _MaxTurnSpeed = 1200;
-        public float MaxTurnSpeed { get { return _MaxTurnSpeed; } }
+        public float MaxTurnSpeed => _MaxTurnSpeed;
 
         [SerializeField]
         private float _Gravity = 20;
-        public float Gravity { get { return _Gravity; } }
+        public float Gravity => _Gravity;
 
         [SerializeField]
         private float _StickingGravityProportion = 0.3f;
-        public float StickingGravityProportion { get { return _StickingGravityProportion; } }
+        public float StickingGravityProportion => _StickingGravityProportion;
 
         /************************************************************************************************************************/
     }

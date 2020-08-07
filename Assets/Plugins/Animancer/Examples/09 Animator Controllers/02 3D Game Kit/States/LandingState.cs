@@ -8,8 +8,8 @@ using UnityEngine.Events;
 
 namespace Animancer.Examples.AnimatorControllers.GameKit
 {
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Game Kit - Landing State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimatorControllers.GameKit/LandingState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Game Kit - Landing State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(AnimatorControllers) + "." + nameof(GameKit) + "/" + nameof(LandingState))]
     public sealed class LandingState : CreatureState
     {
         /************************************************************************************************************************/
@@ -26,17 +26,14 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
         private void Awake()
         {
-            _SoftLanding.Events.Sequence.OnEnd =
-                _HardLanding.Events.Sequence.OnEnd =
+            _SoftLanding.Events.OnEnd =
+                _HardLanding.Events.OnEnd =
                 () => Creature.CheckMotionState();
         }
 
         /************************************************************************************************************************/
 
-        public override bool CanEnterState(CreatureState previousState)
-        {
-            return Creature.IsGrounded;
-        }
+        public override bool CanEnterState(CreatureState previousState) => Creature.IsGrounded;
 
         /************************************************************************************************************************/
 
@@ -68,7 +65,7 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
         /************************************************************************************************************************/
 
-        public override bool FullMovementControl { get { return _IsSoftLanding; } }
+        public override bool FullMovementControl => _IsSoftLanding;
 
         /************************************************************************************************************************/
 

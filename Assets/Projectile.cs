@@ -9,6 +9,10 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActive
         
     }
 
+    public SingleAnimationObject OnHitAnimation;
+
+    PoolObjectQueue<SingleAnimationObject> onHitAnimationQueuePool;
+
     public Dictionary<string,Effectable> ActiveTargets => GameObjectPool.Instance.ActiveEffectables.Pool;
     ActiveObjectPool<Projectile> activePool;
     public ActiveObjectPool<Projectile> ActivePool { get => activePool; set { activePool = value;}}
@@ -37,14 +41,28 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActive
 
     public abstract void AdditionalOnDisableActions();
 
+    public void PlayOnHitAnimation(Effectable ef) {
+        SingleAnimationObject sao = onHitAnimationQueuePool.Get();
+        sao.transform.position = transform.position;
+        sao.gameObject.SetActive(true);
+        sao.PlayOnceAndEnqueue();
+    }
+
 
     void OnEnable()
     {
         ActivePool.AddObjectToActiveObjectPool(this);
     }
+
+    public abstract void PostAwake();
     void Awake()
     {
-        gameObject.tag = TypeTag;    
+        if (OnHitAnimation != null) {
+        onHitAnimationQueuePool = GameObjectPool.Instance.GetSingleAnimationObjectQueue(OnHitAnimation);
+        }
+        gameObject.tag = TypeTag; 
+        onHit += PlayOnHitAnimation;
+        PostAwake();
     }
 
     private void OnDisable() {

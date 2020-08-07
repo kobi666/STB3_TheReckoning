@@ -9,8 +9,8 @@ namespace Animancer.Examples.Events
     /// <summary>
     /// An <see cref="GolfHitController"/> that uses Animation Events.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Golf Events - Animation")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimationEvents/GolfHitControllerAnimation")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Golf Events - Animation")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Events) + "/" + nameof(GolfHitControllerAnimation))]
     public sealed class GolfHitControllerAnimation : GolfHitController
     {
         /************************************************************************************************************************/
@@ -26,7 +26,7 @@ namespace Animancer.Examples.Events
         protected override void Awake()
         {
             base.Awake();
-            _Swing.Events.Sequence.OnEnd = EndSwing;
+            _Swing.Events.OnEnd = EndSwing;
         }
 
         /************************************************************************************************************************/
@@ -42,6 +42,21 @@ namespace Animancer.Examples.Events
         private void Event()
         {
             HitBall();
+        }
+
+        /************************************************************************************************************************/
+
+        /// <summary>
+        /// Called by Animation Events with the Function Name "End".
+        /// Calls <see cref="EndEventReceiver.End"/>.
+        /// </summary>
+        /// <remarks>
+        /// Note that Unity will allocate some garbage every time it triggers an Animation Event with an
+        /// <see cref="AnimationEvent"/> parameter.
+        /// </remarks>
+        private void End(AnimationEvent animationEvent)
+        {
+            EndEventReceiver.End(_Animancer, animationEvent);
         }
 
         /************************************************************************************************************************/

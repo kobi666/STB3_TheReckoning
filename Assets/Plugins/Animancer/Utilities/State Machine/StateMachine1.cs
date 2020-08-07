@@ -123,10 +123,7 @@ namespace Animancer.FSM
         /// <summary>
         /// Returns a string describing the type of this state machine and its <see cref="CurrentState"/>.
         /// </summary>
-        public override string ToString()
-        {
-            return GetType().Name + " -> " + CurrentState;
-        }
+        public override string ToString() => GetType().Name + " -> " + CurrentState;
 
         /************************************************************************************************************************/
     }

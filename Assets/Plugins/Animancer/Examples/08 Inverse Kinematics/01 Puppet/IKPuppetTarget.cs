@@ -9,8 +9,8 @@ namespace Animancer.Examples.InverseKinematics
     /// <summary>
     /// An object for one of a character's limbs to aim at using Inverse Kinematics (IK).
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Inverse Kinematics - IK Puppet Target")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.InverseKinematics/IKPuppetTarget")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Inverse Kinematics - IK Puppet Target")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(InverseKinematics) + "/" + nameof(IKPuppetTarget))]
     public sealed class IKPuppetTarget : MonoBehaviour
     {
         /************************************************************************************************************************/

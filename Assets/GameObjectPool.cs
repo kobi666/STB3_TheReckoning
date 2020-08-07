@@ -9,6 +9,8 @@ public class GameObjectPool : MonoBehaviour
     public Dictionary<string, PoolObjectQueue<UnitController>> UnitObjectPoolQueue = new Dictionary<string, PoolObjectQueue<UnitController>>();
 
     public Dictionary<string, PoolObjectQueue<AreaOfEffectController>> AOEObjectPoolQueue = new Dictionary<string, PoolObjectQueue<AreaOfEffectController>>();
+    public Dictionary<string,PoolObjectQueue<SingleAnimationObject>> SingleAnimationPoolQueue = new Dictionary<string, PoolObjectQueue<SingleAnimationObject>>();
+
 
     public event Action<string> onObjectDisable;
     public void OnObjectDisable(string objectName) {
@@ -29,6 +31,16 @@ public class GameObjectPool : MonoBehaviour
         else {
             CreateNewObjectQueue<Projectile>(ProjectilesObjectPoolQueue, prefab);
             return ProjectilesObjectPoolQueue[prefab.name];
+        }
+    }
+
+    public PoolObjectQueue<SingleAnimationObject> GetSingleAnimationObjectQueue(SingleAnimationObject prefab) {
+        if (SingleAnimationPoolQueue.ContainsKey(prefab.name)) {
+            return SingleAnimationPoolQueue[prefab.name];
+        }
+        else {
+            CreateNewObjectQueue<SingleAnimationObject>(SingleAnimationPoolQueue, prefab);
+            return SingleAnimationPoolQueue[prefab.name];
         }
     }
 

@@ -11,8 +11,8 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
     /// A <see cref="CreatureState"/> which teleports back to the starting position, plays an animation then returns
     /// to the <see cref="Creature.Idle"/> state.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Game Kit - Respawn State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.AnimatorControllers.GameKit/RespawnState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Game Kit - Respawn State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(AnimatorControllers) + "." + nameof(GameKit) + "/" + nameof(RespawnState))]
     public sealed class RespawnState : CreatureState
     {
         /************************************************************************************************************************/
@@ -27,7 +27,7 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
         private void Awake()
         {
-            _Animation.Events.Sequence.OnEnd = Creature.ForceEnterIdleState;
+            _Animation.Events.OnEnd = Creature.ForceEnterIdleState;
             _StartingPosition = transform.position;
         }
 
@@ -49,10 +49,7 @@ namespace Animancer.Examples.AnimatorControllers.GameKit
 
         /************************************************************************************************************************/
 
-        public override bool CanExitState(CreatureState nextState)
-        {
-            return false;
-        }
+        public override bool CanExitState(CreatureState nextState) => false;
 
         /************************************************************************************************************************/
     }

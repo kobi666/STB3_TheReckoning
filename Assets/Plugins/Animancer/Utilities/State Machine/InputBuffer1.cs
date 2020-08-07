@@ -32,20 +32,14 @@ namespace Animancer.FSM
             /************************************************************************************************************************/
 
             /// <summary>Indicates whether there is currently a <see cref="BufferedState"/>.</summary>
-            public bool IsBufferActive
-            {
-                get { return BufferedState != null; }
-            }
+            public bool IsBufferActive => BufferedState != null;
 
             /************************************************************************************************************************/
 
             /// <summary>
             /// Constructs a new <see cref="InputBuffer"/> targeting the specified `stateMachine`.
             /// </summary>
-            public InputBuffer(StateMachine<TState> stateMachine)
-            {
-                StateMachine = stateMachine;
-            }
+            public InputBuffer(StateMachine<TState> stateMachine) => StateMachine = stateMachine;
 
             /************************************************************************************************************************/
 
@@ -75,10 +69,7 @@ namespace Animancer.FSM
             /// <summary>
             /// Attempts to enter the <see cref="BufferedState"/> and returns true if successful.
             /// </summary>
-            protected virtual bool TryEnterBufferedState()
-            {
-                return StateMachine.TryResetState(BufferedState);
-            }
+            protected virtual bool TryEnterBufferedState() => StateMachine.TryResetState(BufferedState);
 
             /************************************************************************************************************************/
 
@@ -89,10 +80,7 @@ namespace Animancer.FSM
             /// <para></para>
             /// If <see cref="UseUnscaledTime"/> is true, it will use <see cref="Time.unscaledDeltaTime"/> instead.
             /// </summary>
-            public bool Update()
-            {
-                return Update(UseUnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime);
-            }
+            public bool Update() => Update(UseUnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime);
 
             /// <summary>
             /// Attempts to enter the <see cref="BufferedState"/> if there is one and returns true if successful.
@@ -141,10 +129,7 @@ namespace Animancer.FSM
             /************************************************************************************************************************/
 
             /// <summary>Clears the buffer.</summary>
-            public void Clear()
-            {
-                BufferedState = null;
-            }
+            public void Clear() => BufferedState = null;
 
             /************************************************************************************************************************/
         }

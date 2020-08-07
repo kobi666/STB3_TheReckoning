@@ -35,7 +35,7 @@ public abstract class AnimationController : MonoBehaviour
         CurrentAnimationState.Stop();
         var state = animancer.Play(clip);
         state.Events.OnEnd += delegate { state.IsPlaying = false;};
-        
+
         }
     }
 
@@ -53,5 +53,11 @@ public abstract class AnimationController : MonoBehaviour
     private void Awake() {
         animancer = GetComponent<AnimancerComponent>() ?? null;
         PostAwake();
+    }
+
+    
+    void OnDisable()
+    {
+        CurrentAnimationState = null;
     }
 }

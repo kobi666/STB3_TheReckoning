@@ -3,8 +3,9 @@
 --- !u!74 &7400000
 AnimationClip:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: SpiderBot-MoveRight
   serializedVersion: 6
   m_Legacy: 0
@@ -60,7 +61,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main
+    path: Root
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -166,7 +167,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main/minebot_right_upperleg
+    path: Root/RightUpperLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -263,7 +264,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main/minebot_right_upperleg/minebot_right_lowerleg
+    path: Root/RightUpperLeg/RightLowerLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -288,7 +289,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main/minebot_head
+    path: Root/Core
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -403,7 +404,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main/minebot_front_upperleg
+    path: Root/FrontUpperLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -518,7 +519,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main/minebot_front_upperleg/minebot_back_lowerleg
+    path: Root/FrontUpperLeg/FrontLowerLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -633,7 +634,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main/minebot_left_upperleg
+    path: Root/LeftUpperLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -739,7 +740,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main/minebot_left_upperleg/minebot_left_lowerleg
+    path: Root/LeftUpperLeg/LeftLowerLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -854,7 +855,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main/minebot_backt_upperleg
+    path: Root/BackUpperLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -960,7 +961,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main/minebot_backt_upperleg/minebot_front_lowerleg
+    path: Root/BackUpperLeg/BackLowerLeg
   m_CompressedRotationCurves: []
   m_EulerCurves: []
   m_PositionCurves:
@@ -1087,7 +1088,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main
+    path: Root
   m_ScaleCurves:
   - curve:
       serializedVersion: 2
@@ -1138,7 +1139,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main
+    path: Root
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1163,7 +1164,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main/minebot_right_upperleg
+    path: Root/RightUpperLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1188,7 +1189,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main/minebot_right_upperleg/minebot_right_lowerleg
+    path: Root/RightUpperLeg/RightLowerLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1213,7 +1214,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main/minebot_head
+    path: Root/Core
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1238,7 +1239,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main/minebot_front_upperleg
+    path: Root/FrontUpperLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1263,7 +1264,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main/minebot_front_upperleg/minebot_back_lowerleg
+    path: Root/FrontUpperLeg/FrontLowerLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1288,7 +1289,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main/minebot_left_upperleg
+    path: Root/LeftUpperLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1313,7 +1314,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main/minebot_left_upperleg/minebot_left_lowerleg
+    path: Root/LeftUpperLeg/LeftLowerLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1338,7 +1339,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main/minebot_backt_upperleg
+    path: Root/BackUpperLeg
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1363,7 +1364,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: minebot_main/minebot_backt_upperleg/minebot_front_lowerleg
+    path: Root/BackUpperLeg/BackLowerLeg
   m_FloatCurves: []
   m_PPtrCurves: []
   m_SampleRate: 30
@@ -1374,84 +1375,63 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1690791267
+      path: 3066451557
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 4201297411
+      path: 4059323307
       attribute: 2
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 556294267
+      path: 1468998702
       attribute: 2
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 939761840
+      path: 1327320855
       attribute: 2
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3476785095
+      path: 1196010073
       attribute: 2
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2877695902
+      path: 754768532
       attribute: 2
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3811493463
+      path: 2098365892
       attribute: 2
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1547633788
+      path: 3762568428
       attribute: 2
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 348208035
-      attribute: 2
-      script: {fileID: 0}
-      typeID: 4
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 0
-      attribute: 2
-      script: {fileID: 0}
-      typeID: 4
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 1690791267
-      attribute: 2
-      script: {fileID: 0}
-      typeID: 4
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 3387493945
+      path: 1899895732
       attribute: 2
       script: {fileID: 0}
       typeID: 4
@@ -1459,76 +1439,97 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 0
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 3066451557
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 4148293930
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 0
       attribute: 3
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1690791267
+      path: 3066451557
       attribute: 3
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 4201297411
+      path: 4059323307
       attribute: 3
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 556294267
+      path: 1468998702
       attribute: 3
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3387493945
+      path: 4148293930
       attribute: 3
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 939761840
+      path: 1327320855
       attribute: 3
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3476785095
+      path: 1196010073
       attribute: 3
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2877695902
+      path: 754768532
       attribute: 3
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3811493463
+      path: 2098365892
       attribute: 3
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1547633788
+      path: 3762568428
       attribute: 3
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 348208035
+      path: 1899895732
       attribute: 3
       script: {fileID: 0}
       typeID: 4
@@ -1559,5 +1560,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_GenerateMotionCurves: 0
   m_Events: []

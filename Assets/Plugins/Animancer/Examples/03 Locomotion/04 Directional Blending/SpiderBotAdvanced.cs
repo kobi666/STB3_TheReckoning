@@ -12,8 +12,8 @@ namespace Animancer.Examples.Locomotion
     /// A <see cref="SpiderBot"/> with a <see cref="MixerState.Transition2D"/> and <see cref="Rigidbody"/> to allow the
     /// bot to move in any direction.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Locomotion - Spider Bot Advanced")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.Locomotion/SpiderBotAdvanced")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Locomotion - Spider Bot Advanced")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Locomotion) + "/" + nameof(SpiderBotAdvanced))]
     public sealed class SpiderBotAdvanced : SpiderBot
     {
         /************************************************************************************************************************/
@@ -28,19 +28,13 @@ namespace Animancer.Examples.Locomotion
         [SerializeField]
         private MixerState.Transition2D _Move;
 
-        protected override ITransition MovementAnimation
-        {
-            get { return _Move; }
-        }
+        protected override ITransition MovementAnimation => _Move;
 
         /************************************************************************************************************************/
 
         private Vector3 _MovementDirection;
 
-        protected override bool IsMoving
-        {
-            get { return _MovementDirection != Vector3.zero; }
-        }
+        protected override bool IsMoving => _MovementDirection != Vector3.zero;
 
         /************************************************************************************************************************/
 

@@ -9,8 +9,8 @@ namespace Animancer.Examples.InverseKinematics
     /// <summary>
     /// Records the positions and rotations of a set of objects so they can be returned later on.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Inverse Kinematics - Transform Resetter")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.InverseKinematics/TransformResetter")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Inverse Kinematics - Transform Resetter")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(InverseKinematics) + "/" + nameof(TransformResetter))]
     public sealed class TransformResetter : MonoBehaviour
     {
         /************************************************************************************************************************/

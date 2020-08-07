@@ -9,14 +9,14 @@ namespace Animancer.Examples.StateMachines.Platformer
     /// <summary>
     /// Base class for any kind of <see cref="Platformer.Creature"/> controller - local, network, AI, replay, etc.
     /// </summary>
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Platformer/CreatureBrain")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Platformer) + "/" + nameof(CreatureBrain))]
     public abstract class CreatureBrain : MonoBehaviour
     {
         /************************************************************************************************************************/
 
         [SerializeField]
         private Creature _Creature;
-        public Creature Creature { get { return _Creature; } }
+        public Creature Creature => _Creature;
 
         /************************************************************************************************************************/
 

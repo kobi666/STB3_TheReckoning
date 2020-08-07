@@ -7,7 +7,8 @@ namespace Animancer.Examples
     /// <summary>
     /// Simple mouse controls for orbiting the camera around a focal point.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Orbit Controls")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Orbit Controls")]
+    [HelpURL(Strings.APIDocumentationURL + "." + nameof(Examples) + "/" + nameof(OrbitControls))]
 #if UNITY_2019_1_OR_NEWER
     [ExecuteAlways]
 #else
@@ -17,17 +18,21 @@ namespace Animancer.Examples
     {
         /************************************************************************************************************************/
 
-        [SerializeField]
-        private Vector3 _FocalPoint = new Vector3(0, 1, 0);
-
-        [SerializeField]
-        [Range(-1, 2)]
-        private int _MouseButton = 1;
-
-        [SerializeField]
-        private Vector3 _Sensitivity = new Vector3(15, -10, -0.1f);
+        [SerializeField] private Vector3 _FocalPoint = new Vector3(0, 1, 0);
+        [SerializeField] private MouseButton _MouseButton = MouseButton.Right;
+        [SerializeField] private Vector3 _Sensitivity = new Vector3(15, -10, -0.1f);
 
         private float _Distance;
+
+        /************************************************************************************************************************/
+
+        public enum MouseButton
+        {
+            Automatic = -1,
+            Left = 0,
+            Right = 1,
+            Middle = 2,
+        }
 
         /************************************************************************************************************************/
 
@@ -43,14 +48,14 @@ namespace Animancer.Examples
         private void Update()
         {
 #if UNITY_EDITOR
-            if (!UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode)
+            if (!UnityEditor.EditorApplication.isPlaying)
             {
                 transform.LookAt(_FocalPoint);
                 return;
             }
 #endif
 
-            if (_MouseButton < 0 || Input.GetMouseButton(_MouseButton))
+            if (_MouseButton == MouseButton.Automatic || Input.GetMouseButton((int)_MouseButton))
             {
                 var movement = new Vector2(
                     Input.GetAxis("Mouse X"),

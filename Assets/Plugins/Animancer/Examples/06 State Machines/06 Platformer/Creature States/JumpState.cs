@@ -10,8 +10,8 @@ namespace Animancer.Examples.StateMachines.Platformer
     /// <summary>
     /// A <see cref="CreatureState"/> that plays a jump animation and applies some upwards force.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Platformer - Jump State")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.StateMachines.Platformer/JumpState")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Platformer - Jump State")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(StateMachines) + "." + nameof(Platformer) + "/" + nameof(JumpState))]
     public class JumpState : CreatureState
     {
         /************************************************************************************************************************/
@@ -23,17 +23,11 @@ namespace Animancer.Examples.StateMachines.Platformer
 
         /************************************************************************************************************************/
 
-        public override float MovementSpeed
-        {
-            get { return Creature.Idle.MovementSpeed; }
-        }
+        public override float MovementSpeed => Creature.Idle.MovementSpeed;
 
         /************************************************************************************************************************/
 
-        public override bool CanEnterState(CreatureState previousState)
-        {
-            return Creature.GroundDetector.IsGrounded;
-        }
+        public override bool CanEnterState(CreatureState previousState) => Creature.GroundDetector.IsGrounded;
 
         /************************************************************************************************************************/
 

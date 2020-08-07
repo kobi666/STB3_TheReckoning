@@ -5,11 +5,11 @@ using UnityEngine;
 public class SingleAnimationObject : AnimationController,IQueueable<SingleAnimationObject>
 {
     
-    public AnimationClip OnStartAnimation = null;
+    public AnimationClip AnimationClip = null;
     public PoolObjectQueue<SingleAnimationObject> QueuePool {get;set;}
 
     public void OnEnqueue() {
-
+        gameObject.SetActive(false);
     }
 
     public override void PostAwake() {
@@ -17,12 +17,12 @@ public class SingleAnimationObject : AnimationController,IQueueable<SingleAnimat
     }
 
     
-    void Start()
-    {
-        if (OnStartAnimation != null) {
-            PlayFiniteAnimationWithAction(OnStartAnimation, delegate {QueuePool?.ObjectQueue.Enqueue(this);});
+    public void PlayOnceAndEnqueue() {
+        if (AnimationClip != null) {
+            PlayFiniteAnimationWithAction(AnimationClip, delegate {QueuePool?.ObjectQueue.Enqueue(this);});
         }
-        else if (OnStartAnimation == null) {
+        else if (AnimationClip == null) {
+            gameObject.SetActive(false);
             QueuePool?.ObjectQueue.Enqueue(this);
         }
     }

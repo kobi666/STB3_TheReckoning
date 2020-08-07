@@ -25,6 +25,14 @@ public class PoolObjectQueue<T> where T : Component, IQueueable<T> {
         return t;
     }
 
+    public T GetInactive() {
+        if (ObjectQueue.Count < 5) {
+            AddObjectsToQueue(5);
+        }
+        T t = ObjectQueue.Dequeue();
+        return t;
+    }
+
     void AddObjectsToQueue(int numOfObjects) {
         for (int i = 0 ; i < numOfObjects ; i++) 
         {

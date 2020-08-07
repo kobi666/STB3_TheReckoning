@@ -3,6 +3,7 @@
 #pragma warning disable CS0649 // Field is never assigned to, and will always have its default value.
 
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Animancer.Examples.Basics
@@ -10,8 +11,8 @@ namespace Animancer.Examples.Basics
     /// <summary>
     /// Demonstrates how to use a <see cref="NamedAnimancerComponent"/> to play animations by name.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Basics - Named Animations")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.Basics/NamedAnimations")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Basics - Named Animations")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Basics) + "/" + nameof(NamedAnimations))]
     public sealed class NamedAnimations : MonoBehaviour
     {
         /************************************************************************************************************************/
@@ -34,7 +35,7 @@ namespace Animancer.Examples.Basics
         /// </summary>
         public void PlayIdle()
         {
-            _Animancer.Play("Humanoid-Idle");
+            _Animancer.TryPlay("Humanoid-Idle");
         }
 
         /************************************************************************************************************************/
@@ -49,14 +50,9 @@ namespace Animancer.Examples.Basics
         /// </summary>
         public void PlayWalk()
         {
-            var state = _Animancer.Play("Humanoid-Walk");
-            if (state == null)
-            {
-                Debug.Log("No state called 'Humanoid-Walk' exists yet." +
-                    " Click 'Initialise Walk State' to create it then try again.", this);
-            }
+            _Animancer.TryPlay("Humanoid-Walk");
 
-            // _Animancer.Play(_Walk.name); would also work,
+            // _Animancer.TryPlay(_Walk.name); would also work,
             // but if we are going to use the clip we should really just use _Animancer.Play(_Walk);
         }
 

@@ -19,7 +19,7 @@ namespace Animancer
     /// <see cref="UnityEngine.Animator"/>.
     /// </remarks>
     [AddComponentMenu(Strings.MenuPrefix + "Animancer Component")]
-    [HelpURL(Strings.APIDocumentationURL + "/AnimancerComponent")]
+    [HelpURL(Strings.APIDocumentationURL + "/" + nameof(AnimancerComponent))]
     [DefaultExecutionOrder(-5000)]// Initialise before anything else tries to use this component.
     public class AnimancerComponent : MonoBehaviour,
         IAnimancerComponent, IEnumerable<AnimancerState>, IEnumerator, IAnimationClipSource, IAnimationClipCollection
@@ -36,7 +36,7 @@ namespace Animancer
         /// </summary>
         public Animator Animator
         {
-            get { return _Animator; }
+            get => _Animator;
             set
             {
 #if UNITY_EDITOR
@@ -54,7 +54,7 @@ namespace Animancer
 
 #if UNITY_EDITOR
         /// <summary>[Editor-Only] The name of the serialized backing field for the <see cref="Animator"/> property.</summary>
-        string IAnimancerComponent.AnimatorFieldName { get { return "_Animator"; } }
+        string IAnimancerComponent.AnimatorFieldName => nameof(_Animator);
 #endif
 
         /************************************************************************************************************************/
@@ -75,32 +75,37 @@ namespace Animancer
         }
 
         /// <summary>Indicates whether the <see cref="Playable"/> has been initialised.</summary>
-        public bool IsPlayableInitialised { get { return _Playable != null && _Playable.IsValid; } }
+        public bool IsPlayableInitialised => _Playable != null && _Playable.IsValid;
 
         /************************************************************************************************************************/
 
         /// <summary>The states managed by this component.</summary>
-        public AnimancerPlayable.StateDictionary States { get { return Playable.States; } }
+        public AnimancerPlayable.StateDictionary States => Playable.States;
 
         /// <summary>The layers which each manage their own set of animations.</summary>
-        public AnimancerPlayable.LayerList Layers { get { return Playable.Layers; } }
+        public AnimancerPlayable.LayerList Layers => Playable.Layers;
+
+        /// <summary>Returns the <see cref="Playable"/>.</summary>
+        public static implicit operator AnimancerPlayable(AnimancerComponent animancer) => animancer.Playable;
 
         /// <summary>Returns layer 0.</summary>
-        public static implicit operator AnimancerLayer(AnimancerComponent animancer)
-        {
-            return animancer.Playable.Layers[0];
-        }
+        public static implicit operator AnimancerLayer(AnimancerComponent animancer) => animancer.Playable.Layers[0];
 
         /************************************************************************************************************************/
 
         [SerializeField, Tooltip("Determines what happens when this component is disabled" +
-            " or its GameObject becomes inactive (i.e. in OnDisable):" +
-            "\n- Stop all animations" +
-            "\n- Pause all animations" +
-            "\n- Continue playing" +
-            "\n- Reset to the original values" +
-            "\n- Destroy all layers and states")]
+            " or its " + nameof(GameObject) + " becomes inactive (i.e. in " + nameof(OnDisable) + "):" +
+            "\n- " + nameof(DisableAction.Stop) + " all animations" +
+            "\n- " + nameof(DisableAction.Pause) + " all animations" +
+            "\n- " + nameof(DisableAction.Continue) + " playing" +
+            "\n- " + nameof(DisableAction.Reset) + " to the original values" +
+            "\n- " + nameof(DisableAction.Destroy) + " all layers and states")]
         private DisableAction _ActionOnDisable;
+
+#if UNITY_EDITOR
+        /// <summary>[Editor-Only] The name of the serialized backing field for the <see cref="ActionOnDisable"/> property.</summary>
+        string IAnimancerComponent.ActionOnDisableFieldName => nameof(_ActionOnDisable);
+#endif
 
         /// <summary>[<see cref="SerializeField"/>]
         /// Determines what happens when this component is disabled or its <see cref="GameObject"/> becomes inactive
@@ -108,14 +113,10 @@ namespace Animancer
         /// <para></para>
         /// The default value is <see cref="DisableAction.Stop"/>.
         /// </summary>
-        public DisableAction ActionOnDisable
-        {
-            get { return _ActionOnDisable; }
-            set { _ActionOnDisable = value; }
-        }
+        public ref DisableAction ActionOnDisable => ref _ActionOnDisable;
 
         /// <summary>Determines whether the object will be reset to its original values when disabled.</summary>
-        bool IAnimancerComponent.ResetOnDisable { get { return _ActionOnDisable == DisableAction.Reset; } }
+        bool IAnimancerComponent.ResetOnDisable => _ActionOnDisable == DisableAction.Reset;
 
         /// <summary>
         /// An action to perform when disabling an <see cref="AnimancerComponent"/>. See <see cref="ActionOnDisable"/>.
@@ -172,10 +173,10 @@ namespace Animancer
         /// <para></para>
         /// Note that changing to or from <see cref="AnimatorUpdateMode.AnimatePhysics"/> at runtime has no effect.
         /// </summary>
-        /// <exception cref="NullReferenceException">Thrown if no <see cref="Animator"/> is assigned.</exception>
+        /// <exception cref="NullReferenceException">No <see cref="Animator"/> is assigned.</exception>
         public AnimatorUpdateMode UpdateMode
         {
-            get { return _Animator.updateMode; }
+            get => _Animator.updateMode;
             set
             {
                 _Animator.updateMode = value;
@@ -197,8 +198,9 @@ namespace Animancer
                 else if (UnityEditor.EditorApplication.isPlaying)
                 {
                     if (AnimancerPlayable.HasChangedToOrFromAnimatePhysics(InitialUpdateMode, value))
-                        Debug.LogWarning("Changing the Animator.updateMode to or from AnimatePhysics at runtime will have no effect." +
-                            " You must set it in the Unity Editor or on startup.");
+                        Debug.LogWarning($"Changing the {nameof(Animator)}.{nameof(Animator.updateMode)}" +
+                            $" to or from {nameof(AnimatorUpdateMode.AnimatePhysics)} at runtime will have no effect." +
+                            " You must set it in the Unity Editor or on startup.", this);
                 }
 #endif
             }
@@ -219,117 +221,6 @@ namespace Animancer
 #endif
         /************************************************************************************************************************/
         #endregion
-        /************************************************************************************************************************/
-        #endregion
-        /************************************************************************************************************************/
-        #region Animation Events
-        /************************************************************************************************************************/
-        // These methods are above their regular overloads so Animation Events find them first (because the others can't be used).
-        /************************************************************************************************************************/
-
-        /// <summary>Calls <see cref="Play(AnimationClip, int)"/>.</summary>
-        /// <remarks>This method is called by Animation Events.</remarks>
-        private void Play(AnimationEvent animationEvent)
-        {
-            var clip = (AnimationClip)animationEvent.objectReferenceParameter;
-            var layerIndex = animationEvent.intParameter;
-            if (layerIndex < 0)
-                Play(clip);
-            else
-                Layers[layerIndex].Play(clip);
-        }
-
-        /// <summary>
-        /// Calls <see cref="Play(AnimationClip, int)"/> and sets the <see cref="AnimancerState.Time"/> = 0.
-        /// </summary>
-        /// <remarks>This method is called by Animation Events.</remarks>
-        private void PlayFromStart(AnimationEvent animationEvent)
-        {
-            var clip = (AnimationClip)animationEvent.objectReferenceParameter;
-            var layerIndex = animationEvent.intParameter;
-            if (layerIndex < 0)
-                Play(clip).Time = 0;
-            else
-                Layers[layerIndex].Play(clip).Time = 0;
-        }
-
-        /// <summary>Calls <see cref="CrossFade(AnimationClip, float, int)"/>.</summary>
-        /// <remarks>This method is called by Animation Events.</remarks>
-        private void CrossFade(AnimationEvent animationEvent)
-        {
-            var clip = (AnimationClip)animationEvent.objectReferenceParameter;
-
-            var fadeDuration = animationEvent.floatParameter;
-            if (fadeDuration <= 0)
-                fadeDuration = AnimancerPlayable.DefaultFadeDuration;
-
-            var layerIndex = animationEvent.intParameter;
-            if (layerIndex < 0)
-                Play(clip, fadeDuration);
-            else
-                Layers[layerIndex].Play(clip, fadeDuration);
-        }
-
-        /// <summary>Calls <see cref="CrossFadeFromStart(AnimationClip, float, int)"/>.</summary>
-        /// <remarks>This method is called by Animation Events.</remarks>
-        private void CrossFadeFromStart(AnimationEvent animationEvent)
-        {
-            var clip = (AnimationClip)animationEvent.objectReferenceParameter;
-
-            var fadeDuration = animationEvent.floatParameter;
-            if (fadeDuration <= 0)
-                fadeDuration = AnimancerPlayable.DefaultFadeDuration;
-
-            var layerIndex = animationEvent.intParameter;
-            if (layerIndex < 0)
-                Play(clip, fadeDuration, FadeMode.FromStart);
-            else
-                Layers[layerIndex].Play(clip, fadeDuration, FadeMode.FromStart);
-        }
-
-        /// <summary>Calls <see cref="Transition(ITransition, int)"/>.</summary>
-        /// <remarks>This method is called by Animation Events.</remarks>
-        private void Transition(AnimationEvent animationEvent)
-        {
-            var transition = (ITransition)animationEvent.objectReferenceParameter;
-            var layerIndex = animationEvent.intParameter;
-            if (layerIndex < 0)
-                Play(transition);
-            else
-                Layers[layerIndex].Play(transition);
-        }
-
-        /************************************************************************************************************************/
-
-        /// <summary>
-        /// Invokes the <see cref="Animancerstate.Events.OnEndCallback"/> event of the
-        /// <see cref="CurrentState"/> if it is playing the <see cref="AnimationClip"/> which triggered the event.
-        /// <para></para>
-        /// Logs a warning if no state is registered for that animation.
-        /// </summary>
-        /// <remarks>This method is called by Animation Events.</remarks>
-        private void End(AnimationEvent animationEvent)
-        {
-            if (_Playable == null)
-            {
-                // This could only happen if another Animator triggers the event on this object somehow.
-                Debug.LogWarning("AnimationEvent 'End' was triggered by " + animationEvent.animatorClipInfo.clip +
-                    ", but the AnimancerComponent.Playable hasn't been initialised.",
-                    this);
-                return;
-            }
-
-            if (_Playable.OnEndEventReceived(animationEvent))
-                return;
-
-            if (animationEvent.messageOptions == SendMessageOptions.RequireReceiver)
-            {
-                Debug.LogWarning("AnimationEvent 'End' was triggered by " + animationEvent.animatorClipInfo.clip +
-                    ", but no state was found with that key.",
-                    this);
-            }
-        }
-
         /************************************************************************************************************************/
         #endregion
         /************************************************************************************************************************/
@@ -412,11 +303,13 @@ namespace Animancer
 
                 case DisableAction.Reset:
                     Debug.Assert(_Animator.isActiveAndEnabled,
-                        "DisableAction.Reset failed because the Animator is not enabled." +
-                        " This most likely means you are disabling the GameObject and the Animator is above the" +
-                        " AnimancerComponent in the Inspector so it got disabled right before this method was called." +
-                        " See the Inspector of " + this + " to fix the issue or use DisableAction.Stop and call Animator.Rebind" +
-                        " manually before disabling the GameObject.",
+                        $"{nameof(DisableAction)}.{nameof(DisableAction.Reset)} failed because the {nameof(Animator)} is not enabled." +
+                        $" This most likely means you are disabling the {nameof(GameObject)} and the {nameof(Animator)} is above the" +
+                        $" {nameof(AnimancerComponent)} in the Inspector so it got disabled right before this method was called." +
+                        $" See the Inspector of {this} to fix the issue" +
+                        $" or use {nameof(DisableAction)}.{nameof(DisableAction.Stop)}" +
+                        $" and call {nameof(Animator)}.{nameof(Animator.Rebind)} manually" +
+                        $" before disabling the {nameof(GameObject)}.",
                         this);
 
                     Stop();
@@ -430,7 +323,7 @@ namespace Animancer
                     break;
 
                 default:
-                    throw new ArgumentOutOfRangeException("ActionOnDisable");
+                    throw new ArgumentOutOfRangeException(nameof(ActionOnDisable));
             }
         }
 
@@ -442,10 +335,27 @@ namespace Animancer
             if (IsPlayableInitialised)
                 return;
 
+#if UNITY_ASSERTIONS
 #if UNITY_EDITOR
-            var currentEvent = Event.current;
-            if (currentEvent != null && (currentEvent.type == EventType.Layout || currentEvent.type == EventType.Repaint))
-                Debug.LogWarning("Creating an AnimancerPlayable during a " + currentEvent.type + " event is likely undesirable.");
+            if (UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode)
+#endif
+            {
+                if (!gameObject.activeInHierarchy)
+                    WarningType.CreateGraphWhileDisabled.Log($"An {nameof(AnimancerPlayable)} is being created for '{this}'" +
+                        $" which is attached to an inactive {nameof(GameObject)}." +
+                        $" If that object is never activated then Unity will not call {nameof(OnDestroy)}" +
+                        $" so {nameof(AnimancerPlayable)}.{nameof(AnimancerPlayable.Destroy)} will need to be called manually.", this);
+            }
+
+#if UNITY_EDITOR
+            if (WarningType.CreateGraphDuringGuiEvent.IsEnabled())
+            {
+                var currentEvent = Event.current;
+                if (currentEvent != null && (currentEvent.type == EventType.Layout || currentEvent.type == EventType.Repaint))
+                    WarningType.CreateGraphDuringGuiEvent.Log(
+                        $"Creating an {nameof(AnimancerPlayable)} during a {currentEvent.type} event is likely undesirable.", this);
+            }
+#endif
 #endif
 
             if (_Animator == null)
@@ -480,7 +390,8 @@ namespace Animancer
 
 #if UNITY_EDITOR
         /// <summary>[Editor-Only]
-        /// Ensures that the <see cref="PlayableGraph"/> is destroyed.
+        /// Ensures that the <see cref="AnimancerPlayable"/> is destroyed in Edit Mode, but not in Play Mode since we want
+        /// Unity to complain if that happens.
         /// </summary>
         ~AnimancerComponent()
         {
@@ -500,64 +411,37 @@ namespace Animancer
         /// when none is specified by the user, such as in <see cref="Play(AnimationClip)"/>. It can be overridden by
         /// child classes to use something else as the key.
         /// </summary>
-        public virtual object GetKey(AnimationClip clip)
-        {
-            return clip;
-        }
+        public virtual object GetKey(AnimationClip clip) => clip;
 
+        /************************************************************************************************************************/
+        // Play Immediately.
         /************************************************************************************************************************/
 
         /// <summary>
-        /// Stops all other animations, plays the `clip`, and returns its state.
+        /// Stops all other animations on the same layer, plays the `clip`, and returns its state.
         /// <para></para>
         /// The animation will continue playing from its current <see cref="AnimancerState.Time"/>.
         /// To restart it from the beginning you can use <c>...Play(clip, layerIndex).Time = 0;</c>.
         /// </summary>
-        public AnimancerState Play(AnimationClip clip)
-        {
-            return Play(States.GetOrCreate(clip));
-        }
+        public AnimancerState Play(AnimationClip clip) => Playable.Play(States.GetOrCreate(clip));
 
         /// <summary>
-        /// Stops all other animations, plays the `state`, and returns it.
+        /// Stops all other animations on the same layer, plays the `state`, and returns it.
         /// <para></para>
         /// The animation will continue playing from its current <see cref="AnimancerState.Time"/>.
         /// To restart it from the beginning you can use <c>...Play(state).Time = 0;</c>.
         /// </summary>
-        public AnimancerState Play(AnimancerState state)
-        {
-            return Playable.Play(state);
-        }
+        public AnimancerState Play(AnimancerState state) => Playable.Play(state);
 
-        /// <summary>
-        /// Creates a state for the `transition` if it didn't already exist, then calls
-        /// <see cref="Play(AnimancerState)"/> or <see cref="Play(AnimancerState, float, FadeMode)"/>
-        /// depending on <see cref="ITransition.CrossFadeFromStart"/>.
-        /// </summary>
-        public AnimancerState Play(ITransition transition)
-        {
-            return Playable.Play(transition);
-        }
-
-        /// <summary>
-        /// Stops all other animations, plays the animation registered with the `key`, and returns that
-        /// state. If no state is registered with the `key`, this method does nothing and returns null.
-        /// <para></para>
-        /// The animation will continue playing from its current <see cref="AnimancerState.Time"/>.
-        /// To restart it from the beginning you can use <c>...Play(key).Time = 0;</c>.
-        /// </summary>
-        public AnimancerState Play(object key)
-        {
-            return Playable.Play(key);
-        }
-
+        /************************************************************************************************************************/
+        // Cross Fade.
         /************************************************************************************************************************/
 
         /// <summary>
-        /// Starts fading in the `clip` over the course of the `fadeDuration` while fading out all others in the same
-        /// layer. Returns its state.
+        /// Starts fading in the `clip` while fading out all other states in the same layer over the course of the
+        /// `fadeDuration`. Returns its state.
         /// <para></para>
-        /// If the `state` was already playing and fading in with less time remaining than the `fadeDuration`, this
+        /// If the state was already playing and fading in with less time remaining than the `fadeDuration`, this
         /// method will allow it to complete the existing fade rather than starting a slower one.
         /// <para></para>
         /// If the layer currently has 0 <see cref="AnimancerNode.Weight"/>, this method will fade in the layer itself
@@ -566,13 +450,11 @@ namespace Animancer
         /// Animancer Lite only allows the default `fadeDuration` (0.25 seconds) in a runtime build.
         /// </summary>
         public AnimancerState Play(AnimationClip clip, float fadeDuration, FadeMode mode = FadeMode.FixedSpeed)
-        {
-            return Play(States.GetOrCreate(clip), fadeDuration, mode);
-        }
+            => Playable.Play(States.GetOrCreate(clip), fadeDuration, mode);
 
         /// <summary>
-        /// Starts fading in the `state` over the course of the `fadeDuration` while fading out all others in the same
-        /// layer. Returns the `state`.
+        /// Starts fading in the `state` while fading out all others in the same layer over the course of the
+        /// `fadeDuration`. Returns the `state`.
         /// <para></para>
         /// If the `state` was already playing and fading in with less time remaining than the `fadeDuration`, this
         /// method will allow it to complete the existing fade rather than starting a slower one.
@@ -583,9 +465,18 @@ namespace Animancer
         /// Animancer Lite only allows the default `fadeDuration` (0.25 seconds) in a runtime build.
         /// </summary>
         public AnimancerState Play(AnimancerState state, float fadeDuration, FadeMode mode = FadeMode.FixedSpeed)
-        {
-            return Playable.Play(state, fadeDuration, mode);
-        }
+            => Playable.Play(state, fadeDuration, mode);
+
+        /************************************************************************************************************************/
+        // Transition.
+        /************************************************************************************************************************/
+
+        /// <summary>
+        /// Creates a state for the `transition` if it didn't already exist, then calls
+        /// <see cref="Play(AnimancerState)"/> or <see cref="Play(AnimancerState, float, FadeMode)"/>
+        /// depending on <see cref="ITransition.CrossFadeFromStart"/>.
+        /// </summary>
+        public AnimancerState Play(ITransition transition) => Playable.Play(transition);
 
         /// <summary>
         /// Creates a state for the `transition` if it didn't already exist, then calls
@@ -593,13 +484,26 @@ namespace Animancer
         /// depending on <see cref="ITransition.CrossFadeFromStart"/>.
         /// </summary>
         public AnimancerState Play(ITransition transition, float fadeDuration, FadeMode mode = FadeMode.FixedSpeed)
-        {
-            return Playable.Play(transition, fadeDuration, mode);
-        }
+            => Playable.Play(transition, fadeDuration, mode);
+
+        /************************************************************************************************************************/
+        // Try Play.
+        /************************************************************************************************************************/
 
         /// <summary>
-        /// Starts fading in the animation registered with the `key` over the course of the `fadeDuration` while fading
-        /// out all others in the same layer. Returns the animation's state (or null if none was registered).
+        /// Stops all other animations on the same layer, plays the animation registered with the `key`, and returns
+        /// that state.
+        /// <para></para>
+        /// The animation will continue playing from its current <see cref="AnimancerState.Time"/>.
+        /// To restart it from the beginning you can use <c>...Play(key).Time = 0;</c>.
+        /// </summary>
+        /// <exception cref="ArgumentNullException">The `key` is null.</exception>
+        /// <exception cref="KeyNotFoundException">No state is registered with the `key`.</exception>
+        public AnimancerState TryPlay(object key) => Playable.TryPlay(key);
+
+        /// <summary>
+        /// Starts fading in the animation registered with the `key` while fading out all others in the same layer
+        /// over the course of the `fadeDuration`.
         /// <para></para>
         /// If the state was already playing and fading in with less time remaining than the `fadeDuration`, this
         /// method will allow it to complete the existing fade rather than starting a slower one.
@@ -609,43 +513,28 @@ namespace Animancer
         /// <para></para>
         /// Animancer Lite only allows the default `fadeDuration` (0.25 seconds) in a runtime build.
         /// </summary>
-        public AnimancerState Play(object key, float fadeDuration, FadeMode mode = FadeMode.FixedSpeed)
-        {
-            return Playable.Play(key, fadeDuration, mode);
-        }
+        /// <exception cref="ArgumentNullException">The `key` is null.</exception>
+        /// <exception cref="KeyNotFoundException">No state is registered with the `key`.</exception>
+        public AnimancerState TryPlay(object key, float fadeDuration, FadeMode mode = FadeMode.FixedSpeed)
+            => Playable.TryPlay(key, fadeDuration, mode);
 
         /************************************************************************************************************************/
 
         /// <summary>
         /// Gets the state associated with the `clip`, stops and rewinds it to the start, then returns it.
         /// </summary>
-        public AnimancerState Stop(AnimationClip clip)
-        {
-            return Stop(GetKey(clip));
-        }
+        public AnimancerState Stop(AnimationClip clip) => Stop(GetKey(clip));
 
         /// <summary>
         /// Gets the state registered with the <see cref="IHasKey.Key"/>, stops and rewinds it to the start, then
         /// returns it.
         /// </summary>
-        public AnimancerState Stop(IHasKey hasKey)
-        {
-            if (_Playable != null)
-                return _Playable.Stop(hasKey);
-            else
-                return null;
-        }
+        public AnimancerState Stop(IHasKey hasKey) => _Playable != null ? _Playable.Stop(hasKey) : null;
 
         /// <summary>
         /// Gets the state associated with the `key`, stops and rewinds it to the start, then returns it.
         /// </summary>
-        public AnimancerState Stop(object key)
-        {
-            if (_Playable != null)
-                return _Playable.Stop(key);
-            else
-                return null;
-        }
+        public AnimancerState Stop(object key) => _Playable != null ? _Playable.Stop(key) : null;
 
         /// <summary>
         /// Stops all animations and rewinds them to the start.
@@ -663,43 +552,22 @@ namespace Animancer
         /// <para></para>
         /// The actual dictionary key is determined using <see cref="GetKey"/>.
         /// </summary>
-        public bool IsPlaying(AnimationClip clip)
-        {
-            return IsPlaying(GetKey(clip));
-        }
+        public bool IsPlaying(AnimationClip clip) => IsPlaying(GetKey(clip));
 
         /// <summary>
         /// Returns true if a state is registered with the <see cref="IHasKey.Key"/> and it is currently playing.
         /// </summary>
-        public bool IsPlaying(IHasKey hasKey)
-        {
-            if (_Playable != null)
-                return _Playable.IsPlaying(hasKey);
-            else
-                return false;
-        }
+        public bool IsPlaying(IHasKey hasKey) => _Playable != null && _Playable.IsPlaying(hasKey);
 
         /// <summary>
         /// Returns true if a state is registered with the `key` and it is currently playing.
         /// </summary>
-        public bool IsPlaying(object key)
-        {
-            if (_Playable != null)
-                return _Playable.IsPlaying(key);
-            else
-                return false;
-        }
+        public bool IsPlaying(object key) => _Playable != null && _Playable.IsPlaying(key);
 
         /// <summary>
         /// Returns true if at least one animation is being played.
         /// </summary>
-        public bool IsPlaying()
-        {
-            if (_Playable != null)
-                return _Playable.IsPlaying();
-            else
-                return false;
-        }
+        public bool IsPlaying() => _Playable != null && _Playable.IsPlaying();
 
         /************************************************************************************************************************/
 
@@ -709,32 +577,20 @@ namespace Animancer
         /// This method is inefficient because it searches through every state to find any that are playing the `clip`,
         /// unlike <see cref="IsPlaying(AnimationClip)"/> which only checks the state registered using the `clip`s key.
         /// </summary>
-        public bool IsPlayingClip(AnimationClip clip)
-        {
-            if (_Playable != null)
-                return _Playable.IsPlayingClip(clip);
-            else
-                return false;
-        }
+        public bool IsPlayingClip(AnimationClip clip) => _Playable != null && _Playable.IsPlayingClip(clip);
 
         /************************************************************************************************************************/
 
         /// <summary>
         /// Evaluates all of the currently playing animations to apply their states to the animated objects.
         /// </summary>
-        public void Evaluate()
-        {
-            Playable.Evaluate();
-        }
+        public void Evaluate() => Playable.Evaluate();
 
         /// <summary>
         /// Advances all currently playing animations by the specified amount of time (in seconds) and evaluates the
         /// graph to apply their states to the animated objects.
         /// </summary>
-        public void Evaluate(float deltaTime)
-        {
-            Playable.Evaluate(deltaTime);
-        }
+        public void Evaluate(float deltaTime) => Playable.Evaluate(deltaTime);
 
         /************************************************************************************************************************/
         #region Key Error Methods
@@ -760,10 +616,7 @@ namespace Animancer
         /// Just check <see cref="AnimancerState.IsPlaying"/>.
         /// </summary>
         [Obsolete("You should not use an AnimancerState as a key. Just check AnimancerState.IsPlaying.", true)]
-        public bool IsPlaying(AnimancerState key)
-        {
-            return key.IsPlaying;
-        }
+        public bool IsPlaying(AnimancerState key) => key.IsPlaying;
 
         /************************************************************************************************************************/
 #endif
@@ -777,18 +630,18 @@ namespace Animancer
         /************************************************************************************************************************/
 
         /// <summary>
-        /// Returns an enumerator that will iterate through all states in each layer (not states inside mixers).
+        /// Returns an enumerator that will iterate through all states in each layer (but not sub-states).
         /// </summary>
         public IEnumerator<AnimancerState> GetEnumerator()
         {
             if (!IsPlayableInitialised)
                 yield break;
 
-            foreach (var state in _Playable.Layers.GetAllStateEnumerable())
+            foreach (var state in _Playable)
                 yield return state;
         }
 
-        IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         /************************************************************************************************************************/
         // IEnumerator for yielding in a coroutine to wait until all animations have stopped.
@@ -806,7 +659,7 @@ namespace Animancer
         }
 
         /// <summary>Returns null.</summary>
-        object IEnumerator.Current { get { return null; } }
+        object IEnumerator.Current => null;
 
 #pragma warning disable UNT0006 // Incorrect message signature.
         /// <summary>Does nothing.</summary>
@@ -830,6 +683,8 @@ namespace Animancer
 
             ObjectPool.Release(set);
         }
+
+        /************************************************************************************************************************/
 
         /// <summary>[<see cref="IAnimationClipCollection"/>]
         /// Gathers all the animations in the <see cref="Playable"/>.

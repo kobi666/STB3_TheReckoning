@@ -10,8 +10,8 @@ namespace Animancer.Examples.Basics
     /// <summary>
     /// Plays through a series of animations in a sequence using a coroutine.
     /// </summary>
-    [AddComponentMenu(Strings.MenuPrefix + "Examples/Basics - Sequence Coroutine")]
-    [HelpURL(Strings.APIDocumentationURL + ".Examples.Basics/SequenceCoroutine")]
+    [AddComponentMenu(Strings.ExamplesMenuPrefix + "Basics - Sequence Coroutine")]
+    [HelpURL(Strings.ExampleAPIDocumentationURL + nameof(Basics) + "/" + nameof(SequenceCoroutine))]
     public sealed class SequenceCoroutine : MonoBehaviour
     {
         /************************************************************************************************************************/

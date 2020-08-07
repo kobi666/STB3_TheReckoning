@@ -141,7 +141,7 @@ public class SelectorTest2 : MonoBehaviour
             //transform.position = towerSlotGO.transform.position;
             SelectedTowerSlot = towerSlotGO;
             StartCoroutine(SelectorUtils.SmoothMove(transform,towerSlotGO.transform.position,0.3f));
-            Debug.LogWarning("On Move : " + TowerObjectController.TowerActions.ButtonSouth.ActionDescription);
+            //Debug.LogWarning("On Move : " + TowerObjectController.TowerActions.ButtonSouth.ActionDescription);
             
             
             //Debug.LogWarning(TowerActions.ButtonSouth.ActionDescription);
