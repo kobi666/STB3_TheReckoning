@@ -13,50 +13,37 @@ public class ArcingProjectile : MonoBehaviour
     public bool init = false;
     public bool init2 = false;
 
-    public void MoveInArc(Vector2 targetPos) {
-        if (init == false) {
-            MaximumArcValue = Vector2.Distance(transform.position, targetPos);
-            init = true;
-        }
-        bool reachedHighestPoint = false;
-        float targetY = (targetPos.y + MaximumArcValue) / 2;
-        transform.position = new Vector2(Mathf.SmoothStep(transform.position.x, targetPos.x, speed * Time.deltaTime), Mathf.SmoothStep(transform.position.y, targetY,(speed * Time.deltaTime) * 2));
-        if (transform.position.y >= targetY && init2 == false) {
-            reachedHighestPoint = true;
-            targetY = targetPos.y;
-            init2 = true;
-        }
-    }
+    
 
     public float MovementDuration = 1.5f;
 
-    public IEnumerator MoveInArcAndInvokeEvent(Vector2 TargetPosition) {
-        float startTime = Time.time;
-        float t;
-        Action act = delegate { Debug.LogWarning("I reached");};
-        float distanceToTargetPos = Vector2.Distance(transform.position,TargetPosition);
-        float targetY = transform.position.y + (distanceToTargetPos / 2);
-        while ((Vector2)transform.position != TargetPosition) {
-            t = (Time.time - startTime) / MovementDuration;
-            if (transform.position.y >= targetY - 0.10f) {
-                targetY = TargetPosition.y;
-            }
-            // transform.position = new Vector2(Mathf.SmoothStep(transform.position.x, TargetPosition.x, t), 
-            // Mathf.SmoothStep(transform.position.y, targetY, t * 2));
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(TargetPosition.x, transform.position.y), speed * Time.deltaTime);
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, targetY), (speed * Time.deltaTime));
-            yield return new WaitForFixedUpdate();
-        }
-        act.Invoke();
-        yield break;
+
+
+
+
+public IEnumerator MoveInArc3(Vector2 targetPos) {
+    //point[1] = point[0] +(point[2] -point[0])/2 +Vector3.up *5.0f;
+    Vector2 initPos = transform.position;
+    Vector2 middlePos = initPos + (targetPos - initPos) / 2 + Vector2.down * MaximumArcValue;
+    float count = 0;
+    while (count < 1.0f) {
+        count += Time.deltaTime * speed;
+
+        Vector2 m1 = Vector2.Lerp( initPos, middlePos, count );
+        Vector3 m2 = Vector2.Lerp( middlePos, targetPos, count );
+        transform.position = Vector2.Lerp(m1, m2, count);
+        yield return new WaitForFixedUpdate();
     }
+    yield break;
+}
 
     
 
     public GameObject pfp;
     void Start()
     {
-        StartCoroutine( MoveInArcAndInvokeEvent(pfp.transform.position));
+        //StartCoroutine( MoveInArcAndInvokeEvent(pfp.transform.position));
+        StartCoroutine(MoveInArc3(pfp.transform.position));
     }
 
     
