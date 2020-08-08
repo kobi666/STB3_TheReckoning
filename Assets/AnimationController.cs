@@ -35,7 +35,6 @@ public abstract class AnimationController : MonoBehaviour
         CurrentAnimationState.Stop();
         var state = animancer.Play(clip);
         state.Events.OnEnd += delegate { state.IsPlaying = false;};
-
         }
     }
 
@@ -43,14 +42,19 @@ public abstract class AnimationController : MonoBehaviour
         if (clip != null) {
         CurrentAnimationState?.Stop();
         var state = animancer.Play(clip);
+        Debug.LogWarning("Animation Started at" + Time.time + " " + name);
+        state.Events.OnEnd += delegate {Debug.LogWarning("On End called at " +  Time.time +  " " + name);};
         state.Events.OnEnd += delegate { state.IsPlaying = false;};
         state.Events.OnEnd += OnEndAction;
+        //state.Events.OnEnd += delegate {gameObject.SetActive(false);};
+        state.Events.OnEnd += delegate { state.Events.OnEnd = null;};
         }
     }
     // Start is called before the first frame update
     public AnimancerComponent animancer;
     public abstract void PostAwake();
     private void Awake() {
+        Animancer.WarningType.EndEventInterrupt.Disable();
         animancer = GetComponent<AnimancerComponent>() ?? null;
         PostAwake();
     }

@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugTargetNames: []
   rangeDetector: {fileID: 6264660785862362693}
 --- !u!58 &1273832889504559229
 CircleCollider2D:

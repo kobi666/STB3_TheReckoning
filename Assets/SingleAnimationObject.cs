@@ -17,14 +17,18 @@ public class SingleAnimationObject : AnimationController,IQueueable<SingleAnimat
     }
 
     
-    public void PlayOnceAndEnqueue() {
+    public void PlayOnceAndDisable() {
         if (AnimationClip != null) {
-            PlayFiniteAnimationWithAction(AnimationClip, delegate {QueuePool?.ObjectQueue.Enqueue(this);});
+            PlayFiniteAnimationWithAction(AnimationClip, delegate {gameObject.SetActive(false);});
         }
         else if (AnimationClip == null) {
             gameObject.SetActive(false);
-            QueuePool?.ObjectQueue.Enqueue(this);
         }
+    }
+
+    void OnDisable()
+    {
+        QueuePool?.ObjectQueue.Enqueue(this);
     }
     
 }

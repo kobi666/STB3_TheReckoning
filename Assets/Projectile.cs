@@ -35,7 +35,7 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActive
         targetPositionSet = true;
         }}
     public bool targetPositionSet = false;
-
+    
     public float speed = 5;
     public int Damage;
 
@@ -45,7 +45,7 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActive
         SingleAnimationObject sao = onHitAnimationQueuePool.Get();
         sao.transform.position = transform.position;
         sao.gameObject.SetActive(true);
-        sao.PlayOnceAndEnqueue();
+        sao.PlayOnceAndDisable();
     }
 
 
@@ -55,7 +55,7 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActive
     }
 
     public abstract void PostAwake();
-    void Awake()
+    protected void  Awake()
     {
         if (OnHitAnimation != null) {
         onHitAnimationQueuePool = GameObjectPool.Instance.GetSingleAnimationObjectQueue(OnHitAnimation);

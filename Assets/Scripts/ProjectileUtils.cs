@@ -9,11 +9,7 @@ public class ProjectileUtils
         return pool.Get();
     }
 
-    // public static void SpawnProjectileWithTargetEnemyController(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, EnemyUnitController targetUnit) {
-    //     Projectile proj = SpawnProjectileFromPool(pool);
-    //     proj.transform.position = exitPoint;
-    //     proj.TargetUnit = targetUnit;
-    // }
+    
 
     public static void SpawnProjectileWithTargetEnemyController(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Effectable targetEffectable) {
         Projectile proj = SpawnProjectileFromPool(pool);
@@ -34,20 +30,14 @@ public class ProjectileUtils
         return proj;
     }
 
-    // public static Projectile SpawnDirectHitTargetFacingProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, Quaternion direction, EnemyTargetBank targetBank, int damage) {
-    //     Projectile proj = SpawnTargetPositionFacingProjectile(pool,exitPoint,targetPosition,direction);
-    //     proj.TargetBank = targetBank;
-    //     proj.Damage = damage;
-    //     return proj;
-    // }
-
+    
     public static Projectile SpawnDirectHitTargetFacingProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, Quaternion direction, int damage) {
         Projectile proj = SpawnTargetPositionFacingProjectile(pool,exitPoint,targetPosition,direction);
         proj.Damage = damage;
         return proj;
     }
 
-    public static void MoveUntilReachedTargetPosition(Transform self, Vector2 targetPosition, float speed, Action onTargetPositionReach) {
+    public static void MoveStraightUntilReachedTargetPosition(Transform self, Vector2 targetPosition, float speed, Action onTargetPositionReach) {
         if ((Vector2)self.position != targetPosition) {
         self.position = Vector2.MoveTowards(self.position,targetPosition,speed * StaticObjects.instance.DeltaGameTime);
         }

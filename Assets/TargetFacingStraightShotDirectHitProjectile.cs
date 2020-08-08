@@ -5,10 +5,9 @@ using System;
 
 public class TargetFacingStraightShotDirectHitProjectile : DirectHitProjectile
 {
-    
     public override void MovementFunction() {
         if (targetPositionSet == true) {
-            ProjectileUtils.MoveUntilReachedTargetPosition(transform,TargetPosition,speed,OnTargetPositionReached);
+            ProjectileUtils.MoveStraightUntilReachedTargetPosition(transform,TargetPosition,speed,OnTargetPositionReached);
         }
     }
 
@@ -17,7 +16,6 @@ public class TargetFacingStraightShotDirectHitProjectile : DirectHitProjectile
     }
 
     public override void PostAwake() {
-        
         onTargetPositionReached += delegate {gameObject.SetActive(false);};
     }
 
