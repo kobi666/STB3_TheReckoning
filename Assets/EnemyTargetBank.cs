@@ -14,8 +14,6 @@ public class EnemyTargetBank : MonoBehaviour
 
     public CircleCollider2D RangeCollider;
 
-    public event Action<EnemyUnitController> onConcurrentProximityCheck;
-
     public EnemyUnitController CurrentLowestProximityTarget;
     public string CurrentLowestProximtyTargetName;
 
@@ -56,27 +54,8 @@ public class EnemyTargetBank : MonoBehaviour
             }
         }
     }
-    IEnumerator proxyCheckPH;
 
-    public void initProxyCheck() {
-        StopCoroutine(proxyCheckPH);
-        StartCoroutine(proxyCheckPH);
-    }
-    // public IEnumerator LiveProximtyCheck() {
-    //     if (targets.Count > 1) {
-    //         float currentLowestProximty = 999.0f; 
-    //         while (targets.Count > 1) {
-    //             foreach (var item in targets)
-    //             {
-    //                 if (item.Value.Proximity < currentLowestProximty) {
-    //                     Debug.LogWarning(item.Value.name + " Has lower Proximity");
-    //                 }
-    //             }
-    //             yield return new WaitForFixedUpdate();
-    //         }
-    //     }
-    //     yield break;
-    // }
+    
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Enemy")) {

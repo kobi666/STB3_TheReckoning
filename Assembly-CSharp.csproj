@@ -47,9 +47,6 @@
      <Compile Include="Assets\AnimationcontrollerTest.cs" />
      <Compile Include="Assets\ArcingProjectile.cs" />
      <Compile Include="Assets\AreaOfEffectController.cs" />
-     <Compile Include="Assets\AwakeTest.cs" />
-     <Compile Include="Assets\AwakeTest2.cs" />
-     <Compile Include="Assets\AwakeTest3.cs" />
      <Compile Include="Assets\BasicMeleePlayerUnit.cs" />
      <Compile Include="Assets\CoroutineTest.cs" />
      <Compile Include="Assets\CrosshairTest.cs" />
@@ -189,6 +186,7 @@
      <Compile Include="Assets\UnitData.cs" />
      <Compile Include="Assets\UnitSpawnerTowerController.cs" />
      <Compile Include="Assets\WeaponRotator.cs" />
+     <Compile Include="Assets\arcingAOEProjectile.cs" />
      <Compile Include="Assets\sometest.cs" />
      <Compile Include="Assets\testEnemyController.cs" />
      <Compile Include="Assets\testRotation.cs" />

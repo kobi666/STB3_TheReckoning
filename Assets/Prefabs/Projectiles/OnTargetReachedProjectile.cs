@@ -5,35 +5,32 @@ using System;
 
 public abstract class OnTargetReachedProjectile : Projectile
 {
-    public bool TargetReachedCalled = false;
-    public void RunMovementFunctionUntilTargetReachedAndInvokeActionInTheEnd() {
-        if (targetPositionSet == true) {
-            if ((Vector2)transform.position != TargetPosition) {
-                MovementFunction();
-            }
-            else if ((Vector2)transform.position == TargetPosition) {
-                if (TargetReachedCalled == false) {
-                    OnTargetPositionReached();
-                    TargetReachedCalled = true;
-                }
-            }
-        }
-    }
+    public IEnumerator movementCoroutine;
+
     public abstract void OnTargetReachedAction();
+
+    public abstract IEnumerator MovementCoroutine {get;set;}
     
     public event Action onTargetPositionReached;
     public void OnTargetPositionReached() {
         onTargetPositionReached?.Invoke();
     }
 
-    public override void PostAwake() {
+    protected void Awake() {
+        base.Awake();
+        onTargetPositionReached += OnTargetReachedAction;
         onTargetPositionReached += delegate {PlayOnHitAnimation(null);};
+        onTargetPositionReached += delegate {gameObject.SetActive(false);};
     }
 
-    void Update()
+    
+    
+    protected void Start()
     {
-        RunMovementFunctionUntilTargetReachedAndInvokeActionInTheEnd(); 
+        StartCoroutine(movementCoroutine);   
     }
+
+     
 
     
 
