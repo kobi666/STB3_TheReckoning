@@ -5,6 +5,8 @@ using System;
 
 public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActiveObject<Projectile>
 {
+    public Type QueueableType {get;set;}
+    public ProjectileData Data = new ProjectileData();
     public void OnEnqueue() {
         
     }
@@ -26,18 +28,16 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActive
     PoolObjectQueue<Projectile> queuePool;
     public PoolObjectQueue<Projectile> QueuePool {get => queuePool;set{queuePool = value;}}
     // Start is called before the first frame update
-    Effectable targetUnit;
-    public Effectable TargetUnit { get => targetUnit ; set { targetUnit = value;}}
+    public Effectable EffectableTarget { get => Data.EffectableTarget ; set { Data.EffectableTarget = value;}}
 
-    Vector2 targetPosition = Vector2.zero;
-    public Vector2 TargetPosition { get => targetPosition; set {
-        targetPosition = value;
+    public Vector2 TargetPosition { get => Data.TargetPosition; set {
+        Data.TargetPosition = value;
         targetPositionSet = true;
         }}
     public bool targetPositionSet = false;
     
-    public float speed = 5;
-    public int Damage;
+    public float speed {get => Data.Speed ; set {Data.Speed = value;}}
+    public int Damage { get => Data.Damage ; set {Data.Damage = value;}}
 
     public abstract void AdditionalOnDisableActions();
 
@@ -51,7 +51,7 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActive
 
     void OnEnable()
     {
-        ActivePool.AddObjectToActiveObjectPool(this);
+        ActivePool?.AddObjectToActiveObjectPool(this);
     }
 
     public abstract void PostAwake();
@@ -65,12 +65,11 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActive
         PostAwake();
     }
 
-    private void OnDisable() {
+    protected void OnDisable() {
         TargetPosition = transform.position;
         targetPositionSet = false;
-        TargetUnit = null;
-        //TargetBank = null;
-        QueuePool.ObjectQueue.Enqueue(this);
+        EffectableTarget = null;
+        QueuePool?.ObjectQueue.Enqueue(this);
         GameObjectPool.Instance.RemoveObjectFromAllPools(name);
         AdditionalOnDisableActions();
     }

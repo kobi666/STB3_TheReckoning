@@ -336,6 +336,35 @@ public class  DamageRange {
 }
 
 [System.Serializable]
+public class ProjectileData {
+
+    [SerializeField]
+    public float Speed;
+    [SerializeField]
+    public int Damage;
+
+    [SerializeField]
+    public float ArcValue;
+    [SerializeField]
+    public Effectable EffectableTarget;
+    [SerializeField]
+    public Vector2 TargetPosition;
+
+    [SerializeField]
+    public EffectableTargetBank TargetBank;
+    [SerializeField]
+    public RangeDetector RangeDetector;
+}
+
+public class Queueable : Component, IQueueable<Queueable> {
+    public Type QueueableType {get;set;}
+
+    public PoolObjectQueue<Queueable> QueuePool {get;set;}
+
+    public void OnEnqueue() {}
+}
+
+[System.Serializable]
 public class TargetWithProximityToEndOfSpline {
 
     GameObject go;

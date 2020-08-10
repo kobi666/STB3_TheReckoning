@@ -6,6 +6,7 @@ using Animancer;
 
 public abstract class AreaOfEffectController : MonoBehaviour,IQueueable<AreaOfEffectController>
 {
+    public Type QueueableType {get;set;}
     public Effector Effector;
     EffectableTargetBank TargetBank;
     public event Action onEffectTrigger;

@@ -71,18 +71,24 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     
     void Awake()
     {
+        //rangeDetector =  GetComponent<RangeDetector>() ?? GetComponentInChildren<RangeDetector>() ?? null;
         onTryToAddTarget += AddTarget;
         onTargetRemove += RemoveTarget;
         onTargetAdd += AddNamesToDebugList;
         onTargetRemove += removeNameFromDebugList;
         
     }
+
+    public void InitRangeDetectorEvents() {
+        if (rangeDetector != null) {
+        rangeDetector.onTargetEnter += OnTryToAddTarget;
+        rangeDetector.onTargetExit += OnTargetRemove;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
-        //rangeDetector = transform.parent?.GetComponentInChildren<RangeDetector>() ?? GetComponent<RangeDetector>() ?? null;
-        rangeDetector.onTargetEnter += OnTryToAddTarget;
-        rangeDetector.onTargetExit += OnTargetRemove;
+        InitRangeDetectorEvents();
         DeathManager.instance.onEnemyUnitDeath += OnTargetRemove;
         DeathManager.instance.onPlayerUnitDeath += OnTargetRemove;
         GameObjectPool.Instance.onObjectDisable += OnTargetRemove;

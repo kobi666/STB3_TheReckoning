@@ -32,6 +32,7 @@ public interface IOrbital<T> {
 }
 
 public interface IQueueable<T> where T : Component, IQueueable<T> {
+    Type QueueableType {get;set;}
     PoolObjectQueue<T> QueuePool {get;set;}
     void OnEnqueue();
 }

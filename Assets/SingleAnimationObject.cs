@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SingleAnimationObject : AnimationController,IQueueable<SingleAnimationObject>
 {
-    
+    public Type QueueableType {get;set;}
     public AnimationClip AnimationClip = null;
     public PoolObjectQueue<SingleAnimationObject> QueuePool {get;set;}
 

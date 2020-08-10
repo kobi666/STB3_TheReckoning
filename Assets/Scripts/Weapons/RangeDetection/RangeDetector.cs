@@ -4,8 +4,14 @@ using UnityEngine;
 using System;
 
 [RequireComponent(typeof(CircleCollider2D))]
-public class RangeDetector : MonoBehaviour
+public class RangeDetector : MonoBehaviour,IQueueable<RangeDetector>
 {
+    public Type QueueableType {get;set;}
+    public void OnEnqueue() {
+
+    }
+    PoolObjectQueue<RangeDetector> queuePool;
+    public PoolObjectQueue<RangeDetector> QueuePool { get;set;}
     public CircleCollider2D RangeCollider;
     [TagSelector]
      public string[] DiscoverableTags = new string[] { };
@@ -57,6 +63,12 @@ public class RangeDetector : MonoBehaviour
             DiscoverableTagsList.Add(item);
             }
         }
+    }
+
+    
+    void OnDisable()
+    {
+        QueuePool?.ObjectQueue.Enqueue(this);
     }
 
 

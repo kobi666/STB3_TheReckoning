@@ -8,6 +8,7 @@ using Animancer;
 
 public abstract class UnitController : MonoBehaviour,IQueueable<UnitController>,IActiveObject<UnitController>
 {
+    public Type QueueableType {get;set;}
     public virtual void OnEnqueue() {}
     public ActiveObjectPool<UnitController> activePool;
     public ActiveObjectPool<UnitController> ActivePool {get => activePool;set { activePool = value;}}

@@ -5,11 +5,15 @@ using System;
 
 public abstract class OnTargetReachedProjectile : Projectile
 {
-    public IEnumerator movementCoroutine;
+    public event Action<IEnumerator, ProjectileData> onUpdateMovementCoroutine;
+    public void OnUpdateMovementCoroutine(IEnumerator newMovementCoroutine, ProjectileData projectileData) {
+        onUpdateMovementCoroutine?.Invoke(newMovementCoroutine, projectileData);
+    }
+    public IEnumerator MovementCoroutine = null;
 
     public abstract void OnTargetReachedAction();
 
-    public abstract IEnumerator MovementCoroutine {get;set;}
+    
     
     public event Action onTargetPositionReached;
     public void OnTargetPositionReached() {
@@ -25,10 +29,27 @@ public abstract class OnTargetReachedProjectile : Projectile
 
     
     
-    protected void Start()
-    {
-        StartCoroutine(movementCoroutine);   
+    protected void Start() {
+
+        if (MovementCoroutine != null) {
+            StartCoroutine(MovementCoroutine);
+        }
+        else if (MovementCoroutine == null) {
+            Debug.LogWarning("Movement Couroutine is null", gameObject);
+        }
     }
+    
+         
+    
+
+    
+    protected void OnDisable()
+    {
+        base.OnDisable();
+        StopAllCoroutines();
+    }
+
+    
 
      
 

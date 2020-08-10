@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class arcingAOEProjectile : OnTargetReachedProjectile
 {
-
-    RangeDetector rangeDetector;
+    public GameObject TestTarget;
+    RangeDetector RangeDetector;
+    public RangeDetector RangeDetectorPrefab;
+    
+    
     EffectableTargetBank TargetBank;
-    public override IEnumerator MovementCoroutine { get => movementCoroutine ; set { movementCoroutine = value;}}
+    
     public override void OnTargetReachedAction() {
 
     }
@@ -23,21 +26,54 @@ public class arcingAOEProjectile : OnTargetReachedProjectile
 
     }
 
-    
+    // IEnumerator MoveTargetDetectorToTargetPosition() {
+    //     Transform rangeDetector = RangeDetector.transform;
+    //     rangeDetector.position = (Vector2)transform.position - TargetPosition;
+    //     while ((Vector2)rangeDetector.transform.position != TargetPosition) {
+    //         rangeDetector.position = Vector2.MoveTowards(rangeDetector.position, TargetPosition, Data.Speed * 3);
+    //         yield return new WaitForFixedUpdate();
+    //     }
+    //     yield break;
+    // }
+
+    IEnumerator MoveRangeDetectorToTargetpositionAheadofself() {
+        Transform rdt = RangeDetector.transform;
+        rdt.position = (Vector2)transform.position - TargetPosition;
+        while ((Vector2)rdt.position != TargetPosition) {
+            rdt.position = Vector2.MoveTowards(rdt.position,TargetPosition,speed * 10);
+            yield return new WaitForFixedUpdate();
+        }
+        yield break;
+    }
     protected void Awake()
     {
+        PoolObjectQueue<RangeDetector> rdq = GameObjectPool.Instance.GetRangeDetectorQueue(RangeDetectorPrefab);
+        RangeDetector = rdq.Get();
         base.Awake();
     }
     
     // Start is called before the first frame update
     protected void Start()
     {
-      rangeDetector = GetComponentInChildren<RangeDetector>() ?? null;
-      TargetBank = GetComponent<EffectableTargetBank>() ?? null;
-      rangeDetector.transform.position = new Vector2(TargetPosition.x)  
+        TargetPosition = TestTarget.transform.position;
+      MovementCoroutine = ProjectileUtils.MoveInArc(transform,TargetPosition, Data.ArcValue,Data.Speed,OnTargetReachedAction);
       base.Start();
+      
+      TargetBank = GetComponent<EffectableTargetBank>() ?? null;
+      TargetBank.rangeDetector = RangeDetector;
+      TargetBank.InitRangeDetectorEvents();
+      StartCoroutine(MoveRangeDetectorToTargetpositionAheadofself());
     }
 
-    // Update is called once per frame
+    protected void Update() {
+        
+    }
+
+    
+    void OnDisable()
+    {
+        RangeDetector.gameObject.SetActive(false);
+        base.OnDisable();
+    }
     
 }

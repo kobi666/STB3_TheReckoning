@@ -7,7 +7,7 @@ public class ProjectileUtils
 {
 
 
-    
+
     public static Projectile SpawnProjectileFromPool(PoolObjectQueue<Projectile> pool) {
         return pool.Get();
     }
@@ -17,7 +17,7 @@ public class ProjectileUtils
     public static void SpawnProjectileWithTargetEnemyController(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Effectable targetEffectable) {
         Projectile proj = SpawnProjectileFromPool(pool);
         proj.transform.position = exitPoint;
-        proj.TargetUnit = targetEffectable;
+        proj.EffectableTarget = targetEffectable;
     }
 
     public static Projectile SpawnProjectileWithTargetPosition(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition) {
@@ -49,7 +49,7 @@ public class ProjectileUtils
         }
     }
 
-    public IEnumerator MoveInArc(Transform projectileTransform, Vector2 targetPos, float arcValue, float speed, Action action) {
+    public static IEnumerator MoveInArc(Transform projectileTransform, Vector2 targetPos, float arcValue, float speed, Action action) {
     //point[1] = point[0] +(point[2] -point[0])/2 +Vector3.up *5.0f;
     Vector2 initPos = projectileTransform.position;
     Vector2 arcDirection = Vector2.up;

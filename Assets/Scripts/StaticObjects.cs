@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StaticObjects : MonoBehaviour
 {
-    
+    public RangeDetector RangeDetector;
     public float GameTimeMultiplier = 1.0000f;
     public float GameTime = 0.0000f;
     // Start is called before the first frame update

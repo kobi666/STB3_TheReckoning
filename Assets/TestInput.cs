@@ -5,6 +5,8 @@ using System;
 
 public class TestInput : MonoBehaviour
 {
+
+    
     public float Distance = 1;
     public static Vector2 RadianToVector2(float radian)
         {
