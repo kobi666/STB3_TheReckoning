@@ -4,6 +4,47 @@ using UnityEngine;
 using System;
 
 
+[System.Serializable]
+
+public class PoolObjectQueueDictionariesContainer<T> where T : Component,IQueueable<T> {
+    public Dictionary<string, Dictionary<string,PoolObjectQueue<T>>> AllDictionaries = new Dictionary<string, Dictionary<string, PoolObjectQueue<T>>>();
+
+    public (string,T) GetQueueableType(T t) {
+
+        Type componentType = t.QueueableType;
+        if (componentType == null) {
+            Debug.LogWarning("Queueable Type is NULL!!");
+            return (null,null);
+        }
+        string TypeName = componentType.FullName;
+        return (TypeName,componentType as T);
+    }
+
+    public Dictionary<string,PoolObjectQueue<T>> AddOrGetNewTypeDictionary(T t) {
+        (string,T) tempT = GetQueueableType(t);
+        if (tempT.Item2 != null) {
+            if (!AllDictionaries.ContainsKey(tempT.Item1)) {
+                AllDictionaries.Add(tempT.Item1, new Dictionary<string, PoolObjectQueue<T>>());
+                return AllDictionaries[tempT.Item1];
+            }
+            else if (AllDictionaries.ContainsKey(tempT.Item1)) {
+                return AllDictionaries[tempT.Item1];
+            }
+        }
+        Debug.LogWarning("Could not add type " + tempT.Item1 + " To all Dictionaries for some reason..");
+        return null;
+    }
+}
+
+public class QueueableType<T> where T: Component,IQueueable<T> {
+    public string QueueableTypeName;
+    public Type Queueable_Type;
+
+    public QueueableType (T t) {
+        QueueableTypeName = t.QueueableType.FullName;
+        Queueable_Type = t.QueueableType;
+    }
+}
 
 
 
@@ -340,6 +381,9 @@ public class ProjectileData {
 
     [SerializeField]
     public float Speed;
+
+    [SerializeField]
+    public float EffectRadius;
     [SerializeField]
     public int Damage;
 

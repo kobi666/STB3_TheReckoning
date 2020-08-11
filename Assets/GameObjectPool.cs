@@ -5,31 +5,6 @@ using System;
 
 public class GameObjectPool : MonoBehaviour
 {
-
-    
-    public void AddTypeToQueueableTypes(Type type) {
-         if (!QueuableTypes.Contains(type)) {
-             QueuableTypes.Add(type);
-         }
-    }
-
-    public void CreateNewTypeQueuePool(Type type) {
-        if (!AllObjectPoolObjectQueueDictionaries.ContainsKey(type.FullName)) {
-          Type[] interfaces = type.GetInterfaces();
-          for (int i = 0; i < interfaces.Length; i++)
-          {
-              if (interfaces[i].IsGenericType && interfaces[i].GetGenericTypeDefinition() == typeof(IQueueable<>)) {
-                  AllObjectPoolObjectQueueDictionaries.Add(type.FullName, new Dictionary<string, PoolObjectQueue<Queueable>>());
-              }
-          }
-        }
-    }
-
-
-
-    List<Type> QueuableTypes = new List<Type>();
-    public Dictionary<string, Dictionary<string, PoolObjectQueue<Queueable>>>  AllObjectPoolObjectQueueDictionaries = new Dictionary<string, Dictionary<string, PoolObjectQueue<Queueable>>>();
-
     public Dictionary<string, PoolObjectQueue<RangeDetector>> RangeDetectorObjectPoolQueue = new Dictionary<string, PoolObjectQueue<RangeDetector>>();
     public Dictionary<string, PoolObjectQueue<Projectile>> ProjectilesObjectPoolQueue = new Dictionary<string, PoolObjectQueue<Projectile>>();
     public Dictionary<string, PoolObjectQueue<UnitController>> UnitObjectPoolQueue = new Dictionary<string, PoolObjectQueue<UnitController>>();
@@ -50,7 +25,9 @@ public class GameObjectPool : MonoBehaviour
         dict.Add(prefab.name, new PoolObjectQueue<T>(prefab, 20,placeholder));
     }
 
-    
+    public PoolObjectQueue<T> GetOrCreateObjectQueue<T>(T t) where T : Component,IQueueable<T> {
+        return null;
+    }
 
     public PoolObjectQueue<Projectile> GetProjectileQueue(Projectile prefab) {
         if (ProjectilesObjectPoolQueue.ContainsKey(prefab.name)) {

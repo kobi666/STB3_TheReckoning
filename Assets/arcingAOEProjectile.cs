@@ -26,21 +26,12 @@ public class arcingAOEProjectile : OnTargetReachedProjectile
 
     }
 
-    // IEnumerator MoveTargetDetectorToTargetPosition() {
-    //     Transform rangeDetector = RangeDetector.transform;
-    //     rangeDetector.position = (Vector2)transform.position - TargetPosition;
-    //     while ((Vector2)rangeDetector.transform.position != TargetPosition) {
-    //         rangeDetector.position = Vector2.MoveTowards(rangeDetector.position, TargetPosition, Data.Speed * 3);
-    //         yield return new WaitForFixedUpdate();
-    //     }
-    //     yield break;
-    // }
-
     IEnumerator MoveRangeDetectorToTargetpositionAheadofself() {
         Transform rdt = RangeDetector.transform;
         rdt.position = (Vector2)transform.position - TargetPosition;
         while ((Vector2)rdt.position != TargetPosition) {
-            rdt.position = Vector2.MoveTowards(rdt.position,TargetPosition,speed * 10);
+            
+            rdt.position = Vector2.MoveTowards(rdt.position,TargetPosition,speed * 1.5f);
             yield return new WaitForFixedUpdate();
         }
         yield break;
@@ -65,11 +56,6 @@ public class arcingAOEProjectile : OnTargetReachedProjectile
       StartCoroutine(MoveRangeDetectorToTargetpositionAheadofself());
     }
 
-    protected void Update() {
-        
-    }
-
-    
     void OnDisable()
     {
         RangeDetector.gameObject.SetActive(false);
