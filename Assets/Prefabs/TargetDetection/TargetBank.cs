@@ -71,7 +71,8 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     
     void Awake()
     {
-        //rangeDetector =  GetComponent<RangeDetector>() ?? GetComponentInChildren<RangeDetector>() ?? null;
+        
+        rangeDetector =  GetComponentInChildren<RangeDetector>() ?? rangeDetector ?? null;
         onTryToAddTarget += AddTarget;
         onTargetRemove += RemoveTarget;
         onTargetAdd += AddNamesToDebugList;

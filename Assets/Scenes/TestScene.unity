@@ -1651,7 +1651,7 @@ GameObject:
   - component: {fileID: 1552441128}
   - component: {fileID: 1552441127}
   - component: {fileID: 1552441126}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArcingAOEProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1694,8 +1694,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -526778269
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2613247888821195678, guid: aa45a3a6aa2c8404d9762fc77842b2c2,
     type: 3}
@@ -1737,13 +1737,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     Speed: 1
+    EffectRadius: 0
     Damage: 0
-    ArcValue: 4
+    ArcValue: 7
     EffectableTarget: {fileID: 0}
     TargetPosition: {x: 0, y: 0}
     TargetBank: {fileID: 0}
     RangeDetector: {fileID: 0}
-  OnHitAnimation: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  OnHitAnimation: {fileID: 7705615216159269146, guid: b09aca2b552e999459ebaa57a34119eb,
+    type: 3}
   targetPositionSet: 0
   TestTarget: {fileID: 1890939937}
   RangeDetectorPrefab: {fileID: 5142296622837540743, guid: 0136b884f776412409c134b6ba98b7cf,
@@ -1756,7 +1759,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1552441125}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.1, y: -0.79, z: 1.5214844}
+  m_LocalPosition: {x: -7.64, y: -0.4, z: 1.5214844}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2859,7 +2862,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890939937}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.39, y: 2.4, z: 0}
+  m_LocalPosition: {x: -0.75, y: -0.69, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3126,6 +3129,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8210630034806055046, guid: b09aca2b552e999459ebaa57a34119eb,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: -8210630034806055046, guid: b09aca2b552e999459ebaa57a34119eb,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.175
+      objectReference: {fileID: 0}
+    - target: {fileID: -8210630034806055046, guid: b09aca2b552e999459ebaa57a34119eb,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7705615216159269145, guid: b09aca2b552e999459ebaa57a34119eb,
         type: 3}
       propertyPath: m_LocalPosition.x

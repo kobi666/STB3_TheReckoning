@@ -54,10 +54,14 @@ MonoBehaviour:
     OrbitingSpeed: 0
     RotationSpeed: 0
     PlayerUnitPrefab: {fileID: 0}
+    EffectableTarget: {fileID: 0}
+    TargetUnit:
+      unitController: {fileID: 0}
+      effectable: {fileID: 0}
     MaxUnits: 0
     PlayerUnitSpawnTime: 0
     OrbitBase: {fileID: 0}
-    OrbitalGunPrefab: {fileID: 9140078121220912564, guid: 902e54a590cc5ac4ba2e368165662c9c,
+    OrbitalGunPrefab: {fileID: 1285039470, guid: 22d0d1d5df937ff4c85f0255cf2f97f4,
       type: 3}
     MaxNumberOfOrbitals: 6
     ProjectilePrefab: {fileID: 0}
@@ -68,6 +72,7 @@ MonoBehaviour:
     enemyTarget: {fileID: 0}
     playerTarget: {fileID: 0}
   ParentTower: {fileID: 0}
+  RangeDetector: {fileID: 0}
   RangeCollider: {fileID: 0}
 --- !u!212 &929528369630166996
 SpriteRenderer:

@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 1273832889504559218}
   - component: {fileID: 1273832889504559219}
   - component: {fileID: 1273832889504559228}
-  - component: {fileID: 1273832889504559229}
-  - component: {fileID: 1273832889504559230}
+  - component: {fileID: 7747227131221480630}
   m_Layer: 0
   m_Name: OrbitalGunGeneric
   m_TagString: Untagged
@@ -28,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1273832889504559231}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.22, y: 3.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6264660785862362692}
@@ -101,23 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugTargetNames: []
   rangeDetector: {fileID: 6264660785862362693}
---- !u!58 &1273832889504559229
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273832889504559231}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.41
---- !u!114 &1273832889504559230
+--- !u!114 &7747227131221480630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,8 +117,8 @@ MonoBehaviour:
   Data:
     Radius: 3
     DistanceFromRotatorBase: 1.5
-    OrbitingSpeed: 20
-    RotationSpeed: 20
+    OrbitingSpeed: 10
+    RotationSpeed: 10
     PlayerUnitPrefab: {fileID: 0}
     EffectableTarget: {fileID: 0}
     TargetUnit:
@@ -149,13 +132,13 @@ MonoBehaviour:
     ProjectilePrefab: {fileID: 5882499641662690262, guid: f21a1d072317d5a428476205f0acd37a,
       type: 3}
     damageRange:
-      min: 50
-      max: 100
-    FireRate: 60
+      min: 10
+      max: 10
+    FireRate: 10
     enemyTarget: {fileID: 0}
     playerTarget: {fileID: 0}
   ParentTower: {fileID: 0}
-  RangeDetector: {fileID: 6264660785862362693}
+  RangeDetector: {fileID: 0}
   RangeCollider: {fileID: 0}
   AttackCounter: 0
   CounterMax: 3

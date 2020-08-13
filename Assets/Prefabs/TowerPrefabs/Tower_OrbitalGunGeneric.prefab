@@ -163,6 +163,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerComponent_OrbitalGunControllerGeneric
       objectReference: {fileID: 0}
+    - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
+        type: 3}
+      propertyPath: Data.OrbitalGunPrefab
+      value: 
+      objectReference: {fileID: 1285039470, guid: 22d0d1d5df937ff4c85f0255cf2f97f4,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c30e1e0fc1f670498b61db8c249ee37, type: 3}
 --- !u!4 &9132915217241234106 stripped
