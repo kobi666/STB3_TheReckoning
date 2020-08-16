@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[RequireComponent(typeof(CircleCollider2D))]
 public class RangeDetector : MonoBehaviour,IQueueable<RangeDetector>
 {
+
+    
     float rangeRadius = 1;
     public float RangeRadius {
         get => rangeRadius ;

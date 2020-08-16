@@ -7,6 +7,17 @@ using System;
 public abstract class TargetBank<T> : MonoBehaviour where T : Component
 
 {
+    private void OnEnable()
+    {
+        InitRangeDetectorEvents();
+    }
+
+    private void OnDisable()
+    {
+        DisableRangedetectorEvents();
+    }
+
+
     [SerializeField]
     public List<string> debugTargetNames = new List<string>();
     public RangeDetector rangeDetector;
@@ -71,25 +82,37 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     
     void Awake()
     {
-        
-        rangeDetector =  GetComponentInChildren<RangeDetector>() ?? rangeDetector ?? null;
+        rangeDetector =  rangeDetector ?? GetComponentInChildren<RangeDetector>() ?? null;
         onTryToAddTarget += AddTarget;
         onTargetRemove += RemoveTarget;
         onTargetAdd += AddNamesToDebugList;
         onTargetRemove += removeNameFromDebugList;
-        
     }
 
     public void InitRangeDetectorEvents() {
+        if (rangeDetector == null)
+        {
+            rangeDetector = GetComponentInChildren<RangeDetector>();
+        }
+        
         if (rangeDetector != null) {
         rangeDetector.onTargetEnter += OnTryToAddTarget;
         rangeDetector.onTargetExit += OnTargetRemove;
         }
     }
+
+    void DisableRangedetectorEvents()
+    {
+        if (rangeDetector != null)
+        {
+            rangeDetector.onTargetEnter -= OnTryToAddTarget;
+            rangeDetector.onTargetExit -= OnTargetRemove;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
-        InitRangeDetectorEvents();
+        //InitRangeDetectorEvents();
         DeathManager.instance.onEnemyUnitDeath += OnTargetRemove;
         DeathManager.instance.onPlayerUnitDeath += OnTargetRemove;
         GameObjectPool.Instance.onObjectDisable += OnTargetRemove;
