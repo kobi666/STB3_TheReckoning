@@ -30,7 +30,7 @@ public abstract class TowerController : MonoBehaviour,ITypeTag
     public SpriteRenderer TowerSpriteRenderer;
     public TowerSlotActions TowerActions;
     public abstract void PostStart();
-    private void Start() {
+    protected void Start() {
         TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoop(gameObject, SelectorTest2.instance.TowerSlotsWithPositions, TowerUtils.Cardinal8);
         for(int i = 0 ; i < 8 ; i++) {
             TowersDebug[i].GO = TowerSlotsByDirections8[TowerUtils.Cardinal8.directionsClockwise[i]].TowerSlotGo;
@@ -47,7 +47,7 @@ public abstract class TowerController : MonoBehaviour,ITypeTag
         PostStart();
     }
 
-    private void Awake() {
+    protected void Awake() {
         gameObject.tag = TypeTag;
         PostAwake();
     }

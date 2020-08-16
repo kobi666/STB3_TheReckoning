@@ -38,7 +38,7 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActive
         }}
     public bool targetPositionSet = false;
     
-    public float speed {get => Data.Speed ; set {Data.Speed = value;}}
+    public float Speed {get => Data.Speed ; set {Data.Speed = value;}}
     public int Damage { get => Data.Damage ; set {Data.Damage = value;}}
 
     public abstract void AdditionalOnDisableActions();

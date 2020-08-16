@@ -7,7 +7,7 @@ public class TargetFacingStraightShotDirectHitProjectile : DirectHitProjectile
 {
     public override void MovementFunction() {
         if (targetPositionSet == true) {
-            ProjectileUtils.MoveStraightUntilReachedTargetPosition(transform,TargetPosition,speed,OnTargetPositionReached);
+            ProjectileUtils.MoveStraightUntilReachedTargetPosition(transform,TargetPosition,Speed,OnTargetPositionReached);
         }
     }
 

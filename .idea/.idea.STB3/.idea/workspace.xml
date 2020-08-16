@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9bc93a1b-9ae3-491b-9e71-24961a6e256c" name="Default Changelist" comment="sadasdas">
+      <change afterPath="$PROJECT_DIR$/Assets/ArcingAOEProjectileController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ArcingAOEProjectileController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ArcingBombTowerController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ArcingBombTowerController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ArcingProjectileLauncherController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/ArcingAOEProjectile.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/ArcingAOEProjectile.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/TowerComponentPrefabs/ArcingBombLauncherController.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/TowerComponentPrefabs/ArcingBombLauncherController.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/TowerPrefabs/ArcingBombLauncherTower.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/TowerPrefabs/ArcingBombLauncherTower.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Projectiles/AOEProjectile.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Projectiles/OnTargetReachedProjectile.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Projectiles/OnTargetReachedProjectile.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/bomb-tower-8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/bomb-tower-8.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor-firstpass.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor-firstpass.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-firstpass.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-firstpass.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/OnTargetReachedProjectile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/OnTargetReachedProjectile.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TargetDetection/TargetBank.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TargetDetection/TargetBank.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TowerPrefabs/Tower_OrbitalGunGeneric.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TowerPrefabs/Tower_OrbitalGunGeneric.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Projectiles/Projectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Projectiles/Projectile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Projectiles/ProjectileUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Projectiles/ProjectileUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Projectiles/TargetFacingStraightShotDirectHitProjectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Projectiles/TargetFacingStraightShotDirectHitProjectile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Projectiles/arcingAOEProjectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Projectiles/arcingAOEProjectile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TestScripts/TestScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TestScripts/TestScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TowerComponents/WeaponController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TowerComponents/WeaponController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Towers/TowerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Towers/TowerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/9c3d38-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/9c3d38-mainStage.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/550729-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/550729-mainStage.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/expandedItems" beforeDir="false" afterPath="$PROJECT_DIR$/Library/expandedItems" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-firstpass.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-firstpass.csprojAssemblyReference.cache" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Projectiles/AOEProjectile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/03035303-2B91-4045-A0B9-6BEA329B98D3/17/1d15b9ca/NavMesh.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E93AB2F8-5FF8-4881-B6AB-5BA98D373CFC/4a/4f5a8f71/NativeInputSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ArcingProjectileLauncherController.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Scripts/RangeDetection/RangeDetector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Prefabs/TargetDetection/TargetBank.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TestScripts/TestScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/ArcingProjectileTowerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TowerComponents/WeaponController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Towers/TowerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Projectiles/arcingAOEProjectile.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Projectiles/OnTargetReachedProjectile.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Projectiles/Projectile.cs" />
+        <option value="$PROJECT_DIR$/Assets/ArcingProjectileLauncherController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Projectiles/ProjectileUtils.cs" />
+        <option value="$PROJECT_DIR$/Assets/ArcingBombTowerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/ArcingAOEProjectileController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Projectiles/AOEProjectile.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1gAxUJrTTbloZiW2ekEW9b9Vemx" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.3502052" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.3002736" />
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="4500">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" value="4500" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9bc93a1b-9ae3-491b-9e71-24961a6e256c" name="Default Changelist" comment="" />
+      <created>1597571214132</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1597571214132</updated>
+      <workItem from="1597571219653" duration="3172000" />
+      <workItem from="1597591585458" duration="17196000" />
+    </task>
+    <task id="LOCAL-00001" summary="sadasdas">
+      <created>1597590782336</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1597590782336</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="sadasdas" />
+    <option name="LAST_COMMIT_MESSAGE" value="sadasdas" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1493" height="175" key="GridCell.Tab.0.bottom" timestamp="1597613461567">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597613461567" />
+    <state width="1493" height="175" key="GridCell.Tab.0.center" timestamp="1597613461566">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597613461566" />
+    <state width="1493" height="175" key="GridCell.Tab.0.left" timestamp="1597613461566">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597613461566" />
+    <state width="1493" height="175" key="GridCell.Tab.0.right" timestamp="1597613461567">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597613461567" />
+    <state width="1493" height="175" key="GridCell.Tab.1.bottom" timestamp="1597613461568">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
+    <state width="1493" height="175" key="GridCell.Tab.1.center" timestamp="1597613461568">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
+    <state width="1493" height="175" key="GridCell.Tab.1.left" timestamp="1597613461568">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
+    <state width="1493" height="175" key="GridCell.Tab.1.right" timestamp="1597613461568">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
+    <state width="1493" height="175" key="GridCell.Tab.2.bottom" timestamp="1597613461568">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
+    <state width="1493" height="175" key="GridCell.Tab.2.center" timestamp="1597613461568">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
+    <state width="1493" height="175" key="GridCell.Tab.2.left" timestamp="1597613461568">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
+    <state width="1493" height="175" key="GridCell.Tab.2.right" timestamp="1597613461568">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
+    <state width="1493" height="175" key="GridCell.Tab.3.bottom" timestamp="1597613461568">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
+    <state width="1493" height="175" key="GridCell.Tab.3.center" timestamp="1597613461568">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
+    <state width="1493" height="175" key="GridCell.Tab.3.left" timestamp="1597613461568">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
+    <state width="1493" height="175" key="GridCell.Tab.3.right" timestamp="1597613461568">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
+    <state x="565" y="129" key="RiderGenerateDialog" timestamp="1597608828753">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="565" y="129" key="RiderGenerateDialog/0.0.1536.824@0.0.1536.824" timestamp="1597608828753" />
+    <state x="277" y="57" key="SettingsEditor" timestamp="1597613486499">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597613486499" />
+    <state x="407" y="11" width="722" height="801" key="find.popup" timestamp="1597572172646">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="407" y="11" width="722" height="801" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1597572172646" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1597590794962">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1597590794962" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1597613461559">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597613461559" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Towers/TowerController.cs</url>
+          <line>41</line>
+          <properties documentPath="C:\_UnityProjects\STB3\Assets\Scripts\Towers\TowerController.cs" initialLine="41">
+            <startOffsets>
+              <option value="1985" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2076" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

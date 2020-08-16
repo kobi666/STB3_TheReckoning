@@ -40,6 +40,18 @@ public class ProjectileUtils
         return proj;
     }
 
+    public static Projectile SpawnArcingAOEProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, float arcValue, float speed, Action<Effectable> onReachAction)
+    {
+        ArcingAOEProjectileController proj = pool.GetInactive() as ArcingAOEProjectileController;
+        proj.transform.position = exitPoint;
+        proj.Data.ArcValue = arcValue;
+        proj.Speed = speed;
+        proj.TargetPosition = targetPosition;
+        proj.placeholderAction = onReachAction;
+        proj.gameObject.SetActive(true);
+        return proj;
+    } 
+
     public static void MoveStraightUntilReachedTargetPosition(Transform self, Vector2 targetPosition, float speed, Action onTargetPositionReach) {
         if ((Vector2)self.position != targetPosition) {
         self.position = Vector2.MoveTowards(self.position,targetPosition,speed * StaticObjects.instance.DeltaGameTime);
@@ -48,8 +60,10 @@ public class ProjectileUtils
             onTargetPositionReach.Invoke();
         }
     }
+    
+    
 
-    public static IEnumerator MoveInArc(Transform projectileTransform, Vector2 targetPos, float arcValue, float speed, Action action) {
+    public static IEnumerator MoveInArcAndInvokeAction(Transform projectileTransform, Vector2 targetPos, float arcValue, float speed, Action action) {
     float movementSpeed = speed;
     Vector2 initPos = projectileTransform.position;
     Vector2 arcDirection = Vector2.up;

@@ -49,6 +49,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     void AddTarget(GameObject targetGO) {
         T t = TryToGetTargetOfType(targetGO);
         if (t != null) {
+            clearNulls();
             Targets.Add(targetGO.name, t);
             OnTargetAdd(t);
         }
@@ -56,6 +57,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
 
     void RemoveTarget(String targetName) {
         if (Targets.ContainsKey(targetName)) {
+            clearNulls();
             Targets.Remove(targetName);
         }
     }

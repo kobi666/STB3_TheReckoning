@@ -59,6 +59,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\ACT.cs" />
+     <Compile Include="Assets\ArcingAOEProjectileController.cs" />
+     <Compile Include="Assets\ArcingBombTowerController.cs" />
+     <Compile Include="Assets\ArcingProjectileLauncherController.cs" />
      <Compile Include="Assets\ExternalUtils\Direction.cs" />
      <Compile Include="Assets\Garbage\OldStateMachine.cs" />
      <Compile Include="Assets\Garbage\TProjectileController.cs" />
@@ -66,7 +69,6 @@
      <Compile Include="Assets\Garbage\TestTowerController.cs" />
      <Compile Include="Assets\Garbage\TestWeaponController.cs" />
      <Compile Include="Assets\Garbage\TowerTestScript.cs" />
-     <Compile Include="Assets\Prefabs\Projectiles\OnTargetReachedProjectile.cs" />
      <Compile Include="Assets\Prefabs\TargetDetection\EffectableTargetBank.cs" />
      <Compile Include="Assets\Prefabs\TargetDetection\TargetBank.cs" />
      <Compile Include="Assets\Samples\BasicEnemyMeleeUnit.cs" />
@@ -106,10 +108,12 @@
      <Compile Include="Assets\Scripts\PlayerObjects\TowerCrosshairManager.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\TowerCrosshairMovementController.cs" />
      <Compile Include="Assets\Scripts\Projectiles\AOEAnimationController.cs" />
+     <Compile Include="Assets\Scripts\Projectiles\AOEProjectile.cs" />
      <Compile Include="Assets\Scripts\Projectiles\AreaOfEffectController.cs" />
      <Compile Include="Assets\Scripts\Projectiles\DirectHitProjectile.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Explosion.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ExplosionController.cs" />
+     <Compile Include="Assets\Scripts\Projectiles\OnTargetReachedProjectile.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Projectile.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ProjectileExitPoint.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ProjectileFinalPoint.cs" />
@@ -196,6 +200,39 @@
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+ <Reference Include="Unity.Timeline.Editor">
+ <HintPath>C:/_UnityProjects/STB3/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.VSCode.Editor">
+ <HintPath>C:/_UnityProjects/STB3/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.InputSystem">
+ <HintPath>C:/_UnityProjects/STB3/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.TextMeshPro.Editor">
+ <HintPath>C:/_UnityProjects/STB3/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/_UnityProjects/STB3/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Timeline">
+ <HintPath>C:/_UnityProjects/STB3/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.CollabProxy.Editor">
+ <HintPath>C:/_UnityProjects/STB3/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Rider.Editor">
+ <HintPath>C:/_UnityProjects/STB3/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Sprite.Editor">
+ <HintPath>C:/_UnityProjects/STB3/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.TextMeshPro">
+ <HintPath>C:/_UnityProjects/STB3/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>C:/_UnityProjects/STB3/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/2019.4.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
  </Reference>
@@ -736,53 +773,13 @@
       <Project>{04441EDE-0A95-865C-05BF-785CC557C08E}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.Editor.csproj">
-      <Project>{915B9D80-C802-ABC7-980D-BC7EE57FA3EB}</Project>
-      <Name>Unity.Timeline.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VSCode.Editor.csproj">
-      <Project>{B4AB0BC6-0240-76DE-FDBA-34E6B4DDC50B}</Project>
-      <Name>Unity.VSCode.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="Animancer.FSM.csproj">
       <Project>{6B8B5F23-6EAF-D6CB-390C-C954CAE78F91}</Project>
       <Name>Animancer.FSM</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.InputSystem.csproj">
-      <Project>{4607B812-58E8-0D2B-C2E9-B61438DF663C}</Project>
-      <Name>Unity.InputSystem</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
-      <Project>{8E761302-14C3-6B36-379F-8DA07ED144AC}</Project>
-      <Name>Unity.TextMeshPro.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{9695815A-B7F1-798D-3D30-E0EF0993FDF2}</Project>
-      <Name>UnityEngine.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.csproj">
-      <Project>{2C9726F5-020C-79CD-2728-E7C0BAF902AC}</Project>
-      <Name>Unity.Timeline</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.CollabProxy.Editor.csproj">
-      <Project>{C7C86F6F-72F4-DAB7-0F96-83B0D71C65E1}</Project>
-      <Name>Unity.CollabProxy.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Rider.Editor.csproj">
-      <Project>{DF04E951-2B6F-5F48-9CCF-E61D858D8F4D}</Project>
-      <Name>Unity.Rider.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.InputSystem.VirtualMouseInput.csproj">
       <Project>{6584BF93-A837-6D47-0AF2-D2D9E6F269D3}</Project>
       <Name>Unity.InputSystem.VirtualMouseInput</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
-      <Project>{48A60B18-4FD9-8F8F-AA3D-9F52FF039AAD}</Project>
-      <Name>Unity.2D.Sprite.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.csproj">
-      <Project>{4CB96D6A-DE33-9B99-D767-224361A570E0}</Project>
-      <Name>Unity.TextMeshPro</Name>
     </ProjectReference>
     <ProjectReference Include="InputSystem.Samples.Visualizers.csproj">
       <Project>{DD212BEB-B118-0B75-BB2C-21EEF160A44B}</Project>
@@ -791,10 +788,6 @@
     <ProjectReference Include="Animancer.csproj">
       <Project>{4D23789E-76A4-9344-F7FF-22AE883AE8FA}</Project>
       <Name>Animancer</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{5DE5D252-4335-CE50-67D9-B42E12E6B5E3}</Project>
-      <Name>UnityEditor.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

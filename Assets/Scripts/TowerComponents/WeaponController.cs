@@ -74,9 +74,9 @@ public abstract class WeaponController : TowerComponent
     }
 
     public virtual void StandardOnTargetLeftRange(string targetName) {
-        if (Target?.name == targetName) {
-            Target = FindSingleTargetNearestToEndOfSpline() ?? null;
-        }
+        
+            Target = FindSingleTargetNearestToEndOfSpline();
+        
     }
     string CurrentLowestProximtyTargetName;
     TargetUnit FindSingleTargetNearestToEndOfSpline() {
@@ -114,6 +114,11 @@ public abstract class WeaponController : TowerComponent
                 MainAttackFunction();
                 AttackCounter = 0;
                 }
+
+            if (CanAttack() == false)
+            {
+                Debug.LogWarning("Can attack is false bu i'm still attacking");
+            }
             await Task.Yield();
         }
         AsyncAttackInProgress = false;
@@ -191,7 +196,7 @@ public abstract class WeaponController : TowerComponent
     }
 
     public abstract void PostStart();
-    private void Start() {
+    protected void Start() {
         RangeDetector = GetComponentInChildren<RangeDetector>() ?? null;
         ProjectileQueuePool = GameObjectPool.Instance.GetProjectileQueue(Data.ProjectilePrefab) ?? null;
         projectileExitPoint = GetComponentInChildren<ProjectileExitPoint>() ?? null;

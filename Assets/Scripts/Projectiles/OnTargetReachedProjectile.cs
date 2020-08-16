@@ -13,8 +13,6 @@ public abstract class OnTargetReachedProjectile : Projectile
 
     public abstract void OnTargetReachedAction();
 
-    
-    
     public event Action onTargetPositionReached;
     public void OnTargetPositionReached() {
         onTargetPositionReached?.Invoke();
