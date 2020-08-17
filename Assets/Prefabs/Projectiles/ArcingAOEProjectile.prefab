@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7004966156267044091
 Transform:
   m_ObjectHideFlags: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugTargetNames: []
-  rangeDetector: {fileID: 2768508784887808126}
+  RangeDetector: {fileID: 0}
 --- !u!114 &7004966156267044092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     Speed: 1.1
-    EffectRadius: 0
+    EffectRadius: 2
     Damage: 0
     ArcValue: 7
     EffectableTarget: {fileID: 0}
@@ -75,6 +75,11 @@ MonoBehaviour:
   targetPositionSet: 0
   RangeDetector: {fileID: 0}
   TargetBank: {fileID: 0}
+  initToMiddle: {x: 0, y: 0}
+  MiddleToTarget: {x: 0, y: 0}
+  InitPos: {x: 0, y: 0}
+  MiddlePos: {x: 0, y: 0}
+  moveCounter: 0
 --- !u!212 &7004966156267044093
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -133,6 +138,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7004966156267044091}
     m_Modifications:
+    - target: {fileID: 5142296622837540736, guid: 0136b884f776412409c134b6ba98b7cf,
+        type: 3}
+      propertyPath: m_Radius
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5142296622837540740, guid: 0136b884f776412409c134b6ba98b7cf,
         type: 3}
       propertyPath: m_Name

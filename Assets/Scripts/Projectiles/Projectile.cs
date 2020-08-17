@@ -80,7 +80,7 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActive
         targetPositionSet = false;
         EffectableTarget = null;
         QueuePool?.ObjectQueue.Enqueue(this);
-        GameObjectPool.Instance.RemoveObjectFromAllPools(name);
+        GameObjectPool.Instance.RemoveObjectFromAllPools(name,name);
         AdditionalOnDisableActions();
     }
 

@@ -46,6 +46,6 @@ public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITarg
     
     void OnDisable()
     {
-        GameObjectPool.Instance.RemoveObjectFromAllPools(name);
+        GameObjectPool.Instance.RemoveObjectFromAllPools(name,name);
     }
 }

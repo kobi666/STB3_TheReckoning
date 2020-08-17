@@ -12,7 +12,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
         InitRangeDetectorEvents();
     }
 
-    private void OnDisable()
+    protected void OnDisable()
     {
         DisableRangedetectorEvents();
     }
@@ -20,23 +20,18 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
 
     [SerializeField]
     public List<string> debugTargetNames = new List<string>();
-    public RangeDetector rangeDetector;
+    public RangeDetector RangeDetector;
     public event Action<GameObject> onTryToAddTarget;
     public void OnTryToAddTarget(GameObject targetGO) {
         onTryToAddTarget?.Invoke(targetGO);
     }
 
-    public event Action<string> onTargetRemove;
-    public void OnTargetRemove(string targetName) {
-        onTargetRemove?.Invoke(targetName);
+    public event Action<string,string> onTargetRemove;
+    public void OnTargetRemove(string targetName, string callerName) {
+        onTargetRemove?.Invoke(targetName, callerName);
     }
-    Dictionary <string,T> targets = new Dictionary<string, T>();
-    public Dictionary<string,T> Targets {
-        get {
-            //clearNulls();
-            return targets;
-        }
-    }
+    
+    public Dictionary<string,T> Targets = new Dictionary<string,T>();
 
     public abstract T TryToGetTargetOfType(GameObject GO);
     
@@ -50,24 +45,28 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
         T t = TryToGetTargetOfType(targetGO);
         if (t != null) {
             clearNulls();
-            Targets.Add(targetGO.name, t);
-            OnTargetAdd(t);
+            if (!Targets.ContainsKey(targetGO.name))
+            {
+                Targets.Add(targetGO.name, t);
+                OnTargetAdd(t);
+            }
         }
     }
 
-    void RemoveTarget(String targetName) {
+    void RemoveTarget(String targetName, string callerName) {
         if (Targets.ContainsKey(targetName)) {
             clearNulls();
             Targets.Remove(targetName);
+            //Debug.LogWarning(name + " : " + "Target " + targetName + " was removed by" + callerName  );
         }
     }
 
     void clearNulls() {
-        if (targets.Count > 0) {
-            foreach (var item in targets)
+        if (Targets.Count > 0) {
+            foreach (var item in Targets)
             {
                 if (item.Value == null) {
-                    targets.Remove(item.Key);
+                    Targets.Remove(item.Key);
                 }
             }
         }
@@ -77,14 +76,14 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
         debugTargetNames.Add(t.name);
     }
 
-    void removeNameFromDebugList(string s) {
+    void removeNameFromDebugList(string s, string callerName) {
         debugTargetNames.Remove(s);
     }
 
     
     void Awake()
     {
-        rangeDetector =  rangeDetector ?? GetComponentInChildren<RangeDetector>() ?? null;
+        RangeDetector =  RangeDetector ?? GetComponentInChildren<RangeDetector>() ?? null;
         onTryToAddTarget += AddTarget;
         onTargetRemove += RemoveTarget;
         onTargetAdd += AddNamesToDebugList;
@@ -92,23 +91,23 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     }
 
     public void InitRangeDetectorEvents() {
-        if (rangeDetector == null)
+        if (RangeDetector == null)
         {
-            rangeDetector = GetComponentInChildren<RangeDetector>();
+            RangeDetector = GetComponentInChildren<RangeDetector>();
         }
         
-        if (rangeDetector != null) {
-        rangeDetector.onTargetEnter += OnTryToAddTarget;
-        rangeDetector.onTargetExit += OnTargetRemove;
+        if (RangeDetector != null) {
+        RangeDetector.onTargetEnter += OnTryToAddTarget;
+        RangeDetector.onTargetExit += OnTargetRemove;
         }
     }
 
     void DisableRangedetectorEvents()
     {
-        if (rangeDetector != null)
+        if (RangeDetector != null)
         {
-            rangeDetector.onTargetEnter -= OnTryToAddTarget;
-            rangeDetector.onTargetExit -= OnTargetRemove;
+            RangeDetector.onTargetEnter -= OnTryToAddTarget;
+            RangeDetector.onTargetExit -= OnTargetRemove;
         }
     }
     // Start is called before the first frame update

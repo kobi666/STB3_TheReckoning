@@ -49,9 +49,9 @@ public class RangeDetector : MonoBehaviour,IQueueable<RangeDetector>
         onTargetEnter?.Invoke(target);
     }
 
-    public event Action<string> onTargetExit;
-    public void OnTargetExit(string targetName) {
-        onTargetExit?.Invoke(targetName);
+    public event Action<string,string> onTargetExit;
+    public void OnTargetExit(string targetName, string callerName) {
+        onTargetExit?.Invoke(targetName, callerName);
     }
 
 
@@ -63,7 +63,7 @@ public class RangeDetector : MonoBehaviour,IQueueable<RangeDetector>
 
     private void OnTriggerExit2D(Collider2D other) {
         if (DiscoverableTagsList.Contains(other.tag)) {
-            OnTargetExit(other.name);
+            OnTargetExit(other.name, name);
         }
     }
 
@@ -83,8 +83,7 @@ public class RangeDetector : MonoBehaviour,IQueueable<RangeDetector>
         if (RangeCollider == null) {
             RangeCollider = gameObject.GetComponent<CircleCollider2D>();
         }
-        RangeCollider.radius =  1;
-        gameObject.transform.localScale.Scale(new Vector3(range,range,range));
+        gameObject.transform.localScale = new Vector3(range,range,range);
     }
 
     

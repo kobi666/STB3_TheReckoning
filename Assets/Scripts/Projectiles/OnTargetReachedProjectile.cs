@@ -25,22 +25,13 @@ public abstract class OnTargetReachedProjectile : Projectile
         onTargetPositionReached += delegate {gameObject.SetActive(false);};
     }
 
-    
-    
-    protected void Start() {
 
-        if (MovementCoroutine != null) {
-            StartCoroutine(MovementCoroutine);
-        }
-        else if (MovementCoroutine == null) {
-            Debug.LogWarning("Movement Couroutine is null", gameObject);
-        }
+    protected void Update()
+    {
+        MovementFunction();
     }
-    
-         
-    
 
-    
+
     protected void OnDisable()
     {
         base.OnDisable();

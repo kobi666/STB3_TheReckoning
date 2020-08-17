@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PoolObjectQueue<T> where T : Component, IQueueable<T> {
+public class PoolObjectQueue<T> where T : Component, IQueueable<T>
+{
 
+    public string PlaceholderName;
     int objectCounter = 0;
     int ObjectCounter {
         get {
@@ -16,7 +18,6 @@ public class PoolObjectQueue<T> where T : Component, IQueueable<T> {
     public T ObjectPrefab;
     GameObject PoolParentObject;
     public T Get() {
-
         if (ObjectQueue.Count < 5) {
             AddObjectsToQueue(5);
         }
@@ -48,6 +49,7 @@ public class PoolObjectQueue<T> where T : Component, IQueueable<T> {
 
     public PoolObjectQueue(T objectPrefab, int initialNumberOfObjects, GameObject poolPlaceHolder) {
         PoolParentObject = poolPlaceHolder;
+        PlaceholderName = poolPlaceHolder.name;
         ObjectPrefab = objectPrefab;
         ObjectQueue = new Queue<T>();
         AddObjectsToQueue(initialNumberOfObjects);

@@ -67,12 +67,12 @@ public class EnemyTargetBank : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.CompareTag("Enemy")) {
-        RemoveFromTargetsString(other.name);
+        RemoveFromTargetsString(other.name,name);
         targetLeftRange?.Invoke(other.name);
         }
     }
 
-    public void RemoveFromTargetsString(String name) {
+    public void RemoveFromTargetsString(String name,string callerName) {
         clearNullsFromList();
         try {
             targets.Remove(name);

@@ -64,6 +64,7 @@ public class SplineSpawner : MonoBehaviour
 
    public void SpawnEnemyToSplineFromQueue(PoolObjectQueue<UnitController> queue, BezierSolution.BezierSpline spline) {
        UnitController unit = queue.Get();
+       unit.gameObject.SetActive(true);
        unit.Walker.spline = spline;
    }
 

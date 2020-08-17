@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 public abstract class WeaponController : TowerComponent
 {
 
-    TargetBank<Effectable> TargetBank;
+    public EffectableTargetBank TargetBank;
     public int Damage {
         get {
             return UnityEngine.Random.Range(Data.damageRange.min, Data.damageRange.max);
@@ -73,7 +73,7 @@ public abstract class WeaponController : TowerComponent
         }
     }
 
-    public virtual void StandardOnTargetLeftRange(string targetName) {
+    public virtual void StandardOnTargetLeftRange(string targetName,string callerName) {
         
             Target = FindSingleTargetNearestToEndOfSpline();
         
@@ -110,10 +110,10 @@ public abstract class WeaponController : TowerComponent
         AsyncAttackInProgress = true;
         while (CanAttack() && AsyncAttackInProgress == true) {
             AttackCounter += (StaticObjects.instance.DeltaGameTime * Data.FireRate) / 10;
-            if (AttackCounter >= CounterMax) {
-                MainAttackFunction();
-                AttackCounter = 0;
-                }
+            if (AttackCounter >= CounterMax)
+            {
+                AttackOnce();
+            }
 
             if (CanAttack() == false)
             {
@@ -128,16 +128,25 @@ public abstract class WeaponController : TowerComponent
             InAttackState = true;
         }
     }
-
+    
     public abstract void MainAttackFunction();
+
+    void AttackOnce()
+    {
+        if (AttackCounter >= CounterMax)
+        {
+            AttackCounter = 0;
+            MainAttackFunction();
+        }
+    }
 
     
 
 
 
-    public event Action<string> onEnemyLeftRange;
-    public void OnEnemyLeftRange(string targetName) {
-        onEnemyLeftRange?.Invoke(targetName);
+    public event Action<string,string> onEnemyLeftRange;
+    public void OnEnemyLeftRange(string targetName,string callerName) {
+        onEnemyLeftRange?.Invoke(targetName,name);
     }
 
     public TargetUnit Target {
@@ -154,8 +163,11 @@ public abstract class WeaponController : TowerComponent
         set {
             if (value == true) {
                 if (CanAttack()) {
-                    inAttackState = value;
-                    OnAttackInitiate();
+                    inAttackState = true;
+                    if (AsyncAttackInProgress == false)
+                    {
+                        OnAttackInitiate();
+                    }
                 }
                 else
                 {
@@ -163,7 +175,7 @@ public abstract class WeaponController : TowerComponent
                 }
             }
             if (value == false) {
-                inAttackState = value;
+                inAttackState = false;
                 OnAttackCease();
             }
             
@@ -206,7 +218,7 @@ public abstract class WeaponController : TowerComponent
                 Data.Radius = 1;
             }
             else if (Data.Radius != 0) {
-                TargetBank.rangeDetector.SetRangeRadius(Data.Radius);
+                TargetBank.RangeDetector.SetRangeRadius(Data.Radius);
             }
         }
         PostStart();

@@ -13,15 +13,18 @@ public class GameObjectPool : MonoBehaviour
     public Dictionary<string,PoolObjectQueue<SingleAnimationObject>> SingleAnimationPoolQueue = new Dictionary<string, PoolObjectQueue<SingleAnimationObject>>();
 
 
-    public event Action<string> onObjectDisable;
+    public event Action<string,string> onObjectDisable;
     public void OnObjectDisable(string objectName) {
-        onObjectDisable?.Invoke(objectName);
+        onObjectDisable?.Invoke(objectName,name);
     }
+    
+    public Dictionary<string,GameObject> PlaceHoldersDict = new Dictionary<string, GameObject>();
 
     void CreateNewObjectQueue<T> (Dictionary<string,PoolObjectQueue<T>> dict, T prefab) where T : Component,IQueueable<T> {
         GameObject placeholder = Instantiate(new GameObject());
         placeholder.transform.parent = this.transform;
         placeholder.name = "_PlaceHolder_" + prefab.gameObject.name;
+        PlaceHoldersDict.Add(placeholder.name, placeholder);
         dict.Add(prefab.name, new PoolObjectQueue<T>(prefab, 20,placeholder));
     }
 
@@ -89,7 +92,7 @@ public class GameObjectPool : MonoBehaviour
 
     public ActiveObjectPool<Projectile> ActiveProjectiles = new ActiveObjectPool<Projectile>();
     
-    public void RemoveObjectFromAllPools(string objectName) {
+    public void RemoveObjectFromAllPools(string objectName, string callerName) {
         ActiveEffectables.RemoveObjectFromPool(objectName);
         ActiveUnitPool.RemoveObjectFromPool(objectName);
         ActiveProjectiles.RemoveObjectFromPool(objectName);

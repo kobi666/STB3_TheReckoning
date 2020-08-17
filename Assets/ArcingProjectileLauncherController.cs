@@ -13,8 +13,9 @@ public class ArcingProjectileLauncherController : WeaponController
 
     void HitAndExplode(Effectable effectable)
     {
-        effectable.ApplyDamage(Data.damageRange.RandomDamage());
-        effectable.ApplyExplosion(5f);
+        int damage = Data.damageRange.RandomDamage();
+        effectable?.ApplyDamage(damage);
+        effectable?.ApplyExplosion(5f);
     }
 
     public override void PostStart()
@@ -24,7 +25,7 @@ public class ArcingProjectileLauncherController : WeaponController
 
     void Start()
     {
-      base.Start();  
+      base.Start();
     }
 
     // Update is called once per frame

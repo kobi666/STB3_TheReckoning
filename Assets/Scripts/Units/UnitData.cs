@@ -51,7 +51,7 @@ public class UnitData
     public Damage_Type damageType = new Damage_Type("normal");
     Dictionary<string, PlayerUnitController> playerUnitsFightingMe = new Dictionary<string, PlayerUnitController>();
 
-    public void RemovePlayerUnitTarget(string unitName) {
+    public void RemovePlayerUnitTarget(string unitName,string callerName) {
         if (PlayerTarget?.name == unitName) {
             PlayerTarget = null;
             EffectableTarget = null;
@@ -59,7 +59,7 @@ public class UnitData
         RemoveUnitFromPlayerUnitsFightingDictionary(unitName);
     }
 
-    public void SetEnemyTargetToNull(string unitName) {
+    public void SetEnemyTargetToNull(string unitName,string callerName) {
         if (EnemyTarget != null) {
             if (EnemyTarget.name == unitName) {
                 EnemyTarget = null;

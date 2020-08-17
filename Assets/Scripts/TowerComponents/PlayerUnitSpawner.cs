@@ -14,12 +14,12 @@ public abstract class PlayerUnitSpawner : TowerComponent
         return false;
     }
 
-    public event Action<string> onUnitDeath;
-    public void OnUnitDeath(string unitName) {
-        onUnitDeath?.Invoke(unitName);
+    public event Action<string,string> onUnitDeath;
+    public void OnUnitDeath(string unitName,string callerName) {
+        onUnitDeath?.Invoke(unitName,name);
     }
 
-    void invokeSpawnOnUnitDeath(string unitName) {
+    void invokeSpawnOnUnitDeath(string unitName, string callerName) {
         if (unitsIndex.ContainsKey(unitName)) {
             OnUnitSpawn(unitsIndex[unitName].Item2);
         }
@@ -59,7 +59,7 @@ public abstract class PlayerUnitSpawner : TowerComponent
         StartCoroutine(SpawningCoroutines[unitBaseIndex]);
     }
 
-    public void RemoveUnitFromIndex(string unitName) {
+    public void RemoveUnitFromIndex(string unitName,string callerName) {
         if (unitsIndex.ContainsKey(unitName)) {
             unitsIndex.Remove(unitName);
         }

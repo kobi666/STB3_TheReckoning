@@ -20,44 +20,68 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9bc93a1b-9ae3-491b-9e71-24961a6e256c" name="Default Changelist" comment="sadasdas">
-      <change afterPath="$PROJECT_DIR$/Assets/ArcingAOEProjectileController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ArcingAOEProjectileController.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ArcingBombTowerController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ArcingBombTowerController.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ArcingProjectileLauncherController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/ArcingAOEProjectile.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/ArcingAOEProjectile.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/TowerComponentPrefabs/ArcingBombLauncherController.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/TowerComponentPrefabs/ArcingBombLauncherController.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/TowerPrefabs/ArcingBombLauncherTower.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/TowerPrefabs/ArcingBombLauncherTower.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Projectiles/AOEProjectile.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Projectiles/OnTargetReachedProjectile.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Projectiles/OnTargetReachedProjectile.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/bomb-tower-8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/bomb-tower-8.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor-firstpass.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor-firstpass.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-firstpass.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-firstpass.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/OnTargetReachedProjectile.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/OnTargetReachedProjectile.cs.meta" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/ExplosionTest.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/ExplosionTest.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/RightArrow.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/RightArrow.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/SingleExplosionTest.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/SingleExplosionTest.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/TargetDetection/ProjectileExitPoint.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/TargetDetection/ProjectileExitPoint.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/TowerPrefabs/SpawningPoint.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/TowerPrefabs/SpawningPoint.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/TowerPrefabs/UnitSpawner.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/TowerPrefabs/UnitSpawner.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Units.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Units/EnemyUnitTest2.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Units/EnemyUnitTest2.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Units/EnemyUnits.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Units/PlayerUnitTest2.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Units/PlayerUnitTest2.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Units/PlayerUnits.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.STB3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.STB3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ArcingAOEProjectileController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ArcingAOEProjectileController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ArcingProjectileLauncherController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ArcingProjectileLauncherController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Garbage/TestWeaponController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Garbage/TestWeaponController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/ArcingAOEProjectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/ArcingAOEProjectile.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TargetDetection/EffectableTargetBank.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TargetDetection/EffectableTargetBank.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TargetDetection/TargetBank.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TargetDetection/TargetBank.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TowerPrefabs/Tower_OrbitalGunGeneric.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TowerPrefabs/Tower_OrbitalGunGeneric.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/AOEs/ExplosionTest.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/AOEs/ExplosionTest.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/AOEs/SingleExplosionTest.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/AOEs/SingleExplosionTest.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/EnemyUnitTest2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/EnemyUnitTest2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/PlayerUnitTest2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/PlayerUnitTest2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/RightArrow.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/RightArrow.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/SpawningPoint.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/SpawningPoint.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/UnitSpawner.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/UnitSpawner.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TowerPrefabs/ArcingBombLauncherTower.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TowerPrefabs/ArcingBombLauncherTower.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GeneralClasses/DeathManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GeneralClasses/DeathManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GeneralClasses/GameObjectPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GeneralClasses/GameObjectPool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GeneralClasses/PoolObjectQueue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GeneralClasses/PoolObjectQueue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Levels-rooms/SplineSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Levels-rooms/SplineSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Projectiles/AOEProjectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Projectiles/AOEProjectile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Projectiles/OnTargetReachedProjectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Projectiles/OnTargetReachedProjectile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Projectiles/Projectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Projectiles/Projectile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Projectiles/ProjectileUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Projectiles/ProjectileUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Projectiles/TargetFacingStraightShotDirectHitProjectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Projectiles/TargetFacingStraightShotDirectHitProjectile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Projectiles/arcingAOEProjectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Projectiles/arcingAOEProjectile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RangeDetection/Effectable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RangeDetection/Effectable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RangeDetection/EnemyTargetBank.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RangeDetection/EnemyTargetBank.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RangeDetection/RangeDetector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RangeDetection/RangeDetector.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/TestScripts/TestScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TestScripts/TestScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TowerComponents/PlayerUnitSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TowerComponents/PlayerUnitSpawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/TowerComponents/WeaponController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TowerComponents/WeaponController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Towers/TowerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Towers/TowerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/UnitData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/UnitData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/9c3d38-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/9c3d38-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/550729-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/550729-mainStage.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/expandedItems" beforeDir="false" afterPath="$PROJECT_DIR$/Library/expandedItems" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-firstpass.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-firstpass.csprojAssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,19 +100,30 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/Assets/ArcingProjectileTowerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Towers/TowerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/ArcingBombTowerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TestScripts/TestScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Projectiles/OnTargetReachedProjectile.cs" />
+        <option value="$PROJECT_DIR$/Assets/Prefabs/TargetDetection/EffectableTargetBank.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Projectiles/arcingAOEProjectile.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GeneralClasses/DeathManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Garbage/TestWeaponController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Projectiles/Projectile.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RangeDetection/Effectable.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RangeDetection/EnemyTargetBank.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TowerComponents/PlayerUnitSpawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TowerComponents/WeaponController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UnitController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Levels-rooms/SplineSpawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GeneralClasses/PoolObjectQueue.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GeneralClasses/GameObjectPool.cs" />
+        <option value="$PROJECT_DIR$/Assets/ArcingAOEProjectileController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RangeDetection/RangeDetector.cs" />
         <option value="$PROJECT_DIR$/Assets/Prefabs/TargetDetection/TargetBank.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/TestScripts/TestScript.cs" />
-        <option value="$PROJECT_DIR$/Assets/ArcingProjectileTowerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/TowerComponents/WeaponController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Towers/TowerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Projectiles/arcingAOEProjectile.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Projectiles/OnTargetReachedProjectile.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Projectiles/Projectile.cs" />
-        <option value="$PROJECT_DIR$/Assets/ArcingProjectileLauncherController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Projectiles/ProjectileUtils.cs" />
-        <option value="$PROJECT_DIR$/Assets/ArcingBombTowerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/ArcingAOEProjectileController.cs" />
+        <option value="$PROJECT_DIR$/Assets/ArcingProjectileLauncherController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Projectiles/AOEProjectile.cs" />
       </list>
     </option>
@@ -104,12 +139,13 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.3502052" />
-    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.3002736" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30010834" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="terminal" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -140,7 +176,7 @@
       <option name="presentableId" value="Default" />
       <updated>1597571214132</updated>
       <workItem from="1597571219653" duration="3172000" />
-      <workItem from="1597591585458" duration="17196000" />
+      <workItem from="1597591585458" duration="41346000" />
     </task>
     <task id="LOCAL-00001" summary="sadasdas">
       <created>1597590782336</created>
@@ -176,77 +212,94 @@
     <option name="LAST_COMMIT_MESSAGE" value="sadasdas" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1493" height="175" key="GridCell.Tab.0.bottom" timestamp="1597613461567">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="227" key="GridCell.Tab.0.bottom" timestamp="1597682739928">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="175" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597613461567" />
-    <state width="1493" height="175" key="GridCell.Tab.0.center" timestamp="1597613461566">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="227" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1597682739928" />
+    <state width="1493" height="175" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597614339457" />
+    <state width="1877" height="227" key="GridCell.Tab.0.center" timestamp="1597682739928">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="175" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597613461566" />
-    <state width="1493" height="175" key="GridCell.Tab.0.left" timestamp="1597613461566">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="227" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1597682739928" />
+    <state width="1493" height="175" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597614339457" />
+    <state width="1877" height="227" key="GridCell.Tab.0.left" timestamp="1597682739928">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="175" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597613461566" />
-    <state width="1493" height="175" key="GridCell.Tab.0.right" timestamp="1597613461567">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="227" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1597682739928" />
+    <state width="1493" height="175" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597614339457" />
+    <state width="1877" height="227" key="GridCell.Tab.0.right" timestamp="1597682739928">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="175" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597613461567" />
-    <state width="1493" height="175" key="GridCell.Tab.1.bottom" timestamp="1597613461568">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="227" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1597682739928" />
+    <state width="1493" height="175" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597614339457" />
+    <state width="1877" height="227" key="GridCell.Tab.1.bottom" timestamp="1597682746639">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="175" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
-    <state width="1493" height="175" key="GridCell.Tab.1.center" timestamp="1597613461568">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="227" key="GridCell.Tab.1.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1597682746639" />
+    <state width="1493" height="175" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597614339458" />
+    <state width="1877" height="227" key="GridCell.Tab.1.center" timestamp="1597682746638">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="175" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
-    <state width="1493" height="175" key="GridCell.Tab.1.left" timestamp="1597613461568">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="227" key="GridCell.Tab.1.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1597682746638" />
+    <state width="1493" height="175" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597614339457" />
+    <state width="1877" height="227" key="GridCell.Tab.1.left" timestamp="1597682746638">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="175" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
-    <state width="1493" height="175" key="GridCell.Tab.1.right" timestamp="1597613461568">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="227" key="GridCell.Tab.1.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1597682746638" />
+    <state width="1493" height="175" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597614339457" />
+    <state width="1877" height="227" key="GridCell.Tab.1.right" timestamp="1597682746638">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="175" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
-    <state width="1493" height="175" key="GridCell.Tab.2.bottom" timestamp="1597613461568">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="227" key="GridCell.Tab.1.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1597682746638" />
+    <state width="1493" height="175" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597614339458" />
+    <state width="1877" height="227" key="GridCell.Tab.2.bottom" timestamp="1597682739818">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="175" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
-    <state width="1493" height="175" key="GridCell.Tab.2.center" timestamp="1597613461568">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="227" key="GridCell.Tab.2.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1597682739818" />
+    <state width="1493" height="175" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597614339458" />
+    <state width="1877" height="227" key="GridCell.Tab.2.center" timestamp="1597682739818">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="175" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
-    <state width="1493" height="175" key="GridCell.Tab.2.left" timestamp="1597613461568">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="227" key="GridCell.Tab.2.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1597682739818" />
+    <state width="1493" height="175" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1597614339458" />
+    <state width="1877" height="227" key="GridCell.Tab.2.left" timestamp="1597682739818">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="175" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
-    <state width="1493" height="175" key="GridCell.Tab.2.right" timestamp="1597613461568">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="227" key="GridCell.Tab.2.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1597682739818" />
+    <state width="1493" height="175" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1597614339458" />
+    <state width="1877" height="227" key="GridCell.Tab.2.right" timestamp="1597682739818">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="175" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
-    <state width="1493" height="175" key="GridCell.Tab.3.bottom" timestamp="1597613461568">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="227" key="GridCell.Tab.2.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1597682739818" />
+    <state width="1493" height="175" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1597614339458" />
+    <state width="1877" height="227" key="GridCell.Tab.3.bottom" timestamp="1597682739818">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="175" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
-    <state width="1493" height="175" key="GridCell.Tab.3.center" timestamp="1597613461568">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="227" key="GridCell.Tab.3.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1597682739818" />
+    <state width="1493" height="175" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597614339458" />
+    <state width="1877" height="227" key="GridCell.Tab.3.center" timestamp="1597682739818">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="175" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
-    <state width="1493" height="175" key="GridCell.Tab.3.left" timestamp="1597613461568">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="227" key="GridCell.Tab.3.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1597682739818" />
+    <state width="1493" height="175" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1597614339458" />
+    <state width="1877" height="227" key="GridCell.Tab.3.left" timestamp="1597682739818">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="175" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
-    <state width="1493" height="175" key="GridCell.Tab.3.right" timestamp="1597613461568">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="227" key="GridCell.Tab.3.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1597682739818" />
+    <state width="1493" height="175" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1597614339458" />
+    <state width="1877" height="227" key="GridCell.Tab.3.right" timestamp="1597682739818">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="175" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1597613461568" />
+    <state width="1877" height="227" key="GridCell.Tab.3.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1597682739818" />
+    <state width="1493" height="175" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1597614339458" />
     <state x="565" y="129" key="RiderGenerateDialog" timestamp="1597608828753">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="565" y="129" key="RiderGenerateDialog/0.0.1536.824@0.0.1536.824" timestamp="1597608828753" />
-    <state x="277" y="57" key="SettingsEditor" timestamp="1597613486499">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="346" y="72" key="SettingsEditor" timestamp="1597655801538">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="346" y="72" key="SettingsEditor/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1597655801538" />
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597613486499" />
     <state x="407" y="11" width="722" height="801" key="find.popup" timestamp="1597572172646">
       <screen x="0" y="0" width="1536" height="824" />
@@ -265,17 +318,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Towers/TowerController.cs</url>
-          <line>41</line>
-          <properties documentPath="C:\_UnityProjects\STB3\Assets\Scripts\Towers\TowerController.cs" initialLine="41">
+          <url>file://$PROJECT_DIR$/Assets/ArcingProjectileLauncherController.cs</url>
+          <line>14</line>
+          <properties documentPath="C:\_UnityProjects\STB3\Assets\ArcingProjectileLauncherController.cs" initialLine="14">
             <startOffsets>
-              <option value="1985" />
+              <option value="460" />
             </startOffsets>
             <endOffsets>
-              <option value="2076" />
+              <option value="461" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="14" />
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

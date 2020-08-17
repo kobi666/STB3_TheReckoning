@@ -5,9 +5,6 @@ using System;
 
 public class ProjectileUtils 
 {
-
-
-
     public static Projectile SpawnProjectileFromPool(PoolObjectQueue<Projectile> pool) {
         return pool.Get();
     }
@@ -37,6 +34,7 @@ public class ProjectileUtils
     public static Projectile SpawnDirectHitTargetFacingProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, Quaternion direction, int damage) {
         Projectile proj = SpawnTargetPositionFacingProjectile(pool,exitPoint,targetPosition,direction);
         proj.Damage = damage;
+        proj.gameObject.SetActive(true);
         return proj;
     }
 
@@ -60,10 +58,32 @@ public class ProjectileUtils
             onTargetPositionReach.Invoke();
         }
     }
-    
+
+    public static Vector2 GetArcingMiddlePosition(Vector2 initPos, Vector2 targetPos, float arcValue)
+    {
+        Vector2 arcDirection = Vector2.up;
+        if (arcValue < 0) {
+            arcDirection = Vector2.down;
+        }
+        Vector2 middlePos = initPos + (targetPos - initPos) / 2 + arcDirection * Mathf.Abs(arcValue);
+
+        return middlePos;
+    }
+    public static void MoveInArcToPosition(Transform projectileTransform, Vector2 initPos, Vector2 middlePos,
+        Vector2 targetPosition, ref Vector2 initToMiddle, ref Vector2 middleToTarget, float speed, ref float counter)
+    {
+        if (counter <= 1f)
+        {
+            counter += speed * StaticObjects.instance.DeltaGameTime;
+            initToMiddle = Vector2.Lerp(initPos, middlePos, counter);
+            middleToTarget = Vector2.Lerp(middlePos, targetPosition, counter);
+            projectileTransform.position = Vector2.Lerp(initToMiddle, middleToTarget, counter);
+        }
+        
+    }
     
 
-    public static IEnumerator MoveInArcAndInvokeAction(Transform projectileTransform, Vector2 targetPos, float arcValue, float speed, Action action) {
+    public static IEnumerator MoveInArcAndInvokeActionCoroutine(Transform projectileTransform, Vector2 targetPos, float arcValue, float speed, Action action) {
     float movementSpeed = speed;
     Vector2 initPos = projectileTransform.position;
     Vector2 arcDirection = Vector2.up;
@@ -83,6 +103,8 @@ public class ProjectileUtils
     action.Invoke();
     yield break;
 }
+    
+    
 
     
 

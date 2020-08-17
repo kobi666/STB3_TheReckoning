@@ -71,7 +71,7 @@ public abstract class TestWeaponController : TowerComponent
         }
     }
 
-    public virtual void StandardOnTargetLeftRange(string targetName) {
+    public virtual void StandardOnTargetLeftRange(string targetName,string callerName) {
         if (Target?.name == targetName) {
             Target = FindSingleTargetNearestToEndOfSpline() ?? null;
         }
@@ -128,9 +128,9 @@ public abstract class TestWeaponController : TowerComponent
 
 
 
-    public event Action<string> onEnemyLeftRange;
-    public void OnEnemyLeftRange(string targetName) {
-        onEnemyLeftRange?.Invoke(targetName);
+    public event Action<string,string> onEnemyLeftRange;
+    public void OnEnemyLeftRange(string targetName,string callerName) {
+        onEnemyLeftRange?.Invoke(targetName,name);
     }
 
     public TargetUnit Target {
@@ -196,10 +196,10 @@ public abstract class TestWeaponController : TowerComponent
         projectileFinalPoint = GetComponentInChildren<ProjectileFinalPoint>() ?? null;
         if (TargetBank != null) {
             if (Data.Radius == 0) {
-                Data.Radius = TargetBank.rangeDetector.RangeRadius;
+                Data.Radius = TargetBank.RangeDetector.RangeRadius;
             }
             else if (Data.Radius != 0) {
-                TargetBank.rangeDetector.RangeRadius = Data.Radius;
+                TargetBank.RangeDetector.RangeRadius = Data.Radius;
             }
         }
         PostStart();

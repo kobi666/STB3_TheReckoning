@@ -136,7 +136,7 @@ public abstract class UnitController : MonoBehaviour,IQueueable<UnitController>,
     }
 
     private void OnDisable() {
-        GameObjectPool.Instance.RemoveObjectFromAllPools(name);
+        GameObjectPool.Instance.RemoveObjectFromAllPools(name,name);
     }
 
     

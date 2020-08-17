@@ -56,12 +56,10 @@ public class arcingAOEProjectile : OnTargetReachedProjectile
     
     // Start is called before the first frame update
     protected void Start()
-    { 
-        MovementCoroutine = ProjectileUtils.MoveInArcAndInvokeAction(transform,TargetPosition, Data.ArcValue,Data.Speed,OnTargetReachedAction);
-        base.Start();
+    {
         onTargetPositionReached += delegate { PlayOnHitAnimation(null);};
         TargetBank = GetComponent<EffectableTargetBank>() ?? null;
-        TargetBank.rangeDetector = RangeDetector;
+        TargetBank.RangeDetector = RangeDetector;
         TargetBank.InitRangeDetectorEvents();
         StartCoroutine(MoveRangeDetectorToTargetpositionAheadofself());
     }
