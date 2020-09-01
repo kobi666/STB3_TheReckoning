@@ -9,15 +9,15 @@ public abstract class AOEProjectile : OnTargetReachedProjectile
     private bool EffectOnceLock = false;
     protected void OnDisable()
     {
-        
+        //placeholderAction = null;
         base.OnDisable();
     }
 
     protected void OnEnable()
     {
         EffectOnceLock = false;
-        placeholderAction = null;
         TargetBank?.Targets.Clear();
+        TargetBank?.debugTargetNames.Clear();
     }
     
     
@@ -55,9 +55,12 @@ public abstract class AOEProjectile : OnTargetReachedProjectile
         
         onTargetReachEffect -= placeholderAction;
     }
-    
-    
-    public RangeDetector RangeDetector;
+
+
+    public RangeDetector RangeDetector
+    {
+        get => TargetBank.RangeDetector;
+    }
     
     public EffectableTargetBank TargetBank;
     

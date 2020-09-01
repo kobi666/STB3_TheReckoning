@@ -69,9 +69,10 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActive
         SpriteRenderer = GetComponent<SpriteRenderer>() ?? null;
         if (OnHitAnimation != null) {
         onHitAnimationQueuePool = GameObjectPool.Instance.GetSingleAnimationObjectQueue(OnHitAnimation);
+        onHit += PlayOnHitAnimation;
         }
         gameObject.tag = TypeTag; 
-        onHit += PlayOnHitAnimation;
+        
         PostAwake();
     }
 

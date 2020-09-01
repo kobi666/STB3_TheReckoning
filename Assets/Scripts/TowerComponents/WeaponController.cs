@@ -109,7 +109,7 @@ public abstract class WeaponController : TowerComponent
         }
         AsyncAttackInProgress = true;
         while (CanAttack() && AsyncAttackInProgress == true) {
-            AttackCounter += (StaticObjects.instance.DeltaGameTime * Data.FireRate) / 10;
+            AttackCounter += (StaticObjects.instance.DeltaGameTime * Data.fireRate) / 10;
             if (AttackCounter >= CounterMax)
             {
                 AttackOnce();
@@ -150,9 +150,9 @@ public abstract class WeaponController : TowerComponent
     }
 
     public TargetUnit Target {
-        get => Data.TargetUnit;
+        get => Data.targetUnit;
         set {
-            Data.TargetUnit = value;
+            Data.targetUnit = value;
         }
     }
 
@@ -191,7 +191,10 @@ public abstract class WeaponController : TowerComponent
         onAttackCease?.Invoke();
     }
 
-    
+    protected void Awake()
+    {
+        base.Awake();
+    }
     public override void PostAwake() {
         
         TargetBank = GetComponent<EffectableTargetBank>();
@@ -210,15 +213,15 @@ public abstract class WeaponController : TowerComponent
     public abstract void PostStart();
     protected void Start() {
         RangeDetector = GetComponentInChildren<RangeDetector>() ?? null;
-        ProjectileQueuePool = GameObjectPool.Instance.GetProjectileQueue(Data.ProjectilePrefab) ?? null;
+        ProjectileQueuePool = GameObjectPool.Instance.GetProjectileQueue(Data.projectileData.projectilePrefab);
         projectileExitPoint = GetComponentInChildren<ProjectileExitPoint>() ?? null;
         projectileFinalPoint = GetComponentInChildren<ProjectileFinalPoint>() ?? null;
         if (TargetBank != null) {
-            if (Data.Radius == 0) {
-                Data.Radius = 1;
+            if (Data.componentRadius == 0) {
+                Data.componentRadius = 1;
             }
-            else if (Data.Radius != 0) {
-                TargetBank.RangeDetector.SetRangeRadius(Data.Radius);
+            else if (Data.componentRadius != 0) {
+                TargetBank.RangeDetector.SetRangeRadius(Data.componentRadius);
             }
         }
         PostStart();

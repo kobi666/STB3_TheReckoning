@@ -15,7 +15,7 @@ public abstract class TowerController : MonoBehaviour,ITypeTag
     public abstract bool SouthExecutionCondition(TowerComponent tc);
     public abstract TowerSlotAction WestAction();
     public abstract bool WestExecutionCondition(TowerComponent tc);
-    public Dictionary<Vector2, TowerUtils.TowerPositionData> TowerSlotsByDirections8 = new Dictionary<Vector2, TowerUtils.TowerPositionData>();
+    public Dictionary<Vector2, TowerPositionData> TowerSlotsByDirections8 = new Dictionary<Vector2, TowerPositionData>();
     public DebugTowerPositionData[] TowersDebug = new DebugTowerPositionData[8];
     
     [SerializeField]

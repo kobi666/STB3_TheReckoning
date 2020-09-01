@@ -42,9 +42,10 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     
 
     void AddTarget(GameObject targetGO) {
+        clearNulls();
         T t = TryToGetTargetOfType(targetGO);
         if (t != null) {
-            clearNulls();
+            
             if (!Targets.ContainsKey(targetGO.name))
             {
                 Targets.Add(targetGO.name, t);
@@ -54,8 +55,8 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     }
 
     void RemoveTarget(String targetName, string callerName) {
+        clearNulls();
         if (Targets.ContainsKey(targetName)) {
-            clearNulls();
             Targets.Remove(targetName);
             //Debug.LogWarning(name + " : " + "Target " + targetName + " was removed by" + callerName  );
         }

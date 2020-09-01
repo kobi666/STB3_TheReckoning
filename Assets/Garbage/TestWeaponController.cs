@@ -107,7 +107,7 @@ public abstract class TestWeaponController : TowerComponent
         }
         AsyncAttackInProgress = true;
         while (CanAttack() && AsyncAttackInProgress == true) {
-            AttackCounter += (StaticObjects.instance.DeltaGameTime * Data.FireRate) / 10;
+            AttackCounter += (StaticObjects.instance.DeltaGameTime * Data.fireRate) / 10;
             if (AttackCounter >= CounterMax) {
                 MainAttackFunction();
                 AttackCounter = 0;
@@ -134,9 +134,9 @@ public abstract class TestWeaponController : TowerComponent
     }
 
     public TargetUnit Target {
-        get => Data.TargetUnit;
+        get => Data.targetUnit;
         set {
-            Data.TargetUnit = value;
+            Data.targetUnit = value;
         }
     }
 
@@ -191,15 +191,15 @@ public abstract class TestWeaponController : TowerComponent
     public abstract void PostStart();
     private void Start() {
         RangeDetector = GetComponentInChildren<RangeDetector>() ?? null;
-        ProjectileQueuePool = GameObjectPool.Instance.GetProjectileQueue(Data.ProjectilePrefab) ?? null;
+        ProjectileQueuePool = GameObjectPool.Instance.GetProjectileQueue(Data.projectileData.projectilePrefab) ?? null;
         projectileExitPoint = GetComponentInChildren<ProjectileExitPoint>() ?? null;
         projectileFinalPoint = GetComponentInChildren<ProjectileFinalPoint>() ?? null;
         if (TargetBank != null) {
-            if (Data.Radius == 0) {
-                Data.Radius = TargetBank.RangeDetector.RangeRadius;
+            if (Data.componentRadius == 0) {
+                Data.componentRadius = TargetBank.RangeDetector.RangeRadius;
             }
-            else if (Data.Radius != 0) {
-                TargetBank.RangeDetector.RangeRadius = Data.Radius;
+            else if (Data.componentRadius != 0) {
+                TargetBank.RangeDetector.RangeRadius = Data.componentRadius;
             }
         }
         PostStart();

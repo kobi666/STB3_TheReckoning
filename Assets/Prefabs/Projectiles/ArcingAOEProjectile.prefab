@@ -61,8 +61,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data:
-    Speed: 1.1
-    EffectRadius: 2
+    Speed: 0.1
+    EffectRadius: 1
     Damage: 0
     ArcValue: 7
     EffectableTarget: {fileID: 0}
@@ -73,7 +73,6 @@ MonoBehaviour:
   OnHitAnimation: {fileID: 7705615216159269146, guid: b09aca2b552e999459ebaa57a34119eb,
     type: 3}
   targetPositionSet: 0
-  RangeDetector: {fileID: 0}
   TargetBank: {fileID: 0}
   initToMiddle: {x: 0, y: 0}
   MiddleToTarget: {x: 0, y: 0}
@@ -117,7 +116,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -526778269
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -2613247888821195678, guid: aa45a3a6aa2c8404d9762fc77842b2c2,
     type: 3}

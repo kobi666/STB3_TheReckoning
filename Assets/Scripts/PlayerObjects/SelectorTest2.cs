@@ -33,7 +33,7 @@ public class SelectorTest2 : MonoBehaviour
     public GameObject V4;
 
     public PlayerInput PlayerControl;
-    public float MoveLock;
+    public float moveLock;
 
     [SerializeField]
     GameObject selectedTowerSlot;
@@ -82,7 +82,7 @@ public class SelectorTest2 : MonoBehaviour
     }
     public TowerSlotActions TowerActions;
 
-    public Dictionary<Vector2, TowerUtils.TowerPositionData> CardinalTowerSlots {
+    public Dictionary<Vector2, TowerPositionData> CardinalTowerSlots {
         get => SlotController?.TowerSlotsByDirections8 ?? null;
     }
 
@@ -96,7 +96,7 @@ public class SelectorTest2 : MonoBehaviour
     }
 
     void resetMoveCounter() {
-        MoveLock = 1.0f;
+        moveLock = 1.0f;
     }
 
     private void Awake() {
@@ -127,8 +127,8 @@ public class SelectorTest2 : MonoBehaviour
 
 
     public void MoveToNewTower4(Vector2 cardinalDirectionV2) {
-        if (MoveLock >= 0.20f) {
-            MoveLock = 0.0f;
+        if (moveLock >= 0.20f) {
+            moveLock = 0.0f;
             if (cardinalDirectionV2 == Vector2.zero) {
                 Debug.Log("Didn't move cause Vector2 was ZERO");
                 return;
@@ -155,7 +155,7 @@ public class SelectorTest2 : MonoBehaviour
 
     private void OnDisable() {
         PlayerControl.GamePlay.Disable();
-        MoveLock = 0.7f;
+        moveLock = 0.7f;
         PlayerControl = new PlayerInput();
     }
     // Start is called before the first frame update
@@ -191,8 +191,8 @@ public class SelectorTest2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MoveLock < 1.0f) {
-            MoveLock += Time.deltaTime;
+        if (moveLock < 1.0f) {
+            moveLock += Time.deltaTime;
         }
         H1L.SetPosition(0, new Vector2(-10, SelectedTowerSlot.transform.position.y + DiscoveryRangeWithLineWidth));
         H1L.SetPosition(1, new Vector2(10, SelectedTowerSlot.transform.position.y + DiscoveryRangeWithLineWidth));

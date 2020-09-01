@@ -31,31 +31,37 @@ MonoBehaviour:
   SR: {fileID: 0}
   Animancer: {fileID: 0}
   Data:
-    Radius: 6
-    DistanceFromRotatorBase: 1.5
-    OrbitingSpeed: 30
-    RotationSpeed: 30
-    PlayerUnitPrefab: {fileID: 0}
-    EffectableTarget: {fileID: 0}
-    TargetUnit:
+    componentRadius: 0
+    effectableTarget: {fileID: 0}
+    targetUnit:
       unitController: {fileID: 0}
       effectable: {fileID: 0}
-    MaxUnits: 0
-    PlayerUnitSpawnTime: 0
-    OrbitBase: {fileID: 0}
-    OrbitalGunPrefab: {fileID: 0}
-    MaxNumberOfOrbitals: 0
-    ProjectilePrefab: {fileID: 5882499641662690262, guid: f21a1d072317d5a428476205f0acd37a,
-      type: 3}
+    orbitalData:
+      maxNumberOfOrbitals: 0
+      distanceFromRotatorBase: 1.5
+      orbitingSpeed: 10
+      rotationSpeed: 10
+      orbitBase: {fileID: 0}
+      orbitalGunPrefab: {fileID: 0}
+    projectileData:
+      projectileSpeed: 15
+      projectilePrefab: {fileID: 5882499641662690262, guid: f21a1d072317d5a428476205f0acd37a,
+        type: 3}
+      aoeProjectileRadius: 0
+    SpawnerData:
+      playerUnitPrefab: {fileID: 0}
+      maxUnits: 0
+      playerUnitSpawnTime: 0
     damageRange:
       min: 15
       max: 15
-    FireRate: 15
+    fireRate: 50
     enemyTarget: {fileID: 0}
     playerTarget: {fileID: 0}
   ParentTower: {fileID: 0}
   RangeDetector: {fileID: 4514042185536052587}
   RangeCollider: {fileID: 0}
+  TargetBank: {fileID: 0}
   AttackCounter: 0
   CounterMax: 3
   ExternalAttackLock: 0
@@ -74,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugTargetNames: []
-  rangeDetector: {fileID: 4514042185536052587}
+  RangeDetector: {fileID: 0}
 --- !u!1001 &182045178584165309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146,6 +152,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140078121220912567, guid: 902e54a590cc5ac4ba2e368165662c9c,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1984086635
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140078121220912567, guid: 902e54a590cc5ac4ba2e368165662c9c,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9140078121220912564, guid: 902e54a590cc5ac4ba2e368165662c9c, type: 3}

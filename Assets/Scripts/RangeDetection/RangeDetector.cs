@@ -5,17 +5,17 @@ using System;
 
 public class RangeDetector : MonoBehaviour,IQueueable<RangeDetector>
 {
-
-    
+    private RangeDebug _rangeDebug;
     float rangeRadius = 1;
     public float RangeRadius {
         get => rangeRadius ;
         set {
             rangeRadius = value;
-            RangeCollider.radius = rangeRadius;
-            //transform.localScale = transform.localScale * rangeRadius;
+            SetRangeRadius(value);
         } 
     }
+    
+    
     Sprite sprite;
     public Type QueueableType {get;set;}
 
@@ -69,7 +69,6 @@ public class RangeDetector : MonoBehaviour,IQueueable<RangeDetector>
 
     void Awake()
     {
-        sprite = GetComponent<SpriteRenderer>().sprite;
         RangeCollider = GetComponent<CircleCollider2D>() ?? null;
         foreach (string item in DiscoverableTags)
         {
@@ -83,13 +82,22 @@ public class RangeDetector : MonoBehaviour,IQueueable<RangeDetector>
         if (RangeCollider == null) {
             RangeCollider = gameObject.GetComponent<CircleCollider2D>();
         }
-        gameObject.transform.localScale = new Vector3(range,range,range);
+
+        RangeCollider.radius = range;
+        if (_rangeDebug == null)
+        {
+            _rangeDebug = GetComponentInChildren<RangeDebug>() ?? null;
+        }
+        if (_rangeDebug?.gameObject.activeSelf == true) {
+        _rangeDebug.transform.localScale = new Vector3(range,range,range);
+        }
     }
 
     
     void Start()
     {
         RangeCollider = gameObject.GetComponent<CircleCollider2D>() ?? null;
+        _rangeDebug = GetComponentInChildren<RangeDebug>() ?? null;
     }
 
     

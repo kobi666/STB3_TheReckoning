@@ -21,7 +21,7 @@ public class EmptyTowerSlot : TowerController
     }
 
     public override TowerSlotAction SouthAction() {
-        TowerSlotAction tc = new TowerSlotAction(null,"",null,PlaceTestTower3);
+        TowerSlotAction tc = new TowerSlotAction(null,"",null,PlaceTestTowerSouth);
         return tc;
     }
 
@@ -48,16 +48,21 @@ public class EmptyTowerSlot : TowerController
     
 
     public void PlaceTestTower2() {
-       Debug.Log("2");
+       
        SlotController.PlaceNewTower(TowerArsenal.arsenal.TestTower2.TowerPrefab);
     }
     public void PlaceTestTower3() {
-        Debug.Log("3");
+        
         SlotController.PlaceNewTower(TowerArsenal.arsenal.EmptyTowerSlot.TowerPrefab);
     }
     public void PlaceTestTower4() {
-        Debug.Log("4");
+        
         SlotController.PlaceNewTower(TowerArsenal.arsenal.TestTower4.TowerPrefab);
+    }
+
+    public void PlaceTestTowerSouth()
+    {
+        SlotController.PlaceNewTower(TowerArsenal.arsenal.TestTower3.TowerPrefab);
     }
 
     public override void PostAwake() {

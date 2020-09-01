@@ -22,7 +22,6 @@ public class DeathManager : MonoBehaviour
 
     private void Awake() {
         instance = this;
-        
     }
     
 

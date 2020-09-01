@@ -14,7 +14,7 @@ public class OrbitalGunTowerController : TowerController
     }
 
     public override bool NorthExecutionCondition(TowerComponent tc) {
-        if (orbitalGunsController.OrbitalGuns.Count < tc.Data.MaxNumberOfOrbitals) {
+        if (orbitalGunsController.OrbitalGuns.Count < tc.Data.orbitalData.maxNumberOfOrbitals) {
             return true;
         }
         return false;

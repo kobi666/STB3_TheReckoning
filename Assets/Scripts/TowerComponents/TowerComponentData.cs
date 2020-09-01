@@ -5,33 +5,17 @@ using UnityEngine;
 [System.Serializable]
 public class TowerComponentData 
 {
-    public float Radius = 0;
-    public float DistanceFromRotatorBase;
-    public float OrbitingSpeed;
-    public float RotationSpeed;
-    public PlayerUnitController PlayerUnitPrefab;
-    public Effectable EffectableTarget = null;
+    public float componentRadius = 0;
+    public Effectable effectableTarget = null;
 
-    public TargetUnit TargetUnit = null;
-    public int MaxUnits;
-    public float PlayerUnitSpawnTime;
-    public Transform OrbitBase;
-    int numOfOrbitals;
-    public int NumOfOrbitals {
-        get => numOfOrbitals;
-        set {
-            numOfOrbitals = value;
-        }
-    }
-
-    public OrbitalWeaponGeneric OrbitalGunPrefab;
-
-    public int MaxNumberOfOrbitals;
-    public Projectile ProjectilePrefab;
+    public TargetUnit targetUnit = null;
     
+    public TowerComponentOrbitalControllerData orbitalData;
+    public TowerComponentProjectileData projectileData;
+    public TowerComponentUnitSpawnerData SpawnerData;
     [SerializeField]
     public DamageRange damageRange;
-    public float FireRate;
+    public float fireRate;
 
     [SerializeField]
     EnemyUnitController enemyTarget;

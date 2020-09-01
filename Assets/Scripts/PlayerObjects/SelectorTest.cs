@@ -21,8 +21,8 @@ public class SelectorTest : MonoBehaviour
         }
     }
 
-    Dictionary<Vector2, TowerUtils.TowerPositionData> cardinalTowers = new Dictionary<Vector2, TowerUtils.TowerPositionData>();
-    public Dictionary<Vector2, TowerUtils.TowerPositionData> CardinalTowers {
+    Dictionary<Vector2, TowerPositionData> cardinalTowers = new Dictionary<Vector2, TowerPositionData>();
+    public Dictionary<Vector2, TowerPositionData> CardinalTowers {
         get => cardinalTowers = TowerController.towersByDirections8 ?? null;
     }
 

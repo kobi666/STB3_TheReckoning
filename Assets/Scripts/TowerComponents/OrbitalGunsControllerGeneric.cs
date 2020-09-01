@@ -11,8 +11,8 @@ public abstract class OrbitalGunsControllerGeneric : TowerComponent
     
 
     public virtual void AddOrbitalGun() {
-        if (OrbitalGuns.Count < Data.MaxNumberOfOrbitals) {
-            TowerUtils.AddOrbitalGun(this, Rotator, Data.OrbitalGunPrefab);
+        if (OrbitalGuns.Count < Data.orbitalData.maxNumberOfOrbitals) {
+            TowerUtils.AddOrbitalGun(this, Rotator, Data.orbitalData.orbitalGunPrefab);
         }
     }
 

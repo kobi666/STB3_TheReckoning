@@ -9,11 +9,9 @@ public class ProjectileFinalPoint : MonoBehaviour
         parentTowerComponent = transform.parent?.GetComponent<WeaponController>() ?? null;
         
         if (parentTowerComponent != null) {
-        transform.position = new Vector2(transform.position.x + parentTowerComponent.Data.Radius, transform.position.y);
+        transform.position = new Vector2(transform.position.x + parentTowerComponent.Data.componentRadius, transform.position.y);
         }
-        else {
-            transform.position = new Vector2(transform.position.x + 3, transform.position.y);
-        }
+        
     }
 
     

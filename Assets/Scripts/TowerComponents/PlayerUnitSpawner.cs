@@ -32,7 +32,7 @@ public abstract class PlayerUnitSpawner : TowerComponent
     public Dictionary<string, (PlayerUnitController,int)> unitsIndex = new Dictionary<string, (PlayerUnitController, int)>();
 
     void AddUnitToIndex(PlayerUnitController puc) {
-        if (unitsIndex.Count < Data.MaxUnits) {
+        if (unitsIndex.Count < Data.SpawnerData.maxUnits) {
             if (CanSpawn()) {
                 unitsIndex.Add(puc.name,(puc,puc.UnitBaseIndex));
             }
@@ -70,7 +70,7 @@ public abstract class PlayerUnitSpawner : TowerComponent
         float counter = 0;
         while (this != null) {
             counter += StaticObjects.instance.DeltaGameTime;
-            if (counter >= Data.PlayerUnitSpawnTime) {
+            if (counter >= Data.SpawnerData.playerUnitSpawnTime) {
                 PlayerUnitController puc = PlayerUnitSpawnerUtils.SpawnPlayerUnitFromSpawner(this, unitBaseIndex);
                 try {
                 AddUnitToIndex(puc);
@@ -85,7 +85,7 @@ public abstract class PlayerUnitSpawner : TowerComponent
     }
 
     public void SpawnPlayerUnitAndAddToIndex(int unitBaseIndex) {
-            PlayerUnitController puc = PlayerUnitSpawnerUtils.SpawnPlayerUnit(Data.PlayerUnitPrefab, SpawningPointPosition, unitBaseIndex);
+            PlayerUnitController puc = PlayerUnitSpawnerUtils.SpawnPlayerUnit(Data.SpawnerData.playerUnitPrefab, SpawningPointPosition, unitBaseIndex);
             puc.Data.SetPosition = GetRallyPoint(unitBaseIndex);
             try {
             AddUnitToIndex(puc);
@@ -99,7 +99,7 @@ public abstract class PlayerUnitSpawner : TowerComponent
     public PlayerUnitRallyPoint RallyPoint {get => rallyPoint; private set { rallyPoint = value;}}
     PlayerUnitRallyPoint rallyPoint;
     public Vector2 GetRallyPoint(int unitBaseIndex) {
-        return rallyPoint.GetRallyPoint(unitBaseIndex, Data.MaxUnits);
+        return rallyPoint.GetRallyPoint(unitBaseIndex, Data.SpawnerData.maxUnits);
     }
     public Vector2 SpawningPointPosition {get {
         if (SpawningPointComponent == null) {
@@ -120,7 +120,7 @@ public abstract class PlayerUnitSpawner : TowerComponent
         onUnitDeath += RemoveUnitFromIndex;
         RallyPoint = GetComponentInChildren<PlayerUnitRallyPoint>() ?? null;
         SpawningPointComponent = GetComponentInChildren<PlayerUnitSpawningPoint>() ?? null;
-        for (int i = 0 ; i < Data.MaxUnits ; i++) {
+        for (int i = 0 ; i < Data.SpawnerData.maxUnits ; i++) {
             SpawnPlayerUnitAndAddToIndex(i);
         }
         PostStart();

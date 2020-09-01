@@ -11,16 +11,16 @@ public abstract class OrbitalWeaponGeneric : WeaponController, IOrbital<OrbitalW
     WeaponRotator rotator;
     public WeaponRotator Rotator {get => rotator;set { rotator = value;}}
     [SerializeField]
-    public float OrbitingSpeed {get => Data.OrbitingSpeed; set {Data.OrbitingSpeed = value;}}
+    public float OrbitingSpeed {get => Data.orbitalData.orbitingSpeed; set {Data.orbitalData.orbitingSpeed = value;}}
 
     [SerializeField]
-    public float RotationSpeed {get => Data.RotationSpeed; set {Data.RotationSpeed =value;}}
+    public float RotationSpeed {get => Data.orbitalData.rotationSpeed; set {Data.orbitalData.rotationSpeed =value;}}
     public string OrbitalName {get => name;}
     public Transform OrbitalTransform {get => transform;}
     public abstract bool ShouldRotate {get;set;}
     
-    public Transform OrbitBase{get => Data.OrbitBase;set { Data.OrbitBase = value;}}
-    public float DistanceFromOrbitalBase {get => Data.DistanceFromRotatorBase;set { DistanceFromOrbitalBase = value;}}
+    public Transform OrbitBase{get => Data.orbitalData.orbitBase;set { Data.orbitalData.orbitBase = value;}}
+    public float DistanceFromOrbitalBase {get => Data.orbitalData.distanceFromRotatorBase;set { Data.orbitalData.distanceFromRotatorBase = value;}}
     public abstract GameObject referenceGOforRotation {get;set;}
 
     float angleForOrbit;
@@ -74,7 +74,7 @@ public abstract class OrbitalWeaponGeneric : WeaponController, IOrbital<OrbitalW
         Vector2 vecToTarget = Target.transform.position - transform.position;
         float angleToTarget = Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg;
         Quaternion q = Quaternion.AngleAxis(angleToTarget, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, q, StaticObjects.instance.DeltaGameTime * Data.RotationSpeed);
+        transform.rotation = Quaternion.Slerp(transform.rotation, q, StaticObjects.instance.DeltaGameTime * Data.orbitalData.rotationSpeed);
     }
     
 

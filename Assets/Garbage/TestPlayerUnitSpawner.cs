@@ -5,7 +5,7 @@ using UnityEngine;
 public class TestPlayerUnitSpawner : PlayerUnitSpawner
 {
     private void Update() {
-        for (int i = 0; i < Data.MaxUnits ; i++) {
+        for (int i = 0; i < Data.SpawnerData.maxUnits ; i++) {
             Debug.DrawLine(RallyPoint.transform.position, GetRallyPoint(i));
         }
 

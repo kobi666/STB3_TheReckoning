@@ -59,9 +59,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\ACT.cs" />
-     <Compile Include="Assets\ArcingAOEProjectileController.cs" />
-     <Compile Include="Assets\ArcingBombTowerController.cs" />
-     <Compile Include="Assets\ArcingProjectileLauncherController.cs" />
+     <Compile Include="Assets\BeamWeapon.cs" />
      <Compile Include="Assets\ExternalUtils\Direction.cs" />
      <Compile Include="Assets\Garbage\OldStateMachine.cs" />
      <Compile Include="Assets\Garbage\TProjectileController.cs" />
@@ -69,6 +67,9 @@
      <Compile Include="Assets\Garbage\TestTowerController.cs" />
      <Compile Include="Assets\Garbage\TestWeaponController.cs" />
      <Compile Include="Assets\Garbage\TowerTestScript.cs" />
+     <Compile Include="Assets\LaserTest.cs" />
+     <Compile Include="Assets\LaserTest2.cs" />
+     <Compile Include="Assets\PathRenderer.cs" />
      <Compile Include="Assets\Prefabs\TargetDetection\EffectableTargetBank.cs" />
      <Compile Include="Assets\Prefabs\TargetDetection\TargetBank.cs" />
      <Compile Include="Assets\Samples\BasicEnemyMeleeUnit.cs" />
@@ -109,6 +110,7 @@
      <Compile Include="Assets\Scripts\PlayerObjects\TowerCrosshairMovementController.cs" />
      <Compile Include="Assets\Scripts\Projectiles\AOEAnimationController.cs" />
      <Compile Include="Assets\Scripts\Projectiles\AOEProjectile.cs" />
+     <Compile Include="Assets\Scripts\Projectiles\ArcingAOEProjectileController.cs" />
      <Compile Include="Assets\Scripts\Projectiles\AreaOfEffectController.cs" />
      <Compile Include="Assets\Scripts\Projectiles\DirectHitProjectile.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Explosion.cs" />
@@ -125,12 +127,16 @@
      <Compile Include="Assets\Scripts\RangeDetection\Effectable.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\Effector.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\EnemyTargetBank.cs" />
+     <Compile Include="Assets\Scripts\RangeDetection\ObjectDetectionUtils.cs" />
+     <Compile Include="Assets\Scripts\RangeDetection\RangeDebug.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\RangeDetector.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\TagSelectorAttribute.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\TagSelectorPropertyDrawer.cs" />
+     <Compile Include="Assets\Scripts\RangeDetection\TowerPositionData.cs" />
      <Compile Include="Assets\Scripts\TestScripts\TestInput.cs" />
      <Compile Include="Assets\Scripts\TestScripts\TestInputEvent.cs" />
      <Compile Include="Assets\Scripts\TestScripts\TestScript.cs" />
+     <Compile Include="Assets\Scripts\TowerComponents\ArcingProjectileLauncherController.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\OrbitalGunsController.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\OrbitalGunsControllerGeneric.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\OrbitalWeapon.cs" />
@@ -150,6 +156,7 @@
      <Compile Include="Assets\Scripts\TowerComponents\WeaponRotator.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\WeaponUtils.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\Weapons\TowerWeaponAttacks.cs" />
+     <Compile Include="Assets\Scripts\Towers\ArcingBombTowerController.cs" />
      <Compile Include="Assets\Scripts\Towers\EmptyTowerSlot.cs" />
      <Compile Include="Assets\Scripts\Towers\OrbitalGunTowerController.cs" />
      <Compile Include="Assets\Scripts\Towers\SlotController.cs" />

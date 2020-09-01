@@ -17,6 +17,16 @@ public class SingleAnimationObject : AnimationController,IQueueable<SingleAnimat
 
     }
 
+    public void PlaySingleAnimationNonStop()
+    {
+        PlaySingleAnimation(AnimationClip);
+    }
+    
+    
+    
+    
+    
+
     
     public void PlayOnceAndDisable() {
         if (AnimationClip != null) {

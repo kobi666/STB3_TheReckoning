@@ -4,11 +4,69 @@ using UnityEngine;
 using System;
 
 
-[System.Serializable]
 
+[System.Serializable]
+public class TowerComponentWeaponData
+{
+    
+}
+
+public class TowerComponentBeamData
+{
+    public float BeamDuration;
+    public (float, float) OscliatingBeamWidthMinMax;
+    public SingleAnimationObject OnHitBeamAnimation;
+    public Material BeamMaterial;
+}
+
+
+[System.Serializable]
+public class TowerComponentProjectileData
+{
+    public float projectileSpeed;
+    public Projectile projectilePrefab;
+    public float aoeProjectileRadius;
+}
+
+
+[System.Serializable]
+public class TowerComponentOrbitalControllerData
+{
+    public int maxNumberOfOrbitals;
+    public float distanceFromRotatorBase;
+    public float orbitingSpeed;
+    public float rotationSpeed;
+    public Transform orbitBase;
+    private int _numOfOrbitals;
+    public int NumOfOrbitals {
+        get => _numOfOrbitals;
+        set => _numOfOrbitals = value;
+    }
+    public OrbitalWeaponGeneric orbitalGunPrefab;
+}
+
+[System.Serializable]
+public class TowerComponentUnitSpawnerData
+{
+    public PlayerUnitController playerUnitPrefab;
+    public int maxUnits;
+    public float playerUnitSpawnTime;
+}
+
+[System.Serializable]
+public class TowerComponentAOEData
+{
+    
+}
+
+
+
+
+
+
+[System.Serializable]
 public class PoolObjectQueueDictionariesContainer<T> where T : Component,IQueueable<T> {
     public Dictionary<string, Dictionary<string,PoolObjectQueue<T>>> AllDictionaries = new Dictionary<string, Dictionary<string, PoolObjectQueue<T>>>();
-
     public (string,T) GetQueueableType(T t) {
 
         Type componentType = t.QueueableType;
@@ -374,6 +432,12 @@ public class  DamageRange {
     public int RandomDamage() {
         return UnityEngine.Random.Range(min, max);
     }
+}
+
+[System.Serializable]
+public class BeamData
+{
+    
 }
 
 [System.Serializable]

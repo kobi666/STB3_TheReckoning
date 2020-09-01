@@ -8,7 +8,7 @@ public class ArcingProjectileLauncherController : WeaponController
     // Start is called before the first frame update
     public override void MainAttackFunction()
     {
-        ProjectileUtils.SpawnArcingAOEProjectile(ProjectileQueuePool, ProjectileExitPoint, Target.transform.position, 6f, 1.2f, HitAndExplode);
+        ProjectileUtils.SpawnArcingAOEProjectile(ProjectileQueuePool, ProjectileExitPoint, Target.transform.position, 6f, Data.projectileData.projectileSpeed, Data.projectileData.aoeProjectileRadius, HitAndExplode);
     }
 
     void HitAndExplode(Effectable effectable)

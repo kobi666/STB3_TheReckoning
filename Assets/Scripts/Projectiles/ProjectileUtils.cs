@@ -38,11 +38,12 @@ public class ProjectileUtils
         return proj;
     }
 
-    public static Projectile SpawnArcingAOEProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, float arcValue, float speed, Action<Effectable> onReachAction)
+    public static Projectile SpawnArcingAOEProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, float arcValue, float speed, float effectRadius, Action<Effectable> onReachAction)
     {
         ArcingAOEProjectileController proj = pool.GetInactive() as ArcingAOEProjectileController;
         proj.transform.position = exitPoint;
         proj.Data.ArcValue = arcValue;
+        proj.Data.EffectRadius = effectRadius;
         proj.Speed = speed;
         proj.TargetPosition = targetPosition;
         proj.placeholderAction = onReachAction;

@@ -8,8 +8,8 @@ public class TowerTestScript : MonoBehaviour
 
 
     [SerializeField]
-    public Dictionary<Vector2, TowerUtils.TowerPositionData> towersByDirections8 = new Dictionary<Vector2, TowerUtils.TowerPositionData>();
-    public Dictionary<Vector2, TowerUtils.TowerPositionData> towersByDirections4 = new Dictionary<Vector2, TowerUtils.TowerPositionData>();
+    public Dictionary<Vector2, TowerPositionData> towersByDirections8 = new Dictionary<Vector2, TowerPositionData>();
+    public Dictionary<Vector2, TowerPositionData> towersByDirections4 = new Dictionary<Vector2, TowerPositionData>();
     // Start is called before the first frame update
     public DebugTowerPositionData[] TowersDebug = new DebugTowerPositionData[8];
 

@@ -9,9 +9,7 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="ACT.cs" t="Include" />
-        <e p="ArcingAOEProjectileController.cs" t="Include" />
-        <e p="ArcingBombTowerController.cs" t="Include" />
-        <e p="ArcingProjectileLauncherController.cs" t="Include" />
+        <e p="BeamWeapon.cs" t="Include" />
         <e p="ExternalUtils" t="Include">
           <e p="Direction.cs" t="Include" />
         </e>
@@ -23,6 +21,9 @@
           <e p="TowerTestScript.cs" t="Include" />
           <e p="TProjectileController.cs" t="Include" />
         </e>
+        <e p="LaserTest.cs" t="Include" />
+        <e p="LaserTest2.cs" t="Include" />
+        <e p="PathRenderer.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="Animancer" t="Include">
             <e p="AnimancerComponent.cs" t="Include" />
@@ -187,6 +188,7 @@
             <e p="AOEAnimationController.cs" t="Include" />
             <e p="AOEProjectile.cs" t="Include" />
             <e p="arcingAOEProjectile.cs" t="Include" />
+            <e p="ArcingAOEProjectileController.cs" t="Include" />
             <e p="AreaOfEffectController.cs" t="Include" />
             <e p="DirectHitProjectile.cs" t="Include" />
             <e p="Explosion.cs" t="Include" />
@@ -204,9 +206,12 @@
             <e p="Effectable.cs" t="Include" />
             <e p="Effector.cs" t="Include" />
             <e p="EnemyTargetBank.cs" t="Include" />
+            <e p="ObjectDetectionUtils.cs" t="Include" />
+            <e p="RangeDebug.cs" t="Include" />
             <e p="RangeDetector.cs" t="Include" />
             <e p="TagSelectorAttribute.cs" t="Include" />
             <e p="TagSelectorPropertyDrawer.cs" t="Include" />
+            <e p="TowerPositionData.cs" t="Include" />
           </e>
           <e p="TestScripts" t="Include">
             <e p="TestInput.cs" t="Include" />
@@ -214,6 +219,7 @@
             <e p="TestScript.cs" t="Include" />
           </e>
           <e p="TowerComponents" t="Include">
+            <e p="ArcingProjectileLauncherController.cs" t="Include" />
             <e p="OrbitalGunsController.cs" t="Include" />
             <e p="OrbitalGunsControllerGeneric.cs" t="Include" />
             <e p="OrbitalWeapon.cs" t="Include" />
@@ -237,6 +243,7 @@
             <e p="WeaponUtils.cs" t="Include" />
           </e>
           <e p="Towers" t="Include">
+            <e p="ArcingBombTowerController.cs" t="Include" />
             <e p="EmptyTowerSlot.cs" t="Include" />
             <e p="OrbitalGunTowerController.cs" t="Include" />
             <e p="SlotController.cs" t="Include" />

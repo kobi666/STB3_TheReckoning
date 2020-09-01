@@ -163,12 +163,74 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerComponent_OrbitalGunControllerGeneric
       objectReference: {fileID: 0}
+    - target: {fileID: 5154157196094913892, guid: 6c30e1e0fc1f670498b61db8c249ee37,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1892930427
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154157196094913892, guid: 6c30e1e0fc1f670498b61db8c249ee37,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
     - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
         type: 3}
       propertyPath: Data.OrbitalGunPrefab
       value: 
       objectReference: {fileID: 1285039470, guid: 22d0d1d5df937ff4c85f0255cf2f97f4,
         type: 3}
+    - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
+        type: 3}
+      propertyPath: Data.orbitalData.maxNumberOfOrbitals
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
+        type: 3}
+      propertyPath: Data.orbitalData.distanceFromRotatorBase
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
+        type: 3}
+      propertyPath: Data.orbitalData.orbitingSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
+        type: 3}
+      propertyPath: Data.orbitalData.rotationSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
+        type: 3}
+      propertyPath: Data.orbitalData.orbitalGunPrefab
+      value: 
+      objectReference: {fileID: 1285039470, guid: 22d0d1d5df937ff4c85f0255cf2f97f4,
+        type: 3}
+    - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
+        type: 3}
+      propertyPath: Data.projectileData.projectilePrefab
+      value: 
+      objectReference: {fileID: 5882499641662690262, guid: f21a1d072317d5a428476205f0acd37a,
+        type: 3}
+    - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
+        type: 3}
+      propertyPath: Data.projectileData.projectileSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
+        type: 3}
+      propertyPath: Data.damageRange.min
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
+        type: 3}
+      propertyPath: Data.damageRange.max
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
+        type: 3}
+      propertyPath: Data.fireRate
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5154157196094913894, guid: 6c30e1e0fc1f670498b61db8c249ee37, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6c30e1e0fc1f670498b61db8c249ee37, type: 3}

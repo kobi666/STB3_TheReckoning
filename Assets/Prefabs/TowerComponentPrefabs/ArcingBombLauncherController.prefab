@@ -48,9 +48,11 @@ MonoBehaviour:
   SR: {fileID: 0}
   Animancer: {fileID: 0}
   Data:
-    Radius: 1.5
+    Radius: 3
     DistanceFromRotatorBase: 0
     OrbitingSpeed: 0
+    ProjectileSpeed: 0.5
+    AOERadius: 1.5
     RotationSpeed: 0
     PlayerUnitPrefab: {fileID: 0}
     EffectableTarget: {fileID: 0}
@@ -65,14 +67,15 @@ MonoBehaviour:
     ProjectilePrefab: {fileID: 7004966156267044092, guid: 400c3a48717d12b4e9fc0503eee0db75,
       type: 3}
     damageRange:
-      min: 0
-      max: 0
-    FireRate: 10
+      min: 50
+      max: 100
+    FireRate: 60
     enemyTarget: {fileID: 0}
     playerTarget: {fileID: 0}
   ParentTower: {fileID: 0}
   RangeDetector: {fileID: 0}
   RangeCollider: {fileID: 0}
+  TargetBank: {fileID: 0}
   AttackCounter: 0
   CounterMax: 3
   ExternalAttackLock: 0
@@ -91,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugTargetNames: []
-  rangeDetector: {fileID: 2876795871505310373}
+  RangeDetector: {fileID: 0}
 --- !u!1001 &6967478822472926498
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -172,15 +175,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6967478822472926498}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2876795871505310373 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5142296622837540743, guid: 0136b884f776412409c134b6ba98b7cf,
-    type: 3}
-  m_PrefabInstance: {fileID: 6967478822472926498}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d45e3e4dba7d88844960d76ea319698e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

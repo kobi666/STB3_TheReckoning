@@ -147,10 +147,9 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoop(
     
 
 
-public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAngles(GameObject self, Dictionary<Vector2, GameObject> allTowers, CardinalSet cardinalSet) {
+public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAngles(GameObject self, Dictionary<Vector2, GameObject> allTowers, CardinalSet cardinalSet, float towerDiscoveryRange) {
     Dictionary<Vector2, TowerPositionData> dict = new Dictionary<Vector2, TowerPositionData>();
     Vector2 selfPosition = self.transform.position;
-    float towerDiscoveryRange = 1f;
     Vector2 towerDiscoveryRangeY = new Vector2(0, towerDiscoveryRange);
     Vector2 towerDiscoveryRangeX = new Vector2(towerDiscoveryRange, 0);
     for (int i =0 ; i < cardinalSet.length ; i++ ) {
@@ -193,11 +192,6 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAngles(Game
                 }
             }
         }
-       
-        
-
-        
-        
     }
     return dict;
 }
@@ -224,55 +218,7 @@ public static bool FindIfTowerInStraightPositionRangeXorY(float myPosXorY, float
 
 
 
-[System.Serializable]
-public class TowerPositionData {
-    [SerializeField]
-    float distance;
-    public float Distance {
-        get => distance;
-        set {
-            distance = value;
-        }
-    }
-    public int CardinalIndex;
-    [SerializeField]
-    GameObject towerSlotGO;
-    
-    [SerializeField]
-    Vector2 towerPosition;
-    public GameObject TowerSlotGo {
-        get => towerSlotGO;
-        set {
-            if (value == null) {
-                //Debug.Log("Tower set to null");
-            }
-            towerSlotGO = value;
-            }
-    
-        }
-    public Vector2 TowerPosition {
-        get => towerPosition;
-        set {
-            towerPosition = value;
-        }
-    }
 
-    public int ClockWiseIndex;
-    
-
-    public int CounterClockwiseIndex;
-    
-
-    
-
-    public TowerPositionData(GameObject _towerGO, float _distance, int cardinalIndex) {
-        TowerSlotGo = _towerGO;
-        if (_towerGO != null) {
-        TowerPosition = (Vector2)_towerGO.transform.position;
-        }
-        Distance = _distance;
-    }
-}
     public static Vector2[] GetDirections(int numOfDirections) {
         switch (numOfDirections) {
             case 4 :
@@ -499,69 +445,109 @@ public class TowerPositionData {
     }
 
     public static bool GetUpTower(TowerPositionQuery tq) {
-        if (tq.TargetTower.y > tq.ThisTower.y + (tq.Assistingfloat1 / 2)) {
-            return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.x, tq.TargetTower.x, tq.Assistingfloat1);
+        for (int i = 1 ; i < 20 ; i++) {
+        if (tq.TargetTower.y > tq.ThisTower.y + (tq.Assistingfloat1 * i / 2)) {
+                return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.x, tq.TargetTower.x, tq.Assistingfloat1 * i);
+            }
         }
         return false;
     }
     public static bool GetUpRightTower(TowerPositionQuery tq) {
-        Vector2 pos = new Vector2(tq.ThisTower.x + tq.Assistingfloat1, tq.ThisTower.y + tq.Assistingfloat1);
-        if (tq.TargetTower.y > pos.y) {
-            if (tq.TargetTower.x > pos.x) {
-                return true;
+        for (int i = 1; i < 20; i++)
+        {
+            Vector2 pos = new Vector2(tq.ThisTower.x + tq.Assistingfloat1 * i, tq.ThisTower.y + tq.Assistingfloat1 * i);
+            if (tq.TargetTower.y > pos.y)
+            {
+                if (tq.TargetTower.x > pos.x)
+                {
+                    return true;
+                }
             }
         }
+
         return false;
     }
 
     public static bool GetRightTower(TowerPositionQuery tq) {
-        if (tq.TargetTower.x > tq.ThisTower.x + (tq.Assistingfloat1 / 2)) {
-        return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.y, tq.TargetTower.y, tq.Assistingfloat1);
+        for (int i = 1; i < 20; i++)
+        {
+            if (tq.TargetTower.x > tq.ThisTower.x + (tq.Assistingfloat1 * i ))
+            {
+                return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.y, tq.TargetTower.y, tq.Assistingfloat1 * i);
+            }
         }
+
         return false;
     }
 
     public static bool GetDownRightTower(TowerPositionQuery tq) {
-        Vector2 pos = new Vector2(tq.ThisTower.x + tq.Assistingfloat1, tq.ThisTower.y - tq.Assistingfloat1);
-        if (tq.TargetTower.y < pos.y) {
-            if (tq.TargetTower.x > pos.x) {
-                return true;
+        for (int i = 1; i < 20; i++)
+        {
+            Vector2 pos = new Vector2(tq.ThisTower.x + tq.Assistingfloat1 * i, tq.ThisTower.y - tq.Assistingfloat1 * i);
+            if (tq.TargetTower.y < pos.y)
+            {
+                if (tq.TargetTower.x > pos.x)
+                {
+                    return true;
+                }
             }
         }
+
         return false;
     }
 
     public static bool GetDownTower(TowerPositionQuery tq) {
-        if (tq.TargetTower.y < tq.ThisTower.y - (tq.Assistingfloat1 / 2)) {
-            return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.x, tq.TargetTower.x, tq.Assistingfloat1);
+        for (int i = 1; i < 20; i++)
+        {
+            if (tq.TargetTower.y < tq.ThisTower.y - (tq.Assistingfloat1 * i ))
+            {
+                return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.x, tq.TargetTower.x, tq.Assistingfloat1 * i);
+            }
         }
         return false;
     }
 
     public static bool GetDownLeftTower(TowerPositionQuery tq) {
-        Vector2 pos = new Vector2(tq.ThisTower.x - tq.Assistingfloat1, tq.ThisTower.y - tq.Assistingfloat1);
-        if (tq.TargetTower.y < pos.y ) {
-            if (tq.TargetTower.x < pos.x) {
-                return true;
+        for (int i = 1; i < 20; i++)
+        {
+            Vector2 pos = new Vector2(tq.ThisTower.x - tq.Assistingfloat1 * i, tq.ThisTower.y - tq.Assistingfloat1 * i);
+            if (tq.TargetTower.y < pos.y)
+            {
+                if (tq.TargetTower.x < pos.x)
+                {
+                    return true;
+                }
             }
         }
+
         return false;
     }
 
     public static bool GetLeftTower(TowerPositionQuery tq) {
-        if (tq.TargetTower.x < tq.ThisTower.x - (tq.Assistingfloat1 / 2)) {
-            return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.y, tq.TargetTower.y, tq.Assistingfloat1);
+        for (int i = 1; i < 20; i++)
+        {
+            if (tq.TargetTower.x < tq.ThisTower.x - (tq.Assistingfloat1 * i ))
+            {
+                return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.y, tq.TargetTower.y, tq.Assistingfloat1 * i);
+            }
         }
+
         return false;
     }
 
     public static bool GetUpLeftTower(TowerPositionQuery tq) {
-        Vector2 pos = new Vector2(tq.ThisTower.x - tq.Assistingfloat1, tq.ThisTower.y + tq.Assistingfloat1);
-        if (tq.TargetTower.y > pos.y) {
-            if (tq.TargetTower.x < pos.x) {
-                return true;
+        for (int i = 1; i < 20; i++)
+        {
+            Vector2 pos = new Vector2(tq.ThisTower.x - tq.Assistingfloat1 * i, tq.ThisTower.y + tq.Assistingfloat1 * i);
+            if (tq.TargetTower.y > pos.y)
+            {
+                if (tq.TargetTower.x < pos.x)
+                {
+                    return true;
+                }
             }
         }
+
         return false;
     }
     

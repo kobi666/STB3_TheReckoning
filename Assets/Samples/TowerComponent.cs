@@ -18,8 +18,8 @@ public abstract class TowerComponent : MonoBehaviour
 
     public CircleCollider2D RangeCollider;    
     public abstract void PostAwake();
-    private void Awake() {
-        EnemyTargetBank = GetComponentInChildren<EnemyTargetBank>() ?? ParentTower?.TargetBank ?? null;
+    protected void Awake() {
+        //EnemyTargetBank = GetComponentInChildren<EnemyTargetBank>() ?? ParentTower?.TargetBank ?? null;
         SR = GetComponent<SpriteRenderer>() ?? null;
         Animancer = GetComponent<AnimancerComponent>() ?? null;
         

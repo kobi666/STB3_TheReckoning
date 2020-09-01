@@ -10,11 +10,12 @@ public class PlayerUnitSpawnerUtils
         PlayerUnitController puc = GameObject.Instantiate(unitPrefab, targetPosition, Quaternion.identity);
         puc.name = unitPrefab.name + "_" + UnityEngine.Random.Range(10000,50000);
         puc.UnitBaseIndex = unitBaseIndex;
+        puc.gameObject.SetActive(true);
         return puc;
     }
 
     public static PlayerUnitController SpawnPlayerUnitFromSpawner(PlayerUnitSpawner spawner, int unitBaseIndex) {
-        PlayerUnitController puc = SpawnPlayerUnit(spawner.Data.PlayerUnitPrefab,spawner.SpawningPointPosition, unitBaseIndex);
+        PlayerUnitController puc = SpawnPlayerUnit(spawner.Data.SpawnerData.playerUnitPrefab,spawner.SpawningPointPosition, unitBaseIndex);
         puc.Data.SetPosition = spawner.GetRallyPoint(unitBaseIndex);
         return puc;
     }
