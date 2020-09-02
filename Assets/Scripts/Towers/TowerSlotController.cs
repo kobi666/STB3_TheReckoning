@@ -62,7 +62,8 @@ public class TowerSlotController : MonoBehaviour
 
     private void Start() {
         SR = GetComponent<SpriteRenderer>();
-        TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoop(gameObject, SelectorTest2.instance.TowerSlotsWithPositions, TowerUtils.Cardinal8);
+        //TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoopover(gameObject, SelectorTest2.instance.TowerSlotsWithPositions, TowerUtils.Cardinal8);
+        TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoopOver(gameObject, SelectorTest2.instance.TowerSlotsWithPositions, TowerUtils.Cardinal8, 5);
         for(int i = 0 ; i < 8 ; i++) {
             TowersDebug[i].GO = TowerSlotsByDirections8[TowerUtils.Cardinal8.directionsClockwise[i]].TowerSlotGo;
             TowersDebug[i].Direction = TowerUtils.Cardinal8.directionNamesClockwise[i];

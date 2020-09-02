@@ -13,7 +13,14 @@ public class TowerPositionData {
             distance = value;
         }
     }
-    public int CardinalIndex;
+
+    public int DiscoveryRangeCycleNumber = 99;
+
+    public float ProximityScore(float discoveryRange)
+    {
+        return distance + (DiscoveryRangeCycleNumber * discoveryRange);
+    }
+    
     [SerializeField]
     GameObject towerSlotGO;
     
@@ -44,8 +51,17 @@ public class TowerPositionData {
 
     
 
-    public TowerPositionData(GameObject _towerGO, float _distance, int cardinalIndex) {
+    public TowerPositionData(GameObject _towerGO, float _distance) {
         TowerSlotGo = _towerGO;
+        if (_towerGO != null) {
+            TowerPosition = (Vector2)_towerGO.transform.position;
+        }
+        Distance = _distance;
+    }
+    
+    public TowerPositionData(GameObject _towerGO, float _distance, int _cycleNumber) {
+        TowerSlotGo = _towerGO;
+        DiscoveryRangeCycleNumber = _cycleNumber;
         if (_towerGO != null) {
             TowerPosition = (Vector2)_towerGO.transform.position;
         }
