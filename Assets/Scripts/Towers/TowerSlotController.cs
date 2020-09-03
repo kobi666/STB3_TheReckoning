@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class TowerSlotController : MonoBehaviour
 {
@@ -54,15 +55,8 @@ public class TowerSlotController : MonoBehaviour
         SR.sprite = null;
     }
 
-    private void Update() {
-        
-    }
-    
-    
-
-    private void Start() {
-        SR = GetComponent<SpriteRenderer>();
-        //TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoopover(gameObject, SelectorTest2.instance.TowerSlotsWithPositions, TowerUtils.Cardinal8);
+    public void CalculateAdjecentTowers()
+    {
         TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoopOver(gameObject, SelectorTest2.instance.TowerSlotsWithPositions, TowerUtils.Cardinal8, 5);
         for(int i = 0 ; i < 8 ; i++) {
             TowersDebug[i].GO = TowerSlotsByDirections8[TowerUtils.Cardinal8.directionsClockwise[i]].TowerSlotGo;
@@ -70,7 +64,25 @@ public class TowerSlotController : MonoBehaviour
             TowersDebug[i].Position = TowerSlotsByDirections8[TowerUtils.Cardinal8.directionsClockwise[i]].TowerPosition;
             TowersDebug[i].Distance = TowerSlotsByDirections8[TowerUtils.Cardinal8.directionsClockwise[i]].Distance;
         }
+    }
 
+    public event Action onTowerPositionCalculation;
+
+    public void OnTowerPositionCalculation()
+    {
+        onTowerPositionCalculation?.Invoke();
+    }
+
+    protected void Awake()
+    {
+        onTowerPositionCalculation += CalculateAdjecentTowers;
+    }
+
+
+    protected void Start() {
+        SR = GetComponent<SpriteRenderer>();
+        //TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoopover(gameObject, SelectorTest2.instance.TowerSlotsWithPositions, TowerUtils.Cardinal8);
+        OnTowerPositionCalculation();
         if (TowerObject == null) {
             PlaceNewTower(TowerArsenal.arsenal.EmptyTowerSlot.TowerPrefab);
         }

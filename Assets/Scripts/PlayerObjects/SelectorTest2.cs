@@ -9,8 +9,9 @@ public class SelectorTest2 : MonoBehaviour
     float FirstDiscoveryRange;
     public float SecondDiscoveryRangeMultiplier;
     public float SecondDiscoveryRange;
-        
-    
+
+
+    public TowerPosIndicator[] indicators = new TowerPosIndicator[4];
     public float DiscoveryRangeWithLineWidth;
     public float SecondDiscoveryRangeWithLineWidth;
     
@@ -109,6 +110,7 @@ public class SelectorTest2 : MonoBehaviour
         //PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => Move = ctx.ReadValue<Vector2>();
         //PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => DebugAxis(ctx.ReadValue<Vector2>(), TowerUtils.GetCardinalDirectionFromAxis(ctx.ReadValue<Vector2>()));
         PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => MoveToNewTower4(TowerUtils.GetCardinalDirectionFromAxis(ctx.ReadValue<Vector2>() ) );
+        PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => ShowIndicators();
         
         
         PlayerControl.GamePlay.MoveTowerCursor.canceled += ctx => resetMoveCounter();
@@ -116,6 +118,30 @@ public class SelectorTest2 : MonoBehaviour
         
     }
 
+
+    public void ShowIndicators()
+    {
+        Transform[] towerTransforms = new Transform[4] {null, null, null, null};
+        for (int i = 0; i < towerTransforms.Length; i++)
+        {
+            if (SlotController.TowersDebug[2 * i].GO != null)
+            {
+                towerTransforms[i] = SlotController.TowersDebug[2 * i].GO.transform;
+                indicators[i].transform.position = towerTransforms[i].position;
+                indicators[i].SR.enabled = true;
+                indicators[i].text.enabled = true;
+                indicators[i].text.text = SlotController.TowersDebug[2 * i].Direction;
+            }
+            else
+            {
+                indicators[i].SR.enabled = false;
+                indicators[i].text.enabled = false;
+            }
+        }
+
+        
+
+    }
 
 
 

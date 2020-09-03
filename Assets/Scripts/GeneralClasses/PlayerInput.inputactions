@@ -375,6 +375,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "J",
+                    "type": "Button",
+                    "id": "7262049a-2884-43fa-b0e7-d1c7138a6583",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -408,6 +416,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "U",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "894131d3-d2cc-42a0-9aea-7ca339f08121",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "J",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

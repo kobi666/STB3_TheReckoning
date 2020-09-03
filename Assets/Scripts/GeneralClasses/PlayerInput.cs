@@ -388,6 +388,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""J"",
+                    ""type"": ""Button"",
+                    ""id"": ""7262049a-2884-43fa-b0e7-d1c7138a6583"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -421,6 +429,17 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""U"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""894131d3-d2cc-42a0-9aea-7ca339f08121"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""J"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -467,6 +486,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_TestButtons_T = m_TestButtons.FindAction("T", throwIfNotFound: true);
         m_TestButtons_Y = m_TestButtons.FindAction("Y", throwIfNotFound: true);
         m_TestButtons_U = m_TestButtons.FindAction("U", throwIfNotFound: true);
+        m_TestButtons_J = m_TestButtons.FindAction("J", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -608,6 +628,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_TestButtons_T;
     private readonly InputAction m_TestButtons_Y;
     private readonly InputAction m_TestButtons_U;
+    private readonly InputAction m_TestButtons_J;
     public struct TestButtonsActions
     {
         private @PlayerInput m_Wrapper;
@@ -615,6 +636,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @T => m_Wrapper.m_TestButtons_T;
         public InputAction @Y => m_Wrapper.m_TestButtons_Y;
         public InputAction @U => m_Wrapper.m_TestButtons_U;
+        public InputAction @J => m_Wrapper.m_TestButtons_J;
         public InputActionMap Get() { return m_Wrapper.m_TestButtons; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -633,6 +655,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @U.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnU;
                 @U.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnU;
                 @U.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnU;
+                @J.started -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnJ;
+                @J.performed -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnJ;
+                @J.canceled -= m_Wrapper.m_TestButtonsActionsCallbackInterface.OnJ;
             }
             m_Wrapper.m_TestButtonsActionsCallbackInterface = instance;
             if (instance != null)
@@ -646,6 +671,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @U.started += instance.OnU;
                 @U.performed += instance.OnU;
                 @U.canceled += instance.OnU;
+                @J.started += instance.OnJ;
+                @J.performed += instance.OnJ;
+                @J.canceled += instance.OnJ;
             }
         }
     }
@@ -684,5 +712,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnT(InputAction.CallbackContext context);
         void OnY(InputAction.CallbackContext context);
         void OnU(InputAction.CallbackContext context);
+        void OnJ(InputAction.CallbackContext context);
     }
 }
