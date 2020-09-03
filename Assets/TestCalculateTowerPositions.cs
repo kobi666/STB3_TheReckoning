@@ -22,6 +22,11 @@ public class TestCalculateTowerPositions : MonoBehaviour
     }
 
 
+    private void Awake()
+    {
+        PInput = new PlayerInput();
+    }
+
     private void Start()
     {
         TowerSlotControllers = GetComponentsInChildren<TowerSlotController>();
@@ -29,12 +34,13 @@ public class TestCalculateTowerPositions : MonoBehaviour
         foreach (var VARIABLE in TowerSlotControllers)
         {
             onRecalculate += VARIABLE.CalculateAdjecentTowers;
-            
         }
         
         onRecalculate += SelectorTest2.instance.ShowIndicators;
 
         PInput.TestButtons.J.performed += ctx => OnRecalculate();
+        PInput.TestButtons.J.performed += ctx => Debug.LogWarning("J WAS PRESSED" + TowerSlotControllers.Length);
+        ;
 
     }
 }

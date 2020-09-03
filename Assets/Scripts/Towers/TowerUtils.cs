@@ -145,47 +145,74 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoop(
     return dict;
     }
 
+
+public static float GetDistanceScore( float baseDiscoveryRange, TowerPositionData towerPos)
+{
+    float distanceInDistanceUnits = (towerPos.Distance / baseDiscoveryRange);
+    float DistanceScore = distanceInDistanceUnits + (towerPos.DiscoveryRangeCycleNumber * baseDiscoveryRange);
+    return DistanceScore;
+}
+
 public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoopOver(GameObject self, Dictionary<Vector2, GameObject> allTowers, CardinalSet cardinalSet, int rangeCheckCyclesAmount) {
     Dictionary<Vector2, TowerPositionData> dict = new Dictionary<Vector2, TowerPositionData>();
     Vector2 selfPosition = self.transform.position;
     float towerDiscoveryRange = StaticObjects.instance.TowerSize;
 
     for (int i =0 ; i < cardinalSet.length ; i++ ) {
-        dict.Add(cardinalSet.directionsClockwise[i], new TowerPositionData(null, 999f));
-    }
-
-    for (int i = 0; i < cardinalSet.length; i++)
-    {
-        TowerPositionData tpsPH = new TowerPositionData(null, 999f);
-        foreach (var item in allTowers)
+        dict.Add(cardinalSet.directionsClockwise[i], new TowerPositionData(null, 999f, 99));
+        foreach (var tower in allTowers)
         {
-            for (int ii = 1; ii <= rangeCheckCyclesAmount; ii++)
+            for (int ii = 0; ii < rangeCheckCyclesAmount; ii++)
             {
-                TowerPositionQuery tq = new TowerPositionQuery(selfPosition,item.Key, towerDiscoveryRange * i);
+                TowerPositionQuery tq = new TowerPositionQuery(selfPosition, tower.Key, towerDiscoveryRange * i);
                 if (cardinalSet.discoveryConditionsClockwise[i](tq))
                 {
-                    float d = Vector2.Distance(selfPosition, item.Key);
-                    tpsPH = new TowerPositionData(item.Value, d, ii);
-                    if (tpsPH.ProximityScore(towerDiscoveryRange) <=
-                        dict[cardinalSet.directionsClockwise[i]].ProximityScore(towerDiscoveryRange))
+                    float d = Vector2.Distance(selfPosition, tower.Key);
+                    TowerPositionData tempTowerPos = new TowerPositionData(tower.Value, d, ii);
+                    if (GetDistanceScore(towerDiscoveryRange, dict[cardinalSet.directionsClockwise[i]]) >
+                        GetDistanceScore(towerDiscoveryRange, tempTowerPos))
                     {
-                        dict[cardinalSet.directionsClockwise[i]] = new TowerPositionData(item.Value, d, ii);
+                        dict[cardinalSet.directionsClockwise[i]] = tempTowerPos;
                     }
                 }
             }
-            
-            
-            /*TowerPositionQuery tq  = new TowerPositionQuery(selfPosition,item.Key, towerDiscoveryRange);
+        }
+        
+        
+    }
+
+    
+
+
+
+
+    /*foreach (var item in allTowers)
+    {
+        for (int ii = 1; ii <= rangeCheckCyclesAmount; ii++)
+        {
+            TowerPositionQuery tq = new TowerPositionQuery(selfPosition,item.Key, towerDiscoveryRange * i);
             if (cardinalSet.discoveryConditionsClockwise[i](tq))
             {
                 float d = Vector2.Distance(selfPosition, item.Key);
-                if (dict[cardinalSet.directionsClockwise[i]].Distance > d)
+                tpsPH = new TowerPositionData(item.Value, d, ii);
+                if (tpsPH.ProximityScore(towerDiscoveryRange) <=
+                    dict[cardinalSet.directionsClockwise[i]].ProximityScore(towerDiscoveryRange))
                 {
-                    dict[cardinalSet.directionsClockwise[i]] = new TowerPositionData(item.Value, d, i);
+                    dict[cardinalSet.directionsClockwise[i]] = new TowerPositionData(item.Value, d, ii);
                 }
-            }*/
+            }
         }
     }
+    /*TowerPositionQuery tq  = new TowerPositionQuery(selfPosition,item.Key, towerDiscoveryRange);
+       if (cardinalSet.discoveryConditionsClockwise[i](tq))
+       {
+           float d = Vector2.Distance(selfPosition, item.Key);
+           if (dict[cardinalSet.directionsClockwise[i]].Distance > d)
+           {
+               dict[cardinalSet.directionsClockwise[i]] = new TowerPositionData(item.Value, d, i);
+           }
+       }*/
+    
 
 
     /*foreach (var item in allTowers)
@@ -510,7 +537,7 @@ public static bool FindIfTowerInStraightPositionRangeXorY(float myPosXorY, float
 
     public static bool GetUpTower(TowerPositionQuery tq) {
         
-        if (tq.TargetTower.y > tq.ThisTower.y ) {
+        if (tq.TargetTower.y > tq.ThisTower.y + (tq.Assistingfloat1 / 2) ) {
                 return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.x, tq.TargetTower.x, tq.Assistingfloat1 );
             }
         return false;
@@ -530,7 +557,7 @@ public static bool FindIfTowerInStraightPositionRangeXorY(float myPosXorY, float
 
     public static bool GetRightTower(TowerPositionQuery tq) {
         
-            if (tq.TargetTower.x > tq.ThisTower.x)
+            if (tq.TargetTower.x > tq.ThisTower.x + (tq.Assistingfloat1 / 2 ))
             {
                 return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.y, tq.TargetTower.y, tq.Assistingfloat1);
             }
@@ -556,7 +583,7 @@ public static bool FindIfTowerInStraightPositionRangeXorY(float myPosXorY, float
 
     public static bool GetDownTower(TowerPositionQuery tq) {
         
-            if (tq.TargetTower.y < tq.ThisTower.y)
+            if (tq.TargetTower.y < tq.ThisTower.y - (tq.Assistingfloat1 / 2 ))
             {
                 return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.x, tq.TargetTower.x, tq.Assistingfloat1 );
             }
@@ -581,7 +608,7 @@ public static bool FindIfTowerInStraightPositionRangeXorY(float myPosXorY, float
 
     public static bool GetLeftTower(TowerPositionQuery tq) {
         
-            if (tq.TargetTower.x < tq.ThisTower.x)
+            if (tq.TargetTower.x < tq.ThisTower.x - (tq.Assistingfloat1 / 2 ))
             {
                 return FindIfTowerInStraightPositionRangeXorY(tq.ThisTower.y, tq.TargetTower.y, tq.Assistingfloat1 );
             }
