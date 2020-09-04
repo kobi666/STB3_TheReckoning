@@ -7,11 +7,16 @@
       <e p="Animancer.csproj" t="IncludeRecursive" />
       <e p="Animancer.FSM.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="ACT.cs" t="Include" />
         <e p="BeamWeapon.cs" t="Include" />
+        <e p="Editor" t="Include">
+          <e p="TagSelectorAttribute.cs" t="Include" />
+          <e p="TagSelectorPropertyDrawer.cs" t="Include" />
+        </e>
         <e p="ExternalUtils" t="Include">
           <e p="Direction.cs" t="Include" />
         </e>
@@ -211,8 +216,6 @@
             <e p="ObjectDetectionUtils.cs" t="Include" />
             <e p="RangeDebug.cs" t="Include" />
             <e p="RangeDetector.cs" t="Include" />
-            <e p="TagSelectorAttribute.cs" t="Include" />
-            <e p="TagSelectorPropertyDrawer.cs" t="Include" />
             <e p="TowerPositionData.cs" t="Include" />
           </e>
           <e p="TestScripts" t="Include">

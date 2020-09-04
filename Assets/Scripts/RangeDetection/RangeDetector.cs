@@ -25,7 +25,7 @@ public class RangeDetector : MonoBehaviour,IQueueable<RangeDetector>
     PoolObjectQueue<RangeDetector> queuePool;
     public PoolObjectQueue<RangeDetector> QueuePool { get;set;}
     public CircleCollider2D RangeCollider;
-
+    
     [TagSelector]
      public string[] DiscoverableTags = new string[] { };
      public void AddTagToDiscoverableTags(string _tag) {

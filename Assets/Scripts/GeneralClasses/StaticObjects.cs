@@ -17,11 +17,12 @@ public class StaticObjects : MonoBehaviour
     public static StaticObjects instance;
     public float TowerSize;
     public Sprite TowerSprite;
+    public float DistanceScoreMultiplier;
     void Awake()
     {
         instance = this;
         GameTime = Time.time;
-        TowerSize = TowerSprite.bounds.size.x;
+        TowerSize = TowerSprite.bounds.size.x / 2;
     }
 
     private void Start() {

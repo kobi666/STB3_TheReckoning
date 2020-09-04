@@ -57,7 +57,7 @@ public class TowerSlotController : MonoBehaviour
 
     public void CalculateAdjecentTowers()
     {
-        TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoopOver(gameObject, SelectorTest2.instance.TowerSlotsWithPositions, TowerUtils.Cardinal8, 10);
+        TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoopOver(gameObject, SelectorTest2.instance.TowerSlotsWithPositions, TowerUtils.Cardinal8,20);
         for(int i = 0 ; i < 8 ; i++) {
             TowersDebug[i].GO = TowerSlotsByDirections8[TowerUtils.Cardinal8.directionsClockwise[i]].TowerSlotGo;
             TowersDebug[i].Direction = TowerUtils.Cardinal8.directionNamesClockwise[i];

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+using UnityEngine.Serialization;
 
 
 [System.Serializable]
@@ -322,20 +322,20 @@ public class TowerSlotAction {
 public class TowerPositionQuery {
     public Vector2 ThisTower;
     public Vector2 TargetTower;
-    public float Assistingfloat1;
-    public float Assistingfloat2;
+    public float BaseDiscoveryRange;
+    public float DiscoveryRange;
 
     public TowerPositionQuery(Vector2 thisTower, Vector2 targetTower, float assistingFloat) {
         ThisTower = thisTower;
         TargetTower = targetTower;
-        Assistingfloat1 = assistingFloat;
+        BaseDiscoveryRange = assistingFloat;
     }
 
     public TowerPositionQuery(Vector2 thisTower, Vector2 targetTower, float assistingFloat1, float assistingFloat2) {
         ThisTower = thisTower;
         TargetTower = targetTower;
-        Assistingfloat1 = assistingFloat1;
-        Assistingfloat2 = assistingFloat2;
+        BaseDiscoveryRange = assistingFloat1;
+        DiscoveryRange = assistingFloat2;
     }
 
 }

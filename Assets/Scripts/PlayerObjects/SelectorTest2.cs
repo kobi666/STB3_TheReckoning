@@ -127,7 +127,7 @@ public class SelectorTest2 : MonoBehaviour
             if (SlotController.TowersDebug[2 * i].GO != null)
             {
                 towerTransforms[i] = SlotController.TowersDebug[2 * i].GO.transform;
-                indicators[i].transform.position = towerTransforms[i].position;
+                indicators[i].MoveToNewTarget( towerTransforms[i].position);
                 indicators[i].SR.enabled = true;
                 indicators[i].text.enabled = true;
                 indicators[i].text.text = SlotController.TowersDebug[2 * i].Direction;
