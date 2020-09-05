@@ -12,10 +12,10 @@ public class SelectorTest2 : MonoBehaviour
 
 
     public TowerPosIndicator[] indicators = new TowerPosIndicator[4];
-    public float DiscoveryRangeWithLineWidth;
-    public float SecondDiscoveryRangeWithLineWidth;
+    /*public float DiscoveryRangeWithLineWidth;
+    public float SecondDiscoveryRangeWithLineWidth;*/
     
-    LineRenderer H1L;
+    /*LineRenderer H1L;
     LineRenderer H2L;
     LineRenderer H3L;
     LineRenderer H4L;
@@ -31,7 +31,7 @@ public class SelectorTest2 : MonoBehaviour
     public GameObject V1;
     public GameObject V2;
     public GameObject V3;
-    public GameObject V4;
+    public GameObject V4;*/
 
     public PlayerInput PlayerControl;
     public float moveLock;
@@ -198,14 +198,6 @@ public class SelectorTest2 : MonoBehaviour
             break;
         }
         FirstDiscoveryRange = StaticObjects.instance.TowerSize;
-        V1L = V1.GetComponent<LineRenderer>();
-        V2L = V2.GetComponent<LineRenderer>();
-        V3L = V3.GetComponent<LineRenderer>();
-        V4L = V4.GetComponent<LineRenderer>();
-        H1L = H1.GetComponent<LineRenderer>();
-        H2L = H2.GetComponent<LineRenderer>();
-        H3L = H3.GetComponent<LineRenderer>();
-        H4L = H4.GetComponent<LineRenderer>();
         DiscoveryRangeWithLineWidth = FirstDiscoveryRange + 0.10f;
         int random = UnityEngine.Random.Range(1, TowerSlotsWithPositions.Count);
         SelectedTowerSlot = TowerSlotsWithPositions[FirstKey];
@@ -220,22 +212,6 @@ public class SelectorTest2 : MonoBehaviour
         if (moveLock < 1.0f) {
             moveLock += Time.deltaTime;
         }
-        H1L.SetPosition(0, new Vector2(-10, SelectedTowerSlot.transform.position.y + DiscoveryRangeWithLineWidth));
-        H1L.SetPosition(1, new Vector2(10, SelectedTowerSlot.transform.position.y + DiscoveryRangeWithLineWidth));
-        H2L.SetPosition(0, new Vector2(-10, SelectedTowerSlot.transform.position.y - DiscoveryRangeWithLineWidth));
-        H2L.SetPosition(1, new Vector2(10, SelectedTowerSlot.transform.position.y - DiscoveryRangeWithLineWidth));
-        H3L.SetPosition(0, new Vector2(-10, SelectedTowerSlot.transform.position.y + SecondDiscoveryRangeWithLineWidth));
-        H3L.SetPosition(1, new Vector2(10, SelectedTowerSlot.transform.position.y + SecondDiscoveryRangeWithLineWidth));
-        H4L.SetPosition(0, new Vector2(-10, SelectedTowerSlot.transform.position.y - SecondDiscoveryRangeWithLineWidth));
-        H4L.SetPosition(1, new Vector2(10, SelectedTowerSlot.transform.position.y - SecondDiscoveryRangeWithLineWidth));
-        V1L.SetPosition(0, new Vector2(SelectedTowerSlot.transform.position.x + DiscoveryRangeWithLineWidth, -6));
-        V1L.SetPosition(1, new Vector2(SelectedTowerSlot.transform.position.x + DiscoveryRangeWithLineWidth, 6));
-        V2L.SetPosition(0, new Vector2(SelectedTowerSlot.transform.position.x - DiscoveryRangeWithLineWidth, -6));
-        V2L.SetPosition(1, new Vector2(SelectedTowerSlot.transform.position.x - DiscoveryRangeWithLineWidth, 6));
-        V3L.SetPosition(0, new Vector2(SelectedTowerSlot.transform.position.x + SecondDiscoveryRangeWithLineWidth, -6));
-        V3L.SetPosition(1, new Vector2(SelectedTowerSlot.transform.position.x + SecondDiscoveryRangeWithLineWidth, 6));
-        V4L.SetPosition(0, new Vector2(SelectedTowerSlot.transform.position.x - SecondDiscoveryRangeWithLineWidth, -6));
-        V4L.SetPosition(1, new Vector2(SelectedTowerSlot.transform.position.x - SecondDiscoveryRangeWithLineWidth, 6));
 
     }
 }

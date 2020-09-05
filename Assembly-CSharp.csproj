@@ -86,6 +86,7 @@
      <Compile Include="Assets\Scripts\Units\UnitUtils.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\InGameObjectManager.cs" />
      <Compile Include="Assets\Scripts\Towers\TowerActionManager.cs" />
+     <Compile Include="Assets\TestCalculateTowerPositions.cs" />
      <Compile Include="Assets\Scripts\Units\EffectableUnit.cs" />
      <Compile Include="Assets\Samples\BasicEnemyMeleeUnit.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ProjectileFinalPoint.cs" />
@@ -161,9 +162,11 @@
      <Compile Include="Assets\Scripts\GeneralClasses\PlayerInput.cs" />
      <Compile Include="Assets\Garbage\TestPlayerUnitSpawner.cs" />
      <Compile Include="Assets\Garbage\TestTowerController.cs" />
+     <Compile Include="Assets\TowerPosIndicator.cs" />
      <Compile Include="Assets\Scripts\Levels-rooms\RoomController.cs" />
      <Compile Include="Assets\Scripts\Towers\TowerArsenal.cs" />
      <Compile Include="Assets\Scripts\Projectiles\TargetFacingStraightShotDirectHitProjectile.cs" />
+     <Compile Include="Assets\Scripts\TagSelectorAttribute.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\NativeClasses.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\StateMachineClasses.cs" />
      <Compile Include="Assets\Scripts\Units\PlayerUnitController.cs" />
@@ -179,8 +182,10 @@
      <Compile Include="Assets\Scripts\Towers\TowerSlotController.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\RangeDebug.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ArcingAOEProjectileController.cs" />
-     <Compile Include="Assets\TestCalculateTowerPositions.cs" />
-     <Compile Include="Assets\TowerPosIndicator.cs" />
+     <Compile Include="Assets\TagSelectorPropertyDrawer.cs" />
+     <Compile Include="Assets\BeamTowerController.cs" />
+     <Compile Include="Assets\StraightLaZoRWeapon.cs" />
+     <Compile Include="Assets\Scripts\TowerComponents\Weapons\BeamUtilities.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />

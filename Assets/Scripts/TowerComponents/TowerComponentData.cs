@@ -13,6 +13,7 @@ public class TowerComponentData
     public TowerComponentOrbitalControllerData orbitalData;
     public TowerComponentProjectileData projectileData;
     public TowerComponentUnitSpawnerData SpawnerData;
+    public TowerComponentBeamData BeamData;
     [SerializeField]
     public DamageRange damageRange;
     public float fireRate;

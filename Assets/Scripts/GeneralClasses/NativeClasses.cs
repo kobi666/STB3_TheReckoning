@@ -17,6 +17,7 @@ public class TowerComponentBeamData
     public (float, float) OscliatingBeamWidthMinMax;
     public SingleAnimationObject OnHitBeamAnimation;
     public Material BeamMaterial;
+    public float beamWidth;
 }
 
 

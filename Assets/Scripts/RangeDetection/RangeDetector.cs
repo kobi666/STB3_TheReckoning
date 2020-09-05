@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEditor;
 
 public class RangeDetector : MonoBehaviour,IQueueable<RangeDetector>
 {
@@ -26,8 +27,10 @@ public class RangeDetector : MonoBehaviour,IQueueable<RangeDetector>
     public PoolObjectQueue<RangeDetector> QueuePool { get;set;}
     public CircleCollider2D RangeCollider;
     
-    [TagSelector]
-     public string[] DiscoverableTags = new string[] { };
+#if UNITY_EDITOR
+    [TagSelectorAttribute]
+# endif
+    public string[] DiscoverableTags = new string[] { };
      public void AddTagToDiscoverableTags(string _tag) {
         
         for (int i = 0; i < DiscoverableTags.Length ; i++)
