@@ -15,6 +15,11 @@ public class StraightLaZoRWeapon : BeamWeapon
         
     }
 
+    public override void RenderLineFunction(LineRenderer lineRenderer, Vector2 originPos, Vector2 targetPos)
+    {
+        
+    }
+
     protected void Start()
     {
         base.Start();

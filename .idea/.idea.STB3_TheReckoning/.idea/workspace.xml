@@ -20,9 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa118faa-58da-4e0f-9f08-836bd9e1a5c7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.STB3_TheReckoning/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.STB3_TheReckoning/.idea/indexLayout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/LaserWeaponTest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.STB3_TheReckoning/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.STB3_TheReckoning/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.STB3_TheReckoning/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.STB3_TheReckoning/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/AOEs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/WeaponPrefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Units/EnemyUnits.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Units/PlayerUnits.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AnimancerTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AnimancerTest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerObjects/SelectorTest2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerObjects/SelectorTest2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StraightLaZoRWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StraightLaZoRWeapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TestScripts.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/expandedItems" beforeDir="false" afterPath="$PROJECT_DIR$/Library/expandedItems" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +48,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.1/Scripts/Runtime/TMPro_Private.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/TagSelectorPropertyDrawer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BeamTowerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/StraightLaZoRWeapon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/_unityProjects/STB3_TheReckoning/Assets/Scenes/AnimancerTest.unity" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -46,10 +63,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Towers/TowerUtils.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GeneralClasses/StaticObjects.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Towers/TowerSlotController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerObjects/SelectorTest2.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerPosIndicator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RangeDetection/TagSelectorPropertyDrawer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RangeDetection/RangeDetector.cs" />
+        <option value="$PROJECT_DIR$/Assets/StraightLaZoRWeapon.cs" />
+        <option value="$PROJECT_DIR$/Assets/LaserWeaponTest.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerObjects/SelectorTest2.cs" />
       </list>
     </option>
   </component>
@@ -82,10 +101,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="9956">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="9956" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -203,10 +222,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="dock-window-1/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599239266983" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1599239242887">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1599947635342">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599239242887" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599947635342" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

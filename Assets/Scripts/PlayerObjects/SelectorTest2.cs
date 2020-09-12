@@ -198,12 +198,10 @@ public class SelectorTest2 : MonoBehaviour
             break;
         }
         FirstDiscoveryRange = StaticObjects.instance.TowerSize;
-        DiscoveryRangeWithLineWidth = FirstDiscoveryRange + 0.10f;
         int random = UnityEngine.Random.Range(1, TowerSlotsWithPositions.Count);
         SelectedTowerSlot = TowerSlotsWithPositions[FirstKey];
         transform.position = SelectedTowerSlot.transform.position;
         SecondDiscoveryRange = FirstDiscoveryRange * SecondDiscoveryRangeMultiplier;
-        SecondDiscoveryRangeWithLineWidth = SecondDiscoveryRange + 0.10f;
     }
 
     // Update is called once per frame

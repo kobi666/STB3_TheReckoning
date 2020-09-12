@@ -72,11 +72,14 @@
      <Compile Include="Assets\PathRenderer.cs" />
      <Compile Include="Assets\Scripts\Units\UnitData.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\UnitSpawnerTowerController.cs" />
+     <Compile Include="Assets\LaserWeaponTest.cs" />
      <Compile Include="Assets\Scripts\TestScripts\TestInputEvent.cs" />
      <Compile Include="Assets\Scripts\Units\UnitAnimationController.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\ObjectDetectionUtils.cs" />
+     <Compile Include="Assets\TagSelectorPropertyDrawer.cs" />
      <Compile Include="Assets\Scripts\Units\UnitType.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\WeaponUtils.cs" />
+     <Compile Include="Assets\StraightLaZoRWeapon.cs" />
      <Compile Include="Assets\Scripts\Units\NormalUnitStates.cs" />
      <Compile Include="Assets\Prefabs\TargetDetection\TargetBank.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ExplosionController.cs" />
@@ -109,9 +112,11 @@
      <Compile Include="Assets\Scripts\Levels-rooms\RoomManager.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\PoolObjectQueue.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\ActiveObjectPool.cs" />
+     <Compile Include="Assets\BeamTowerController.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\DebugText.cs" />
      <Compile Include="Assets\Scripts\Projectiles\arcingAOEProjectile.cs" />
      <Compile Include="Assets\Scripts\Levels-rooms\WaveManager.cs" />
+     <Compile Include="Assets\Scripts\TowerComponents\Weapons\BeamUtilities.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\CursorUtils.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\DeathManager.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\TowerComponentData.cs" />
@@ -182,10 +187,6 @@
      <Compile Include="Assets\Scripts\Towers\TowerSlotController.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\RangeDebug.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ArcingAOEProjectileController.cs" />
-     <Compile Include="Assets\TagSelectorPropertyDrawer.cs" />
-     <Compile Include="Assets\BeamTowerController.cs" />
-     <Compile Include="Assets\StraightLaZoRWeapon.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\Weapons\BeamUtilities.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
