@@ -6,12 +6,12 @@ using UnityEngine.Events;
 using Animancer;
 using TMPro;
 using System.Threading.Tasks;
-
+using MyBox;
 
 
 public abstract class WeaponController : TowerComponent
 {
-
+    [ConditionalField("debug")]
     public EffectableTargetBank TargetBank;
     public int Damage {
         get {
@@ -20,10 +20,15 @@ public abstract class WeaponController : TowerComponent
     }
     public float AttackCounter;
     public float CounterMax = 3;
+    
+    [ConditionalField("debug")]
     public PoolObjectQueue<Projectile> ProjectileQueuePool;
+    
+    [ConditionalField("debug")]
     public bool ExternalAttackLock = false;
 
     [SerializeField]
+    [ConditionalField("debug")]
     public bool canattackFieldPH;
     public virtual bool CanAttack() {
         if (ExternalAttackLock == false) {
@@ -50,7 +55,7 @@ public abstract class WeaponController : TowerComponent
             return projectileExitPoint?.transform.position ?? transform.position;
         }
     }
-    ProjectileFinalPoint projectileFinalPoint;
+    public ProjectileFinalPoint projectileFinalPoint;
     public Transform ProjectileFinalPointTransform { get => projectileFinalPoint.transform;}
     public Vector2 ProjectileFinalPointV2 {
         get {
@@ -103,14 +108,19 @@ public abstract class WeaponController : TowerComponent
         AsyncAttackInProgress = false;
     }
     public async void StartAsyncAttack() {
-        if (AsyncAttackInProgress == true) {
+        /*if (AsyncAttackInProgress == true) {
             AsyncAttackInProgress = false;
-            await Task.Yield();
-        }
+        }*/
         AsyncAttackInProgress = true;
         while (CanAttack() && AsyncAttackInProgress == true) {
-            AttackCounter += (StaticObjects.instance.DeltaGameTime * Data.fireRate) / 10;
-            if (AttackCounter >= CounterMax)
+            if (Data.fireRate > 0) {
+                if (AttackCounter >= CounterMax)
+                {
+                    AttackOnce();
+                }
+            }
+
+            if (Data.fireRate < 0)
             {
                 AttackOnce();
             }
@@ -133,11 +143,19 @@ public abstract class WeaponController : TowerComponent
 
     void AttackOnce()
     {
-        if (AttackCounter >= CounterMax)
+        if (CounterMax > 0 ) {
+            if (AttackCounter >= CounterMax)
+            {
+                AttackCounter = 0;
+                MainAttackFunction();
+            }
+        }
+
+        if (CounterMax < 0)
         {
-            AttackCounter = 0;
             MainAttackFunction();
         }
+        
     }
 
     
@@ -146,7 +164,7 @@ public abstract class WeaponController : TowerComponent
 
     public event Action<string,string> onEnemyLeftRange;
     public void OnEnemyLeftRange(string targetName,string callerName) {
-        onEnemyLeftRange?.Invoke(targetName,name);
+        onEnemyLeftRange?.Invoke(targetName ?? null,name ?? null);
     }
 
     public TargetUnit Target {
@@ -213,7 +231,9 @@ public abstract class WeaponController : TowerComponent
     public abstract void PostStart();
     protected void Start() {
         RangeDetector = GetComponentInChildren<RangeDetector>() ?? null;
+        if (Data.projectileData.projectilePrefab != null) {
         ProjectileQueuePool = GameObjectPool.Instance.GetProjectileQueue(Data.projectileData.projectilePrefab);
+        }
         projectileExitPoint = GetComponentInChildren<ProjectileExitPoint>() ?? null;
         projectileFinalPoint = GetComponentInChildren<ProjectileFinalPoint>() ?? null;
         if (TargetBank != null) {
@@ -227,4 +247,13 @@ public abstract class WeaponController : TowerComponent
         PostStart();
     }
 
+    protected void Update()
+    {
+        
+            if (AttackCounter < CounterMax)
+            {
+                AttackCounter += StaticObjects.instance.DeltaGameTime;
+            }
+        
+    }
 }

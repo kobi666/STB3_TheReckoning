@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using System;
 
 [System.Serializable]
 public abstract class BeamWeapon : WeaponController
 {
+    public override void MainAttackFunction()
+    {
+        RenderBeamForDuration();
+    }
+
     public LineRenderer lineRenderer;
-    public float laserDuration;
-    public float laserDurationTimer;
+    public float BeamDurationTimer;
     public float startFireCounter;
-    public float startFireCounterMax;
+    
     public bool isOscilating;
     
     private bool m_BeamSwitch;
@@ -34,31 +39,81 @@ public abstract class BeamWeapon : WeaponController
         }
     }
 
-    public abstract void RenderLineFunction(LineRenderer lineRenderer, Vector2 originPos, Vector2 targetPos);
-    
-    public void RenderBeam()
+    private bool _widthDirection;
+
+    void OscilateBeam()
     {
-        bool laserEnabled;
-        
-        
-        if (laserDurationTimer > 0)
-        { 
-            BeamSwitch = true;
-            lineRenderer.SetPosition(0, ProjectileExitPoint);
-            lineRenderer.SetPosition(1, ProjectileFinalPointV2);
-            laserDurationTimer -= Time.deltaTime;
+        if (CurrentBeamWidth <= CurrentBeamWidth - Data.BeamData.OscliatingBeamWidthMinMax.min)
+        {
+            _widthDirection = true;
+        }
+        else if (CurrentBeamWidth >= CurrentBeamWidth + Data.BeamData.OscliatingBeamWidthMinMax.max)
+        {
+            _widthDirection = false;
         }
 
-        if (laserDurationTimer <= 0)
+        if (_widthDirection == true)
+        {
+            CurrentBeamWidth += Time.deltaTime * Data.BeamData.BeamOsciliationSpeed * Data.BeamData.BeamDuration;
+        }
+        else
+        {
+            CurrentBeamWidth -= Time.deltaTime * Data.BeamData.BeamOsciliationSpeed * Data.BeamData.BeamDuration;
+        }
+    }
+
+    private float currentBeamWidth;
+    public virtual float CurrentBeamWidth
+    {
+        get => currentBeamWidth;
+        set
+        {
+            currentBeamWidth = value;
+            lineRenderer.startWidth = value;
+            lineRenderer.endWidth = value;
+        }
+    }
+
+    public BeamRenderingFunction BeamRenderingFunction;
+
+    private void RenderLine()
+    {
+        if (BeamSwitch == false)
+        {
+            BeamSwitch = true;
+        }
+        BeamRenderingFunction.Invoke(lineRenderer,ProjectileExitPoint,Target.transform.position, Data.BeamData.BeamMovementSpeed);
+    }
+
+    public event Action onBeamRender;
+
+    public void OnBeamRender()
+    {
+        onBeamRender?.Invoke();
+    }
+    
+    private void RenderBeamForDuration() {
+        if (BeamDurationTimer > 0)
+        {
+            RenderLine();
+            BeamDurationTimer -= Time.deltaTime;
+        }
+
+        if (BeamDurationTimer <= 0)
         {
             BeamSwitch = false;
+            startFireCounter = 0;
         }
 
         startFireCounter += StaticObjects.instance.DeltaGameTime;
-        if (startFireCounter >= startFireCounterMax)
+        if (BeamSwitch == false)
         {
-            laserDurationTimer = laserDuration;
-            startFireCounter = 0;
+            if (startFireCounter <= Data.BeamData.CooldownTime)
+            startFireCounter += StaticObjects.instance.DeltaGameTime;
+            if (startFireCounter >= Data.BeamData.CooldownTime)
+            {
+                BeamDurationTimer = Data.BeamData.BeamDuration;
+            }
         }
     }
     
@@ -70,11 +125,21 @@ public abstract class BeamWeapon : WeaponController
     }
     protected void Start()
     {
+        onBeamRender += RenderLine;
+        if (Data.BeamData.IsOscillating)
+        {
+            onBeamRender += OscilateBeam;
+        }
+        onBeamRender += delegate { Debug.DrawLine(transform.position,Target.transform.position); };
+        
         base.Start();
         if (Data.BeamData.beamWidth == 0f)
         {
-            lineRenderer.startWidth = 0.1f;
-            lineRenderer.endWidth = 0.1f;
+            CurrentBeamWidth = 0.1f;
+        }
+        else
+        {
+            CurrentBeamWidth = Data.BeamData.beamWidth;
         }
     }
 

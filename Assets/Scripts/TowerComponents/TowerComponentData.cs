@@ -9,7 +9,7 @@ public class TowerComponentData
     public Effectable effectableTarget = null;
 
     public TargetUnit targetUnit = null;
-    
+
     public TowerComponentOrbitalControllerData orbitalData;
     public TowerComponentProjectileData projectileData;
     public TowerComponentUnitSpawnerData SpawnerData;
@@ -38,7 +38,7 @@ public class TowerComponentData
     }
 
 
-
+    
     [SerializeField]
     PlayerUnitController playerTarget;
 

@@ -15,6 +15,7 @@
         <e p="BeamTowerController.cs" t="Include" />
         <e p="BeamWeapon.cs" t="Include" />
         <e p="Editor" t="Include">
+          <e p="ConditionalFieldAttribute.cs" t="Include" />
           <e p="TagSelectorPropertyDrawer.cs" t="Include" />
         </e>
         <e p="ExternalUtils" t="Include">
@@ -123,6 +124,168 @@
               <e p="BezierWalkerWithTime.cs" t="Include" />
               <e p="ParticlesFollowBezier.cs" t="Include" />
               <e p="UnitWalker.cs" t="Include" />
+            </e>
+          </e>
+          <e p="MyBox" t="Include">
+            <e p="Attributes" t="Include">
+              <e p="AttributeBase.cs" t="Include" />
+              <e p="AttributeBaseDrawer.cs" t="Include" />
+              <e p="AutoPropertyAttribute.cs" t="Include" />
+              <e p="ButtonMethodAttribute.cs" t="Include" />
+              <e p="ConditionalFieldAttribute.cs" t="Include" />
+              <e p="ConstantsSelectionAttribute.cs" t="Include" />
+              <e p="DefinedValuesAttribute.cs" t="Include" />
+              <e p="DisplayInspectorAttribute.cs" t="Include" />
+              <e p="FoldoutAttribute.cs" t="Include" />
+              <e p="InitializationFieldAttribute.cs" t="Include" />
+              <e p="LayerAttribute.cs" t="Include" />
+              <e p="MaxValueAttribute.cs" t="Include" />
+              <e p="MinMaxRangeAttribute.cs" t="Include" />
+              <e p="MinValueAttribute.cs" t="Include" />
+              <e p="MustBeAssignedAttribute.cs" t="Include" />
+              <e p="MustBeAssignedConditionalFieldExclude.cs" t="Include" />
+              <e p="PositiveValueOnlyAttribute.cs" t="Include" />
+              <e p="ReadOnlyAttribute.cs" t="Include" />
+              <e p="RequireLayerAttribute.cs" t="Include" />
+              <e p="RequireLayerOtRagAttributeHandler.cs" t="Include" />
+              <e p="RequireTagAttribute.cs" t="Include" />
+              <e p="SearchableEnumAttribute.cs" t="Include" />
+              <e p="SeparatorAttribute.cs" t="Include" />
+              <e p="SpriteLayerAttribute.cs" t="Include" />
+              <e p="TagAttribute.cs" t="Include" />
+            </e>
+            <e p="Extensions" t="Include">
+              <e p="EditorExtensions" t="Include">
+                <e p="MyEditor.cs" t="Include" />
+                <e p="MyGUI.cs" t="Include" />
+                <e p="MyHandles.cs" t="Include" />
+                <e p="MyIconPresets.cs" t="Include" />
+                <e p="MyScriptableObject.cs" t="Include" />
+                <e p="MySerializedProperty.cs" t="Include" />
+              </e>
+              <e p="MyAlgorithms.cs" t="Include" />
+              <e p="MyCollections.cs" t="Include" />
+              <e p="MyColor.cs" t="Include" />
+              <e p="MyCoroutines.cs" t="Include" />
+              <e p="MyDebug.cs" t="Include" />
+              <e p="MyDelayedActions.cs" t="Include" />
+              <e p="MyExtensions.cs" t="Include" />
+              <e p="MyGizmos.cs" t="Include" />
+              <e p="MyInput.cs" t="Include" />
+              <e p="MyLayers.cs" t="Include" />
+              <e p="MyMath.cs" t="Include" />
+              <e p="MyNavMesh.cs" t="Include" />
+              <e p="MyReflection.cs" t="Include" />
+              <e p="MyString.cs" t="Include" />
+              <e p="MyTexture.cs" t="Include" />
+              <e p="MyUI.cs" t="Include" />
+              <e p="MyVectors.cs" t="Include" />
+              <e p="TransformShakeExtension.cs" t="Include" />
+            </e>
+            <e p="Tools" t="Include">
+              <e p="AssetPresetPreprocessor" t="Include">
+                <e p="AssetPresetPreprocessor.cs" t="Include" />
+                <e p="AssetsPresetPreprocessBase.cs" t="Include" />
+                <e p="AssetsPresetPreprocessEditor.cs" t="Include" />
+              </e>
+              <e p="Features" t="Include">
+                <e p="AutoSaveFeature.cs" t="Include" />
+                <e p="CleanEmptyDirectoriesFeature.cs" t="Include" />
+                <e p="CollapsableEventDrawer.cs" t="Include" />
+                <e p="IPrepareFeature.cs" t="Include" />
+                <e p="SceneViewBookmarkHotkeys.cs" t="Include" />
+                <e p="SelectionHistoryHotkeys.cs" t="Include" />
+                <e p="SerializedPropertyViewer.cs" t="Include" />
+                <e p="ToggleLockHotkey.cs" t="Include" />
+              </e>
+              <e p="ImageStringConverter" t="Include">
+                <e p="ImageStringConverter.cs" t="Include" />
+                <e p="ImageToStringConverterEditor.cs" t="Include" />
+              </e>
+              <e p="Internal" t="Include">
+                <e p="MyBoxFeatures.cs" t="Include" />
+                <e p="MyBoxInternalPath.cs" t="Include" />
+                <e p="MyBoxSettings.cs" t="Include" />
+                <e p="MyBoxUtilities.cs" t="Include" />
+                <e p="MyBoxVersion.cs" t="Include" />
+                <e p="MyBoxWindow.cs" t="Include" />
+                <e p="UnityObjectEditor.cs" t="Include" />
+              </e>
+              <e p="MyEditorEvents.cs" t="Include" />
+              <e p="MySceneBundle.cs" t="Include" />
+              <e p="TimeTest.cs" t="Include" />
+              <e p="Undone" t="Include">
+                <e p="AnimationCreator.cs" t="Include" />
+                <e p="ECS" t="Include">
+                  <e p="Bool.cs" t="Include" />
+                  <e p="EventsSystem.cs" t="Include" />
+                  <e p="MyECSExtensions.cs" t="Include" />
+                  <e p="UniqueComponent.cs" t="Include" />
+                </e>
+                <e p="EmbeddedAnimationCreator.cs" t="Include" />
+                <e p="GLDraw.cs" t="Include" />
+                <e p="JsonDataManager" t="Include">
+                  <e p="HideInJsonEditorAttribute.cs" t="Include" />
+                  <e p="JsonDataManager.cs" t="Include" />
+                  <e p="JsonDataManagerEditor" t="Include">
+                    <e p="JsonDataEditor.cs" t="Include" />
+                    <e p="JsonDataSettingsTransfer.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="MyBundleUtility.cs" t="Include" />
+                <e p="MyLogger.cs" t="Include" />
+                <e p="MyPhysics.cs" t="Include" />
+                <e p="NodeEditorUtils.cs" t="Include" />
+                <e p="TemplatesCreator.cs" t="Include" />
+              </e>
+              <e p="WarningsPool.cs" t="Include" />
+            </e>
+            <e p="Types" t="Include">
+              <e p="ActiveStateOnStart.cs" t="Include" />
+              <e p="AnimationStateReference.cs" t="Include" />
+              <e p="AssetFolderPath.cs" t="Include" />
+              <e p="AssetPath.cs" t="Include" />
+              <e p="Billboard.cs" t="Include" />
+              <e p="CollectionWrapper.cs" t="Include" />
+              <e p="ColliderGizmo.cs" t="Include" />
+              <e p="ColliderToMesh.cs" t="Include" />
+              <e p="CommentaryComponent.cs" t="Include" />
+              <e p="EditorTypes" t="Include">
+                <e p="ConditionallyColoredGUIBlock.cs" t="Include" />
+                <e p="ConditionallyEnabledGUIBlock.cs" t="Include" />
+                <e p="DraggableHandler.cs" t="Include" />
+                <e p="EditorWithSubEditors.cs" t="Include" />
+                <e p="IndentBlock.cs" t="Include" />
+                <e p="ReorderableCollection.cs" t="Include" />
+                <e p="SceneClickHandler.cs" t="Include" />
+                <e p="ScrollViewBlock.cs" t="Include" />
+              </e>
+              <e p="FPSCounter.cs" t="Include" />
+              <e p="GUID" t="Include">
+                <e p="Credits.txt" t="Include" />
+                <e p="GuidComponent.cs" t="Include" />
+                <e p="GUIDEditor" t="Include">
+                  <e p="GuidComponentDrawer.cs" t="Include" />
+                  <e p="GuidReferenceDrawer.cs" t="Include" />
+                </e>
+                <e p="GuidManager.cs" t="Include" />
+                <e p="GuidReference.cs" t="Include" />
+              </e>
+              <e p="MinMax.cs" t="Include" />
+              <e p="MonoSingleton.cs" t="Include" />
+              <e p="MyCursor.cs" t="Include" />
+              <e p="MyDictionary.cs" t="Include" />
+              <e p="Optional.cs" t="Include" />
+              <e p="OptionalMinMax.cs" t="Include" />
+              <e p="Reorderable.cs" t="Include" />
+              <e p="SceneReference.cs" t="Include" />
+              <e p="Singleton.cs" t="Include" />
+              <e p="UIFollow.cs" t="Include" />
+              <e p="UIImageBasedButton.cs" t="Include" />
+              <e p="UIImageBasedToggle.cs" t="Include" />
+              <e p="UIRelativePosition.cs" t="Include" />
+              <e p="UISizeBy.cs" t="Include" />
+              <e p="WaitForUnscaledSeconds.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -246,6 +409,7 @@
             <e p="WeaponRotator.cs" t="Include" />
             <e p="Weapons" t="Include">
               <e p="BeamUtilities.cs" t="Include" />
+              <e p="BeamWeaponAsync.cs" t="Include" />
               <e p="TowerWeaponAttacks.cs" t="Include" />
             </e>
             <e p="WeaponUtils.cs" t="Include" />
@@ -291,6 +455,7 @@
         <e p="StraightLaZoRWeapon.cs" t="Include" />
         <e p="TagSelectorPropertyDrawer.cs" t="Include" />
         <e p="TestCalculateTowerPositions.cs" t="Include" />
+        <e p="testclass.cs" t="Include" />
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">
             <e p="LiberationSans - OFL.txt" t="Include" />
@@ -320,8 +485,10 @@
           </e>
         </e>
         <e p="TowerPosIndicator.cs" t="Include" />
+        <e p="uniteventTest.cs" t="Include" />
       </e>
       <e p="InputSystem.Samples.Visualizers.csproj" t="IncludeRecursive" />
+      <e p="MyBox.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
       <e p="STB3_TheReckoning.sln" t="IncludeFlat" />

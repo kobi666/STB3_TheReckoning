@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,15 +23,308 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa118faa-58da-4e0f-9f08-836bd9e1a5c7" name="Default Changelist" comment="">
+<<<<<<< Updated upstream
       <change afterPath="$PROJECT_DIR$/Assets/LaserWeaponTest.cs.meta" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.STB3_TheReckoning/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.STB3_TheReckoning/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.STB3_TheReckoning/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.STB3_TheReckoning/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/AttributeBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/AttributeBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/AttributeBaseDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/AttributeBaseDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/AutoPropertyAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/AutoPropertyAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/ButtonMethodAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/ButtonMethodAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/ConditionalFieldAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/ConditionalFieldAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/ConstantsSelectionAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/ConstantsSelectionAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/DefinedValuesAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/DefinedValuesAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/DisplayInspectorAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/DisplayInspectorAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/FoldoutAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/FoldoutAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/InitializationFieldAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/InitializationFieldAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/LayerAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/LayerAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/MaxValueAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/MaxValueAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/MinMaxRangeAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/MinMaxRangeAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/MinValueAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/MinValueAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/MustBeAssignedAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/MustBeAssignedAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/MustBeAssignedConditionalFieldExclude.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/MustBeAssignedConditionalFieldExclude.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/PositiveValueOnlyAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/PositiveValueOnlyAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/ReadOnlyAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/ReadOnlyAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/RequireLayerAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/RequireLayerAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/RequireLayerOtRagAttributeHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/RequireLayerOtRagAttributeHandler.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/RequireTagAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/RequireTagAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/SearchableEnumAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/SearchableEnumAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/SeparatorAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/SeparatorAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/SpriteLayerAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/SpriteLayerAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/TagAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/TagAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/EditorExtensions.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/EditorExtensions/MyEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/EditorExtensions/MyEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/EditorExtensions/MyGUI.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/EditorExtensions/MyGUI.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/EditorExtensions/MyHandles.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/EditorExtensions/MyHandles.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/EditorExtensions/MyIconPresets.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/EditorExtensions/MyIconPresets.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/EditorExtensions/MyScriptableObject.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/EditorExtensions/MyScriptableObject.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/EditorExtensions/MySerializedProperty.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/EditorExtensions/MySerializedProperty.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyAlgorithms.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyAlgorithms.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyCollections.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyCollections.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyColor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyColor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyCoroutines.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyCoroutines.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyDebug.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyDebug.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyDelayedActions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyDelayedActions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyExtensions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyGizmos.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyGizmos.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyInput.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyLayers.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyLayers.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyMath.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyMath.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyNavMesh.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyNavMesh.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyReflection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyReflection.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyString.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyString.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyTexture.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyTexture.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyUI.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyUI.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyVectors.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/MyVectors.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/TransformShakeExtension.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Extensions/TransformShakeExtension.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/AssetPresetPreprocessor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/AssetPresetPreprocessor/AssetPresetPreprocessor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/AssetPresetPreprocessor/AssetPresetPreprocessor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/AssetPresetPreprocessor/AssetsPresetPreprocessBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/AssetPresetPreprocessor/AssetsPresetPreprocessBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/AssetPresetPreprocessor/AssetsPresetPreprocessEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/AssetPresetPreprocessor/AssetsPresetPreprocessEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Features.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Features/AutoSaveFeature.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Features/AutoSaveFeature.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Features/CleanEmptyDirectoriesFeature.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Features/CleanEmptyDirectoriesFeature.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Features/CollapsableEventDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Features/CollapsableEventDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Features/IPrepareFeature.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Features/IPrepareFeature.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Features/SceneViewBookmarkHotkeys.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Features/SceneViewBookmarkHotkeys.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Features/SelectionHistoryHotkeys.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Features/SelectionHistoryHotkeys.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Features/SerializedPropertyViewer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Features/SerializedPropertyViewer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Features/ToggleLockHotkey.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Features/ToggleLockHotkey.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/ImageStringConverter.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/ImageStringConverter/ImageStringConverter.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/ImageStringConverter/ImageStringConverter.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/ImageStringConverter/ImageToStringConverterEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/ImageStringConverter/ImageToStringConverterEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Internal.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Internal/MyBoxFeatures.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Internal/MyBoxFeatures.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Internal/MyBoxInternalPath.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Internal/MyBoxInternalPath.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Internal/MyBoxSettings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Internal/MyBoxSettings.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Internal/MyBoxUtilities.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Internal/MyBoxUtilities.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Internal/MyBoxVersion.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Internal/MyBoxVersion.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Internal/MyBoxWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Internal/MyBoxWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Internal/UnityObjectEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Internal/UnityObjectEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/MyEditorEvents.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/MyEditorEvents.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/MySceneBundle.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/MySceneBundle.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/TimeTest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/TimeTest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/AnimationCreator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/AnimationCreator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/ECS.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/ECS/Bool.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/ECS/Bool.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/ECS/EventsSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/ECS/EventsSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/ECS/MyECSExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/ECS/MyECSExtensions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/ECS/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/ECS/README.md.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/ECS/UniqueComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/ECS/UniqueComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/EmbeddedAnimationCreator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/EmbeddedAnimationCreator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/GLDraw.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/GLDraw.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/JsonDataManager.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/JsonDataManager/HideInJsonEditorAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/JsonDataManager/HideInJsonEditorAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/JsonDataManager/JsonDataManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/JsonDataManager/JsonDataManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/JsonDataManager/JsonDataManagerEditor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/JsonDataManager/JsonDataManagerEditor/JsonDataEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/JsonDataManager/JsonDataManagerEditor/JsonDataEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/JsonDataManager/JsonDataManagerEditor/JsonDataSettingsTransfer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/JsonDataManager/JsonDataManagerEditor/JsonDataSettingsTransfer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/MyBundleUtility.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/MyBundleUtility.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/MyLogger.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/MyLogger.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/MyPhysics.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/MyPhysics.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/NodeEditorUtils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/NodeEditorUtils.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/TemplatesCreator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Undone/TemplatesCreator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/WarningsPool.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/WarningsPool.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/ActiveStateOnStart.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/ActiveStateOnStart.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/AnimationStateReference.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/AnimationStateReference.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/AssetFolderPath.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/AssetFolderPath.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/AssetPath.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/AssetPath.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/Billboard.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/Billboard.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/CollectionWrapper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/CollectionWrapper.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/ColliderGizmo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/ColliderGizmo.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/ColliderToMesh.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/ColliderToMesh.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/CommentaryComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/CommentaryComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/EditorTypes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/EditorTypes/ConditionallyColoredGUIBlock.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/EditorTypes/ConditionallyColoredGUIBlock.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/EditorTypes/ConditionallyEnabledGUIBlock.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/EditorTypes/ConditionallyEnabledGUIBlock.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/EditorTypes/DraggableHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/EditorTypes/DraggableHandler.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/EditorTypes/EditorWithSubEditors.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/EditorTypes/EditorWithSubEditors.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/EditorTypes/IndentBlock.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/EditorTypes/IndentBlock.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/EditorTypes/ReorderableCollection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/EditorTypes/ReorderableCollection.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/EditorTypes/SceneClickHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/EditorTypes/SceneClickHandler.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/EditorTypes/ScrollViewBlock.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/EditorTypes/ScrollViewBlock.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/FPSCounter.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/FPSCounter.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/GUID.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/GUID/Credits.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/GUID/Credits.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/GUID/GUIDEditor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/GUID/GUIDEditor/GuidComponentDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/GUID/GUIDEditor/GuidComponentDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/GUID/GUIDEditor/GuidReferenceDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/GUID/GUIDEditor/GuidReferenceDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/GUID/GuidComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/GUID/GuidComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/GUID/GuidManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/GUID/GuidManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/GUID/GuidReference.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/GUID/GuidReference.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/MinMax.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/MinMax.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/MonoSingleton.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/MonoSingleton.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/MyCursor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/MyCursor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/MyDictionary.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/MyDictionary.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/Optional.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/Optional.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/OptionalMinMax.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/OptionalMinMax.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/Reorderable.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/Reorderable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/SceneReference.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/SceneReference.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/Singleton.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/Singleton.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/UIFollow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/UIFollow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/UIImageBasedButton.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/UIImageBasedButton.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/UIImageBasedToggle.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/UIImageBasedToggle.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/UIRelativePosition.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/UIRelativePosition.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/UISizeBy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/UISizeBy.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/WaitForUnscaledSeconds.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/MyBox/Types/WaitForUnscaledSeconds.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/ComponentUtilities.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/ComponentUtilities/BeamUtilities.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/ComponentUtilities/BeamUtilities.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/TowerComponents/Weapons/BeamWeaponAsync.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/testclass.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/uniteventTest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectSettings/MyBoxSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.STB3_TheReckoning/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.STB3_TheReckoning/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.STB3_TheReckoning/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.STB3_TheReckoning/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor-firstpass.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor-firstpass.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-firstpass.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-firstpass.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BeamWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BeamWeapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/LaserBeam.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/LaserBeam.mat" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/AOEs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestPrefabs/WeaponPrefabs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Units/EnemyUnits.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Units/PlayerUnits.meta" beforeDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/AnimancerTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AnimancerTest.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerObjects/SelectorTest2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerObjects/SelectorTest2.cs" afterDir="false" />
@@ -36,7 +332,26 @@
       <change beforePath="$PROJECT_DIR$/Assets/TestScripts.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/TowerComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/TowerComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AnimancerTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AnimancerTest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GeneralClasses/NativeClasses.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GeneralClasses/NativeClasses.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Levels-rooms/WaveManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Levels-rooms/WaveManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerObjects/SelectorTest2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerObjects/SelectorTest2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TowerComponents/TowerComponentData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TowerComponents/TowerComponentData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TowerComponents/WeaponController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TowerComponents/WeaponController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TowerComponents/Weapons/BeamUtilities.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TowerComponents/Weapons/BeamUtilities.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StraightLaZoRWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StraightLaZoRWeapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TestScripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/expandedItems" beforeDir="false" afterPath="$PROJECT_DIR$/Library/expandedItems" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-firstpass.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-firstpass.csprojAssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,11 +362,19 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TowerComponents/Weapons/BeamWeaponAsync.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.1/Scripts/Runtime/TMPro_Private.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TagSelectorPropertyDrawer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BeamTowerController.cs" root0="FORCE_HIGHLIGHTING" />
+<<<<<<< Updated upstream
     <setting file="file://$PROJECT_DIR$/Assets/StraightLaZoRWeapon.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://D:/_unityProjects/STB3_TheReckoning/Assets/Scenes/AnimancerTest.unity" root0="SKIP_HIGHLIGHTING" />
+=======
+    <setting file="file://$PROJECT_DIR$/Assets/uniteventTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/testclass.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/MyBox/Attributes/AutoPropertyAttribute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/StraightLaZoRWeapon.cs" root0="FORCE_HIGHLIGHTING" />
+>>>>>>> Stashed changes
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -59,16 +382,38 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/RangeDetection/TowerPositionData.cs" />
         <option value="$PROJECT_DIR$/Assets/TestCalculateTowerPositions.cs" />
         <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.1/Scripts/Runtime/TMPro_Private.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GeneralClasses/NativeClasses.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Towers/TowerUtils.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GeneralClasses/StaticObjects.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Towers/TowerSlotController.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerPosIndicator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RangeDetection/TagSelectorPropertyDrawer.cs" />
+        <option value="$PROJECT_DIR$/Assets/TagSelectorPropertyDrawer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/TagSelectorAttribute.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/TagSelectorPropertyDrawer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RangeDetection/RangeDetector.cs" />
+<<<<<<< Updated upstream
         <option value="$PROJECT_DIR$/Assets/StraightLaZoRWeapon.cs" />
         <option value="$PROJECT_DIR$/Assets/LaserWeaponTest.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerObjects/SelectorTest2.cs" />
+=======
+        <option value="$PROJECT_DIR$/Assets/BeamTowerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerObjects/SelectorTest2.cs" />
+        <option value="$PROJECT_DIR$/Assets/uniteventTest.cs" />
+        <option value="$PROJECT_DIR$/Assets/LaserTest2.cs" />
+        <option value="$PROJECT_DIR$/Assets/StraightLaZoRWeapon.cs" />
+        <option value="$PROJECT_DIR$/Assets/LaserWeaponTest.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/ConditionalFieldAttribute.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/MyBox/Tools/Internal/MyBoxWindow.cs" />
+        <option value="$PROJECT_DIR$/Assets/testclass.cs" />
+        <option value="$PROJECT_DIR$/Assets/Samples/TowerComponent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TowerComponents/TowerComponentData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Levels-rooms/WaveManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TowerComponents/Weapons/BeamWeaponAsync.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TowerComponents/Weapons/BeamUtilities.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TowerComponents/WeaponController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GeneralClasses/NativeClasses.cs" />
+        <option value="$PROJECT_DIR$/Assets/BeamWeapon.cs" />
+>>>>>>> Stashed changes
       </list>
     </option>
   </component>
@@ -83,8 +428,8 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
-    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30010834" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34669557" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.2973998" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -92,6 +437,14 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.language" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../TestBuilds/Super Tower Brothers 3 - The Reckoning.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="D:\_unityProjects\TestBuilds" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
@@ -101,10 +454,17 @@
       </option>
       <method v="2" />
     </configuration>
+<<<<<<< Updated upstream
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
+=======
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="5316">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" value="5316" />
+>>>>>>> Stashed changes
       <option name="selectedOptions">
         <set />
       </option>
@@ -120,7 +480,11 @@
       <option name="presentableId" value="Default" />
       <updated>1599039241216</updated>
       <workItem from="1599039243856" duration="11708000" />
-      <workItem from="1599120198478" duration="22606000" />
+      <workItem from="1599120198478" duration="32607000" />
+      <workItem from="1599381014726" duration="2263000" />
+      <workItem from="1599557333142" duration="8274000" />
+      <workItem from="1599725842519" duration="19153000" />
+      <workItem from="1599905104953" duration="9367000" />
     </task>
     <servers />
   </component>
@@ -146,74 +510,95 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="595" height="464" key="DebuggerActiveHint" timestamp="1599235952473">
+    <state width="595" height="464" key="DebuggerActiveHint" timestamp="1599946713068">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="595" height="464" key="DebuggerActiveHint/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599235952473" />
-    <state width="1877" height="375" key="GridCell.Tab.0.bottom" timestamp="1599247750350">
+    <state width="595" height="464" key="DebuggerActiveHint/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599946713068" />
+    <state width="1877" height="378" key="GridCell.Tab.0.bottom" timestamp="1599946598967">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599247750350" />
-    <state width="1877" height="375" key="GridCell.Tab.0.center" timestamp="1599247750350">
+    <state width="1877" height="378" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599946598967" />
+    <state width="1493" height="288" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599572243472" />
+    <state width="1877" height="378" key="GridCell.Tab.0.center" timestamp="1599946598967">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599247750350" />
-    <state width="1877" height="375" key="GridCell.Tab.0.left" timestamp="1599247750350">
+    <state width="1877" height="378" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599946598967" />
+    <state width="1493" height="288" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1599572243472" />
+    <state width="1877" height="378" key="GridCell.Tab.0.left" timestamp="1599946598966">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599247750350" />
-    <state width="1877" height="375" key="GridCell.Tab.0.right" timestamp="1599247750350">
+    <state width="1877" height="378" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599946598966" />
+    <state width="1493" height="288" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1599572243472" />
+    <state width="1877" height="378" key="GridCell.Tab.0.right" timestamp="1599946598967">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599247750350" />
-    <state width="1877" height="375" key="GridCell.Tab.1.bottom" timestamp="1599247750351">
+    <state width="1877" height="378" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599946598967" />
+    <state width="1493" height="288" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1599572243472" />
+    <state width="1860" height="378" key="GridCell.Tab.1.bottom" timestamp="1599946607763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.1.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599247750351" />
-    <state width="1877" height="375" key="GridCell.Tab.1.center" timestamp="1599247750351">
+    <state width="1860" height="378" key="GridCell.Tab.1.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599946607763" />
+    <state width="1493" height="288" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599572243472" />
+    <state width="1860" height="378" key="GridCell.Tab.1.center" timestamp="1599946607763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.1.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599247750351" />
-    <state width="1877" height="375" key="GridCell.Tab.1.left" timestamp="1599247750351">
+    <state width="1860" height="378" key="GridCell.Tab.1.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599946607763" />
+    <state width="1493" height="288" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1599572243472" />
+    <state width="1860" height="378" key="GridCell.Tab.1.left" timestamp="1599946607763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.1.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599247750351" />
-    <state width="1877" height="375" key="GridCell.Tab.1.right" timestamp="1599247750351">
+    <state width="1860" height="378" key="GridCell.Tab.1.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599946607763" />
+    <state width="1493" height="288" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1599572243472" />
+    <state width="1860" height="378" key="GridCell.Tab.1.right" timestamp="1599946607763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.1.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599247750351" />
-    <state width="1877" height="375" key="GridCell.Tab.2.bottom" timestamp="1599247750351">
+    <state width="1860" height="378" key="GridCell.Tab.1.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599946607763" />
+    <state width="1493" height="288" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1599572243472" />
+    <state width="1877" height="378" key="GridCell.Tab.2.bottom" timestamp="1599946598855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.2.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599247750351" />
-    <state width="1877" height="375" key="GridCell.Tab.2.center" timestamp="1599247750351">
+    <state width="1877" height="378" key="GridCell.Tab.2.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599946598855" />
+    <state width="1493" height="288" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599572243473" />
+    <state width="1877" height="378" key="GridCell.Tab.2.center" timestamp="1599946598855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.2.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599247750351" />
-    <state width="1877" height="375" key="GridCell.Tab.2.left" timestamp="1599247750351">
+    <state width="1877" height="378" key="GridCell.Tab.2.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599946598855" />
+    <state width="1493" height="288" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1599572243472" />
+    <state width="1877" height="378" key="GridCell.Tab.2.left" timestamp="1599946598855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.2.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599247750351" />
-    <state width="1877" height="375" key="GridCell.Tab.2.right" timestamp="1599247750351">
+    <state width="1877" height="378" key="GridCell.Tab.2.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599946598855" />
+    <state width="1493" height="288" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1599572243472" />
+    <state width="1877" height="378" key="GridCell.Tab.2.right" timestamp="1599946598855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.2.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599247750351" />
-    <state width="1877" height="375" key="GridCell.Tab.3.bottom" timestamp="1599247750351">
+    <state width="1877" height="378" key="GridCell.Tab.2.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599946598855" />
+    <state width="1493" height="288" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1599572243473" />
+    <state width="1877" height="378" key="GridCell.Tab.3.bottom" timestamp="1599946598856">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.3.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599247750351" />
-    <state width="1877" height="375" key="GridCell.Tab.3.center" timestamp="1599247750351">
+    <state width="1877" height="378" key="GridCell.Tab.3.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599946598856" />
+    <state width="1493" height="288" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599572243473" />
+    <state width="1877" height="378" key="GridCell.Tab.3.center" timestamp="1599946598855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.3.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599247750351" />
-    <state width="1877" height="375" key="GridCell.Tab.3.left" timestamp="1599247750351">
+    <state width="1877" height="378" key="GridCell.Tab.3.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599946598855" />
+    <state width="1493" height="288" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1599572243473" />
+    <state width="1877" height="378" key="GridCell.Tab.3.left" timestamp="1599946598855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.3.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599247750351" />
-    <state width="1877" height="375" key="GridCell.Tab.3.right" timestamp="1599247750351">
+    <state width="1877" height="378" key="GridCell.Tab.3.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599946598855" />
+    <state width="1493" height="288" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1599572243473" />
+    <state width="1877" height="378" key="GridCell.Tab.3.right" timestamp="1599946598856">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="375" key="GridCell.Tab.3.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599247750351" />
+    <state width="1877" height="378" key="GridCell.Tab.3.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599946598856" />
+    <state width="1493" height="288" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1599572243473" />
+    <state x="604" y="187" key="RiderGenerateDialog" timestamp="1599564372151">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="755" y="236" key="RiderGenerateDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599292815719" />
+    <state x="604" y="187" key="RiderGenerateDialog/0.0.1536.824@0.0.1536.824" timestamp="1599564372151" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1599247939027">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -222,39 +607,34 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="dock-window-1/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599239266983" />
+<<<<<<< Updated upstream
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1599947635342">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599947635342" />
+=======
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1599946865670">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599946865670" />
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1599562295890" />
+>>>>>>> Stashed changes
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Towers/TowerUtils.cs</url>
-          <line>570</line>
-          <properties documentPath="D:\_unityProjects\STB3_TheReckoning\Assets\Scripts\Towers\TowerUtils.cs" initialLine="570">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/TowerComponents/WeaponController.cs</url>
+          <line>86</line>
+          <properties documentPath="D:\_unityProjects\STB3_TheReckoning\Assets\Scripts\TowerComponents\WeaponController.cs" initialLine="86">
             <startOffsets>
-              <option value="24026" />
+              <option value="2556" />
             </startOffsets>
             <endOffsets>
-              <option value="24027" />
+              <option value="2557" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Towers/TowerUtils.cs</url>
-          <line>169</line>
-          <properties documentPath="D:\_unityProjects\STB3_TheReckoning\Assets\Scripts\Towers\TowerUtils.cs" initialLine="169">
-            <startOffsets>
-              <option value="8464" />
-            </startOffsets>
-            <endOffsets>
-              <option value="8524" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="12" />
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

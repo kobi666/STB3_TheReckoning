@@ -647,6 +647,10 @@
       <Project>{c3d7cf78-3520-07ff-5c1c-81c3704561c7}</Project>
       <Name>Animancer</Name>
     </ProjectReference>
+    <ProjectReference Include="MyBox.csproj">
+      <Project>{1bb719c8-2ea5-b563-0407-7e72ef3955a7}</Project>
+      <Name>MyBox</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

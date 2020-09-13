@@ -3,7 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.Serialization;
+using UnityEngine.Events;
 
+
+
+[System.Serializable]
+public class BeamRenderingFunction : UnityEvent<LineRenderer, Vector2, Vector2,float>
+{
+    
+}
+
+[System.Serializable]
+public class BeamOscilationMinMax
+{
+    public float min;
+    public float max;
+}
 
 [System.Serializable]
 public class TowerComponentWeaponData
@@ -11,13 +26,19 @@ public class TowerComponentWeaponData
     
 }
 
+[System.Serializable]
 public class TowerComponentBeamData
 {
     public float BeamDuration;
-    public (float, float) OscliatingBeamWidthMinMax;
+    public float CooldownTime;
+    [SerializeField]
+    public BeamOscilationMinMax OscliatingBeamWidthMinMax;
     public SingleAnimationObject OnHitBeamAnimation;
     public Material BeamMaterial;
     public float beamWidth;
+    public bool IsOscillating;
+    public float BeamOsciliationSpeed;
+    public float BeamMovementSpeed;
 }
 
 
@@ -196,9 +217,17 @@ public class Nerfs<T> {
 }
 
 [System.Serializable]
-public class TargetUnit {
+public class TargetUnit
+{
 
-    [SerializeField]
+    [SerializeField] private Transform targetTransform;
+    
+    public Transform TargetTransform
+    {
+        get => targetTransform;
+        set => targetTransform = value;
+    }
+
     UnitController unitController = null;
     public UnitController UnitController {
         get => unitController;
@@ -216,13 +245,15 @@ public class TargetUnit {
     }
     [SerializeField]
     public string name {get => Effectable?.name ?? null;}
-    public Transform transform {get => Effectable.transform;}
+    public Transform transform {get => Effectable?.transform ?? null;
+    }
     public float Proximity {get => UnitController.Proximity;}
 
     public TargetUnit(string targetName) {
         try {
             UnitController = GameObjectPool.Instance.ActiveUnitPool.Pool[targetName];
             Effectable = GameObjectPool.Instance.ActiveEffectables.Pool[targetName];
+            TargetTransform = transform;
         }
         catch(Exception e) {
             Debug.LogWarning(e.Message);
@@ -230,6 +261,7 @@ public class TargetUnit {
         if (UnitController == null || Effectable == null) {
             UnitController = null;
             Effectable = null;
+            TargetTransform = null;
             Debug.LogWarning("Target did not have either an effectable or a unit controller, null value returned.");
         }
     }
