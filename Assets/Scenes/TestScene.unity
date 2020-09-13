@@ -4105,6 +4105,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6892659531000615052, guid: bb2436c6546a1c542a53192bd2a46d4d,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.120610215
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892659531000615052, guid: bb2436c6546a1c542a53192bd2a46d4d,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
+      value: 0.120610215
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892659531000615055, guid: bb2436c6546a1c542a53192bd2a46d4d,
+        type: 3}
+      propertyPath: SingleTargetAttack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892659531000615055, guid: bb2436c6546a1c542a53192bd2a46d4d,
+        type: 3}
+      propertyPath: Data.BeamData.BeamDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892659531000615055, guid: bb2436c6546a1c542a53192bd2a46d4d,
+        type: 3}
+      propertyPath: Data.damageRange.min
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892659531000615055, guid: bb2436c6546a1c542a53192bd2a46d4d,
+        type: 3}
+      propertyPath: Data.damageRange.max
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6892659532509377283, guid: bb2436c6546a1c542a53192bd2a46d4d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4168,7 +4198,7 @@ PrefabInstance:
     - target: {fileID: 6892659532509377286, guid: bb2436c6546a1c542a53192bd2a46d4d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb2436c6546a1c542a53192bd2a46d4d, type: 3}

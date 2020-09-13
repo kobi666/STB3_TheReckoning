@@ -12,6 +12,12 @@ public class BeamWeaponAsync : WeaponController
         get => Data.BeamData;
     }
 
+    public bool SingleTargetAttack;
+    public bool AreaAttack;
+    public bool ContinuousAttack;
+    private bool attackOnceLock = false;
+    
+
     private Effectable[] TempEffectables;
     
     
@@ -90,16 +96,36 @@ public class BeamWeaponAsync : WeaponController
             int maxPosition = LineRenderer.positionCount;
         }
         
-        
+        if (ContinuousAttack) {
             while (beamDurationCounter > 0 && Target != null)
             {
                 if (BeamAttackInprogress == true)
                 {
                         beamDurationCounter -= StaticObjects.instance.DeltaGameTime;
-                        OnBeamAttack();
+                        OnContinuousBeamAttack();
                         await Task.Yield();
                     }
             }
+        }
+
+        if (SingleTargetAttack)
+        {
+            staticTarget = Target;
+            while (beamDurationCounter > 0)
+            {
+                if (beamAttackInprogress == true)
+                {
+                    if (staticTarget != null) {
+                    OnSingleBeamAttack();
+                    beamDurationCounter -= StaticObjects.instance.DeltaGameTime;
+                    await Task.Yield();
+                    }
+                }
+            }
+            attackOnceLock = false;
+            staticTarget = null;
+        }
+
             
         BeamAttackInprogress = false;
     }
@@ -142,12 +168,22 @@ public class BeamWeaponAsync : WeaponController
     public BeamRenderingFunction BeamRenderingFunction;
     [SerializeField] private float beamDurationCounter = 1;
 
-    public event Action onBeamAttack;
+    public event Action onContinuousBeamAttack;
 
-    public void OnBeamAttack()
+    public void OnContinuousBeamAttack()
     {
-        onBeamAttack?.Invoke();
+        onContinuousBeamAttack?.Invoke();
     }
+
+    public event Action onSingleBeamAttack;
+
+    public void OnSingleBeamAttack()
+    {
+        onSingleBeamAttack?.Invoke();
+    }
+
+
+    private TargetUnit staticTarget;
 
 
     protected void Awake()
@@ -155,7 +191,7 @@ public class BeamWeaponAsync : WeaponController
         
         base.Awake();
         LineRenderer = GetComponent<LineRenderer>() ?? null;
-        onBeamAttack += renderBeam;
+        onContinuousBeamAttack += renderBeam;
        
         if (BeamData.beamWidth != 0)
         {
@@ -164,21 +200,56 @@ public class BeamWeaponAsync : WeaponController
         
         if (BeamData.IsOscillating)
         {
-            
-            onBeamAttack += OscilateBeamWidth;
+            onSingleBeamAttack += OscilateBeamWidth;
+            onContinuousBeamAttack += OscilateBeamWidth;
         }
 
-        onBeamAttack += moveBeamFinalPointOverTime;
-        onBeamAttack += delegate
-        {
-            if (TempEffectables != null)
-            {
-                BeamUtilities.BeamDamageOnArea(projectileFinalPoint.EffectableTargetBank,
-                    Data.damageRange.RandomDamage(), ref TempEffectables);
-            }
+        onContinuousBeamAttack += moveBeamFinalPointOverTime;
 
-            ;
-        };
+        if (SingleTargetAttack)
+        {
+            
+            onSingleBeamAttack += delegate
+            {
+                if (staticTarget != null)
+                {
+                    ProjectileFinalPointTransform.position = staticTarget.transform.position;
+                }
+            };
+            onSingleBeamAttack += renderBeam;
+
+        }
+        
+        if (AreaAttack) {
+            onContinuousBeamAttack += delegate
+            {
+                if (TempEffectables != null)
+                {
+                    BeamUtilities.BeamDamageOnArea(projectileFinalPoint.EffectableTargetBank,
+                        Data.damageRange.RandomDamage(), ref TempEffectables);
+                }
+
+                ;
+            };
+        }
+
+        if (!AreaAttack)
+        {
+            onContinuousBeamAttack += delegate
+            {
+                if (attackOnceLock == false) {
+                Target.Effectable.ApplyDamage(Data.damageRange.RandomDamage());
+                attackOnceLock = true;
+                }
+            };
+            onSingleBeamAttack += delegate
+            {
+                if (attackOnceLock == false) {
+                    Target.Effectable.ApplyDamage(Data.damageRange.RandomDamage());
+                    attackOnceLock = true;
+                }
+            };
+        }
     }
 
 
@@ -196,9 +267,11 @@ public class BeamWeaponAsync : WeaponController
     {
         base.Start();
         projectileFinalPoint.RangeDetector.SetRangeRadius(BeamWidth / 2);
+        if (AreaAttack) {
         projectileFinalPoint.EffectableTargetBank.onTargetsUpdate += delegate
         {
             TempEffectables = projectileFinalPoint.EffectableTargetBank.Targets.Values.ToArray(); };
+        }
     }
 
     protected void Update()
