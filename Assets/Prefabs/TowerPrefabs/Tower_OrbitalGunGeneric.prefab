@@ -171,7 +171,7 @@ PrefabInstance:
     - target: {fileID: 5154157196094913892, guid: 6c30e1e0fc1f670498b61db8c249ee37,
         type: 3}
       propertyPath: m_SortingLayer
-      value: -4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
         type: 3}
@@ -219,17 +219,17 @@ PrefabInstance:
     - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
         type: 3}
       propertyPath: Data.damageRange.min
-      value: 30
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
         type: 3}
       propertyPath: Data.damageRange.max
-      value: 60
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
         type: 3}
       propertyPath: Data.fireRate
-      value: 50
+      value: 250
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5154157196094913894, guid: 6c30e1e0fc1f670498b61db8c249ee37, type: 3}

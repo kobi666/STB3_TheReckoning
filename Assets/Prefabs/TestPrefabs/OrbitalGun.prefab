@@ -47,31 +47,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f6edec5d6f56c4d8415ada3460241b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
   SR: {fileID: 0}
   Animancer: {fileID: 0}
   Data:
-    Radius: 0
-    DistanceFromRotatorBase: 1
-    OrbitingSpeed: 90
-    ProjectileSpeed: 0
-    AOERadius: 0
-    RotationSpeed: 2.5
-    PlayerUnitPrefab: {fileID: 0}
-    EffectableTarget: {fileID: 0}
-    TargetUnit:
-      unitController: {fileID: 0}
+    componentRadius: 0
+    effectableTarget: {fileID: 0}
+    targetUnit:
+      targetTransform: {fileID: 0}
       effectable: {fileID: 0}
-    MaxUnits: 0
-    PlayerUnitSpawnTime: 0
-    OrbitBase: {fileID: 0}
-    OrbitalGunPrefab: {fileID: 0}
-    MaxNumberOfOrbitals: 0
-    ProjectilePrefab: {fileID: 5882499641662690262, guid: f21a1d072317d5a428476205f0acd37a,
-      type: 3}
+    orbitalData:
+      maxNumberOfOrbitals: 0
+      distanceFromRotatorBase: 0
+      orbitingSpeed: 0
+      rotationSpeed: 0
+      orbitBase: {fileID: 0}
+      orbitalGunPrefab: {fileID: 0}
+    projectileData:
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      aoeProjectileRadius: 0
+    SpawnerData:
+      playerUnitPrefab: {fileID: 0}
+      maxUnits: 0
+      playerUnitSpawnTime: 0
+    BeamData:
+      BeamDuration: 0
+      CooldownTime: 0
+      OscliatingBeamWidthMinMax:
+        min: 0
+        max: 0
+      OnHitBeamAnimation: {fileID: 0}
+      BeamMaterial: {fileID: 0}
+      beamWidth: 0
+      IsOscillating: 0
+      BeamOsciliationSpeed: 0
+      BeamMovementSpeed: 0
     damageRange:
-      min: 30
-      max: 40
-    FireRate: 50
+      min: 5
+      max: 10
+    fireRate: 0
     enemyTarget: {fileID: 0}
     playerTarget: {fileID: 0}
   ParentTower: {fileID: 0}
@@ -82,6 +97,7 @@ MonoBehaviour:
   CounterMax: 3
   ExternalAttackLock: 0
   canattackFieldPH: 0
+  projectileFinalPoint: {fileID: 0}
   inAttackState: 0
 --- !u!212 &9140078121220912567
 SpriteRenderer:
@@ -98,6 +114,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

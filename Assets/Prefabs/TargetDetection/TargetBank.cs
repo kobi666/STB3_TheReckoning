@@ -17,6 +17,8 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
         DisableRangedetectorEvents();
     }
 
+    public event Action onTargetsUpdate;
+
 
     [SerializeField]
     public List<string> debugTargetNames = new List<string>();
@@ -29,6 +31,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     public event Action<string,string> onTargetRemove;
     public void OnTargetRemove(string targetName, string callerName) {
         onTargetRemove?.Invoke(targetName, callerName);
+        onTargetsUpdate?.Invoke();
     }
     
     public Dictionary<string,T> Targets = new Dictionary<string,T>();
@@ -38,6 +41,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     public event Action<T> onTargetAdd;
     public void OnTargetAdd(T t) {
         onTargetAdd?.Invoke(t);
+        onTargetsUpdate?.Invoke();
     }
     
 
@@ -68,6 +72,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
             {
                 if (item.Value == null) {
                     Targets.Remove(item.Key);
+                    onTargetsUpdate?.Invoke();
                 }
             }
         }
@@ -84,6 +89,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     
     void Awake()
     {
+        
         RangeDetector =  RangeDetector ?? GetComponentInChildren<RangeDetector>() ?? null;
         onTryToAddTarget += AddTarget;
         onTargetRemove += RemoveTarget;

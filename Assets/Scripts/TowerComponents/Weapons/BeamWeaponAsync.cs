@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using System.Threading.Tasks;
 
@@ -10,6 +11,8 @@ public class BeamWeaponAsync : WeaponController
     {
         get => Data.BeamData;
     }
+
+    private Effectable[] TempEffectables;
     
     
     private LineRenderer LineRenderer;
@@ -168,7 +171,14 @@ public class BeamWeaponAsync : WeaponController
         onBeamAttack += moveBeamFinalPointOverTime;
         onBeamAttack += delegate
         {
-            BeamUtilities.BeamDamageOnArea(projectileFinalPoint.EffectableTargetBank, Data.damageRange.RandomDamage()); };
+            if (TempEffectables != null)
+            {
+                BeamUtilities.BeamDamageOnArea(projectileFinalPoint.EffectableTargetBank,
+                    Data.damageRange.RandomDamage(), ref TempEffectables);
+            }
+
+            ;
+        };
     }
 
 
@@ -186,6 +196,9 @@ public class BeamWeaponAsync : WeaponController
     {
         base.Start();
         projectileFinalPoint.RangeDetector.SetRangeRadius(BeamWidth / 2);
+        projectileFinalPoint.EffectableTargetBank.onTargetsUpdate += delegate
+        {
+            TempEffectables = projectileFinalPoint.EffectableTargetBank.Targets.Values.ToArray(); };
     }
 
     protected void Update()

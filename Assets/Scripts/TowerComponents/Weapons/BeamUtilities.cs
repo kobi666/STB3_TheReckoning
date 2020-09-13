@@ -19,17 +19,16 @@ public class BeamUtilities : MonoBehaviour
     }
     
     //Requires range detector
-    public static void BeamDamageOnArea(EffectableTargetBank effectableTargetBank, int damage)
+    public static void BeamDamageOnArea(EffectableTargetBank effectableTargetBank, int damage, ref Effectable[] effectablesArray)
     {
-        foreach (var effectable in effectableTargetBank.Targets)
+        foreach (var effectable in effectablesArray)
         {
             
-            if (effectable.Value == null)
+            if (effectable == null)
             {
                 continue;
             }
-            effectable.Value.ApplyDamage(damage);
-            
+            effectable.ApplyDamage(damage);
         }
     }
 

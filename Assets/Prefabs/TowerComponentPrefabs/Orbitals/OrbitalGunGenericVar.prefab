@@ -28,13 +28,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb3fa518ef7f8ba4dad3d472061badbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
   SR: {fileID: 0}
   Animancer: {fileID: 0}
   Data:
     componentRadius: 0
     effectableTarget: {fileID: 0}
     targetUnit:
-      unitController: {fileID: 0}
+      targetTransform: {fileID: 0}
       effectable: {fileID: 0}
     orbitalData:
       maxNumberOfOrbitals: 0
@@ -52,10 +53,22 @@ MonoBehaviour:
       playerUnitPrefab: {fileID: 0}
       maxUnits: 0
       playerUnitSpawnTime: 0
+    BeamData:
+      BeamDuration: 0
+      CooldownTime: 0
+      OscliatingBeamWidthMinMax:
+        min: 0
+        max: 0
+      OnHitBeamAnimation: {fileID: 0}
+      BeamMaterial: {fileID: 0}
+      beamWidth: 0
+      IsOscillating: 0
+      BeamOsciliationSpeed: 0
+      BeamMovementSpeed: 0
     damageRange:
-      min: 15
-      max: 15
-    fireRate: 50
+      min: 5
+      max: 10
+    fireRate: 150
     enemyTarget: {fileID: 0}
     playerTarget: {fileID: 0}
   ParentTower: {fileID: 0}
@@ -66,6 +79,7 @@ MonoBehaviour:
   CounterMax: 3
   ExternalAttackLock: 0
   canattackFieldPH: 0
+  projectileFinalPoint: {fileID: 0}
   inAttackState: 0
 --- !u!114 &1285039471
 MonoBehaviour:
@@ -161,7 +175,7 @@ PrefabInstance:
     - target: {fileID: 9140078121220912567, guid: 902e54a590cc5ac4ba2e368165662c9c,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9140078121220912564, guid: 902e54a590cc5ac4ba2e368165662c9c, type: 3}

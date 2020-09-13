@@ -164,7 +164,7 @@ public abstract class WeaponController : TowerComponent
 
     public event Action<string,string> onEnemyLeftRange;
     public void OnEnemyLeftRange(string targetName,string callerName) {
-        onEnemyLeftRange?.Invoke(targetName ?? null,name ?? null);
+        onEnemyLeftRange?.Invoke(targetName ?? null, name ?? null);
     }
 
     public TargetUnit Target {
