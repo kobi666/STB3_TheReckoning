@@ -57,6 +57,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -220,6 +221,8 @@ MonoBehaviour:
     SetPosition: {x: 0, y: 0}
     EffectableTarget: {fileID: 0}
     Target: {fileID: 0}
+  ShouldGiveMoneyzOnDeath: 1
+  MoneyzAmount: 5
 --- !u!114 &7919928291453572044
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,6 +18,10 @@ public abstract class WeaponController : TowerComponent
             return UnityEngine.Random.Range(Data.damageRange.min, Data.damageRange.max);
         }
     }
+
+    [ConditionalField("debug")] 
+    public int testAsyncAttackcounter;
+    
     public float AttackCounter;
     public float CounterMax = 3;
     
@@ -108,19 +112,10 @@ public abstract class WeaponController : TowerComponent
         AsyncAttackInProgress = false;
     }
     public async void StartAsyncAttack() {
-        /*if (AsyncAttackInProgress == true) {
-            AsyncAttackInProgress = false;
-        }*/
+        testAsyncAttackcounter += 1;
         AsyncAttackInProgress = true;
         while (CanAttack() && AsyncAttackInProgress == true) {
-            if (Data.fireRate > 0) {
-                if (AttackCounter >= CounterMax)
-                {
-                    AttackOnce();
-                }
-            }
-
-            if (Data.fireRate < 0)
+            if (AttackCounter >= CounterMax)
             {
                 AttackOnce();
             }
@@ -137,6 +132,8 @@ public abstract class WeaponController : TowerComponent
         if (CanAttack()) {
             InAttackState = true;
         }
+
+        testAsyncAttackcounter -= 1;
     }
     
     public abstract void MainAttackFunction();
@@ -151,11 +148,6 @@ public abstract class WeaponController : TowerComponent
             }
         }
 
-        if (CounterMax < 0)
-        {
-            MainAttackFunction();
-        }
-        
     }
 
     
@@ -250,10 +242,17 @@ public abstract class WeaponController : TowerComponent
     protected void Update()
     {
         
-            if (AttackCounter < CounterMax)
-            {
+        if (AttackCounter < CounterMax)
+        {
+            if (Data.fireRate > 0) {
+            AttackCounter += StaticObjects.instance.DeltaGameTime * Data.fireRate;
+            }
+            else
+            { 
                 AttackCounter += StaticObjects.instance.DeltaGameTime;
             }
+        }
+        
         
     }
 }

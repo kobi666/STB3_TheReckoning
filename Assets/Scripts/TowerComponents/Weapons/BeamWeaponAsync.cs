@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using System.Threading.Tasks;
+using MyBox;
 
 public class BeamWeaponAsync : WeaponController
 {
@@ -84,16 +85,21 @@ public class BeamWeaponAsync : WeaponController
             BeamWidth -= StaticObjects.instance.DeltaGameTime * BeamData.BeamOsciliationSpeed * BeamData.BeamDuration;
         }
     }
-    
 
+    [ConditionalField("debug")] public int asyncBeamCounter;
+    
     public async void StartAsyncBeam()
     {
-        
+        if (beamAttackInprogress == true)
+        {
+            return;
+        }
+
+        asyncBeamCounter += 1;
         if (BeamAttackInprogress == false)
         {
             BeamAttackInprogress = true;
             BeamWidth = BeamData.beamWidth;
-            int maxPosition = LineRenderer.positionCount;
         }
         
         if (ContinuousAttack) {
@@ -101,7 +107,7 @@ public class BeamWeaponAsync : WeaponController
             {
                 if (BeamAttackInprogress == true)
                 {
-                        beamDurationCounter -= StaticObjects.instance.DeltaGameTime;
+                    beamDurationCounter -= StaticObjects.instance.DeltaGameTime;
                         OnContinuousBeamAttack();
                         await Task.Yield();
                     }
@@ -125,9 +131,8 @@ public class BeamWeaponAsync : WeaponController
             attackOnceLock = false;
             staticTarget = null;
         }
-
-            
         BeamAttackInprogress = false;
+        asyncBeamCounter -= 1;
     }
 
     private float coolDownTimer;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using MyBox;
 using UnityEngine.Serialization;
 using UnityEngine.Events;
 
@@ -321,6 +322,17 @@ public class TowerSlotActions  {
     }
 }
 
+[System.Serializable]
+public class TowerAction : UnityEvent
+{
+    public bool IsUpgradeFunction = true;
+    [ConditionalField("IsUpgradeFunction")]
+    public GameObject UpgradePrefab;
+
+    public TowerController someTowerController;
+}
+
+[System.Serializable]
 public class TowerSlotAction {
     public TowerComponent TowerComponent = null;
     [SerializeField]
@@ -330,6 +342,8 @@ public class TowerSlotAction {
     [SerializeField]
     public event Action ActionFunctions = null;
 
+    public TowerAction MainAction = new TowerAction();
+    public int ActionCost;
     public Predicate<TowerComponent> ExecutionCondition = null;
     public TowerSlotAction(TowerComponent towerComponent, string actionDescription, Sprite buttonSprite, Action action) {
         TowerComponent = towerComponent;

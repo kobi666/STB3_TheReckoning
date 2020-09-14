@@ -5,6 +5,8 @@ using System;
 
 public abstract class EnemyUnitController : UnitController,ITypeTag
 {
+    public bool ShouldGiveMoneyzOnDeath = true;
+    public int MoneyzAmount;
     [NonSerialized]
     public static string Tag = "Enemy";
     public string TypeTag {get => Tag;}
@@ -39,7 +41,17 @@ public abstract class EnemyUnitController : UnitController,ITypeTag
     public abstract bool CannotInitiateBattleWithThisUnit();
     public abstract void LateStart();
 
-    private void Start() {
+    void UpdateMoneyzOnDeath()
+    {
+        if (ShouldGiveMoneyzOnDeath)
+        {
+            PlayerResources.instance.UpdateMoneyz(MoneyzAmount);
+        }
+    }
+    
+    private void Start()
+    {
+        LifeManager.onUnitDeath += UpdateMoneyzOnDeath;
         gameObject.tag = TypeTag;
         DeathManager.instance.onPlayerUnitDeath += Data.RemovePlayerUnitTarget;
         if (tag == "Untagged") {

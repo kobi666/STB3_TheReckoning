@@ -33,6 +33,7 @@
         <e p="LaserTest2.cs" t="Include" />
         <e p="LaserWeaponTest.cs" t="Include" />
         <e p="PathRenderer.cs" t="Include" />
+        <e p="PlayerResources.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="Animancer" t="Include">
             <e p="AnimancerComponent.cs" t="Include" />
@@ -334,6 +335,7 @@
             <e p="Rotator.cs" t="Include" />
             <e p="StateMachineClasses.cs" t="Include" />
             <e p="StaticObjects.cs" t="Include" />
+            <e p="TestUtilities.cs" t="Include" />
             <e p="Utils.cs" t="Include" />
           </e>
           <e p="Levels-rooms" t="Include">

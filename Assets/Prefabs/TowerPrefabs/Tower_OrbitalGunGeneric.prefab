@@ -219,17 +219,22 @@ PrefabInstance:
     - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
         type: 3}
       propertyPath: Data.damageRange.min
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
         type: 3}
       propertyPath: Data.damageRange.max
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
         type: 3}
       propertyPath: Data.fireRate
-      value: 250
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
+        type: 3}
+      propertyPath: debug
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5154157196094913894, guid: 6c30e1e0fc1f670498b61db8c249ee37, type: 3}

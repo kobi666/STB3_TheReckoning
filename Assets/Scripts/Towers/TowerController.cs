@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
+[System.Serializable]
 public abstract class TowerController : MonoBehaviour,ITypeTag
 {
     static string Tag = "Tower";
