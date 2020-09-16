@@ -1,18 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerActionManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private TowerController TowerController;
+    
+    public TowerSlotAction NorthAction();
+    public bool NorthExecutionCondition(TowerComponent tc);
+    public TowerSlotAction EastAction();
+    public bool EastExecutionCondition(TowerComponent tc);
+    public TowerSlotAction SouthAction();
+    public bool SouthExecutionCondition(TowerComponent tc);
+    public TowerSlotAction WestAction();
+    public bool WestExecutionCondition(TowerComponent tc);
+    
+    
+    protected void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        TowerController = GetComponent<TowerController>();
     }
 }

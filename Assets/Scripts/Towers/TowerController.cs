@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using MyBox;
 
 
 [System.Serializable]
 public abstract class TowerController : MonoBehaviour,ITypeTag
 {
+    [ConditionalField("debug")] public TowerActionManager TowerActionManager;
+    public bool debug;
     static string Tag = "Tower";
     public string TypeTag {get => Tag;}
     public abstract TowerSlotAction NorthAction();
@@ -19,7 +22,9 @@ public abstract class TowerController : MonoBehaviour,ITypeTag
     public abstract bool WestExecutionCondition(TowerComponent tc);
     public Dictionary<Vector2, TowerPositionData> TowerSlotsByDirections8 = new Dictionary<Vector2, TowerPositionData>();
     public DebugTowerPositionData[] TowersDebug = new DebugTowerPositionData[8];
-    
+
+    [ConditionalField("debug")]
+    public OrbitalGunsController OrbitalGunsController;
     [SerializeField]
     TowerSlotController slotController;
     public TowerSlotController SlotController {
@@ -47,12 +52,17 @@ public abstract class TowerController : MonoBehaviour,ITypeTag
         TowerActions.ButtonSouth.ExecutionCondition = new Predicate<TowerComponent>(SouthExecutionCondition);
         TowerActions.ButtonWest.ExecutionCondition = new Predicate<TowerComponent>(WestExecutionCondition);
         PostStart();
+        OrbitalGunsController = GetComponentInChildren<OrbitalGunsController>();
     }
 
-    protected void Awake() {
+    protected void Awake()
+    {
+        TowerActionManager = GetComponent<TowerActionManager>() ?? null;
         gameObject.tag = TypeTag;
         PostAwake();
     }
 
     public abstract void PostAwake();
+
+    
 }

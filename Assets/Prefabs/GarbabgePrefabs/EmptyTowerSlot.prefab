@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8798782153369218734}
-  m_LocalRotation: {x: 0, y: 0, z: 0.92387956, w: 0.38268343}
-  m_LocalPosition: {x: 1.65, y: 1.96, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 135}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4344787683947181734
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -46,6 +46,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -68,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1892930427
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 43f439af395afb241be9b86b4e040865, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -93,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94451eb8f64a914484a074f7c089aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
   TowersDebug:
   - Direction: 
     GO: {fileID: 0}
@@ -142,7 +145,48 @@ MonoBehaviour:
     Distance: 0
     ClockWiseTower: {fileID: 0}
     CounterClockWiseTower: {fileID: 0}
-  slotManager: {fileID: 0}
-  SlotManagerObject: {fileID: 0}
+  OrbitalGunsController: {fileID: 0}
+  slotController: {fileID: 0}
   TowerSprite: {fileID: 0}
   TowerSpriteRenderer: {fileID: 0}
+  TowerActions:
+    ButtonNorth:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+      ActionCost: 0
+    ButtonEast:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+      ActionCost: 0
+    ButtonSouth:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+      ActionCost: 0
+    ButtonWest:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+      ActionCost: 0

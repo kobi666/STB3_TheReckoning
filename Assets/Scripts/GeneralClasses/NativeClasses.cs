@@ -8,6 +8,8 @@ using UnityEngine.Events;
 
 
 
+
+
 [System.Serializable]
 public class BeamRenderingFunction : UnityEvent<LineRenderer, Vector2, Vector2,float>
 {
@@ -20,6 +22,9 @@ public class BeamOscilationMinMax
     public float min;
     public float max;
 }
+
+
+
 
 [System.Serializable]
 public class TowerComponentWeaponData
@@ -323,13 +328,12 @@ public class TowerSlotActions  {
 }
 
 [System.Serializable]
-public class TowerAction : UnityEvent
+public class TowerAction : UnityEvent<TowerController>
 {
-    public bool IsUpgradeFunction = true;
-    [ConditionalField("IsUpgradeFunction")]
+    public TowerController TowerController;
     public GameObject UpgradePrefab;
-
-    public TowerController someTowerController;
+    
+    
 }
 
 [System.Serializable]
@@ -357,8 +361,9 @@ public class TowerSlotAction {
 
     }
     public void ExecuteFunction() {
-        if (ExecutionCondition != null && ExecutionCondition.Invoke(TowerComponent) == true )
+        if (ExecutionCondition != null && ExecutionCondition.Invoke(TowerComponent) == true ) {
         ActionFunctions?.Invoke();
+        }
     }
 }
 
