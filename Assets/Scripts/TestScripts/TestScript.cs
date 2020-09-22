@@ -5,6 +5,10 @@ using System;
 
 public class TestScript : MonoBehaviour
 {
+    public GameObject t1;
+    public GameObject t2;
+    
+    
     public GameObject TestTarget;
     public Vector2 TargetPosition;
     public Vector2 InitPos;
@@ -39,13 +43,14 @@ public class TestScript : MonoBehaviour
     {
         _counter = 0;
         InitPos = transform.position;
-        TargetPosition = TestTarget.transform.position;
+//        TargetPosition = TestTarget.transform.position;
+        Debug.LogWarning(Vector2.Distance(t1.transform.position, t2.transform.position));
     }
 
     private void Update()
     {
-        ProjectileUtils.MoveInArcToPosition(transform, InitPos, MiddlePos(), TargetPosition, ref initToMiddle,
-            ref MiddleToTarget, speed, ref _counter );
+        /*ProjectileUtils.MoveInArcToPosition(transform, InitPos, MiddlePos(), TargetPosition, ref initToMiddle,
+            ref MiddleToTarget, speed, ref _counter );*/
 
         
     }

@@ -8,6 +8,7 @@ public class GameObjectPool : MonoBehaviour
     public Dictionary<string, PoolObjectQueue<RangeDetector>> RangeDetectorObjectPoolQueue = new Dictionary<string, PoolObjectQueue<RangeDetector>>();
     public Dictionary<string, PoolObjectQueue<Projectile>> ProjectilesObjectPoolQueue = new Dictionary<string, PoolObjectQueue<Projectile>>();
     public Dictionary<string, PoolObjectQueue<UnitController>> UnitObjectPoolQueue = new Dictionary<string, PoolObjectQueue<UnitController>>();
+    public Dictionary<string, PoolObjectQueue<PathDiscoveryPoint>> PathDiscoveryPointObjectPoolQueue = new Dictionary<string, PoolObjectQueue<PathDiscoveryPoint>>();
 
     public Dictionary<string, PoolObjectQueue<AreaOfEffectController>> AOEObjectPoolQueue = new Dictionary<string, PoolObjectQueue<AreaOfEffectController>>();
     public Dictionary<string,PoolObjectQueue<SingleAnimationObject>> SingleAnimationPoolQueue = new Dictionary<string, PoolObjectQueue<SingleAnimationObject>>();
@@ -39,6 +40,16 @@ public class GameObjectPool : MonoBehaviour
         else {
             CreateNewObjectQueue<Projectile>(ProjectilesObjectPoolQueue, prefab);
             return ProjectilesObjectPoolQueue[prefab.name];
+        }
+    }
+    
+    public PoolObjectQueue<PathDiscoveryPoint> GetPathDiscoveryPool(PathDiscoveryPoint prefab) {
+        if (PathDiscoveryPointObjectPoolQueue.ContainsKey(prefab.name)) {
+            return PathDiscoveryPointObjectPoolQueue[prefab.name];
+        }
+        else {
+            CreateNewObjectQueue<PathDiscoveryPoint>(PathDiscoveryPointObjectPoolQueue, prefab);
+            return PathDiscoveryPointObjectPoolQueue[prefab.name];
         }
     }
 
@@ -91,6 +102,7 @@ public class GameObjectPool : MonoBehaviour
     public ActiveObjectPool<Effectable> ActiveEffectables = new ActiveObjectPool<Effectable>();
 
     public ActiveObjectPool<Projectile> ActiveProjectiles = new ActiveObjectPool<Projectile>();
+    public ActiveObjectPool<PathDiscoveryPoint> ActivePathDiscoveryPoints = new ActiveObjectPool<PathDiscoveryPoint>();
     
     public void RemoveObjectFromAllPools(string objectName, string callerName) {
         ActiveEffectables.RemoveObjectFromPool(objectName);

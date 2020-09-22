@@ -32,6 +32,8 @@
         <e p="LaserTest.cs" t="Include" />
         <e p="LaserTest2.cs" t="Include" />
         <e p="LaserWeaponTest.cs" t="Include" />
+        <e p="PathDiscoveryPoint.cs" t="Include" />
+        <e p="PathDiscoveryWalker.cs" t="Include" />
         <e p="PathRenderer.cs" t="Include" />
         <e p="PlayerResources.cs" t="Include" />
         <e p="Plugins" t="Include">
@@ -296,6 +298,7 @@
             <e p="TargetBank.cs" t="Include" />
           </e>
         </e>
+        <e p="RallyPointDiscoveryGenerator.cs" t="Include" />
         <e p="Samples" t="Include">
           <e p="BasicEnemyMeleeUnit.cs" t="Include" />
           <e p="Input System" t="Include">

@@ -69,6 +69,7 @@
      <Compile Include="Assets\Scripts\Units\StateDebug.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\WeaponController.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\DebugCrosshair.cs" />
+     <Compile Include="Assets\PathDiscoveryPoint.cs" />
      <Compile Include="Assets\Scripts\Units\BasicMeleePlayerUnit.cs" />
      <Compile Include="Assets\PathRenderer.cs" />
      <Compile Include="Assets\Scripts\Units\UnitData.cs" />
@@ -93,6 +94,7 @@
      <Compile Include="Assets\Scripts\Towers\TowerActionManager.cs" />
      <Compile Include="Assets\TestCalculateTowerPositions.cs" />
      <Compile Include="Assets\testclass.cs" />
+     <Compile Include="Assets\Shaker.cs" />
      <Compile Include="Assets\uniteventTest.cs" />
      <Compile Include="Assets\Scripts\Units\EffectableUnit.cs" />
      <Compile Include="Assets\Samples\BasicEnemyMeleeUnit.cs" />
@@ -124,6 +126,7 @@
      <Compile Include="Assets\Scripts\TowerComponents\Weapons\BeamUtilities.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\CursorUtils.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\DeathManager.cs" />
+     <Compile Include="Assets\RallyPointDiscoveryGenerator.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\TowerComponentData.cs" />
      <Compile Include="Assets\ACT.cs" />
      <Compile Include="Assets\Scripts\Projectiles\AOEAnimationController.cs" />
@@ -167,6 +170,7 @@
      <Compile Include="Assets\Scripts\GeneralClasses\AnimationController.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\Gutils.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\TestOrbitalGun.cs" />
+     <Compile Include="Assets\PathDiscoveryWalker.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\RangeDetector.cs" />
      <Compile Include="Assets\Scripts\Towers\ArcingBombTowerController.cs" />
      <Compile Include="Assets\Samples\Input System\1.0.0-preview.5\Custom Binding Composite\CustomComposite.cs" />
@@ -194,7 +198,6 @@
      <Compile Include="Assets\Scripts\Towers\TowerSlotController.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\RangeDebug.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ArcingAOEProjectileController.cs" />
-     <Compile Include="Assets\Shaker.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
