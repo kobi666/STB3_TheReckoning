@@ -9,29 +9,11 @@ public class SelectorTest2 : MonoBehaviour
     float FirstDiscoveryRange;
     public float SecondDiscoveryRangeMultiplier;
     public float SecondDiscoveryRange;
+    private Shaker shaker;
+    public float MovementDuration = 0.15f;
 
-
+    public bool MoveInProgress = false;
     public TowerPosIndicator[] indicators = new TowerPosIndicator[4];
-    /*public float DiscoveryRangeWithLineWidth;
-    public float SecondDiscoveryRangeWithLineWidth;*/
-    
-    /*LineRenderer H1L;
-    LineRenderer H2L;
-    LineRenderer H3L;
-    LineRenderer H4L;
-    LineRenderer V1L;
-    LineRenderer V2L;
-    LineRenderer V3L;
-    LineRenderer V4L;
-    public GameObject H1;
-    public GameObject H2;
-    public GameObject H3;
-    public GameObject H4;
-
-    public GameObject V1;
-    public GameObject V2;
-    public GameObject V3;
-    public GameObject V4;*/
 
     public PlayerInput PlayerControl;
     public float moveLock;
@@ -50,9 +32,43 @@ public class SelectorTest2 : MonoBehaviour
 //            Debug.LogWarning("On Set : " + TowerObjectController.TowerActions.ButtonSouth.ActionDescription);
         }
     }
-
     
+    public bool ExternalTowerSlotActionsLock = false;
+    public bool CanPerformActions()
+    {
+        if (ExternalTowerSlotActionsLock == false)
+        {
+            return true;
+        }
 
+        return false;
+    }
+
+    void ExecActionIfPossible(TowerSlotAction towerAction)
+    {
+        if (towerAction == null)
+        {
+            return;
+        }
+        if (CanPerformActions() == true) {
+            if (PlayerResources.instance.moneyz >= towerAction.ActionCost)
+            {
+                PlayerResources.instance.UpdateMoneyz(-(towerAction.ActionCost));
+                towerAction.ExecuteFunction();
+            }
+            else
+            {
+                OnCantPerformActionDueToResources();
+            }
+        }
+    }
+
+    public event Action onCantPerformActionDueToResources;
+
+    public void OnCantPerformActionDueToResources()
+    {
+        onCantPerformActionDueToResources?.Invoke();
+    }
     
 
 
@@ -100,22 +116,34 @@ public class SelectorTest2 : MonoBehaviour
         moveLock = 1.0f;
     }
 
-    private void Awake() {
-        
+    private void Awake()
+    {
+        shaker = GetComponent<Shaker>();
         instance = this;
         PlayerControl = new PlayerInput();
-        TowerSlotsWithPositions = TowerUtils.TowerSlotsWithPositionsFromParent(GameObject.FindGameObjectWithTag("TowerParent"));
-        
+        TowerSlotsWithPositions =
+            TowerUtils.TowerSlotsWithPositionsFromParent(GameObject.FindGameObjectWithTag("TowerParent"));
 
+        onCantPerformActionDueToResources += Shake;
         //PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => Move = ctx.ReadValue<Vector2>();
         //PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => DebugAxis(ctx.ReadValue<Vector2>(), TowerUtils.GetCardinalDirectionFromAxis(ctx.ReadValue<Vector2>()));
-        PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => MoveToNewTower4(TowerUtils.GetCardinalDirectionFromAxis(ctx.ReadValue<Vector2>() ) );
+        PlayerControl.GamePlay.MoveTowerCursor.performed += ctx =>
+            MoveToNewTower4(TowerUtils.GetCardinalDirectionFromAxis(ctx.ReadValue<Vector2>()));
         PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => ShowIndicators();
+
         
         
         PlayerControl.GamePlay.MoveTowerCursor.canceled += ctx => resetMoveCounter();
         //PlayerControl.GamePlay.NorthButton.performed += ctx => TowerActions.ButtonNorth.ExecuteFunction(TowerSlotController.TowerSlot, TowerSlotController.gameObject);
         
+    }
+
+    private void Shake()
+    {
+        if (MoveInProgress == false)
+        {
+            shaker.BeginShaking();
+        }
     }
 
 
@@ -143,11 +171,26 @@ public class SelectorTest2 : MonoBehaviour
 
     }
 
-
+    public void SetMoveInProgress()
+    {
+        MoveInProgress = false;
+    }
 
 
     public void DebugAxis(Vector2 real, Vector2 normalized ) {
         Debug.Log("Real :" + real + ",  Normalized : " + normalized);
+    }
+    IEnumerator moveCoroutine;
+    public void MoveToNewTarget(Vector2 TargetPos)
+    {
+        
+        if (moveCoroutine != null)
+        {
+            StopCoroutine(moveCoroutine);
+        }
+        moveCoroutine = SelectorUtils.SmoothMove(transform, TargetPos, MovementDuration, delegate { MoveInProgress = true; },
+            delegate { MoveInProgress = false; });
+        StartCoroutine(moveCoroutine);
     }
 
 
@@ -159,6 +202,7 @@ public class SelectorTest2 : MonoBehaviour
                 Debug.Log("Didn't move cause Vector2 was ZERO");
                 return;
             }
+            
             GameObject towerSlotGO = null;
             if (CardinalTowerSlots.ContainsKey(cardinalDirectionV2)) {
                 towerSlotGO = CardinalTowerSlots[cardinalDirectionV2].TowerSlotGo;
@@ -166,10 +210,18 @@ public class SelectorTest2 : MonoBehaviour
             if (towerSlotGO != null) {
             //transform.position = towerSlotGO.transform.position;
             SelectedTowerSlot = towerSlotGO;
-            StartCoroutine(SelectorUtils.SmoothMove(transform,towerSlotGO.transform.position,0.3f));
+            
+            /*StartCoroutine(SelectorUtils.SmoothMove(transform,towerSlotGO.transform.position,0.3f,
+                delegate { MoveInProgress = true; },  SetMoveInProgress));*/
+
+            shaker.StopAllCoroutines();
+            shaker.ShakeInProgress = false;
+            MoveToNewTarget(towerSlotGO.transform.position);
+            
+            
             //Debug.LogWarning("On Move : " + TowerObjectController.TowerActions.ButtonSouth.ActionDescription);
-            
-            
+
+
             //Debug.LogWarning(TowerActions.ButtonSouth.ActionDescription);
             }
 
@@ -184,13 +236,14 @@ public class SelectorTest2 : MonoBehaviour
         moveLock = 0.7f;
         PlayerControl = new PlayerInput();
     }
+
     // Start is called before the first frame update
     void Start()
     {
-        PlayerControl.GamePlay.NorthButton.performed += ctx => ExecNorth();
-        PlayerControl.GamePlay.EastButton.performed += ctx =>  ExecEast();
-        PlayerControl.GamePlay.SouthButton.performed += ctx => ExecSouth();
-        PlayerControl.GamePlay.WestButton.performed += ctx => ExecWest();
+        PlayerControl.GamePlay.NorthButton.performed += ctx => ExecActionIfPossible(TowerObjectController.TowerActions.ButtonNorth);
+        PlayerControl.GamePlay.EastButton.performed += ctx =>  ExecActionIfPossible(TowerObjectController.TowerActions.ButtonEast);
+        PlayerControl.GamePlay.SouthButton.performed += ctx => ExecActionIfPossible(TowerObjectController.TowerActions.ButtonSouth);
+        PlayerControl.GamePlay.WestButton.performed += ctx => ExecActionIfPossible(TowerObjectController.TowerActions.ButtonWest);
         Vector2 FirstKey = Vector2.zero;
         foreach (var item in TowerSlotsWithPositions)
         {
@@ -200,9 +253,14 @@ public class SelectorTest2 : MonoBehaviour
         FirstDiscoveryRange = StaticObjects.instance.TowerSize;
         int random = UnityEngine.Random.Range(1, TowerSlotsWithPositions.Count);
         SelectedTowerSlot = TowerSlotsWithPositions[FirstKey];
-        transform.position = SelectedTowerSlot.transform.position;
+        MoveToNewTower4(TowerUtils.GetCardinalDirectionFromAxis(FirstKey));
+        //transform.position = SelectedTowerSlot.transform.position;
         SecondDiscoveryRange = FirstDiscoveryRange * SecondDiscoveryRangeMultiplier;
+
+        //StartCoroutine(SelectorUtils.Shake(transform, 10f, 1.5f));
     }
+
+    
 
     // Update is called once per frame
     void Update()

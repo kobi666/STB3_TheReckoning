@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\Units\PlayerUnitUtils.cs" />
      <Compile Include="Assets\Scripts\Levels-rooms\LevelManager.cs" />
      <Compile Include="Assets\Scripts\Towers\SlotController.cs" />
+     <Compile Include="Assets\Scripts\GeneralClasses\UnityPredicate.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\PlayerControllerUtilis.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\OrbitalGunsControllerGeneric.cs" />
      <Compile Include="Assets\Scripts\Towers\TowerCrosshairData.cs" />
@@ -111,6 +112,7 @@
      <Compile Include="Assets\Scripts\PlayerObjects\SelectorTest.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Projectile.cs" />
      <Compile Include="Assets\Scripts\UnitController.cs" />
+     <Compile Include="Assets\PlayerResources.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\TestOrbitalWeapon.cs" />
      <Compile Include="Assets\Scripts\Levels-rooms\RoomManager.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\PoolObjectQueue.cs" />
@@ -132,6 +134,7 @@
      <Compile Include="Assets\Scripts\Units\UnitTypes.cs" />
      <Compile Include="Assets\Scripts\Projectiles\AOEProjectile.cs" />
      <Compile Include="Assets\Scripts\Projectiles\AreaOfEffectController.cs" />
+     <Compile Include="Assets\Scripts\GeneralClasses\TestUtilities.cs" />
      <Compile Include="Assets\Scripts\Towers\Tower.cs" />
      <Compile Include="Assets\LaserTest2.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\PlayerUnitSpawningPoint.cs" />
@@ -171,6 +174,7 @@
      <Compile Include="Assets\Garbage\TestPlayerUnitSpawner.cs" />
      <Compile Include="Assets\Garbage\TestTowerController.cs" />
      <Compile Include="Assets\TowerPosIndicator.cs" />
+     <Compile Include="Assets\testPredicate.cs" />
      <Compile Include="Assets\Scripts\Levels-rooms\RoomController.cs" />
      <Compile Include="Assets\Scripts\Towers\TowerArsenal.cs" />
      <Compile Include="Assets\Scripts\Projectiles\TargetFacingStraightShotDirectHitProjectile.cs" />
@@ -190,8 +194,7 @@
      <Compile Include="Assets\Scripts\Towers\TowerSlotController.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\RangeDebug.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ArcingAOEProjectileController.cs" />
-     <Compile Include="Assets\PlayerResources.cs" />
-     <Compile Include="Assets\Scripts\GeneralClasses\TestUtilities.cs" />
+     <Compile Include="Assets\Shaker.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />

@@ -2019,6 +2019,52 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!1 &980437191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 980437193}
+  - component: {fileID: 980437192}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &980437192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980437191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5197086e720dca24e8541e63c6e2f489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testTest:
+    target: {fileID: 980437193}
+    methodName: 
+--- !u!4 &980437193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980437191}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.3849275, y: 0.5418441, z: -10.989003}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1032227585
 GameObject:
   m_ObjectHideFlags: 0
@@ -2642,6 +2688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e22a16ce1c828498072cd797482dda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartupMoneyz: 200
 --- !u!114 &1338539413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3354,6 +3401,7 @@ GameObject:
   - component: {fileID: 1764259585}
   - component: {fileID: 1764259584}
   - component: {fileID: 1764259583}
+  - component: {fileID: 1764259586}
   m_Layer: 0
   m_Name: Crosshair2
   m_TagString: Untagged
@@ -3375,6 +3423,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SecondDiscoveryRangeMultiplier: 5
   SecondDiscoveryRange: 0
+  MovementDuration: 0.15
+  MoveInProgress: 0
   indicators:
   - {fileID: 1962636916}
   - {fileID: 368705794}
@@ -3382,6 +3432,7 @@ MonoBehaviour:
   - {fileID: 1032227588}
   moveLock: 0
   selectedTowerSlot: {fileID: 0}
+  ExternalTowerSlotActionsLock: 0
   TowerObject: {fileID: 0}
   TowerActions:
     ButtonNorth:
@@ -3391,8 +3442,9 @@ MonoBehaviour:
       MainAction:
         m_PersistentCalls:
           m_Calls: []
-        IsUpgradeFunction: 0
+        TowerController: {fileID: 0}
         UpgradePrefab: {fileID: 0}
+        ActionName: 
       ActionCost: 0
     ButtonEast:
       TowerComponent: {fileID: 0}
@@ -3401,8 +3453,9 @@ MonoBehaviour:
       MainAction:
         m_PersistentCalls:
           m_Calls: []
-        IsUpgradeFunction: 0
+        TowerController: {fileID: 0}
         UpgradePrefab: {fileID: 0}
+        ActionName: 
       ActionCost: 0
     ButtonSouth:
       TowerComponent: {fileID: 0}
@@ -3411,8 +3464,9 @@ MonoBehaviour:
       MainAction:
         m_PersistentCalls:
           m_Calls: []
-        IsUpgradeFunction: 0
+        TowerController: {fileID: 0}
         UpgradePrefab: {fileID: 0}
+        ActionName: 
       ActionCost: 0
     ButtonWest:
       TowerComponent: {fileID: 0}
@@ -3421,8 +3475,9 @@ MonoBehaviour:
       MainAction:
         m_PersistentCalls:
           m_Calls: []
-        IsUpgradeFunction: 0
+        TowerController: {fileID: 0}
         UpgradePrefab: {fileID: 0}
+        ActionName: 
       ActionCost: 0
   speed: 0
 --- !u!212 &1764259584
@@ -3490,6 +3545,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1764259586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764259582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65b8ecf3b126e274ba91510675d7c0d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _time: 0.2
+  _distance: 0.1
+  _delayBetweenShakes: 0
+  ShakeInProgress: 0
 --- !u!1001 &1787435683
 PrefabInstance:
   m_ObjectHideFlags: 0

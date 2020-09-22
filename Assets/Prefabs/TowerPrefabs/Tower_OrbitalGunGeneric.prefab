@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 016d067ad013fd944a844d614435add5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TowerActionManager: {fileID: 0}
+  debug: 0
   TowersDebug:
   - Direction: 
     GO: {fileID: 0}
@@ -93,9 +95,55 @@ MonoBehaviour:
     Distance: 0
     ClockWiseTower: {fileID: 0}
     CounterClockWiseTower: {fileID: 0}
+  OrbitalGunsController: {fileID: 0}
   slotController: {fileID: 0}
   TowerSprite: {fileID: 0}
   TowerSpriteRenderer: {fileID: 0}
+  TowerActions:
+    ButtonNorth:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
+    ButtonEast:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
+    ButtonSouth:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
+    ButtonWest:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
 --- !u!1001 &4123499183542822882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,6 +283,11 @@ PrefabInstance:
         type: 3}
       propertyPath: debug
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
+        type: 3}
+      propertyPath: Data.orbitalData.initialNumberOfOrbitals
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5154157196094913894, guid: 6c30e1e0fc1f670498b61db8c249ee37, type: 3}

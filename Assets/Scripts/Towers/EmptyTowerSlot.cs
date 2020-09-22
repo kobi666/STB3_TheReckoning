@@ -12,21 +12,25 @@ public class EmptyTowerSlot : TowerController
 
     public override TowerSlotAction NorthAction() {
         TowerSlotAction tc = new TowerSlotAction(null,"place test tower 1",null,PlaceTestTower1);
+        tc.ActionCost = 75;
         return tc;
     }
 
     public override TowerSlotAction EastAction() {
         TowerSlotAction tc = new TowerSlotAction(null,"",null,PlaceTestTower2);
+        tc.ActionCost = 75;
         return tc;
     }
 
     public override TowerSlotAction SouthAction() {
         TowerSlotAction tc = new TowerSlotAction(null,"",null,PlaceTestTowerSouth);
+        tc.ActionCost = 75;
         return tc;
     }
 
     public override TowerSlotAction WestAction() {
         TowerSlotAction tc = new TowerSlotAction(null,"",null,PlaceTestTower4);
+        tc.ActionCost = 75;
         return tc;
     }
 

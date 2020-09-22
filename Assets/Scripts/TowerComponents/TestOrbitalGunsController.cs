@@ -20,6 +20,10 @@ public class TestOrbitalGunsController : OrbitalGunsControllerGeneric
 
     private void Start() {
         //TestInput.instance.onW += AddOrbitalGun;
-        AddOrbitalGun();
+        for (int i = 0; i < Data.orbitalData.initialNumberOfOrbitals; i++)
+        {
+            AddOrbitalGun();
+        }
+        
     }
 }

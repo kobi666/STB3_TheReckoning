@@ -18,7 +18,7 @@ public class TowerPosIndicator : MonoBehaviour
         {
             StopCoroutine(moveCoroutine);
         }
-        moveCoroutine = SelectorUtils.SmoothMove(transform, TargetPos, 0.15f);
+        moveCoroutine = SelectorUtils.SmoothMove(transform, TargetPos, 0.15f, null, null);
         StartCoroutine(moveCoroutine);
     }
     

@@ -10,7 +10,7 @@ public class PlayerResources : MonoBehaviour
     public static PlayerResources instance;
 
     private TextMeshPro tmpro;
-    
+    public int StartupMoneyz;
     
     
     public int moneyz { get; private set; }
@@ -43,6 +43,6 @@ public class PlayerResources : MonoBehaviour
     
     private void Start()
     {
-        
+        UpdateTheMoneyz(StartupMoneyz); 
     }
 }

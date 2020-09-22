@@ -65,6 +65,7 @@ public class TowerComponentOrbitalControllerData
     public float orbitingSpeed;
     public float rotationSpeed;
     public Transform orbitBase;
+    public int initialNumberOfOrbitals;
     private int _numOfOrbitals;
     public int NumOfOrbitals {
         get => _numOfOrbitals;
@@ -332,8 +333,8 @@ public class TowerAction : UnityEvent<TowerController>
 {
     public TowerController TowerController;
     public GameObject UpgradePrefab;
-    
-    
+    public string ActionName;
+
 }
 
 [System.Serializable]
