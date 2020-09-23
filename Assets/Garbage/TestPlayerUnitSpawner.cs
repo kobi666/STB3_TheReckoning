@@ -10,7 +10,14 @@ public class TestPlayerUnitSpawner : PlayerUnitSpawner
         }
 
     }
-    
+
+
+    protected void Start()
+    {
+        base.Start();
+        
+        
+    }
     public override void PostAwake() {
 
     }

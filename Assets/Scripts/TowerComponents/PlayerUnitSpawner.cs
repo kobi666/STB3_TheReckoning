@@ -14,6 +14,13 @@ public abstract class PlayerUnitSpawner : TowerComponent
         return false;
     }
 
+    private Vector2 FoundRallyPointPosition;
+
+    public void FindRallyPointPosition()
+    {
+        FoundRallyPointPosition = ParentTowerSlot.lowestProximityPointFound;
+    }
+
     public event Action<string,string> onUnitDeath;
     public void OnUnitDeath(string unitName,string callerName) {
         onUnitDeath?.Invoke(unitName,name);
@@ -86,6 +93,7 @@ public abstract class PlayerUnitSpawner : TowerComponent
 
     public void SpawnPlayerUnitAndAddToIndex(int unitBaseIndex) {
             PlayerUnitController puc = PlayerUnitSpawnerUtils.SpawnPlayerUnit(Data.SpawnerData.playerUnitPrefab, SpawningPointPosition, unitBaseIndex);
+            rallyPoint.transform.position = 
             puc.Data.SetPosition = GetRallyPoint(unitBaseIndex);
             try {
             AddUnitToIndex(puc);
@@ -113,12 +121,14 @@ public abstract class PlayerUnitSpawner : TowerComponent
     //Name, index, counter, Prefab
 //    Dictionary<string, (int,float,PlayerUnitController)> Units;
     public abstract void PostStart();
-    private void Start() {
+    protected void Start() {
+        
         onUnitDeath += invokeSpawnOnUnitDeath;
         onUnitSpawn += SpawnUnitOnDeath;
         DeathManager.instance.onPlayerUnitDeath += OnUnitDeath;
         onUnitDeath += RemoveUnitFromIndex;
         RallyPoint = GetComponentInChildren<PlayerUnitRallyPoint>() ?? null;
+        RallyPoint.transform.position = ParentTowerSlot.lowestProximityPointFound;
         SpawningPointComponent = GetComponentInChildren<PlayerUnitSpawningPoint>() ?? null;
         for (int i = 0 ; i < Data.SpawnerData.maxUnits ; i++) {
             SpawnPlayerUnitAndAddToIndex(i);

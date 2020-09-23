@@ -17,6 +17,8 @@ public abstract class TowerComponent : MonoBehaviour
     public TowerComponentData Data;
     [ConditionalField("debug")]
     public Tower ParentTower;
+
+    public TowerSlotController ParentTowerSlot;
     
     
     public EnemyTargetBank EnemyTargetBank {get ; private set;}
@@ -31,7 +33,7 @@ public abstract class TowerComponent : MonoBehaviour
         //EnemyTargetBank = GetComponentInChildren<EnemyTargetBank>() ?? ParentTower?.TargetBank ?? null;
         SR = GetComponent<SpriteRenderer>() ?? null;
         Animancer = GetComponent<AnimancerComponent>() ?? null;
-        
+        ParentTowerSlot = GetComponentInParent<TowerSlotController>();
         PostAwake();
     }
 

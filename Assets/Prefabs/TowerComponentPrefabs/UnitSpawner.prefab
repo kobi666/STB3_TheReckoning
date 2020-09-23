@@ -49,6 +49,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -96,28 +97,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0906223ef5fd03e47af621c393ed91dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
   SR: {fileID: 0}
   Animancer: {fileID: 0}
   Data:
-    Radius: 0
-    DistanceFromRotatorBase: 0
-    OrbitingSpeed: 0
-    RotationSpeed: 0
-    PlayerUnitPrefab: {fileID: 3209448747754013985, guid: 426aa1b6be2db2f4eb42f8fc3894eb15,
-      type: 3}
-    MaxUnits: 5
-    PlayerUnitSpawnTime: 5
-    OrbitBase: {fileID: 0}
-    OrbitalGunPrefab: {fileID: 0}
-    MaxNumberOfOrbitals: 0
-    ProjectilePrefab: {fileID: 0}
+    componentRadius: 0
+    effectableTarget: {fileID: 0}
+    targetUnit:
+      targetTransform: {fileID: 0}
+      effectable: {fileID: 0}
+    orbitalData:
+      maxNumberOfOrbitals: 0
+      distanceFromRotatorBase: 0
+      orbitingSpeed: 0
+      rotationSpeed: 0
+      orbitBase: {fileID: 0}
+      initialNumberOfOrbitals: 0
+      orbitalGunPrefab: {fileID: 0}
+    projectileData:
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      aoeProjectileRadius: 0
+    SpawnerData:
+      playerUnitPrefab: {fileID: 0}
+      maxUnits: 0
+      playerUnitSpawnTime: 0
+    BeamData:
+      BeamDuration: 0
+      CooldownTime: 0
+      OscliatingBeamWidthMinMax:
+        min: 0
+        max: 0
+      OnHitBeamAnimation: {fileID: 0}
+      BeamMaterial: {fileID: 0}
+      beamWidth: 0
+      IsOscillating: 0
+      BeamOsciliationSpeed: 0
+      BeamMovementSpeed: 0
     damageRange:
       min: 0
       max: 0
-    FireRate: 0
+    fireRate: 0
     enemyTarget: {fileID: 0}
     playerTarget: {fileID: 0}
   ParentTower: {fileID: 0}
+  RangeDetector: {fileID: 0}
   RangeCollider: {fileID: 0}
   ExternalSpawningLock: 0
   SpawningPointComponent: {fileID: 0}

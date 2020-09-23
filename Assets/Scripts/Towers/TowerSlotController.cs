@@ -2,9 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class TowerSlotController : MonoBehaviour
 {
+    public event Action onPathDiscoveryEvent;
+    public Vector2 lowestProximityPointFound;
+    public void OnPathDiscoveryEvent()
+    {
+        onPathDiscoveryEvent?.Invoke();
+    }
+
+    void TryToFindHighestProximityPathDiscoveryPoint()
+    {
+        float proximity = 0;
+        PathDiscoveryPoint[] points = PathDiscoveryTargetBank.Targets.Values.ToArray();
+        foreach (PathDiscoveryPoint point in points)
+        {
+            if (proximity < point.Proximity)
+            {
+                lowestProximityPointFound = point.transform.position;
+            }
+        }
+    }
+    
+    
+
+    private PathDiscoveryTargetBank PathDiscoveryTargetBank;
+    private RangeDetector RangeDetector;
     SpriteRenderer SR;
     public Dictionary<Vector2, TowerPositionData> TowerSlotsByDirections8 = new Dictionary<Vector2, TowerPositionData>();
     public DebugTowerPositionData[] TowersDebug = new DebugTowerPositionData[8];
@@ -19,6 +44,8 @@ public class TowerSlotController : MonoBehaviour
             TowerObjectController = value?.GetComponent<TowerController>() ?? null;
         }
     }
+
+    
 
     public TowerController TowerObjectController;
     public TowerSlotActions Actions;
@@ -76,7 +103,12 @@ public class TowerSlotController : MonoBehaviour
     protected void Awake()
     {
         onTowerPositionCalculation += CalculateAdjecentTowers;
+        RangeDetector = GetComponentInChildren<RangeDetector>();
+        PathDiscoveryTargetBank = GetComponent<PathDiscoveryTargetBank>();
+        onPathDiscoveryEvent += TryToFindHighestProximityPathDiscoveryPoint;
     }
+    
+    
 
 
     protected void Start() {

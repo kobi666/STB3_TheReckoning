@@ -13,8 +13,9 @@ public class EffectableTargetBank : TargetBank<Effectable>
         }
         return ef;
     }
-    public override void PostStart() {
+
+    public override void PostStart()
+    {
         
     }
-
 }

@@ -5,8 +5,7 @@ using System;
 
 public class TestScript : MonoBehaviour
 {
-    public GameObject t1;
-    public GameObject t2;
+    
     
     
     public GameObject TestTarget;
@@ -41,10 +40,7 @@ public class TestScript : MonoBehaviour
 
     private void Start()
     {
-        _counter = 0;
-        InitPos = transform.position;
-//        TargetPosition = TestTarget.transform.position;
-        Debug.LogWarning(Vector2.Distance(t1.transform.position, t2.transform.position));
+        
     }
 
     private void Update()

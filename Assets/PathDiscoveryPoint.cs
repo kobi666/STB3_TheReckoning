@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class PathDiscoveryPoint : MonoBehaviour,IQueueable<PathDiscoveryPoint>,IActiveObject<PathDiscoveryPoint>
 {
-    
+    public float Proximity;
     public Type QueueableType { get; set; }
+    
+    
 
     public PoolObjectQueue<PathDiscoveryPoint> queuePool;
     public PoolObjectQueue<PathDiscoveryPoint> QueuePool 
@@ -24,6 +26,16 @@ public class PathDiscoveryPoint : MonoBehaviour,IQueueable<PathDiscoveryPoint>,I
     {
         QueuePool?.ObjectQueue.Enqueue(this);
         GameObjectPool.Instance.RemoveObjectFromAllPools(name,name);
+    }
+
+    protected void OnEnable()
+    {
+        ActivePool.AddObjectToActiveObjectPool(this);
+    }
+
+    protected void Awake()
+    {
+        ActivePool = GameObjectPool.Instance.ActivePathDiscoveryPoints;
     }
 
 
