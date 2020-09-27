@@ -29,6 +29,7 @@
           <e p="TowerTestScript.cs" t="Include" />
           <e p="TProjectileController.cs" t="Include" />
         </e>
+        <e p="Garbage.cs" t="Include" />
         <e p="LaserTest.cs" t="Include" />
         <e p="LaserTest2.cs" t="Include" />
         <e p="LaserWeaponTest.cs" t="Include" />
@@ -292,6 +293,34 @@
               <e p="WaitForUnscaledSeconds.cs" t="Include" />
             </e>
           </e>
+          <e p="Sirenix" t="Include">
+            <e p="Assemblies" t="Include">
+              <e p="link.xml" t="Include" />
+              <e p="Sirenix.OdinInspector.Attributes.xml" t="Include" />
+              <e p="Sirenix.OdinInspector.Editor.xml" t="Include" />
+              <e p="Sirenix.Serialization.Config.xml" t="Include" />
+              <e p="Sirenix.Utilities.Editor.xml" t="Include" />
+              <e p="Sirenix.Utilities.xml" t="Include" />
+            </e>
+            <e p="Odin Inspector" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="AssemblyImportSettingsAutomation.cs" t="Include" />
+                  <e p="BuildAOTAutomation.cs" t="Include" />
+                  <e p="EnsureOdinInspectorDefine.cs" t="Include" />
+                  <e p="FixBrokenUnityObjectWrapperDrawer.cs" t="Include" />
+                  <e p="SyncListDrawer.cs" t="Include" />
+                  <e p="SyncVarAttributeDrawer.cs" t="Include" />
+                  <e p="Vector2IntMinMaxAttributeDrawer.cs" t="Include" />
+                  <e p="VectorIntDrawers.cs" t="Include" />
+                  <e p="VectorIntPropertyResolvers.cs" t="Include" />
+                </e>
+                <e p="SerializedNetworkBehaviour.cs" t="Include" />
+                <e p="VectorIntFormatters.cs" t="Include" />
+              </e>
+            </e>
+            <e p="README.txt" t="Include" />
+          </e>
         </e>
         <e p="Prefabs" t="Include">
           <e p="TargetDetection" t="Include">
@@ -502,6 +531,8 @@
       <e p="MyBox.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
+      <e p="Sirenix.OdinInspector.CompatibilityLayer.csproj" t="IncludeRecursive" />
+      <e p="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj" t="IncludeRecursive" />
       <e p="STB3_TheReckoning.sln" t="IncludeFlat" />
       <e p="Temp\bin" t="ExcludeRecursive" />
       <e p="Unity.InputSystem.VirtualMouseInput.csproj" t="IncludeRecursive" />

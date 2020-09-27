@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c3afc8dd295e0e4e85069a7fc69b16f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TowerActionManager: {fileID: 0}
+  debug: 0
   TowersDebug:
   - Direction: 
     GO: {fileID: 0}
@@ -94,9 +96,55 @@ MonoBehaviour:
     Distance: 0
     ClockWiseTower: {fileID: 0}
     CounterClockWiseTower: {fileID: 0}
+  OrbitalGunsController: {fileID: 0}
   slotController: {fileID: 0}
   TowerSprite: {fileID: 0}
   TowerSpriteRenderer: {fileID: 0}
+  TowerActions:
+    ButtonNorth:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
+    ButtonEast:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
+    ButtonSouth:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
+    ButtonWest:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
 --- !u!212 &7060959317151863643
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -228,12 +276,12 @@ PrefabInstance:
     - target: {fileID: 6967478822057340351, guid: feee7f0aeb7832e49a20d403d43bdb3f,
         type: 3}
       propertyPath: Data.damageRange.min
-      value: 50
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 6967478822057340351, guid: feee7f0aeb7832e49a20d403d43bdb3f,
         type: 3}
       propertyPath: Data.damageRange.max
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 6967478822057340351, guid: feee7f0aeb7832e49a20d403d43bdb3f,
         type: 3}
@@ -280,7 +328,7 @@ PrefabInstance:
     - target: {fileID: 6967478822057340351, guid: feee7f0aeb7832e49a20d403d43bdb3f,
         type: 3}
       propertyPath: Data.fireRate
-      value: 0.5
+      value: 1.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feee7f0aeb7832e49a20d403d43bdb3f, type: 3}

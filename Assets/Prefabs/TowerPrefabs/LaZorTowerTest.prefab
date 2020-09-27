@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676068d69e0089542acdc8ef0cd3d3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TowerActionManager: {fileID: 0}
+  debug: 0
   TowersDebug:
   - Direction: 
     GO: {fileID: 0}
@@ -94,9 +96,55 @@ MonoBehaviour:
     Distance: 0
     ClockWiseTower: {fileID: 0}
     CounterClockWiseTower: {fileID: 0}
+  OrbitalGunsController: {fileID: 0}
   slotController: {fileID: 0}
   TowerSprite: {fileID: 0}
   TowerSpriteRenderer: {fileID: 0}
+  TowerActions:
+    ButtonNorth:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
+    ButtonEast:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
+    ButtonSouth:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
+    ButtonWest:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
 --- !u!212 &6892659532509377281
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -214,6 +262,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6317676921443767990, guid: 85ed6b8df1dccb942a7ff8e90db27de5,
+        type: 3}
+      propertyPath: Data.damageRange.max
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6317676921443767990, guid: 85ed6b8df1dccb942a7ff8e90db27de5,
+        type: 3}
+      propertyPath: Data.damageRange.min
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85ed6b8df1dccb942a7ff8e90db27de5, type: 3}

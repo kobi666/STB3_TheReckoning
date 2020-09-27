@@ -54,7 +54,7 @@ public class WaveManager : MonoBehaviour
 
         InitilizeEnemiesDict();
         InitilizeSpawners();
-        TestSubwavePackage = new SubWavePackage(0.5f, 50, TestPrefab, "random");
+        TestSubwavePackage = new SubWavePackage(1.2f, 50, TestPrefab, "random");
         // Spawners[0].SpawnSubWave(TestSubwave);
         Spawners[0].SpawnSubWave(TestSubwavePackage);
         for (int i = 0 ; i < TestWave.Subwaves.Length ; i++) {

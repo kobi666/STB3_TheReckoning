@@ -23,7 +23,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3209448747754013991
 Transform:
   m_ObjectHideFlags: 0
@@ -76,6 +76,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -165,9 +166,9 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 30
-      max: 60
-    HP: 300
+      min: 100
+      max: 200
+    HP: 5000
     Armor: 0
     SpecialArmor: 0
     speed: 2
@@ -339,6 +340,21 @@ PrefabInstance:
       propertyPath: m_margin.y
       value: 1.7846327
       objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235032105786296601, guid: ec259e872a517f74cb948b51b068b026,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 65535
+      objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296602, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_Mesh
@@ -352,7 +368,7 @@ PrefabInstance:
     - target: {fileID: 8235032105786296606, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296607, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
@@ -459,7 +475,8 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8235032105786296596, guid: ec259e872a517f74cb948b51b068b026, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ec259e872a517f74cb948b51b068b026, type: 3}
 --- !u!224 &6828291222904458432 stripped
 RectTransform:

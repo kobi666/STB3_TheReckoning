@@ -25,7 +25,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8455382016201061951
 Transform:
   m_ObjectHideFlags: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   spline: {fileID: 0}
   travelMode: 0
   isWalking: 1
-  speed: 2.5
+  speed: 1.5
   m_normalizedT: 0
   rotationLerpModifier: 0
   lookAt: 1
@@ -212,9 +212,9 @@ MonoBehaviour:
     CanBeStoppedByOtherUnit: 0
     AttackRate: 5
     DamageRange:
-      min: 25
-      max: 50
-    HP: 300
+      min: 125
+      max: 175
+    HP: 5000
     Armor: 0
     SpecialArmor: 0
     speed: 0
@@ -415,7 +415,7 @@ PrefabInstance:
     - target: {fileID: 8235032105786296606, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8235032105786296607, guid: ec259e872a517f74cb948b51b068b026,
         type: 3}
