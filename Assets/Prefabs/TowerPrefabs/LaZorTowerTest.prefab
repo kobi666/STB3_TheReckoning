@@ -98,7 +98,7 @@ MonoBehaviour:
     ClockWiseTower: {fileID: 0}
     CounterClockWiseTower: {fileID: 0}
   OrbitalGunsController: {fileID: 0}
-  slotController: {fileID: 0}
+  parentSlotController: {fileID: 0}
   TowerSprite: {fileID: 0}
   TowerSpriteRenderer: {fileID: 0}
   TowerActions:
@@ -274,6 +274,22 @@ PrefabInstance:
       propertyPath: Data.damageRange.min
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6317676921443767990, guid: 85ed6b8df1dccb942a7ff8e90db27de5,
+        type: 3}
+      propertyPath: parentTowerComponent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6317676921443767990, guid: 85ed6b8df1dccb942a7ff8e90db27de5,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 6317676921443767990, guid: 85ed6b8df1dccb942a7ff8e90db27de5,
+        type: 3}
+    - target: {fileID: 6317676921443767990, guid: 85ed6b8df1dccb942a7ff8e90db27de5,
+        type: 3}
+      propertyPath: ParentTower
+      value: 
+      objectReference: {fileID: 6892659532509377280}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85ed6b8df1dccb942a7ff8e90db27de5, type: 3}
 --- !u!4 &6892659531000615058 stripped

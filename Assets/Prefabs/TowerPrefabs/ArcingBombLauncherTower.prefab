@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TowerActionManager: {fileID: 0}
   MainTowerComponent: {fileID: 7060959318558857126}
-  debug: 0
+  debug: 1
   TowersDebug:
   - Direction: 
     GO: {fileID: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
     ClockWiseTower: {fileID: 0}
     CounterClockWiseTower: {fileID: 0}
   OrbitalGunsController: {fileID: 0}
-  slotController: {fileID: 0}
+  parentSlotController: {fileID: 0}
   TowerSprite: {fileID: 0}
   TowerSpriteRenderer: {fileID: 0}
   TowerActions:
@@ -330,6 +330,22 @@ PrefabInstance:
         type: 3}
       propertyPath: Data.fireRate
       value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967478822057340351, guid: feee7f0aeb7832e49a20d403d43bdb3f,
+        type: 3}
+      propertyPath: ParentTower
+      value: 
+      objectReference: {fileID: 7060959317151863641}
+    - target: {fileID: 6967478822057340351, guid: feee7f0aeb7832e49a20d403d43bdb3f,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 6967478822057340351, guid: feee7f0aeb7832e49a20d403d43bdb3f,
+        type: 3}
+    - target: {fileID: 6967478822057340351, guid: feee7f0aeb7832e49a20d403d43bdb3f,
+        type: 3}
+      propertyPath: parentTowerComponent
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feee7f0aeb7832e49a20d403d43bdb3f, type: 3}

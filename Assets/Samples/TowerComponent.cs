@@ -4,8 +4,9 @@ using UnityEngine;
 using System;
 using Animancer;
 using MyBox;
+using Sirenix.OdinInspector;
 
-public abstract class TowerComponent : MonoBehaviour
+public abstract class TowerComponent : SerializedMonoBehaviour
 {
 
     public bool IsMainTowerComponent = true;
@@ -17,17 +18,29 @@ public abstract class TowerComponent : MonoBehaviour
     public AnimancerComponent Animancer;
     
     public TowerComponentData Data;
-    [ConditionalField("debug")]
+    
     public TowerController ParentTower;
 
-    private TowerSlotController parentTowerSlot;
+   
+    public TowerSlotController parentTowerSlot;
+    public TowerComponent parentTowerComponent;
     public TowerSlotController ParentTowerSlot
     {
-        get => parentTowerSlot;
+        get
+        {
+            if (parentTowerSlot != null)
+            {
+                return parentTowerSlot;
+            }
+            else
+            {
+                parentTowerSlot = ParentTower.ParentSlotController ?? ParentTower.GetComponentInParent<TowerSlotController>() ?? null;
+                return parentTowerSlot;
+            }
+        }
         set
         {
-            parentTowerSlot = value;
-            ParentTower = ParentTowerSlot.TowerObjectController;
+            parentTowerSlot = value ?? null;
         }
     }
     
@@ -44,10 +57,14 @@ public abstract class TowerComponent : MonoBehaviour
         //EnemyTargetBank = GetComponentInChildren<EnemyTargetBank>() ?? ParentTower?.TargetBank ?? null;
         SR = GetComponent<SpriteRenderer>() ?? null;
         Animancer = GetComponent<AnimancerComponent>() ?? null;
-        ParentTowerSlot = GetComponentInParent<TowerSlotController>();
+        
         PostAwake();
     }
 
-    
-    
+    protected void Start()
+    {
+        parentTowerComponent = parentTowerComponent ?? GetComponentInParent<TowerComponent>() ?? null;
+        ParentTower =  ParentTower ?? GetComponentInParent<TowerController>() ?? null;
+        ParentTowerSlot = ParentTower.ParentSlotController ?? parentTowerComponent.ParentTower.ParentSlotController ?? null;
+    }
 }

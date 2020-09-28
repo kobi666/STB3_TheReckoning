@@ -2,14 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.Events;
-using Animancer;
-using TMPro;
-using System.Threading.Tasks;
 using MyBox;
 
-
-public abstract class WeaponController : TowerComponent
+public class GenericWeaponController : TowerComponent
 {
     [ConditionalField("debug")]
     public EffectableTargetBank TargetBank;
@@ -250,4 +245,6 @@ public abstract class WeaponController : TowerComponent
         
         
     }
+
+    
 }

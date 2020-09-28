@@ -122,7 +122,7 @@ public abstract class PlayerUnitSpawner : TowerComponent
 //    Dictionary<string, (int,float,PlayerUnitController)> Units;
     public abstract void PostStart();
     protected void Start() {
-        
+        base.Start();
         onUnitDeath += invokeSpawnOnUnitDeath;
         onUnitSpawn += SpawnUnitOnDeath;
         DeathManager.instance.onPlayerUnitDeath += OnUnitDeath;

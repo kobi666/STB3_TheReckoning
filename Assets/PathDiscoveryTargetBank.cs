@@ -15,6 +15,6 @@ public class PathDiscoveryTargetBank : TargetBank<PathDiscoveryPoint>
 
     public override void PostStart()
     {
-        RangeDetector.onTargetEnter += delegate(GameObject o) { Debug.LogWarning("TargetEnterHappened"); };
+        
     }
 }

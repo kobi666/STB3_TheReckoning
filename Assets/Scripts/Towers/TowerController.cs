@@ -28,19 +28,21 @@ public abstract class TowerController : MonoBehaviour,ITypeTag
     [ConditionalField("debug")]
     public OrbitalGunsController OrbitalGunsController;
     [SerializeField]
-    TowerSlotController slotController;
-    public TowerSlotController SlotController {
-        get => slotController;
+    private TowerSlotController parentSlotController;
+    public TowerSlotController ParentSlotController {
+        get => parentSlotController;
         set {
-            slotController = value;
+            parentSlotController = value;
         }
     }
     public Sprite TowerSprite;
     public SpriteRenderer TowerSpriteRenderer;
     public TowerSlotActions TowerActions;
     public abstract void PostStart();
-    protected void Start() {
-        TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoop(SlotController, SelectorTest2.instance.TowerSlotsWithPositions, TowerUtils.Cardinal8);
+    protected void Start()
+    {
+        ParentSlotController = ParentSlotController ?? transform.parent.GetComponent<TowerSlotController>();
+        TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoop(ParentSlotController, SelectorTest2.instance.towerSlotsWithPositions, TowerUtils.Cardinal8);
         for(int i = 0 ; i < 8 ; i++) {
             TowersDebug[i].GO = TowerSlotsByDirections8[TowerUtils.Cardinal8.directionsClockwise[i]].TowerSlotGo;
             TowersDebug[i].Direction = TowerUtils.Cardinal8.directionNamesClockwise[i];

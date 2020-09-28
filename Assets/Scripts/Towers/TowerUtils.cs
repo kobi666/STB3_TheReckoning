@@ -10,6 +10,7 @@ public class TowerUtils : MonoBehaviour
         ow.transform.parent = self.transform;
         ow.OrbitBase = self.transform;
         ow.Rotator = rotator;
+        ow.parentTowerComponent = self;
         ow.name = gunPrefab.name + UnityEngine.Random.Range(10,100000);
         self.OrbitalGuns.Add(ow);
         rotator.AddOrbital(ow);
@@ -136,7 +137,7 @@ public static float GetDistanceScore( float baseDiscoveryRange, TowerPositionDat
     return DistanceScore;
 }
 
-public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoopOver(GameObject self, Dictionary<Vector2, TowerSlotController> allTowers, CardinalSet cardinalSet, int rangeCheckCyclesAmount) {
+public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoopOver(GameObject self,  Dictionary<Vector2, TowerSlotController> allTowers, CardinalSet cardinalSet, int rangeCheckCyclesAmount) {
     Dictionary<Vector2, TowerPositionData> dict = new Dictionary<Vector2, TowerPositionData>();
     Vector2 selfPosition = self.transform.position;
     float towerDiscoveryRange = StaticObjects.instance.TowerSize;
@@ -175,58 +176,6 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoopO
         
     }
 
-    
-
-
-
-
-    /*foreach (var item in allTowers)
-    {
-        for (int ii = 1; ii <= rangeCheckCyclesAmount; ii++)
-        {
-            TowerPositionQuery tq = new TowerPositionQuery(selfPosition,item.Key, towerDiscoveryRange * i);
-            if (cardinalSet.discoveryConditionsClockwise[i](tq))
-            {
-                float d = Vector2.Distance(selfPosition, item.Key);
-                tpsPH = new TowerPositionData(item.Value, d, ii);
-                if (tpsPH.ProximityScore(towerDiscoveryRange) <=
-                    dict[cardinalSet.directionsClockwise[i]].ProximityScore(towerDiscoveryRange))
-                {
-                    dict[cardinalSet.directionsClockwise[i]] = new TowerPositionData(item.Value, d, ii);
-                }
-            }
-        }
-    }
-    /*TowerPositionQuery tq  = new TowerPositionQuery(selfPosition,item.Key, towerDiscoveryRange);
-       if (cardinalSet.discoveryConditionsClockwise[i](tq))
-       {
-           float d = Vector2.Distance(selfPosition, item.Key);
-           if (dict[cardinalSet.directionsClockwise[i]].Distance > d)
-           {
-               dict[cardinalSet.directionsClockwise[i]] = new TowerPositionData(item.Value, d, i);
-           }
-       }*/
-    
-
-
-    /*foreach (var item in allTowers)
-    {
-            if (item.Value.name == self.name || item.Value == null) {
-                continue;
-            }
-            
-            TowerPositionQuery tq = new TowerPositionQuery(selfPosition, item.Key, towerDiscoveryRange);
-            for(int i = 0 ; i < cardinalSet.length ; i++) {
-                if (cardinalSet.discoveryConditionsClockwise[i](tq)) {
-                    float d = Vector2.Distance(selfPosition, item.Key);
-                    if (dict[cardinalSet.directionsClockwise[i]].Distance > d) {
-                        dict[cardinalSet.directionsClockwise[i]] = new TowerPositionData(item.Value, d, i);
-                    }
-                }
-            }
-            
-    }*/
-    
     return dict;
     }
     

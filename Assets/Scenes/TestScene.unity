@@ -316,6 +316,62 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 51121984}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &73640875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 73640878}
+  - component: {fileID: 73640877}
+  - component: {fileID: 73640876}
+  m_Layer: 0
+  m_Name: DeathManager (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &73640876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73640875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe7f0c84b7d58f94e984e6df52672d88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &73640877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73640875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f2f077a9fdc424ea768285c4274216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &73640878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73640875}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &142517078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
@@ -981,62 +1037,6 @@ MeshRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &443324409
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 443324412}
-  - component: {fileID: 443324411}
-  - component: {fileID: 443324410}
-  m_Layer: 0
-  m_Name: DeathManager (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &443324410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443324409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe7f0c84b7d58f94e984e6df52672d88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &443324411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443324409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58f2f077a9fdc424ea768285c4274216, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &443324412
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443324409}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &484811343
 GameObject:
   m_ObjectHideFlags: 0
@@ -1552,7 +1552,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1b178a5df0d50a40b06d929c7576500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TowerSlotControllers: []
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: V2_Tsc
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.Vector2, UnityEngine.CoreModule],[TowerSlotController,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[UnityEngine.Vector2,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
 --- !u!1 &720318469
 GameObject:
   m_ObjectHideFlags: 0
@@ -2182,7 +2210,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &980338546
 GameObject:
@@ -3644,6 +3672,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28357eec19cb4242891a4e0436a641e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: PlayerControl
+      Entry: 6
+      Data: 
+    - Name: towerSlotsWithPositions
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.Vector2, UnityEngine.CoreModule],[TowerSlotController,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[UnityEngine.Vector2,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   SecondDiscoveryRangeMultiplier: 5
   SecondDiscoveryRange: 0
   RangeDrawer: {fileID: 609893254}
@@ -4700,7 +4760,7 @@ PrefabInstance:
     - target: {fileID: 7367793775600174100, guid: 3ad66c7245385a94e8b06bb4e04b86f2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7367793775600174100, guid: 3ad66c7245385a94e8b06bb4e04b86f2,
         type: 3}

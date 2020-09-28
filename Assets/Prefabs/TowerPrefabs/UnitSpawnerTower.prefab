@@ -132,7 +132,7 @@ MonoBehaviour:
     ClockWiseTower: {fileID: 0}
     CounterClockWiseTower: {fileID: 0}
   OrbitalGunsController: {fileID: 0}
-  slotController: {fileID: 0}
+  parentSlotController: {fileID: 0}
   TowerSprite: {fileID: 0}
   TowerSpriteRenderer: {fileID: 0}
   TowerActions:
@@ -288,6 +288,17 @@ PrefabInstance:
       propertyPath: Data.SpawnerData.playerUnitPrefab
       value: 
       objectReference: {fileID: 1603762197680233546, guid: 0e59560ec635f3a47851ad9b41187579,
+        type: 3}
+    - target: {fileID: 3316156093528985495, guid: a1e99b9b34ceff2419bc2c393003e418,
+        type: 3}
+      propertyPath: ParentTower
+      value: 
+      objectReference: {fileID: -1097418570291239245}
+    - target: {fileID: 3316156093528985495, guid: a1e99b9b34ceff2419bc2c393003e418,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 3316156093528985495, guid: a1e99b9b34ceff2419bc2c393003e418,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1e99b9b34ceff2419bc2c393003e418, type: 3}

@@ -101,16 +101,14 @@ public class SelectorTest2 : SerializedMonoBehaviour
         SelectedTowerController.TowerActions.ButtonWest?.ExecuteFunction();
     }
 
-    public GameObject TowerObject;
 
-    
     public TowerSlotActions TowerActions;
 
     public Dictionary<Vector2, TowerPositionData> CardinalTowerSlots {
         get => SelectedTowerSlot?.TowerSlotsByDirections8 ?? null;
     }
 
-    public Dictionary<Vector2, TowerSlotController> TowerSlotsWithPositions;
+    public Dictionary<Vector2, TowerSlotController> towerSlotsWithPositions = new Dictionary<Vector2, TowerSlotController>();
     public static SelectorTest2 instance;
     public float speed;
     Vector2 Move;
@@ -222,20 +220,20 @@ public class SelectorTest2 : SerializedMonoBehaviour
                 return;
             }
             
-            TowerSlotController towerSlotGO = null;
+            TowerSlotController _towerSlotcontroller = null;
             if (CardinalTowerSlots.ContainsKey(cardinalDirectionV2)) {
-                towerSlotGO = CardinalTowerSlots[cardinalDirectionV2].TowerSlotController;
+                _towerSlotcontroller = CardinalTowerSlots[cardinalDirectionV2].TowerSlotController;
             }
-            if (towerSlotGO != null) {
+            if (_towerSlotcontroller != null) {
             //transform.position = towerSlotGO.transform.position;
-            OnTowerSelect(towerSlotGO);
+            OnTowerSelect(_towerSlotcontroller);
             
-            /*StartCoroutine(SelectorUtils.SmoothMove(transform,towerSlotGO.transform.position,0.3f,
-                delegate { MoveInProgress = true; },  SetMoveInProgress));*/
+            StartCoroutine(SelectorUtils.SmoothMove(transform,_towerSlotcontroller.transform.position,0.3f,
+                delegate { MoveInProgress = true; },  SetMoveInProgress));
 
             shaker.StopAllCoroutines();
             shaker.ShakeInProgress = false;
-            MoveToNewTarget(towerSlotGO.transform.position);
+            MoveToNewTarget(_towerSlotcontroller.transform.position);
             
             
             //Debug.LogWarning("On Move : " + TowerObjectController.TowerActions.ButtonSouth.ActionDescription);
@@ -262,14 +260,14 @@ public class SelectorTest2 : SerializedMonoBehaviour
         TowerSlotParentManager.instance.OnGetTowerSlotsWithPositions();
         foreach (var tscv2 in TowerSlotParentManager.instance.TowerslotControllers.Values)
         {
-            TowerSlotsWithPositions.Add(tscv2.Item1,tscv2.Item2);
+            towerSlotsWithPositions.Add(tscv2.Item1,tscv2.Item2);
         } 
         PlayerControl.GamePlay.NorthButton.performed += ctx => ExecActionIfPossible(SelectedTowerController.TowerActions.ButtonNorth);
         PlayerControl.GamePlay.EastButton.performed += ctx =>  ExecActionIfPossible(SelectedTowerController.TowerActions.ButtonEast);
         PlayerControl.GamePlay.SouthButton.performed += ctx => ExecActionIfPossible(SelectedTowerController.TowerActions.ButtonSouth);
         PlayerControl.GamePlay.WestButton.performed += ctx => ExecActionIfPossible(SelectedTowerController.TowerActions.ButtonWest);
         Vector2 FirstKey = Vector2.zero;
-        foreach (var item in TowerSlotsWithPositions)
+        foreach (var item in towerSlotsWithPositions)
         {
             if (item.Value != null) {
             FirstKey = item.Key;
@@ -278,9 +276,10 @@ public class SelectorTest2 : SerializedMonoBehaviour
             
         }
         FirstDiscoveryRange = StaticObjects.instance.TowerSize;
-        int random = UnityEngine.Random.Range(1, TowerSlotsWithPositions.Count);
-        SelectedTowerSlot = TowerSlotsWithPositions[FirstKey];
-        MoveToNewTower4(TowerUtils.GetCardinalDirectionFromAxis(FirstKey));
+        int random = UnityEngine.Random.Range(1, towerSlotsWithPositions.Count);
+        OnTowerSelect(towerSlotsWithPositions[FirstKey]);
+        //SelectedTowerSlot = towerSlotsWithPositions[FirstKey];
+        MoveToNewTower4(SelectedTowerSlot.transform.position);
         //transform.position = SelectedTowerSlot.transform.position;
         SecondDiscoveryRange = FirstDiscoveryRange * SecondDiscoveryRangeMultiplier;
 

@@ -45,41 +45,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d5fcb317addb364b8f69ecad18279ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: ProjectileQueuePool
+      Entry: 6
+      Data: 
+  IsMainTowerComponent: 1
+  debug: 0
   SR: {fileID: 0}
   Animancer: {fileID: 0}
   Data:
-    Radius: 3
-    DistanceFromRotatorBase: 0
-    OrbitingSpeed: 0
-    ProjectileSpeed: 0.5
-    AOERadius: 1.5
-    RotationSpeed: 0
-    PlayerUnitPrefab: {fileID: 0}
-    EffectableTarget: {fileID: 0}
-    TargetUnit:
-      unitController: {fileID: 0}
+    componentRadius: 0
+    effectableTarget: {fileID: 0}
+    targetUnit:
+      targetTransform: {fileID: 0}
       effectable: {fileID: 0}
-    MaxUnits: 0
-    PlayerUnitSpawnTime: 0
-    OrbitBase: {fileID: 0}
-    OrbitalGunPrefab: {fileID: 0}
-    MaxNumberOfOrbitals: 0
-    ProjectilePrefab: {fileID: 7004966156267044092, guid: 400c3a48717d12b4e9fc0503eee0db75,
-      type: 3}
+    orbitalData:
+      maxNumberOfOrbitals: 0
+      distanceFromRotatorBase: 0
+      orbitingSpeed: 0
+      rotationSpeed: 0
+      orbitBase: {fileID: 0}
+      initialNumberOfOrbitals: 0
+      orbitalGunPrefab: {fileID: 0}
+    projectileData:
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      aoeProjectileRadius: 0
+    SpawnerData:
+      playerUnitPrefab: {fileID: 0}
+      maxUnits: 0
+      playerUnitSpawnTime: 0
+    BeamData:
+      BeamDuration: 0
+      CooldownTime: 0
+      OscliatingBeamWidthMinMax:
+        min: 0
+        max: 0
+      OnHitBeamAnimation: {fileID: 0}
+      BeamMaterial: {fileID: 0}
+      beamWidth: 0
+      IsOscillating: 0
+      BeamOsciliationSpeed: 0
+      BeamMovementSpeed: 0
     damageRange:
       min: 50
       max: 100
-    FireRate: 60
+    fireRate: 0
     enemyTarget: {fileID: 0}
     playerTarget: {fileID: 0}
   ParentTower: {fileID: 0}
+  parentTowerSlot: {fileID: 0}
+  parentTowerComponent: {fileID: 6967478822057340351}
   RangeDetector: {fileID: 0}
   RangeCollider: {fileID: 0}
   TargetBank: {fileID: 0}
+  testAsyncAttackcounter: 0
   AttackCounter: 0
   CounterMax: 3
   ExternalAttackLock: 0
   canattackFieldPH: 0
+  projectileFinalPoint: {fileID: 0}
   inAttackState: 0
 --- !u!114 &6967478822057340350
 MonoBehaviour:
