@@ -75,7 +75,7 @@ public class TowerSlotController : MonoBehaviour
         GameObject newTower = Instantiate(TowerPrefab, transform.position, Quaternion.identity, gameObject.transform);
         TowerObject = newTower;
         TowerObject.name = (TowerPrefab.name + UnityEngine.Random.Range(10000, 99999).ToString());
-        SelectorTest2.instance.SelectedTowerSlot = this.gameObject;
+        SelectorTest2.instance.SelectedTowerSlot = this;
         if (OldTowerObject != null) {
             Destroy(OldTowerObject);
         }

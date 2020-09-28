@@ -74,7 +74,30 @@ public class TowerUtils : MonoBehaviour
         return allTowersUnderParentObject;
     }
 
-public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoop(GameObject self, Dictionary<Vector2, GameObject> allTowers, CardinalSet cardinalSet) {
+    public static Dictionary<Vector2, TowerSlotController> TowerSlotControllersWithPositionsFromParent(
+        TowerSlotParentManager towerSlotParentManager)
+    {
+        Dictionary<Vector2, TowerSlotController> allTowersUnderParentObject = new Dictionary<Vector2, TowerSlotController>();
+        for (int i = 0 ; i < towerSlotParentManager.transform.childCount ; i++) {
+            
+            if (allTowersUnderParentObject.ContainsKey((Vector2)towerSlotParentManager.transform.GetChild(i).transform.position)) {
+                continue;
+            }
+            if (!towerSlotParentManager.transform.GetChild(i).CompareTag("TowerSlot")) {
+                continue;
+            }
+            if (towerSlotParentManager.transform.GetChild(i).gameObject.activeSelf == false) {
+                continue;
+            }
+
+            string childName = towerSlotParentManager.transform.GetChild(i).gameObject.name;
+            allTowersUnderParentObject.Add(towerSlotParentManager.TowerslotControllers[childName].Item1,towerSlotParentManager.TowerslotControllers[childName].Item2);
+
+        }
+        return allTowersUnderParentObject;
+    }
+
+public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoop(TowerSlotController self, Dictionary<Vector2, TowerSlotController> allTowers, CardinalSet cardinalSet) {
     Dictionary<Vector2, TowerPositionData> dict = new Dictionary<Vector2, TowerPositionData>();
     Vector2 selfPosition = self.transform.position;
     float towerDiscoveryRange = StaticObjects.instance.TowerSize;
@@ -82,7 +105,7 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoop(
     float RangeMultiplier = SelectorTest2.instance.SecondDiscoveryRangeMultiplier;
     
     for (int i =0 ; i < cardinalSet.length ; i++ ) {
-        dict.Add(cardinalSet.directionsClockwise[i], new TowerPositionData(null, 999f));
+        dict.Add(cardinalSet.directionsClockwise[i], new TowerPositionData(null as TowerSlotController, 999f));
     }
     foreach (var item in allTowers)
     {
@@ -101,47 +124,7 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoop(
             }
             
     }
-    // Second check with extended range for vertical/horizontal towers to make sure we are catching horizontal towers with priority to shorter vertical/horizontal range area.
-    /*foreach (var item in allTowers)
-    {
-            if (item.Value.name == self.name || item.Value == null) {
-                continue;
-            }
-            //dict[DirectionsClockwise4[0]] = new TowerPositionData(item.Value, Vector2.Distance(item.Key, selfPosition + towerDiscoveryRangeY), 0);
-            //Get UP tower
-            TowerPositionQuery tq = new TowerPositionQuery(selfPosition, item.Key, SecondTowerDiscoveryRange);
-            for(int i = 0 ; i < cardinalSet.length ; i+=2) {
-                if(dict[cardinalSet.directionsClockwise[i]].TowerSlotGo == null) {
-                    if (cardinalSet.discoveryConditionsClockwise[i](tq)) {
-                        float d = Vector2.Distance(selfPosition, item.Key);
-                        if (dict[cardinalSet.directionsClockwise[i]].Distance > d) {
-                            dict[cardinalSet.directionsClockwise[i]] = new TowerPositionData(item.Value, d, i);
-                        }
-                    }
-                }
-            }
-            
-    }
-    foreach (var item in allTowers)
-    {
-            if (item.Value.name == self.name || item.Value == null) {
-                continue;
-            }
-            //dict[DirectionsClockwise4[0]] = new TowerPositionData(item.Value, Vector2.Distance(item.Key, selfPosition + towerDiscoveryRangeY), 0);
-            //Get UP tower
-            TowerPositionQuery tq = new TowerPositionQuery(selfPosition, item.Key, SecondTowerDiscoveryRange * RangeMultiplier);
-            for(int i = 0 ; i < cardinalSet.length ; i+=2) {
-                if(dict[cardinalSet.directionsClockwise[i]].TowerSlotGo == null) {
-                    if (cardinalSet.discoveryConditionsClockwise[i](tq)) {
-                        float d = Vector2.Distance(selfPosition, item.Key);
-                        if (dict[cardinalSet.directionsClockwise[i]].Distance > d) {
-                            dict[cardinalSet.directionsClockwise[i]] = new TowerPositionData(item.Value, d, i);
-                        }
-                    }
-                }
-            }
-            
-    }*/ 
+    
     return dict;
     }
 
@@ -153,7 +136,7 @@ public static float GetDistanceScore( float baseDiscoveryRange, TowerPositionDat
     return DistanceScore;
 }
 
-public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoopOver(GameObject self, Dictionary<Vector2, GameObject> allTowers, CardinalSet cardinalSet, int rangeCheckCyclesAmount) {
+public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoopOver(GameObject self, Dictionary<Vector2, TowerSlotController> allTowers, CardinalSet cardinalSet, int rangeCheckCyclesAmount) {
     Dictionary<Vector2, TowerPositionData> dict = new Dictionary<Vector2, TowerPositionData>();
     Vector2 selfPosition = self.transform.position;
     float towerDiscoveryRange = StaticObjects.instance.TowerSize;
@@ -176,7 +159,7 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoopO
                 if (cardinalSet.discoveryConditionsClockwise[i](tq))
                 {
                     float d = Vector2.Distance(selfPosition, tower.Key);
-                    TowerPositionData tempTowerPos = new TowerPositionData(tower.Value, d, ii);
+                    TowerPositionData tempTowerPos = new TowerPositionData(tower.Value.gameObject, tower.Value, d, ii);
                     float currentDistanceScore =
                         GetDistanceScore(towerDiscoveryRange, dict[cardinalSet.directionsClockwise[i]]);
                     float candidateDistanceScore = GetDistanceScore(towerDiscoveryRange, tempTowerPos);

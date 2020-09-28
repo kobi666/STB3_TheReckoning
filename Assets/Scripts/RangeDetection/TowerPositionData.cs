@@ -20,6 +20,8 @@ public class TowerPositionData {
     {
         return distance + (DiscoveryRangeCycleNumber * discoveryRange);
     }
+
+    public TowerSlotController TowerSlotController;
     
     [SerializeField]
     GameObject towerSlotGO;
@@ -58,9 +60,30 @@ public class TowerPositionData {
         }
         Distance = _distance;
     }
+
+    public TowerPositionData(TowerSlotController tsc, float _distance)
+    {
+        if (tsc != null)
+        {
+            TowerSlotGo = tsc.gameObject;
+            TowerSlotController = tsc;
+        }
+
+        Distance = _distance;
+    }
     
     public TowerPositionData(GameObject _towerGO, float _distance, int _cycleNumber) {
         TowerSlotGo = _towerGO;
+        DiscoveryRangeCycleNumber = _cycleNumber;
+        if (_towerGO != null) {
+            TowerPosition = (Vector2)_towerGO.transform.position;
+        }
+        Distance = _distance;
+    }
+    
+    public TowerPositionData(GameObject _towerGO, TowerSlotController _towerSlotController, float _distance, int _cycleNumber) {
+        TowerSlotGo = _towerGO;
+        TowerSlotController = _towerSlotController;
         DiscoveryRangeCycleNumber = _cycleNumber;
         if (_towerGO != null) {
             TowerPosition = (Vector2)_towerGO.transform.position;

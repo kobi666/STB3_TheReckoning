@@ -7,6 +7,8 @@ using MyBox;
 
 public abstract class TowerComponent : MonoBehaviour
 {
+
+    public bool IsMainTowerComponent = true;
     // Start is called before the first frame update
     public bool debug;
     [ConditionalField("debug")]
@@ -16,9 +18,18 @@ public abstract class TowerComponent : MonoBehaviour
     
     public TowerComponentData Data;
     [ConditionalField("debug")]
-    public Tower ParentTower;
+    public TowerController ParentTower;
 
-    public TowerSlotController ParentTowerSlot;
+    private TowerSlotController parentTowerSlot;
+    public TowerSlotController ParentTowerSlot
+    {
+        get => parentTowerSlot;
+        set
+        {
+            parentTowerSlot = value;
+            ParentTower = ParentTowerSlot.TowerObjectController;
+        }
+    }
     
     
     public EnemyTargetBank EnemyTargetBank {get ; private set;}

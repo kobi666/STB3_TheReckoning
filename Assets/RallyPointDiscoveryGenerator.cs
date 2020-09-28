@@ -55,7 +55,7 @@ public class RallyPointDiscoveryGenerator : MonoBehaviour
             time -= StaticObjects.instance.DeltaGameTime;
             yield return null;
         }*/
-        TowerSlotController[] towerSlotControllers = TowerSlotParentManager.instance.TowerSlotControllers;
+        Dictionary<string, (Vector2,TowerSlotController)> towerSlotControllers = TowerSlotParentManager.instance.TowerslotControllers;
         
         foreach (var pd in pdps)
         {
@@ -67,9 +67,9 @@ public class RallyPointDiscoveryGenerator : MonoBehaviour
             pd.gameObject.SetActive(true);
             yield return null;
         }
-        foreach (TowerSlotController slot in towerSlotControllers)
+        foreach ((Vector2,TowerSlotController) slot in towerSlotControllers.Values)
         {
-            slot.OnPathDiscoveryEvent();
+            slot.Item2.OnPathDiscoveryEvent();
         }
         
         yield break;

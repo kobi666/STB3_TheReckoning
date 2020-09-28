@@ -9,6 +9,8 @@ using MyBox;
 public abstract class TowerController : MonoBehaviour,ITypeTag
 {
     [ConditionalField("debug")] public TowerActionManager TowerActionManager;
+
+    public TowerComponent MainTowerComponent;
     public bool debug;
     static string Tag = "Tower";
     public string TypeTag {get => Tag;}
@@ -38,7 +40,7 @@ public abstract class TowerController : MonoBehaviour,ITypeTag
     public TowerSlotActions TowerActions;
     public abstract void PostStart();
     protected void Start() {
-        TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoop(gameObject, SelectorTest2.instance.TowerSlotsWithPositions, TowerUtils.Cardinal8);
+        TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoop(SlotController, SelectorTest2.instance.TowerSlotsWithPositions, TowerUtils.Cardinal8);
         for(int i = 0 ; i < 8 ; i++) {
             TowersDebug[i].GO = TowerSlotsByDirections8[TowerUtils.Cardinal8.directionsClockwise[i]].TowerSlotGo;
             TowersDebug[i].Direction = TowerUtils.Cardinal8.directionNamesClockwise[i];
