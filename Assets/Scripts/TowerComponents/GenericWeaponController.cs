@@ -3,9 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using MyBox;
+using System.Threading.Tasks;
+using Sirenix;
+using Sirenix.OdinInspector;
 
 public class GenericWeaponController : TowerComponent
 {
+    
+    
+    
+    
+    
+    
+    public SerializedBoolFunc1T conditionsForSomething;
+    
     [ConditionalField("debug")]
     public EffectableTargetBank TargetBank;
     public int Damage {
@@ -14,11 +25,13 @@ public class GenericWeaponController : TowerComponent
         }
     }
 
+    
+
     [ConditionalField("debug")] 
     public int testAsyncAttackcounter;
     
     public float AttackCounter;
-    public float CounterMax = 3;
+    public float CounterMax = 1;
     
     [ConditionalField("debug")]
     public PoolObjectQueue<Projectile> ProjectileQueuePool;
@@ -41,7 +54,7 @@ public class GenericWeaponController : TowerComponent
     }
 
 
-    public event Action<WeaponController, Effectable> onEnemyEnteredRange;
+    public event Action<GenericWeaponController, Effectable> onEnemyEnteredRange;
     public void OnEnemyEnteredRange(Effectable ef) {
         onEnemyEnteredRange?.Invoke(this, ef);
     }
@@ -62,7 +75,7 @@ public class GenericWeaponController : TowerComponent
         }
     }
 
-    public virtual void StandardOnTargetEnteredRange(WeaponController self, Effectable ef) {
+    public virtual void StandardOnTargetEnteredRange(GenericWeaponController self, Effectable ef) {
         TargetUnit tu = GameObjectPool.Instance.GetTargetUnit(ef.name);
         if (Target?.Effectable == null) {
             Target = tu;
@@ -130,8 +143,11 @@ public class GenericWeaponController : TowerComponent
 
         testAsyncAttackcounter -= 1;
     }
-    
-    public abstract void MainAttackFunction();
+
+    public void MainAttackFunction()
+    {
+        
+    }
 
     void AttackOnce()
     {
@@ -209,8 +225,6 @@ public class GenericWeaponController : TowerComponent
         onEnemyEnteredRange += StandardOnTargetEnteredRange;
         onEnemyLeftRange += StandardOnTargetLeftRange;
     }
-
-    public abstract void PostStart();
     protected void Start() {
         RangeDetector = GetComponentInChildren<RangeDetector>() ?? null;
         if (Data.projectileData.projectilePrefab != null) {
@@ -226,7 +240,6 @@ public class GenericWeaponController : TowerComponent
                 TargetBank.RangeDetector.SetRangeRadius(Data.componentRadius);
             }
         }
-        PostStart();
     }
 
     protected void Update()

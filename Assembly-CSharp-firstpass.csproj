@@ -58,6 +58,9 @@
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\BezierWalkerWithSpeed.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\UnitWalker.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\BezierWalkerWithTime.cs" />
+     <Compile Include="Assets\Plugins\Better Events\BetterEvent.cs" />
+     <Compile Include="Assets\Plugins\Better Events\BetterEventEntry.cs" />
+     <Compile Include="Assets\Plugins\Better Events\ExampleMonoBehaviour.cs" />
      <None Include="Assets\Plugins\BezierSolution\README.txt" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.xml" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.xml" />

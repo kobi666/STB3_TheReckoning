@@ -107,6 +107,18 @@
               </e>
             </e>
           </e>
+          <e p="Better Events" t="Include">
+            <e p="BetterEvent.cs" t="Include" />
+            <e p="BetterEventEntry.cs" t="Include" />
+            <e p="Editor" t="Include">
+              <e p="BetterEventDrawer.cs" t="Include" />
+              <e p="BetterEventListDrawer.cs" t="Include" />
+              <e p="BetterEventProcessor.cs" t="Include" />
+              <e p="DelegateInfo.cs" t="Include" />
+              <e p="MethodSelector.cs" t="Include" />
+            </e>
+            <e p="ExampleMonoBehaviour.cs" t="Include" />
+          </e>
           <e p="BezierSolution" t="Include">
             <e p="BezierPoint.cs" t="Include" />
             <e p="BezierSpline.cs" t="Include" />
@@ -354,6 +366,7 @@
           <e p="GeneralClasses" t="Include">
             <e p="ActiveObjectPool.cs" t="Include" />
             <e p="AnimationController.cs" t="Include" />
+            <e p="ConditionalWeaponList.cs" t="Include" />
             <e p="DeathManager.cs" t="Include" />
             <e p="DebugText.cs" t="Include" />
             <e p="GameObjectPool.cs" t="Include" />
@@ -367,6 +380,7 @@
             <e p="PlayerInput.cs" t="Include" />
             <e p="PoolObjectQueue.cs" t="Include" />
             <e p="Rotator.cs" t="Include" />
+            <e p="SerializedFunc.cs" t="Include" />
             <e p="StateMachineClasses.cs" t="Include" />
             <e p="StaticObjects.cs" t="Include" />
             <e p="TestUtilities.cs" t="Include" />
@@ -495,6 +509,7 @@
         <e p="TagSelectorPropertyDrawer.cs" t="Include" />
         <e p="TestCalculateTowerPositions.cs" t="Include" />
         <e p="testclass.cs" t="Include" />
+        <e p="TestConditionalDropDown.cs" t="Include" />
         <e p="testPredicate.cs" t="Include" />
         <e p="testscript2.cs" t="Include" />
         <e p="TextMesh Pro" t="Include">

@@ -42,6 +42,8 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     public void OnTargetAdd(T t) {
         onTargetAdd?.Invoke(t);
         onTargetsUpdate?.Invoke();
+        Collision c;
+        
     }
     
 
