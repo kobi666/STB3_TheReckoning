@@ -34,5 +34,4 @@ public class ConditionalWeaponList
     [ShowIf("WeaponType", 2)]
     [SerializeField]
     protected Func<bool>[] LaZorEvent = new Func<bool>[0];
-    
 }
