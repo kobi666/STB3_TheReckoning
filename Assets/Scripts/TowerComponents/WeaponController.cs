@@ -25,6 +25,8 @@ public abstract class WeaponController : TowerComponent
     public float AttackCounter;
     public float CounterMax = 3;
     
+    private AnimationController AnimationController;
+    
     [ConditionalField("debug")]
     public PoolObjectQueue<Projectile> ProjectileQueuePool;
     
@@ -114,18 +116,23 @@ public abstract class WeaponController : TowerComponent
     public async void StartAsyncAttack() {
         testAsyncAttackcounter += 1;
         AsyncAttackInProgress = true;
-        while (CanAttack() && AsyncAttackInProgress == true) {
-            if (AttackCounter >= CounterMax)
-            {
-                AttackOnce();
-            }
+        if (CanAttack()) {
+            AnimationController.PlayLoopingAnimation(AnimationController.Clip);
+            while (CanAttack() && AsyncAttackInProgress == true) {
+                if (AttackCounter >= CounterMax)
+                {
+                    AttackOnce();
+                }
 
-            if (CanAttack() == false)
-            {
-                Debug.LogWarning("Can attack is false bu i'm still attacking");
+                if (CanAttack() == false)
+                {
+                    Debug.LogWarning("Can attack is false bu i'm still attacking");
+                }
+                await Task.Yield();
             }
-            await Task.Yield();
         }
+
+        AnimationController.animancer.Stop();
         AsyncAttackInProgress = false;
         InAttackState = false;
         Target = FindSingleTargetNearestToEndOfSpline();
@@ -199,6 +206,7 @@ public abstract class WeaponController : TowerComponent
     protected void Awake()
     {
         base.Awake();
+        AnimationController = GetComponent<AnimationController>();
     }
     public override void PostAwake() {
         

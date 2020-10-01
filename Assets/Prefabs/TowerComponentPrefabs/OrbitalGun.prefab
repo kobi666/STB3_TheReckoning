@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9140078121220912565}
-  - component: {fileID: 9140078121220912564}
   - component: {fileID: 9140078121220912567}
+  - component: {fileID: 137728324531323859}
+  - component: {fileID: 7327795066914108447}
   m_Layer: 0
   m_Name: OrbitalGun
   m_TagString: Untagged
@@ -35,70 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9140078121220912564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9140078121220912561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13f6edec5d6f56c4d8415ada3460241b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug: 0
-  SR: {fileID: 0}
-  Animancer: {fileID: 0}
-  Data:
-    componentRadius: 0
-    effectableTarget: {fileID: 0}
-    targetUnit:
-      targetTransform: {fileID: 0}
-      effectable: {fileID: 0}
-    orbitalData:
-      maxNumberOfOrbitals: 0
-      distanceFromRotatorBase: 0
-      orbitingSpeed: 0
-      rotationSpeed: 0
-      orbitBase: {fileID: 0}
-      orbitalGunPrefab: {fileID: 0}
-    projectileData:
-      projectileSpeed: 0
-      projectilePrefab: {fileID: 0}
-      aoeProjectileRadius: 0
-    SpawnerData:
-      playerUnitPrefab: {fileID: 0}
-      maxUnits: 0
-      playerUnitSpawnTime: 0
-    BeamData:
-      BeamDuration: 0
-      CooldownTime: 0
-      OscliatingBeamWidthMinMax:
-        min: 0
-        max: 0
-      OnHitBeamAnimation: {fileID: 0}
-      BeamMaterial: {fileID: 0}
-      beamWidth: 0
-      IsOscillating: 0
-      BeamOsciliationSpeed: 0
-      BeamMovementSpeed: 0
-    damageRange:
-      min: 5
-      max: 10
-    fireRate: 0
-    enemyTarget: {fileID: 0}
-    playerTarget: {fileID: 0}
-  ParentTower: {fileID: 0}
-  RangeDetector: {fileID: 0}
-  RangeCollider: {fileID: 0}
-  TargetBank: {fileID: 0}
-  AttackCounter: 0
-  CounterMax: 3
-  ExternalAttackLock: 0
-  canattackFieldPH: 0
-  projectileFinalPoint: {fileID: 0}
-  inAttackState: 0
 --- !u!212 &9140078121220912567
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -139,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6602e8ba0f17c454ea54e677fbfc6add, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 817b788f0899a764982be680fc3aaddf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -150,6 +87,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &137728324531323859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9140078121220912561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Animator: {fileID: 0}
+  _ActionOnDisable: 0
+--- !u!95 &7327795066914108447
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9140078121220912561}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &5644195859457390891
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -240,12 +210,12 @@ PrefabInstance:
     - target: {fileID: 2275542799276280031, guid: 43b0a984e43ce9c48816a023d43ea06f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.606
+      value: 0.376
       objectReference: {fileID: 0}
     - target: {fileID: 2275542799276280031, guid: 43b0a984e43ce9c48816a023d43ea06f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.016
+      value: 0.045
       objectReference: {fileID: 0}
     - target: {fileID: 2275542799276280031, guid: 43b0a984e43ce9c48816a023d43ea06f,
         type: 3}

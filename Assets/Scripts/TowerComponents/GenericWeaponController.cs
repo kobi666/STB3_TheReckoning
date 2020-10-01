@@ -11,12 +11,6 @@ public class GenericWeaponController : TowerComponent
 {
     
     
-    
-    
-    
-    
-    public SerializedBoolFunc1T conditionsForSomething;
-    
     [ConditionalField("debug")]
     public EffectableTargetBank TargetBank;
     public int Damage {

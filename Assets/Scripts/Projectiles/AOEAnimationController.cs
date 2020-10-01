@@ -14,11 +14,6 @@ public class AOEAnimationController : AnimationController
         }
     } 
     
-    
-
-    public override void PostAwake() {
-
-    }
     void Start()
     {
         

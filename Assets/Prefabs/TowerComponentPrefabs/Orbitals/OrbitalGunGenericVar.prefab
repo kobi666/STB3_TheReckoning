@@ -12,6 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb3fa518ef7f8ba4dad3d472061badbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: ProjectileQueuePool
+      Entry: 6
+      Data: 
+    - Name: OrbitingSpeed
+      Entry: 4
+      Data: 10
+    - Name: RotationSpeed
+      Entry: 4
+      Data: 10
+  IsMainTowerComponent: 1
   debug: 0
   SR: {fileID: 0}
   Animancer: {fileID: 0}
@@ -27,10 +46,11 @@ MonoBehaviour:
       orbitingSpeed: 10
       rotationSpeed: 10
       orbitBase: {fileID: 0}
+      initialNumberOfOrbitals: 0
       orbitalGunPrefab: {fileID: 0}
     projectileData:
       projectileSpeed: 15
-      projectilePrefab: {fileID: 5882499641662690262, guid: f21a1d072317d5a428476205f0acd37a,
+      projectilePrefab: {fileID: 3226299588316402478, guid: 2359c14f313866341b562f9dac90e215,
         type: 3}
       aoeProjectileRadius: 0
     SpawnerData:
@@ -56,9 +76,12 @@ MonoBehaviour:
     enemyTarget: {fileID: 0}
     playerTarget: {fileID: 0}
   ParentTower: {fileID: 0}
+  parentTowerSlot: {fileID: 0}
+  parentTowerComponent: {fileID: 0}
   RangeDetector: {fileID: 4514042185536052587}
   RangeCollider: {fileID: 0}
   TargetBank: {fileID: 0}
+  testAsyncAttackcounter: 0
   AttackCounter: 0
   CounterMax: 3
   ExternalAttackLock: 0
@@ -79,6 +102,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugTargetNames: []
   RangeDetector: {fileID: 0}
+--- !u!114 &7735187972544160779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8961835054651530764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffaa51dc3e79d554aac5ac85683a68c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: CurrentAnimationState
+      Entry: 6
+      Data: 
+  Clip: {fileID: 7400000, guid: 501618caa67827c4a99055921e34336b, type: 2}
+  animancer: {fileID: 0}
 --- !u!1001 &182045178584165309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86,6 +135,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 137728324531323859, guid: 902e54a590cc5ac4ba2e368165662c9c,
+        type: 3}
+      propertyPath: _Animator
+      value: 
+      objectReference: {fileID: 7437501175610646434}
     - target: {fileID: 3713715151120950848, guid: 902e54a590cc5ac4ba2e368165662c9c,
         type: 3}
       propertyPath: m_IsActive
@@ -95,6 +149,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327795066914108447, guid: 902e54a590cc5ac4ba2e368165662c9c,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9140078121220912561, guid: 902e54a590cc5ac4ba2e368165662c9c,
         type: 3}
@@ -166,12 +225,17 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 9140078121220912564, guid: 902e54a590cc5ac4ba2e368165662c9c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 902e54a590cc5ac4ba2e368165662c9c, type: 3}
 --- !u!1 &8961835054651530764 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9140078121220912561, guid: 902e54a590cc5ac4ba2e368165662c9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 182045178584165309}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7437501175610646434 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7327795066914108447, guid: 902e54a590cc5ac4ba2e368165662c9c,
     type: 3}
   m_PrefabInstance: {fileID: 182045178584165309}
   m_PrefabAsset: {fileID: 0}

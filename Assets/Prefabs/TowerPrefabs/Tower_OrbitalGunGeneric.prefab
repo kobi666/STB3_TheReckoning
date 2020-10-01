@@ -145,6 +145,55 @@ MonoBehaviour:
         UpgradePrefab: {fileID: 0}
         ActionName: 
       ActionCost: 0
+--- !u!95 &6999639545599279369
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9132915217241234107}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1192656888270075636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9132915217241234107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Animator: {fileID: 6999639545599279369}
+  _ActionOnDisable: 0
+--- !u!114 &4918742040812117269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9132915217241234107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd4c361dd5a388a41b638b1d55ed2b8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Animator: {fileID: 6999639545599279369}
+  _Clip: {fileID: 7400000, guid: 47bb96b19bd72b24e9822cdefbbc98ca, type: 2}
+  _Speed: 1
+  _FootIK: 0
 --- !u!1001 &4123499183542822882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -212,6 +261,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerComponent_OrbitalGunControllerGeneric
       objectReference: {fileID: 0}
+    - target: {fileID: 5154157196094913881, guid: 6c30e1e0fc1f670498b61db8c249ee37,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5154157196094913892, guid: 6c30e1e0fc1f670498b61db8c249ee37,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -222,6 +276,12 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5154157196094913892, guid: 6c30e1e0fc1f670498b61db8c249ee37,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e7de2e86aa83c75428dc5726dc5a7a91,
+        type: 3}
     - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
         type: 3}
       propertyPath: Data.OrbitalGunPrefab
@@ -258,7 +318,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Data.projectileData.projectilePrefab
       value: 
-      objectReference: {fileID: 5882499641662690262, guid: f21a1d072317d5a428476205f0acd37a,
+      objectReference: {fileID: 3226299588316402478, guid: 2359c14f313866341b562f9dac90e215,
         type: 3}
     - target: {fileID: 5154157196094913895, guid: 6c30e1e0fc1f670498b61db8c249ee37,
         type: 3}
@@ -304,6 +364,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5154157196094913894, guid: 6c30e1e0fc1f670498b61db8c249ee37, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6c30e1e0fc1f670498b61db8c249ee37, type: 3}
+--- !u!1 &9132915217241234107 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5154157196094913881, guid: 6c30e1e0fc1f670498b61db8c249ee37,
+    type: 3}
+  m_PrefabInstance: {fileID: 4123499183542822882}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9132915217241234106 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5154157196094913880, guid: 6c30e1e0fc1f670498b61db8c249ee37,
@@ -316,7 +382,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4123499183542822882}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 9132915217241234107}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9963f3ac0b6d3ad4785e17e773311784, type: 3}

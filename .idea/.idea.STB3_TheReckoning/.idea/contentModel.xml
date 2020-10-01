@@ -30,6 +30,8 @@
           <e p="TProjectileController.cs" t="Include" />
         </e>
         <e p="Garbage.cs" t="Include" />
+        <e p="instantiateTest.cs" t="Include" />
+        <e p="instantiateTestspawner.cs" t="Include" />
         <e p="LaserTest.cs" t="Include" />
         <e p="LaserTest2.cs" t="Include" />
         <e p="LaserWeaponTest.cs" t="Include" />
@@ -379,6 +381,7 @@
             <e p="PerksAndNerfs.cs" t="Include" />
             <e p="PlayerInput.cs" t="Include" />
             <e p="PoolObjectQueue.cs" t="Include" />
+            <e p="ProjectileMovementFunction.cs" t="Include" />
             <e p="Rotator.cs" t="Include" />
             <e p="SerializedFunc.cs" t="Include" />
             <e p="StateMachineClasses.cs" t="Include" />
@@ -415,6 +418,7 @@
             <e p="DirectHitProjectile.cs" t="Include" />
             <e p="Explosion.cs" t="Include" />
             <e p="ExplosionController.cs" t="Include" />
+            <e p="GenericProjectile.cs" t="Include" />
             <e p="OnTargetReachedProjectile.cs" t="Include" />
             <e p="Projectile.cs" t="Include" />
             <e p="ProjectileExitPoint.cs" t="Include" />
@@ -450,6 +454,7 @@
             <e p="PlayerUnitSpawner.cs" t="Include" />
             <e p="PlayerUnitSpawnerUtils.cs" t="Include" />
             <e p="PlayerUnitSpawningPoint.cs" t="Include" />
+            <e p="ProjectileFactory.cs" t="Include" />
             <e p="TestOrbitalGun.cs" t="Include" />
             <e p="TestOrbitalGunGeneric.cs" t="Include" />
             <e p="TestOrbitalGunsController.cs" t="Include" />
@@ -516,6 +521,7 @@
           <e p="Fonts" t="Include">
             <e p="LiberationSans - OFL.txt" t="Include" />
           </e>
+          <e p="ProjectileCreationData.cs" t="Include" />
           <e p="Resources" t="Include">
             <e p="LineBreaking Following Characters.txt" t="Include" />
             <e p="LineBreaking Leading Characters.txt" t="Include" />
@@ -542,6 +548,7 @@
         </e>
         <e p="TowerPosIndicator.cs" t="Include" />
         <e p="TowerSlotParentManager.cs" t="Include" />
+        <e p="TriggerTest.cs" t="Include" />
         <e p="uniteventTest.cs" t="Include" />
       </e>
       <e p="InputSystem.Samples.Visualizers.csproj" t="IncludeRecursive" />

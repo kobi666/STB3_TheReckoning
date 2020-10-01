@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Animancer;
 using System;
+using Sirenix.OdinInspector;
 
-public abstract class AnimationController : MonoBehaviour
+public class AnimationController : SerializedMonoBehaviour
 {
-    public AnimancerState CurrentAnimationState;
 
+    public AnimationClip Clip = null;
+    
+    public AnimancerState CurrentAnimationState;
     public void PlaySingleAnimation(AnimationClip clip) {
         if (clip != null) {
             AnimancerState a_state = animancer.Play(clip);
@@ -50,11 +53,10 @@ public abstract class AnimationController : MonoBehaviour
     }
     // Start is called before the first frame update
     public AnimancerComponent animancer;
-    public abstract void PostAwake();
-    private void Awake() {
+    
+    protected void Awake() {
         Animancer.WarningType.EndEventInterrupt.Disable();
         animancer = GetComponent<AnimancerComponent>() ?? null;
-        PostAwake();
     }
 
     

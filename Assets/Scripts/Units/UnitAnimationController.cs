@@ -44,7 +44,8 @@ public class UnitAnimationController : AnimationController
     public AnimationClip ShootingAnimation;
 
 
-    public override void PostAwake() {
+    protected void Awake() {
+        base.Awake();
         onDirectBattleAttack += delegate {PlaySingleAnimation(DirectBattleAttackAnimation);};
         onWalking += delegate {PlayLoopingAnimation(WalkingAnimation);};
         onDeath += delegate {PlayFiniteAnimation(DeathAnimation);};

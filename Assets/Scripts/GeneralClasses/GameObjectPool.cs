@@ -10,6 +10,8 @@ public class GameObjectPool : MonoBehaviour
     public Dictionary<string, PoolObjectQueue<UnitController>> UnitObjectPoolQueue = new Dictionary<string, PoolObjectQueue<UnitController>>();
     public Dictionary<string, PoolObjectQueue<PathDiscoveryPoint>> PathDiscoveryPointObjectPoolQueue = new Dictionary<string, PoolObjectQueue<PathDiscoveryPoint>>();
 
+    public Dictionary<string, PoolObjectQueue<GenericProjectile>> GenericProjectilesObjectPoolQueue = new Dictionary<string, PoolObjectQueue<GenericProjectile>>();
+    
     public Dictionary<string, PoolObjectQueue<AreaOfEffectController>> AOEObjectPoolQueue = new Dictionary<string, PoolObjectQueue<AreaOfEffectController>>();
     public Dictionary<string,PoolObjectQueue<SingleAnimationObject>> SingleAnimationPoolQueue = new Dictionary<string, PoolObjectQueue<SingleAnimationObject>>();
 
@@ -40,6 +42,16 @@ public class GameObjectPool : MonoBehaviour
         else {
             CreateNewObjectQueue<Projectile>(ProjectilesObjectPoolQueue, prefab);
             return ProjectilesObjectPoolQueue[prefab.name];
+        }
+    }
+    
+    public PoolObjectQueue<GenericProjectile> GetGenericProjectileQueue(GenericProjectile prefab) {
+        if (ProjectilesObjectPoolQueue.ContainsKey(prefab.name)) {
+            return GenericProjectilesObjectPoolQueue[prefab.name];
+        }
+        else {
+            CreateNewObjectQueue<GenericProjectile>(GenericProjectilesObjectPoolQueue, prefab);
+            return GenericProjectilesObjectPoolQueue[prefab.name];
         }
     }
     
@@ -100,6 +112,7 @@ public class GameObjectPool : MonoBehaviour
     public ActiveObjectPool<UnitController> ActiveUnitPool = new ActiveObjectPool<UnitController>();
     
     public ActiveObjectPool<Effectable> ActiveEffectables = new ActiveObjectPool<Effectable>();
+    public ActiveObjectPool<GenericProjectile> ActiveGenericProjectiles = new ActiveObjectPool<GenericProjectile>();
 
     public ActiveObjectPool<Projectile> ActiveProjectiles = new ActiveObjectPool<Projectile>();
     public ActiveObjectPool<PathDiscoveryPoint> ActivePathDiscoveryPoints = new ActiveObjectPool<PathDiscoveryPoint>();
@@ -108,7 +121,7 @@ public class GameObjectPool : MonoBehaviour
         ActiveEffectables.RemoveObjectFromPool(objectName);
         ActiveUnitPool.RemoveObjectFromPool(objectName);
         ActiveProjectiles.RemoveObjectFromPool(objectName);
-
+        ActiveGenericProjectiles.RemoveObjectFromPool(objectName);
         OnObjectDisable(objectName);
     }
 

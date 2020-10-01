@@ -3676,6 +3676,58 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
+--- !u!1 &1655214226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1655214228}
+  - component: {fileID: 1655214227}
+  m_Layer: 0
+  m_Name: ProjectileFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1655214227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655214226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dbe8dd1bf73c184790269801df2a049, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+--- !u!4 &1655214228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655214226}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.5071762, y: -0.7279641, z: -0.89945245}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1662653241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4920,6 +4972,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1984034161347882033, guid: 3ad66c7245385a94e8b06bb4e04b86f2,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1984034161347882033, guid: 3ad66c7245385a94e8b06bb4e04b86f2,
+        type: 3}
     - target: {fileID: 7367793775600174093, guid: 3ad66c7245385a94e8b06bb4e04b86f2,
         type: 3}
       propertyPath: m_Name
@@ -5059,10 +5117,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestConditionalDropdown
       objectReference: {fileID: 0}
+    - target: {fileID: 3196542253944092222, guid: 92315cc6d89400c4bad5c2e0fe3a4e91,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3196542253944092223, guid: 92315cc6d89400c4bad5c2e0fe3a4e91,
         type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3196542253944092223, guid: 92315cc6d89400c4bad5c2e0fe3a4e91,
         type: 3}
@@ -5083,22 +5146,6 @@ PrefabInstance:
     - target: {fileID: 3196542253944092223, guid: 92315cc6d89400c4bad5c2e0fe3a4e91,
         type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
-      value: '"path":"ConditionalWeaponList","value":{"$id":0,"$type":"ConditionalWeaponList,
-        Assembly-CSharp","WeaponType":0,"ProjeEvent":{"$id":1,"$type":"System.Func`1[[Projectile,
-        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]][],
-        mscorlib","$rlength":0,"$rcontent":[]},"AoeEvent":{"$id":2,"$type":"System.Action`1[[AOEProjectile,
-        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]][],
-        mscorlib","$rlength":0,"$rcontent":[]},"LaZorEvent":{"$id":3,"$type":"System.Func`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]][],
-        mscorlib","$rlength":1,"$rcontent":[{"$id":4,"$type":"System.Func`1[[System.Boolean,
-        mscorlib]], mscorlib","target":$eref:0,"declaringType":{"$id":5,"$type":"System.RuntimeType,
-        mscorlib","UnityEngine.GameObject, UnityEngine.CoreModule"},"methodName":"get_active","delegateType":{"$id":6,"$type":"System.RuntimeType,
-        mscorlib","System.Func`1[[System.Boolean, mscorlib]], mscorlib"},"signature":{"$id":7,"$type":"System.Type[],
-        mscorlib","$rlength":0,"$rcontent":[]}}]}}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3196542253944092223, guid: 92315cc6d89400c4bad5c2e0fe3a4e91,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[1]
       value: '"path":"ConditionalWeaponList.LaZorEvent","value":{"$id":0,"$type":"System.Func`1[[System.Boolean,
         mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]][],
         mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"System.Func`1[[System.Boolean,
@@ -5109,7 +5156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3196542253944092223, guid: 92315cc6d89400c4bad5c2e0fe3a4e91,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[2]
+      propertyPath: serializationData.PrefabModifications.Array.data[1]
       value: '"path":"ConditionalWeaponList.LaZorEvent.[0]","value":{"$id":0,"$type":"System.Func`1[[System.Boolean,
         mscorlib]], mscorlib","target":$eref:0,"declaringType":{"$id":1,"$type":"System.RuntimeType,
         mscorlib","UnityEngine.GameObject, UnityEngine.CoreModule"},"methodName":"get_active","delegateType":{"$id":2,"$type":"System.RuntimeType,
@@ -5118,12 +5165,87 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3196542253944092223, guid: 92315cc6d89400c4bad5c2e0fe3a4e91,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[3]
+      propertyPath: serializationData.PrefabModifications.Array.data[2]
       value: '"path":"ConditionalWeaponList.WeaponType","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",0}'
+        mscorlib",2}'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92315cc6d89400c4bad5c2e0fe3a4e91, type: 3}
+--- !u!1001 &5907068860285555609
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5907068859232098816, guid: d813ad87313d18d44be4fa1af9e6195a,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 5907068859232098816, guid: d813ad87313d18d44be4fa1af9e6195a,
+        type: 3}
+    - target: {fileID: 5907068859232098818, guid: d813ad87313d18d44be4fa1af9e6195a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.5071762
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907068859232098818, guid: d813ad87313d18d44be4fa1af9e6195a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.7279641
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907068859232098818, guid: d813ad87313d18d44be4fa1af9e6195a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.89945245
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907068859232098818, guid: d813ad87313d18d44be4fa1af9e6195a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907068859232098818, guid: d813ad87313d18d44be4fa1af9e6195a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907068859232098818, guid: d813ad87313d18d44be4fa1af9e6195a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907068859232098818, guid: d813ad87313d18d44be4fa1af9e6195a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907068859232098818, guid: d813ad87313d18d44be4fa1af9e6195a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907068859232098818, guid: d813ad87313d18d44be4fa1af9e6195a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907068859232098818, guid: d813ad87313d18d44be4fa1af9e6195a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907068859232098818, guid: d813ad87313d18d44be4fa1af9e6195a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907068859232098831, guid: d813ad87313d18d44be4fa1af9e6195a,
+        type: 3}
+      propertyPath: m_Name
+      value: GenericProjectile
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d813ad87313d18d44be4fa1af9e6195a, type: 3}
 --- !u!1001 &6892659531386466941
 PrefabInstance:
   m_ObjectHideFlags: 0

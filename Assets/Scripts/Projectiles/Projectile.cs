@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Sirenix.OdinInspector;
 
-public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActiveObject<Projectile>
+public abstract class Projectile : SerializedMonoBehaviour, IQueueable<Projectile>,IActiveObject<Projectile>
 {
     public Type QueueableType {get;set;}
     public ProjectileData Data = new ProjectileData();
@@ -12,9 +13,7 @@ public abstract class Projectile : MonoBehaviour, IQueueable<Projectile>,IActive
     }
 
     public SpriteRenderer SpriteRenderer;
-
     public SingleAnimationObject OnHitAnimation;
-
     PoolObjectQueue<SingleAnimationObject> onHitAnimationQueuePool;
 
     public Dictionary<string,Effectable> ActiveTargets => GameObjectPool.Instance.ActiveEffectables.Pool;

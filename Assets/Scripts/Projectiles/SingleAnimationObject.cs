@@ -13,21 +13,18 @@ public class SingleAnimationObject : AnimationController,IQueueable<SingleAnimat
         gameObject.SetActive(false);
     }
 
-    public override void PostAwake() {
-
-    }
-
     public void PlaySingleAnimationNonStop()
     {
         PlaySingleAnimation(AnimationClip);
     }
-    
-    
-    
-    
-    
 
-    
+
+    /*private void Start()
+    {
+        PlayOnceAndDisable();
+    }*/
+
+
     public void PlayOnceAndDisable() {
         if (AnimationClip != null) {
             PlayFiniteAnimationWithAction(AnimationClip, delegate {gameObject.SetActive(false);});

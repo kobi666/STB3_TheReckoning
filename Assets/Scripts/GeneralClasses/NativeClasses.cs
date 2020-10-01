@@ -511,6 +511,7 @@ public class ProjectileData {
     [SerializeField]
     public Vector2 TargetPosition;
 
+    public Vector2 OriginPosition;
     [SerializeField]
     public EffectableTargetBank TargetBank;
     [SerializeField]
