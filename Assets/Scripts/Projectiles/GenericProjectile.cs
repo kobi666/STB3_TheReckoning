@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProjectile>,IActiveObject<GenericProjectile>
 {
+    public ProjectileBehaviorData ProjectileBehaviorData = new ProjectileBehaviorData();
+    
+    
     public bool DirectHitProjectile = false;
     public bool AOEProjectile = false;
     public bool SingleTargetProjectile;
@@ -141,7 +144,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     public void OnMainMovementAction(Transform selfTransform, Vector2 originPos, Vector2 targetPos, float speed, float assistingfloat1,
         ref float movementProgressCounter)
     {
-        onMainMovementAction?.Invoke(selfTransform, originPos, targetPos,speed,assistingfloat1,ref movementProgressCounter);
+        // ////////// //////// ///////  onMainMovementAction?.Invoke(selfTransform, originPos, targetPos,speed,assistingfloat1,ref movementProgressCounter);
     }
 
 
@@ -277,19 +280,15 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
 
     void OnEnable()
     {
+        MovementProgressCounter = 0f;
         RangeDetector.enabled = true;
         ActivePool?.AddObjectToActiveObjectPool(this);
         HitCounter = 1;
     }
-    
-    protected void  Awake()
-    {
-        
-        
-    }
 
     protected void OnDisable()
     {
+        
         RangeDetector.enabled = false;
         targetPositionSet = false;
         EffectableTarget = null;

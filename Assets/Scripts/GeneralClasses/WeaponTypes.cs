@@ -8,10 +8,11 @@ using System;
 
 [InlineProperty]
 [LabelWidth(75)]
-public class ConditionalWeaponList
+public class WeaponTypes
 {
-    [ValueDropdown("valueList")]
+    [ValueDropdown("valueList", DropdownWidth = 100)]
     [HideLabel]
+    [BoxGroup]
     [SerializeField]
     protected int WeaponType;
     
@@ -21,11 +22,13 @@ public class ConditionalWeaponList
         {"IsAOEWeapon", 1},
         {"IsLaZoRWeapon",2}
     };
-
-
-    [ShowIf("WeaponType", 0)]
+    [ShowIf("WeaponType", 0)] public GenericProjectile ProjectileBase;
+    
+    
+    [ShowIf("WeaponType", 0)] 
     [SerializeField]
-    protected Func<Projectile>[] ProjeEvent = new Func<Projectile>[0];
+    [BoxGroup]
+    public ProjectileBehaviorData ProjectileBehavior = new ProjectileBehaviorData();
 
     [ShowIf("WeaponType", 1)]
     [SerializeField]

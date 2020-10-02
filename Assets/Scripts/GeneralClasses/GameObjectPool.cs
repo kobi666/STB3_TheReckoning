@@ -45,7 +45,7 @@ public class GameObjectPool : MonoBehaviour
         }
     }
     
-    public PoolObjectQueue<GenericProjectile> GetGenericProjectileQueue(GenericProjectile prefab) {
+    public PoolObjectQueue<GenericProjectile> GetOrCreateGenericProjectileQueue(GenericProjectile prefab) {
         if (ProjectilesObjectPoolQueue.ContainsKey(prefab.name)) {
             return GenericProjectilesObjectPoolQueue[prefab.name];
         }

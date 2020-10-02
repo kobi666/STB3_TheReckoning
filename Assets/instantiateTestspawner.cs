@@ -7,6 +7,10 @@ using System.Runtime.Serialization;
 
 public class instantiateTestspawner : MonoBehaviour
 {
+    public List<ProjectileMovementFunction> test1 = new List<ProjectileMovementFunction>();
+    
+    
+    
     [System.Serializable]
     public class testClass
     {

@@ -9,7 +9,9 @@ using Sirenix.OdinInspector;
 
 public class GenericWeaponController : TowerComponent
 {
+    public WeaponTypes WeaponTypes = new WeaponTypes();
     
+    public string WeaponName;
     
     [ConditionalField("debug")]
     public EffectableTargetBank TargetBank;
@@ -19,8 +21,6 @@ public class GenericWeaponController : TowerComponent
         }
     }
 
-    
-
     [ConditionalField("debug")] 
     public int testAsyncAttackcounter;
     
@@ -28,7 +28,7 @@ public class GenericWeaponController : TowerComponent
     public float CounterMax = 1;
     
     [ConditionalField("debug")]
-    public PoolObjectQueue<Projectile> ProjectileQueuePool;
+    public PoolObjectQueue<GenericProjectile> ProjectileQueuePool;
     
     [ConditionalField("debug")]
     public bool ExternalAttackLock = false;
@@ -138,6 +138,22 @@ public class GenericWeaponController : TowerComponent
         testAsyncAttackcounter -= 1;
     }
 
+    public event Action OnAttack;
+
+    public event Action<GenericProjectile> onProjectileAttack;
+
+    public void ProjectileAttack()
+    {
+        GenericProjectile proj = ProjectileQueuePool.GetInactive();
+        proj.transform.position = ProjectileExitPoint;
+        proj.EffectableTarget = Target.Effectable;
+        proj.TargetPosition = ProjectileFinalPointV2;
+        proj.Damage = Data.damageRange.RandomDamage();
+        proj.Speed = Data.projectileData.projectileSpeed;
+        proj.gameObject.SetActive(true);
+        onProjectileAttack?.Invoke(proj);
+    }
+
     public void MainAttackFunction()
     {
         
@@ -219,11 +235,17 @@ public class GenericWeaponController : TowerComponent
         onEnemyEnteredRange += StandardOnTargetEnteredRange;
         onEnemyLeftRange += StandardOnTargetLeftRange;
     }
+
+
+
+    void initializeProjectileWeapon()
+    {
+        ProjectileQueuePool = ProjectileFactory.GetOrCreateGenericProjectilePool(WeaponTypes.ProjectileBase, WeaponTypes.ProjectileBehavior,
+            WeaponName);
+        
+    }
     protected void Start() {
         RangeDetector = GetComponentInChildren<RangeDetector>() ?? null;
-        if (Data.projectileData.projectilePrefab != null) {
-        ProjectileQueuePool = GameObjectPool.Instance.GetProjectileQueue(Data.projectileData.projectilePrefab);
-        }
         projectileExitPoint = GetComponentInChildren<ProjectileExitPoint>() ?? null;
         projectileFinalPoint = GetComponentInChildren<ProjectileFinalPoint>() ?? null;
         if (TargetBank != null) {

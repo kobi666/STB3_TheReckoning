@@ -5,5 +5,5 @@ using UnityEngine;
 
 public class TestConditionalDropDown : SerializedMonoBehaviour
 {
-   public ConditionalWeaponList ConditionalWeaponList;
+   public WeaponTypes WeaponTypes;
 }
