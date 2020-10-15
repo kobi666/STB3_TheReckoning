@@ -8,6 +8,13 @@ using UnityEngine;
 [Serializable]
 public class BetterEventEntry : ISerializationCallbackReceiver
 {
+    public static ValueDropdownList<int> SpecificReturnTypes = new ValueDropdownList<int>()
+    {
+        {"Enumerator", 2},
+        {"Enumerator123123", 3},
+    };
+    
+    
     [NonSerialized, HideInInspector]
     public Delegate Delegate;
 

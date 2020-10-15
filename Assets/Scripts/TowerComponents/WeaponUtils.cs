@@ -41,8 +41,10 @@ public class WeaponUtils
             yield return new WaitForFixedUpdate();
         }
     }
+    
+    
 
-    public static IEnumerator RotateTowardsTargetGO(Transform self, Transform target, float rotationSpeed) {
+    public static IEnumerator RotateTowardsTarget(Transform self, Transform target, float rotationSpeed) {
         while (true) {
             Vector2 vecToTarget = target.position - self.position;
             float angleToTarget = Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg;

@@ -2,6 +2,7 @@
 using Sirenix.Utilities;
 using Sirenix.Utilities.Editor;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -14,9 +15,22 @@ public class MethodSelector : OdinSelector<DelegateInfo>
     private UnityEngine.Object target = null;
     private GameObject gameObjectTarget;
     private OdinMenuStyle staticMethodMenuItemStyle;
-
+    public Type ReturnType = null;
     public MethodSelector(UnityEngine.Object obj)
     {
+        this.target = obj;
+        this.gameObjectTarget = this.target as GameObject;
+
+        var component = this.target as Component;
+        if (component)
+        {
+            this.gameObjectTarget = component.gameObject;
+        }
+    }
+    
+    public MethodSelector(UnityEngine.Object obj, Type returnType)
+    {
+        this.ReturnType = returnType;
         this.target = obj;
         this.gameObjectTarget = this.target as GameObject;
 
@@ -126,10 +140,48 @@ public class MethodSelector : OdinSelector<DelegateInfo>
 
         // We can't detect whether a member is internal or public. Luckily Unity use a naming convension.
         if ((mi.DeclaringType.Namespace ?? "").StartsWith("UnityEngine") && mi.Name.StartsWith("Internal", StringComparison.InvariantCultureIgnoreCase)) return false;
-
+        
+        
         // Note: 
         // We can't filter out Extern methods. There are many important extern methods.
+        
+        return true;
+    }
+    
+    private static bool ShouldIncludeMethod(MethodInfo mi, Type returnType)
+    {
+        // Only include methods without a return-type.
+        //if (mi.ReturnType != typeof(void)) return false;
 
+        // No get properties!
+        if (mi.ReturnType != typeof(void) && mi.IsSpecialName && mi.Name.StartsWith("get_")) return false; // There's probably a better way of doing this.
+
+        // No generic methods.
+        if (mi.IsGenericMethod) return false;
+
+        // Exclude property set methods. (optional)
+        // if (mi.IsSpecialName) return false;
+
+        // Exclude obsolete methods? This could maybe be made a warning icon on the menu item instead.
+        if (mi.GetAttribute<ObsoleteAttribute>() != null) return false;
+
+        // Internal Unity methods.
+        var o = mi.GetAttribute<MethodImplAttribute>();
+        if (o != null && (o.Value & MethodImplOptions.InternalCall) != 0) return false;
+
+        // We can't detect whether a member is internal or public. Luckily Unity use a naming convension.
+        if ((mi.DeclaringType.Namespace ?? "").StartsWith("UnityEngine") && mi.Name.StartsWith("Internal", StringComparison.InvariantCultureIgnoreCase)) return false;
+
+        if (returnType != typeof(NoType))
+        {
+            if (mi.ReturnType != returnType)
+            {
+                return false;
+            }
+        }
+        // Note: 
+        // We can't filter out Extern methods. There are many important extern methods.
+        
         return true;
     }
 
@@ -139,7 +191,7 @@ public class MethodSelector : OdinSelector<DelegateInfo>
 
         foreach (var mi in methods)
         {
-            if (!ShouldIncludeMethod(mi))
+            if (!ShouldIncludeMethod(mi, ReturnType))
             {
                 continue;
             }

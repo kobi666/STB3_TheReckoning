@@ -8,7 +8,11 @@ using Sirenix.OdinInspector;
 
 public abstract class TowerComponent : SerializedMonoBehaviour
 {
-
+    public bool RotatingComponent;
+    [ShowIf("RotatingComponent")]
+    public float RotationSpeed = 5;
+    
+    
     public bool IsMainTowerComponent = true;
     // Start is called before the first frame update
     public bool debug;
@@ -54,10 +58,8 @@ public abstract class TowerComponent : SerializedMonoBehaviour
     public CircleCollider2D RangeCollider;    
     public abstract void PostAwake();
     protected void Awake() {
-        //EnemyTargetBank = GetComponentInChildren<EnemyTargetBank>() ?? ParentTower?.TargetBank ?? null;
         SR = GetComponent<SpriteRenderer>() ?? null;
         Animancer = GetComponent<AnimancerComponent>() ?? null;
-        
         PostAwake();
     }
 

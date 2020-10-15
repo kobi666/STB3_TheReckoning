@@ -10,7 +10,11 @@ using System.Threading.Tasks;
 public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProjectile>,IActiveObject<GenericProjectile>
 {
     public ProjectileBehaviorData ProjectileBehaviorData = new ProjectileBehaviorData();
-    
+
+    public void Activate()
+    {
+        gameObject.SetActive(true);
+    }
     
     public bool DirectHitProjectile = false;
     public bool AOEProjectile = false;

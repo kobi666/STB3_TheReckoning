@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Reflection;
 using MyBox;
 using System.Threading.Tasks;
 using Sirenix;
@@ -9,15 +10,67 @@ using Sirenix.OdinInspector;
 
 public class GenericWeaponController : TowerComponent
 {
-    public WeaponTypes WeaponTypes = new WeaponTypes();
     
+    [ValueDropdown("valueList")]
+    [HideLabel]
+    [BoxGroup]
+    [SerializeField]
+    protected int WeaponType;
+    
+    private static ValueDropdownList<int> valueList = new ValueDropdownList<int>()
+    {
+        {"Projectile Effect", 0},
+        {"AOE", 1},
+        {"Beam Effect",2}
+    };
+
+    [ShowIf("WeaponType", 0)] [SerializeField] [BoxGroup] [ValueDropdown("attackTypes")]
+    public MethodInfo AttackSequence;
+    
+    
+    
+    private ValueDropdownList<MethodInfo> attackTypes = ProjectileAttacks.Atypes();
+    
+    
+    [ShowIf("WeaponType", 0)] 
+    [SerializeField]
+    [BoxGroup]
+    public List<ProjectileBehaviorData> ProjectileTypes = new List<ProjectileBehaviorData>();
+    [ShowIf("WeaponType", 0)] public GenericProjectile ProjectileBase;
+    
+    
+    
+
+    [ShowIf("WeaponType", 1)]
+    [SerializeField]
+    protected Action<AOEProjectile>[] AoeEvent = new Action<AOEProjectile>[0];
+
+    [ShowIf("WeaponType", 2)]
+    [SerializeField]
+    protected Func<bool>[] LaZorEvent = new Func<bool>[0];
     public string WeaponName;
+
+    void InitializeProjectileWeapon()
+    {
+        
+    }
+    
+    
     
     [ConditionalField("debug")]
     public EffectableTargetBank TargetBank;
-    public int Damage {
-        get {
-            return UnityEngine.Random.Range(Data.damageRange.min, Data.damageRange.max);
+
+    private ComponentRotator componentRotator = null;
+    private ComponentRotator ComponentRotator
+    {
+        get
+        {
+            if (componentRotator == null)
+            {
+                componentRotator = this.GetOrAddComponent<ComponentRotator>();
+            }
+
+            return componentRotator;
         }
     }
 
@@ -45,6 +98,19 @@ public class GenericWeaponController : TowerComponent
         }
         canattackFieldPH = false;
         return false;
+    }
+    
+    
+    public bool ShouldRotate 
+    {
+        get {
+            if (CanAttack()) {
+                if (InAttackState == true) {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 
 
@@ -85,9 +151,7 @@ public class GenericWeaponController : TowerComponent
     }
 
     public virtual void StandardOnTargetLeftRange(string targetName,string callerName) {
-        
-            Target = FindSingleTargetNearestToEndOfSpline();
-        
+        Target = FindSingleTargetNearestToEndOfSpline();
     }
     string CurrentLowestProximtyTargetName;
     TargetUnit FindSingleTargetNearestToEndOfSpline() {
@@ -217,6 +281,12 @@ public class GenericWeaponController : TowerComponent
         onAttackCease?.Invoke();
     }
 
+    void RotateTowardsTarget()
+    {
+        ComponentRotator.TargetTransform = Target.transform;
+        ComponentRotator.StartRotatingTowardsTarget();
+    }
+
     protected void Awake()
     {
         base.Awake();
@@ -232,18 +302,19 @@ public class GenericWeaponController : TowerComponent
         
         onAttackInitiate += StartAsyncAttack;
         onAttackCease += StopAsyncAttack;
+        
+        if (RotatingComponent) {
+        onAttackInitiate += RotateTowardsTarget;
+        onAttackCease += ComponentRotator.StopRotating;
+        }
+        
         onEnemyEnteredRange += StandardOnTargetEnteredRange;
         onEnemyLeftRange += StandardOnTargetLeftRange;
     }
 
 
 
-    void initializeProjectileWeapon()
-    {
-        ProjectileQueuePool = ProjectileFactory.GetOrCreateGenericProjectilePool(WeaponTypes.ProjectileBase, WeaponTypes.ProjectileBehavior,
-            WeaponName);
-        
-    }
+    
     protected void Start() {
         RangeDetector = GetComponentInChildren<RangeDetector>() ?? null;
         projectileExitPoint = GetComponentInChildren<ProjectileExitPoint>() ?? null;

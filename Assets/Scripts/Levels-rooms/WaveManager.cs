@@ -60,7 +60,12 @@ public class WaveManager : MonoBehaviour
         for (int i = 0 ; i < TestWave.Subwaves.Length ; i++) {
             TestWave.Subwaves[i] = new Subwave(TestSubwavePackage, 5.0f);
         }
+        Spawners[1].SpawnSubWave(TestSubwavePackage);
+        for (int i = 0 ; i < TestWave.Subwaves.Length ; i++) {
+            TestWave.Subwaves[i] = new Subwave(TestSubwavePackage, 5.0f);
+        }
         StartCoroutine(Spawners[0].StartWave(TestWave));
+        StartCoroutine(Spawners[1].StartWave(TestWave));
 
     }
 }

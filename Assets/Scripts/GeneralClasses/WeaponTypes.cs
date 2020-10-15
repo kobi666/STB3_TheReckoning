@@ -18,7 +18,7 @@ public class WeaponTypes
     
     private static ValueDropdownList<int> valueList = new ValueDropdownList<int>()
     {
-        {"IsProjectileWeapon", 0},
+        {"ProjectileWeapon", 0},
         {"IsAOEWeapon", 1},
         {"IsLaZoRWeapon",2}
     };

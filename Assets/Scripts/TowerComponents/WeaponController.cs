@@ -24,8 +24,21 @@ public abstract class WeaponController : TowerComponent
     
     public float AttackCounter;
     public float CounterMax = 3;
-    
-    private AnimationController AnimationController;
+
+    private AnimationController animationController = null;
+
+    private AnimationController AnimationController
+    {
+        get
+        {
+            if (animationController == null)
+            {
+                animationController = this.GetOrAddComponent<AnimationController>();
+            }
+
+            return animationController;
+        }
+    }
     
     [ConditionalField("debug")]
     public PoolObjectQueue<Projectile> ProjectileQueuePool;
@@ -206,7 +219,6 @@ public abstract class WeaponController : TowerComponent
     protected void Awake()
     {
         base.Awake();
-        AnimationController = GetComponent<AnimationController>();
     }
     public override void PostAwake() {
         

@@ -2,6 +2,8 @@
 using Sirenix.Utilities;
 using Sirenix.Utilities.Editor;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -9,6 +11,27 @@ using UnityEngine;
 public class BetterEventDrawer : OdinValueDrawer<BetterEventEntry>
 {
     private UnityEngine.Object tmpTarget;
+    private int tmpInt = 0;
+    private Type tempType = typeof(NoType);
+
+    private static List<int> someList = new List<int>()
+    {
+        1,
+        2
+    };
+    
+    public static List<Type> SupportedReturnTypes = new List<Type>()
+    {
+        typeof(NoType),
+        typeof(int),
+        typeof(string),
+        typeof(IEnumerator),
+        typeof(LineRenderer),
+        typeof(int[])
+    };
+
+    
+    
 
     protected override void DrawPropertyLayout(GUIContent label)
     {
@@ -20,12 +43,16 @@ public class BetterEventDrawer : OdinValueDrawer<BetterEventEntry>
                 var unityObjectFieldRect = rect.Padding(2).AlignLeft(rect.width / 2);
                 var methodSelectorRect = rect.Padding(2).AlignRight(rect.width / 2 - 5);
                 var dInfo = this.GetDelegateInfo();
+                var intlabel = new GUIContent("some type");
 
                 EditorGUI.BeginChangeCheck();
+                var someType = SirenixEditorFields.Dropdown(intlabel, tempType , SupportedReturnTypes);
+                /*public static bool Dropdown<T>(Rect rect, IList<int> selected, IList<T> items, bool multiSelection)*/
                 var newTarget = SirenixEditorFields.UnityObjectField(unityObjectFieldRect, dInfo.Target, typeof(UnityEngine.Object), true);
                 if (EditorGUI.EndChangeCheck())
                 {
                     this.tmpTarget = newTarget;
+                    this.tempType = someType;
                 }
 
                 EditorGUI.BeginChangeCheck();
@@ -77,6 +104,10 @@ public class BetterEventDrawer : OdinValueDrawer<BetterEventEntry>
             else if (args.Length == 3) delegateType = typeof(Func<,,,>).MakeGenericType(pTypes);
             else if (args.Length == 4) delegateType = typeof(Func<,,,,>).MakeGenericType(pTypes);
             else if (args.Length == 5) delegateType = typeof(Func<,,,,,>).MakeGenericType(pTypes);
+            else if (args.Length == 6) delegateType = typeof(Func<,,,,,,>).MakeGenericType(pTypes);
+            else if (args.Length == 7) delegateType = typeof(Func<,,,,,,,>).MakeGenericType(pTypes);
+            else if (args.Length == 8) delegateType = typeof(Func<,,,,,,,,>).MakeGenericType(pTypes);
+            else if (args.Length == 9) delegateType = typeof(Func<,,,,,,,,,>).MakeGenericType(pTypes);
         }
         
         if (delegateType == null)
@@ -117,9 +148,11 @@ public class BetterEventDrawer : OdinValueDrawer<BetterEventEntry>
     {
         arg.xMin -= arg.width;
         var info = this.GetDelegateInfo();
-        var sel = new MethodSelector(info.Target);
+        var sel = new MethodSelector(info.Target, tempType);
         sel.SetSelection(info);
         sel.ShowInPopup(arg);
         return sel;
     }
+    
+    
 }

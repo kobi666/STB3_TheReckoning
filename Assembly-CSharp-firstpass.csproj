@@ -50,17 +50,19 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Plugins\Better Events\BetterEvent.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\ParticlesFollowBezier.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\BezierWalker.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\BezierWalkerLocomotion.cs" />
+     <Compile Include="Assets\Plugins\Better Events\BetterEventEntry.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\BezierPoint.cs" />
+     <Compile Include="Assets\Plugins\Better Events\SpecificReturnTypes.cs" />
+     <Compile Include="Assets\Plugins\Better Events\ExampleMonoBehaviour.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\BezierSpline.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\BezierWalkerWithSpeed.cs" />
+     <Compile Include="Assets\Plugins\Better Events\NoType.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\UnitWalker.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\BezierWalkerWithTime.cs" />
-     <Compile Include="Assets\Plugins\Better Events\BetterEvent.cs" />
-     <Compile Include="Assets\Plugins\Better Events\BetterEventEntry.cs" />
-     <Compile Include="Assets\Plugins\Better Events\ExampleMonoBehaviour.cs" />
      <None Include="Assets\Plugins\BezierSolution\README.txt" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.xml" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.xml" />

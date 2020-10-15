@@ -54,15 +54,15 @@
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierWalkerLocomotionEditor.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierWalkerWithTimeEditor.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierSplineEditor.cs" />
+     <Compile Include="Assets\Plugins\Better Events\Editor\BetterEventProcessor.cs" />
+     <Compile Include="Assets\Plugins\Better Events\Editor\BetterEventListDrawer.cs" />
+     <Compile Include="Assets\Plugins\Better Events\Editor\BetterEventDrawer.cs" />
+     <Compile Include="Assets\Plugins\Better Events\Editor\MethodSelector.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierPointEditor.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierPointExtraDataDrawer.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierUtils.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierWalkerEditor.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierWalkerWithSpeedEditor.cs" />
-     <Compile Include="Assets\Plugins\Better Events\Editor\BetterEventProcessor.cs" />
-     <Compile Include="Assets\Plugins\Better Events\Editor\BetterEventListDrawer.cs" />
-     <Compile Include="Assets\Plugins\Better Events\Editor\BetterEventDrawer.cs" />
-     <Compile Include="Assets\Plugins\Better Events\Editor\MethodSelector.cs" />
      <Compile Include="Assets\Plugins\Better Events\Editor\DelegateInfo.cs" />
  <Reference Include="UnityEditor.TestRunner">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
