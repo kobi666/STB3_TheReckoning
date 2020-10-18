@@ -19,14 +19,6 @@ public abstract class Attack {
     public abstract void InitilizeAttack();
     
 }
-[System.Serializable]
-public abstract class ProjectileAttack<T> : Attack where T: Projectile,IQueueable<T> {
-    [SerializeField]
-    T projectilePrefab;
-    public T ProjectilePrefab {get => projectilePrefab ;set { projectilePrefab = value;}}
-    public PoolObjectQueue<T> Pool;
-    public abstract void GetPool();
-}
 
 
 

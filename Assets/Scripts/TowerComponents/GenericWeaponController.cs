@@ -15,37 +15,37 @@ public class GenericWeaponController : TowerComponent
     [HideLabel]
     [BoxGroup]
     [SerializeField]
-    protected int WeaponType;
+    protected string WeaponType;
     
-    private static ValueDropdownList<int> valueList = new ValueDropdownList<int>()
+    private static ValueDropdownList<string> valueList = new ValueDropdownList<string>()
     {
-        {"Projectile Effect", 0},
-        {"AOE", 1},
-        {"Beam Effect",2}
+        {"Projectile Effect", "Projectile Effect"},
+        {"Area Of Effect", "Area Of Effect"},
+        {"Beam Effect","Beam Effect"}
     };
 
-    [ShowIf("WeaponType", 0)] [SerializeField] [BoxGroup] [ValueDropdown("attackTypes")]
-    public MethodInfo AttackSequence;
+    [ShowIf("WeaponType", "Projectile Effect")] [SerializeField] [BoxGroup] [ValueDropdown("attackTypes")]
+    public ProjectileAttack Attack;
     
     
     
     private ValueDropdownList<MethodInfo> attackTypes = ProjectileAttacks.Atypes();
     
     
-    [ShowIf("WeaponType", 0)] 
+    [ShowIf("WeaponType", "Projectile Effect")] 
     [SerializeField]
     [BoxGroup]
     public List<ProjectileBehaviorData> ProjectileTypes = new List<ProjectileBehaviorData>();
-    [ShowIf("WeaponType", 0)] public GenericProjectile ProjectileBase;
+    [ShowIf("WeaponType", "Projectile Effect")] public GenericProjectile ProjectileBase;
     
     
     
 
-    [ShowIf("WeaponType", 1)]
+    [ShowIf("WeaponType", "Area Of Effect")]
     [SerializeField]
     protected Action<AOEProjectile>[] AoeEvent = new Action<AOEProjectile>[0];
 
-    [ShowIf("WeaponType", 2)]
+    [ShowIf("WeaponType", "Beam Effect")]
     [SerializeField]
     protected Func<bool>[] LaZorEvent = new Func<bool>[0];
     public string WeaponName;

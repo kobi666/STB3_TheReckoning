@@ -135,6 +135,5 @@ public class GameObjectPool : MonoBehaviour
 
     private void Awake() {
         Instance = this;
-        
     }
 }

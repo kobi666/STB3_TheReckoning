@@ -51,6 +51,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Projectiles\Explosion.cs" />
+     <Compile Include="Assets\Scripts\ProjectileAsyncAttacks.cs" />
      <Compile Include="Assets\Scripts\Levels-rooms\RoomBorder.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ProjectileUtils.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\NativeInterfaces.cs" />
@@ -150,6 +151,7 @@
      <Compile Include="Assets\Scripts\TowerComponents\TowerComponentData.cs" />
      <Compile Include="Assets\ACT.cs" />
      <Compile Include="Assets\Scripts\Projectiles\AOEAnimationController.cs" />
+     <Compile Include="Assets\Scripts\ProjectileAttackSequence.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\TestOrbitalGunGeneric.cs" />
      <Compile Include="Assets\Samples\TowerComponent.cs" />
      <Compile Include="Assets\VDtest.cs" />
@@ -163,6 +165,7 @@
      <Compile Include="Assets\Scripts\GeneralClasses\TestUtilities.cs" />
      <Compile Include="Assets\Scripts\Towers\Tower.cs" />
      <Compile Include="Assets\LaserTest2.cs" />
+     <Compile Include="Assets\test7.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\PlayerUnitSpawningPoint.cs" />
      <Compile Include="Assets\Scripts\Projectiles\OnTargetReachedProjectile.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\PlayerUnitSpawner.cs" />
@@ -229,7 +232,8 @@
      <Compile Include="Assets\Scripts\Towers\TowerSlotController.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\RangeDebug.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ArcingAOEProjectileController.cs" />
-     <Compile Include="Assets\Scripts\ProjectileAttackSequence.cs" />
+     <Compile Include="Assets\Scripts\parent1.cs" />
+     <Compile Include="Assets\Scripts\testInterface.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
