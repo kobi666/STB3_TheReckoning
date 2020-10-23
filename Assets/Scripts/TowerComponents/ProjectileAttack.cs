@@ -3,13 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using System.Linq;
 using System.Threading.Tasks;
 using Random = UnityEngine.Random;
 
 [System.Serializable]
-public class ProjectileAttack
+public class ProjectileAttack 
 {
+    
+    [TypeFilter("GetFilteredTypeList")]
+    [LabelText("Attack Function")]
+    [ShowInInspector]
     public ProjectileAttackFunction AttackFunction;
+    
+    public static IEnumerable<Type> GetFilteredTypeList()
+    {
+        var q = typeof(ProjectileAttackFunction).Assembly.GetTypes()
+            .Where(x => !x.IsAbstract) // Excludes BaseClass
+            .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
+            .Where(x => typeof(ProjectileAttackFunction).IsAssignableFrom(x)); // Excludes classes not inheriting from BaseClass
+        
+        return q;
+    }
+
+
     [LabelText("Projectile Data")]
     public List<ProjectilePoolCreationData> ProjectilesData = new List<ProjectilePoolCreationData>();
     public Dictionary<string,PoolObjectQueue<GenericProjectile>> projectilePools = new Dictionary<string,PoolObjectQueue<GenericProjectile>>();
@@ -55,9 +72,10 @@ public class ProjectilePoolCreationData
 
 
 [System.Serializable]
-public abstract class ProjectileAttackFunction : SerializedBehaviour
+public abstract class ProjectileAttackFunction 
 {
     public abstract int NumOfProjectiles { get; set; }
+    
     public abstract float AssistingFloat1 { get; set; }
     public abstract float AssistingFloat2 { get; set; }
     public abstract int AssistingInt1 { get; set; }
@@ -76,7 +94,7 @@ public abstract class ProjectileAttackFunction : SerializedBehaviour
     public event Action<List<PoolObjectQueue<GenericProjectile>>, int,
         Quaternion, Vector2, Effectable, Effectable[],
     float, float, int, List<ProjectileExitPoint> ,List<ProjectileFinalPoint>> attack;
-    void Attack(List<PoolObjectQueue<GenericProjectile>> projectilePools, Quaternion direction,
+    public void Attack(List<PoolObjectQueue<GenericProjectile>> projectilePools, Quaternion direction,
         Vector2 SingleTargetPosition, Effectable singleTarget, Effectable[] multiTargets)
     {
         onAttack?.Invoke();

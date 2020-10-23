@@ -24,19 +24,19 @@ public class GenericWeaponController : TowerComponent
         {"Beam Effect","Beam Effect"}
     };
 
-    [ShowIf("WeaponType", "Projectile Effect")] [SerializeField] [BoxGroup] [ValueDropdown("attackTypes")]
-    public ProjectileAttack Attack;
+    [ShowIf("WeaponType", "Projectile Effect")] [SerializeField] [BoxGroup]
+    public ProjectileAttack Attack = new ProjectileAttack();
     
     
     
-    private ValueDropdownList<MethodInfo> attackTypes = ProjectileAttacks.Atypes();
+    //private ValueDropdownList<MethodInfo> attackTypes = ProjectileAttacks.Atypes();
     
     
-    [ShowIf("WeaponType", "Projectile Effect")] 
+    /*[ShowIf("WeaponType", "Projectile Effect")] 
     [SerializeField]
     [BoxGroup]
     public List<ProjectileBehaviorData> ProjectileTypes = new List<ProjectileBehaviorData>();
-    [ShowIf("WeaponType", "Projectile Effect")] public GenericProjectile ProjectileBase;
+    [ShowIf("WeaponType", "Projectile Effect")] public GenericProjectile ProjectileBase;*/
     
     
     

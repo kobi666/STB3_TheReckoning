@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Sirenix.OdinInspector;
 
-public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITargetable
+public abstract class Effectable : SerializedMonoBehaviour,IActiveObject<Effectable>,ITargetable
 {
     
     bool OnFirstStart = true;

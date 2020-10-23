@@ -12,6 +12,10 @@
     [System.Serializable]
     public class ProjectileAttacks : SerializedMonoBehaviour
     {
+        [ShowInInspector]
+        public ShootOneProjectile test1 = new ShootOneProjectile();
+        
+        
         [ValueDropdown("Atypes", DropdownWidth = 500)] [HideLabel] [BoxGroup] [SerializeField] [ShowInInspector]
         public static List<MethodInfo> methods = new List<MethodInfo>();
 

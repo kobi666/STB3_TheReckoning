@@ -299,8 +299,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
         GameObjectPool.Instance.RemoveObjectFromAllPools(name,name);
         QueuePool?.ObjectQueue.Enqueue(this);
     }
-    
-    
+
     private void Update() {
         if (targetPositionSet) {
         MovementFunction();

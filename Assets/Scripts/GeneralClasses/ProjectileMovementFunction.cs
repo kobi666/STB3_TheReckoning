@@ -3,43 +3,59 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using System.Threading.Tasks;
 
 [System.Serializable]
-public class ProjectileMovementFunction
+public abstract class ProjectileMovementFunction
 {
+    public abstract void MovementFunction(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos, Vector2 TargetPos,
+        float speed,
+        float assistingFloat1, float assistinfloat2);
+    
     [ShowInInspector]
-    public ProjectileMovementDelegate[] ProjectileMovmentFunctions = new ProjectileMovementDelegate[1];
+    public abstract float speed { get; set; }
+    
+    [ShowInInspector]
+    protected float ProgressCounter;
+    
+    public abstract float assistingFloat1 { get; set; }
+    public abstract float assistingFloat2 { get; set; }
+    
+    public bool ExternalMovementLock { get; set; }
     
     
-    public Func<Vector2, Vector2, Vector2> StaticAssistingPosFunc;
-    public Vector2 assistingPos = Vector2.zero;
-    public Vector2 GetStaticAssistingPos(Vector2 originPos, Vector2 targetPos)
+    public async void MoveToTargetPosition(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos, Vector2 TargetPos
+        ,Action onPositionReachedAction)
     {
-        if (StaticAssistingPosFunc == null)
+        while ((Vector2)projectileTransform.position != TargetPos && ExternalMovementLock == false)
         {
-            return assistingPos;
+            MovementFunction(projectileTransform, null, originPos, TargetPos, speed, assistingFloat1,
+                    assistingFloat2);
+            await Task.Yield();
         }
-        else
-        {
-            return StaticAssistingPosFunc.Invoke(originPos, targetPos);
-        }
+        onPositionReachedAction.Invoke();
     }
-    
-    
-    public float assistingFloat1;
-    public float assistingFloat2;
-    
-    
 
-    public void Invoke(Transform projectileTransform, Vector2 originPos, Vector2 targetPos, float speed,
-        ref float progressCounter)
+    public async void MoveToTargetTransform(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos,
+        Vector2 TargetPos
+        , Action onPositionReachedAction)
     {
-        foreach (var mf in ProjectileMovmentFunctions)
+        Vector2 cachedPosition = targetTarnsform.position;
+        while ((Vector2)projectileTransform.position != cachedPosition && ExternalMovementLock == false)
         {
-            mf?.Invoke(projectileTransform,originPos,targetPos, assistingPos, speed,assistingFloat1, assistingFloat2, ref progressCounter);
+            cachedPosition = (targetTarnsform.gameObject.activeSelf)
+                ? (Vector2)targetTarnsform.position
+                : cachedPosition;
+            MovementFunction(projectileTransform, null, originPos, cachedPosition, speed, assistingFloat1,
+                assistingFloat2);
+            await Task.Yield();
         }
-        //ProjectileMovmentFunction?.Invoke(projectileTransform,originPos,targetPos, assistingPos, speed,assistingFloat1, assistingFloat2, ref progressCounter);
+        onPositionReachedAction.Invoke();
     }
+
+    
+    
+    
     
 }
 

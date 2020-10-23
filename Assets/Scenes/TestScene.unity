@@ -4554,103 +4554,22 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: AttackSequence
-      Entry: 7
-      Data: 0|System.Reflection.MonoMethod, mscorlib
-    - Name: declaringType
-      Entry: 7
-      Data: 1|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: ProjectileAttacks, Assembly-CSharp
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: methodName
-      Entry: 1
-      Data: FireSingleProjectile2
-    - Name: signature
-      Entry: 7
-      Data: 2|System.Type[], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 7
-    - Name: 
-      Entry: 7
-      Data: 3|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: PoolObjectQueue`1[[GenericProjectile, Assembly-CSharp]], Assembly-CSharp
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 4|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: Effectable, Assembly-CSharp
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 5|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 9
-      Data: 5
-    - Name: 
-      Entry: 7
-      Data: 6|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: UnityEngine.Quaternion, UnityEngine.CoreModule
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 7|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: System.Single, mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 9
-      Data: 7
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: ProjectileTypes
       Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[ProjectileBehaviorData, Assembly-CSharp]],
+      Data: 0|System.Collections.Generic.List`1[[ProjectileBehaviorData, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 9|ProjectileBehaviorData, Assembly-CSharp
+      Data: 1|ProjectileBehaviorData, Assembly-CSharp
     - Name: MovementFunctions
       Entry: 7
-      Data: 10|ProjectileMovementFunction, Assembly-CSharp
+      Data: 2|ProjectileMovementFunction, Assembly-CSharp
     - Name: ProjectileMovmentFunctions
       Entry: 7
-      Data: 11|ProjectileMovementDelegate[], Assembly-CSharp
+      Data: 3|ProjectileMovementDelegate[], Assembly-CSharp
     - Name: 
       Entry: 12
       Data: 1
@@ -4689,7 +4608,7 @@ MonoBehaviour:
       Data: 
     - Name: singleTargetEffects
       Entry: 7
-      Data: 12|System.Action`1[[Effectable, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      Data: 4|System.Action`1[[Effectable, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null]][], mscorlib
     - Name: 
       Entry: 12
@@ -4705,7 +4624,7 @@ MonoBehaviour:
       Data: 
     - Name: multiTargerEffects
       Entry: 7
-      Data: 13|System.Action`1[[Effectable[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      Data: 5|System.Action`1[[Effectable[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null]][], mscorlib
     - Name: 
       Entry: 12
@@ -4742,8 +4661,8 @@ MonoBehaviour:
       Data: 
     - Name: AoeEvent
       Entry: 7
-      Data: 14|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null]][], mscorlib
+      Data: 6|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null]][], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -4755,7 +4674,7 @@ MonoBehaviour:
       Data: 
     - Name: LaZorEvent
       Entry: 7
-      Data: 15|System.Func`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+      Data: 7|System.Func`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089]][], mscorlib
     - Name: 
       Entry: 12
@@ -4820,7 +4739,10 @@ MonoBehaviour:
   parentTowerComponent: {fileID: 0}
   RangeDetector: {fileID: 0}
   RangeCollider: {fileID: 0}
-  WeaponType: 0
+  WeaponType: Projectile Effect
+  Attack:
+    AttackFunction: {fileID: 0}
+    ProjectilesData: []
   ProjectileBase: {fileID: 0}
   WeaponName: 
   TargetBank: {fileID: 0}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EffectableUnit : Effectable
 {
-    UnitController unitController;
+    public UnitController unitController;
     public override bool IsTargetable() {
         return unitController.IsTargetable();
     }
