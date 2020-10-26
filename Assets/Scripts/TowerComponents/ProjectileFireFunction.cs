@@ -62,6 +62,7 @@ public class ProjectileFireFunction
 }
 
 [System.Serializable]
+[HideLabel]
 public class ProjectilePoolCreationData
 {
     public ProjectileEffect projectileEffect = new ProjectileEffect();

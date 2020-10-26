@@ -23,10 +23,12 @@ public class ProjectileEffect
     
     
     public bool TriggersOnCollision;
+    [ShowIf("TriggersOnCollision")]
+    public int HitCounter = 1;
 
-    [ShowInInspector, ShowIf("TriggersOnCollision")]
-    public int HitCounter { get; set; } = 1;
     
+    [ShowIf("TriggersOnCollision")]
+    public bool TriggersOnSpecificTarget = false;
     
     
     public bool OnPositionReachedEffect;
