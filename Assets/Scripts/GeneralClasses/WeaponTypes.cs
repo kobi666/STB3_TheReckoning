@@ -28,7 +28,7 @@ public class WeaponTypes
     [ShowIf("WeaponType", 0)] 
     [SerializeField]
     [BoxGroup]
-    public ProjectileBehaviorData ProjectileBehavior = new ProjectileBehaviorData();
+    public ProjectileEffect ProjectileEffect = new ProjectileEffect();
 
     [ShowIf("WeaponType", 1)]
     [SerializeField]

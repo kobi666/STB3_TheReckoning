@@ -161,9 +161,80 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
+    - Name: Attack
+      Entry: 7
+      Data: 0|ProjectileAttack, Assembly-CSharp
+    - Name: AttackFunction
+      Entry: 7
+      Data: 1|ShootOneProjectile, Assembly-CSharp
+    - Name: ProjectileExitPoints
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[ProjectileExitPoint, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ProjectileFinalPoints
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[ProjectileFinalPoint, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ProjectilesData
+      Entry: 7
+      Data: 4|System.Collections.Generic.List`1[[ProjectilePoolCreationData, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: projectilePools
+      Entry: 7
+      Data: 5|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[PoolObjectQueue`1[[GenericProjectile,
+        Assembly-CSharp]], Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 6|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: AoeEvent
       Entry: 7
-      Data: 0|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      Data: 7|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null]][], mscorlib
     - Name: 
       Entry: 12
@@ -176,7 +247,7 @@ MonoBehaviour:
       Data: 
     - Name: LaZorEvent
       Entry: 7
-      Data: 1|System.Func`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+      Data: 8|System.Func`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089]][], mscorlib
     - Name: 
       Entry: 12
@@ -243,14 +314,7 @@ MonoBehaviour:
   RangeCollider: {fileID: 0}
   WeaponType: Projectile Effect
   Attack:
-    ProjectilesData:
-    - ProjectileBehavior:
-        OnHitEffect: 1
-        EffectOnDirectHit: 0
-        AOE: 0
-        OnPositionReachedEffect: 1
-        Homing: 0
-      ProjectileBase: {fileID: 0}
+    ProjectilesData: []
   WeaponName: 
   TargetBank: {fileID: 0}
   testAsyncAttackcounter: 0
@@ -312,10 +376,171 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
+    - Name: Attack
+      Entry: 7
+      Data: 0|ProjectileAttack, Assembly-CSharp
+    - Name: AttackFunction
+      Entry: 7
+      Data: 1|ShootOneProjectile, Assembly-CSharp
+    - Name: ProjectileExitPoints
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[ProjectileExitPoint, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ProjectileFinalPoints
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[ProjectileFinalPoint, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ProjectilesData
+      Entry: 7
+      Data: 4|System.Collections.Generic.List`1[[ProjectilePoolCreationData, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 5|ProjectilePoolCreationData, Assembly-CSharp
+    - Name: ProjectileBehavior
+      Entry: 7
+      Data: 6|ProjectileBehaviorData, Assembly-CSharp
+    - Name: OnHitEffect
+      Entry: 5
+      Data: true
+    - Name: onHitEffects
+      Entry: 7
+      Data: 7|System.Collections.Generic.List`1[[Effect, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 8|Damage, Assembly-CSharp
+    - Name: DamageRange
+      Entry: 7
+      Data: 9|DamageRange, Assembly-CSharp
+    - Name: min
+      Entry: 3
+      Data: 5
+    - Name: max
+      Entry: 3
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: TriggersOnCollision
+      Entry: 5
+      Data: false
+    - Name: OnPositionReachedEffect
+      Entry: 5
+      Data: true
+    - Name: onPositionReachedEffects
+      Entry: 7
+      Data: 10|System.Collections.Generic.List`1[[Effect, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 11|Damage, Assembly-CSharp
+    - Name: DamageRange
+      Entry: 7
+      Data: 12|DamageRange, Assembly-CSharp
+    - Name: min
+      Entry: 3
+      Data: 50
+    - Name: max
+      Entry: 3
+      Data: 50
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Homing
+      Entry: 5
+      Data: false
+    - Name: AOE
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ProjectileBase
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: projectilePools
+      Entry: 7
+      Data: 13|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[PoolObjectQueue`1[[GenericProjectile,
+        Assembly-CSharp]], Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 14|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: AoeEvent
       Entry: 7
-      Data: 0|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null]][], mscorlib
+      Data: 15|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null]][], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -327,7 +552,7 @@ MonoBehaviour:
       Data: 
     - Name: LaZorEvent
       Entry: 7
-      Data: 1|System.Func`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+      Data: 16|System.Func`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089]][], mscorlib
     - Name: 
       Entry: 12
@@ -397,10 +622,10 @@ MonoBehaviour:
     ProjectilesData:
     - ProjectileBehavior:
         OnHitEffect: 1
-        EffectOnDirectHit: 0
-        AOE: 0
+        TriggersOnCollision: 0
         OnPositionReachedEffect: 1
         Homing: 0
+        AOE: 0
       ProjectileBase: {fileID: 0}
   WeaponName: 
   TargetBank: {fileID: 0}
@@ -716,9 +941,80 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
+    - Name: Attack
+      Entry: 7
+      Data: 0|ProjectileAttack, Assembly-CSharp
+    - Name: AttackFunction
+      Entry: 7
+      Data: 1|ShootOneProjectile, Assembly-CSharp
+    - Name: ProjectileExitPoints
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[ProjectileExitPoint, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ProjectileFinalPoints
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[ProjectileFinalPoint, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ProjectilesData
+      Entry: 7
+      Data: 4|System.Collections.Generic.List`1[[ProjectilePoolCreationData, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: projectilePools
+      Entry: 7
+      Data: 5|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[PoolObjectQueue`1[[GenericProjectile,
+        Assembly-CSharp]], Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 6|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: AoeEvent
       Entry: 7
-      Data: 0|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      Data: 7|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null]][], mscorlib
     - Name: 
       Entry: 12
@@ -731,7 +1027,7 @@ MonoBehaviour:
       Data: 
     - Name: LaZorEvent
       Entry: 7
-      Data: 1|System.Func`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+      Data: 8|System.Func`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089]][], mscorlib
     - Name: 
       Entry: 12

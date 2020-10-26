@@ -52,7 +52,6 @@ public class ProjectileAttackSequences
         proj.transform.position = originPosition;
         proj.EffectableTarget = targetEffectable ?? null;
         proj.transform.rotation = direction;
-        proj.assistingFloat1 = assistingfloat1;
         proj.Activate();
         yield break;
     }

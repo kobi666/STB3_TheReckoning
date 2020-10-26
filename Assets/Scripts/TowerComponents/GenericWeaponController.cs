@@ -7,6 +7,7 @@ using MyBox;
 using System.Threading.Tasks;
 using Sirenix;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 
 public class GenericWeaponController : TowerComponent
 {
@@ -24,8 +25,9 @@ public class GenericWeaponController : TowerComponent
         {"Beam Effect","Beam Effect"}
     };
 
-    [ShowIf("WeaponType", "Projectile Effect")] [SerializeField] [BoxGroup]
-    public ProjectileAttack Attack = new ProjectileAttack();
+    [ShowIf("WeaponType", "Projectile Effect")] [OdinSerialize] [BoxGroup]
+    public ProjectileFireFunction fireFunction = new ProjectileFireFunction();
+    
     
     
     

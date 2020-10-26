@@ -47,30 +47,14 @@ public class ProjectileAsyncAttacks
 public class ShootOneProjectile : ProjectileAttackFunction {
     [ShowInInspector] 
     public override int NumOfProjectiles { get; set; } = 1;
-    public override float AssistingFloat1 { get; set; }
-    public override float AssistingFloat2 { get; set; }
-    
-    public override int AssistingInt1 { get; set; }
-    public override int AssistingInt2 { get; set; }
 
-    public override void AttackFunction(List<PoolObjectQueue<GenericProjectile>> projectilePools, int numOfProjectiles, Quaternion direction, Vector2 SingleTargetPosition,
-        Effectable singleTarget, Effectable[] multiTargets, float af1, float af2, int ai1, int ai2, List<ProjectileExitPoint> exitPoints,
-        List<ProjectileFinalPoint> finalPoints)
+    public override void AttackFunction(List<PoolObjectQueue<GenericProjectile>> projectilePools, int numOfProjectiles, Quaternion direction, Vector2 originPosition,
+        Vector2 SingleTargetPosition, Effectable singleTarget)
     {
         GenericProjectile proj = projectilePools[0].GetInactive();
-        proj.transform.position = exitPoints[0].transform.position;
         proj.TargetPosition = SingleTargetPosition; // can also be projectile final point position
         proj.EffectableTarget = singleTarget ?? null;
-        proj.transform.rotation = exitPoints[0].transform.rotation;
         proj.Activate();
-    }
-
-    public void InvokeAttack(List<PoolObjectQueue<GenericProjectile>> projectilePools, Quaternion direction, Vector2 SingleTargetPosition, Effectable singleTarget,
-        Effectable[] multiTargets)
-    {
-        AttackFunction(projectilePools, NumOfProjectiles, direction, SingleTargetPosition, singleTarget,
-            multiTargets, AssistingFloat1, AssistingFloat2, AssistingInt1, AssistingInt2, ProjectileExitPoints,
-            ProjectileFinalPoints);
     }
 }
     
@@ -81,34 +65,31 @@ public class ShootOneProjectile : ProjectileAttackFunction {
     {
         [ShowInInspector]
         public override int NumOfProjectiles { get; set; }
-        
-        [ShowInInspector]
-        [LabelText("Time between each Projectile")]
-        public override  float AssistingFloat1 { get; set; }
-        public override float AssistingFloat2 { get; set; }
-        public override int AssistingInt1 { get; set; }
-        public override int AssistingInt2 { get; set; }
 
-        public override async void AttackFunction(List<PoolObjectQueue<GenericProjectile>> projectilePools, int numOfProjectiles, Quaternion direction, Vector2 SingleTargetPosition,
-            Effectable singleTarget, Effectable[] multiTargets, float timebetweenProjectiles, float af2, int ai1, int ai2, List<ProjectileExitPoint> exitPoints,
-            List<ProjectileFinalPoint> finalPoints)
+        public override async void AttackFunction(List<PoolObjectQueue<GenericProjectile>> projectilePools, int numOfProjectiles, Quaternion direction, Vector2 originPosition,
+            Vector2 SingleTargetPosition, Effectable singleTarget)
         {
             int counter = numOfProjectiles;
             float timeCounter = 0;
             while (counter >= 0)
             {
                 if (timeCounter <= 0) {
-                GenericProjectile proj = projectilePools[0].GetInactive();
-                proj.transform.position = exitPoints[0].transform.position;
-                proj.TargetPosition = SingleTargetPosition; // can also be projectile final point position
-                proj.EffectableTarget = singleTarget ?? null;
-                proj.transform.rotation = exitPoints[0].transform.rotation;
-                proj.Activate();
-                timeCounter = timebetweenProjectiles;
-                counter -= 1;
+                    GenericProjectile proj = projectilePools[0].GetInactive();
+                    proj.transform.position = originPosition;
+                    proj.TargetPosition = SingleTargetPosition; // can also be projectile final point position
+                    proj.EffectableTarget = singleTarget ?? null;
+                    proj.transform.rotation = direction;
+                    proj.Activate();
+                    timeCounter = timebetweenProjectiles;
+                    counter -= 1;
                 }
                 timeCounter -= StaticObjects.instance.DeltaGameTime;
+                await Task.Yield();
             }
         }
+
+
+        public float timebetweenProjectiles = 0.5f;
+
     }
 

@@ -3,9 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Threading.Tasks;
+using System.Linq;
+using Object = System.Object;
 
 public class Utils
 {
+    
+    private static IEnumerable<Type> GetFilteredTypeList()
+    {
+        
+        var q = typeof(Effect).Assembly.GetTypes()
+            .Where(x => !x.IsAbstract) // Excludes BaseClass
+            .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
+            .Where(x => typeof(Effect).IsAssignableFrom(x)); // Excludes classes not inheriting from BaseClass
+        
+        return q;
+    }
+    
     
     public static Vector3 V2toV3(Vector2 v) {
         Vector3 v3 = new Vector3(v.x, v.y, 0);

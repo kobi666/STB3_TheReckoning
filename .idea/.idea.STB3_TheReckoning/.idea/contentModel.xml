@@ -468,9 +468,9 @@
             <e p="PlayerUnitSpawner.cs" t="Include" />
             <e p="PlayerUnitSpawnerUtils.cs" t="Include" />
             <e p="PlayerUnitSpawningPoint.cs" t="Include" />
-            <e p="ProjectileAttack.cs" t="Include" />
             <e p="ProjectileAttacks.cs" t="Include" />
             <e p="ProjectileFactory.cs" t="Include" />
+            <e p="ProjectileFireFunction.cs" t="Include" />
             <e p="ProjectileMovementFunctions.cs" t="Include" />
             <e p="ProjectileProperties.cs" t="Include" />
             <e p="TestOrbitalGun.cs" t="Include" />
@@ -536,6 +536,7 @@
         <e p="test6.cs" t="Include" />
         <e p="test7.cs" t="Include" />
         <e p="test8.cs" t="Include" />
+        <e p="test9.cs" t="Include" />
         <e p="TestCalculateTowerPositions.cs" t="Include" />
         <e p="testclass.cs" t="Include" />
         <e p="TestConditionalDropDown.cs" t="Include" />
@@ -545,7 +546,7 @@
           <e p="Fonts" t="Include">
             <e p="LiberationSans - OFL.txt" t="Include" />
           </e>
-          <e p="ProjectileBehaviorData.cs" t="Include" />
+          <e p="ProjectileEffect.cs" t="Include" />
           <e p="Resources" t="Include">
             <e p="LineBreaking Following Characters.txt" t="Include" />
             <e p="LineBreaking Leading Characters.txt" t="Include" />

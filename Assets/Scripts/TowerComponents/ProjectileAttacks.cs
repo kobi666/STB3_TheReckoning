@@ -37,7 +37,6 @@
             proj.transform.position = originPosition;
             proj.EffectableTarget = targetEffectable;
             proj.transform.rotation = direction;
-            proj.assistingFloat1 = assistingfloat1;
             proj.Activate();
             yield break;
         }
@@ -53,7 +52,6 @@
             proj.transform.position = originPosition;
             proj.EffectableTarget = targetEffectable;
             proj.transform.rotation = direction;
-            proj.assistingFloat1 = assistingfloat1;
             proj.Activate();
             yield break;
         }

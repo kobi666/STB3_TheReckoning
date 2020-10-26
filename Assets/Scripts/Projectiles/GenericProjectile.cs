@@ -9,29 +9,18 @@ using System.Threading.Tasks;
 
 public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProjectile>,IActiveObject<GenericProjectile>
 {
-    public ProjectileBehaviorData ProjectileBehaviorData = new ProjectileBehaviorData();
+    public ProjectileEffect projectileEffect = new ProjectileEffect();
 
     public void Activate()
     {
         gameObject.SetActive(true);
     }
     
-    public bool DirectHitProjectile = false;
-    public bool AOEProjectile = false;
-    public bool SingleTargetProjectile;
-    public bool HomingProjectile;
-    public float AOERadius = 1;
-    
-    public int HitCounter = 1;
-    private float MaxLifeTime = 3;
     private float MaxLifeTimeCounter = 0;
     public event Action onHitCounterZero;
     private RangeDetector rangeDetector = null;
-    public float assistingFloat1;
-    public float assistingFloat2;
     private EffectableTargetBank effectableTargetBank;
-    private float MovementProgressCounter;
-    
+
     private EffectableTargetBank EffectableTargetBank
     {
         get
@@ -79,29 +68,28 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
 
     public async void StartAsyncMovement()
     {
-        
         MovementFunction();
             if ((Vector2)transform.position == TargetPosition)
             {
                 OnTargetPositionReached();
             }
-            if (HomingProjectile)
-        {
-            if (transform.position == EffectableTarget.transform.position)
+            if (projectileEffect.Homing)
             {
-                OnTargetPositionReached();
-            }
+                if (transform.position == EffectableTarget.transform.position)
+                {
+                    OnTargetPositionReached();
+                }
         }
     }
     
     
     public void OnTriggerEnter2D(Collider2D other) {
-        if (DirectHitProjectile) {
+        if (projectileEffect.TriggersOnCollision) {
             if (GameObjectPool.Instance.ActiveEffectables?.Pool.ContainsKey(other.name) ?? false) {
                 if (ActiveTargets[other.name].IsTargetable())
                     OnHit(ActiveTargets[other.name]);
-                HitCounter -= 1;
-                if (HitCounter == 0) {
+                projectileEffect.HitCounter -= 1;
+                if (projectileEffect.HitCounter == 0) {
                     OnHitCounterZero();
                 }
             }
@@ -143,8 +131,6 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     public ActiveObjectPool<GenericProjectile> ActivePool { get => activePool; set { activePool = value;}}
     string TypeTag = "Projectile";
 
-    public event ProjectileMovementDelegate onMainMovementAction;
-
     public void OnMainMovementAction(Transform selfTransform, Vector2 originPos, Vector2 targetPos, float speed, float assistingfloat1,
         ref float movementProgressCounter)
     {
@@ -167,17 +153,17 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
 
     void HomingMovement()
     {
-        OnMainMovementAction(transform,Data.OriginPosition,EffectableTarget.transform.position,Speed,assistingFloat1, ref MovementProgressCounter);
+        //OnMainMovementAction(transform,Data.OriginPosition,EffectableTarget.transform.position,Speed,assistingFloat1, ref MovementProgressCounter);
     }
 
     void MoveToTargetPosition()
     {
-        OnMainMovementAction(transform,Data.OriginPosition,TargetPosition,Speed,assistingFloat1,ref MovementProgressCounter);
+        //OnMainMovementAction(transform,Data.OriginPosition,TargetPosition,Speed,assistingFloat1,ref MovementProgressCounter);
     }
     
     public event Action<Effectable> onHitSingleTarget;
     public void OnHitSingleTarget(Effectable ef) {
-        if (HomingProjectile) {
+        if (projectileEffect.Homing) {
             if (ef.name != EffectableTarget.name) {
         onHitSingleTarget?.Invoke(ef);
             }
@@ -199,7 +185,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
 
     void SetProjectileActions()
     {
-        if (HomingProjectile)
+        if (projectileEffect.Homing)
         {
             movementEvent += HomingMovement;
         }
@@ -207,20 +193,27 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
         {
             movementEvent += MoveToTargetPosition;
         }
-        
-        
-        
-        if (SingleTargetProjectile)
+
+        if (projectileEffect.AOE)
         {
-            onHit += OnHitSingleTarget;
+            
+        }
+        
+        
+        if (projectileEffect.OnHitEffect)
+        {
+            if (projectileEffect.AOE)
+            {
+                
+            }
         }
 
-        if (AOEProjectile)
+        if (projectileEffect.AOE)
         {
             onHit += OnHitMultipleTargets;
         }
 
-        if (HomingProjectile)
+        if (projectileEffect.Homing)
         {
             onHit += OnHitSpecificTarget;
         }
@@ -229,12 +222,15 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     
     
 
-    public Action<Effectable[]> onHitMultipleTargets;
+    public Action<Effectable> onHitMultipleTargets;
 
     public void OnHitMultipleTargets(Effectable effectable)
     {
         Effectable[] _targets = EffectableTargetBank.Targets.Values.ToArray();
-        onHitMultipleTargets?.Invoke(_targets);
+        foreach (Effectable target in _targets)
+        {
+            onHitMultipleTargets?.Invoke(target);
+        }
     }
 
     protected void Start()
@@ -284,15 +280,14 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
 
     void OnEnable()
     {
-        MovementProgressCounter = 0f;
+        //MovementProgressCounter = 0f;
         RangeDetector.enabled = true;
         ActivePool?.AddObjectToActiveObjectPool(this);
-        HitCounter = 1;
+        projectileEffect.HitCounter = 1;
     }
 
     protected void OnDisable()
     {
-        
         RangeDetector.enabled = false;
         targetPositionSet = false;
         EffectableTarget = null;
@@ -309,7 +304,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
             }
         }
 
-        if (HomingProjectile)
+        if (projectileEffect.Homing)
         {
             if (transform.position == EffectableTarget.transform.position)
             {
