@@ -74,7 +74,7 @@
      <Compile Include="Assets\Scripts\PlayerObjects\DebugCrosshair.cs" />
      <Compile Include="Assets\PathDiscoveryPoint.cs" />
      <Compile Include="Assets\Scripts\Units\BasicMeleePlayerUnit.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\ProjectileFireFunction.cs" />
+     <Compile Include="Assets\Scripts\TowerComponents\ProjectileAttack.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\ProjectileFactory.cs" />
      <Compile Include="Assets\PathRenderer.cs" />
      <Compile Include="Assets\Scripts\Units\UnitData.cs" />
@@ -237,6 +237,8 @@
      <Compile Include="Assets\Scripts\Towers\TowerSlotController.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\RangeDebug.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ArcingAOEProjectileController.cs" />
+     <Compile Include="Assets\Scripts\ProjectilePoolCreationData.cs" />
+     <Compile Include="Assets\Scripts\ProjectileAttackFunction.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />

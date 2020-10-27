@@ -47,18 +47,6 @@ public abstract class ProjectileMovementFunction
         OnPositionReached?.Invoke();
     }
 
-
-    public async void MoveToTargetTransformOrTargetPosition(Transform projectileTransform, Transform targetTarnsform,
-        Vector2 originPos,
-        Vector2 targetPos)
-    {
-        
-    }
-
-    
-    
-    
-    
 }
 
 

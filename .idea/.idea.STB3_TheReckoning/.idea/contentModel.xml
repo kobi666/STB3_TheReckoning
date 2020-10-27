@@ -420,8 +420,10 @@
             <e p="TowerCrosshairMovementController.cs" t="Include" />
           </e>
           <e p="ProjectileAsyncAttacks.cs" t="Include" />
+          <e p="ProjectileAttackFunction.cs" t="Include" />
           <e p="ProjectileAttackSequence.cs" t="Include" />
           <e p="ProjectileAttackSequences.cs" t="Include" />
+          <e p="ProjectilePoolCreationData.cs" t="Include" />
           <e p="Projectiles" t="Include">
             <e p="AOEAnimationController.cs" t="Include" />
             <e p="AOEProjectile.cs" t="Include" />
@@ -468,9 +470,9 @@
             <e p="PlayerUnitSpawner.cs" t="Include" />
             <e p="PlayerUnitSpawnerUtils.cs" t="Include" />
             <e p="PlayerUnitSpawningPoint.cs" t="Include" />
+            <e p="ProjectileAttack.cs" t="Include" />
             <e p="ProjectileAttacks.cs" t="Include" />
             <e p="ProjectileFactory.cs" t="Include" />
-            <e p="ProjectileFireFunction.cs" t="Include" />
             <e p="ProjectileMovementFunctions.cs" t="Include" />
             <e p="ProjectileProperties.cs" t="Include" />
             <e p="TestOrbitalGun.cs" t="Include" />

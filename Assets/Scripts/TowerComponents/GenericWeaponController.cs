@@ -26,7 +26,7 @@ public class GenericWeaponController : TowerComponent
     };
 
     [ShowIf("WeaponType", "Projectile Effect")] [OdinSerialize] [BoxGroup]
-    public ProjectileFireFunction fireFunction = new ProjectileFireFunction();
+    public ProjectileAttack attack;
     
     
     
