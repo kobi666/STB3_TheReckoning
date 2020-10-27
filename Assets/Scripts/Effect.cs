@@ -9,6 +9,7 @@ using UnityEngine;
 public abstract class Effect
 {
     public abstract void Apply(Effectable ef);
+    public bool IsAOE;
 }
 
 
@@ -18,7 +19,8 @@ public class Damage : Effect
 {
     [ShowInInspector]
     public DamageRange DamageRange = new DamageRange();
-   
+
+    
    
     
     public override void Apply(Effectable ef)

@@ -14,7 +14,7 @@ public class ProjectileFactory : SerializedMonoBehaviour
             new Vector3(999.0f, 999.0f, 999.0f), Quaternion.identity);
         proj.gameObject.SetActive(false);
         proj.name = projectileBase.name + '_' + weaponName;
-        proj.projectileEffect = projectileEffect;
+        proj.BaseProjectileEffect = projectileEffect;
         return proj;
     }
 

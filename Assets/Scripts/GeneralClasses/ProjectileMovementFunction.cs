@@ -16,7 +16,13 @@ public abstract class ProjectileMovementFunction
 
     [ShowInInspector] protected float ProgressCounter { get; private set; } = 0;
 
-    public bool ExternalMovementLock { get; set; }
+    [ShowInInspector]
+    public bool ExternalMovementLock { get; set; } = false;
+
+    public void StopMoving()
+    {
+        ExternalMovementLock = false;
+    }
 
     public event Action OnPositionReached;
     
@@ -48,6 +54,23 @@ public abstract class ProjectileMovementFunction
     }
 
 }
+
+
+
+public class MoveStraight : ProjectileMovementFunction
+{
+    public override void MovementFunction(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos, Vector2 TargetPos,
+        float speed)
+    {
+        projectileTransform.position = Vector2.MoveTowards(projectileTransform.position, TargetPos,
+            speed * StaticObjects.instance.DeltaGameTime);
+    }
+}
+
+
+
+
+
 
 
 

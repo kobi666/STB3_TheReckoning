@@ -32,7 +32,7 @@ public class ProjectilePoolCreationData
     {
         GenericProjectile proj = GameObject.Instantiate(ProjectileBase, nowhere, Quaternion.identity);
         proj.gameObject.SetActive(false);
-        proj.projectileEffect = projectileEffect;
+        proj.BaseProjectileEffect = projectileEffect;
         proj.name = ProjectileBase + Random.Range(0, 999999).ToString();
         GameObject placeholder = GameObject.Instantiate(new GameObject(), Vector3.zero, Quaternion.identity,
             GameObjectPool.Instance.transform);

@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 
 public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProjectile>,IActiveObject<GenericProjectile>
 {
-    public ProjectileEffect projectileEffect = new ProjectileEffect();
+    public ProjectileEffect BaseProjectileEffect;
+    public ProjectileMovementFunction MovementFunction;
 
     public void Activate()
     {
@@ -55,6 +56,14 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     public event Action onTargetPositionReached;
     public void OnTargetPositionReached() {
         onTargetPositionReached?.Invoke();
+        OnTargetPositionReachedEffect(null);
+    }
+
+    public event Action<Effectable> onTargetPositionReachedEffect;
+
+    public void OnTargetPositionReachedEffect(Effectable ef)
+    {
+        onTargetPositionReachedEffect?.Invoke(ef);
     }
 
 
@@ -66,56 +75,44 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     }
 
 
-    public async void StartAsyncMovement()
-    {
-        MovementFunction();
-            if ((Vector2)transform.position == TargetPosition)
-            {
-                OnTargetPositionReached();
-            }
-            if (projectileEffect.Homing)
-            {
-                if (transform.position == EffectableTarget.transform.position)
-                {
-                    OnTargetPositionReached();
-                }
-        }
-    }
-    
-    
     public void OnTriggerEnter2D(Collider2D other) {
-        if (projectileEffect.TriggersOnCollision) {
-            if (GameObjectPool.Instance.ActiveEffectables?.Pool.ContainsKey(other.name) ?? false) {
-                if (ActiveTargets[other.name].IsTargetable())
-                    OnHit(ActiveTargets[other.name]);
-                projectileEffect.HitCounter -= 1;
-                if (projectileEffect.HitCounter == 0) {
-                    OnHitCounterZero();
+        if (BaseProjectileEffect.TriggersOnCollision) {
+            if (BaseProjectileEffect.TriggersOnSpecificTarget)
+            {
+                if (other.name == EffectableTarget.name)
+                {
+                    string n = EffectableTarget.name;
+                    if (ActiveTargets?.ContainsKey(n) ?? false) {
+                        if (ActiveTargets[n].IsTargetable())
+                            OnTargetHit(ActiveTargets[n]);
+                        BaseProjectileEffect.HitCounter -= 1;
+                    }
                 }
             }
+            else { 
+                if (GameObjectPool.Instance.ActiveEffectables?.Pool.ContainsKey(other.name) ?? false) {
+                    if (ActiveTargets[other.name].IsTargetable())
+                        OnTargetHit(ActiveTargets[other.name]);
+                    BaseProjectileEffect.HitCounter -= 1;
+                }
+                
+            }
+        }
+        if (BaseProjectileEffect.HitCounter == 0) {
+            OnHitCounterZero();
         }
     }
 
-    public event Action<Effectable> onHit;
+    public event Action<Effectable> onTargetHit;
 
-    public void OnHit(Effectable ef)
+    public void OnTargetHit(Effectable ef)
     {
-        onHit?.Invoke(ef); 
+        onTargetHit?.Invoke(ef); 
     }
 
-    void onHitSingle(Effectable ef)
-    {
-        OnHitSingleTarget(ef);
-    }
 
-    void onHitMulti(Effectable ef)
-    {
-        OnHitMultipleTargets(ef);
-    }
-    
-    
-    
-    
+
+
     public Type QueueableType {get;set;}
     public ProjectileData Data = new ProjectileData();
     public void OnEnqueue() {
@@ -130,94 +127,57 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     ActiveObjectPool<GenericProjectile> activePool;
     public ActiveObjectPool<GenericProjectile> ActivePool { get => activePool; set { activePool = value;}}
     string TypeTag = "Projectile";
-
-    public void OnMainMovementAction(Transform selfTransform, Vector2 originPos, Vector2 targetPos, float speed, float assistingfloat1,
-        ref float movementProgressCounter)
-    {
-        // ////////// //////// ///////  onMainMovementAction?.Invoke(selfTransform, originPos, targetPos,speed,assistingfloat1,ref movementProgressCounter);
-    }
-
-
-
-    public event Action movementEvent;
     
-    public void MovementEvent()
-    {
-        movementEvent?.Invoke();
-    }
+    public event Action<Transform, Transform, Vector2, Vector2> onMovementEvent;
     
-    public void MovementFunction()
+    public void OnMovementEvent(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos,
+        Vector2 targetPos)
     {
-        MovementEvent();
+        onMovementEvent?.Invoke(projectileTransform,targetTarnsform,originPos,targetPos);
     }
 
-    void HomingMovement()
-    {
-        //OnMainMovementAction(transform,Data.OriginPosition,EffectableTarget.transform.position,Speed,assistingFloat1, ref MovementProgressCounter);
-    }
-
-    void MoveToTargetPosition()
-    {
-        //OnMainMovementAction(transform,Data.OriginPosition,TargetPosition,Speed,assistingFloat1,ref MovementProgressCounter);
-    }
-    
     public event Action<Effectable> onHitSingleTarget;
     public void OnHitSingleTarget(Effectable ef) {
-        if (projectileEffect.Homing) {
-            if (ef.name != EffectableTarget.name) {
         onHitSingleTarget?.Invoke(ef);
-            }
-        }
-        else
-        {
-            onHitSingleTarget?.Invoke(ef);
-        }
-    }
-
-    public void OnHitSpecificTarget(Effectable ef)
-    {
-        if (ef.name == EffectableTarget.name)
-        {
-            onHitSingleTarget?.Invoke(ef);
-        } 
     }
 
 
-    void SetProjectileActions()
+    void InitProjectileEffects()
     {
-        if (projectileEffect.Homing)
+        if (BaseProjectileEffect.OnHitEffect)
         {
-            movementEvent += HomingMovement;
-        }
-        else
-        {
-            movementEvent += MoveToTargetPosition;
-        }
-
-        if (projectileEffect.AOE)
-        {
-            
-        }
-        
-        
-        if (projectileEffect.OnHitEffect)
-        {
-            if (projectileEffect.AOE)
+            foreach (var effect in BaseProjectileEffect.onHitEffects)
             {
-                
+                if (effect.IsAOE)
+                {
+                    onHitMultipleTargets += effect.Apply;
+                }
+                else
+                {
+                    onHitSingleTarget += effect.Apply;
+                }
             }
         }
 
-        if (projectileEffect.AOE)
+        if (BaseProjectileEffect.OnPositionReachedEffect)
         {
-            onHit += OnHitMultipleTargets;
+            foreach (var effect in BaseProjectileEffect.onPositionReachedEffects)
+            {
+                onTargetPositionReachedEffect += effect.Apply;
+            }
         }
+    }
 
-        if (projectileEffect.Homing)
+    void InitProjectileMovement()
+    {
+        if (BaseProjectileEffect.Homing)
         {
-            onHit += OnHitSpecificTarget;
+            onMovementEvent += MovementFunction.MoveToTargetTransform;
         }
-        
+        else
+        {
+            onMovementEvent += MovementFunction.MoveToTargetPosition;
+        }
     }
     
     
@@ -240,10 +200,10 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
         SpriteRenderer = GetComponent<SpriteRenderer>() ?? null;
         if (OnHitAnimation != null) {
             onHitAnimationQueuePool = GameObjectPool.Instance.GetSingleAnimationObjectQueue(OnHitAnimation);
-            onHit += delegate(Effectable effectable) { PlayOnHitAnimation(effectable); };
+            onTargetHit += delegate(Effectable effectable) { PlayOnHitAnimation(effectable); };
         }
         gameObject.tag = TypeTag; 
-        SetProjectileActions();
+        InitProjectileEffects();
     }
 
     //public EffectableTargetBank TargetBank {get;set;}
@@ -283,7 +243,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
         //MovementProgressCounter = 0f;
         RangeDetector.enabled = true;
         ActivePool?.AddObjectToActiveObjectPool(this);
-        projectileEffect.HitCounter = 1;
+        BaseProjectileEffect.HitCounter = 1;
     }
 
     protected void OnDisable()
@@ -295,26 +255,8 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
         QueuePool?.ObjectQueue.Enqueue(this);
     }
 
-    private void Update() {
-        if (targetPositionSet) {
-        MovementFunction();
-        if ((Vector2)transform.position == TargetPosition)
-            {
-                OnTargetPositionReached();
-            }
-        }
 
-        if (projectileEffect.Homing)
-        {
-            if (transform.position == EffectableTarget.transform.position)
-            {
-                OnTargetPositionReached();
-            }
-        }
-    }
 
-    
 
-    
 
 }
