@@ -15,7 +15,7 @@ public class ProjectilePoolCreationData
     public ProjectileMovementFunction projectileMovement;
     public ProjectileEffect projectileEffect = new ProjectileEffect();
     public GenericProjectile ProjectileBase;
-    Vector3 nowhere = new Vector3(9999,9999,9999);
+    static Vector3 nowhere = new Vector3(9999,9999,9999);
     
      
     private static IEnumerable<Type> GetMovementFunctions()
@@ -28,12 +28,14 @@ public class ProjectilePoolCreationData
         return q;
     }
 
-    public (PoolObjectQueue<GenericProjectile>,string) CreatePool()
+    public (PoolObjectQueue<GenericProjectile>,string) CreatePool(string towerName)
     {
         GenericProjectile proj = GameObject.Instantiate(ProjectileBase, nowhere, Quaternion.identity);
         proj.gameObject.SetActive(false);
         proj.BaseProjectileEffect = projectileEffect;
-        proj.name = ProjectileBase + Random.Range(0, 999999).ToString();
+        proj.MovementFunction = projectileMovement;
+        proj.name = towerName + "_" + ProjectileBase + "_" + Random.Range(0, 999999).ToString();
+        proj.OnProjectileInit();
         GameObject placeholder = GameObject.Instantiate(new GameObject(), Vector3.zero, Quaternion.identity,
             GameObjectPool.Instance.transform);
         placeholder.name = proj.name + "_placeHolder";

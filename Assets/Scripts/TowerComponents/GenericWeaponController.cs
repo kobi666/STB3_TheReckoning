@@ -16,45 +16,36 @@ public class GenericWeaponController : TowerComponent
     [HideLabel]
     [BoxGroup]
     [SerializeField]
-    protected string WeaponType;
+    protected int WeaponType;
     
-    private static ValueDropdownList<string> valueList = new ValueDropdownList<string>()
+    private static ValueDropdownList<int> valueList = new ValueDropdownList<int>()
     {
-        {"Projectile Effect", "Projectile Effect"},
-        {"Area Of Effect", "Area Of Effect"},
-        {"Beam Effect","Beam Effect"}
+        {"Projectile Effect", 0},
+        {"Area Of Effect", 1},
+        {"Beam Effect",2}
     };
 
-    [ShowIf("WeaponType", "Projectile Effect")] [OdinSerialize] [BoxGroup]
-    public ProjectileAttack attack;
-    
-    
-    
-    
-    //private ValueDropdownList<MethodInfo> attackTypes = ProjectileAttacks.Atypes();
-    
-    
-    /*[ShowIf("WeaponType", "Projectile Effect")] 
-    [SerializeField]
-    [BoxGroup]
-    public List<ProjectileBehaviorData> ProjectileTypes = new List<ProjectileBehaviorData>();
-    [ShowIf("WeaponType", "Projectile Effect")] public GenericProjectile ProjectileBase;*/
-    
-    
-    
+    [ShowIf("WeaponType", 0)] [OdinSerialize] [BoxGroup]
+    public ProjectileAttack projectileAttack;
 
-    [ShowIf("WeaponType", "Area Of Effect")]
+    
+    
+    
+    [ShowIf("WeaponType", 1)]
     [SerializeField]
     protected Action<AOEProjectile>[] AoeEvent = new Action<AOEProjectile>[0];
 
-    [ShowIf("WeaponType", "Beam Effect")]
+    [ShowIf("WeaponType", 2)]
     [SerializeField]
     protected Func<bool>[] LaZorEvent = new Func<bool>[0];
     public string WeaponName;
 
-    void InitializeProjectileWeapon()
+    public void InitWeapon()
     {
-        
+        if (WeaponType == 0)
+        {
+            projectileAttack.InitProjectilePools(ParentTower.name);
+        }
     }
     
     

@@ -384,10 +384,10 @@ MonoBehaviour:
     - Name: ProjectileLifeTime
       Entry: 4
       Data: 3
-    - Name: SingleTargetEffect
+    - Name: OnHitEffect
       Entry: 5
       Data: false
-    - Name: onSingleHitEffects
+    - Name: onHitEffects
       Entry: 6
       Data: 
     - Name: TriggersOnCollision
@@ -411,6 +411,9 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 7|Damage, Assembly-CSharp
+    - Name: IsAOE
+      Entry: 5
+      Data: false
     - Name: DamageRange
       Entry: 7
       Data: 8|DamageRange, Assembly-CSharp
@@ -561,7 +564,7 @@ MonoBehaviour:
     ProjectilesData:
     - projectileEffect:
         ProjectileLifeTime: 3
-        SingleTargetEffect: 0
+        OnHitEffect: 0
         TriggersOnCollision: 0
         HitCounter: 1
         TriggersOnSpecificTarget: 1
@@ -683,6 +686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   d:
+    IsAOE: 0
     DamageRange:
       min: 0
       max: 0

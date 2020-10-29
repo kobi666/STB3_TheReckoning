@@ -142,6 +142,35 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     }
 
 
+    void initAOEProperties()
+    {
+        if (BaseProjectileEffect.AOE)
+        {
+            if (BaseProjectileEffect.EffectRadius <= 0)
+            {
+                rangeDetector.SetRangeRadius(1);
+            }
+            else
+            {
+                rangeDetector.SetRangeRadius(BaseProjectileEffect.EffectRadius);
+            } 
+        }
+    }
+
+    private void Awake()
+    {
+        onProjectileInit += InitProjectileMovement;
+        onProjectileInit += InitProjectileEffects;
+        onProjectileInit += initAOEProperties;
+    }
+
+    private event Action onProjectileInit;
+
+    public void OnProjectileInit()
+    {
+        onProjectileInit?.Invoke();
+    }
+
     void InitProjectileEffects()
     {
         if (BaseProjectileEffect.OnHitEffect)
@@ -172,11 +201,11 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     {
         if (BaseProjectileEffect.Homing)
         {
-            onMovementEvent += MovementFunction.MoveToTargetTransform;
+            onMovementEvent = MovementFunction.MoveToTargetTransform;
         }
         else
         {
-            onMovementEvent += MovementFunction.MoveToTargetPosition;
+            onMovementEvent = MovementFunction.MoveToTargetPosition;
         }
     }
     
@@ -195,15 +224,14 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
 
     protected void Start()
     {
-        onTargetPositionReached += delegate { targetPositionSet = false; };
+        //onTargetPositionReached += delegate { targetPositionSet = false; };
         onHitCounterZero += delegate {gameObject.SetActive(false);};
         SpriteRenderer = GetComponent<SpriteRenderer>() ?? null;
         if (OnHitAnimation != null) {
             onHitAnimationQueuePool = GameObjectPool.Instance.GetSingleAnimationObjectQueue(OnHitAnimation);
             onTargetHit += delegate(Effectable effectable) { PlayOnHitAnimation(effectable); };
         }
-        gameObject.tag = TypeTag; 
-        InitProjectileEffects();
+        gameObject.tag = TypeTag;
     }
 
     //public EffectableTargetBank TargetBank {get;set;}
