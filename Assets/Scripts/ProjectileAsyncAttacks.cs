@@ -21,26 +21,6 @@ public class ProjectileAsyncAttacks
         
         return q;
     }
-
-    /*public static ValueDropdownList<ProjectileAttackFunction> Attacks()
-    {
-        var t = typeof(ProjectileAttackFunction);
-        var list = typeof(ProjectileAsyncAttacks).Assembly.GetTypes()
-            .Where(x => typeof(ProjectileAttackFunction).GetTypeInfo().IsAssignableFrom(x.GetType()));
-        
-        ValueDropdownList<ProjectileAttackFunction> paflist = new ValueDropdownList<ProjectileAttackFunction>();
-        foreach (Type at in list)
-        {
-            ConstructorInfo cinfo = at.GetConstructor(Type.EmptyTypes);
-            ProjectileAttackFunction paf = cinfo.Invoke(null) as ProjectileAttackFunction;
-            if (paf != null)
-            {
-                paflist.Add(at.Name, paf);
-            }
-        }
-
-        return paflist;
-    }*/
 }
 
 [System.Serializable]

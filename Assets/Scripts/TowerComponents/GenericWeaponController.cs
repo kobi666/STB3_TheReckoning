@@ -223,6 +223,7 @@ public class GenericWeaponController : TowerComponent
             {
                 AttackCounter = 0;
                 MainAttackFunction();
+                
             }
         }
 
@@ -320,11 +321,14 @@ public class GenericWeaponController : TowerComponent
                 TargetBank.RangeDetector.SetRangeRadius(Data.componentRadius);
             }
         }
+
+        ParentTower = ParentTower ?? GetComponentInParent<TowerController>();
+
+        InitWeapon();
     }
 
     protected void Update()
     {
-        
         if (AttackCounter < CounterMax)
         {
             if (Data.fireRate > 0) {
@@ -335,8 +339,6 @@ public class GenericWeaponController : TowerComponent
                 AttackCounter += StaticObjects.instance.DeltaGameTime;
             }
         }
-        
-        
     }
 
     

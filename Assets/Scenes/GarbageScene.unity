@@ -161,7 +161,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: attack
+    - Name: projectileAttack
       Entry: 7
       Data: 0|ProjectileAttack, Assembly-CSharp
     - Name: AttackFunction
@@ -286,8 +286,8 @@ MonoBehaviour:
   parentTowerComponent: {fileID: 0}
   RangeDetector: {fileID: 0}
   RangeCollider: {fileID: 0}
-  WeaponType: Projectile Effect
-  attack:
+  WeaponType: 0
+  projectileAttack:
     ProjectilesData: []
   WeaponName: 
   TargetBank: {fileID: 0}
@@ -350,7 +350,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: attack
+    - Name: projectileAttack
       Entry: 7
       Data: 0|ProjectileAttack, Assembly-CSharp
     - Name: AttackFunction
@@ -365,91 +365,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 3|ProjectilePoolCreationData, Assembly-CSharp
-    - Name: projectileMovement
-      Entry: 7
-      Data: 4|MoveStraight, Assembly-CSharp
-    - Name: speed
-      Entry: 4
       Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: projectileEffect
-      Entry: 7
-      Data: 5|ProjectileEffect, Assembly-CSharp
-    - Name: ProjectileLifeTime
-      Entry: 4
-      Data: 3
-    - Name: OnHitEffect
-      Entry: 5
-      Data: false
-    - Name: onHitEffects
-      Entry: 6
-      Data: 
-    - Name: TriggersOnCollision
-      Entry: 5
-      Data: false
-    - Name: HitCounter
-      Entry: 3
-      Data: 1
-    - Name: TriggersOnSpecificTarget
-      Entry: 5
-      Data: true
-    - Name: OnPositionReachedEffect
-      Entry: 5
-      Data: true
-    - Name: onPositionReachedEffects
-      Entry: 7
-      Data: 6|System.Collections.Generic.List`1[[Effect, Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 7|Damage, Assembly-CSharp
-    - Name: IsAOE
-      Entry: 5
-      Data: false
-    - Name: DamageRange
-      Entry: 7
-      Data: 8|DamageRange, Assembly-CSharp
-    - Name: min
-      Entry: 3
-      Data: 0
-    - Name: max
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Homing
-      Entry: 5
-      Data: false
-    - Name: AOE
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: ProjectileBase
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -458,11 +374,11 @@ MonoBehaviour:
       Data: 
     - Name: projectilePools
       Entry: 7
-      Data: 9|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[PoolObjectQueue`1[[GenericProjectile,
+      Data: 3|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[PoolObjectQueue`1[[GenericProjectile,
         Assembly-CSharp]], Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 10|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+      Data: 4|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
@@ -481,8 +397,8 @@ MonoBehaviour:
       Data: 
     - Name: AoeEvent
       Entry: 7
-      Data: 11|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null]][], mscorlib
+      Data: 5|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null]][], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -494,7 +410,7 @@ MonoBehaviour:
       Data: 
     - Name: LaZorEvent
       Entry: 7
-      Data: 12|System.Func`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+      Data: 6|System.Func`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089]][], mscorlib
     - Name: 
       Entry: 12
@@ -559,19 +475,9 @@ MonoBehaviour:
   parentTowerComponent: {fileID: 0}
   RangeDetector: {fileID: 0}
   RangeCollider: {fileID: 0}
-  WeaponType: Projectile Effect
-  attack:
-    ProjectilesData:
-    - projectileEffect:
-        ProjectileLifeTime: 3
-        OnHitEffect: 0
-        TriggersOnCollision: 0
-        HitCounter: 1
-        TriggersOnSpecificTarget: 1
-        OnPositionReachedEffect: 1
-        Homing: 0
-        AOE: 0
-      ProjectileBase: {fileID: 0}
+  WeaponType: 0
+  projectileAttack:
+    ProjectilesData: []
   WeaponName: 
   TargetBank: {fileID: 0}
   testAsyncAttackcounter: 0
@@ -594,6 +500,474 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &634693226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 634693228}
+  - component: {fileID: 634693227}
+  m_Layer: 0
+  m_Name: GameObject (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &634693227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634693226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28357eec19cb4242891a4e0436a641e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: PlayerControl
+      Entry: 6
+      Data: 
+    - Name: towerSlotsWithPositions
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.Vector2, UnityEngine.CoreModule],[TowerSlotController,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[UnityEngine.Vector2,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  SecondDiscoveryRangeMultiplier: 0
+  SecondDiscoveryRange: 0
+  RangeDrawer: {fileID: 0}
+  MovementDuration: 0.15
+  MoveInProgress: 0
+  indicators:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  moveLock: 0
+  selectedTowerSlot: {fileID: 0}
+  ExternalTowerSlotActionsLock: 0
+  TowerActions:
+    ButtonNorth:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
+    ButtonEast:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
+    ButtonSouth:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
+    ButtonWest:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
+  speed: 0
+--- !u!4 &634693228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634693226}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.50654066, y: -0.39322233, z: -1.7355497}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &636700251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 636700252}
+  - component: {fileID: 636700254}
+  m_Layer: 0
+  m_Name: Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &636700252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636700251}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 754446696}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &636700254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636700251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2c8e9fee8787c4b84f4836239ec567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: projectileAttack
+      Entry: 7
+      Data: 0|ProjectileAttack, Assembly-CSharp
+    - Name: AttackFunction
+      Entry: 7
+      Data: 1|ShootOneProjectile, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ProjectilesData
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[ProjectilePoolCreationData, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: projectilePools
+      Entry: 7
+      Data: 3|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[PoolObjectQueue`1[[GenericProjectile,
+        Assembly-CSharp]], Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 4|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: AoeEvent
+      Entry: 7
+      Data: 5|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null]][], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: LaZorEvent
+      Entry: 7
+      Data: 6|System.Func`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089]][], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ProjectileQueuePool
+      Entry: 6
+      Data: 
+  RotatingComponent: 0
+  RotationSpeed: 5
+  IsMainTowerComponent: 1
+  debug: 0
+  SR: {fileID: 0}
+  Animancer: {fileID: 0}
+  Data:
+    componentRadius: 0
+    effectableTarget: {fileID: 0}
+    targetUnit:
+      targetTransform: {fileID: 0}
+      effectable: {fileID: 0}
+    orbitalData:
+      maxNumberOfOrbitals: 0
+      distanceFromRotatorBase: 0
+      orbitingSpeed: 0
+      rotationSpeed: 0
+      orbitBase: {fileID: 0}
+      initialNumberOfOrbitals: 0
+      orbitalGunPrefab: {fileID: 0}
+    projectileData:
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      aoeProjectileRadius: 0
+    SpawnerData:
+      playerUnitPrefab: {fileID: 0}
+      maxUnits: 0
+      playerUnitSpawnTime: 0
+    BeamData:
+      BeamDuration: 0
+      CooldownTime: 0
+      OscliatingBeamWidthMinMax:
+        min: 0
+        max: 0
+      OnHitBeamAnimation: {fileID: 0}
+      BeamMaterial: {fileID: 0}
+      beamWidth: 0
+      IsOscillating: 0
+      BeamOsciliationSpeed: 0
+      BeamMovementSpeed: 0
+    damageRange:
+      min: 0
+      max: 0
+    fireRate: 0
+    enemyTarget: {fileID: 0}
+    playerTarget: {fileID: 0}
+  ParentTower: {fileID: 0}
+  parentTowerSlot: {fileID: 0}
+  parentTowerComponent: {fileID: 0}
+  RangeDetector: {fileID: 0}
+  RangeCollider: {fileID: 0}
+  WeaponType: 0
+  projectileAttack:
+    ProjectilesData: []
+  WeaponName: 
+  TargetBank: {fileID: 0}
+  testAsyncAttackcounter: 0
+  AttackCounter: 0
+  CounterMax: 1
+  ExternalAttackLock: 0
+  canattackFieldPH: 0
+  projectileFinalPoint: {fileID: 0}
+  inAttackState: 0
+--- !u!1 &754446694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 754446696}
+  - component: {fileID: 754446695}
+  m_Layer: 0
+  m_Name: Tower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &754446695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754446694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c3afc8dd295e0e4e85069a7fc69b16f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TowerActionManager: {fileID: 0}
+  MainTowerComponent: {fileID: 0}
+  debug: 0
+  TowersDebug:
+  - Direction: 
+    GO: {fileID: 0}
+    Position: {x: 0, y: 0}
+    Distance: 0
+    ClockWiseTower: {fileID: 0}
+    CounterClockWiseTower: {fileID: 0}
+  - Direction: 
+    GO: {fileID: 0}
+    Position: {x: 0, y: 0}
+    Distance: 0
+    ClockWiseTower: {fileID: 0}
+    CounterClockWiseTower: {fileID: 0}
+  - Direction: 
+    GO: {fileID: 0}
+    Position: {x: 0, y: 0}
+    Distance: 0
+    ClockWiseTower: {fileID: 0}
+    CounterClockWiseTower: {fileID: 0}
+  - Direction: 
+    GO: {fileID: 0}
+    Position: {x: 0, y: 0}
+    Distance: 0
+    ClockWiseTower: {fileID: 0}
+    CounterClockWiseTower: {fileID: 0}
+  - Direction: 
+    GO: {fileID: 0}
+    Position: {x: 0, y: 0}
+    Distance: 0
+    ClockWiseTower: {fileID: 0}
+    CounterClockWiseTower: {fileID: 0}
+  - Direction: 
+    GO: {fileID: 0}
+    Position: {x: 0, y: 0}
+    Distance: 0
+    ClockWiseTower: {fileID: 0}
+    CounterClockWiseTower: {fileID: 0}
+  - Direction: 
+    GO: {fileID: 0}
+    Position: {x: 0, y: 0}
+    Distance: 0
+    ClockWiseTower: {fileID: 0}
+    CounterClockWiseTower: {fileID: 0}
+  - Direction: 
+    GO: {fileID: 0}
+    Position: {x: 0, y: 0}
+    Distance: 0
+    ClockWiseTower: {fileID: 0}
+    CounterClockWiseTower: {fileID: 0}
+  OrbitalGunsController: {fileID: 0}
+  parentSlotController: {fileID: 0}
+  TowerSprite: {fileID: 0}
+  TowerSpriteRenderer: {fileID: 0}
+  TowerActions:
+    ButtonNorth:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
+    ButtonEast:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
+    ButtonSouth:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
+    ButtonWest:
+      TowerComponent: {fileID: 0}
+      ActionDescription: Empty Action
+      ButtonSprite: {fileID: 0}
+      MainAction:
+        m_PersistentCalls:
+          m_Calls: []
+        TowerController: {fileID: 0}
+        UpgradePrefab: {fileID: 0}
+        ActionName: 
+      ActionCost: 0
+--- !u!4 &754446696
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754446694}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 636700252}
+  m_Father: {fileID: 1090710156}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &802769777
 GameObject:
@@ -766,6 +1140,186 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1090710155
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_Name
+      value: TowerSlot
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
+--- !u!4 &1090710156 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7921043470084178604, guid: d53823bb922edca419fd667d8b2b04ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 1090710155}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1136905980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1136905983}
+  - component: {fileID: 1136905982}
+  - component: {fileID: 1136905981}
+  - component: {fileID: 1136905984}
+  - component: {fileID: 1136905985}
+  m_Layer: 0
+  m_Name: GM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1136905981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136905980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe7f0c84b7d58f94e984e6df52672d88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1136905982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136905980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f2f077a9fdc424ea768285c4274216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1136905983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136905980}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.50654066, y: -0.39322233, z: -1.7355497}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1136905984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136905980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd269caabf3b21640bd50febeaa3a471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RangeDetector: {fileID: 0}
+  GameTimeMultiplier: 1
+  GameTime: 0
+  TowerSize: 0
+  TowerSprite: {fileID: 21300000, guid: 43f439af395afb241be9b86b4e040865, type: 3}
+  DistanceScoreMultiplier: 0
+--- !u!114 &1136905985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136905980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea331b6ebe1fdb24d8b7aee98f76b72b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmptyTowerSlot:
+    TowerPrefab: {fileID: 8798782153369218734, guid: c7b8c7725ff54cb4381f5954b8b5b8ef,
+      type: 3}
+    Price: 0
+  TestTower1:
+    TowerPrefab: {fileID: 8798782153369218734, guid: c7b8c7725ff54cb4381f5954b8b5b8ef,
+      type: 3}
+    Price: 0
+  TestTower2:
+    TowerPrefab: {fileID: 0}
+    Price: 0
+  TestTower3:
+    TowerPrefab: {fileID: 0}
+    Price: 0
+  TestTower4:
+    TowerPrefab: {fileID: 0}
+    Price: 0
 --- !u!1 &1146200272
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,7 +1441,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: attack
+    - Name: projectileAttack
       Entry: 7
       Data: 0|ProjectileAttack, Assembly-CSharp
     - Name: AttackFunction
@@ -1012,8 +1566,8 @@ MonoBehaviour:
   parentTowerComponent: {fileID: 0}
   RangeDetector: {fileID: 0}
   RangeCollider: {fileID: 0}
-  WeaponType: Projectile Effect
-  attack:
+  WeaponType: 0
+  projectileAttack:
     ProjectilesData: []
   WeaponName: 
   TargetBank: {fileID: 0}
@@ -1037,4 +1591,76 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1946284873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1946284875}
+  - component: {fileID: 1946284874}
+  m_Layer: 0
+  m_Name: towerParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1946284874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946284873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b178a5df0d50a40b06d929c7576500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: V2_Tsc
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.Vector2, UnityEngine.CoreModule],[TowerSlotController,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[UnityEngine.Vector2,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+--- !u!4 &1946284875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946284873}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.50654066, y: -0.39322233, z: -1.7355497}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
