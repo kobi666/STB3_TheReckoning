@@ -7,8 +7,11 @@ using UnityEngine;
 public abstract class ProjectileAttackFunction 
 {
     public abstract int NumOfProjectiles { get; set; }
+    
+    public abstract List<PoolObjectQueue<GenericProjectile>> ProjectilePools {get; set; }
+    public abstract void InitializeAttack();
 
-    public abstract void AttackFunction(List<PoolObjectQueue<GenericProjectile>> projectilePools, int numOfProjectiles,
+    public abstract void AttackFunction(
         Quaternion direction, Vector2 originPosition, Vector2 SingleTargetPosition, Effectable singleTarget);
 
     public event Action onAttack; 
@@ -16,10 +19,10 @@ public abstract class ProjectileAttackFunction
     /*public event Action<List<PoolObjectQueue<GenericProjectile>>, int,
         Quaternion, Vector2, Effectable, Effectable[],
         float, float, int, List<ProjectileExitPoint> ,List<ProjectileFinalPoint>> attack;*/
-    public void Attack(List<PoolObjectQueue<GenericProjectile>> projectilePools, Quaternion direction, Vector2 originPosition,
-        Vector2 SingleTargetPosition, Effectable singleTarget)
+    public void Attack(Quaternion direction, Vector2 originPosition,
+        Vector2 singleTargetPosition, Effectable singleTarget)
     {
         onAttack?.Invoke();
-        AttackFunction(projectilePools, NumOfProjectiles, direction, originPosition,SingleTargetPosition, singleTarget);
+        AttackFunction(direction, originPosition,singleTargetPosition, singleTarget);
     }
 }

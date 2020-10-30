@@ -44,7 +44,7 @@ public class GenericWeaponController : TowerComponent
     {
         if (WeaponType == 0)
         {
-            projectileAttack.InitProjectilePools(ParentTower.name);
+            projectileAttack.AttackFunction.InitializeAttack();
         }
     }
     

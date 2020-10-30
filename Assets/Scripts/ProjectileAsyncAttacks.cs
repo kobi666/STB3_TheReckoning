@@ -28,14 +28,25 @@ public class ShootOneProjectile : ProjectileAttackFunction {
     [ShowInInspector] 
     public override int NumOfProjectiles { get; set; } = 1;
 
-    public override void AttackFunction(List<PoolObjectQueue<GenericProjectile>> projectilePools, int numOfProjectiles, Quaternion direction, Vector2 originPosition,
-        Vector2 SingleTargetPosition, Effectable singleTarget)
+    public ProjectilePoolCreationData Projectile;
+
+    private List<PoolObjectQueue<GenericProjectile>> projectilePool;
+    public override List<PoolObjectQueue<GenericProjectile>> ProjectilePools { get => projectilePool; set => projectilePool = value; }
+    public override void InitializeAttack()
     {
-        GenericProjectile proj = projectilePools[0].GetInactive();
+        ProjectilePools.Add(Projectile.CreatePool());
+    }
+
+    public override void AttackFunction(Quaternion direction, Vector2 originPosition, Vector2 SingleTargetPosition,
+        Effectable singleTarget)
+    {
+        GenericProjectile proj = ProjectilePools[0].GetInactive();
         proj.TargetPosition = SingleTargetPosition; // can also be projectile final point position
         proj.EffectableTarget = singleTarget ?? null;
         proj.Activate();
     }
+
+    
 }
     
     
@@ -46,15 +57,24 @@ public class ShootOneProjectile : ProjectileAttackFunction {
         [ShowInInspector]
         public override int NumOfProjectiles { get; set; }
 
-        public override async void AttackFunction(List<PoolObjectQueue<GenericProjectile>> projectilePools, int numOfProjectiles, Quaternion direction, Vector2 originPosition,
+        public ProjectilePoolCreationData Projectile;
+
+        public override List<PoolObjectQueue<GenericProjectile>> ProjectilePools { get; set; }
+
+        public override void InitializeAttack()
+        {
+            ProjectilePools.Add(Projectile.CreatePool());
+        }
+
+        public override async void AttackFunction(Quaternion direction, Vector2 originPosition,
             Vector2 SingleTargetPosition, Effectable singleTarget)
         {
-            int counter = numOfProjectiles;
+            int counter = NumOfProjectiles;
             float timeCounter = 0;
             while (counter >= 0)
             {
                 if (timeCounter <= 0) {
-                    GenericProjectile proj = projectilePools[0].GetInactive();
+                    GenericProjectile proj = ProjectilePools[0].GetInactive();
                     proj.transform.position = originPosition;
                     proj.TargetPosition = SingleTargetPosition; // can also be projectile final point position
                     proj.EffectableTarget = singleTarget ?? null;

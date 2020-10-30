@@ -30,19 +30,7 @@ public class ProjectileAttack
     public List<ProjectilePoolCreationData> ProjectilesData = new List<ProjectilePoolCreationData>();
     public Dictionary<string,PoolObjectQueue<GenericProjectile>> projectilePools = new Dictionary<string,PoolObjectQueue<GenericProjectile>>();
 
-    public void InitProjectilePools(string towerName)
-    {
-        foreach (var projs in ProjectilesData)
-        {
-            if (projs != null)
-            {
-                (PoolObjectQueue<GenericProjectile>, string) pool = projs.CreatePool(towerName);
-                projectilePools.Add(pool.Item2,pool.Item1);
-            }
-        }
-    }
-    
-    
+
 }
 
 
