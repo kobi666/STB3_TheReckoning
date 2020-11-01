@@ -6,15 +6,22 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Threading.Tasks;
+using Sirenix.Serialization;
 
 public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProjectile>,IActiveObject<GenericProjectile>
 {
+    [OdinSerialize]
     public ProjectileEffect BaseProjectileEffect;
+    [OdinSerialize]
     public ProjectileMovementFunction MovementFunction;
+    private ProjectileDynamicData DynamicData = new ProjectileDynamicData();
+    private int hitCounter;
+    private bool projectileInitlized = false;
 
     public void Activate()
     {
         gameObject.SetActive(true);
+        OnMovementEvent(transform,EffectableTarget.transform,transform.position,TargetPosition);
     }
     
     private float MaxLifeTimeCounter = 0;
@@ -85,7 +92,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
                     if (ActiveTargets?.ContainsKey(n) ?? false) {
                         if (ActiveTargets[n].IsTargetable())
                             OnTargetHit(ActiveTargets[n]);
-                        BaseProjectileEffect.HitCounter -= 1;
+                        hitCounter -= 1;
                     }
                 }
             }
@@ -93,12 +100,12 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
                 if (GameObjectPool.Instance.ActiveEffectables?.Pool.ContainsKey(other.name) ?? false) {
                     if (ActiveTargets[other.name].IsTargetable())
                         OnTargetHit(ActiveTargets[other.name]);
-                    BaseProjectileEffect.HitCounter -= 1;
+                    hitCounter -= 1;
                 }
                 
             }
         }
-        if (BaseProjectileEffect.HitCounter == 0) {
+        if (hitCounter == 0) {
             OnHitCounterZero();
         }
     }
@@ -128,6 +135,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     public ActiveObjectPool<GenericProjectile> ActivePool { get => activePool; set { activePool = value;}}
     string TypeTag = "Projectile";
     
+    [ShowInInspector]
     public event Action<Transform, Transform, Vector2, Vector2> onMovementEvent;
     
     public void OnMovementEvent(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos,
@@ -155,13 +163,6 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
                 rangeDetector.SetRangeRadius(BaseProjectileEffect.EffectRadius);
             } 
         }
-    }
-
-    private void Awake()
-    {
-        onProjectileInit += InitProjectileMovement;
-        onProjectileInit += InitProjectileEffects;
-        onProjectileInit += initAOEProperties;
     }
 
     private event Action onProjectileInit;
@@ -225,7 +226,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     protected void Start()
     {
         //onTargetPositionReached += delegate { targetPositionSet = false; };
-        onHitCounterZero += delegate {gameObject.SetActive(false);};
+        //onHitCounterZero += delegate {gameObject.SetActive(false);};
         SpriteRenderer = GetComponent<SpriteRenderer>() ?? null;
         if (OnHitAnimation != null) {
             onHitAnimationQueuePool = GameObjectPool.Instance.GetSingleAnimationObjectQueue(OnHitAnimation);
@@ -238,12 +239,20 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     PoolObjectQueue<GenericProjectile> queuePool;
     public PoolObjectQueue<GenericProjectile> QueuePool {get => queuePool;set{queuePool = value;}}
     // Start is called before the first frame update
-    public Effectable EffectableTarget { get => Data.EffectableTarget ; set { Data.EffectableTarget = value;}}
 
-    public Vector2 TargetPosition { get => Data.TargetPosition; set {
-        Data.TargetPosition = value;
-        targetPositionSet = true;
-        }}
+
+    public Effectable EffectableTarget
+    {
+        get => DynamicData.EffectableTarget;
+        set => DynamicData.EffectableTarget = value;
+    }
+
+    public Vector2 TargetPosition
+    {
+        get => DynamicData.TargetPosition;
+        set => DynamicData.TargetPosition = value;
+
+    }
     public bool targetPositionSet = false;
     
     public float Speed {get => Data.Speed ; set {Data.Speed = value;}}
@@ -265,20 +274,67 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
         sao.PlayOnceAndDisable();
     }
 
+    public void initProjectile()
+    {
+        if (BaseProjectileEffect != null)
+        {
+            InitProjectileEffects();
+            initAOEProperties();
+        }
+        if (BaseProjectileEffect == null)
+        {
+            Debug.LogWarning("Init projectile called with effect null");
+        }
+        
+        
+        if (MovementFunction != null) {
+        InitProjectileMovement();
+        }
+
+        if (MovementFunction == null)
+        {
+            Debug.LogWarning("Init projectile called with movement function null" + " " + name);
+        }
+
+        projectileInitlized = true;
+    }
+    
+    public void initProjectileArgs(ProjectileEffect pe, ProjectileMovementFunction pm)
+    {
+        BaseProjectileEffect = pe;
+        MovementFunction = pm;
+        if (BaseProjectileEffect!= null) {
+        InitProjectileEffects();
+        initAOEProperties();
+        if (MovementFunction != null)
+        {
+            InitProjectileMovement();
+        }
+        }
+        else
+        {
+            Debug.LogWarning("NULLLZZZ");
+        }
+            
+    }
+
 
     void OnEnable()
     {
-        //MovementProgressCounter = 0f;
+        if (!projectileInitlized)
+        {
+            initProjectile();
+        }
         RangeDetector.enabled = true;
         ActivePool?.AddObjectToActiveObjectPool(this);
-        BaseProjectileEffect.HitCounter = 1;
+        hitCounter = BaseProjectileEffect.HitCounter;
     }
 
     protected void OnDisable()
     {
+        DynamicData.Clear();
         RangeDetector.enabled = false;
         targetPositionSet = false;
-        EffectableTarget = null;
         GameObjectPool.Instance.RemoveObjectFromAllPools(name,name);
         QueuePool?.ObjectQueue.Enqueue(this);
     }

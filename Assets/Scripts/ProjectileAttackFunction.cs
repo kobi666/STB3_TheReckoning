@@ -6,23 +6,27 @@ using UnityEngine;
 [System.Serializable]
 public abstract class ProjectileAttackFunction 
 {
-    public abstract int NumOfProjectiles { get; set; }
     
-    public abstract List<PoolObjectQueue<GenericProjectile>> ProjectilePools {get; set; }
+    //for some reason, the object pools cannot be instantiated as Lists, so a workaround is to create static pools.
+    //perhaps arrays or dictionaries will work better...
+    
+    
+    
+    public abstract int ProjectileMultiplier { get; set; }
     public abstract void InitializeAttack();
 
-    public abstract void AttackFunction(
-        Quaternion direction, Vector2 originPosition, Vector2 SingleTargetPosition, Effectable singleTarget);
+    public abstract void AttackFunction(Effectable singleTarget,
+         Vector2 SingleTargetPosition);
 
     public event Action onAttack; 
     
     /*public event Action<List<PoolObjectQueue<GenericProjectile>>, int,
         Quaternion, Vector2, Effectable, Effectable[],
         float, float, int, List<ProjectileExitPoint> ,List<ProjectileFinalPoint>> attack;*/
-    public void Attack(Quaternion direction, Vector2 originPosition,
-        Vector2 singleTargetPosition, Effectable singleTarget)
+    public void Attack(Effectable singleTarget,
+        Vector2 singleTargetPosition)
     {
         onAttack?.Invoke();
-        AttackFunction(direction, originPosition,singleTargetPosition, singleTarget);
+        AttackFunction(singleTarget, singleTargetPosition );
     }
 }

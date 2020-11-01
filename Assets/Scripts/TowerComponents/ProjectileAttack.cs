@@ -5,14 +5,14 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using System.Linq;
 using System.Threading.Tasks;
+using Sirenix.Serialization;
 using Random = UnityEngine.Random;
 
-[System.Serializable]
 public class ProjectileAttack
 {
     [TypeFilter("GetProjectileAttacks")]
     [LabelText("Attack Function")]
-    [ShowInInspector]
+    [OdinSerialize]
     public ProjectileAttackFunction AttackFunction = new ShootOneProjectile();
     
     private static IEnumerable<Type> GetProjectileAttacks()
@@ -24,11 +24,6 @@ public class ProjectileAttack
         
         return q;
     }
-
-
-    [LabelText("Projectile Data")]
-    public List<ProjectilePoolCreationData> ProjectilesData = new List<ProjectilePoolCreationData>();
-    public Dictionary<string,PoolObjectQueue<GenericProjectile>> projectilePools = new Dictionary<string,PoolObjectQueue<GenericProjectile>>();
 
 
 }

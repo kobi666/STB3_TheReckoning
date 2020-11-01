@@ -25,9 +25,14 @@ public class GenericWeaponController : TowerComponent
         {"Beam Effect",2}
     };
 
-    [ShowIf("WeaponType", 0)] [OdinSerialize] [BoxGroup]
+    [ShowIf("WeaponType", 0)][BoxGroup][OdinSerialize]
     public ProjectileAttack projectileAttack;
 
+    void FireProjectileAttack()
+    {
+        projectileAttack.AttackFunction.Attack(Target.Effectable,Target.transform.position);
+    }
+    
     
     
     
@@ -45,6 +50,7 @@ public class GenericWeaponController : TowerComponent
         if (WeaponType == 0)
         {
             projectileAttack.AttackFunction.InitializeAttack();
+            onAttack += FireProjectileAttack;
         }
     }
     
@@ -176,7 +182,7 @@ public class GenericWeaponController : TowerComponent
         while (CanAttack() && AsyncAttackInProgress == true) {
             if (AttackCounter >= CounterMax)
             {
-                AttackOnce();
+                Attack();
             }
 
             if (CanAttack() == false)
@@ -195,35 +201,23 @@ public class GenericWeaponController : TowerComponent
         testAsyncAttackcounter -= 1;
     }
 
-    public event Action OnAttack;
 
-    public event Action<GenericProjectile> onProjectileAttack;
+    event Action onAttack;
 
-    public void ProjectileAttack()
+    void OnAttack()
     {
-        GenericProjectile proj = ProjectileQueuePool.GetInactive();
-        proj.transform.position = ProjectileExitPoint;
-        proj.EffectableTarget = Target.Effectable;
-        proj.TargetPosition = ProjectileFinalPointV2;
-        proj.Damage = Data.damageRange.RandomDamage();
-        proj.Speed = Data.projectileData.projectileSpeed;
-        proj.gameObject.SetActive(true);
-        onProjectileAttack?.Invoke(proj);
+        onAttack?.Invoke();
     }
 
-    public void MainAttackFunction()
-    {
-        
-    }
+    
 
-    void AttackOnce()
+    void Attack()
     {
         if (CounterMax > 0 ) {
             if (AttackCounter >= CounterMax)
             {
                 AttackCounter = 0;
-                MainAttackFunction();
-                
+                OnAttack();
             }
         }
 

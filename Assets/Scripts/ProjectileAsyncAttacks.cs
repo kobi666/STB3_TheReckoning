@@ -6,6 +6,7 @@ using System.Reflection;
 using UnityEngine;
 using System.Threading.Tasks;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using Sirenix.Utilities;
 
 [System.Serializable]
@@ -26,23 +27,28 @@ public class ProjectileAsyncAttacks
 [System.Serializable]
 public class ShootOneProjectile : ProjectileAttackFunction {
     [ShowInInspector] 
-    public override int NumOfProjectiles { get; set; } = 1;
+    public override int ProjectileMultiplier { get; set; } = 1;
 
-    public ProjectilePoolCreationData Projectile;
+    [OdinSerialize] public List<ProjectilePoolCreationData> Projectile = new List<ProjectilePoolCreationData>();
+    //public List<ProjectilePoolCreationData> pools = new List<ProjectilePoolCreationData>();
+    public ProjectileExitPoint ExitPoint;
+    public ProjectileFinalPoint FinalPoint;
 
-    private List<PoolObjectQueue<GenericProjectile>> projectilePool;
-    public override List<PoolObjectQueue<GenericProjectile>> ProjectilePools { get => projectilePool; set => projectilePool = value; }
+    private PoolObjectQueue<GenericProjectile> projectilePool;
+    
     public override void InitializeAttack()
     {
-        ProjectilePools.Add(Projectile.CreatePool());
+        projectilePool = Projectile[0].CreatePool();
     }
 
-    public override void AttackFunction(Quaternion direction, Vector2 originPosition, Vector2 SingleTargetPosition,
-        Effectable singleTarget)
+    public override void AttackFunction(Effectable singleTarget,Vector2 SingleTargetPosition)
     {
-        GenericProjectile proj = ProjectilePools[0].GetInactive();
-        proj.TargetPosition = SingleTargetPosition; // can also be projectile final point position
+        GenericProjectile proj = projectilePool.GetInactive();
+        proj.transform.rotation = ExitPoint.transform.rotation;
+        proj.transform.position = ExitPoint.transform.position;
+        proj.TargetPosition = FinalPoint?.transform.position ?? SingleTargetPosition; // can also be projectile final point position
         proj.EffectableTarget = singleTarget ?? null;
+        Debug.LogWarning("proj position at : " + proj.transform.position + " proj target pos at : " +  proj.TargetPosition);
         proj.Activate();
     }
 
@@ -55,30 +61,37 @@ public class ShootOneProjectile : ProjectileAttackFunction {
     public class ShootMultipleProjectilesOneAfterTheOther : ProjectileAttackFunction
     {
         [ShowInInspector]
-        public override int NumOfProjectiles { get; set; }
+        public override int ProjectileMultiplier { get; set; }
 
-        public ProjectilePoolCreationData Projectile;
+        public int NumOfProjectiles = 3;
+        public float timebetweenProjectiles = 0.5f;
 
-        public override List<PoolObjectQueue<GenericProjectile>> ProjectilePools { get; set; }
+        
+        [OdinSerialize] public List<ProjectilePoolCreationData> Projectile = new List<ProjectilePoolCreationData>();
+        public ProjectileExitPoint ExitPoint;
+        public ProjectileFinalPoint FinalPoint;
+        
+        private PoolObjectQueue<GenericProjectile> projectilePool;
 
         public override void InitializeAttack()
         {
-            ProjectilePools.Add(Projectile.CreatePool());
+            projectilePool = Projectile[0].CreatePool();
         }
 
-        public override async void AttackFunction(Quaternion direction, Vector2 originPosition,
-            Vector2 SingleTargetPosition, Effectable singleTarget)
+        public override async void AttackFunction(Effectable singleTarget,
+            Vector2 SingleTargetPosition)
         {
             int counter = NumOfProjectiles;
             float timeCounter = 0;
             while (counter >= 0)
             {
                 if (timeCounter <= 0) {
-                    GenericProjectile proj = ProjectilePools[0].GetInactive();
-                    proj.transform.position = originPosition;
-                    proj.TargetPosition = SingleTargetPosition; // can also be projectile final point position
+                    GenericProjectile proj = projectilePool.GetInactive();
+                    proj.transform.position = ExitPoint.transform.position;
+                    proj.transform.rotation = ExitPoint.transform.rotation;
+                    proj.TargetPosition = FinalPoint?.transform.position ?? SingleTargetPosition; //can also be projectile final point position
                     proj.EffectableTarget = singleTarget ?? null;
-                    proj.transform.rotation = direction;
+                    
                     proj.Activate();
                     timeCounter = timebetweenProjectiles;
                     counter -= 1;
@@ -89,7 +102,7 @@ public class ShootOneProjectile : ProjectileAttackFunction {
         }
 
 
-        public float timebetweenProjectiles = 0.5f;
+       
 
     }
 

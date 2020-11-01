@@ -29,6 +29,18 @@ public class Damage : Effect
     }
 }
 
+
+public class DebugEffect : Effect
+{
+    public override void Apply(Effectable ef)
+    {
+        
+    }
+}
+
+
+
+
 [System.Serializable]
 public class DoSomethingWithPrefab : Effect
 {

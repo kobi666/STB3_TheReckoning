@@ -6,11 +6,14 @@ using UnityEngine;
 using System.Threading.Tasks;
 
 [System.Serializable]
-public abstract class ProjectileMovementFunction
+public class ProjectileMovementFunction
 {
-    public abstract void MovementFunction(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos,
+    public virtual void MovementFunction(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos,
         Vector2 TargetPos,
-        float speed);
+        float speed)
+    {
+        Debug.LogWarning("NULL MOVEMENT FUNCTION");
+    }
 
     public float speed;
 
@@ -30,7 +33,7 @@ public abstract class ProjectileMovementFunction
     public async void MoveToTargetPosition(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos, Vector2 TargetPos
         )
     {
-        while ((Vector2)projectileTransform.position != TargetPos && ExternalMovementLock == false)
+        while ((Vector2)projectileTransform?.position != TargetPos && ExternalMovementLock == false)
         {
             MovementFunction(projectileTransform, null, originPos, TargetPos, speed);
             await Task.Yield();

@@ -6,14 +6,14 @@ using System;
 using System.Linq;
 using Random = UnityEngine.Random;
 
-[System.Serializable]
 [HideLabel]
 public class ProjectilePoolCreationData
 {
     
     [TypeFilter("GetMovementFunctions")]
     public ProjectileMovementFunction projectileMovement;
-    public ProjectileEffect projectileEffect = new ProjectileEffect();
+
+    [HideLabel] public ProjectileEffect projectileEffect;
     public GenericProjectile ProjectileBase;
     static Vector3 nowhere = new Vector3(9999,9999,9999);
     
@@ -31,16 +31,16 @@ public class ProjectilePoolCreationData
     public PoolObjectQueue<GenericProjectile> CreatePool()
     {
         GenericProjectile proj = GameObject.Instantiate(ProjectileBase, nowhere, Quaternion.identity);
-        proj.gameObject.SetActive(false);
         proj.BaseProjectileEffect = projectileEffect;
         proj.MovementFunction = projectileMovement;
-        proj.name = ProjectileBase + "_" + Random.Range(0, 999999).ToString();
-        proj.OnProjectileInit();
+        proj.name = ProjectileBase + "_" + Random.Range(0, 999999);
+        proj.initProjectileArgs(projectileEffect,projectileMovement);
         GameObject placeholder = GameObject.Instantiate(new GameObject(), Vector3.zero, Quaternion.identity,
             GameObjectPool.Instance.transform);
         placeholder.name = proj.name + "_placeHolder";
-        PoolObjectQueue<GenericProjectile> pool = new PoolObjectQueue<GenericProjectile>(proj, 5, placeholder);
-        pool.ObjectQueue.Enqueue(proj);
+        proj.gameObject.SetActive(false);
+        PoolObjectQueue<GenericProjectile> pool = new PoolObjectQueue<GenericProjectile>(proj, 10, placeholder);
+        //pool.ObjectQueue.Enqueue(proj);
         return pool;
     }
 }

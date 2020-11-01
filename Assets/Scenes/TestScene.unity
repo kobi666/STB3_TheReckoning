@@ -296,7 +296,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8996652684618427095, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
@@ -1050,6 +1050,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 354324575}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &357321245 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2275542799276280030, guid: 43b0a984e43ce9c48816a023d43ea06f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1615952955}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0e162f14b01c34d8215408fd521263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &362019021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2336,7 +2348,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
@@ -2817,7 +2829,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
@@ -3548,7 +3560,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
@@ -4480,6 +4492,7 @@ GameObject:
   - component: {fileID: 1084532688}
   - component: {fileID: 1084532690}
   - component: {fileID: 1084532689}
+  - component: {fileID: 1084532691}
   m_Layer: 0
   m_Name: TestGenericWeapon
   m_TagString: Untagged
@@ -4535,6 +4548,8 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 2074054408246329578, guid: 9da627fd3c069124293a4087546e4294, type: 3}
+    - {fileID: 357321245}
+    - {fileID: 1415243750}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -4545,11 +4560,14 @@ MonoBehaviour:
       Data: 0|ProjectileAttack, Assembly-CSharp
     - Name: AttackFunction
       Entry: 7
-      Data: 1|ShootOneProjectile, Assembly-CSharp
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: ProjectilesData
+      Data: 1|ShootMultipleProjectilesOneAfterTheOther, Assembly-CSharp
+    - Name: NumOfProjectiles
+      Entry: 3
+      Data: 3
+    - Name: timebetweenProjectiles
+      Entry: 4
+      Data: 0.5
+    - Name: Projectile
       Entry: 7
       Data: 2|System.Collections.Generic.List`1[[ProjectilePoolCreationData, Assembly-CSharp]],
         mscorlib
@@ -4564,7 +4582,7 @@ MonoBehaviour:
       Data: 4|MoveStraight, Assembly-CSharp
     - Name: speed
       Entry: 4
-      Data: 0
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -4594,10 +4612,10 @@ MonoBehaviour:
       Data: 8|DamageRange, Assembly-CSharp
     - Name: min
       Entry: 3
-      Data: 20
+      Data: 0
     - Name: max
       Entry: 3
-      Data: 50
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -4612,7 +4630,7 @@ MonoBehaviour:
       Data: 
     - Name: TriggersOnCollision
       Entry: 5
-      Data: false
+      Data: true
     - Name: HitCounter
       Entry: 3
       Data: 1
@@ -4676,23 +4694,12 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: projectilePools
-      Entry: 7
-      Data: 12|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[PoolObjectQueue`1[[GenericProjectile,
-        Assembly-CSharp]], Assembly-CSharp]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 13|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
+    - Name: ExitPoint
+      Entry: 10
+      Data: 1
+    - Name: FinalPoint
+      Entry: 10
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -4701,7 +4708,7 @@ MonoBehaviour:
       Data: 
     - Name: AoeEvent
       Entry: 7
-      Data: 14|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0,
+      Data: 12|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null]][], mscorlib
     - Name: 
       Entry: 12
@@ -4714,7 +4721,7 @@ MonoBehaviour:
       Data: 
     - Name: LaZorEvent
       Entry: 7
-      Data: 15|System.Func`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+      Data: 13|System.Func`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089]][], mscorlib
     - Name: 
       Entry: 12
@@ -4734,8 +4741,9 @@ MonoBehaviour:
   debug: 0
   SR: {fileID: 0}
   Animancer: {fileID: 0}
+  legacyTower: 1
   Data:
-    componentRadius: 0
+    componentRadius: 3
     effectableTarget: {fileID: 0}
     targetUnit:
       targetTransform: {fileID: 0}
@@ -4771,7 +4779,7 @@ MonoBehaviour:
     damageRange:
       min: 0
       max: 0
-    fireRate: 50
+    fireRate: 1
     enemyTarget: {fileID: 0}
     playerTarget: {fileID: 0}
   ParentTower: {fileID: 0}
@@ -4780,19 +4788,6 @@ MonoBehaviour:
   RangeDetector: {fileID: 0}
   RangeCollider: {fileID: 0}
   WeaponType: 0
-  projectileAttack:
-    ProjectilesData:
-    - projectileEffect:
-        ProjectileLifeTime: 3
-        OnHitEffect: 1
-        TriggersOnCollision: 0
-        HitCounter: 1
-        TriggersOnSpecificTarget: 0
-        OnPositionReachedEffect: 0
-        Homing: 0
-        AOE: 0
-      ProjectileBase: {fileID: 2074054408246329578, guid: 9da627fd3c069124293a4087546e4294,
-        type: 3}
   WeaponName: 
   TargetBank: {fileID: 0}
   testAsyncAttackcounter: 0
@@ -4802,6 +4797,20 @@ MonoBehaviour:
   canattackFieldPH: 0
   projectileFinalPoint: {fileID: 0}
   inAttackState: 0
+--- !u!114 &1084532691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084532687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97acf04cbdcbe48438fa4899ec1a05a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OrbitalsOrbitBound: 1
+  parentTowerComponent: {fileID: 0}
 --- !u!1 &1138084414
 GameObject:
   m_ObjectHideFlags: 0
@@ -4985,7 +4994,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
@@ -5338,6 +5347,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8996652684618427095, guid: d53823bb922edca419fd667d8b2b04ef,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
 --- !u!4 &1216659133 stripped
@@ -5421,7 +5435,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
@@ -5495,7 +5509,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
@@ -5707,6 +5721,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02275c8483eed24d98dcd24189b5768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1415243750 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2191932398054562708, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1883151754}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c595c544edd53948b582fc2cb5cb31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1419546474
 GameObject:
   m_ObjectHideFlags: 0
@@ -5831,7 +5857,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
@@ -6380,7 +6406,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
@@ -6454,7 +6480,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8996652684618427095, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
@@ -7091,7 +7117,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
@@ -7639,7 +7665,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
@@ -7650,6 +7676,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1084532688}
     m_Modifications:
+    - target: {fileID: 631715455718265086, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3905871268722241388, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
         type: 3}
       propertyPath: m_Name
@@ -7658,7 +7689,7 @@ PrefabInstance:
     - target: {fileID: 8626309326448447657, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.45
       objectReference: {fileID: 0}
     - target: {fileID: 8626309326448447657, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
         type: 3}
@@ -8201,7 +8232,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
@@ -8286,7 +8317,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
@@ -8671,7 +8702,7 @@ PrefabInstance:
     - target: {fileID: 7921043470084178605, guid: d53823bb922edca419fd667d8b2b04ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53823bb922edca419fd667d8b2b04ef, type: 3}
@@ -8935,6 +8966,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6641476789242659999, guid: bb2436c6546a1c542a53192bd2a46d4d,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 6641476789242659999, guid: bb2436c6546a1c542a53192bd2a46d4d,
+        type: 3}
     - target: {fileID: 6892659531000615052, guid: bb2436c6546a1c542a53192bd2a46d4d,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value

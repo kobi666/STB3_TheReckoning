@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class WeaponAttack 
+public abstract class WeaponAttack
 {
-    public void Attack()
-    {
-        
-        
-    }
+    public abstract void Attack();
+    
+
+    public abstract void InitlizeAttack();
 }

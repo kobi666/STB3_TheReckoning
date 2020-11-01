@@ -20,7 +20,10 @@ public abstract class TowerComponent : SerializedMonoBehaviour
     public SpriteRenderer SR;
     [ConditionalField("debug")]
     public AnimancerComponent Animancer;
+
+    public bool legacyTower = true;
     
+    [ShowIf("legacyTower")]
     public TowerComponentData Data;
     
     public TowerController ParentTower;
