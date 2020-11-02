@@ -2,23 +2,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 public class ProjectileFinalPoint : MonoBehaviour
 {
     WeaponController parentTowerComponent;
-    private void Start() {
-        parentTowerComponent = transform.parent?.GetComponent<WeaponController>() ?? null;
-        
-        if (parentTowerComponent != null) {
-        transform.position = new Vector2(transform.position.x + parentTowerComponent.Data.componentRadius, transform.position.y);
-        }
-    }
+    private GenericWeaponController ParentWeaponController;
 
+    public TargetUnit Target
+    {
+        get => parentTowerComponent.Target;
+    }
+    
     public RangeDetector RangeDetector;
     public EffectableTargetBank EffectableTargetBank;
-    private void Awake()
+    protected void Awake()
     {
         EffectableTargetBank = GetComponent<EffectableTargetBank>() ?? null;
-        RangeDetector = RangeDetector ?? GetComponentInChildren<RangeDetector>() ?? null;
     }
+    
+    protected void Start() {
+        parentTowerComponent = transform.parent?.GetComponent<WeaponController>() ?? null;
+        RangeDetector = RangeDetector ?? GetComponentInChildren<RangeDetector>() ?? null;
+        if (parentTowerComponent != null) {
+            transform.position = new Vector2(transform.position.x + parentTowerComponent.Data.componentRadius, transform.position.y);
+        }
+        ParentWeaponController = GetComponentInParent<GenericWeaponController>();
+    }
+
+    
+
+    
+    public async void rotateTowerdsTarget(Transform target)
+    {
+        
+    }
+    
 }

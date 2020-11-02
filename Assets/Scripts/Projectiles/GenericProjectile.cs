@@ -202,11 +202,11 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     {
         if (BaseProjectileEffect.Homing)
         {
-            onMovementEvent = MovementFunction.MoveToTargetTransform;
+            onMovementEvent += MovementFunction.MoveToTargetTransform;
         }
         else
         {
-            onMovementEvent = MovementFunction.MoveToTargetPosition;
+            onMovementEvent += MovementFunction.MoveToTargetPosition;
         }
     }
     
@@ -274,35 +274,39 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
         sao.PlayOnceAndDisable();
     }
 
-    public void initProjectile()
+    public void InitProjectile()
     {
         if (BaseProjectileEffect != null)
         {
             InitProjectileEffects();
             initAOEProperties();
         }
+
         if (BaseProjectileEffect == null)
         {
+
             Debug.LogWarning("Init projectile called with effect null");
         }
-        
-        
-        if (MovementFunction != null) {
-        InitProjectileMovement();
-        }
 
-        if (MovementFunction == null)
+
+        if (MovementFunction != null)
         {
-            Debug.LogWarning("Init projectile called with movement function null" + " " + name);
-        }
+            InitProjectileMovement();
+            if (MovementFunction == null)
+            {
+                Debug.LogWarning("Init projectile called with movement function null" + " " + name);
+            }
 
-        projectileInitlized = true;
+            projectileInitlized = true;
+        }
     }
-    
-    public void initProjectileArgs(ProjectileEffect pe, ProjectileMovementFunction pm)
+
+    /*public void initProjectileArgs(ProjectileEffect pe, ProjectileMovementFunction pm)
     {
         BaseProjectileEffect = pe;
         MovementFunction = pm;
+        Debug.LogWarning("pm null:" +  (pm == null));
+        Debug.LogWarning("projectile movement null" + (MovementFunction == null));
         if (BaseProjectileEffect!= null) {
         InitProjectileEffects();
         initAOEProperties();
@@ -316,14 +320,14 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
             Debug.LogWarning("NULLLZZZ");
         }
             
-    }
+    }*/
 
 
     void OnEnable()
     {
         if (!projectileInitlized)
         {
-            initProjectile();
+            InitProjectile();
         }
         RangeDetector.enabled = true;
         ActivePool?.AddObjectToActiveObjectPool(this);

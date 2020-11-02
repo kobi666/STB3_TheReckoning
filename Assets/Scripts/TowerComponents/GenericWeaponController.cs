@@ -134,16 +134,29 @@ public class GenericWeaponController : TowerComponent
         }
     }
 
-    public virtual void StandardOnTargetEnteredRange(GenericWeaponController self, Effectable ef) {
+    public event Action<TargetUnit> onTargetAdd;
+
+    public void OnTargetAdd(TargetUnit tu)
+    {
+        onTargetAdd?.Invoke(tu);
+    }
+
+    void SetTarget(TargetUnit tu)
+    {
+        Target = tu;
+    }
+    
+    
+    public void StandardOnTargetEnteredRange(GenericWeaponController self, Effectable ef) {
         TargetUnit tu = GameObjectPool.Instance.GetTargetUnit(ef.name);
         if (Target?.Effectable == null) {
-            Target = tu;
+            OnTargetAdd(tu);
             InAttackState = true;
         }
         if (Target?.Effectable != null) {
             
             if (tu.Proximity < Target.Proximity) {
-                Target = tu;
+                OnTargetAdd(tu);
                 InAttackState = true;
             }
         }
@@ -278,6 +291,7 @@ public class GenericWeaponController : TowerComponent
     protected void Awake()
     {
         base.Awake();
+        onTargetAdd += SetTarget;
     }
     public override void PostAwake() {
         
@@ -290,6 +304,7 @@ public class GenericWeaponController : TowerComponent
         
         onAttackInitiate += StartAsyncAttack;
         onAttackCease += StopAsyncAttack;
+        
         
         if (RotatingComponent) {
         onAttackInitiate += RotateTowardsTarget;
@@ -317,7 +332,8 @@ public class GenericWeaponController : TowerComponent
         }
 
         ParentTower = ParentTower ?? GetComponentInParent<TowerController>();
-
+        onAttackInitiate += projectileExitPoint.StartAsyncRotation;
+        onAttackCease += projectileExitPoint.StopAsyncRotation;
         InitWeapon();
     }
 
