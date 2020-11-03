@@ -9,7 +9,7 @@ public class ProjectileExitPoint : SerializedMonoBehaviour
 {
     public GenericWeaponController ParentWeaponController;
     public float rotationSpeed = 1;
-    public TargetUnit TargetUnit
+    public TargetUnit Target
     {
         get => ParentWeaponController?.Target;
     }
@@ -39,10 +39,12 @@ public class ProjectileExitPoint : SerializedMonoBehaviour
     }
     
     public void DefaultRotationFunction() {
-        Vector2 vecToTarget = TargetUnit.transform.position - transform.position;
+        
+        Vector2 vecToTarget = Target.transform.position - transform.position;
         float angleToTarget = Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg;
         Quaternion q = Quaternion.AngleAxis(angleToTarget, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, q, StaticObjects.instance.DeltaGameTime * rotationSpeed);
+        
     }
     
 }

@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Threading.Tasks;
 using Sirenix.Serialization;
+using UnityEditor;
 
 public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProjectile>,IActiveObject<GenericProjectile>
 {
@@ -17,6 +18,28 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     private ProjectileDynamicData DynamicData = new ProjectileDynamicData();
     private int hitCounter;
     private bool projectileInitlized = false;
+    
+    
+#if UNITY_EDITOR
+    [TagSelectorAttribute]
+# endif
+    public string[] DiscoverableTags = new string[] { };
+    public void AddTagToDiscoverableTags(string _tag) {
+        
+        for (int i = 0; i < DiscoverableTags.Length ; i++)
+        {
+            
+            if (String.IsNullOrEmpty(DiscoverableTags[i])) {
+                DiscoverableTags[i] = _tag;
+                break;
+            }
+            if (i >= DiscoverableTags.Length -1) {
+                Debug.LogWarning("No Empty Tag slots!");
+            }
+        }
+    }
+    List<string> DiscoverableTagsList = new List<string>();
+    
 
     public void Activate()
     {
@@ -83,28 +106,36 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
 
 
     public void OnTriggerEnter2D(Collider2D other) {
-        if (BaseProjectileEffect.TriggersOnCollision) {
-            if (BaseProjectileEffect.TriggersOnSpecificTarget)
+        if (DiscoverableTagsList.Contains(other.tag))
+        {
+            if (BaseProjectileEffect.TriggersOnCollision)
             {
-                if (other.name == EffectableTarget.name)
+                if (BaseProjectileEffect.TriggersOnSpecificTarget)
                 {
-                    string n = EffectableTarget.name;
-                    if (ActiveTargets?.ContainsKey(n) ?? false) {
-                        if (ActiveTargets[n].IsTargetable())
-                            OnTargetHit(ActiveTargets[n]);
-                        hitCounter -= 1;
+                    if (other.name == EffectableTarget.name)
+                    {
+                        string n = EffectableTarget.name;
+                        if (ActiveTargets?.ContainsKey(n) ?? false)
+                        {
+                            if (ActiveTargets[n].IsTargetable())
+                                OnTargetHit(ActiveTargets[n]);
+                            hitCounter -= 1;
+                        }
                     }
                 }
-            }
-            else { 
-                if (GameObjectPool.Instance.ActiveEffectables?.Pool.ContainsKey(other.name) ?? false) {
-                    if (ActiveTargets[other.name].IsTargetable())
-                        OnTargetHit(ActiveTargets[other.name]);
-                    hitCounter -= 1;
+                else
+                {
+                    if (GameObjectPool.Instance.ActiveEffectables?.Pool.ContainsKey(other.name) ?? false)
+                    {
+                        if (ActiveTargets[other.name].IsTargetable())
+                            OnTargetHit(ActiveTargets[other.name]);
+                        hitCounter -= 1;
+                    }
+
                 }
-                
             }
         }
+
         if (hitCounter == 0) {
             OnHitCounterZero();
         }

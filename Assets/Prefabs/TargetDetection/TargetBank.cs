@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Sirenix.OdinInspector;
 
 [System.Serializable]
-public abstract class TargetBank<T> : MonoBehaviour where T : Component
+public abstract class TargetBank<T> : SerializedMonoBehaviour where T : Component
 
 {
     private void OnEnable()

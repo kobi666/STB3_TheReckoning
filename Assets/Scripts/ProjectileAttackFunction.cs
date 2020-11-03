@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 
 [System.Serializable]
 public abstract class ProjectileAttackFunction 
@@ -17,16 +18,19 @@ public abstract class ProjectileAttackFunction
 
     public abstract void AttackFunction(Effectable singleTarget,
          Vector2 SingleTargetPosition);
-
-    public event Action onAttack; 
     
-    /*public event Action<List<PoolObjectQueue<GenericProjectile>>, int,
-        Quaternion, Vector2, Effectable, Effectable[],
-        float, float, int, List<ProjectileExitPoint> ,List<ProjectileFinalPoint>> attack;*/
-    public void Attack(Effectable singleTarget,
+    
+
+    public event Action onAttack;
+
+
+    public bool AsyncAttackInProgress;
+
+
+    public async void Attack(Effectable singleTarget,
         Vector2 singleTargetPosition)
     {
         onAttack?.Invoke();
-        AttackFunction(singleTarget, singleTargetPosition );
+        AttackFunction(singleTarget, singleTargetPosition);
     }
 }

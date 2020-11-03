@@ -108,8 +108,110 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
+    - Name: BaseProjectileEffect
+      Entry: 7
+      Data: 0|ProjectileEffect, Assembly-CSharp
+    - Name: ProjectileLifeTime
+      Entry: 4
+      Data: 3
+    - Name: OnHitEffect
+      Entry: 5
+      Data: false
+    - Name: onHitEffects
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[Effect, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 2|Damage, Assembly-CSharp
+    - Name: IsAOE
+      Entry: 5
+      Data: false
+    - Name: DamageRange
+      Entry: 7
+      Data: 3|DamageRange, Assembly-CSharp
+    - Name: min
+      Entry: 3
+      Data: 0
+    - Name: max
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: TriggersOnCollision
+      Entry: 5
+      Data: false
+    - Name: HitCounter
+      Entry: 3
+      Data: 1
+    - Name: TriggersOnSpecificTarget
+      Entry: 5
+      Data: false
+    - Name: OnPositionReachedEffect
+      Entry: 5
+      Data: false
+    - Name: onPositionReachedEffects
+      Entry: 7
+      Data: 4|System.Collections.Generic.List`1[[Effect, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 5|Damage, Assembly-CSharp
+    - Name: IsAOE
+      Entry: 5
+      Data: false
+    - Name: DamageRange
+      Entry: 7
+      Data: 6|DamageRange, Assembly-CSharp
+    - Name: min
+      Entry: 3
+      Data: 0
+    - Name: max
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Homing
+      Entry: 5
+      Data: false
+    - Name: AOE
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: MovementFunction
-      Entry: 6
+      Entry: 7
+      Data: 7|ProjectileMovementFunction, Assembly-CSharp
+    - Name: speed
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
       Data: 
     - Name: onHitMultipleTargets
       Entry: 6
@@ -123,6 +225,10 @@ MonoBehaviour:
     OnPositionReachedEffect: 0
     Homing: 0
     AOE: 0
+  MovementFunction:
+    speed: 0
+  DiscoverableTags:
+  - Enemy
   Data:
     Speed: 0
     EffectRadius: 0

@@ -51,6 +51,8 @@ public class GenericWeaponController : TowerComponent
         {
             projectileAttack.AttackFunction.InitializeAttack();
             onAttack += FireProjectileAttack;
+            onAttackInitiate += projectileFinalPoint.StartAsyncRotation;
+            onAttackCease += projectileFinalPoint.StopAsyncRotation;
         }
     }
     
@@ -335,6 +337,7 @@ public class GenericWeaponController : TowerComponent
         onAttackInitiate += projectileExitPoint.StartAsyncRotation;
         onAttackCease += projectileExitPoint.StopAsyncRotation;
         InitWeapon();
+        projectileFinalPoint.Position = new Vector2(projectileFinalPoint.Position.x + (Data.componentRadius * 0.5f), projectileFinalPoint.Position.y);
     }
 
     protected void Update()

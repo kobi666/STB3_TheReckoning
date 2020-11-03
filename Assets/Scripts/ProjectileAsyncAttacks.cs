@@ -40,16 +40,23 @@ public class ShootOneProjectile : ProjectileAttackFunction {
     {
         projectilePool = Projectile[0].CreatePool();
     }
-
-    public override void AttackFunction(Effectable singleTarget,Vector2 SingleTargetPosition)
+    
+    
+    
+    public override async void AttackFunction(Effectable singleTarget,Vector2 SingleTargetPosition)
     {
-        GenericProjectile proj = projectilePool.GetInactive();
-        proj.transform.rotation = ExitPoint.transform.rotation;
-        proj.transform.position = ExitPoint.transform.position;
-        proj.TargetPosition = FinalPoint?.transform.position ?? SingleTargetPosition; // can also be projectile final point position
-        proj.EffectableTarget = singleTarget ?? null;
-        Debug.LogWarning("proj position at : " + proj.transform.position + " proj target pos at : " +  proj.TargetPosition);
-        proj.Activate();
+        if (AsyncAttackInProgress == false)
+        { 
+            AsyncAttackInProgress = true;
+            GenericProjectile proj = projectilePool.GetInactive();
+            proj.transform.rotation = ExitPoint.transform.rotation;
+            proj.transform.position = ExitPoint.transform.position;
+            proj.TargetPosition = FinalPoint?.Position ?? SingleTargetPosition; // can also be projectile final point position
+            proj.EffectableTarget = singleTarget ?? null;
+            Debug.LogWarning("proj position at : " + proj.transform.position + " proj target pos at : " +  proj.TargetPosition);
+            proj.Activate();
+            AsyncAttackInProgress = false;
+        }
     }
 
     
@@ -83,21 +90,27 @@ public class ShootOneProjectile : ProjectileAttackFunction {
         {
             int counter = NumOfProjectiles;
             float timeCounter = 0;
-            while (counter >= 0)
+            if (AsyncAttackInProgress == false)
             {
-                if (timeCounter <= 0) {
-                    GenericProjectile proj = projectilePool.GetInactive();
-                    proj.transform.position = ExitPoint.transform.position;
-                    proj.transform.rotation = ExitPoint.transform.rotation;
-                    proj.TargetPosition = FinalPoint?.transform.position ?? SingleTargetPosition; //can also be projectile final point position
-                    proj.EffectableTarget = singleTarget ?? null;
-                    
-                    proj.Activate();
-                    timeCounter = timebetweenProjectiles;
-                    counter -= 1;
+                AsyncAttackInProgress = true;
+                while (counter >= 0)
+                {
+                    if (timeCounter <= 0) {
+                        GenericProjectile proj = projectilePool.GetInactive();
+                        proj.transform.position = ExitPoint.transform.position;
+                        proj.transform.rotation = ExitPoint.transform.rotation;
+                        proj.TargetPosition = FinalPoint?.Position ?? SingleTargetPosition; //can also be projectile final point position
+                        proj.EffectableTarget = singleTarget ?? null;
+                        
+                        proj.Activate();
+                        timeCounter = timebetweenProjectiles;
+                        counter -= 1;
+                    }
+                    timeCounter -= StaticObjects.instance.DeltaGameTime;
+                    await Task.Yield();
                 }
-                timeCounter -= StaticObjects.instance.DeltaGameTime;
-                await Task.Yield();
+
+                AsyncAttackInProgress = false;
             }
         }
 

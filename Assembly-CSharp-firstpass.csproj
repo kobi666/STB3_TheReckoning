@@ -64,6 +64,7 @@
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\UnitWalker.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\BezierWalkerWithTime.cs" />
      <None Include="Assets\Plugins\BezierSolution\README.txt" />
+     <None Include="Assets\Plugins\UniRx\ReadMe.txt" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.xml" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.xml" />
      <None Include="Assets\Plugins\Sirenix\Readme.txt" />
@@ -688,6 +689,10 @@
     <ProjectReference Include="MyBox.csproj">
       <Project>{1bb719c8-2ea5-b563-0407-7e72ef3955a7}</Project>
       <Name>MyBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniRx.csproj">
+      <Project>{25802a85-b3b3-cd9a-eb46-51e86eaeebb4}</Project>
+      <Name>UniRx</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
