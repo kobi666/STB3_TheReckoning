@@ -28,14 +28,13 @@ public class RangeDetector : MonoBehaviour,IQueueable<RangeDetector>
     public CircleCollider2D RangeCollider;
     
 #if UNITY_EDITOR
-    [TagSelectorAttribute]
+    [TagSelectorAttribute][SerializeField]
 # endif
     public string[] DiscoverableTags = new string[] { };
      public void AddTagToDiscoverableTags(string _tag) {
         
         for (int i = 0; i < DiscoverableTags.Length ; i++)
         {
-            
             if (String.IsNullOrEmpty(DiscoverableTags[i])) {
                 DiscoverableTags[i] = _tag;
                 break;

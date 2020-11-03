@@ -249,6 +249,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b744ad22e0dd098438e3a05191a74faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: CurrentAnimationState
+      Entry: 6
+      Data: 
+  Clip: {fileID: 0}
   animancer: {fileID: 0}
   WalkingAnimation: {fileID: 7400000, guid: 103d48b133d0b4e4fb3c33386ee4faca, type: 2}
   IdleAnimation: {fileID: 7400000, guid: b03ec98c7ec079144946774163a71bae, type: 2}
@@ -289,7 +302,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cfaf404a69f91a458494a5bb4866f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   canOnlyBeHitOnce: 0
+  unitController: {fileID: 0}
 --- !u!1001 &8455382015743396817
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     private ProjectileDynamicData DynamicData = new ProjectileDynamicData();
     private int hitCounter;
     private bool projectileInitlized = false;
+    private Collider2D selfCollider;
     
     
 #if UNITY_EDITOR
@@ -106,6 +107,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
 
 
     public void OnTriggerEnter2D(Collider2D other) {
+        Debug.LogWarning(other.name);
         if (DiscoverableTagsList.Contains(other.tag))
         {
             if (BaseProjectileEffect.TriggersOnCollision)
@@ -129,14 +131,18 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
                     {
                         if (ActiveTargets[other.name].IsTargetable())
                             OnTargetHit(ActiveTargets[other.name]);
-                        hitCounter -= 1;
                     }
 
                 }
             }
         }
+    }
 
-        if (hitCounter == 0) {
+    void ReduceHitCounterAndInvokeOnHitCounterZero(Effectable ef)
+    {
+        hitCounter -= 1;
+        if (hitCounter <= 0)
+        {
             OnHitCounterZero();
         }
     }
@@ -212,11 +218,24 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
                 if (effect.IsAOE)
                 {
                     onHitMultipleTargets += effect.Apply;
+                    if (BaseProjectileEffect.TriggersOnCollision)
+                    {
+                        onTargetHit += OnHitMultipleTargets;
+                    }
                 }
                 else
                 {
                     onHitSingleTarget += effect.Apply;
+                    if (BaseProjectileEffect.TriggersOnCollision)
+                    {
+                        onTargetHit += OnHitSingleTarget;
+                    }
                 }
+            }
+
+            if (BaseProjectileEffect.TriggersOnCollision)
+            {
+                onTargetHit += ReduceHitCounterAndInvokeOnHitCounterZero;
             }
         }
 
@@ -227,6 +246,8 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
                 onTargetPositionReachedEffect += effect.Apply;
             }
         }
+
+        
     }
 
     void InitProjectileMovement()
@@ -254,10 +275,21 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
         }
     }
 
+    protected void Awake()
+    {
+        selfCollider = GetComponent<Collider2D>();
+        foreach (string item in DiscoverableTags)
+        {
+            if (!String.IsNullOrEmpty(item)) {
+                DiscoverableTagsList.Add(item);
+            }
+        }
+    }
+
     protected void Start()
     {
         //onTargetPositionReached += delegate { targetPositionSet = false; };
-        //onHitCounterZero += delegate {gameObject.SetActive(false);};
+        onHitCounterZero += delegate {gameObject.SetActive(false);};
         SpriteRenderer = GetComponent<SpriteRenderer>() ?? null;
         if (OnHitAnimation != null) {
             onHitAnimationQueuePool = GameObjectPool.Instance.GetSingleAnimationObjectQueue(OnHitAnimation);
@@ -327,9 +359,18 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
             {
                 Debug.LogWarning("Init projectile called with movement function null" + " " + name);
             }
-
+        
             projectileInitlized = true;
         }
+
+        MovementFunction.onPositionReached += OnTargetPositionReached;
+        onTargetPositionReached += Disable;
+        
+    }
+
+    void Disable()
+    {
+        gameObject.SetActive(false);
     }
 
     /*public void initProjectileArgs(ProjectileEffect pe, ProjectileMovementFunction pm)
@@ -360,7 +401,11 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
         {
             InitProjectile();
         }
+
+        RangeDetector.enabled = false;
         RangeDetector.enabled = true;
+        selfCollider.enabled = false;
+        selfCollider.enabled = true;
         ActivePool?.AddObjectToActiveObjectPool(this);
         hitCounter = BaseProjectileEffect.HitCounter;
     }

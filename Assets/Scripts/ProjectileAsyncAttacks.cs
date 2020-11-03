@@ -53,7 +53,6 @@ public class ShootOneProjectile : ProjectileAttackFunction {
             proj.transform.position = ExitPoint.transform.position;
             proj.TargetPosition = FinalPoint?.Position ?? SingleTargetPosition; // can also be projectile final point position
             proj.EffectableTarget = singleTarget ?? null;
-            Debug.LogWarning("proj position at : " + proj.transform.position + " proj target pos at : " +  proj.TargetPosition);
             proj.Activate();
             AsyncAttackInProgress = false;
         }

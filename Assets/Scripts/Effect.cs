@@ -34,7 +34,7 @@ public class DebugEffect : Effect
 {
     public override void Apply(Effectable ef)
     {
-        
+        Debug.LogWarning(ef.name + " was affected");
     }
 }
 

@@ -27,7 +27,12 @@ public class ProjectileMovementFunction
         ExternalMovementLock = false;
     }
 
-    public event Action OnPositionReached;
+    public event Action onPositionReached;
+
+    void OnPositionReached()
+    {
+        onPositionReached?.Invoke();
+    }
     
     
     public async void MoveToTargetPosition(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos, Vector2 TargetPos
@@ -38,7 +43,8 @@ public class ProjectileMovementFunction
             MovementFunction(projectileTransform, null, originPos, TargetPos, speed);
             await Task.Yield();
         }
-        OnPositionReached?.Invoke();
+
+        OnPositionReached();
     }
 
     public async void MoveToTargetTransform(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos,
@@ -53,7 +59,7 @@ public class ProjectileMovementFunction
             MovementFunction(projectileTransform, null, originPos, cachedPosition, speed);
             await Task.Yield();
         }
-        OnPositionReached?.Invoke();
+        OnPositionReached();
     }
 
 }
