@@ -1106,7 +1106,7 @@ MonoBehaviour:
       Data: 4|MoveStraight, Assembly-CSharp
     - Name: speed
       Entry: 4
-      Data: 2
+      Data: 10
     - Name: 
       Entry: 8
       Data: 
@@ -1124,13 +1124,13 @@ MonoBehaviour:
       Data: 6|System.Collections.Generic.List`1[[Effect, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 7
       Data: 7|Damage, Assembly-CSharp
     - Name: IsAOE
       Entry: 5
-      Data: false
+      Data: true
     - Name: DamageRange
       Entry: 7
       Data: 8|DamageRange, Assembly-CSharp
@@ -1143,15 +1143,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 9|DebugEffect, Assembly-CSharp
-    - Name: IsAOE
-      Entry: 5
-      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -1175,19 +1166,19 @@ MonoBehaviour:
       Data: false
     - Name: onPositionReachedEffects
       Entry: 7
-      Data: 10|System.Collections.Generic.List`1[[Effect, Assembly-CSharp]], mscorlib
+      Data: 9|System.Collections.Generic.List`1[[Effect, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 11|Damage, Assembly-CSharp
+      Data: 10|Damage, Assembly-CSharp
     - Name: IsAOE
       Entry: 5
       Data: false
     - Name: DamageRange
       Entry: 7
-      Data: 12|DamageRange, Assembly-CSharp
+      Data: 11|DamageRange, Assembly-CSharp
     - Name: min
       Entry: 3
       Data: 0
@@ -1241,7 +1232,7 @@ MonoBehaviour:
       Data: 
     - Name: AoeEvent
       Entry: 7
-      Data: 13|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0,
+      Data: 12|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null]][], mscorlib
     - Name: 
       Entry: 12
@@ -1254,7 +1245,7 @@ MonoBehaviour:
       Data: 
     - Name: LaZorEvent
       Entry: 7
-      Data: 14|System.Func`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+      Data: 13|System.Func`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089]][], mscorlib
     - Name: 
       Entry: 12
@@ -5724,7 +5715,7 @@ MonoBehaviour:
       Data: 4|MoveStraight, Assembly-CSharp
     - Name: speed
       Entry: 4
-      Data: 2
+      Data: 0.2
     - Name: 
       Entry: 8
       Data: 
@@ -5742,13 +5733,13 @@ MonoBehaviour:
       Data: 6|System.Collections.Generic.List`1[[Effect, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 7
       Data: 7|Damage, Assembly-CSharp
     - Name: IsAOE
       Entry: 5
-      Data: false
+      Data: true
     - Name: DamageRange
       Entry: 7
       Data: 8|DamageRange, Assembly-CSharp
@@ -5761,15 +5752,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 9|DebugEffect, Assembly-CSharp
-    - Name: IsAOE
-      Entry: 5
-      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -5787,25 +5769,25 @@ MonoBehaviour:
       Data: 1
     - Name: TriggersOnSpecificTarget
       Entry: 5
-      Data: false
+      Data: true
     - Name: OnPositionReachedEffect
       Entry: 5
       Data: false
     - Name: onPositionReachedEffects
       Entry: 7
-      Data: 10|System.Collections.Generic.List`1[[Effect, Assembly-CSharp]], mscorlib
+      Data: 9|System.Collections.Generic.List`1[[Effect, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 11|Damage, Assembly-CSharp
+      Data: 10|Damage, Assembly-CSharp
     - Name: IsAOE
       Entry: 5
       Data: false
     - Name: DamageRange
       Entry: 7
-      Data: 12|DamageRange, Assembly-CSharp
+      Data: 11|DamageRange, Assembly-CSharp
     - Name: min
       Entry: 3
       Data: 0
@@ -5826,7 +5808,7 @@ MonoBehaviour:
       Data: 
     - Name: Homing
       Entry: 5
-      Data: false
+      Data: true
     - Name: AOE
       Entry: 5
       Data: false
@@ -5859,7 +5841,7 @@ MonoBehaviour:
       Data: 
     - Name: AoeEvent
       Entry: 7
-      Data: 13|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0,
+      Data: 12|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null]][], mscorlib
     - Name: 
       Entry: 12
@@ -5872,7 +5854,7 @@ MonoBehaviour:
       Data: 
     - Name: LaZorEvent
       Entry: 7
-      Data: 14|System.Func`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+      Data: 13|System.Func`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089]][], mscorlib
     - Name: 
       Entry: 12
@@ -5930,7 +5912,7 @@ MonoBehaviour:
     damageRange:
       min: 0
       max: 0
-    fireRate: 2
+    fireRate: 15
     enemyTarget: {fileID: 0}
     playerTarget: {fileID: 0}
   ParentTower: {fileID: 0}

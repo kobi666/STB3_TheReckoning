@@ -52,6 +52,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Projectiles\Explosion.cs" />
      <Compile Include="Assets\Scripts\ProjectileAsyncAttacks.cs" />
+     <Compile Include="Assets\WeaponAttack.cs" />
      <Compile Include="Assets\Scripts\Levels-rooms\RoomBorder.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ProjectileUtils.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\NativeInterfaces.cs" />
@@ -90,6 +91,7 @@
      <Compile Include="Assets\Scripts\TowerComponents\WeaponUtils.cs" />
      <Compile Include="Assets\StraightLaZoRWeapon.cs" />
      <Compile Include="Assets\Scripts\Units\NormalUnitStates.cs" />
+     <Compile Include="Assets\Prefabs\ProjectileDynamicData.cs" />
      <Compile Include="Assets\Prefabs\TargetDetection\TargetBank.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\Weapons\BeamWeaponAsync.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ExplosionController.cs" />
@@ -152,6 +154,7 @@
      <Compile Include="Assets\Scripts\PlayerObjects\CursorUtils.cs" />
      <Compile Include="Assets\RangeDrawer.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\DeathManager.cs" />
+     <Compile Include="Assets\ComponentSpriteController.cs" />
      <Compile Include="Assets\RallyPointDiscoveryGenerator.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\TowerComponentData.cs" />
      <Compile Include="Assets\ACT.cs" />
@@ -239,9 +242,6 @@
      <Compile Include="Assets\Scripts\Towers\TowerSlotController.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\RangeDebug.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ArcingAOEProjectileController.cs" />
-     <Compile Include="Assets\WeaponAttack.cs" />
-     <Compile Include="Assets\Prefabs\ProjectileDynamicData.cs" />
-     <Compile Include="Assets\ComponentSpriteController.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
@@ -484,6 +484,9 @@
  </Reference>
  <Reference Include="Animancer.Lite">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Animancer/Internal/Core/Animancer.Lite.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
  </Reference>
  <Reference Include="Sirenix.OdinInspector.Attributes">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
@@ -854,6 +857,10 @@
       <Project>{128c3589-08ae-d1d3-d7b1-488de5f10c72}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
+    <ProjectReference Include="UniRx.csproj">
+      <Project>{25802a85-b3b3-cd9a-eb46-51e86eaeebb4}</Project>
+      <Name>UniRx</Name>
+    </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
       <Project>{98d1b84c-946c-21be-173a-4f536c124f96}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
@@ -881,10 +888,6 @@
     <ProjectReference Include="MyBox.csproj">
       <Project>{1bb719c8-2ea5-b563-0407-7e72ef3955a7}</Project>
       <Name>MyBox</Name>
-    </ProjectReference>
-    <ProjectReference Include="UniRx.csproj">
-      <Project>{25802a85-b3b3-cd9a-eb46-51e86eaeebb4}</Project>
-      <Name>UniRx</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

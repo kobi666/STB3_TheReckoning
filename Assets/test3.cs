@@ -3,31 +3,22 @@ using Sirenix.Serialization;
 using Sirenix.Utilities;
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 
 public class test3 : SerializedMonoBehaviour
 {
-    [OdinSerialize]
-    private Action myEvent;
+    public Transform target;
+    public float duration;
 
-    [ShowInInspector]
-    
-    
-    public event Action MyEvent
+    void moveToTarget()
     {
-        add { myEvent += value; }
-        remove { myEvent -= value; }
+        transform.DOMove(target.position, duration).easePeriod = 0;
     }
 
-    void Start()
+    private void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        moveToTarget();
     }
 }

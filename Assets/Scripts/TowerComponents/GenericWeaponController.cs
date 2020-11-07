@@ -17,6 +17,8 @@ public class GenericWeaponController : TowerComponent
     [BoxGroup]
     [SerializeField]
     protected int WeaponType;
+
+    private string cachedTargetName;
     
     private static ValueDropdownList<int> valueList = new ValueDropdownList<int>()
     {

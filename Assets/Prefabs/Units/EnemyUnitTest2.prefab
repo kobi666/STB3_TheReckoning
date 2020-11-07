@@ -177,7 +177,7 @@ MonoBehaviour:
   spline: {fileID: 0}
   travelMode: 0
   isWalking: 1
-  speed: 1.5
+  speed: 0.5
   m_normalizedT: 0
   rotationLerpModifier: 0
   lookAt: 1
@@ -214,7 +214,7 @@ MonoBehaviour:
     DamageRange:
       min: 125
       max: 175
-    HP: 5000
+    HP: 1500
     Armor: 0
     SpecialArmor: 0
     speed: 0

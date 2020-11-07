@@ -52,12 +52,19 @@
   <ItemGroup>
      <Compile Include="Assets\Plugins\Better Events\BetterEvent.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\ParticlesFollowBezier.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\BezierWalker.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\BezierWalkerLocomotion.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
      <Compile Include="Assets\Plugins\Better Events\BetterEventEntry.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\BezierPoint.cs" />
      <Compile Include="Assets\Plugins\Better Events\SpecificReturnTypes.cs" />
      <Compile Include="Assets\Plugins\Better Events\ExampleMonoBehaviour.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\BezierSpline.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\BezierWalkerWithSpeed.cs" />
      <Compile Include="Assets\Plugins\Better Events\NoType.cs" />
@@ -70,6 +77,7 @@
      <None Include="Assets\Plugins\Sirenix\Readme.txt" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.xml" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\link.xml" />
+     <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.xml" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.xml" />
  <Reference Include="Unity.Timeline.Editor">
@@ -296,6 +304,9 @@
  </Reference>
  <Reference Include="Animancer.Lite">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Animancer/Internal/Core/Animancer.Lite.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
  </Reference>
  <Reference Include="Sirenix.OdinInspector.Attributes">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
@@ -662,6 +673,10 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="UniRx.csproj">
+      <Project>{25802a85-b3b3-cd9a-eb46-51e86eaeebb4}</Project>
+      <Name>UniRx</Name>
+    </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
       <Project>{98d1b84c-946c-21be-173a-4f536c124f96}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
@@ -689,10 +704,6 @@
     <ProjectReference Include="MyBox.csproj">
       <Project>{1bb719c8-2ea5-b563-0407-7e72ef3955a7}</Project>
       <Name>MyBox</Name>
-    </ProjectReference>
-    <ProjectReference Include="UniRx.csproj">
-      <Project>{25802a85-b3b3-cd9a-eb46-51e86eaeebb4}</Project>
-      <Name>UniRx</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

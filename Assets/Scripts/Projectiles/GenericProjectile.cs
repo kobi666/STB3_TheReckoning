@@ -16,6 +16,10 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     [OdinSerialize]
     public ProjectileMovementFunction MovementFunction;
     private ProjectileDynamicData DynamicData = new ProjectileDynamicData();
+    [ShowInInspector] private Vector2 TargetPos
+    {
+        get => DynamicData.TargetPosition;
+    }
     private int hitCounter;
     private bool projectileInitlized = false;
     private Collider2D selfCollider;
@@ -44,6 +48,12 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
 
     public void Activate()
     {
+        if (SpriteRenderer != null)
+        {
+            SpriteRenderer.enabled = true;
+        }
+
+        MovementFunction.ExternalMovementLock = false;
         gameObject.SetActive(true);
         OnMovementEvent(transform,EffectableTarget.transform,transform.position,TargetPosition);
     }
@@ -107,21 +117,22 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
 
 
     public void OnTriggerEnter2D(Collider2D other) {
-        Debug.LogWarning(other.name);
         if (DiscoverableTagsList.Contains(other.tag))
         {
             if (BaseProjectileEffect.TriggersOnCollision)
             {
                 if (BaseProjectileEffect.TriggersOnSpecificTarget)
                 {
-                    if (other.name == EffectableTarget.name)
-                    {
-                        string n = EffectableTarget.name;
-                        if (ActiveTargets?.ContainsKey(n) ?? false)
+                    if (EffectableTarget != null) {
+                        if (EffectableTarget?.name == other.name)
                         {
-                            if (ActiveTargets[n].IsTargetable())
-                                OnTargetHit(ActiveTargets[n]);
-                            hitCounter -= 1;
+                            string n = EffectableTarget.name;
+                            if (ActiveTargets?.ContainsKey(n) ?? false)
+                            {
+                                if (ActiveTargets[n].IsTargetable())
+                                    OnTargetHit(ActiveTargets[n]);
+                                hitCounter -= 1;
+                            }
                         }
                     }
                 }
@@ -271,12 +282,19 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
         Effectable[] _targets = EffectableTargetBank.Targets.Values.ToArray();
         foreach (Effectable target in _targets)
         {
+            if (target == null)
+            {
+                continue;
+            }
             onHitMultipleTargets?.Invoke(target);
         }
     }
 
     protected void Awake()
     {
+        SpriteRenderer = GetComponent<SpriteRenderer>();
+        //onTargetPositionReached += delegate { SpriteRenderer.enabled = false; Debug.LogWarning(Time.time); };
+        onTargetHit += delegate(Effectable effectable) { SpriteRenderer.enabled = false; };
         selfCollider = GetComponent<Collider2D>();
         foreach (string item in DiscoverableTags)
         {
@@ -290,7 +308,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     {
         //onTargetPositionReached += delegate { targetPositionSet = false; };
         onHitCounterZero += delegate {gameObject.SetActive(false);};
-        SpriteRenderer = GetComponent<SpriteRenderer>() ?? null;
+        
         if (OnHitAnimation != null) {
             onHitAnimationQueuePool = GameObjectPool.Instance.GetSingleAnimationObjectQueue(OnHitAnimation);
             onTargetHit += delegate(Effectable effectable) { PlayOnHitAnimation(effectable); };
@@ -362,10 +380,10 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
         
             projectileInitlized = true;
         }
-
-        MovementFunction.onPositionReached += OnTargetPositionReached;
         onTargetPositionReached += Disable;
+        MovementFunction.onPositionReached += OnTargetPositionReached;
         
+        projectileInitlized = true;
     }
 
     void Disable()
@@ -373,26 +391,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
         gameObject.SetActive(false);
     }
 
-    /*public void initProjectileArgs(ProjectileEffect pe, ProjectileMovementFunction pm)
-    {
-        BaseProjectileEffect = pe;
-        MovementFunction = pm;
-        Debug.LogWarning("pm null:" +  (pm == null));
-        Debug.LogWarning("projectile movement null" + (MovementFunction == null));
-        if (BaseProjectileEffect!= null) {
-        InitProjectileEffects();
-        initAOEProperties();
-        if (MovementFunction != null)
-        {
-            InitProjectileMovement();
-        }
-        }
-        else
-        {
-            Debug.LogWarning("NULLLZZZ");
-        }
-            
-    }*/
+    
 
 
     void OnEnable()
@@ -412,8 +411,10 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
 
     protected void OnDisable()
     {
+        SpriteRenderer.enabled = false;
         DynamicData.Clear();
         RangeDetector.enabled = false;
+        MovementFunction.ExternalMovementLock = true;
         targetPositionSet = false;
         GameObjectPool.Instance.RemoveObjectFromAllPools(name,name);
         QueuePool?.ObjectQueue.Enqueue(this);

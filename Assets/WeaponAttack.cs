@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class WeaponAttack
 {
-    public abstract void Attack();
     
-
+    public abstract void Attack(Effectable singleTarget, Vector2 SingleTargetPosition);
+    
     public abstract void InitlizeAttack();
 }
