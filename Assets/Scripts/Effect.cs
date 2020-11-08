@@ -25,7 +25,7 @@ public class Damage : Effect
     
     public override void Apply(Effectable ef)
     {
-        ef.ApplyDamage(DamageRange.RandomDamage());
+        ef?.ApplyDamage(DamageRange.RandomDamage());
     }
 }
 

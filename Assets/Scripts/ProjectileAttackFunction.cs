@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.Serialization;
 using UnityEngine;
 using UniRx;
 
@@ -16,7 +17,9 @@ public abstract class ProjectileAttackFunction
     public event Action onAttack;
     
     public bool AsyncAttackInProgress;
-
+    
+    
+    [OdinSerialize] public List<ProjectilePoolCreationData> Projectiles = new List<ProjectilePoolCreationData>();
 
     public async void Attack(Effectable singleTarget,
         Vector2 singleTargetPosition)

@@ -28,9 +28,7 @@ public class ProjectileAsyncAttacks
 public class ShootOneProjectile : ProjectileAttackFunction {
     [ShowInInspector] 
     public override int ProjectileMultiplier { get; set; } = 1;
-
-    [OdinSerialize] public List<ProjectilePoolCreationData> Projectile = new List<ProjectilePoolCreationData>();
-    //public List<ProjectilePoolCreationData> pools = new List<ProjectilePoolCreationData>();
+    
     public ProjectileExitPoint ExitPoint;
     public ProjectileFinalPoint FinalPoint;
 
@@ -38,7 +36,7 @@ public class ShootOneProjectile : ProjectileAttackFunction {
     
     public override void InitializeAttack()
     {
-        projectilePool = Projectile[0].CreatePool();
+        projectilePool = Projectiles[0].CreatePool();
     }
     
     
@@ -71,9 +69,7 @@ public class ShootOneProjectile : ProjectileAttackFunction {
 
         public int NumOfProjectiles = 3;
         public float timebetweenProjectiles = 0.5f;
-
         
-        [OdinSerialize] public List<ProjectilePoolCreationData> Projectile = new List<ProjectilePoolCreationData>();
         public ProjectileExitPoint ExitPoint;
         public ProjectileFinalPoint FinalPoint;
         
@@ -81,7 +77,7 @@ public class ShootOneProjectile : ProjectileAttackFunction {
 
         public override void InitializeAttack()
         {
-            projectilePool = Projectile[0].CreatePool();
+            projectilePool = Projectiles[0].CreatePool();
         }
 
         public override async void AttackFunction(Effectable singleTarget,

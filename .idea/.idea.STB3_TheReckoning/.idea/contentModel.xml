@@ -12,6 +12,7 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="ACT.cs" t="Include" />
+        <e p="BeamController.cs" t="Include" />
         <e p="BeamTowerController.cs" t="Include" />
         <e p="BeamWeapon.cs" t="Include" />
         <e p="betterEventTest.cs" t="Include" />
@@ -835,6 +836,11 @@
         <e p="TestCalculateTowerPositions.cs" t="Include" />
         <e p="testclass.cs" t="Include" />
         <e p="TestConditionalDropDown.cs" t="Include" />
+        <e p="TestingGenericWeapon" t="Include">
+          <e p="BeamAttack.cs" t="Include" />
+          <e p="BeamAttackFunction.cs" t="Include" />
+          <e p="BeamBehavior.cs" t="Include" />
+        </e>
         <e p="testPredicate.cs" t="Include" />
         <e p="testscript2.cs" t="Include" />
         <e p="TextMesh Pro" t="Include">

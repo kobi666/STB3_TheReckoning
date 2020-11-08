@@ -74,7 +74,7 @@ public abstract class BeamWeapon : WeaponController
         }
     }
 
-    public BeamRenderingFunction BeamRenderingFunction;
+    public BeamRenderingFunctionLegacy beamRenderingFunctionLegacy;
 
     private void RenderLine()
     {
@@ -82,7 +82,7 @@ public abstract class BeamWeapon : WeaponController
         {
             BeamSwitch = true;
         }
-        BeamRenderingFunction.Invoke(lineRenderer,ProjectileExitPoint,Target.transform.position, Data.BeamData.BeamMovementSpeed);
+        beamRenderingFunctionLegacy.Invoke(lineRenderer,ProjectileExitPoint,Target.transform.position, Data.BeamData.BeamMovementSpeed);
     }
 
     public event Action onBeamRender;

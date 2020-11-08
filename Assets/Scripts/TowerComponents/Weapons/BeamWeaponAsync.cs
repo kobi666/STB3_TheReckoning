@@ -167,10 +167,10 @@ public class BeamWeaponAsync : WeaponController
 
     void renderBeam()
     {
-        BeamRenderingFunction.Invoke(LineRenderer,ProjectileExitPoint,ProjectileFinalPointV2, BeamData.BeamMovementSpeed);
+        beamRenderingFunctionLegacy.Invoke(LineRenderer,ProjectileExitPoint,ProjectileFinalPointV2, BeamData.BeamMovementSpeed);
     }
 
-    public BeamRenderingFunction BeamRenderingFunction;
+    public BeamRenderingFunctionLegacy beamRenderingFunctionLegacy;
     [SerializeField] private float beamDurationCounter = 1;
 
     public event Action onContinuousBeamAttack;

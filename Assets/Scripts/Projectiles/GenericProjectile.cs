@@ -60,7 +60,12 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     
     private float MaxLifeTimeCounter = 0;
     public event Action onHitCounterZero;
-    private RangeDetector rangeDetector = null;
+
+    private RangeDetector rangeDetector
+    {
+        get => EffectableTargetBank.RangeDetector;
+        set => effectableTargetBank.RangeDetector = value;
+    }
     private EffectableTargetBank effectableTargetBank;
 
     private EffectableTargetBank EffectableTargetBank

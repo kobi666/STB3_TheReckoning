@@ -9,9 +9,10 @@ using Sirenix;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 
+
+[RequireComponent(typeof(EffectableTargetBank))]
 public class GenericWeaponController : TowerComponent
 {
-    
     [ValueDropdown("valueList")]
     [HideLabel]
     [BoxGroup]

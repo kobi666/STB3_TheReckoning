@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Sirenix.Serialization;
 using Random = UnityEngine.Random;
 
-public class ProjectileAttack
+public class ProjectileAttack : WeaponAttack
 {
     [TypeFilter("GetProjectileAttacks")]
     [LabelText("Attack Function")]
@@ -26,6 +26,15 @@ public class ProjectileAttack
     }
 
 
+    public override void Attack(Effectable singleTarget, Vector2 SingleTargetPosition)
+    {
+        AttackFunction.Attack(singleTarget,SingleTargetPosition);
+    }
+
+    public override void InitlizeAttack()
+    {
+        AttackFunction.InitializeAttack();
+    }
 }
 
 

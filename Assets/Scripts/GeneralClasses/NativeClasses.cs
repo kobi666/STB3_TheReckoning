@@ -11,7 +11,7 @@ using UnityEngine.Events;
 
 
 [System.Serializable]
-public class BeamRenderingFunction : UnityEvent<LineRenderer, Vector2, Vector2,float>
+public class BeamRenderingFunctionLegacy : UnityEvent<LineRenderer, Vector2, Vector2,float>
 {
     
 }
