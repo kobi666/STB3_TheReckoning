@@ -14,7 +14,7 @@ public class TowerWeaponAttacks
     }
 
     public static void TestDebugRay(TestWeaponController self) {
-        Debug.DrawLine(self.ProjectileExitPoint, self.Target.transform.position);
+        //Debug.DrawLine(self.ProjectileExitPoint, self.Target.transform.position);
     }
 
 

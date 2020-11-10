@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 public abstract class TestWeaponController : TowerComponent
 {
 
+    /*
     TargetBank<Effectable> TargetBank;
     public int Damage {
         get {
@@ -196,13 +197,14 @@ public abstract class TestWeaponController : TowerComponent
         projectileFinalPoint = GetComponentInChildren<ProjectileFinalPoint>() ?? null;
         if (TargetBank != null) {
             if (Data.componentRadius == 0) {
-                Data.componentRadius = TargetBank.RangeDetector.RangeRadius;
+                Data.componentRadius = TargetBank.Detector.RangeRadius;
             }
             else if (Data.componentRadius != 0) {
-                TargetBank.RangeDetector.RangeRadius = Data.componentRadius;
+                TargetBank.Detector.RangeRadius = Data.componentRadius;
             }
         }
         PostStart();
     }
+    */
 
 }

@@ -11,14 +11,11 @@ public class test3 : SerializedMonoBehaviour
 {
     public Transform target;
     public float duration;
-
-    void moveToTarget()
-    {
-        transform.DOMove(target.position, duration).easePeriod = 0;
-    }
+    private RangeDetector rd;
+    
 
     private void Start()
     {
-        moveToTarget();
+        rd = GetComponentInChildren<RangeDetector>();
     }
 }

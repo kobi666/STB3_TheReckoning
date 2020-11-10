@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using Sirenix.OdinInspector;
 
-public class ProjectileFinalPoint : MonoBehaviour
+public class ProjectileFinalPoint : SerializedMonoBehaviour
 {
     WeaponController parentTowerComponent;
     private GenericWeaponController ParentWeaponController;

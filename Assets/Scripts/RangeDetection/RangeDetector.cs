@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Sirenix.OdinInspector;
 using UnityEditor;
 
-public class RangeDetector : MonoBehaviour,IQueueable<RangeDetector>
+public class RangeDetector : TagDetector,IQueueable<RangeDetector>
 {
     private RangeDebug _rangeDebug;
     float rangeRadius = 1;
@@ -27,6 +28,7 @@ public class RangeDetector : MonoBehaviour,IQueueable<RangeDetector>
     public PoolObjectQueue<RangeDetector> QueuePool { get;set;}
     public CircleCollider2D RangeCollider;
     
+/*
 #if UNITY_EDITOR
     [TagSelectorAttribute][SerializeField]
 # endif
@@ -68,16 +70,12 @@ public class RangeDetector : MonoBehaviour,IQueueable<RangeDetector>
             OnTargetExit(other.name, name);
         }
     }
+    */
 
     void Awake()
     {
+        base.Awake();
         RangeCollider = GetComponent<CircleCollider2D>() ?? null;
-        foreach (string item in DiscoverableTags)
-        {
-            if (!String.IsNullOrEmpty(item)) {
-            DiscoverableTagsList.Add(item);
-            }
-        }
     }
 
     public void SetRangeRadius(float range) {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Sirenix.OdinInspector;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public abstract class TargetBank<T> : SerializedMonoBehaviour where T : Component
@@ -23,7 +24,7 @@ public abstract class TargetBank<T> : SerializedMonoBehaviour where T : Componen
 
     [SerializeField]
     public List<string> debugTargetNames = new List<string>();
-    public RangeDetector RangeDetector;
+    [FormerlySerializedAs("RangeDetector")] public TagDetector Detector;
     public event Action<GameObject> onTryToAddTarget;
     public void OnTryToAddTarget(GameObject targetGO) {
         onTryToAddTarget?.Invoke(targetGO);
@@ -92,7 +93,7 @@ public abstract class TargetBank<T> : SerializedMonoBehaviour where T : Componen
     
     void Awake()
     {
-        RangeDetector =  RangeDetector ?? GetComponentInChildren<RangeDetector>() ?? null;
+        Detector =  Detector ?? GetComponentInChildren<RangeDetector>() ?? null;
         onTryToAddTarget += AddTarget;
         onTargetRemove += RemoveTarget;
         onTargetAdd += AddNamesToDebugList;
@@ -100,23 +101,23 @@ public abstract class TargetBank<T> : SerializedMonoBehaviour where T : Componen
     }
 
     public void InitRangeDetectorEvents() {
-        if (RangeDetector == null)
+        if (Detector == null)
         {
-            RangeDetector = GetComponentInChildren<RangeDetector>();
+            Detector = GetComponentInChildren<RangeDetector>();
         }
         
-        if (RangeDetector != null) {
-        RangeDetector.onTargetEnter += OnTryToAddTarget;
-        RangeDetector.onTargetExit += OnTargetRemove;
+        if (Detector != null) {
+        Detector.onTargetEnter += OnTryToAddTarget;
+        Detector.onTargetExit += OnTargetRemove;
         }
     }
 
     void DisableRangedetectorEvents()
     {
-        if (RangeDetector != null)
+        if (Detector != null)
         {
-            RangeDetector.onTargetEnter -= OnTryToAddTarget;
-            RangeDetector.onTargetExit -= OnTargetRemove;
+            Detector.onTargetEnter -= OnTryToAddTarget;
+            Detector.onTargetExit -= OnTargetRemove;
         }
     }
     // Start is called before the first frame update

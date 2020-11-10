@@ -59,7 +59,7 @@ public class arcingAOEProjectile : OnTargetReachedProjectile
     {
         onTargetPositionReached += delegate { PlayOnHitAnimation(null);};
         TargetBank = GetComponent<EffectableTargetBank>() ?? null;
-        TargetBank.RangeDetector = RangeDetector;
+        TargetBank.Detector = RangeDetector;
         TargetBank.InitRangeDetectorEvents();
         StartCoroutine(MoveRangeDetectorToTargetpositionAheadofself());
     }

@@ -63,8 +63,8 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
 
     private RangeDetector rangeDetector
     {
-        get => EffectableTargetBank.RangeDetector;
-        set => effectableTargetBank.RangeDetector = value;
+        get => EffectableTargetBank.Detector as RangeDetector;
+        set => effectableTargetBank.Detector = value;
     }
     private EffectableTargetBank effectableTargetBank;
 

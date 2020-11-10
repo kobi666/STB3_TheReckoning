@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 
 
-public abstract class TestOrbitalWeapon : TestWeaponController, IOrbital<TestOrbitalWeapon>
+public abstract class TestOrbitalWeapon : TestWeaponController//, IOrbital<TestOrbitalWeapon>
 {
-    WeaponRotator rotator;
+    /*WeaponRotator rotator;
     public WeaponRotator Rotator {get => rotator;set { rotator = value;}}
     [SerializeField]
     public float OrbitingSpeed {get => Data.orbitalData.orbitingSpeed; set {Data.orbitalData.orbitingSpeed = value;}}
@@ -148,5 +148,6 @@ public abstract class TestOrbitalWeapon : TestWeaponController, IOrbital<TestOrb
     IEnumerator rotationCoroutine;
 
     public IEnumerator RotationCoroutine {get => rotationCoroutine; set {rotationCoroutine = value;}}
+    */
     
 }

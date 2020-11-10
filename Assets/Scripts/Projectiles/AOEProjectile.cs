@@ -59,7 +59,7 @@ public abstract class AOEProjectile : OnTargetReachedProjectile
 
     public RangeDetector RangeDetector
     {
-        get => TargetBank.RangeDetector;
+        get => TargetBank.Detector as RangeDetector;
     }
     
     public EffectableTargetBank TargetBank;

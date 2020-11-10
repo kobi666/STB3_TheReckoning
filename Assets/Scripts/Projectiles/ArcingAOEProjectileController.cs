@@ -14,10 +14,10 @@ public class ArcingAOEProjectileController : AOEProjectile
     protected void OnEnable()
     {
         base.OnEnable();
-        TargetBank.RangeDetector.gameObject.SetActive(true);
+        TargetBank.Detector.gameObject.SetActive(true);
         InitPos = transform.position;
         MiddlePos = ProjectileUtils.GetArcingMiddlePosition(InitPos, TargetPosition, Data.ArcValue);
-        TargetBank.RangeDetector.transform.parent =
+        TargetBank.Detector.transform.parent =
             GameObjectPool.Instance.PlaceHoldersDict[QueuePool.PlaceholderName].transform;
         RangeDetector.SetRangeRadius(Data.EffectRadius);
     }
@@ -32,8 +32,8 @@ public class ArcingAOEProjectileController : AOEProjectile
 
     protected void OnDisable()
     {
-        TargetBank.RangeDetector.gameObject.SetActive(false);
-        TargetBank.RangeDetector.transform.localScale = new Vector3(1,1,1);
+        TargetBank.Detector.gameObject.SetActive(false);
+        TargetBank.Detector.transform.localScale = new Vector3(1,1,1);
         moveCounter = 0;
         RangeDetector.SetRangeRadius(0);
         base.OnDisable();
@@ -42,7 +42,7 @@ public class ArcingAOEProjectileController : AOEProjectile
     IEnumerator MoveRangeDetectorToTargetpositionAheadofself()
     {
         if (RangeDetector != null) {
-        Transform rdt = TargetBank.RangeDetector.transform;
+        Transform rdt = TargetBank.Detector.transform;
         rdt.position = (Vector2)transform.position - TargetPosition;
         while ((Vector2)rdt.position != TargetPosition) {
             
@@ -66,7 +66,7 @@ public class ArcingAOEProjectileController : AOEProjectile
         public override void MovementFunction()
         {
             ProjectileUtils.MoveInArcToPosition(transform,InitPos,MiddlePos,TargetPosition,ref initToMiddle,ref MiddleToTarget,Data.Speed,ref moveCounter);
-            TargetBank.RangeDetector.transform.position = 
+            TargetBank.Detector.transform.position = 
                 Vector2.MoveTowards((Vector2) transform.position, TargetPosition, Speed * 3);
             transform.Rotate(Vector3.forward * (380 * Time.deltaTime) , Space.Self);
             GrowRangeDetectorToEffectRadius();
