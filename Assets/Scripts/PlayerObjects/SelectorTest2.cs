@@ -275,7 +275,7 @@ public class SelectorTest2 : SerializedMonoBehaviour
             }
             
         }
-        FirstDiscoveryRange = StaticObjects.instance.TowerSize;
+        FirstDiscoveryRange = StaticObjects.Instance.TowerSize;
         int random = UnityEngine.Random.Range(1, towerSlotsWithPositions.Count);
         OnTowerSelect(towerSlotsWithPositions[FirstKey]);
         //SelectedTowerSlot = towerSlotsWithPositions[FirstKey];

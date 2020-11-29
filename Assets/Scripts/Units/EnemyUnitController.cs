@@ -53,7 +53,7 @@ public abstract class EnemyUnitController : UnitController,ITypeTag
     {
         LifeManager.onUnitDeath += UpdateMoneyzOnDeath;
         gameObject.tag = TypeTag;
-        DeathManager.instance.onPlayerUnitDeath += Data.RemovePlayerUnitTarget;
+        DeathManager.Instance.onPlayerUnitDeath += Data.RemovePlayerUnitTarget;
         if (tag == "Untagged") {
             tag = Tag;
         }

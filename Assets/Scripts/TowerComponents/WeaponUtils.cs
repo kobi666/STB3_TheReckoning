@@ -37,7 +37,7 @@ public class WeaponUtils
             Vector2 vecToTarget = targetTransform.position - self.position;
             float angleToTarget = Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg;
             Quaternion q = Quaternion.AngleAxis(angleToTarget, Vector3.forward);
-            self.rotation = Quaternion.Slerp(self.rotation, q, StaticObjects.instance.DeltaGameTime * rotationSpeed);
+            self.rotation = Quaternion.Slerp(self.rotation, q, StaticObjects.Instance.DeltaGameTime * rotationSpeed);
             yield return new WaitForFixedUpdate();
         }
     }
@@ -49,7 +49,7 @@ public class WeaponUtils
             Vector2 vecToTarget = target.position - self.position;
             float angleToTarget = Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg;
             Quaternion q = Quaternion.AngleAxis(angleToTarget, Vector3.forward);
-            self.rotation = Quaternion.Slerp(self.rotation, q, StaticObjects.instance.DeltaGameTime * rotationSpeed);
+            self.rotation = Quaternion.Slerp(self.rotation, q, StaticObjects.Instance.DeltaGameTime * rotationSpeed);
             yield return new WaitForFixedUpdate();
         }
     }

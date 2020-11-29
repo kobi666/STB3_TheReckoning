@@ -54,10 +54,13 @@ public class ShootOneProjectile : ProjectileAttackFunction {
             proj.Activate();
             AsyncAttackInProgress = false;
         }
+        
     }
 
     
 }
+
+
     
     
     
@@ -101,7 +104,7 @@ public class ShootOneProjectile : ProjectileAttackFunction {
                         timeCounter = timebetweenProjectiles;
                         counter -= 1;
                     }
-                    timeCounter -= StaticObjects.instance.DeltaGameTime;
+                    timeCounter -= StaticObjects.Instance.DeltaGameTime;
                     await Task.Yield();
                 }
 

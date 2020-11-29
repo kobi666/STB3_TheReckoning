@@ -14,7 +14,9 @@ public class GameObjectPool : MonoBehaviour
     
     public Dictionary<string, PoolObjectQueue<AreaOfEffectController>> AOEObjectPoolQueue = new Dictionary<string, PoolObjectQueue<AreaOfEffectController>>();
     public Dictionary<string,PoolObjectQueue<SingleAnimationObject>> SingleAnimationPoolQueue = new Dictionary<string, PoolObjectQueue<SingleAnimationObject>>();
-
+    public Dictionary<string,PoolObjectQueue<AreaEffect>> AreaEffectPoolQueue = new Dictionary<string, PoolObjectQueue<AreaEffect>>();
+    
+    
 
     public event Action<string,string> onObjectDisable;
     public void OnObjectDisable(string objectName) {
@@ -34,7 +36,9 @@ public class GameObjectPool : MonoBehaviour
     public PoolObjectQueue<T> GetOrCreateObjectQueue<T>(T t) where T : Component,IQueueable<T> {
         return null;
     }
-
+    
+    
+    
     public PoolObjectQueue<Projectile> GetProjectileQueue(Projectile prefab) {
         if (ProjectilesObjectPoolQueue.ContainsKey(prefab.name)) {
             return ProjectilesObjectPoolQueue[prefab.name];
@@ -127,11 +131,31 @@ public class GameObjectPool : MonoBehaviour
 
 
 
-    
 
 
 
-    public static GameObjectPool Instance {get ; private set;}
+    private static GameObjectPool instance;
+    private static bool instantiated = false;
+
+    public static GameObjectPool Instance
+    {
+        get
+        {
+            if (instantiated == false)
+            {
+                GameObject g = new GameObject();
+                g.AddComponent<GameObjectPool>();
+                Instance = g.GetComponent<GameObjectPool>();
+            }
+
+            return instance;
+        }
+        set
+        {
+            instance = value;
+            instantiated = true;
+        }
+    }
 
     private void Awake() {
         Instance = this;

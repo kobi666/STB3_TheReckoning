@@ -13,7 +13,7 @@ public class RangeDetector : TagDetector,IQueueable<RangeDetector>
         get => rangeRadius ;
         set {
             rangeRadius = value;
-            SetRangeRadius(value);
+            SetSize(value);
         } 
     }
     
@@ -78,7 +78,7 @@ public class RangeDetector : TagDetector,IQueueable<RangeDetector>
         RangeCollider = GetComponent<CircleCollider2D>() ?? null;
     }
 
-    public void SetRangeRadius(float range) {
+    public override void SetSize(float range) {
         if (RangeCollider == null) {
             RangeCollider = gameObject.GetComponent<CircleCollider2D>();
         }

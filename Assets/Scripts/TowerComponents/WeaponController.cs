@@ -248,7 +248,7 @@ public abstract class WeaponController : TowerComponent
                 Data.componentRadius = 1;
             }
             else if (Data.componentRadius != 0) {
-                RangeDetector.SetRangeRadius(Data.componentRadius);
+                RangeDetector.SetSize(Data.componentRadius);
             }
         }
         PostStart();
@@ -260,11 +260,11 @@ public abstract class WeaponController : TowerComponent
         if (AttackCounter < CounterMax)
         {
             if (Data.fireRate > 0) {
-            AttackCounter += StaticObjects.instance.DeltaGameTime * Data.fireRate;
+            AttackCounter += StaticObjects.Instance.DeltaGameTime * Data.fireRate;
             }
             else
             { 
-                AttackCounter += StaticObjects.instance.DeltaGameTime;
+                AttackCounter += StaticObjects.Instance.DeltaGameTime;
             }
         }
         

@@ -69,7 +69,7 @@ public abstract class UnitController : MonoBehaviour,IQueueable<UnitController>,
     }
 
     void AnnounceDeath() {
-        DeathManager.instance.OnUnitDeath(tag, name);
+        DeathManager.Instance.OnUnitDeath(tag, name);
     }
 
     

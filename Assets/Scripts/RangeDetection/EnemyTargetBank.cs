@@ -114,7 +114,7 @@ public class EnemyTargetBank : MonoBehaviour
     }
 
     void Start() {
-        DeathManager.instance.onEnemyUnitDeath += RemoveFromTargetsString;
+        DeathManager.Instance.onEnemyUnitDeath += RemoveFromTargetsString;
         
     }
 

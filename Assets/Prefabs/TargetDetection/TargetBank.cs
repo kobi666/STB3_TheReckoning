@@ -20,10 +20,7 @@ public abstract class TargetBank<T> : SerializedMonoBehaviour where T : Componen
     }
 
     public event Action onTargetsUpdate;
-
-
-    [SerializeField]
-    public List<string> debugTargetNames = new List<string>();
+    
     [FormerlySerializedAs("RangeDetector")] public TagDetector Detector;
     public event Action<GameObject> onTryToAddTarget;
     public void OnTryToAddTarget(GameObject targetGO) {
@@ -36,6 +33,13 @@ public abstract class TargetBank<T> : SerializedMonoBehaviour where T : Componen
         onTargetsUpdate?.Invoke();
     }
     
+    
+    /// <summary>
+    /// Add marked by targeter boolean field, which something can do an OnTargetGet mark,
+    /// which signifies to other people sharing this target bank that this target has been marked,
+    /// you can then do so that attacks that have multiple weapons \ splines \ etc, can only fire or aquire a target
+    /// in case it has not been marked as taken, up to you.
+    /// </summary>
     public Dictionary<string,T> Targets = new Dictionary<string,T>();
 
     public abstract T TryToGetTargetOfType(GameObject GO);
@@ -82,13 +86,7 @@ public abstract class TargetBank<T> : SerializedMonoBehaviour where T : Componen
         }
     }
 
-    void AddNamesToDebugList(T t) {
-        debugTargetNames.Add(t.name);
-    }
-
-    void removeNameFromDebugList(string s, string callerName) {
-        debugTargetNames.Remove(s);
-    }
+    
 
     
     void Awake()
@@ -96,8 +94,6 @@ public abstract class TargetBank<T> : SerializedMonoBehaviour where T : Componen
         Detector =  Detector ?? GetComponentInChildren<RangeDetector>() ?? null;
         onTryToAddTarget += AddTarget;
         onTargetRemove += RemoveTarget;
-        onTargetAdd += AddNamesToDebugList;
-        onTargetRemove += removeNameFromDebugList;
     }
 
     public void InitRangeDetectorEvents() {
@@ -124,8 +120,8 @@ public abstract class TargetBank<T> : SerializedMonoBehaviour where T : Componen
     void Start()
     {
         //InitRangeDetectorEvents();
-        DeathManager.instance.onEnemyUnitDeath += OnTargetRemove;
-        DeathManager.instance.onPlayerUnitDeath += OnTargetRemove;
+        DeathManager.Instance.onEnemyUnitDeath += OnTargetRemove;
+        DeathManager.Instance.onPlayerUnitDeath += OnTargetRemove;
         GameObjectPool.Instance.onObjectDisable += OnTargetRemove;
         PostStart();
     }

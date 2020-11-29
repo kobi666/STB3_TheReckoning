@@ -101,7 +101,7 @@ public class TowerUtils : MonoBehaviour
 public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoop(TowerSlotController self, Dictionary<Vector2, TowerSlotController> allTowers, CardinalSet cardinalSet) {
     Dictionary<Vector2, TowerPositionData> dict = new Dictionary<Vector2, TowerPositionData>();
     Vector2 selfPosition = self.transform.position;
-    float towerDiscoveryRange = StaticObjects.instance.TowerSize;
+    float towerDiscoveryRange = StaticObjects.Instance.TowerSize;
     float SecondTowerDiscoveryRange = SelectorTest2.instance.SecondDiscoveryRange;
     float RangeMultiplier = SelectorTest2.instance.SecondDiscoveryRangeMultiplier;
     
@@ -133,14 +133,14 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoop(
 public static float GetDistanceScore( float baseDiscoveryRange, TowerPositionData towerPos)
 {
     float distanceInDistanceUnits = (towerPos.Distance / baseDiscoveryRange);
-    float DistanceScore = distanceInDistanceUnits + ((towerPos.DiscoveryRangeCycleNumber * baseDiscoveryRange) * StaticObjects.instance.DistanceScoreMultiplier);
+    float DistanceScore = distanceInDistanceUnits + ((towerPos.DiscoveryRangeCycleNumber * baseDiscoveryRange) * StaticObjects.Instance.DistanceScoreMultiplier);
     return DistanceScore;
 }
 
 public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoopOver(GameObject self,  Dictionary<Vector2, TowerSlotController> allTowers, CardinalSet cardinalSet, int rangeCheckCyclesAmount) {
     Dictionary<Vector2, TowerPositionData> dict = new Dictionary<Vector2, TowerPositionData>();
     Vector2 selfPosition = self.transform.position;
-    float towerDiscoveryRange = StaticObjects.instance.TowerSize;
+    float towerDiscoveryRange = StaticObjects.Instance.TowerSize;
 
     for (int i =0 ; i < cardinalSet.length ; i++ ) {
         dict.Add(cardinalSet.directionsClockwise[i], new TowerPositionData(null, 999f, 99));

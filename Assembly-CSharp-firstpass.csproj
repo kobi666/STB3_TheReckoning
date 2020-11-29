@@ -693,6 +693,10 @@
       <Project>{76a534b3-2042-71c2-62c4-6bb4d27de2c8}</Project>
       <Name>Unity.InputSystem.VirtualMouseInput</Name>
     </ProjectReference>
+    <ProjectReference Include="ScriptInspector.csproj">
+      <Project>{0200984e-7307-7a6b-107b-62c491592bdd}</Project>
+      <Name>ScriptInspector</Name>
+    </ProjectReference>
     <ProjectReference Include="InputSystem.Samples.Visualizers.csproj">
       <Project>{3a10130d-ca5b-fb61-a173-c43809519df6}</Project>
       <Name>InputSystem.Samples.Visualizers</Name>

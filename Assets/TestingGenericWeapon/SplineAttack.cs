@@ -9,15 +9,15 @@ using System;
 public class SplineAttack : WeaponAttack
 {
 
-    [TypeFilter("GetBeamAttacks")] [LabelText("Attack Function")] [OdinSerialize]
-    public SplineAttackFunction AttackFunction;
+    [TypeFilter("GetSplineAttacks")] [LabelText("Attack Function")] [OdinSerialize]
+    public SplineAttackProperties SplineAttacks;
     
-    private static IEnumerable<Type> GetBeamAttacks()
+    private static IEnumerable<Type> GetSplineAttacks()
     {
-        var q = typeof(SplineAttackFunction).Assembly.GetTypes()
+        var q = typeof(SplineAttackProperties).Assembly.GetTypes()
             .Where(x => !x.IsAbstract) // Excludes BaseClass
             .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
-            .Where(x => typeof(SplineAttackFunction).IsAssignableFrom(x)); // Excludes classes not inheriting from BaseClass
+            .Where(x => typeof(SplineAttackProperties).IsAssignableFrom(x)); // Excludes classes not inheriting from BaseClass
         
         return q;
     }

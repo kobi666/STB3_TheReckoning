@@ -18,10 +18,33 @@ public class DeathManager : MonoBehaviour
         }
         onUnitDeath?.Invoke(unitTag, unitName);
     }
-    public static DeathManager instance;
+
+    public static DeathManager instance = null;
+    static bool instantiated = false;
+
+    public static DeathManager Instance
+    {
+        get
+        {
+            if (instantiated == false)
+            {
+               GameObject g = new GameObject();
+               g.AddComponent<DeathManager>();
+               Instance = g.GetComponent<DeathManager>();
+            }
+
+            return instance;
+        }
+        set
+        {
+            instance = value;
+            instantiated = true;
+        }
+    }
 
     private void Awake() {
-        instance = this;
+        Instance = this;
+        
     }
     
 

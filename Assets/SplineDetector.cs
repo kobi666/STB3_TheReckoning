@@ -7,5 +7,8 @@ using UnityEngine;
 
 public class SplineDetector : TagDetector
 {
-
+    public override void SetSize(float newSize)
+    {
+        
+    }
 }

@@ -12,6 +12,7 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="ACT.cs" t="Include" />
+        <e p="AreaEffect.cs" t="Include" />
         <e p="BansheeGz" t="Include">
           <e p="BGCollider" t="Include">
             <e p="Examples" t="Include">
@@ -341,6 +342,102 @@
                 <e p="DOTweenModuleUtils.cs" t="Include" />
               </e>
               <e p="README.txt" t="Include" />
+            </e>
+          </e>
+          <e p="Editor" t="Include">
+            <e p="ScriptInspector3" t="Include">
+              <e p="_readme.txt" t="Include" />
+              <e p="CodeSnippets" t="Include">
+                <e p="base.txt" t="Include" />
+                <e p="case.txt" t="Include" />
+                <e p="catch.txt" t="Include" />
+                <e p="class.txt" t="Include" />
+                <e p="do.txt" t="Include" />
+                <e p="else.txt" t="Include" />
+                <e p="enum.txt" t="Include" />
+                <e p="finally.txt" t="Include" />
+                <e p="for.txt" t="Include" />
+                <e p="foreach.txt" t="Include" />
+                <e p="GenerateOverrideMethod.cs" t="Include" />
+                <e p="GeneratePropertyForField.cs" t="Include" />
+                <e p="GenerateUnityMagicMethod.cs" t="Include" />
+                <e p="get.txt" t="Include" />
+                <e p="if.txt" t="Include" />
+                <e p="interface.txt" t="Include" />
+                <e p="log.txt" t="Include" />
+                <e p="namespace.txt" t="Include" />
+                <e p="nn.txt" t="Include" />
+                <e p="set.txt" t="Include" />
+                <e p="struct.txt" t="Include" />
+                <e p="switch.txt" t="Include" />
+                <e p="try.txt" t="Include" />
+                <e p="while.txt" t="Include" />
+              </e>
+              <e p="EditorResources" t="Include">
+                <e p="Fonts" t="Include">
+                  <e p="SourceCodePro-Legal.txt" t="Include" />
+                </e>
+              </e>
+              <e p="Scripts" t="Include">
+                <e p="AboutScriptInspector.cs" t="Include" />
+                <e p="BooParser.cs" t="Include" />
+                <e p="CodeSnippets.cs" t="Include" />
+                <e p="CsGrammar.cs" t="Include" />
+                <e p="CsParser.cs" t="Include" />
+                <e p="FGCodeWindow.cs" t="Include" />
+                <e p="FGConsole.cs" t="Include" />
+                <e p="FGDefaultAssetInspector.cs" t="Include" />
+                <e p="FGFindInFiles.cs" t="Include" />
+                <e p="FGGrammar.cs" t="Include" />
+                <e p="FGKeyboardHook.cs" t="Include" />
+                <e p="FGListPopup.cs" t="Include" />
+                <e p="FGParser.cs" t="Include" />
+                <e p="FGPopupWindow.cs" t="Include" />
+                <e p="FGTextBuffer.cs" t="Include" />
+                <e p="FGTextBufferManager.cs" t="Include" />
+                <e p="FGTextEditor.cs" t="Include" />
+                <e p="FGTextInspector.cs" t="Include" />
+                <e p="FGTooltip.cs" t="Include" />
+                <e p="FGTypeSystem.cs" t="Include" />
+                <e p="FindReplaceWindow.cs" t="Include" />
+                <e p="FindResultsWindow.cs" t="Include" />
+                <e p="GoToLineWindow.cs" t="Include" />
+                <e p="JsParser.cs" t="Include" />
+                <e p="ScriptInspector.cs" t="Include" />
+                <e p="ShaderInspector.cs" t="Include" />
+                <e p="ShaderParser.cs" t="Include" />
+                <e p="SISettings.cs" t="Include" />
+                <e p="TabSwitcher.cs" t="Include" />
+                <e p="TangoColors.cs" t="Include" />
+                <e p="UnitySymbols.cs" t="Include" />
+              </e>
+              <e p="SI Changes.txt" t="Include" />
+              <e p="Si3 Extensions" t="Include">
+                <e p="Si3 Immediate Window.cs" t="Include" />
+                <e p="Si3 Open Any File.cs" t="Include" />
+                <e p="Si3 Open File.cs" t="Include" />
+                <e p="Si3 Print TextAsset.cs" t="Include" />
+                <e p="Si3 UnityEventDrawer.cs" t="Include" />
+              </e>
+              <e p="Themes" t="Include">
+                <e p="Darcula.cs" t="Include" />
+                <e p="MDBrown.cs" t="Include" />
+                <e p="MDBrownDark.cs" t="Include" />
+                <e p="Monokai.cs" t="Include" />
+                <e p="SolarizedDark.cs" t="Include" />
+                <e p="SolarizedLight.cs" t="Include" />
+                <e p="SonOfObsidian.cs" t="Include" />
+                <e p="TangoDark_Oblivion.cs" t="Include" />
+                <e p="TangoLight.cs" t="Include" />
+                <e p="Theme.cs" t="Include" />
+                <e p="VisualStudio.cs" t="Include" />
+                <e p="VisualStudioDark.cs" t="Include" />
+                <e p="VSCodeMonokai.cs" t="Include" />
+                <e p="VSDarkWithResharper.cs" t="Include" />
+                <e p="VSDarkWithVAX.cs" t="Include" />
+                <e p="VSLightWithVAX.cs" t="Include" />
+                <e p="Xcode.cs" t="Include" />
+              </e>
             </e>
           </e>
           <e p="MyBox" t="Include">
@@ -922,6 +1019,9 @@
             <e p="RangeDetector.cs" t="Include" />
             <e p="TowerPositionData.cs" t="Include" />
           </e>
+          <e p="SplineStuff" t="Include">
+            <e p="SplineEffect.cs" t="Include" />
+          </e>
           <e p="TagSelectorAttribute.cs" t="Include" />
           <e p="testInterface.cs" t="Include" />
           <e p="TestScripts" t="Include">
@@ -1000,10 +1100,12 @@
           </e>
         </e>
         <e p="Shaker.cs" t="Include" />
+        <e p="SplineController.cs" t="Include" />
         <e p="SplineDetector.cs" t="Include" />
         <e p="StraightLaZoRWeapon.cs" t="Include" />
         <e p="TagSelectorPropertyDrawer.cs" t="Include" />
         <e p="test12.cs" t="Include" />
+        <e p="test13.cs" t="Include" />
         <e p="test3.cs" t="Include" />
         <e p="test4.cs" t="Include" />
         <e p="test5.cs" t="Include" />
@@ -1016,10 +1118,11 @@
         <e p="TestConditionalDropDown.cs" t="Include" />
         <e p="TestingGenericWeapon" t="Include">
           <e p="AreaOfEffect.cs" t="Include" />
-          <e p="BeamDynamicData.cs" t="Include" />
           <e p="SplineAttack.cs" t="Include" />
-          <e p="SplineAttackFunction.cs" t="Include" />
+          <e p="SplineAttackProperties.cs" t="Include" />
           <e p="SplineBehavior.cs" t="Include" />
+          <e p="SplineDynamicData.cs" t="Include" />
+          <e p="SplineMovementFunction.cs" t="Include" />
         </e>
         <e p="testPredicate.cs" t="Include" />
         <e p="testscript2.cs" t="Include" />
@@ -1057,12 +1160,42 @@
         <e p="TriggerTest.cs" t="Include" />
         <e p="uniteventTest.cs" t="Include" />
         <e p="VDtest.cs" t="Include" />
+        <e p="Vectrosity" t="Include">
+          <e p="Plugins" t="Include">
+            <e p="Editor" t="Include">
+              <e p="LineMaker.cs" t="Include" />
+              <e p="UIVector2D.cs" t="Include" />
+              <e p="VectorObject2DEditor.cs" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="BrightnessControl.cs" t="Include" />
+              <e p="CapInfo.cs" t="Include" />
+              <e p="IVectorObject.cs" t="Include" />
+              <e p="LineManager.cs" t="Include" />
+              <e p="RefInt.cs" t="Include" />
+              <e p="VectorChar.cs" t="Include" />
+              <e p="VectorLine.cs" t="Include" />
+              <e p="VectorManager.cs" t="Include" />
+              <e p="VectorObject2D.cs" t="Include" />
+              <e p="VectorObject3D.cs" t="Include" />
+              <e p="VectorUtilities.cs" t="Include" />
+              <e p="VisibilityControl.cs" t="Include" />
+              <e p="VisibilityControlAlways.cs" t="Include" />
+              <e p="VisibilityControlStatic.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Vectrosity Documentation" t="Include">
+            <e p="Vectrosity changelog.txt" t="Include" />
+            <e p="Vectrosity5 Upgrade Guide.txt" t="Include" />
+          </e>
+        </e>
         <e p="WeaponAttack.cs" t="Include" />
       </e>
       <e p="InputSystem.Samples.Visualizers.csproj" t="IncludeRecursive" />
       <e p="MyBox.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
+      <e p="ScriptInspector.csproj" t="IncludeRecursive" />
       <e p="Sirenix.OdinInspector.CompatibilityLayer.csproj" t="IncludeRecursive" />
       <e p="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj" t="IncludeRecursive" />
       <e p="STB3_TheReckoning.sln" t="IncludeFlat" />

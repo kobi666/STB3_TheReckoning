@@ -53,7 +53,7 @@ public class ProjectileUtils
 
     public static void MoveStraightUntilReachedTargetPosition(Transform self, Vector2 targetPosition, float speed, Action onTargetPositionReach) {
         if ((Vector2)self.position != targetPosition) {
-        self.position = Vector2.MoveTowards(self.position,targetPosition,speed * StaticObjects.instance.DeltaGameTime);
+        self.position = Vector2.MoveTowards(self.position,targetPosition,speed * StaticObjects.Instance.DeltaGameTime);
         }
         else if ((Vector2)self.position == targetPosition) {
             onTargetPositionReach.Invoke();
@@ -75,7 +75,7 @@ public class ProjectileUtils
     {
         if (counter <= 1f)
         {
-            counter += speed * StaticObjects.instance.DeltaGameTime;
+            counter += speed * StaticObjects.Instance.DeltaGameTime;
             initToMiddle = Vector2.Lerp(initPos, middlePos, counter);
             middleToTarget = Vector2.Lerp(middlePos, targetPosition, counter);
             projectileTransform.position = Vector2.Lerp(initToMiddle, middleToTarget, counter);
@@ -94,7 +94,7 @@ public class ProjectileUtils
     Vector2 middlePos = initPos + (targetPos - initPos) / 2 + arcDirection * Mathf.Abs(arcValue);
     float count = 0;
     while (count < 0.97f) {
-        count += StaticObjects.instance.DeltaGameTime * movementSpeed;
+        count += StaticObjects.Instance.DeltaGameTime * movementSpeed;
         Vector2 m1 = Vector2.Lerp( initPos, middlePos, count );
         Vector3 m2 = Vector2.Lerp( middlePos, targetPos, count );
         projectileTransform.position = Vector2.Lerp(m1, m2, count);

@@ -14,15 +14,44 @@ public class StaticObjects : MonoBehaviour
             return Time.deltaTime * GameTimeMultiplier;
         }
     }
-    public static StaticObjects instance;
+
+    private static StaticObjects instance;
+    static bool instantiated = false;
+
+    public static StaticObjects Instance
+    {
+        get
+        {
+            if (instantiated == false)
+            {
+                GameObject g = new GameObject();
+                g.AddComponent<StaticObjects>();
+                Instance = g.GetComponent<StaticObjects>();
+            }
+
+            return instance;
+        }
+        set
+        {
+            instance = value;
+            instantiated = true;
+        }
+    }
+        
+    
+    
+    
+    
+    
+    
     public float TowerSize;
     public Sprite TowerSprite;
     public float DistanceScoreMultiplier;
     void Awake()
     {
-        instance = this;
+        Instance = this;
         GameTime = Time.time;
-        TowerSize = TowerSprite.bounds.size.x / 2;
+        TowerSize = TowerSprite?.bounds.size.x / 2 ?? 0.8f;
     }
 
     private void Start() {

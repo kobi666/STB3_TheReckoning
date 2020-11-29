@@ -60,7 +60,7 @@ public class ProjectileFinalPoint : SerializedMonoBehaviour
         Vector2 vecToTarget = Target.transform.position - transform.position;
         float angleToTarget = Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg;
         Quaternion q = Quaternion.AngleAxis(angleToTarget, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, q, StaticObjects.instance.DeltaGameTime * rotationSpeed);
+        transform.rotation = Quaternion.Slerp(transform.rotation, q, StaticObjects.Instance.DeltaGameTime * rotationSpeed);
     }
 
 }

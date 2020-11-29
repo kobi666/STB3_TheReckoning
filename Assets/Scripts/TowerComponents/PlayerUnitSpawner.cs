@@ -76,7 +76,7 @@ public abstract class PlayerUnitSpawner : TowerComponent
     IEnumerator SpawnPlayerUnitAfterCounterAndAddToIndexWithCounter(int unitBaseIndex) {
         float counter = 0;
         while (this != null) {
-            counter += StaticObjects.instance.DeltaGameTime;
+            counter += StaticObjects.Instance.DeltaGameTime;
             if (counter >= Data.SpawnerData.playerUnitSpawnTime) {
                 PlayerUnitController puc = PlayerUnitSpawnerUtils.SpawnPlayerUnitFromSpawner(this, unitBaseIndex);
                 try {
@@ -125,7 +125,7 @@ public abstract class PlayerUnitSpawner : TowerComponent
         base.Start();
         onUnitDeath += invokeSpawnOnUnitDeath;
         onUnitSpawn += SpawnUnitOnDeath;
-        DeathManager.instance.onPlayerUnitDeath += OnUnitDeath;
+        DeathManager.Instance.onPlayerUnitDeath += OnUnitDeath;
         onUnitDeath += RemoveUnitFromIndex;
         RallyPoint = GetComponentInChildren<PlayerUnitRallyPoint>() ?? null;
         RallyPoint.transform.position = ParentTowerSlot.lowestProximityPointFound;

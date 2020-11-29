@@ -17,7 +17,7 @@ public abstract class AOEProjectile : OnTargetReachedProjectile
     {
         EffectOnceLock = false;
         TargetBank?.Targets.Clear();
-        TargetBank?.debugTargetNames.Clear();
+            //TargetBank?.debugTargetNames.Clear();
     }
     
     
@@ -78,6 +78,9 @@ public abstract class AOEProjectile : OnTargetReachedProjectile
     protected void Awake()
     {
         base.Awake();
+        
+        
+        
         TargetBank = GetComponent<EffectableTargetBank>() ?? null;
         
     }

@@ -77,7 +77,7 @@ public abstract class PlayerUnitController : UnitController,ITypeTag
         TargetBank.targetEnteredRange += OnTargetEnteredRange;
         States.JoinBattle.OnEnterState += OnEnterJoinBattle;
         States.JoinBattle.OnExitState += OnExitJoinBattle;
-        DeathManager.instance.onEnemyUnitDeath += Data.SetEnemyTargetToNull;
+        DeathManager.Instance.onEnemyUnitDeath += Data.SetEnemyTargetToNull;
         States.Default.StateAnimation = IdleAnimation;
         States.PreBattle.StateAnimation = WalkingAnimation;
         onAttack += PlayAttackAnimation;

@@ -60,7 +60,7 @@ public class PlayerUnitUtils
             attackAction?.Invoke();
             maxCounter = 0.0f;
             }
-            maxCounter += ((StaticObjects.instance.DeltaGameTime * (PlayerUnitAfterEffects.instance.MeleeAttackRateWithMultiplier(attackRate)) / 10.0F));
+            maxCounter += ((StaticObjects.Instance.DeltaGameTime * (PlayerUnitAfterEffects.instance.MeleeAttackRateWithMultiplier(attackRate)) / 10.0F));
             yield return new WaitForFixedUpdate();
         }
         yield break;
@@ -89,7 +89,7 @@ public class PlayerUnitUtils
              if (targetPos.x < selfTransform.position.x) {
                  self.SetXdirection(true);
              }
-            selfTransform.position = Vector2.MoveTowards(selfTransform.position, targetPos, speed * StaticObjects.instance.DeltaGameTime);
+            selfTransform.position = Vector2.MoveTowards(selfTransform.position, targetPos, speed * StaticObjects.Instance.DeltaGameTime);
             yield return new WaitForFixedUpdate();
         }
         action?.Invoke();

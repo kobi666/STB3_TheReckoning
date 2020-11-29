@@ -78,11 +78,11 @@ public class BeamWeaponAsync : WeaponController
 
         if (_widthDirection == true)
         {
-            BeamWidth += StaticObjects.instance.DeltaGameTime * BeamData.BeamOsciliationSpeed * BeamData.BeamDuration;
+            BeamWidth += StaticObjects.Instance.DeltaGameTime * BeamData.BeamOsciliationSpeed * BeamData.BeamDuration;
         }
         else
         {
-            BeamWidth -= StaticObjects.instance.DeltaGameTime * BeamData.BeamOsciliationSpeed * BeamData.BeamDuration;
+            BeamWidth -= StaticObjects.Instance.DeltaGameTime * BeamData.BeamOsciliationSpeed * BeamData.BeamDuration;
         }
     }
 
@@ -107,7 +107,7 @@ public class BeamWeaponAsync : WeaponController
             {
                 if (BeamAttackInprogress == true)
                 {
-                    beamDurationCounter -= StaticObjects.instance.DeltaGameTime;
+                    beamDurationCounter -= StaticObjects.Instance.DeltaGameTime;
                         OnContinuousBeamAttack();
                         await Task.Yield();
                     }
@@ -123,7 +123,7 @@ public class BeamWeaponAsync : WeaponController
                 {
                     if (staticTarget != null) {
                     OnSingleBeamAttack();
-                    beamDurationCounter -= StaticObjects.instance.DeltaGameTime;
+                    beamDurationCounter -= StaticObjects.Instance.DeltaGameTime;
                     await Task.Yield();
                     }
                 }
@@ -271,7 +271,7 @@ public class BeamWeaponAsync : WeaponController
     protected void Start()
     {
         base.Start();
-        projectileFinalPoint.RangeDetector.SetRangeRadius(BeamWidth / 2);
+        projectileFinalPoint.RangeDetector.SetSize(BeamWidth / 2);
         if (AreaAttack) {
         projectileFinalPoint.EffectableTargetBank.onTargetsUpdate += delegate
         {
@@ -284,7 +284,7 @@ public class BeamWeaponAsync : WeaponController
         base.Update();
         if (BeamAttackInprogress == false)
         {
-            CoolDownTimer += StaticObjects.instance.DeltaGameTime;
+            CoolDownTimer += StaticObjects.Instance.DeltaGameTime;
         }
     }
 }

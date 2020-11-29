@@ -60,7 +60,7 @@ public class ProjectileMovementFunction
     {
         while (ProgressCounter <= 1f && ExternalMovementLock == false)
         {
-            ProgressCounter += speed * StaticObjects.instance.DeltaGameTime;
+            ProgressCounter += speed * StaticObjects.Instance.DeltaGameTime;
             MovementFunction(projectileTransform, null, originPos, TargetPos, speed);
             await Task.Yield();
         }
@@ -76,7 +76,7 @@ public class ProjectileMovementFunction
         Vector2 cachedPosition = targetTarnsform.position;
         while (ProgressCounter <= 1f && ExternalMovementLock == false)
         {
-            ProgressCounter += StaticObjects.instance.DeltaGameTime * speed;
+            ProgressCounter += StaticObjects.Instance.DeltaGameTime * speed;
             if (targetLost == false) {
                 if (targetTarnsform != null)
                 {

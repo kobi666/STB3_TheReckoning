@@ -209,11 +209,11 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
         {
             if (BaseProjectileEffect.EffectRadius <= 0)
             {
-                rangeDetector.SetRangeRadius(1);
+                rangeDetector.SetSize(1);
             }
             else
             {
-                rangeDetector.SetRangeRadius(BaseProjectileEffect.EffectRadius);
+                rangeDetector.SetSize(BaseProjectileEffect.EffectRadius);
             } 
         }
     }

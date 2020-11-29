@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 
-public class TagDetector : SerializedMonoBehaviour
+public abstract class TagDetector : MonoBehaviour
 {
 #if UNITY_EDITOR
     [TagSelector][SerializeField]
@@ -36,7 +36,9 @@ public class TagDetector : SerializedMonoBehaviour
         onTargetExit?.Invoke(targetName, callerName);
     }
 
-
+    public abstract void SetSize(float newSize);
+    
+    
     private void OnTriggerEnter2D(Collider2D other) {
         if (DiscoverableTagsList.Contains(other.tag)) {
             OnTargetEnter(other.gameObject);
