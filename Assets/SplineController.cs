@@ -5,11 +5,13 @@ using BansheeGz.BGSpline.Curve;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class SplineController : SerializedMonoBehaviour
+public class SplineController : MonoBehaviour
 {
     public BGCurve BgCurve;
     public EffectableTargetBank TargetBank;
     public SplineDetector Detector;
+    public ProjectileFinalPoint FinalPoint;
+    public ProjectileExitPoint ExitPoint;
 
     public BGCurvePointI[] points
     {
@@ -24,5 +26,7 @@ public class SplineController : SerializedMonoBehaviour
         TargetBank = TargetBank ?? GetComponent<EffectableTargetBank>();
         Detector = Detector ?? GetComponent<SplineDetector>();
         LineRenderer = GetComponent<LineRenderer>();
+        FinalPoint = FinalPoint ?? GetComponentInChildren<ProjectileFinalPoint>();
+        ExitPoint = ExitPoint ?? GetComponentInChildren<ProjectileExitPoint>();
     }
 }
