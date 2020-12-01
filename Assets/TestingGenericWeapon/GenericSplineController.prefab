@@ -111,21 +111,7 @@ MonoBehaviour:
     existing: 1
   mode2D: 1
   closed: 0
-  points:
-  - controlType: 1
-    positionLocal: {x: 0, y: 0, z: 0}
-    controlFirstLocal: {x: 0, y: 0, z: 0}
-    controlSecondLocal: {x: -0, y: -0, z: -0}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 2350894109049245224}
-    fieldsValues: []
-  - controlType: 1
-    positionLocal: {x: 0, y: 0, z: 0}
-    controlFirstLocal: {x: 0, y: 0, z: -0}
-    controlSecondLocal: {x: -0, y: -0, z: 0}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 2350894109049245224}
-    fieldsValues: []
+  points: []
   pointsComponents: []
   pointsGameObjects: []
   fields: []
@@ -293,38 +279,7 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  m_Positions: []
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.5
@@ -473,18 +428,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f431a3e70f0966447b551cd13de8a1d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
   BgCurve: {fileID: 0}
   TargetBank: {fileID: 2350894109049245200}
   Detector: {fileID: 2350894109049245207}
+  FinalPoint: {fileID: 0}
+  ExitPoint: {fileID: 0}
   LineRenderer: {fileID: 0}
 --- !u!1001 &6499143542104343830
 PrefabInstance:

@@ -9,7 +9,7 @@ using System;
 public class SplineAttack : WeaponAttack
 {
     [TypeFilter("GetSplineAttacks")] [LabelText("Attack Function")] [OdinSerialize]
-    public SplineAttackProperties SplineAttacks;
+    public SplineAttackProperties SplineAttackType;
     
     private static IEnumerable<Type> GetSplineAttacks()
     {
@@ -21,14 +21,13 @@ public class SplineAttack : WeaponAttack
         return q;
     }
     
-    public List<SplineBehavior> Splines {get; set;}
     public override void Attack(Effectable singleTarget, Vector2 SingleTargetPosition)
     {
-        
+        SplineAttackType.StartAsyncSplineAttack(singleTarget, SingleTargetPosition);
     }
 
     public override void InitlizeAttack()
     {
-        
+        SplineAttackType.InitlizeProperties();
     }
 }

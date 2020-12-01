@@ -38,5 +38,8 @@ public class SplineEffect
     {
         new Damage()
     };
+    
+    
+    
 
 }

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using System;
+using BansheeGz.BGSpline.Curve;
 
 [System.Serializable]
-public class SplineMovementFunction
+public abstract class SplineMovementFunction
 {
+    public abstract void MovementFunction(Vector2 targetPosition);
     
     public bool Oscilating;
     [ShowIf("Oscilating")] public (float, float) beamOsciliationOffsetMinMax { get; set; } = (0.05f,0.05f);
@@ -40,16 +42,34 @@ public class SplineMovementFunction
     private bool AsyncMovementInProgress;
 
     public bool FinalPointTeleportsToTarget;
-    private ProjectileExitPoint exitPoint;
-    private SplineController splineController;
-    private ProjectileFinalPoint finalPoint;
+
+    [HideIf("FinalPointTeleportsToTarget")]
+    public float TravelSpeed { get; set; } = 0.5f;
+    [HideInInspector]
+    public ProjectileExitPoint exitPoint;
+    [HideInInspector]
+    public SplineController splineController;
+    [HideInInspector]
+    public ProjectileFinalPoint finalPoint;
+    private event Action<Vector2> onFinalPointMovement; 
 
     public void Initialize(SplineBehavior sb)
     {
         splineController = sb.SplineController;
         exitPoint = sb.ExitPoint;
         finalPoint = sb.FinalPoint;
+        if (FinalPointTeleportsToTarget)
+        {
+            onFinalPointMovement += TeleportFinalPoint;
+        }
+        else
+        {
+            onFinalPointMovement += FinalPointTravelToTarget;
+        }
+        InitSplineProperties();
     }
+
+    public abstract void InitSplineProperties();
 
     public void TeleportFinalPoint(Vector2 targetPosition)
     {
@@ -57,12 +77,12 @@ public class SplineMovementFunction
         FinalPointReached = true;
     }
 
-    public void FinalPointTravelToTarget(Vector2 targetPosition, float travelSpeed)
+    public void FinalPointTravelToTarget(Vector2 targetPosition)
     {
         distanceCounter = 1 - (Vector2.Distance(exitPoint.transform.position, targetPosition));
         if (distanceCounter <= 1)
         {
-            distanceCounter += travelSpeed * StaticObjects.Instance.DeltaGameTime;
+            distanceCounter += TravelSpeed * StaticObjects.Instance.DeltaGameTime;
             finalPoint.Position = Vector2.Lerp(exitPoint.transform.position, targetPosition, distanceCounter);
         }
 
@@ -71,6 +91,21 @@ public class SplineMovementFunction
             FinalPointReached = true;
         }
     }
+
+
+    public void MoveSpline(Vector2 targetPosition)
+    {
+        onFinalPointMovement?.Invoke(targetPosition);
+        if (Oscilating)
+        {
+            OscilateBeam();
+        }
+
+        MovementFunction(targetPosition);
+    }
+    
+    
+    
     
     private float currentBeamWidth;
     public virtual float CurrentBeamWidth
@@ -86,7 +121,7 @@ public class SplineMovementFunction
     
     private bool _widthDirection;
 
-    public virtual void OscilateBeam(float beamDuration)
+    public virtual void OscilateBeam()
     {
         if (CurrentBeamWidth <= CurrentBeamWidth - beamOsciliationOffsetMinMax.Item1)
         {
@@ -112,4 +147,22 @@ public class SplineMovementFunction
     
     
     
+}
+
+
+public class StraightLaZor : SplineMovementFunction
+{
+    public override void MovementFunction(Vector2 targetPosition)
+    {
+        splineController.points[0].PointTransform.position = exitPoint.transform.position;
+        splineController.points[1].PointTransform.position = finalPoint.Position;
+    }
+
+    public override void InitSplineProperties()
+    {
+        splineController.BgCurve.CreatePointFromWorldPosition(exitPoint.transform.position,
+            BGCurvePoint.ControlTypeEnum.Absent);
+        splineController.BgCurve.CreatePointFromWorldPosition(finalPoint.transform.position,
+            BGCurvePoint.ControlTypeEnum.Absent);
+    }
 }

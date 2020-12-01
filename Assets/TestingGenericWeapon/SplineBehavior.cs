@@ -18,7 +18,7 @@ public class SplineBehavior
     private EffectableTargetBank TargetBank;
     
     public bool SpecificTarget;
-    public bool SplineEndInstantlyReachesTarget;
+    public bool SplineInstantlyReachesTarget;
     [HideIf("SplineInstantlyReachesTarget")]
     public bool SplineTravelsToTarget;
     [ShowIf("SplineTravelsToTarget")]
@@ -70,21 +70,21 @@ public class SplineBehavior
     
     
 
-    public void Init(SplineController sc)
+    public void Init()
     {
-        SplineController = sc;
-        FinalPoint = sc.FinalPoint;
-        ExitPoint = sc.ExitPoint;
-        TargetBank = sc.TargetBank;
+        FinalPoint = SplineController.FinalPoint;
+        ExitPoint = SplineController.ExitPoint;
+        TargetBank = SplineController.TargetBank;
+        SplineMovement.Initialize(this);
     }
     
     [ShowInInspector]
-    private bool SplineAttackInProgress = false;
-    public async void InitiateSplineAttack()
+    private bool SplineBehaviorInProgress = false;
+    /*public async void InitiateAsyncSplineBehavior()
     {
-        if (SplineAttackInProgress == false)
+        if (SplineBehaviorInProgress == false)
         {
-            SplineAttackInProgress = true;
+            SplineBehaviorInProgress = true;
             resetTimer();
             while (SplineDynamicData.MainTarget != null)
             {
@@ -94,5 +94,10 @@ public class SplineBehavior
                 }
             }
         }
+    }*/
+
+    public void ConcurrentSplineBehavior(Vector2 targetPosition)
+    {
+        SplineMovement.MoveSpline(targetPosition);
     }
 }
