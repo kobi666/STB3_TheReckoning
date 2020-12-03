@@ -17,21 +17,18 @@ public class SplineBehavior
     public ProjectileFinalPoint FinalPoint;
     private EffectableTargetBank TargetBank;
     
-    public bool SpecificTarget;
-    public bool SplineInstantlyReachesTarget;
+    /*public bool SplineInstantlyReachesTarget;
     [HideIf("SplineInstantlyReachesTarget")]
     public bool SplineTravelsToTarget;
     [ShowIf("SplineTravelsToTarget")]
-    public float SplineTravelSpeed = 0.1f;
+    public float SplineTravelSpeed = 0.1f;*/
     
-    [HideIf("SpecificTarget")]
-    public bool HitsTargetsAlongSpline;
-    [ShowIf("HitsTargetsAlongBeam")] public int MaxTargets;
-    [ShowIf("HitsTargetsAlongBeam")] public int TargetCounter = 0;
+    /*[ShowIf("HitsTargetsAlongBeam")] public int MaxTargets;
+    [ShowIf("HitsTargetsAlongBeam")] public int TargetCounter = 0;*/
     
-    [TypeFilter("GetSplineEffects")] [OdinSerialize]
+    [TypeFilter("GetSplineEffects")] [OdinSerialize][GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     public List<SplineEffect> SplineEffect;
-    [TypeFilter("GetSplineMovements")] [OdinSerialize]
+    [TypeFilter("GetSplineMovements")] [OdinSerialize][GUIColor(0, 1, 0)][BoxGroup]
     public SplineMovementFunction SplineMovement;
 
     public float SplineDuration;
@@ -67,6 +64,23 @@ public class SplineBehavior
         
         return q;
     }
+
+    private bool positionReached = false;
+    void SetOnPositionReachedTrue()
+    {
+        positionReached = true;
+    }
+
+    private event Action<Effectable> onPosReachedAttack;
+
+    void OnPosReachedAttack(Effectable ef)
+    {
+        if (positionReached)
+        {
+            onPosReachedAttack?.Invoke(ef);
+        }
+    }
+    private event Action<Effectable> onConcurrentAttack; 
     
     
 
@@ -76,6 +90,19 @@ public class SplineBehavior
         ExitPoint = SplineController.ExitPoint;
         TargetBank = SplineController.TargetBank;
         SplineMovement.Initialize(this);
+        SplineMovement.onTargetPositionReached += SetOnPositionReachedTrue;
+        foreach (var effect in SplineEffect)
+        {
+            effect.InitEffect(SplineController);
+            if (effect.EffectStartsOnTargetPositionReached)
+            {
+                onPosReachedAttack += effect.OnAttack;
+            }
+            else
+            {
+                onConcurrentAttack += effect.OnAttack;
+            }
+        }
     }
     
     [ShowInInspector]
@@ -96,8 +123,10 @@ public class SplineBehavior
         }
     }*/
 
-    public void ConcurrentSplineBehavior(Vector2 targetPosition)
+    public void ConcurrentSplineBehavior(Effectable targetEffectable, Vector2 targetPosition)
     {
-        SplineMovement.MoveSpline(targetPosition);
+        SplineMovement.MoveSpline(targetEffectable.transform.position);
+        OnPosReachedAttack(targetEffectable);
+        onConcurrentAttack?.Invoke(targetEffectable);
     }
 }

@@ -5,13 +5,11 @@ using UnityEngine;
 public class SplineDynamicData
 {
     public Effectable MainTarget;
-    public Vector2? TargetPosition;
-    public Effectable[] Targets;
+    public Vector2 TargetPosition;
 
     public void Clear()
     {
         MainTarget = null;
-        TargetPosition = null;
-        Targets = null;
+        TargetPosition = new Vector2(9999,9999);
     }
 }

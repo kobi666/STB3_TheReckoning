@@ -14,6 +14,10 @@ public class SplineEffect
     {
         new Damage()
     };
+
+    private EffectableTargetBank TargetBank;
+    private SplineController splineController;
+    
     
     private static IEnumerable<Type> GetFilteredTypeList()
     {
@@ -24,20 +28,212 @@ public class SplineEffect
         
         return q;
     }
-
+    
+    [DisableIf("EffectHappensAtInterval")]
     public bool EffectHappensOnce;
-    [ShowIf("EffectHappensOnce")]
-    public bool EffectStartsOnTargetPositionReached;
+    [HideIf("EffectHappensOnce"), DisableIf("EffectHappensOnce")]
     public bool EffectHappensAtInterval;
     
-    public bool AffectsTargetsOnPath;
-    [ShowIf("AffectsTargetsOnPath")] public int MaxNumberOfTargets = 1;
     
-    [HideLabel, ShowIf("EffectsTargetsInPath"), TypeFilter("GetFilteredTypeList")] [OdinSerialize]
+    public bool EffectStartsOnTargetPositionReached = false;
+    [ShowIf("EffectHappensAtInterval")] public float EffectInterval = 0.25f;
+
+    [ShowIf("EffectHappensAtInterval"), ShowInInspector]
+    private float EffectIntervalCounter = 0;
+    public event Action onInterval;
+    
+    public bool AffectsTargetsOnPath;
+
+    [HideLabel, ShowIf("AffectsTargetsOnPath")] [TypeFilter("GetFilteredTypeList")] [OdinSerialize]
     public List<Effect> OnPathTargetsEffects = new List<Effect>()
     {
         new Damage()
     };
+
+    private event Action<Effectable> onPathEffect;
+    private event Action<Effectable> onMainTargetEffect;
+    private event Action<Effectable> onAttack;
+
+    private void ApplyEffectOnMainTarget(Effectable ef)
+    {
+        if (TargetBank.Targets.ContainsKey(ef.name))
+        {
+            if (ef.IsTargetable())
+            {
+                onMainTargetEffect?.Invoke(ef);
+            }
+        }
+    }
+
+    private Dictionary<string,Effectable> t_targets;
+    private void ApplyEffectOnPathTargets(Effectable ef)
+    {
+        if (MainTargetEffect)
+        {
+            t_targets = TargetBank.Targets;
+            foreach (var t in t_targets)
+            {
+                if (t.Key == ef.name)
+                {
+                    continue;
+                }
+
+                if (t.Value?.IsTargetable() ?? false)
+                {
+                    onPathEffect?.Invoke(t.Value);
+                }
+            }
+        }
+        else
+        {
+            t_targets = TargetBank.Targets;
+            foreach (var t in t_targets)
+                {
+                    if (t.Value?.IsTargetable() ?? false)
+                    {
+                        onPathEffect?.Invoke(t.Value);
+                    }
+                }
+        }
+    }
+
+    private void EffectOnce(Effectable ef)
+    {
+        if (!m_SingleSingleEffectHappened)
+        {
+            OnAttack(ef);
+        }
+    }
+
+    public void OnAttack(Effectable ef)
+    {
+        if (TargetBank.Targets.Any())
+        {
+            if (EffectHappensAtInterval)
+            {
+                EffectOnInterval(ef);
+            }
+
+            if (EffectHappensOnce)
+            {
+                EffectOnce(ef);
+            }
+        }
+    }
+
+    void EffectOnMainTarget(Effectable ef)
+    {
+        if (TargetBank.Targets.ContainsKey(ef.name))
+        {
+            if (ef.IsTargetable())
+            {
+                onPathEffect?.Invoke(ef);
+            }
+        }
+    }
+
+    public event Action onAttackStart;
+
+    public void OnAttackStart()
+    {
+        onAttackStart?.Invoke();
+    }
+    public event Action onAttackEnd;
+
+    public void OnAttackEnd()
+    {
+        onAttackEnd?.Invoke();
+    }
+    void EffectOnPathTargets(Effectable ef)
+    {
+        foreach (var target in TargetBank.Targets.Values)
+        {
+            if (target == null)
+            {
+                continue;
+            }
+
+            if (MainTargetEffect)
+            {
+                if (target.name == ef.name)
+                {
+                    continue;
+                }
+            }
+
+            if (target.IsTargetable())
+            {
+                onPathEffect?.Invoke(target);
+            }
+        }
+    }
+
+    void EffectOnInterval(Effectable ef)
+    {
+        EffectIntervalCounter += StaticObjects.Instance.DeltaGameTime;
+        if (EffectIntervalCounter >= EffectInterval)
+        {
+            onAttack?.Invoke(ef);
+            EffectIntervalCounter = 0;
+        }
+    }
+
+    public event Action<Effectable> onEffect;
+
+    private void OnEffect(Effectable ef)
+    {
+        onEffect?.Invoke(ef);
+    }
+    
+    private bool m_SingleSingleEffectHappened = false;
+
+    public bool SingleEffectHappened
+    {
+        get => m_SingleSingleEffectHappened;
+        set
+        {
+            m_SingleSingleEffectHappened = true;
+        }
+    }
+
+    
+
+    public void InitEffect(SplineController sc)
+    {
+        splineController = sc;
+        TargetBank = sc.TargetBank;
+        
+        if (MainTargetEffect)
+        {
+            foreach (var effect in MainTargetEffects)
+            {
+                onMainTargetEffect += effect.Apply;
+                onMainTargetEffect += OnEffect;
+            }
+
+            onAttack += ApplyEffectOnMainTarget;
+        }
+        if (AffectsTargetsOnPath)
+        {
+            foreach (var effect in OnPathTargetsEffects)
+            {
+                onPathEffect += effect.Apply;
+                onPathEffect += OnEffect;
+            }
+            onAttack += ApplyEffectOnPathTargets;
+        }
+
+        if (EffectHappensOnce)
+        {
+            onEffect += delegate(Effectable effectable) { SingleEffectHappened = true;};
+        }
+
+        onAttackEnd += delegate { TargetBank.Targets.Clear();};
+        onAttackEnd += delegate { SingleEffectHappened = false; };
+
+    }
+    
+    
     
     
     

@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using System.Threading.Tasks;
 
-public class ProjectileExitPoint : SerializedMonoBehaviour
+public class ProjectileExitPoint : MonoBehaviour
 {
     public GenericWeaponController ParentWeaponController;
     public float rotationSpeed = 1;

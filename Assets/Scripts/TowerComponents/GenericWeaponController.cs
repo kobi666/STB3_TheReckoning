@@ -35,6 +35,11 @@ public class GenericWeaponController : TowerComponent
     {
         projectileAttack.AttackFunction.Attack(Target.Effectable,Target.transform.position);
     }
+
+    void FireSplineAttack()
+    {
+        SplineAttack.Attack(Target.Effectable, Target.transform.position);
+    }
     
     
     
@@ -43,9 +48,8 @@ public class GenericWeaponController : TowerComponent
     [SerializeField]
     protected Action<AOEProjectile>[] AoeEvent = new Action<AOEProjectile>[0];
 
-    [ShowIf("WeaponType", 2)]
-    [SerializeField]
-    protected Func<bool>[] LaZorEvent = new Func<bool>[0];
+    [ShowIf("WeaponType", 2)] [SerializeField]
+    public SplineAttack SplineAttack;
     public string WeaponName;
 
     public void InitWeapon()
@@ -56,6 +60,13 @@ public class GenericWeaponController : TowerComponent
             onAttack += FireProjectileAttack;
             onAttackInitiate += projectileFinalPoint.StartAsyncRotation;
             onAttackCease += projectileFinalPoint.StopAsyncRotation;
+        }
+
+        if (WeaponType == 2)
+        {
+            SplineAttack.InitlizeAttack();
+            onAttack += FireSplineAttack;
+            onAttackCease += SplineAttack.StopSplineAttack;
         }
     }
     

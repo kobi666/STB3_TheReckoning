@@ -45,7 +45,7 @@ public abstract class EnemyUnitController : UnitController,ITypeTag
     {
         if (ShouldGiveMoneyzOnDeath)
         {
-            PlayerResources.instance.UpdateMoneyz(MoneyzAmount);
+            PlayerResources.instance?.UpdateMoneyz(MoneyzAmount);
         }
     }
     

@@ -14,24 +14,24 @@ public abstract class SplineMovementFunction
     [ShowIf("Oscilating")] public (float, float) beamOsciliationOffsetMinMax { get; set; } = (0.05f,0.05f);
     [ShowIf("Oscilating")] public float OscilationSpeed { get; set; } = 0.01f;
 
-    public event Action onFinalPointReached;
+    public event Action onTargetPositionReached;
 
-    private bool finalPointReached = false;
+    private bool targetPositionReached = false;
     [ShowInInspector]
-    private bool FinalPointReached
+    private bool TargetPositionReached
     {
-        get => finalPointReached;
+        get => targetPositionReached;
         set
         {
             if (value == true)
             {
-                if (finalPointReached == false)
+                if (targetPositionReached == false)
                 {
-                    onFinalPointReached?.Invoke();
+                    onTargetPositionReached?.Invoke();
                 }
             }
 
-            finalPointReached = value;
+            targetPositionReached = value;
         }
     }
 
@@ -44,7 +44,7 @@ public abstract class SplineMovementFunction
     public bool FinalPointTeleportsToTarget;
 
     [HideIf("FinalPointTeleportsToTarget")]
-    public float TravelSpeed { get; set; } = 0.5f;
+    public float TravelSpeed = 0.5f;
     [HideInInspector]
     public ProjectileExitPoint exitPoint;
     [HideInInspector]
@@ -74,22 +74,26 @@ public abstract class SplineMovementFunction
     public void TeleportFinalPoint(Vector2 targetPosition)
     {
         finalPoint.Position = targetPosition;
-        FinalPointReached = true;
+        TargetPositionReached = true;
+    }
+
+    public void initMovment(Vector2 targetPosition)
+    {
+        finalPoint.Position = exitPoint.transform.position;
+        distanceCounter = 0;
     }
 
     public void FinalPointTravelToTarget(Vector2 targetPosition)
     {
-        distanceCounter = 1 - (Vector2.Distance(exitPoint.transform.position, targetPosition));
-        if (distanceCounter <= 1)
+        //distanceCounter += Vector2.Distance()
+            //finalPoint.Position = Vector2.Lerp(exitPoint.transform.position, targetPosition, distanceCounter);
+            finalPoint.Position = Vector2.MoveTowards(finalPoint.Position, targetPosition,
+                TravelSpeed * StaticObjects.Instance.DeltaGameTime);
+            /*if (distanceCounter >= 1)
         {
-            distanceCounter += TravelSpeed * StaticObjects.Instance.DeltaGameTime;
-            finalPoint.Position = Vector2.Lerp(exitPoint.transform.position, targetPosition, distanceCounter);
-        }
-
-        if (distanceCounter >= 1)
-        {
-            FinalPointReached = true;
-        }
+            
+        }*/
+            
     }
 
 
@@ -107,13 +111,13 @@ public abstract class SplineMovementFunction
     
     
     
-    private float currentBeamWidth;
+    public float BeamWidth;
     public virtual float CurrentBeamWidth
     {
-        get => currentBeamWidth;
+        get => BeamWidth;
         set
         {
-            currentBeamWidth = value;
+            BeamWidth = value;
             splineController.LineRenderer.startWidth = value;
             splineController.LineRenderer.endWidth = value;
         }
@@ -154,15 +158,19 @@ public class StraightLaZor : SplineMovementFunction
 {
     public override void MovementFunction(Vector2 targetPosition)
     {
-        splineController.points[0].PointTransform.position = exitPoint.transform.position;
-        splineController.points[1].PointTransform.position = finalPoint.Position;
+        splineController.points[0].PositionLocal = exitPoint.transform.position;
+        splineController.points[1].PositionLocal = finalPoint.Position;
     }
 
     public override void InitSplineProperties()
     {
-        splineController.BgCurve.CreatePointFromWorldPosition(exitPoint.transform.position,
-            BGCurvePoint.ControlTypeEnum.Absent);
-        splineController.BgCurve.CreatePointFromWorldPosition(finalPoint.transform.position,
-            BGCurvePoint.ControlTypeEnum.Absent);
+        splineController.BgCurve.AddPoint(splineController.BgCurve.CreatePointFromWorldPosition(
+            exitPoint.transform.position,
+            BGCurvePoint.ControlTypeEnum.Absent), 0);
+        /*splineController.BgCurve.CreatePointFromWorldPosition(exitPoint.transform.position,
+            BGCurvePoint.ControlTypeEnum.Absent);*/
+        splineController.BgCurve.AddPoint(
+            splineController.BgCurve.CreatePointFromWorldPosition(finalPoint.transform.position,
+                BGCurvePoint.ControlTypeEnum.Absent), 1);
     }
 }

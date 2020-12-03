@@ -26,6 +26,11 @@ public class SplineAttack : WeaponAttack
         SplineAttackType.StartAsyncSplineAttack(singleTarget, SingleTargetPosition);
     }
 
+    public void StopSplineAttack()
+    {
+        SplineAttackType.StopAttack();
+    }
+
     public override void InitlizeAttack()
     {
         SplineAttackType.InitlizeProperties();
