@@ -35,6 +35,16 @@ public abstract class SplineMovementFunction
         }
     }
 
+    public void OnAttackEnd()
+    {
+        splineController.LineRenderer.enabled = false;
+    }
+
+    public void OnAttackStart()
+    {
+        splineController.LineRenderer.enabled = true;
+    }
+
     private float distanceCounter;
 
     [ShowInInspector]
@@ -158,19 +168,19 @@ public class StraightLaZor : SplineMovementFunction
 {
     public override void MovementFunction(Vector2 targetPosition)
     {
-        splineController.points[0].PositionLocal = exitPoint.transform.position;
-        splineController.points[1].PositionLocal = finalPoint.Position;
+        splineController.points[0].PositionWorld = exitPoint.transform.position;
+        splineController.points[1].PositionWorld = finalPoint.Position;
     }
 
     public override void InitSplineProperties()
     {
-        splineController.BgCurve.AddPoint(splineController.BgCurve.CreatePointFromWorldPosition(
+        splineController.BgCurve.AddPoint(splineController.BgCurve.CreatePointFromLocalPosition(
             exitPoint.transform.position,
             BGCurvePoint.ControlTypeEnum.Absent), 0);
         /*splineController.BgCurve.CreatePointFromWorldPosition(exitPoint.transform.position,
             BGCurvePoint.ControlTypeEnum.Absent);*/
         splineController.BgCurve.AddPoint(
-            splineController.BgCurve.CreatePointFromWorldPosition(finalPoint.transform.position,
+            splineController.BgCurve.CreatePointFromLocalPosition(finalPoint.transform.position,
                 BGCurvePoint.ControlTypeEnum.Absent), 1);
     }
 }

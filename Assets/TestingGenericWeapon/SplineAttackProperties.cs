@@ -46,10 +46,7 @@ public abstract class SplineAttackProperties
             foreach (var spline in Splines)
             {
                 spline.SplineMovement.initMovment(targetPosition);
-                foreach (var se in spline.SplineEffect)
-                {
-                    se.OnAttackStart();
-                }
+                spline.OnAttackStart();
             }
             while (AttackProgressCounter < AttackDuration && AsyncAttackInProgress == true && MainTarget != null)
             {
@@ -61,12 +58,10 @@ public abstract class SplineAttackProperties
             AsyncAttackInProgress = false;
             foreach (var sp in Splines)
             {
-                foreach (var se in sp.SplineEffect)
-                {
-                    se.OnAttackEnd();
-                }
+                sp.OnAttackEnd();
             }
-            
+
+            MainTarget = null;
         }
     }
 

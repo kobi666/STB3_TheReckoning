@@ -37,11 +37,13 @@ public abstract class TagDetector : MonoBehaviour
     }
 
     public abstract void SetSize(float newSize);
-    
-    
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (DiscoverableTagsList.Contains(other.tag)) {
+
+    private ContactPoint2D[] cp;
+    protected void OnTriggerEnter2D(Collider2D other) {
+        if (DiscoverableTagsList.Contains(other.tag))
+        {
             OnTargetEnter(other.gameObject);
+            //var t = other.
         }
     }
 

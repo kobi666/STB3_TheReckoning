@@ -65,35 +65,43 @@ public class SplineEffect
         }
     }
 
-    private Dictionary<string,Effectable> t_targets;
+    private Effectable[] t_targets;
+
+    private bool onPathEffectInProgress;
     private void ApplyEffectOnPathTargets(Effectable ef)
     {
-        if (MainTargetEffect)
+        if (!onPathEffectInProgress)
         {
-            t_targets = TargetBank.Targets;
-            foreach (var t in t_targets)
+            onPathEffectInProgress = true;
+            if (MainTargetEffect)
             {
-                if (t.Key == ef.name)
+                t_targets = TargetBank.Targets.Values.ToArray();
+                foreach (var t in t_targets)
                 {
-                    continue;
-                }
-
-                if (t.Value?.IsTargetable() ?? false)
-                {
-                    onPathEffect?.Invoke(t.Value);
-                }
-            }
-        }
-        else
-        {
-            t_targets = TargetBank.Targets;
-            foreach (var t in t_targets)
-                {
-                    if (t.Value?.IsTargetable() ?? false)
+                    if (t.name == ef.name)
                     {
-                        onPathEffect?.Invoke(t.Value);
+                        continue;
+                    }
+
+                    if (t?.IsTargetable() ?? false)
+                    {
+                        onPathEffect?.Invoke(t);
                     }
                 }
+            }
+            else
+            {
+                t_targets = TargetBank.Targets.Values.ToArray();
+                foreach (var t in t_targets)
+                    {
+                        if (t?.IsTargetable() ?? false)
+                        {
+                            onPathEffect?.Invoke(t);
+                        }
+                    }
+            }
+
+            onPathEffectInProgress = false;
         }
     }
 

@@ -5,7 +5,7 @@ using Animancer;
 using System;
 using Sirenix.OdinInspector;
 
-public class AnimationController : SerializedMonoBehaviour
+public class AnimationController : MonoBehaviour
 {
 
     public AnimationClip Clip = null;

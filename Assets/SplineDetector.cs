@@ -7,6 +7,11 @@ using UnityEngine;
 
 public class SplineDetector : TagDetector
 {
+    private ContactPoint2D[] cpt = new ContactPoint2D[1];
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        base.OnTriggerEnter2D(other);
+    }
     public override void SetSize(float newSize)
     {
         

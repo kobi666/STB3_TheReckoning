@@ -30,7 +30,6 @@ public abstract class TargetBank<T> : SerializedMonoBehaviour where T : Componen
     public event Action<string,string> onTargetRemove;
     public void OnTargetRemove(string targetName, string callerName) {
         onTargetRemove?.Invoke(targetName, callerName);
-        onTargetsUpdate?.Invoke();
     }
     
     

@@ -48,7 +48,7 @@ public class GenericWeaponController : TowerComponent
     [SerializeField]
     protected Action<AOEProjectile>[] AoeEvent = new Action<AOEProjectile>[0];
 
-    [ShowIf("WeaponType", 2)] [SerializeField]
+    [ShowIf("WeaponType", 2)] [OdinSerialize]
     public SplineAttack SplineAttack;
     public string WeaponName;
 
@@ -179,7 +179,14 @@ public class GenericWeaponController : TowerComponent
     }
 
     public virtual void StandardOnTargetLeftRange(string targetName,string callerName) {
-        Target = FindSingleTargetNearestToEndOfSpline();
+        if (Target?.name == targetName)
+        {
+            Target = FindSingleTargetNearestToEndOfSpline(targetName);
+        }
+        else
+        {
+            Target = FindSingleTargetNearestToEndOfSpline();
+        }
     }
     string CurrentLowestProximtyTargetName;
     TargetUnit FindSingleTargetNearestToEndOfSpline() {
@@ -188,6 +195,29 @@ public class GenericWeaponController : TowerComponent
         foreach (var item in TargetBank.Targets)
         {
             if (!GameObjectPool.Instance.ActiveUnitPool.Pool.ContainsKey(item.Key)) {
+                continue;
+            }
+            float tp = GameObjectPool.Instance.ActiveUnitPool.Pool[item.Key].Proximity;
+            if (tp < p) {
+                p = tp;
+                tu = GameObjectPool.Instance.GetTargetUnit(item.Key);
+            }
+        }
+        CurrentLowestProximtyTargetName = tu?.name ?? "NULL";
+        return tu;
+    }
+    
+    TargetUnit FindSingleTargetNearestToEndOfSpline(string formerTargetName) {
+        TargetUnit tu = null;
+        float p = 999999.0f;
+        foreach (var item in TargetBank.Targets)
+        {
+            if (!GameObjectPool.Instance.ActiveUnitPool.Pool.ContainsKey(item.Key)) {
+                continue;
+            }
+
+            if (item.Key == formerTargetName)
+            {
                 continue;
             }
             float tp = GameObjectPool.Instance.ActiveUnitPool.Pool[item.Key].Proximity;
@@ -255,7 +285,8 @@ public class GenericWeaponController : TowerComponent
     public void OnEnemyLeftRange(string targetName,string callerName) {
         onEnemyLeftRange?.Invoke(targetName ?? null, name ?? null);
     }
-
+    
+    [ShowInInspector]
     public TargetUnit Target {
         get => Data.targetUnit;
         set {

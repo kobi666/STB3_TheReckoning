@@ -8,28 +8,38 @@ using UnityEngine;
 
 public class SplineBehavior
 {
-    [ShowInInspector]
-    public SplineDynamicData SplineDynamicData = new SplineDynamicData();
     public SplineController SplineController;
     [HideInInspector]
     public ProjectileExitPoint ExitPoint;
     [HideInInspector]
     public ProjectileFinalPoint FinalPoint;
     private EffectableTargetBank TargetBank;
-    
-    /*public bool SplineInstantlyReachesTarget;
-    [HideIf("SplineInstantlyReachesTarget")]
-    public bool SplineTravelsToTarget;
-    [ShowIf("SplineTravelsToTarget")]
-    public float SplineTravelSpeed = 0.1f;*/
-    
-    /*[ShowIf("HitsTargetsAlongBeam")] public int MaxTargets;
-    [ShowIf("HitsTargetsAlongBeam")] public int TargetCounter = 0;*/
-    
+
+    public AnimationClip OnHitSingleAnimation;
+    public AnimationClip OnHitContinuousAnimation;
+
     [TypeFilter("GetSplineEffects")] [OdinSerialize][GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     public List<SplineEffect> SplineEffect;
     [TypeFilter("GetSplineMovements")] [OdinSerialize][GUIColor(0, 1, 0)][BoxGroup]
     public SplineMovementFunction SplineMovement;
+
+    public void OnAttackEnd()
+    {
+        foreach (var effect in SplineEffect)
+        {
+            effect.OnAttackEnd();
+        }
+        SplineMovement.OnAttackEnd();
+    }
+
+    public void OnAttackStart()
+    {
+        foreach (var effect in SplineEffect)
+        {
+            effect.OnAttackStart();
+        }
+        SplineMovement.OnAttackStart();
+    }
 
     public float SplineDuration;
 

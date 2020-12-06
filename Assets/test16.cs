@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class ComponentSpriteController : MonoBehaviour
+public class test16 : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -11,9 +10,12 @@ public class ComponentSpriteController : MonoBehaviour
         
     }
 
+    public float moveSpeed;
+
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position = Vector2.MoveTowards(transform.position, (Vector2) transform.position + Vector2.left,
+            moveSpeed * Time.deltaTime);
     }
 }

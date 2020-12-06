@@ -149,7 +149,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 8455382016201061926}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 0.0001
   m_LinearDrag: 0
@@ -249,18 +249,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b744ad22e0dd098438e3a05191a74faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: CurrentAnimationState
-      Entry: 6
-      Data: 
   Clip: {fileID: 0}
   animancer: {fileID: 0}
   WalkingAnimation: {fileID: 7400000, guid: 103d48b133d0b4e4fb3c33386ee4faca, type: 2}

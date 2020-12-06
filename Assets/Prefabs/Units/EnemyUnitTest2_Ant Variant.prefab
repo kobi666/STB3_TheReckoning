@@ -27,6 +27,12 @@ PrefabInstance:
       propertyPath: DeathAnimation
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5116123812295326348, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 5116123812295326348, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
+        type: 3}
     - target: {fileID: 8455382016201061926, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_Name
@@ -77,6 +83,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.46333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455382016201061947, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
+        type: 3}
+      propertyPath: m_UseFullKinematicContacts
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}

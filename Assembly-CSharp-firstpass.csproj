@@ -71,15 +71,15 @@
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\UnitWalker.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\BezierWalkerWithTime.cs" />
      <None Include="Assets\Plugins\BezierSolution\README.txt" />
-     <None Include="Assets\Plugins\UniRx\ReadMe.txt" />
+     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.xml" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.xml" />
-     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.xml" />
+     <None Include="Assets\Plugins\UniRx\ReadMe.txt" />
      <None Include="Assets\Plugins\Sirenix\Readme.txt" />
-     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.xml" />
+     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.xml" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\link.xml" />
      <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
-     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.xml" />
-     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.xml" />
+     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.xml" />
+     <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.xml" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
@@ -677,17 +677,13 @@
       <Project>{25802a85-b3b3-cd9a-eb46-51e86eaeebb4}</Project>
       <Name>UniRx</Name>
     </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
-      <Project>{98d1b84c-946c-21be-173a-4f536c124f96}</Project>
-      <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
+    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
+      <Project>{af68cc1e-59f5-acda-a8c8-5fdab30a7a89}</Project>
+      <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
     </ProjectReference>
     <ProjectReference Include="Animancer.FSM.csproj">
       <Project>{8c4f66cd-606e-e5a5-7e77-7d928b08a32f}</Project>
       <Name>Animancer.FSM</Name>
-    </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
-      <Project>{af68cc1e-59f5-acda-a8c8-5fdab30a7a89}</Project>
-      <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.InputSystem.VirtualMouseInput.csproj">
       <Project>{76a534b3-2042-71c2-62c4-6bb4d27de2c8}</Project>
@@ -696,6 +692,10 @@
     <ProjectReference Include="ScriptInspector.csproj">
       <Project>{0200984e-7307-7a6b-107b-62c491592bdd}</Project>
       <Name>ScriptInspector</Name>
+    </ProjectReference>
+    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
+      <Project>{98d1b84c-946c-21be-173a-4f536c124f96}</Project>
+      <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="InputSystem.Samples.Visualizers.csproj">
       <Project>{3a10130d-ca5b-fb61-a173-c43809519df6}</Project>
