@@ -19,9 +19,6 @@ public class Damage : Effect
 {
     [ShowInInspector]
     public DamageRange DamageRange = new DamageRange();
-
-    
-   
     
     public override void Apply(Effectable ef)
     {
