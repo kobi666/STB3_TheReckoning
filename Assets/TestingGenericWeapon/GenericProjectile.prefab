@@ -127,6 +127,9 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 2|Damage, Assembly-CSharp
+    - Name: ParentWeapon
+      Entry: 6
+      Data: 
     - Name: IsAOE
       Entry: 5
       Data: false
@@ -172,6 +175,9 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 5|Damage, Assembly-CSharp
+    - Name: ParentWeapon
+      Entry: 6
+      Data: 
     - Name: IsAOE
       Entry: 5
       Data: false
@@ -206,13 +212,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: MovementFunction
-      Entry: 7
-      Data: 7|ProjectileMovementFunction, Assembly-CSharp
-    - Name: speed
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
+      Entry: 6
       Data: 
     - Name: onHitMultipleTargets
       Entry: 6
@@ -226,8 +226,6 @@ MonoBehaviour:
     OnPositionReachedEffect: 0
     Homing: 0
     AOE: 0
-  MovementFunction:
-    speed: 0
   DiscoverableTags:
   - Enemy
   Data:
@@ -256,9 +254,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.008601636, y: 0}
   serializedVersion: 2
-  m_Radius: 0.08
+  m_Radius: 0.21762574
 --- !u!50 &2074054408246329557
 Rigidbody2D:
   serializedVersion: 4
@@ -269,7 +267,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 2074054408246329576}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -292,37 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: Targets
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[Effectable,
-        Assembly-CSharp]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  debugTargetNames: []
-  RangeDetector: {fileID: 6599355609706005538}
+  Detector: {fileID: 6599355609706005538}
 --- !u!1001 &2074054407886873509
 PrefabInstance:
   m_ObjectHideFlags: 0

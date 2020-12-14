@@ -73,7 +73,8 @@ public class SplitToMultipleProjectiles : Effect
             GenericProjectile proj = Pool.GetInactive();
             //proj.transform.rotation = ExitPoint.transform.rotation;
             proj.transform.position = tpos;
-            proj.TargetPosition = tpos + Vector2.right * 50;
+            Vector2 randomDirection = new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f));
+            proj.TargetPosition = tpos + randomDirection * travelDistance;
             proj.EffectableTarget = ef ?? null;
             proj.Activate();
         }

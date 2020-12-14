@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c94cf1fe0bdf424419af2352baf1145c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.2
+  moveSpeed: 0.2
 --- !u!4 &74542569
 Transform:
   m_ObjectHideFlags: 0
@@ -374,7 +374,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 74542567}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.25, y: -0.94, z: -0.6984144}
+  m_LocalPosition: {x: 5.3199997, y: -0.8, z: -0.6984144}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 675318214}
@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c94cf1fe0bdf424419af2352baf1145c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.2
+  moveSpeed: 0.2
 --- !u!4 &324095690
 Transform:
   m_ObjectHideFlags: 0
@@ -579,7 +579,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 324095688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4675177, y: 0.10180784, z: -0.6984144}
+  m_LocalPosition: {x: 6.102482, y: 0.24180782, z: -0.6984144}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1277520069}
@@ -615,7 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c94cf1fe0bdf424419af2352baf1145c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.2
+  moveSpeed: 0.2
 --- !u!4 &414898095
 Transform:
   m_ObjectHideFlags: 0
@@ -624,7 +624,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 414898093}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4675177, y: 0.10180784, z: -0.6984144}
+  m_LocalPosition: {x: 6.102482, y: 0.24180782, z: -0.6984144}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1111599769}
@@ -660,7 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c94cf1fe0bdf424419af2352baf1145c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.2
+  moveSpeed: 0.2
 --- !u!4 &528503608
 Transform:
   m_ObjectHideFlags: 0
@@ -669,7 +669,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528503606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.63, y: 0.85, z: -0.6984144}
+  m_LocalPosition: {x: 4.9399996, y: 0.99, z: -0.6984144}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1709497325}
@@ -869,32 +869,32 @@ PrefabInstance:
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.6984144
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
@@ -978,7 +978,7 @@ PrefabInstance:
     - target: {fileID: 7134627240943377193, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8382147158443762362, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
@@ -994,7 +994,7 @@ PrefabInstance:
     - target: {fileID: 8977666037474068482, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068508, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
@@ -1060,12 +1060,12 @@ PrefabInstance:
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 154
+      value: 61
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
@@ -1084,567 +1084,364 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
+      propertyPath: Data.componentRadius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: Data.fireRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 1463353696}
+      objectReference: {fileID: 2074054408246329578, guid: 9da627fd3c069124293a4087546e4294,
+        type: 3}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 5907068859232098816, guid: d813ad87313d18d44be4fa1af9e6195a,
-        type: 3}
+      objectReference: {fileID: 725628261}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[2]
       value: 
-      objectReference: {fileID: 725628261}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[3]
-      value: 
       objectReference: {fileID: 725628260}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[4]
-      value: 
-      objectReference: {fileID: 1429920466}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
-      value: '"path":"AoeAttack","value":{"$id":0,"$type":"TriggerAOEOnce, Assembly-CSharp","AoeBehaviors":{"$id":1,"$type":"System.Collections.Generic.List`1[[AOEBehavior,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":2,"$type":"AOEBehavior,
-        Assembly-CSharp","AoeControllers":{"$id":3,"$type":"System.Collections.Generic.List`1[[GenericAOEController,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[$eref:0]},"Effects":{"$id":4,"$type":"System.Collections.Generic.List`1[[AOEEffect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":5,"$type":"AOEEffect,
-        Assembly-CSharp","Effects":{"$id":6,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":7,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":8,"$type":"DamageRange,
-        Assembly-CSharp","min":50,"max":3000}}]},"EffectStacks":false,"EffectOverTime":true,"EffectDuration":3,"EffectInterval":0.2,"MaxTargets":true,"maxTargets":2,"Targets":{"$id":9,"$type":"System.Collections.Generic.List`1[[Effectable,
-        Assembly-CSharp]], mscorlib","$rlength":0,"$rcontent":[]},"TargetsNames":{"$id":10,"$type":"System.Collections.Generic.List`1[[System.String,
-        mscorlib]], mscorlib","$rlength":0,"$rcontent":[]},"EffectInProgress":false}]},"DelayInAttackStartms":0,"AOESize":2}]},"AOESize":0}'
+      value: '"path":"projectileAttack","value":{"$id":0,"$type":"ProjectileAttack,
+        Assembly-CSharp","AttackProperties":{"$id":1,"$type":"ShootOneProjectile,
+        Assembly-CSharp","ParentWeapon":null,"AsyncAttackInProgress":false,"Projectiles":{"$id":2,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":3,"$type":"ProjectilePoolCreationData,
+        Assembly-CSharp","projectileMovement":{"$id":4,"$type":"MoveStraight, Assembly-CSharp","speed":2},"projectileEffect":{"$id":5,"$type":"ProjectileEffect,
+        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":6,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":7,"$type":"SplitToMultipleProjectiles,
+        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"AmountOfProjectiles":3,"ProjectileData":{"$id":8,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":9,"$type":"ProjectilePoolCreationData,
+        Assembly-CSharp","projectileMovement":{"$id":10,"$type":"MoveStraight, Assembly-CSharp","speed":2},"projectileEffect":{"$id":11,"$type":"ProjectileEffect,
+        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":12,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":13,"$type":"Damage,
+        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":14,"$type":"DamageRange,
+        Assembly-CSharp","min":30,"max":30}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":15,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":16,"$type":"Damage,
+        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":17,"$type":"DamageRange,
+        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:0}]},"travelDistance":3}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":18,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":19,"$type":"Damage,
+        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":20,"$type":"DamageRange,
+        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:0}]},"ExitPoint":$eref:1,"FinalPoint":$eref:2}}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[1]
-      value: '"path":"AoeAttack.AoeBehaviors","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[AOEBehavior,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"AOEBehavior,
-        Assembly-CSharp","AoeControllers":{"$id":2,"$type":"System.Collections.Generic.List`1[[GenericAOEController,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[$eref:0]},"Effects":{"$id":3,"$type":"System.Collections.Generic.List`1[[AOEEffect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":4,"$type":"AOEEffect,
-        Assembly-CSharp","Effects":{"$id":5,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":6,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":7,"$type":"DamageRange,
-        Assembly-CSharp","min":50,"max":3000}}]},"EffectStacks":false,"EffectOverTime":true,"EffectDuration":3,"EffectInterval":0.2,"MaxTargets":true,"maxTargets":2,"Targets":{"$id":8,"$type":"System.Collections.Generic.List`1[[Effectable,
-        Assembly-CSharp]], mscorlib","$rlength":0,"$rcontent":[]},"TargetsNames":{"$id":9,"$type":"System.Collections.Generic.List`1[[System.String,
-        mscorlib]], mscorlib","$rlength":0,"$rcontent":[]},"EffectInProgress":false}]},"DelayInAttackStartms":0,"AOESize":2}]}'
+      value: '"path":"projectileAttack.AttackProperties","value":{"$id":0,"$type":"ShootOneProjectile,
+        Assembly-CSharp","ParentWeapon":null,"AsyncAttackInProgress":false,"Projectiles":{"$id":1,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":2,"$type":"ProjectilePoolCreationData,
+        Assembly-CSharp","projectileMovement":{"$id":3,"$type":"MoveStraight, Assembly-CSharp","speed":2},"projectileEffect":{"$id":4,"$type":"ProjectileEffect,
+        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":5,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":6,"$type":"SplitToMultipleProjectiles,
+        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"AmountOfProjectiles":3,"ProjectileData":{"$id":7,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":8,"$type":"ProjectilePoolCreationData,
+        Assembly-CSharp","projectileMovement":{"$id":9,"$type":"MoveStraight, Assembly-CSharp","speed":2},"projectileEffect":{"$id":10,"$type":"ProjectileEffect,
+        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":11,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":12,"$type":"Damage,
+        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":13,"$type":"DamageRange,
+        Assembly-CSharp","min":30,"max":30}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":14,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":15,"$type":"Damage,
+        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":16,"$type":"DamageRange,
+        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:0}]},"travelDistance":3}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":17,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":18,"$type":"Damage,
+        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":19,"$type":"DamageRange,
+        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:0}]},"ExitPoint":$eref:1,"FinalPoint":$eref:2}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[2]
-      value: '"path":"AoeAttack.AoeBehaviors.[0]","value":{"$id":0,"$type":"AOEBehavior,
-        Assembly-CSharp","AoeControllers":{"$id":1,"$type":"System.Collections.Generic.List`1[[GenericAOEController,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[$eref:0]},"Effects":{"$id":2,"$type":"System.Collections.Generic.List`1[[AOEEffect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":3,"$type":"AOEEffect,
-        Assembly-CSharp","Effects":{"$id":4,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":5,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":6,"$type":"DamageRange,
-        Assembly-CSharp","min":50,"max":3000}}]},"EffectStacks":false,"EffectOverTime":true,"EffectDuration":3,"EffectInterval":0.2,"MaxTargets":true,"maxTargets":2,"Targets":{"$id":7,"$type":"System.Collections.Generic.List`1[[Effectable,
-        Assembly-CSharp]], mscorlib","$rlength":0,"$rcontent":[]},"TargetsNames":{"$id":8,"$type":"System.Collections.Generic.List`1[[System.String,
-        mscorlib]], mscorlib","$rlength":0,"$rcontent":[]},"EffectInProgress":false}]},"DelayInAttackStartms":0,"AOESize":2}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[3]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].AoeControllers","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[GenericAOEController,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[$eref:0]}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[4]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].AoeControllers.[0]","value":$eref:0'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[5]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].AOESize","value":{"$id":0,"$type":"System.Single,
-        mscorlib",2}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[6]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].DelayInAttackStartms","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",0}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[7]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].Effects","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[AOEEffect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"AOEEffect,
-        Assembly-CSharp","Effects":{"$id":2,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":3,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":4,"$type":"DamageRange,
-        Assembly-CSharp","min":50,"max":3000}}]},"EffectStacks":false,"EffectOverTime":true,"EffectDuration":3,"EffectInterval":0.2,"MaxTargets":true,"maxTargets":2,"Targets":{"$id":5,"$type":"System.Collections.Generic.List`1[[Effectable,
-        Assembly-CSharp]], mscorlib","$rlength":0,"$rcontent":[]},"TargetsNames":{"$id":6,"$type":"System.Collections.Generic.List`1[[System.String,
-        mscorlib]], mscorlib","$rlength":0,"$rcontent":[]},"EffectInProgress":false}]}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[8]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].Effects.[0]","value":{"$id":0,"$type":"AOEEffect,
-        Assembly-CSharp","Effects":{"$id":1,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":2,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":3,"$type":"DamageRange,
-        Assembly-CSharp","min":50,"max":3000}}]},"EffectStacks":false,"EffectOverTime":true,"EffectDuration":3,"EffectInterval":0.2,"MaxTargets":true,"maxTargets":2,"Targets":{"$id":4,"$type":"System.Collections.Generic.List`1[[Effectable,
-        Assembly-CSharp]], mscorlib","$rlength":0,"$rcontent":[]},"TargetsNames":{"$id":5,"$type":"System.Collections.Generic.List`1[[System.String,
-        mscorlib]], mscorlib","$rlength":0,"$rcontent":[]},"EffectInProgress":false}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[9]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].Effects.[0].EffectDuration","value":{"$id":0,"$type":"System.Single,
-        mscorlib",3}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[10]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].Effects.[0].EffectInProgress","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",false}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[11]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].Effects.[0].EffectInterval","value":{"$id":0,"$type":"System.Single,
-        mscorlib",0.2}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[12]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].Effects.[0].EffectOverTime","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",true}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[13]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].Effects.[0].Effects","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":2,"$type":"DamageRange,
-        Assembly-CSharp","min":50,"max":3000}}]}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[14]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].Effects.[0].Effects.[0]","value":{"$id":0,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":1,"$type":"DamageRange,
-        Assembly-CSharp","min":50,"max":3000}}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[15]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].Effects.[0].Effects.[0].DamageRange","value":{"$id":0,"$type":"DamageRange,
-        Assembly-CSharp","min":50,"max":3000}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[16]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].Effects.[0].Effects.[0].DamageRange.max","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",3000}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[17]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].Effects.[0].Effects.[0].DamageRange.min","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",50}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[18]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].Effects.[0].Effects.[0].IsAOE","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",false}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[19]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].Effects.[0].Effects.[0].ParentWeapon","value":null'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[20]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].Effects.[0].EffectStacks","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",false}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[21]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].Effects.[0].maxTargets","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",2}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[22]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].Effects.[0].MaxTargets","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",true}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[23]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].Effects.[0].Targets","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[Effectable,
-        Assembly-CSharp]], mscorlib","$rlength":0,"$rcontent":[]}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[24]
-      value: '"path":"AoeAttack.AoeBehaviors.[0].Effects.[0].TargetsNames","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[System.String,
-        mscorlib]], mscorlib","$rlength":0,"$rcontent":[]}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[25]
-      value: '"path":"AoeAttack.AOESize","value":{"$id":0,"$type":"System.Single,
-        mscorlib",0}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[26]
-      value: '"path":"projectileAttack.AttackProperties","value":{"$id":0,"$type":"ShootOneProjectile,
-        Assembly-CSharp","ParentWeapon":null,"AsyncAttackInProgress":false,"Projectiles":{"$id":1,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":2,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":3,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":4,"$type":"ProjectileEffect,
-        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":false,"onHitEffects":{"$id":5,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":6,"$type":"SplitToMultipleProjectiles,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"AmountOfProjectiles":3,"ProjectileData":{"$id":7,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":8,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":9,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":10,"$type":"ProjectileEffect,
-        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":11,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":12,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":13,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":14,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":15,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":16,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}]},"travelDistance":3}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":true,"onPositionReachedEffects":{"$id":17,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":18,"$type":"SplitToMultipleProjectiles,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"AmountOfProjectiles":3,"ProjectileData":{"$id":19,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":20,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":21,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":22,"$type":"ProjectileEffect,
-        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":23,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":24,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":25,"$type":"DamageRange,
-        Assembly-CSharp","min":300,"max":20}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":26,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":27,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":28,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}]},"travelDistance":3}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}]},"ExitPoint":$eref:2,"FinalPoint":$eref:3}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[27]
       value: '"path":"projectileAttack.AttackProperties.AsyncAttackInProgress","value":{"$id":0,"$type":"System.Boolean,
         mscorlib",false}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[28]
-      value: '"path":"projectileAttack.AttackProperties.ExitPoint","value":$eref:2'
+      propertyPath: serializationData.PrefabModifications.Array.data[3]
+      value: '"path":"projectileAttack.AttackProperties.ExitPoint","value":$eref:1'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[29]
-      value: '"path":"projectileAttack.AttackProperties.FinalPoint","value":$eref:3'
+      propertyPath: serializationData.PrefabModifications.Array.data[4]
+      value: '"path":"projectileAttack.AttackProperties.FinalPoint","value":$eref:2'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[30]
+      propertyPath: serializationData.PrefabModifications.Array.data[5]
       value: '"path":"projectileAttack.AttackProperties.ParentWeapon","value":null'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[31]
+      propertyPath: serializationData.PrefabModifications.Array.data[6]
       value: '"path":"projectileAttack.AttackProperties.Projectiles","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":2,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":3,"$type":"ProjectileEffect,
-        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":false,"onHitEffects":{"$id":4,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp","projectileMovement":{"$id":2,"$type":"MoveStraight, Assembly-CSharp","speed":2},"projectileEffect":{"$id":3,"$type":"ProjectileEffect,
+        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":4,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":5,"$type":"SplitToMultipleProjectiles,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"AmountOfProjectiles":3,"ProjectileData":{"$id":6,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":7,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":8,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":9,"$type":"ProjectileEffect,
+        Assembly-CSharp","projectileMovement":{"$id":8,"$type":"MoveStraight, Assembly-CSharp","speed":2},"projectileEffect":{"$id":9,"$type":"ProjectileEffect,
         Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":10,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":11,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":12,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":13,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp","min":30,"max":30}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":13,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":14,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":15,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}]},"travelDistance":3}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":true,"onPositionReachedEffects":{"$id":16,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":17,"$type":"SplitToMultipleProjectiles,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"AmountOfProjectiles":3,"ProjectileData":{"$id":18,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":19,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":20,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":21,"$type":"ProjectileEffect,
-        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":22,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":23,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":24,"$type":"DamageRange,
-        Assembly-CSharp","min":300,"max":20}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":25,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":26,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":27,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}]},"travelDistance":3}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}]}'
+        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:0}]},"travelDistance":3}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":16,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":17,"$type":"Damage,
+        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":18,"$type":"DamageRange,
+        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:0}]}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[32]
+      propertyPath: serializationData.PrefabModifications.Array.data[7]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0]","value":{"$id":0,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":1,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":2,"$type":"ProjectileEffect,
-        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":false,"onHitEffects":{"$id":3,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp","projectileMovement":{"$id":1,"$type":"MoveStraight, Assembly-CSharp","speed":2},"projectileEffect":{"$id":2,"$type":"ProjectileEffect,
+        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":3,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":4,"$type":"SplitToMultipleProjectiles,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"AmountOfProjectiles":3,"ProjectileData":{"$id":5,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":6,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":7,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":8,"$type":"ProjectileEffect,
+        Assembly-CSharp","projectileMovement":{"$id":7,"$type":"MoveStraight, Assembly-CSharp","speed":2},"projectileEffect":{"$id":8,"$type":"ProjectileEffect,
         Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":9,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":10,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":11,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":12,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp","min":30,"max":30}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":12,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":13,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":14,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}]},"travelDistance":3}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":true,"onPositionReachedEffects":{"$id":15,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":16,"$type":"SplitToMultipleProjectiles,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"AmountOfProjectiles":3,"ProjectileData":{"$id":17,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":18,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":19,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":20,"$type":"ProjectileEffect,
-        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":21,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":22,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":23,"$type":"DamageRange,
-        Assembly-CSharp","min":300,"max":20}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":24,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":25,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":26,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}]},"travelDistance":3}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}'
+        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:0}]},"travelDistance":3}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":15,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":16,"$type":"Damage,
+        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":17,"$type":"DamageRange,
+        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:0}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[33]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].ProjectileBase","value":$eref:1'
+      propertyPath: serializationData.PrefabModifications.Array.data[8]
+      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].ProjectileBase","value":$eref:0'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[34]
+      propertyPath: serializationData.PrefabModifications.Array.data[9]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect","value":{"$id":0,"$type":"ProjectileEffect,
-        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":false,"onHitEffects":{"$id":1,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":1,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":2,"$type":"SplitToMultipleProjectiles,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"AmountOfProjectiles":3,"ProjectileData":{"$id":3,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":4,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":5,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":6,"$type":"ProjectileEffect,
+        Assembly-CSharp","projectileMovement":{"$id":5,"$type":"MoveStraight, Assembly-CSharp","speed":2},"projectileEffect":{"$id":6,"$type":"ProjectileEffect,
         Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":7,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":8,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":9,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":10,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp","min":30,"max":30}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":10,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":11,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":12,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}]},"travelDistance":3}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":true,"onPositionReachedEffects":{"$id":13,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":14,"$type":"SplitToMultipleProjectiles,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"AmountOfProjectiles":3,"ProjectileData":{"$id":15,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":16,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":17,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":18,"$type":"ProjectileEffect,
-        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":19,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":20,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":21,"$type":"DamageRange,
-        Assembly-CSharp","min":300,"max":20}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":22,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":23,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":24,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}]},"travelDistance":3}]},"Homing":false,"AOE":false}'
+        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:0}]},"travelDistance":3}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":13,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":14,"$type":"Damage,
+        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":15,"$type":"DamageRange,
+        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[35]
+      propertyPath: serializationData.PrefabModifications.Array.data[10]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.AOE","value":{"$id":0,"$type":"System.Boolean,
         mscorlib",false}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[36]
+      propertyPath: serializationData.PrefabModifications.Array.data[11]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.HitCounter","value":{"$id":0,"$type":"System.Int32,
         mscorlib",1}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[37]
+      propertyPath: serializationData.PrefabModifications.Array.data[12]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.Homing","value":{"$id":0,"$type":"System.Boolean,
         mscorlib",false}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[38]
+      propertyPath: serializationData.PrefabModifications.Array.data[13]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.OnHitEffect","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",false}'
+        mscorlib",true}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[39]
+      propertyPath: serializationData.PrefabModifications.Array.data[14]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"SplitToMultipleProjectiles,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"AmountOfProjectiles":3,"ProjectileData":{"$id":2,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":3,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":4,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":5,"$type":"ProjectileEffect,
+        Assembly-CSharp","projectileMovement":{"$id":4,"$type":"MoveStraight, Assembly-CSharp","speed":2},"projectileEffect":{"$id":5,"$type":"ProjectileEffect,
         Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":6,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":7,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":8,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":9,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp","min":30,"max":30}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":9,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":10,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":11,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}]},"travelDistance":3}]}'
+        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:0}]},"travelDistance":3}]}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[40]
+      propertyPath: serializationData.PrefabModifications.Array.data[15]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0]","value":{"$id":0,"$type":"SplitToMultipleProjectiles,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"AmountOfProjectiles":3,"ProjectileData":{"$id":1,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":2,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":3,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":4,"$type":"ProjectileEffect,
+        Assembly-CSharp","projectileMovement":{"$id":3,"$type":"MoveStraight, Assembly-CSharp","speed":2},"projectileEffect":{"$id":4,"$type":"ProjectileEffect,
         Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":5,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":6,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":7,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":8,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp","min":30,"max":30}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":8,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":9,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":10,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}]},"travelDistance":3}'
+        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:0}]},"travelDistance":3}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[41]
+      propertyPath: serializationData.PrefabModifications.Array.data[16]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].AmountOfProjectiles","value":{"$id":0,"$type":"System.Int32,
         mscorlib",3}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[42]
+      propertyPath: serializationData.PrefabModifications.Array.data[17]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].IsAOE","value":{"$id":0,"$type":"System.Boolean,
         mscorlib",false}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[43]
+      propertyPath: serializationData.PrefabModifications.Array.data[18]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ParentWeapon","value":null'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[44]
+      propertyPath: serializationData.PrefabModifications.Array.data[19]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":2,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":3,"$type":"ProjectileEffect,
+        Assembly-CSharp","projectileMovement":{"$id":2,"$type":"MoveStraight, Assembly-CSharp","speed":2},"projectileEffect":{"$id":3,"$type":"ProjectileEffect,
         Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":4,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":5,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":6,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":7,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp","min":30,"max":30}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":7,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":8,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":9,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}]}'
+        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:0}]}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[45]
+      propertyPath: serializationData.PrefabModifications.Array.data[20]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0]","value":{"$id":0,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":1,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":2,"$type":"ProjectileEffect,
+        Assembly-CSharp","projectileMovement":{"$id":1,"$type":"MoveStraight, Assembly-CSharp","speed":2},"projectileEffect":{"$id":2,"$type":"ProjectileEffect,
         Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":3,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":4,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":5,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":6,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp","min":30,"max":30}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":6,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":7,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":8,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}'
+        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:0}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[46]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].ProjectileBase","value":$eref:1'
+      propertyPath: serializationData.PrefabModifications.Array.data[21]
+      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].ProjectileBase","value":$eref:0'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[47]
+      propertyPath: serializationData.PrefabModifications.Array.data[22]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect","value":{"$id":0,"$type":"ProjectileEffect,
         Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":1,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":2,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":3,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":4,"$type":"System.Collections.Generic.List`1[[Effect,
+        Assembly-CSharp","min":30,"max":30}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":4,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":5,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":6,"$type":"DamageRange,
         Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[48]
+      propertyPath: serializationData.PrefabModifications.Array.data[23]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.AOE","value":{"$id":0,"$type":"System.Boolean,
         mscorlib",false}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[49]
+      propertyPath: serializationData.PrefabModifications.Array.data[24]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.HitCounter","value":{"$id":0,"$type":"System.Int32,
         mscorlib",1}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[50]
+      propertyPath: serializationData.PrefabModifications.Array.data[25]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.Homing","value":{"$id":0,"$type":"System.Boolean,
         mscorlib",false}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[51]
+      propertyPath: serializationData.PrefabModifications.Array.data[26]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.OnHitEffect","value":{"$id":0,"$type":"System.Boolean,
         mscorlib",true}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[52]
+      propertyPath: serializationData.PrefabModifications.Array.data[27]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.onHitEffects","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":2,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]}'
+        Assembly-CSharp","min":30,"max":30}}]}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[53]
+      propertyPath: serializationData.PrefabModifications.Array.data[28]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.onHitEffects.[0]","value":{"$id":0,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":1,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}'
+        Assembly-CSharp","min":30,"max":30}}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[54]
+      propertyPath: serializationData.PrefabModifications.Array.data[29]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.onHitEffects.[0].DamageRange","value":{"$id":0,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}'
+        Assembly-CSharp","min":30,"max":30}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[55]
+      propertyPath: serializationData.PrefabModifications.Array.data[30]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.onHitEffects.[0].DamageRange.max","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",0}'
+        mscorlib",30}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[56]
+      propertyPath: serializationData.PrefabModifications.Array.data[31]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.onHitEffects.[0].DamageRange.min","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",0}'
+        mscorlib",30}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[57]
+      propertyPath: serializationData.PrefabModifications.Array.data[32]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.onHitEffects.[0].IsAOE","value":{"$id":0,"$type":"System.Boolean,
         mscorlib",false}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[58]
+      propertyPath: serializationData.PrefabModifications.Array.data[33]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.onHitEffects.[0].ParentWeapon","value":null'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[59]
+      propertyPath: serializationData.PrefabModifications.Array.data[34]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.OnPositionReachedEffect","value":{"$id":0,"$type":"System.Boolean,
         mscorlib",false}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[60]
+      propertyPath: serializationData.PrefabModifications.Array.data[35]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.onPositionReachedEffects","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":2,"$type":"DamageRange,
@@ -1652,658 +1449,155 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[61]
+      propertyPath: serializationData.PrefabModifications.Array.data[36]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.onPositionReachedEffects.[0]","value":{"$id":0,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":1,"$type":"DamageRange,
         Assembly-CSharp","min":0,"max":0}}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[62]
+      propertyPath: serializationData.PrefabModifications.Array.data[37]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.onPositionReachedEffects.[0].DamageRange","value":{"$id":0,"$type":"DamageRange,
         Assembly-CSharp","min":0,"max":0}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[63]
+      propertyPath: serializationData.PrefabModifications.Array.data[38]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.onPositionReachedEffects.[0].DamageRange.max","value":{"$id":0,"$type":"System.Int32,
         mscorlib",0}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[64]
+      propertyPath: serializationData.PrefabModifications.Array.data[39]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.onPositionReachedEffects.[0].DamageRange.min","value":{"$id":0,"$type":"System.Int32,
         mscorlib",0}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[65]
+      propertyPath: serializationData.PrefabModifications.Array.data[40]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.onPositionReachedEffects.[0].IsAOE","value":{"$id":0,"$type":"System.Boolean,
         mscorlib",false}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[66]
+      propertyPath: serializationData.PrefabModifications.Array.data[41]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.onPositionReachedEffects.[0].ParentWeapon","value":null'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[67]
+      propertyPath: serializationData.PrefabModifications.Array.data[42]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.ProjectileLifeTime","value":{"$id":0,"$type":"System.Single,
         mscorlib",3}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[68]
+      propertyPath: serializationData.PrefabModifications.Array.data[43]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.TriggersOnCollision","value":{"$id":0,"$type":"System.Boolean,
         mscorlib",true}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[69]
+      propertyPath: serializationData.PrefabModifications.Array.data[44]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileEffect.TriggersOnSpecificTarget","value":{"$id":0,"$type":"System.Boolean,
         mscorlib",false}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[70]
+      propertyPath: serializationData.PrefabModifications.Array.data[45]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileMovement","value":{"$id":0,"$type":"MoveStraight,
-        Assembly-CSharp","speed":1.5}'
+        Assembly-CSharp","speed":2}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[71]
+      propertyPath: serializationData.PrefabModifications.Array.data[46]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].ProjectileData.[0].projectileMovement.speed","value":{"$id":0,"$type":"System.Single,
-        mscorlib",1.5}'
+        mscorlib",2}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[72]
+      propertyPath: serializationData.PrefabModifications.Array.data[47]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onHitEffects.[0].travelDistance","value":{"$id":0,"$type":"System.Single,
         mscorlib",3}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[73]
+      propertyPath: serializationData.PrefabModifications.Array.data[48]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.OnPositionReachedEffect","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",true}'
+        mscorlib",false}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[74]
+      propertyPath: serializationData.PrefabModifications.Array.data[49]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"SplitToMultipleProjectiles,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"AmountOfProjectiles":3,"ProjectileData":{"$id":2,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":3,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":4,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":5,"$type":"ProjectileEffect,
-        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":6,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":7,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":8,"$type":"DamageRange,
-        Assembly-CSharp","min":300,"max":20}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":9,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":10,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":11,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}]},"travelDistance":3}]}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[75]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0]","value":{"$id":0,"$type":"SplitToMultipleProjectiles,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"AmountOfProjectiles":3,"ProjectileData":{"$id":1,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":2,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":3,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":4,"$type":"ProjectileEffect,
-        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":5,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":6,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":7,"$type":"DamageRange,
-        Assembly-CSharp","min":300,"max":20}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":8,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":9,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":10,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}]},"travelDistance":3}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[76]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].AmountOfProjectiles","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",3}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[77]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].IsAOE","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",false}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[78]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ParentWeapon","value":null'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[79]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[ProjectilePoolCreationData,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":2,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":3,"$type":"ProjectileEffect,
-        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":4,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":5,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":6,"$type":"DamageRange,
-        Assembly-CSharp","min":300,"max":20}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":7,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":8,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":9,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}]}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[80]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0]","value":{"$id":0,"$type":"ProjectilePoolCreationData,
-        Assembly-CSharp","projectileMovement":{"$id":1,"$type":"MoveStraight, Assembly-CSharp","speed":1.5},"projectileEffect":{"$id":2,"$type":"ProjectileEffect,
-        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":3,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":4,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":5,"$type":"DamageRange,
-        Assembly-CSharp","min":300,"max":20}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":6,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":7,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":8,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false},"ProjectileBase":$eref:1}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[81]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].ProjectileBase","value":$eref:1'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[82]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect","value":{"$id":0,"$type":"ProjectileEffect,
-        Assembly-CSharp","ProjectileLifeTime":3,"OnHitEffect":true,"onHitEffects":{"$id":1,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":2,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":3,"$type":"DamageRange,
-        Assembly-CSharp","min":300,"max":20}}]},"TriggersOnCollision":true,"HitCounter":1,"TriggersOnSpecificTarget":false,"OnPositionReachedEffect":false,"onPositionReachedEffects":{"$id":4,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":5,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":6,"$type":"DamageRange,
-        Assembly-CSharp","min":0,"max":0}}]},"Homing":false,"AOE":false}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[83]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.AOE","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",false}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[84]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.HitCounter","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",1}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[85]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.Homing","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",false}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[86]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.OnHitEffect","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",true}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[87]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.onHitEffects","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":2,"$type":"DamageRange,
-        Assembly-CSharp","min":300,"max":20}}]}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[88]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.onHitEffects.[0]","value":{"$id":0,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":1,"$type":"DamageRange,
-        Assembly-CSharp","min":300,"max":20}}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[89]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.onHitEffects.[0].DamageRange","value":{"$id":0,"$type":"DamageRange,
-        Assembly-CSharp","min":300,"max":20}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[90]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.onHitEffects.[0].DamageRange.max","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",20}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[91]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.onHitEffects.[0].DamageRange.min","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",300}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[92]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.onHitEffects.[0].IsAOE","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",false}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[93]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.onHitEffects.[0].ParentWeapon","value":null'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[94]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.OnPositionReachedEffect","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",false}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[95]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.onPositionReachedEffects","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[Effect,
         Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":2,"$type":"DamageRange,
         Assembly-CSharp","min":0,"max":0}}]}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[96]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.onPositionReachedEffects.[0]","value":{"$id":0,"$type":"Damage,
+      propertyPath: serializationData.PrefabModifications.Array.data[50]
+      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0]","value":{"$id":0,"$type":"Damage,
         Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":1,"$type":"DamageRange,
         Assembly-CSharp","min":0,"max":0}}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[97]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.onPositionReachedEffects.[0].DamageRange","value":{"$id":0,"$type":"DamageRange,
+      propertyPath: serializationData.PrefabModifications.Array.data[51]
+      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].DamageRange","value":{"$id":0,"$type":"DamageRange,
         Assembly-CSharp","min":0,"max":0}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[98]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.onPositionReachedEffects.[0].DamageRange.max","value":{"$id":0,"$type":"System.Int32,
+      propertyPath: serializationData.PrefabModifications.Array.data[52]
+      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].DamageRange.max","value":{"$id":0,"$type":"System.Int32,
         mscorlib",0}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[99]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.onPositionReachedEffects.[0].DamageRange.min","value":{"$id":0,"$type":"System.Int32,
+      propertyPath: serializationData.PrefabModifications.Array.data[53]
+      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].DamageRange.min","value":{"$id":0,"$type":"System.Int32,
         mscorlib",0}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[100]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.onPositionReachedEffects.[0].IsAOE","value":{"$id":0,"$type":"System.Boolean,
+      propertyPath: serializationData.PrefabModifications.Array.data[54]
+      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].IsAOE","value":{"$id":0,"$type":"System.Boolean,
         mscorlib",false}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[101]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.onPositionReachedEffects.[0].ParentWeapon","value":null'
+      propertyPath: serializationData.PrefabModifications.Array.data[55]
+      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ParentWeapon","value":null'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[102]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.ProjectileLifeTime","value":{"$id":0,"$type":"System.Single,
-        mscorlib",3}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[103]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.TriggersOnCollision","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",true}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[104]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileEffect.TriggersOnSpecificTarget","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",false}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[105]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileMovement","value":{"$id":0,"$type":"MoveStraight,
-        Assembly-CSharp","speed":1.5}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[106]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].ProjectileData.[0].projectileMovement.speed","value":{"$id":0,"$type":"System.Single,
-        mscorlib",1.5}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[107]
-      value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.onPositionReachedEffects.[0].travelDistance","value":{"$id":0,"$type":"System.Single,
-        mscorlib",3}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[108]
+      propertyPath: serializationData.PrefabModifications.Array.data[56]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.ProjectileLifeTime","value":{"$id":0,"$type":"System.Single,
         mscorlib",3}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[109]
+      propertyPath: serializationData.PrefabModifications.Array.data[57]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.TriggersOnCollision","value":{"$id":0,"$type":"System.Boolean,
         mscorlib",true}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[110]
+      propertyPath: serializationData.PrefabModifications.Array.data[58]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileEffect.TriggersOnSpecificTarget","value":{"$id":0,"$type":"System.Boolean,
         mscorlib",false}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[111]
+      propertyPath: serializationData.PrefabModifications.Array.data[59]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileMovement","value":{"$id":0,"$type":"MoveStraight,
-        Assembly-CSharp","speed":1.5}'
+        Assembly-CSharp","speed":2}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[112]
+      propertyPath: serializationData.PrefabModifications.Array.data[60]
       value: '"path":"projectileAttack.AttackProperties.Projectiles.[0].projectileMovement.speed","value":{"$id":0,"$type":"System.Single,
-        mscorlib",1.5}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[113]
-      value: '"path":"SplineAttack","value":{"$id":0,"$type":"SplineAttack, Assembly-CSharp","SplineAttackType":{"$id":1,"$type":"OneSplineFromOriginToTarget,
-        Assembly-CSharp","ParentWeapon":null,"Splines":{"$id":2,"$type":"System.Collections.Generic.List`1[[SplineBehavior,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":3,"$type":"SplineBehavior,
-        Assembly-CSharp","SplineController":$eref:4,"ExitPoint":null,"FinalPoint":null,"OnHitSingleAnimation":null,"OnHitContinuousAnimation":null,"SplineEffect":{"$id":4,"$type":"System.Collections.Generic.List`1[[SplineEffect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":5,"$type":"SplineEffect,
-        Assembly-CSharp","MainTargetEffect":true,"MainTargetEffects":{"$id":6,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":7,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":8,"$type":"DamageRange,
-        Assembly-CSharp","min":20,"max":10}}]},"EffectHappensOnce":false,"EffectHappensAtInterval":true,"EffectStartsOnTargetPositionReached":false,"EffectInterval":0,"AffectsTargetsOnPath":true,"OnPathTargetsEffects":{"$id":9,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":10,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":11,"$type":"DamageRange,
-        Assembly-CSharp","min":20,"max":10}}]}}]},"SplineMovement":{"$id":12,"$type":"StraightLaZor,
-        Assembly-CSharp","Oscilating":false,"FinalPointTeleportsToTarget":false,"TravelSpeed":0,"exitPoint":null,"splineController":null,"finalPoint":null,"BeamWidth":0},"SplineDuration":0}]},"MainTarget":null,"TargetPosition":{"$type":"UnityEngine.Vector2,
-        UnityEngine.CoreModule",0,0},"AttackDuration":0}}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[114]
-      value: '"path":"SplineAttack.SplineAttackType","value":{"$id":0,"$type":"OneSplineFromOriginToTarget,
-        Assembly-CSharp","ParentWeapon":null,"Splines":{"$id":1,"$type":"System.Collections.Generic.List`1[[SplineBehavior,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":2,"$type":"SplineBehavior,
-        Assembly-CSharp","SplineController":$eref:4,"ExitPoint":null,"FinalPoint":null,"OnHitSingleAnimation":null,"OnHitContinuousAnimation":null,"SplineEffect":{"$id":3,"$type":"System.Collections.Generic.List`1[[SplineEffect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":4,"$type":"SplineEffect,
-        Assembly-CSharp","MainTargetEffect":true,"MainTargetEffects":{"$id":5,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":6,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":7,"$type":"DamageRange,
-        Assembly-CSharp","min":20,"max":10}}]},"EffectHappensOnce":false,"EffectHappensAtInterval":true,"EffectStartsOnTargetPositionReached":false,"EffectInterval":0,"AffectsTargetsOnPath":true,"OnPathTargetsEffects":{"$id":8,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":9,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":10,"$type":"DamageRange,
-        Assembly-CSharp","min":20,"max":10}}]}}]},"SplineMovement":{"$id":11,"$type":"StraightLaZor,
-        Assembly-CSharp","Oscilating":false,"FinalPointTeleportsToTarget":false,"TravelSpeed":0,"exitPoint":null,"splineController":null,"finalPoint":null,"BeamWidth":0},"SplineDuration":0}]},"MainTarget":null,"TargetPosition":{"$type":"UnityEngine.Vector2,
-        UnityEngine.CoreModule",0,0},"AttackDuration":0}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[115]
-      value: '"path":"SplineAttack.SplineAttackType.AttackDuration","value":{"$id":0,"$type":"System.Single,
-        mscorlib",0}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[116]
-      value: '"path":"SplineAttack.SplineAttackType.MainTarget","value":null'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[117]
-      value: '"path":"SplineAttack.SplineAttackType.ParentWeapon","value":null'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[118]
-      value: '"path":"SplineAttack.SplineAttackType.Splines","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[SplineBehavior,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"SplineBehavior,
-        Assembly-CSharp","SplineController":$eref:4,"ExitPoint":null,"FinalPoint":null,"OnHitSingleAnimation":null,"OnHitContinuousAnimation":null,"SplineEffect":{"$id":2,"$type":"System.Collections.Generic.List`1[[SplineEffect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":3,"$type":"SplineEffect,
-        Assembly-CSharp","MainTargetEffect":true,"MainTargetEffects":{"$id":4,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":5,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":6,"$type":"DamageRange,
-        Assembly-CSharp","min":20,"max":10}}]},"EffectHappensOnce":false,"EffectHappensAtInterval":true,"EffectStartsOnTargetPositionReached":false,"EffectInterval":0,"AffectsTargetsOnPath":true,"OnPathTargetsEffects":{"$id":7,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":8,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":9,"$type":"DamageRange,
-        Assembly-CSharp","min":20,"max":10}}]}}]},"SplineMovement":{"$id":10,"$type":"StraightLaZor,
-        Assembly-CSharp","Oscilating":false,"FinalPointTeleportsToTarget":false,"TravelSpeed":0,"exitPoint":null,"splineController":null,"finalPoint":null,"BeamWidth":0},"SplineDuration":0}]}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[119]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0]","value":{"$id":0,"$type":"SplineBehavior,
-        Assembly-CSharp","SplineController":$eref:4,"ExitPoint":null,"FinalPoint":null,"OnHitSingleAnimation":null,"OnHitContinuousAnimation":null,"SplineEffect":{"$id":1,"$type":"System.Collections.Generic.List`1[[SplineEffect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":2,"$type":"SplineEffect,
-        Assembly-CSharp","MainTargetEffect":true,"MainTargetEffects":{"$id":3,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":4,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":5,"$type":"DamageRange,
-        Assembly-CSharp","min":20,"max":10}}]},"EffectHappensOnce":false,"EffectHappensAtInterval":true,"EffectStartsOnTargetPositionReached":false,"EffectInterval":0,"AffectsTargetsOnPath":true,"OnPathTargetsEffects":{"$id":6,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":7,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":8,"$type":"DamageRange,
-        Assembly-CSharp","min":20,"max":10}}]}}]},"SplineMovement":{"$id":9,"$type":"StraightLaZor,
-        Assembly-CSharp","Oscilating":false,"FinalPointTeleportsToTarget":false,"TravelSpeed":0,"exitPoint":null,"splineController":null,"finalPoint":null,"BeamWidth":0},"SplineDuration":0}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[120]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].OnHitContinuousAnimation","value":null'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[121]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].OnHitSingleAnimation","value":null'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[122]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineController","value":$eref:4'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[123]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineDuration","value":{"$id":0,"$type":"System.Single,
-        mscorlib",0}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[124]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[SplineEffect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"SplineEffect,
-        Assembly-CSharp","MainTargetEffect":true,"MainTargetEffects":{"$id":2,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":3,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":4,"$type":"DamageRange,
-        Assembly-CSharp","min":20,"max":10}}]},"EffectHappensOnce":false,"EffectHappensAtInterval":true,"EffectStartsOnTargetPositionReached":false,"EffectInterval":0,"AffectsTargetsOnPath":true,"OnPathTargetsEffects":{"$id":5,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":6,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":7,"$type":"DamageRange,
-        Assembly-CSharp","min":20,"max":10}}]}}]}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[125]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0]","value":{"$id":0,"$type":"SplineEffect,
-        Assembly-CSharp","MainTargetEffect":true,"MainTargetEffects":{"$id":1,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":2,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":3,"$type":"DamageRange,
-        Assembly-CSharp","min":20,"max":10}}]},"EffectHappensOnce":false,"EffectHappensAtInterval":true,"EffectStartsOnTargetPositionReached":false,"EffectInterval":0,"AffectsTargetsOnPath":true,"OnPathTargetsEffects":{"$id":4,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":5,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":6,"$type":"DamageRange,
-        Assembly-CSharp","min":20,"max":10}}]}}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[126]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].AffectsTargetsOnPath","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",true}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[127]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].EffectHappensAtInterval","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",true}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[128]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].EffectHappensOnce","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",false}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[129]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].EffectInterval","value":{"$id":0,"$type":"System.Single,
-        mscorlib",0}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[130]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].EffectStartsOnTargetPositionReached","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",false}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[131]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].MainTargetEffect","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",true}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[132]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].MainTargetEffects","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":2,"$type":"DamageRange,
-        Assembly-CSharp","min":20,"max":10}}]}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[133]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].MainTargetEffects.[0]","value":{"$id":0,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":1,"$type":"DamageRange,
-        Assembly-CSharp","min":20,"max":10}}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[134]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].MainTargetEffects.[0].DamageRange","value":{"$id":0,"$type":"DamageRange,
-        Assembly-CSharp","min":20,"max":10}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[135]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].MainTargetEffects.[0].DamageRange.max","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",10}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[136]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].MainTargetEffects.[0].DamageRange.min","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",20}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[137]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].MainTargetEffects.[0].IsAOE","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",false}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[138]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].MainTargetEffects.[0].ParentWeapon","value":null'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[139]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].OnPathTargetsEffects","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[Effect,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":2,"$type":"DamageRange,
-        Assembly-CSharp","min":20,"max":10}}]}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[140]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].OnPathTargetsEffects.[0]","value":{"$id":0,"$type":"Damage,
-        Assembly-CSharp","ParentWeapon":null,"IsAOE":false,"DamageRange":{"$id":1,"$type":"DamageRange,
-        Assembly-CSharp","min":20,"max":10}}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[141]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].OnPathTargetsEffects.[0].DamageRange","value":{"$id":0,"$type":"DamageRange,
-        Assembly-CSharp","min":20,"max":10}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[142]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].OnPathTargetsEffects.[0].DamageRange.max","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",10}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[143]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].OnPathTargetsEffects.[0].DamageRange.min","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",20}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[144]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].OnPathTargetsEffects.[0].IsAOE","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",false}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[145]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineEffect.[0].OnPathTargetsEffects.[0].ParentWeapon","value":null'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[146]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineMovement","value":{"$id":0,"$type":"StraightLaZor,
-        Assembly-CSharp","Oscilating":false,"FinalPointTeleportsToTarget":false,"TravelSpeed":0,"exitPoint":null,"splineController":null,"finalPoint":null,"BeamWidth":0}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[147]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineMovement.BeamWidth","value":{"$id":0,"$type":"System.Single,
-        mscorlib",0}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[148]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineMovement.FinalPointTeleportsToTarget","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",false}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[149]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineMovement.Oscilating","value":{"$id":0,"$type":"System.Boolean,
-        mscorlib",false}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[150]
-      value: '"path":"SplineAttack.SplineAttackType.Splines.[0].SplineMovement.TravelSpeed","value":{"$id":0,"$type":"System.Single,
-        mscorlib",0}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[151]
-      value: '"path":"SplineAttack.SplineAttackType.TargetPosition","value":{"$id":0,"$type":"UnityEngine.Vector2,
-        UnityEngine.CoreModule",0,0}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[152]
-      value: '"path":"SplineAttack.SplineAttackType.TargetPosition.x","value":{"$id":0,"$type":"System.Single,
-        mscorlib",0}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[153]
-      value: '"path":"SplineAttack.SplineAttackType.TargetPosition.y","value":{"$id":0,"$type":"System.Single,
-        mscorlib",0}'
+        mscorlib",2}'
       objectReference: {fileID: 0}
     - target: {fileID: 8977666039327672661, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
@@ -2497,32 +1791,32 @@ PrefabInstance:
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.6984144
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
@@ -3437,7 +2731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c94cf1fe0bdf424419af2352baf1145c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.2
+  moveSpeed: 0.2
 --- !u!4 &1029190841
 Transform:
   m_ObjectHideFlags: 0
@@ -3446,7 +2740,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029190839}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.65, y: 0.88, z: -0.6984144}
+  m_LocalPosition: {x: 7.22, y: 1.02, z: -0.6984144}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 978401787}
@@ -3500,32 +2794,32 @@ PrefabInstance:
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.6984144
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
@@ -5009,18 +4303,6 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91d528241b790fc439849da3b68a7960, type: 3}
---- !u!114 &1429920466 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2350894109049245201, guid: 91d528241b790fc439849da3b68a7960,
-    type: 3}
-  m_PrefabInstance: {fileID: 1429920465}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f431a3e70f0966447b551cd13de8a1d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1429920467 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2350894109049245224, guid: 91d528241b790fc439849da3b68a7960,
@@ -5141,18 +4423,6 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be11be01f27a2e54a9e61a98e7af0a48, type: 3}
---- !u!114 &1463353696 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6251829637899521291, guid: be11be01f27a2e54a9e61a98e7af0a48,
-    type: 3}
-  m_PrefabInstance: {fileID: 1463353695}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0587adc365093bd42ab31ab471f63bfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1463353697 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1269995743023679875, guid: be11be01f27a2e54a9e61a98e7af0a48,
@@ -5212,32 +4482,32 @@ PrefabInstance:
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.6984144
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
@@ -6157,32 +5427,32 @@ PrefabInstance:
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.6984144
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455382016201061951, guid: cf759b1b2b5e6964ebc74549c36b2bf0,
         type: 3}
@@ -7150,7 +6420,7 @@ PrefabInstance:
     - target: {fileID: 8977666037474068482, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068508, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}

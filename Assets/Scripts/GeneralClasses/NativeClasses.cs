@@ -195,6 +195,11 @@ public class TargetUnit
         set => targetTransform = value;
     }
 
+    /*public Vector2 Position
+    {
+        
+    }*/
+
     UnitController unitController = null;
     public UnitController UnitController {
         get => unitController;
