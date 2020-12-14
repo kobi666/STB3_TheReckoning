@@ -50,17 +50,17 @@ public class SplineEffect
         new Damage()
     };
 
-    private event Action<Effectable> onPathEffect;
-    private event Action<Effectable> onMainTargetEffect;
-    private event Action<Effectable> onAttack;
+    private event Action<Effectable,Vector2> onPathEffect;
+    private event Action<Effectable,Vector2> onMainTargetEffect;
+    private event Action<Effectable,Vector2> onAttack;
 
-    private void ApplyEffectOnMainTarget(Effectable ef)
+    private void ApplyEffectOnMainTarget(Effectable ef,Vector2 targetPos)
     {
         if (TargetBank.Targets.ContainsKey(ef.name))
         {
             if (ef.IsTargetable())
             {
-                onMainTargetEffect?.Invoke(ef);
+                onMainTargetEffect?.Invoke(ef,targetPos);
             }
         }
     }
@@ -68,7 +68,7 @@ public class SplineEffect
     private Effectable[] t_targets;
 
     private bool onPathEffectInProgress;
-    private void ApplyEffectOnPathTargets(Effectable ef)
+    private void ApplyEffectOnPathTargets(Effectable ef,Vector2 targetPos)
     {
         if (!onPathEffectInProgress)
         {
@@ -85,7 +85,7 @@ public class SplineEffect
 
                     if (t?.IsTargetable() ?? false)
                     {
-                        onPathEffect?.Invoke(t);
+                        onPathEffect?.Invoke(t,targetPos);
                     }
                 }
             }
@@ -96,7 +96,7 @@ public class SplineEffect
                     {
                         if (t?.IsTargetable() ?? false)
                         {
-                            onPathEffect?.Invoke(t);
+                            onPathEffect?.Invoke(t,targetPos);
                         }
                     }
             }
@@ -105,37 +105,37 @@ public class SplineEffect
         }
     }
 
-    private void EffectOnce(Effectable ef)
+    private void EffectOnce(Effectable ef,Vector2 targetPos)
     {
         if (!m_SingleSingleEffectHappened)
         {
-            OnAttack(ef);
+            OnAttack(ef,targetPos);
         }
     }
 
-    public void OnAttack(Effectable ef)
+    public void OnAttack(Effectable ef,Vector2 targetPos)
     {
         if (TargetBank.Targets.Any())
         {
             if (EffectHappensAtInterval)
             {
-                EffectOnInterval(ef);
+                EffectOnInterval(ef,targetPos);
             }
 
             if (EffectHappensOnce)
             {
-                EffectOnce(ef);
+                EffectOnce(ef,targetPos);
             }
         }
     }
 
-    void EffectOnMainTarget(Effectable ef)
+    void EffectOnMainTarget(Effectable ef,Vector2 targetPos)
     {
         if (TargetBank.Targets.ContainsKey(ef.name))
         {
             if (ef.IsTargetable())
             {
-                onPathEffect?.Invoke(ef);
+                onPathEffect?.Invoke(ef,targetPos);
             }
         }
     }
@@ -152,7 +152,7 @@ public class SplineEffect
     {
         onAttackEnd?.Invoke();
     }
-    void EffectOnPathTargets(Effectable ef)
+    void EffectOnPathTargets(Effectable ef,Vector2 targetPos)
     {
         foreach (var target in TargetBank.Targets.Values)
         {
@@ -171,26 +171,26 @@ public class SplineEffect
 
             if (target.IsTargetable())
             {
-                onPathEffect?.Invoke(target);
+                onPathEffect?.Invoke(target,targetPos);
             }
         }
     }
 
-    void EffectOnInterval(Effectable ef)
+    void EffectOnInterval(Effectable ef,Vector2 targetPos)
     {
         EffectIntervalCounter += StaticObjects.Instance.DeltaGameTime;
         if (EffectIntervalCounter >= EffectInterval)
         {
-            onAttack?.Invoke(ef);
+            onAttack?.Invoke(ef,targetPos);
             EffectIntervalCounter = 0;
         }
     }
 
-    public event Action<Effectable> onEffect;
+    public event Action<Effectable,Vector2> onEffect;
 
-    private void OnEffect(Effectable ef)
+    private void OnEffect(Effectable ef,Vector2 targetPos)
     {
-        onEffect?.Invoke(ef);
+        onEffect?.Invoke(ef, targetPos);
     }
     
     private bool m_SingleSingleEffectHappened = false;
@@ -233,7 +233,7 @@ public class SplineEffect
 
         if (EffectHappensOnce)
         {
-            onEffect += delegate(Effectable effectable) { SingleEffectHappened = true;};
+            onEffect += delegate(Effectable effectable,Vector2 targetPos) { SingleEffectHappened = true;};
         }
 
         onAttackEnd += delegate { TargetBank.Targets.Clear();};

@@ -13,8 +13,8 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
 {
     [OdinSerialize]
     public ProjectileEffect BaseProjectileEffect;
-    [OdinSerialize]
-    public ProjectileMovementFunction MovementFunction;
+
+    [OdinSerialize] public ProjectileMovementFunction MovementFunction;
     private ProjectileDynamicData DynamicData = new ProjectileDynamicData();
     [ShowInInspector] private Vector2 TargetPos
     {
@@ -52,10 +52,13 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
         {
             SpriteRenderer.enabled = true;
         }
-
+        if (!projectileInitlized)
+        {
+            InitProjectile();
+        }
         MovementFunction.ExternalMovementLock = false;
         gameObject.SetActive(true);
-        OnMovementEvent(transform,EffectableTarget.transform,transform.position,TargetPosition);
+        OnMovementEvent(transform,EffectableTarget?.transform ?? null,transform.position,TargetPosition);
     }
     
     private float MaxLifeTimeCounter = 0;
@@ -102,14 +105,14 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     public event Action onTargetPositionReached;
     public void OnTargetPositionReached() {
         onTargetPositionReached?.Invoke();
-        OnTargetPositionReachedEffect(null);
+        OnTargetPositionReachedEffect(null,transform.position);
     }
 
-    public event Action<Effectable> onTargetPositionReachedEffect;
+    public event Action<Effectable,Vector2> onTargetPositionReachedEffect;
 
-    public void OnTargetPositionReachedEffect(Effectable ef)
+    public void OnTargetPositionReachedEffect(Effectable ef,Vector2 targetPos)
     {
-        onTargetPositionReachedEffect?.Invoke(ef);
+        onTargetPositionReachedEffect?.Invoke(ef,ef?.transform.position ?? transform.position);
     }
 
 
@@ -135,7 +138,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
                             if (ActiveTargets?.ContainsKey(n) ?? false)
                             {
                                 if (ActiveTargets[n].IsTargetable())
-                                    OnTargetHit(ActiveTargets[n]);
+                                    OnTargetHit(ActiveTargets[n],ActiveTargets[n]?.transform.position ?? transform.position);
                                 hitCounter -= 1;
                             }
                         }
@@ -146,7 +149,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
                     if (GameObjectPool.Instance.ActiveEffectables?.Pool.ContainsKey(other.name) ?? false)
                     {
                         if (ActiveTargets[other.name].IsTargetable())
-                            OnTargetHit(ActiveTargets[other.name]);
+                            OnTargetHit(ActiveTargets[other.name],ActiveTargets[other.name]?.transform.position ?? transform.position );
                     }
 
                 }
@@ -154,7 +157,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
         }
     }
 
-    void ReduceHitCounterAndInvokeOnHitCounterZero(Effectable ef)
+    void ReduceHitCounterAndInvokeOnHitCounterZero(Effectable ef,Vector2 targetPos)
     {
         hitCounter -= 1;
         if (hitCounter <= 0)
@@ -163,11 +166,11 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
         }
     }
 
-    public event Action<Effectable> onTargetHit;
+    public event Action<Effectable,Vector2> onTargetHit;
 
-    public void OnTargetHit(Effectable ef)
+    public void OnTargetHit(Effectable ef,Vector2 targetPos)
     {
-        onTargetHit?.Invoke(ef); 
+        onTargetHit?.Invoke(ef, ef?.transform.position ?? transform.position); 
     }
 
 
@@ -197,9 +200,9 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
         onMovementEvent?.Invoke(projectileTransform,targetTarnsform,originPos,targetPos);
     }
 
-    public event Action<Effectable> onHitSingleTarget;
-    public void OnHitSingleTarget(Effectable ef) {
-        onHitSingleTarget?.Invoke(ef);
+    public event Action<Effectable,Vector2> onHitSingleTarget;
+    public void OnHitSingleTarget(Effectable ef,Vector2 targetPos) {
+        onHitSingleTarget?.Invoke(ef, ef?.transform.position ?? transform.position);
     }
 
 
@@ -280,9 +283,9 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     
     
 
-    public Action<Effectable> onHitMultipleTargets;
+    public Action<Effectable,Vector2> onHitMultipleTargets;
 
-    public void OnHitMultipleTargets(Effectable effectable)
+    public void OnHitMultipleTargets(Effectable effectable,Vector2 targetPos)
     {
         Effectable[] _targets = EffectableTargetBank.Targets.Values.ToArray();
         foreach (Effectable target in _targets)
@@ -291,7 +294,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
             {
                 continue;
             }
-            onHitMultipleTargets?.Invoke(target);
+            onHitMultipleTargets?.Invoke(target,target?.transform.position ?? transform.position);
         }
     }
 
@@ -299,7 +302,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
         //onTargetPositionReached += delegate { SpriteRenderer.enabled = false; Debug.LogWarning(Time.time); };
-        onTargetHit += delegate(Effectable effectable) { SpriteRenderer.enabled = false; };
+        onTargetHit += delegate(Effectable effectable, Vector2 targetPos) { SpriteRenderer.enabled = false; };
         selfCollider = GetComponent<Collider2D>();
         foreach (string item in DiscoverableTags)
         {
@@ -316,7 +319,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
         
         if (OnHitAnimation != null) {
             onHitAnimationQueuePool = GameObjectPool.Instance.GetSingleAnimationObjectQueue(OnHitAnimation);
-            onTargetHit += delegate(Effectable effectable) { PlayOnHitAnimation(effectable); };
+            onTargetHit += delegate(Effectable effectable,Vector2 targetPos) { PlayOnHitAnimation(effectable); };
         }
         gameObject.tag = TypeTag;
     }
@@ -340,6 +343,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
 
     }
     public bool targetPositionSet = false;
+    
     
     public float Speed {get => Data.Speed ; set {Data.Speed = value;}}
     public int Damage { get => Data.Damage ; set {Data.Damage = value;}}
@@ -401,11 +405,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
 
     void OnEnable()
     {
-        if (!projectileInitlized)
-        {
-            InitProjectile();
-        }
-
+        
         RangeDetector.enabled = false;
         RangeDetector.enabled = true;
         selfCollider.enabled = false;

@@ -917,6 +917,7 @@
             <e p="TargetBank.cs" t="Include" />
           </e>
         </e>
+        <e p="ProjectileAttacks.cs" t="Include" />
         <e p="RallyPointDiscoveryGenerator.cs" t="Include" />
         <e p="RangeDrawer.cs" t="Include" />
         <e p="Samples" t="Include">
@@ -987,8 +988,7 @@
             <e p="TowerCrosshairManager.cs" t="Include" />
             <e p="TowerCrosshairMovementController.cs" t="Include" />
           </e>
-          <e p="ProjectileAsyncAttacks.cs" t="Include" />
-          <e p="ProjectileAttackFunction.cs" t="Include" />
+          <e p="ProjectileAttackProperties.cs" t="Include" />
           <e p="ProjectileAttackSequence.cs" t="Include" />
           <e p="ProjectileAttackSequences.cs" t="Include" />
           <e p="ProjectilePoolCreationData.cs" t="Include" />
@@ -1119,9 +1119,11 @@
         <e p="testclass.cs" t="Include" />
         <e p="TestConditionalDropDown.cs" t="Include" />
         <e p="TestingGenericWeapon" t="Include">
+          <e p="AOEAttack.cs" t="Include" />
           <e p="AOEBehavior.cs" t="Include" />
           <e p="AOEEffect.cs" t="Include" />
           <e p="AreaOfEffect.cs" t="Include" />
+          <e p="AttackProperties.cs" t="Include" />
           <e p="SplineAttack.cs" t="Include" />
           <e p="SplineAttackProperties.cs" t="Include" />
           <e p="SplineBehavior.cs" t="Include" />

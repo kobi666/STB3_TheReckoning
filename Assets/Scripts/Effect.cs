@@ -8,8 +8,10 @@ using UnityEngine;
 [System.Serializable]
 public abstract class Effect
 {
-    public abstract void Apply(Effectable ef);
+    public GenericWeaponController ParentWeapon;
+    public abstract void Apply(Effectable ef, Vector2 targetPos);
     public bool IsAOE;
+    public abstract void InitializeEffectForWeapon(GenericWeaponController parentWeapon);
 }
 
 
@@ -20,18 +22,67 @@ public class Damage : Effect
     [ShowInInspector]
     public DamageRange DamageRange = new DamageRange();
     
-    public override void Apply(Effectable ef)
+    public override void Apply(Effectable ef, Vector2 targetPos)
     {
         ef?.ApplyDamage(DamageRange.RandomDamage());
+    }
+
+    public override void InitializeEffectForWeapon(GenericWeaponController parentWeapon)
+    {
+        
     }
 }
 
 
 public class DebugEffect : Effect
 {
-    public override void Apply(Effectable ef)
+    public override void Apply(Effectable ef,Vector2 targetPos)
     {
         Debug.LogWarning(ef.name + " was affected");
+    }
+
+    public override void InitializeEffectForWeapon(GenericWeaponController parentWeapon)
+    {
+        
+    }
+}
+
+public class SplitToMultipleProjectiles : Effect
+{
+    public int AmountOfProjectiles = 3;
+    public List<ProjectilePoolCreationData> ProjectileData = new List<ProjectilePoolCreationData>();
+    private PoolObjectQueue<GenericProjectile> pool = null;
+    public float travelDistance;
+
+    public PoolObjectQueue<GenericProjectile> Pool
+    {
+        get
+        {
+            if (pool == null)
+            {
+                pool = ProjectileData[0].CreatePool();
+            }
+            return pool;
+        }
+        set => pool = value;
+    }
+    public override void Apply(Effectable ef,Vector2 tpos)
+    {
+        for (int i = 0; i < AmountOfProjectiles; i++)
+        {
+            GenericProjectile proj = Pool.GetInactive();
+            //proj.transform.rotation = ExitPoint.transform.rotation;
+            proj.transform.position = tpos;
+            proj.TargetPosition = tpos + Vector2.right * 50;
+            proj.EffectableTarget = ef ?? null;
+            proj.Activate();
+        }
+    }
+
+    public override void InitializeEffectForWeapon(GenericWeaponController parentWeapon)
+    {
+        ParentWeapon = parentWeapon;
+        Pool = ProjectileData[0].CreatePool(ParentWeapon.name);
     }
 }
 
@@ -43,7 +94,7 @@ public class DoSomethingWithPrefab : Effect
 {
     [ShowInInspector] public GameObject somePrefab;
     
-    public override void Apply(Effectable ef)
+    public override void Apply(Effectable ef,Vector2 targetPos)
     {
         EffectableUnit efu = ef as EffectableUnit;
         if (efu.unitController != null)
@@ -53,5 +104,10 @@ public class DoSomethingWithPrefab : Effect
                 GameObject someGo = GameObject.Instantiate(somePrefab);
             }
         }
+    }
+
+    public override void InitializeEffectForWeapon(GenericWeaponController parentWeapon)
+    {
+        
     }
 }

@@ -6,10 +6,16 @@ using UnityEngine;
 using UniRx;
 
 [System.Serializable]
-public abstract class ProjectileAttackFunction 
+public abstract class ProjectileAttackProperties : AttackProperties
 {
     public abstract int ProjectileMultiplier { get; set; }
-    public abstract void InitializeAttack();
+
+    public void InitializeAttackProperties(GenericWeaponController parentWeapon)
+    {
+        ParentWeapon = parentWeapon;
+        InitializeAttack(ParentWeapon);
+    }
+    public abstract void InitializeAttack(GenericWeaponController parentWeapon);
 
     public abstract void AttackFunction(Effectable singleTarget,
          Vector2 SingleTargetPosition);

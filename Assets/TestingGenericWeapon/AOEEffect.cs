@@ -11,7 +11,6 @@ public class AOEEffect
 {
     [TypeFilter("GetFilteredTypeList")][OdinSerialize]
     public List<Effect> Effects;
-
     private List<GenericAOEController> AoeControllers;
     
     private static IEnumerable<Type> GetFilteredTypeList()
@@ -38,13 +37,17 @@ public class AOEEffect
 
     public bool MaxTargets;
     [ShowIf("MaxTargets")] [HideLabel] public int maxTargets;
+    private int targetsCounter;
 
-    public List<Effectable> Targets;
-    public List<string> TargetsNames;
+    public List<Effectable> Targets = new List<Effectable>();
+    public List<string> TargetsNames = new List<string>();
 
     private void GetTargets()
     {
-        Targets.Clear();
+        if (Targets != null)
+        {
+            Targets.Clear();
+        }
         if (EffectStacks) {
             foreach (var aoeController in AoeControllers)
             {
@@ -60,49 +63,66 @@ public class AOEEffect
 
         if (!EffectStacks)
         {
-            TargetsNames.Clear();
+            TargetsNames?.Clear();
             foreach (var aoeController in AoeControllers)
             {
                 foreach (var ef in aoeController.TargetBank.Targets.Values)
                 {
-                    if (ef != null && !TargetsNames.Contains(ef.name))
-                    {
-                        Targets.Add(ef);
-                        TargetsNames.Add(ef.name);
+                    if (TargetsNames != null) {
+                        if (ef != null && !TargetsNames.Contains(ef.name))
+                        {
+                            Targets.Add(ef);
+                            TargetsNames.Add(ef.name);
+                        }
                     }
                 }
             }
         }
     }
     
-    public void ApplyEffectOnce()
+    public async void ApplyEffectOnce()
     {
+        await Task.Delay(50);
         GetTargets();
-        foreach (var ef in Targets)
+        if (Targets != null)
+        {
+            foreach (var ef in Targets)
             {
-                OnEffect(ef);
+                //onEffect?.Invoke(ef);
+                OnEffect(ef,ef.transform.position);
             }
+        }
     }
-    private bool EffectInProgress = false;
-    
+    public bool EffectInProgress = false;
+
+    public event Action onAOEEffect;
+
+    public void OnAOEEffect()
+    {
+        targetsCounter = 0;
+        onAOEEffect?.Invoke();
+    }
     public async void ApplyEffectForDuration()
     {
+        await Task.Delay(5);
         if (!EffectInProgress)
         {
             EffectInProgress = true;
             DurationCounter = 0;
             intervalCounter = 0;
-            while (DurationCounter < EffectDuration)
+            while (DurationCounter < EffectDuration && EffectInProgress == true)
             {
                 DurationCounter += StaticObjects.Instance.DeltaGameTime;
                 intervalCounter += StaticObjects.Instance.DeltaGameTime;
                 if (intervalCounter > EffectInterval)
                 {
                     GetTargets();
-                    intervalCounter = 0;
-                    foreach (var effectable in Targets)
-                    {
-                        OnEffect(effectable);
+                    if (Targets != null) {
+                        intervalCounter = 0;
+                        foreach (var effectable in Targets)
+                        {
+                            OnEffect(effectable,effectable.transform.position);
+                        }
                     }
                 }
                 await Task.Yield();
@@ -111,22 +131,48 @@ public class AOEEffect
         }
     }
     
-    public event Action<Effectable> onEffect;
+    public event Action<Effectable,Vector2> onEffect;
+    
 
-    public void OnEffect(Effectable ef)
+    public void OnEffect(Effectable ef,Vector2 targetPos)
     {
         if (ef.IsTargetable())
         {
-            onEffect?.Invoke(ef);
+            if (MaxTargets) {
+                if (targetsCounter <= maxTargets) {
+                onEffect?.Invoke(ef,targetPos);
+                targetsCounter += 1;
+                }
+            }
+
+            if (!MaxTargets)
+            {
+                onEffect?.Invoke(ef,targetPos);
+            }
         }
     }
 
     public void InitEffect(List<GenericAOEController> aoes)
     {
         AoeControllers = aoes;
+        foreach (var aoeController in AoeControllers)
+        {
+            aoeController.Detector.gameObject.SetActive(false);
+            aoeController.Detector.gameObject.SetActive(true);
+        }
         foreach (var effect in Effects)
         {
             onEffect += effect.Apply;
+        }
+
+        if (EffectOverTime)
+        {
+            onAOEEffect += ApplyEffectForDuration;
+        }
+
+        if (!EffectOverTime)
+        {
+            onAOEEffect += ApplyEffectOnce;
         }
     }
     

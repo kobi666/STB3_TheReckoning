@@ -13,14 +13,14 @@ public class ProjectileAttack : WeaponAttack
     [TypeFilter("GetProjectileAttacks")]
     [LabelText("Attack Function")]
     [OdinSerialize]
-    public ProjectileAttackFunction AttackFunction = new ShootOneProjectile();
+    public ProjectileAttackProperties AttackProperties = new ShootOneProjectile();
     
     private static IEnumerable<Type> GetProjectileAttacks()
     {
-        var q = typeof(ProjectileAttackFunction).Assembly.GetTypes()
+        var q = typeof(ProjectileAttackProperties).Assembly.GetTypes()
             .Where(x => !x.IsAbstract) // Excludes BaseClass
             .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
-            .Where(x => typeof(ProjectileAttackFunction).IsAssignableFrom(x)); // Excludes classes not inheriting from BaseClass
+            .Where(x => typeof(ProjectileAttackProperties).IsAssignableFrom(x)); // Excludes classes not inheriting from BaseClass
         
         return q;
     }
@@ -28,12 +28,12 @@ public class ProjectileAttack : WeaponAttack
 
     public override void Attack(Effectable singleTarget, Vector2 SingleTargetPosition)
     {
-        AttackFunction.Attack(singleTarget,SingleTargetPosition);
+        AttackProperties.Attack(singleTarget,SingleTargetPosition);
     }
 
-    public override void InitlizeAttack()
+    public override void InitlizeAttack(GenericWeaponController weapon)
     {
-        AttackFunction.InitializeAttack();
+        AttackProperties.InitializeAttack(weapon);
     }
 }
 

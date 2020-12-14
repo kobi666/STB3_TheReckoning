@@ -6,14 +6,19 @@ using Sirenix.Serialization;
 using UnityEngine;
 using System.Threading.Tasks;
 
-public abstract class SplineAttackProperties
+public abstract class SplineAttackProperties : AttackProperties
 {
     public Effectable MainTarget;
     public Vector2 TargetPosition;
     [OdinSerialize] [GUIColor(1, 0.6f, 0.4f)] public List<SplineBehavior> Splines {get; set;} 
     public float AttackDuration = 2;
     private float AttackProgressCounter = 0f;
-    
+
+    public void InitializeAttackProperties(GenericWeaponController parentWeapon)
+    {
+        ParentWeapon = parentWeapon;
+        InitlizeProperties();
+    }
     public void InitlizeProperties()
     {
         foreach (var spline in Splines)

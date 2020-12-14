@@ -14,13 +14,13 @@ public class AreaEffect : SerializedMonoBehaviour,IQueueable<AreaEffect>
 		get => TargetBank.Targets;
 	}
 
-	public void ApplyEffect(Effect effect)
+	public void ApplyEffect(Effect effect,Vector2 targetPos)
 	{
 		foreach (var target in Targets.Values)
 		{
 			if (target != null)
 			{
-				effect.Apply(target);
+				effect.Apply(target, targetPos);
 			} 
 		}
 	}

@@ -81,16 +81,16 @@ public class SplineBehavior
         positionReached = true;
     }
 
-    private event Action<Effectable> onPosReachedAttack;
+    private event Action<Effectable,Vector2> onPosReachedAttack;
 
-    void OnPosReachedAttack(Effectable ef)
+    void OnPosReachedAttack(Effectable ef,Vector2 targetPos)
     {
         if (positionReached)
         {
-            onPosReachedAttack?.Invoke(ef);
+            onPosReachedAttack?.Invoke(ef,targetPos);
         }
     }
-    private event Action<Effectable> onConcurrentAttack; 
+    private event Action<Effectable,Vector2> onConcurrentAttack; 
     
     
 
@@ -136,7 +136,7 @@ public class SplineBehavior
     public void ConcurrentSplineBehavior(Effectable targetEffectable, Vector2 targetPosition)
     {
         SplineMovement.MoveSpline(targetEffectable.transform.position);
-        OnPosReachedAttack(targetEffectable);
-        onConcurrentAttack?.Invoke(targetEffectable);
+        OnPosReachedAttack(targetEffectable,targetPosition);
+        onConcurrentAttack?.Invoke(targetEffectable,targetPosition);
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 using System.Reflection;
 using MyBox;
 using System.Threading.Tasks;
@@ -33,20 +34,24 @@ public class GenericWeaponController : TowerComponent
 
     void FireProjectileAttack()
     {
-        projectileAttack.AttackFunction.Attack(Target.Effectable,Target.transform.position);
+        projectileAttack.AttackProperties.Attack(Target.Effectable,Target.transform.position);
     }
 
     void FireSplineAttack()
     {
         SplineAttack.Attack(Target.Effectable, Target.transform.position);
     }
-    
-    
-    
-    
-    [ShowIf("WeaponType", 1)]
-    [SerializeField]
-    protected Action<AOEProjectile>[] AoeEvent = new Action<AOEProjectile>[0];
+
+    void FireAOEAttack()
+    {
+        AoeAttack.Attack(Target.Effectable,Target.transform.position);
+    }
+
+
+
+
+    [ShowIf("WeaponType", 1)] [OdinSerialize][TypeFilter("GetAOEAttacks")]
+    public AOEAttack AoeAttack = new TriggerAOEOnce();
 
     [ShowIf("WeaponType", 2)] [OdinSerialize]
     public SplineAttack SplineAttack;
@@ -56,20 +61,37 @@ public class GenericWeaponController : TowerComponent
     {
         if (WeaponType == 0)
         {
-            projectileAttack.AttackFunction.InitializeAttack();
+            projectileAttack.InitlizeAttack(this);
             onAttack += FireProjectileAttack;
             onAttackInitiate += projectileFinalPoint.StartAsyncRotation;
             onAttackCease += projectileFinalPoint.StopAsyncRotation;
         }
 
+        if (WeaponType == 1)
+        {
+            AoeAttack.AOESize = Data.componentRadius;
+            AoeAttack.InitlizeAttack(this);
+            onAttack += FireAOEAttack;
+            onAttackCease += AoeAttack.StopAOEAttack;
+        }
+
         if (WeaponType == 2)
         {
-            SplineAttack.InitlizeAttack();
+            SplineAttack.InitlizeAttack(this);
             onAttack += FireSplineAttack;
             onAttackCease += SplineAttack.StopSplineAttack;
         }
     }
     
+    private static IEnumerable<Type> GetAOEAttacks()
+    {
+        var q = typeof(AOEAttack).Assembly.GetTypes()
+            .Where(x => !x.IsAbstract) // Excludes BaseClass
+            .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
+            .Where(x => typeof(AOEAttack).IsAssignableFrom(x)); // Excludes classes not inheriting from BaseClass
+        
+        return q;
+    }
     
     
     [ConditionalField("debug")]

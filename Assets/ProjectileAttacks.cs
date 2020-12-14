@@ -10,22 +10,8 @@ using Sirenix.Serialization;
 using Sirenix.Utilities;
 
 [System.Serializable]
-public class ProjectileAsyncAttacks
+public class ShootOneProjectile : ProjectileAttackProperties 
 {
-    
-    public static IEnumerable<Type> GetFilteredTypeList()
-    {
-        var q = typeof(ProjectileAttackFunction).Assembly.GetTypes()
-            .Where(x => !x.IsAbstract) // Excludes BaseClass
-            .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
-            .Where(x => typeof(ProjectileAttackFunction).IsAssignableFrom(x)); // Excludes classes not inheriting from BaseClass
-        
-        return q;
-    }
-}
-
-[System.Serializable]
-public class ShootOneProjectile : ProjectileAttackFunction {
     [ShowInInspector] 
     public override int ProjectileMultiplier { get; set; } = 1;
     
@@ -34,7 +20,7 @@ public class ShootOneProjectile : ProjectileAttackFunction {
 
     private PoolObjectQueue<GenericProjectile> projectilePool;
     
-    public override void InitializeAttack()
+    public override void InitializeAttack(GenericWeaponController parentWeapon)
     {
         projectilePool = Projectiles[0].CreatePool();
     }
@@ -46,7 +32,7 @@ public class ShootOneProjectile : ProjectileAttackFunction {
         if (AsyncAttackInProgress == false)
         { 
             AsyncAttackInProgress = true;
-            GenericProjectile proj = projectilePool.GetInactive();
+            GenericProjectile proj = projectilePool.Get();
             proj.transform.rotation = ExitPoint.transform.rotation;
             proj.transform.position = ExitPoint.transform.position;
             proj.TargetPosition = FinalPoint?.Position ?? SingleTargetPosition; // can also be projectile final point position
@@ -65,7 +51,7 @@ public class ShootOneProjectile : ProjectileAttackFunction {
     
     
     [System.Serializable]
-    public class ShootMultipleProjectilesOneAfterTheOther : ProjectileAttackFunction
+    public class ShootMultipleProjectilesOneAfterTheOther : ProjectileAttackProperties
     {
         [ShowInInspector]
         public override int ProjectileMultiplier { get; set; }
@@ -78,7 +64,7 @@ public class ShootOneProjectile : ProjectileAttackFunction {
         
         private PoolObjectQueue<GenericProjectile> projectilePool;
 
-        public override void InitializeAttack()
+        public override void InitializeAttack(GenericWeaponController parentWeapon)
         {
             projectilePool = Projectiles[0].CreatePool();
         }
@@ -111,9 +97,5 @@ public class ShootOneProjectile : ProjectileAttackFunction {
                 AsyncAttackInProgress = false;
             }
         }
-
-
-       
-
     }
 

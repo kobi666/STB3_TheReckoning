@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 using UnityEngine.Serialization;
 
 [System.Serializable]
-public abstract class TargetBank<T> : SerializedMonoBehaviour where T : Component
+public abstract class TargetBank<T> : MonoBehaviour where T : Component
 
 {
     private void OnEnable()

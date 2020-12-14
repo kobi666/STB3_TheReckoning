@@ -51,7 +51,6 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Projectiles\Explosion.cs" />
-     <Compile Include="Assets\Scripts\ProjectileAsyncAttacks.cs" />
      <Compile Include="Assets\WeaponAttack.cs" />
      <Compile Include="Assets\Scripts\Levels-rooms\RoomBorder.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ProjectileUtils.cs" />
@@ -74,7 +73,7 @@
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurvePointI.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\Effector.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurvePointGO.cs" />
-     <Compile Include="Assets\Scripts\ProjectileAttackFunction.cs" />
+     <Compile Include="Assets\Scripts\ProjectileAttackProperties.cs" />
      <Compile Include="Assets\Scripts\Projectiles\DirectHitProjectile.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\ArcingProjectileLauncherController.cs" />
      <Compile Include="Assets\TestingGenericWeapon\SplineMovementFunction.cs" />
@@ -103,6 +102,7 @@
      <Compile Include="Assets\TagSelectorPropertyDrawer.cs" />
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\VisibilityControlAlways.cs" />
      <Compile Include="Assets\Scripts\Units\UnitType.cs" />
+     <Compile Include="Assets\TestingGenericWeapon\AOEAttack.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\WeaponUtils.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcTriangulate2D.cs" />
      <Compile Include="Assets\StraightLaZoRWeapon.cs" />
@@ -125,6 +125,7 @@
      <Compile Include="Assets\Scripts\GeneralClasses\InGameObjectManager.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Examples\Scripts\BGSceneLoader.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcWithCursorObject.cs" />
+     <Compile Include="Assets\GenericAOEController.cs" />
      <Compile Include="Assets\Scripts\Towers\TowerActionManager.cs" />
      <Compile Include="Assets\TestCalculateTowerPositions.cs" />
      <Compile Include="Assets\testclass.cs" />
@@ -226,6 +227,7 @@
      <Compile Include="Assets\LaserTest2.cs" />
      <Compile Include="Assets\test7.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\PlayerUnitSpawningPoint.cs" />
+     <Compile Include="Assets\TestingGenericWeapon\AOEEffect.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Examples\Scripts\BGTestCamera.cs" />
      <Compile Include="Assets\Scripts\Projectiles\OnTargetReachedProjectile.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\PlayerUnitSpawner.cs" />
@@ -242,6 +244,7 @@
      <Compile Include="Assets\Scripts\Towers\TowerSlot.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\ProjectileMovementFunction.cs" />
      <Compile Include="Assets\Garbage\TProjectileController.cs" />
+     <Compile Include="Assets\TestingGenericWeapon\AOEBehavior.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider3DBox.cs" />
      <Compile Include="Assets\BeamWeapon.cs" />
      <Compile Include="Assets\Garbage\TowerTestScript.cs" />
@@ -330,10 +333,8 @@
      <Compile Include="Assets\Scripts\Towers\TowerSlotController.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\RangeDebug.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ArcingAOEProjectileController.cs" />
-     <Compile Include="Assets\GenericAOEController.cs" />
-     <Compile Include="Assets\TestingGenericWeapon\AOEBehavior.cs" />
-     <Compile Include="Assets\TestingGenericWeapon\AOEEffect.cs" />
-     <Compile Include="Assets\TestingGenericWeapon\AOEAttack.cs" />
+     <Compile Include="Assets\TestingGenericWeapon\AttackProperties.cs" />
+     <Compile Include="Assets\ProjectileAttacks.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\BansheeGz\BGCollider\readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

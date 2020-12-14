@@ -1307,35 +1307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: Targets
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[Effectable,
-        Assembly-CSharp]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
   Detector: {fileID: 1439260365}
 --- !u!114 &325660112
 MonoBehaviour:
@@ -1361,16 +1332,15 @@ MonoBehaviour:
     - Name: projectileAttack
       Entry: 6
       Data: 
-    - Name: AoeEvent
+    - Name: AoeAttack
       Entry: 7
-      Data: 0|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null]][], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
+      Data: 0|TriggerAOEOnce, Assembly-CSharp
+    - Name: AoeBehaviors
+      Entry: 6
       Data: 
+    - Name: AOESize
+      Entry: 4
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4789,35 +4759,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: Targets
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[Effectable,
-        Assembly-CSharp]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
   Detector: {fileID: 1807290229}
 --- !u!120 &980338550
 LineRenderer:
@@ -7461,35 +7402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: Targets
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[Effectable,
-        Assembly-CSharp]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
   Detector: {fileID: 255237718}
 --- !u!114 &1578891344
 MonoBehaviour:
@@ -7515,16 +7427,15 @@ MonoBehaviour:
     - Name: projectileAttack
       Entry: 6
       Data: 
-    - Name: AoeEvent
+    - Name: AoeAttack
       Entry: 7
-      Data: 0|System.Action`1[[AOEProjectile, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null]][], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
+      Data: 0|TriggerAOEOnce, Assembly-CSharp
+    - Name: AoeBehaviors
+      Entry: 6
       Data: 
+    - Name: AOESize
+      Entry: 4
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -9352,6 +9263,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Test
+      objectReference: {fileID: 0}
+    - target: {fileID: 707156916585507480, guid: df65a10a4d1884d43b37b9a9682040ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 961377521304559386, guid: df65a10a4d1884d43b37b9a9682040ca,
         type: 3}
@@ -11363,6 +11279,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BasicProjectileWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622965594057284744, guid: ea74d1b1b162f434e853439ab362fc6d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea74d1b1b162f434e853439ab362fc6d, type: 3}

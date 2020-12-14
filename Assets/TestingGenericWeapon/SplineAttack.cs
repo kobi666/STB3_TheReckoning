@@ -31,7 +31,7 @@ public class SplineAttack : WeaponAttack
         SplineAttackType.StopAttack();
     }
 
-    public override void InitlizeAttack()
+    public override void InitlizeAttack(GenericWeaponController parentWeapon)
     {
         SplineAttackType.InitlizeProperties();
     }
