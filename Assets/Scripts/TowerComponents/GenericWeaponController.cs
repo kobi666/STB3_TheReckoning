@@ -20,6 +20,8 @@ public class GenericWeaponController : TowerComponent
     [SerializeField]
     protected int WeaponType;
 
+    public bool RotatingTurret;
+    private GenericRotator GenericRotator;
     private string cachedTargetName;
     
     private static ValueDropdownList<int> valueList = new ValueDropdownList<int>()
@@ -63,8 +65,12 @@ public class GenericWeaponController : TowerComponent
         {
             projectileAttack.InitlizeAttack(this);
             onAttack += FireProjectileAttack;
-            onAttackInitiate += projectileFinalPoint.StartAsyncRotation;
-            onAttackCease += projectileFinalPoint.StopAsyncRotation;
+            /*onAttackInitiate += projectileFinalPoint.StartAsyncRotation;
+            onAttackCease += projectileFinalPoint.StopAsyncRotation;*/
+            if (!projectileAttack.AttackProperties.Projectiles.Any(x => x.projectileEffect.Homing))
+            {
+                RotatingTurret = true;
+            }
         }
 
         if (WeaponType == 1)
@@ -80,6 +86,11 @@ public class GenericWeaponController : TowerComponent
             SplineAttack.InitlizeAttack(this);
             onAttack += FireSplineAttack;
             onAttackCease += SplineAttack.StopSplineAttack;
+        }
+        if (RotatingTurret)
+        {
+            onAttackInitiate += GenericRotator.StartAsyncRotation;
+            onAttackCease += GenericRotator.StopAsyncRotation;
         }
     }
     
@@ -182,6 +193,7 @@ public class GenericWeaponController : TowerComponent
     void SetTarget(TargetUnit tu)
     {
         Target = tu;
+        
     }
     
     
@@ -313,6 +325,7 @@ public class GenericWeaponController : TowerComponent
         get => Data.targetUnit;
         set {
             Data.targetUnit = value;
+            GenericRotator.Target = value?.transform;    
         }
     }
 
@@ -360,6 +373,7 @@ public class GenericWeaponController : TowerComponent
     protected void Awake()
     {
         base.Awake();
+        GenericRotator = GetComponent<GenericRotator>();
         onTargetAdd += SetTarget;
     }
     public override void PostAwake() {

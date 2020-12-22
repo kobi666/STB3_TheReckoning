@@ -45,6 +45,8 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
     }
     List<string> DiscoverableTagsList = new List<string>();
     
+    public List<string> TargetExclusionList = new List<string>();
+    
 
     public void Activate()
     {
@@ -148,8 +150,13 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
                 {
                     if (GameObjectPool.Instance.ActiveEffectables?.Pool.ContainsKey(other.name) ?? false)
                     {
-                        if (ActiveTargets[other.name].IsTargetable())
-                            OnTargetHit(ActiveTargets[other.name],ActiveTargets[other.name]?.transform.position ?? transform.position );
+                        if (!TargetExclusionList.Contains(other.name)) 
+                        {
+                            if (ActiveTargets[other.name].IsTargetable()) 
+                            {
+                                OnTargetHit(ActiveTargets[other.name],ActiveTargets[other.name]?.transform.position ?? transform.position );
+                            }
+                        }
                     }
 
                 }
@@ -416,6 +423,7 @@ public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProje
 
     protected void OnDisable()
     {
+        TargetExclusionList.Clear();
         SpriteRenderer.enabled = false;
         DynamicData.Clear();
         RangeDetector.enabled = false;

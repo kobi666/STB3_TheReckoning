@@ -109,11 +109,11 @@ public class SplineEffect
     {
         if (!m_SingleSingleEffectHappened)
         {
-            OnAttack(ef,targetPos);
+            OnEffectTrigger(ef,targetPos);
         }
     }
 
-    public void OnAttack(Effectable ef,Vector2 targetPos)
+    public void OnEffectTrigger(Effectable ef,Vector2 targetPos)
     {
         if (TargetBank.Targets.Any())
         {
@@ -140,17 +140,17 @@ public class SplineEffect
         }
     }
 
-    public event Action onAttackStart;
+    public event Action onEffectStart;
 
-    public void OnAttackStart()
+    public void OnEffectStart(Effectable ef, Vector2 pos)
     {
-        onAttackStart?.Invoke();
+        onEffectStart?.Invoke();
     }
-    public event Action onAttackEnd;
+    public event Action onEffectEnd;
 
-    public void OnAttackEnd()
+    public void OnEffectEnd()
     {
-        onAttackEnd?.Invoke();
+        onEffectEnd?.Invoke();
     }
     void EffectOnPathTargets(Effectable ef,Vector2 targetPos)
     {
@@ -236,8 +236,8 @@ public class SplineEffect
             onEffect += delegate(Effectable effectable,Vector2 targetPos) { SingleEffectHappened = true;};
         }
 
-        onAttackEnd += delegate { TargetBank.Targets.Clear();};
-        onAttackEnd += delegate { SingleEffectHappened = false; };
+        onEffectEnd += delegate { TargetBank.Targets.Clear();};
+        onEffectEnd += delegate { SingleEffectHappened = false; };
 
     }
     

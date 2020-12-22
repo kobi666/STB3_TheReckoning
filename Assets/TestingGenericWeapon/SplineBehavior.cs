@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class SplineBehavior
 {
+    [Required]
     public SplineController SplineController;
     [HideInInspector]
     public ProjectileExitPoint ExitPoint;
@@ -23,22 +24,16 @@ public class SplineBehavior
     [TypeFilter("GetSplineMovements")] [OdinSerialize][GUIColor(0, 1, 0)][BoxGroup]
     public SplineMovementFunction SplineMovement;
 
-    public void OnAttackEnd()
+    public event Action onBehaviorEnd;
+    public void OnBehaviorEnd()
     {
-        foreach (var effect in SplineEffect)
-        {
-            effect.OnAttackEnd();
-        }
-        SplineMovement.OnAttackEnd();
+        onBehaviorEnd?.Invoke();
     }
 
-    public void OnAttackStart()
+    public event Action<Effectable,Vector2> onBehaviorStart;
+    public void OnBehaviorStart(Effectable initialEfffectable,Vector2 initialtargetPos)
     {
-        foreach (var effect in SplineEffect)
-        {
-            effect.OnAttackStart();
-        }
-        SplineMovement.OnAttackStart();
+        onBehaviorStart?.Invoke(initialEfffectable,initialtargetPos);
     }
 
     public float SplineDuration;
@@ -101,39 +96,29 @@ public class SplineBehavior
         TargetBank = SplineController.TargetBank;
         SplineMovement.Initialize(this);
         SplineMovement.onTargetPositionReached += SetOnPositionReachedTrue;
+        onBehaviorStart += SplineMovement.OnMovementStart;
+        onBehaviorEnd += SplineMovement.OnMovementEnd;
         foreach (var effect in SplineEffect)
         {
             effect.InitEffect(SplineController);
+            onBehaviorStart += effect.OnEffectStart;
+            onBehaviorEnd += effect.OnEffectEnd;
             if (effect.EffectStartsOnTargetPositionReached)
             {
-                onPosReachedAttack += effect.OnAttack;
+                onPosReachedAttack += effect.OnEffectTrigger;
             }
             else
             {
-                onConcurrentAttack += effect.OnAttack;
+                onConcurrentAttack += effect.OnEffectTrigger;
             }
         }
     }
     
     [ShowInInspector]
     private bool SplineBehaviorInProgress = false;
-    /*public async void InitiateAsyncSplineBehavior()
-    {
-        if (SplineBehaviorInProgress == false)
-        {
-            SplineBehaviorInProgress = true;
-            resetTimer();
-            while (SplineDynamicData.MainTarget != null)
-            {
-                if (splineBehaviorTimer > 0)
-                {
-                    
-                }
-            }
-        }
-    }*/
+    
 
-    public void ConcurrentSplineBehavior(Effectable targetEffectable, Vector2 targetPosition)
+    public void InvokeSplineBehavior(Effectable targetEffectable, Vector2 targetPosition)
     {
         SplineMovement.MoveSpline(targetEffectable.transform.position);
         OnPosReachedAttack(targetEffectable,targetPosition);

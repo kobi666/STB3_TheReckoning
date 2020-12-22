@@ -15,10 +15,11 @@ public abstract class SplineMovementFunction
     [ShowIf("Oscilating")] public float OscilationSpeed { get; set; } = 0.01f;
 
     public event Action onTargetPositionReached;
-
-    private bool targetPositionReached = false;
+    
     [ShowInInspector]
-    private bool TargetPositionReached
+    private bool targetPositionReached = false;
+    
+    public bool TargetPositionReached
     {
         get => targetPositionReached;
         set
@@ -35,14 +36,27 @@ public abstract class SplineMovementFunction
         }
     }
 
-    public void OnAttackEnd()
+    private void EnableSplineRender()
+    {
+        splineController.LineRenderer.enabled = true;
+    }
+
+    private void DisableSplineRender()
     {
         splineController.LineRenderer.enabled = false;
     }
+    
+    public event Action onMovementStart;
+    public event Action onMovementEnd;
 
-    public void OnAttackStart()
+    public void OnMovementEnd()
     {
-        splineController.LineRenderer.enabled = true;
+        onMovementEnd?.Invoke();
+    }
+
+    public void OnMovementStart(Effectable ef, Vector2 pos)
+    {
+        onMovementStart?.Invoke();
     }
 
     private float distanceCounter;
@@ -77,6 +91,8 @@ public abstract class SplineMovementFunction
             onFinalPointMovement += FinalPointTravelToTarget;
         }
         InitSplineProperties();
+        
+        
     }
 
     public abstract void InitSplineProperties();
@@ -87,7 +103,7 @@ public abstract class SplineMovementFunction
         TargetPositionReached = true;
     }
 
-    public void initMovment(Vector2 targetPosition)
+    public void ResetMovementProperties()
     {
         finalPoint.Position = exitPoint.transform.position;
         distanceCounter = 0;
@@ -99,11 +115,14 @@ public abstract class SplineMovementFunction
             //finalPoint.Position = Vector2.Lerp(exitPoint.transform.position, targetPosition, distanceCounter);
             finalPoint.Position = Vector2.MoveTowards(finalPoint.Position, targetPosition,
                 TravelSpeed * StaticObjects.Instance.DeltaGameTime);
-            /*if (distanceCounter >= 1)
-        {
-            
-        }*/
-            
+            if (!targetPositionReached)
+            {
+                if (finalPoint.Position == targetPosition)
+                {
+                    TargetPositionReached = true;
+                }
+            }
+
     }
 
 

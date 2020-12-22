@@ -5,7 +5,7 @@ using BansheeGz.BGSpline.Curve;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class SplineController : MonoBehaviour
+public class SplineController : MonoBehaviour,IQueueable<SplineController>
 {
     public BGCurve BgCurve;
     public EffectableTargetBank TargetBank;
@@ -28,5 +28,12 @@ public class SplineController : MonoBehaviour
         LineRenderer = GetComponent<LineRenderer>();
         FinalPoint = FinalPoint ?? GetComponentInChildren<ProjectileFinalPoint>();
         ExitPoint = ExitPoint ?? GetComponentInChildren<ProjectileExitPoint>();
+    }
+
+    public Type QueueableType { get; set; }
+    public PoolObjectQueue<SplineController> QueuePool { get; set; }
+    public void OnEnqueue()
+    {
+        gameObject.SetActive(false);
     }
 }

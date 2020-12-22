@@ -120,6 +120,7 @@
      <Compile Include="Assets\Scripts\Towers\TowerUtils.cs" />
      <Compile Include="Assets\Garbage\OldStateMachine.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\PerksAndNerfs.cs" />
+     <Compile Include="Assets\ProjectileAttacks.cs" />
      <Compile Include="Assets\Scripts\Units\UnitUtils.cs" />
      <Compile Include="Assets\Scripts\ProjectileAttackSequences.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\InGameObjectManager.cs" />
@@ -197,6 +198,7 @@
      <Compile Include="Assets\Scripts\PlayerObjects\CursorUtils.cs" />
      <Compile Include="Assets\RangeDrawer.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\DeathManager.cs" />
+     <Compile Include="Assets\TestingGenericWeapon\AttackProperties.cs" />
      <Compile Include="Assets\ComponentSpriteController.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcTrs.cs" />
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\VectorObject2D.cs" />
@@ -224,6 +226,7 @@
      <Compile Include="Assets\Scripts\Projectiles\AreaOfEffectController.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\TestUtilities.cs" />
      <Compile Include="Assets\Scripts\Towers\Tower.cs" />
+     <Compile Include="Assets\Scripts\GenericRotator.cs" />
      <Compile Include="Assets\LaserTest2.cs" />
      <Compile Include="Assets\test7.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\PlayerUnitSpawningPoint.cs" />
@@ -333,8 +336,6 @@
      <Compile Include="Assets\Scripts\Towers\TowerSlotController.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\RangeDebug.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ArcingAOEProjectileController.cs" />
-     <Compile Include="Assets\TestingGenericWeapon\AttackProperties.cs" />
-     <Compile Include="Assets\ProjectileAttacks.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\BansheeGz\BGCollider\readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
