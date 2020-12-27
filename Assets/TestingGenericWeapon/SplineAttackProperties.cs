@@ -6,11 +6,25 @@ using Sirenix.Serialization;
 using UnityEngine;
 using System.Threading.Tasks;
 using System;
+using BansheeGz.BGSpline.Curve;
+using MyBox;
+using Sirenix.Utilities;
 
+[System.Serializable]
 public abstract class SplineAttackProperties : AttackProperties
 {
     public Effectable MainTarget;
     public Vector2 TargetPosition;
+
+    public SplineBehavior SplineBehavior0
+    {
+        get => Splines[0];
+    }
+
+    public SplineController SplineController0
+    {
+        get => SplineBehavior0.SplineController;
+    }
     [OdinSerialize] [GUIColor(1, 0.6f, 0.4f)] public List<SplineBehavior> Splines {get; set;} 
     public float AttackDuration = 2;
     private float AttackProgressCounter = 0f;
@@ -28,8 +42,8 @@ public abstract class SplineAttackProperties : AttackProperties
             if (spline != null)
             {
                 spline.Init();
-                spline.onBehaviorStart += onAttackStart;
-                spline.onBehaviorEnd += onAttackEnd;
+                onAttackStart += spline.OnBehaviorStart;
+                onAttackEnd += spline.OnBehaviorEnd;
             }
         }
     }
@@ -87,7 +101,7 @@ public abstract class SplineAttackProperties : AttackProperties
 
 }
 
-
+[System.Serializable]
 public class OneSplineFromOriginToTarget : SplineAttackProperties
 {
     public override void SpecificPropertiesInit()
@@ -101,6 +115,7 @@ public class OneSplineFromOriginToTarget : SplineAttackProperties
     }
 }
 
+[System.Serializable]
 public class ChainSplines : SplineAttackProperties
 {
     public bool TrackingAllTargets;
@@ -108,13 +123,13 @@ public class ChainSplines : SplineAttackProperties
     public RangeDetector ChainTargetDiscoveryDetector;
     public float ExtraDiscoveryRange;
     public int Leaps = 2;
-    public List<(Effectable,Vector2)> LeapingTargets = new List<(Effectable,Vector2)>();
+    public SortedList<string,(Effectable,Vector2)> LeapingTargets = new SortedList<string,(Effectable,Vector2)>();
     [Required]
     public EffectableTargetBank ExtraRangeTargetBank;
 
     private void SetInitialTargetTarget(Effectable ef, Vector2 pos)
     {
-        LeapingTargets[0] = (ef,pos);
+        LeapingTargets.Add(ef.name,(ef,pos));
     }
     public override void SpecificPropertiesInit()
     {
@@ -134,19 +149,26 @@ public class ChainSplines : SplineAttackProperties
 
     public override void SplineAttackFunction(Effectable targetEffectable, Vector2 TargetPosition)
     {
-        Splines[0].InvokeSplineBehavior(LeapingTargets[TargetCounter].Item1,LeapingTargets[TargetCounter].Item2);
-        if (Splines[0].SplineMovement.TargetPositionReached)
+        SplineBehavior0.InvokeSplineBehavior(LeapingTargets.Values[TargetCounter].Item1,LeapingTargets.Values[TargetCounter].Item2);
+        if (SplineBehavior0.SplineMovement.TargetPositionReached)
         {
             if (TargetCounter < Leaps)
             {
                 string NextTargetName =
-                    ExtraRangeTargetBank.TryToGetTargetClosestToPosition(LeapingTargets[TargetCounter].Item1.transform.position);
+                    ExtraRangeTargetBank.TryToGetTargetClosestToPosition(LeapingTargets.Values[TargetCounter].Item1.transform.position, LeapingTargets.Keys.ToArray());
                 if (NextTargetName != String.Empty)
                 {
-                    LeapingTargets[TargetCounter + 1] = (ExtraRangeTargetBank.Targets[NextTargetName],
-                        ExtraRangeTargetBank.Targets[NextTargetName].transform.position);
+                    LeapingTargets.Add(NextTargetName,(ExtraRangeTargetBank.Targets[NextTargetName],
+                        ExtraRangeTargetBank.Targets[NextTargetName].transform.position));
                     TargetCounter += 1;
-                    Splines[0].SplineMovement.TargetPositionReached = false;
+                    SplineBehavior0.SplineMovement.TargetPositionReached = false;
+                    BGCurvePointI lastPoint = SplineController0.BgCurve.Points.Last();
+                    int pointsCount = SplineController0.BgCurve.Points.Length;
+                    SplineController0.BgCurve.AddPoint(
+                        new BGCurvePoint(SplineController0.BgCurve, lastPoint.PositionWorld,
+                            BGCurvePoint.ControlTypeEnum.Absent), pointsCount -1);
+                    
+
                 }
             }
         }

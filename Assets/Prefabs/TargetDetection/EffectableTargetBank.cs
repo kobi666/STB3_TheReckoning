@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EffectableTargetBank : TargetBank<Effectable>
@@ -15,7 +16,7 @@ public class EffectableTargetBank : TargetBank<Effectable>
         return ef;
     }
 
-    public string TryToGetTargetClosestToPosition(Vector2 pos)
+    public string TryToGetTargetClosestToPosition(Vector2 pos, string[] existingTargets)
     {
         string s = String.Empty;
         float distance = 9999f;
@@ -23,6 +24,10 @@ public class EffectableTargetBank : TargetBank<Effectable>
         {
             if (ef != null)
             {
+                if (existingTargets.Contains(ef.name))
+                {
+                    continue;
+                }   
                 float vd = Vector2.Distance(pos, ef.transform.position);
                 if (vd < distance)
                 {

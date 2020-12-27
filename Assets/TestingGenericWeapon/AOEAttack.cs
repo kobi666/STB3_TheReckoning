@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public abstract class AOEAttack : WeaponAttack
 {
     public List<AOEBehavior> AoeBehaviors;

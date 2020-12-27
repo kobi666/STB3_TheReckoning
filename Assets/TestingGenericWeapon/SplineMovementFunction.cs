@@ -188,7 +188,7 @@ public class StraightLaZor : SplineMovementFunction
     public override void MovementFunction(Vector2 targetPosition)
     {
         splineController.points[0].PositionWorld = exitPoint.transform.position;
-        splineController.points[1].PositionWorld = finalPoint.Position;
+        splineController.points[splineController.points.Length - 1].PositionWorld = finalPoint.Position;
     }
 
     public override void InitSplineProperties()

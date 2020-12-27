@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Sirenix.Serialization;
 using Random = UnityEngine.Random;
 
+[System.Serializable]
 public class ProjectileAttack : WeaponAttack
 {
     [TypeFilter("GetProjectileAttacks")]
