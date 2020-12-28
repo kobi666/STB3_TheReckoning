@@ -126,7 +126,7 @@ public class LeapingSplines : SplineAttackProperties
     public float ExtraDiscoveryRange;
     public float MinimumLeapDistance;
     public int Leaps = 2;
-    public SortedList<string,(Effectable,Vector2)> LeapingTargets = new SortedList<string,(Effectable,Vector2)>();
+    public Dictionary<string,(Effectable,Vector2)> LeapingTargets = new Dictionary<string, (Effectable, Vector2)>();
     [Required]
     public EffectableTargetBank ExtraRangeTargetBank;
 
@@ -136,6 +136,7 @@ public class LeapingSplines : SplineAttackProperties
     }
     public override void SpecificPropertiesInit()
     {
+        LeapingTargets = new Dictionary<string, (Effectable, Vector2)>();
         if (ExtraRangeTargetBank.Detector == null)
         {
             ExtraRangeTargetBank.Detector = ChainTargetDiscoveryDetector;
@@ -150,53 +151,57 @@ public class LeapingSplines : SplineAttackProperties
 
     private int TargetCounter = 0;
     private List<Vector2> leapingPosisitions = new List<Vector2>();
-    
 
+    public float DelayBetweenLeaps;
+    private float DelayCounter = 0;
     public override void SplineAttackFunction(Effectable targetEffectable, Vector2 TargetPosition)
     {
-        
-            SplineBehavior0.InvokeSplineBehavior(LeapingTargets.Values[TargetCounter].Item1,
-                LeapingTargets.Values[TargetCounter].Item2);
+        SplineBehavior0.InvokeSplineBehavior(LeapingTargets.Values.ToArray()[TargetCounter].Item1,
+                LeapingTargets.Values.ToArray()[TargetCounter].Item2);
             if (SplineBehavior0.SplineMovement.TargetPositionReached)
             {
-                if (TargetCounter < Leaps)
-                {
-                    string NextTargetName =
-                        ExtraRangeTargetBank.TryToGetTargetClosestToPosition(
-                            LeapingTargets.Values[TargetCounter].Item1.transform.position,
-                            LeapingTargets.Keys.ToArray());
-                    if (NextTargetName != String.Empty)
+                DelayCounter += StaticObjects.Instance.DeltaGameTime;
+                if (DelayCounter >= DelayBetweenLeaps) {
+                    if (TargetCounter < Leaps)
                     {
-                        LeapingTargets.Add(NextTargetName, (ExtraRangeTargetBank.Targets[NextTargetName],
-                            ExtraRangeTargetBank.Targets[NextTargetName].transform.position));
-                        TargetCounter += 1;
-                        SplineBehavior0.SplineMovement.TargetPositionReached = false;
-                        BGCurvePointI lastPoint = SplineController0.BgCurve.Points.Last();
-                        int pointsCount = SplineController0.BgCurve.Points.Length;
-                        leapingPosisitions.Add(lastPoint.PositionLocal);
-                        SplineController0.BgCurve.AddPoint(
-                            new BGCurvePoint(SplineController0.BgCurve, lastPoint.PositionLocal,
-                                BGCurvePoint.ControlTypeEnum.Absent), pointsCount - 1);
+                        string NextTargetName =
+                            ExtraRangeTargetBank.TryToGetTargetClosestToPosition(
+                                LeapingTargets.Values.ToArray()[TargetCounter].Item1.transform.position,
+                                LeapingTargets.Keys.ToArray());
+                        if (NextTargetName != String.Empty)
+                        {
+                            LeapingTargets.Add(NextTargetName, (ExtraRangeTargetBank.Targets[NextTargetName],
+                                ExtraRangeTargetBank.Targets[NextTargetName].transform.position));
+                            TargetCounter += 1;
+                            SplineBehavior0.SplineMovement.TargetPositionReached = false;
+                            BGCurvePointI lastPoint = SplineController0.BgCurve.Points.Last();
+                            int pointsCount = SplineController0.BgCurve.Points.Length;
+                            leapingPosisitions.Add(lastPoint.PositionLocal);
+                            SplineController0.BgCurve.AddPoint(
+                                new BGCurvePoint(SplineController0.BgCurve, lastPoint.PositionLocal,
+                                    BGCurvePoint.ControlTypeEnum.Absent), pointsCount - 1);
+                        }
                     }
+
+                    DelayCounter = 0;
                 }
 
-            }
-
-            if (TrackingAllTargets)
-            {
-                for (int i = 0; i < LeapingTargets.Count; i++)
+                if (TrackingAllTargets)
                 {
-                    if (i >= LeapingTargets.Count - 1)
+                    for (int i = 0; i < LeapingTargets.Count; i++)
                     {
-                        continue;
-                    }
+                        if (i >= LeapingTargets.Count - 1)
+                        {
+                            continue;
+                        }
 
-                    if (LeapingTargets.Values[i].Item1 != null)
-                    {
-                        leapingPosisitions[i] = LeapingTargets.Values[i].Item1.transform.position;
-                    }
+                        if (LeapingTargets.Values.ToArray()[i].Item1 != null)
+                        {
+                            leapingPosisitions[i] = LeapingTargets.Values.ToArray()[i].Item1.transform.position;
+                        }
 
-                    SplineController0.BgCurve.Points[i + 1].PositionLocal = leapingPosisitions[i];
+                        SplineController0.BgCurve.Points[i + 1].PositionLocal = leapingPosisitions[i];
+                    }
                 }
             }
         
