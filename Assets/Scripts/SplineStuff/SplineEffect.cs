@@ -31,7 +31,7 @@ public class SplineEffect
     
     [DisableIf("EffectHappensAtInterval")]
     public bool EffectHappensOnce;
-    [HideIf("EffectHappensOnce"), DisableIf("EffectHappensOnce")]
+    [HideIf("EffectHappensOnce")]
     public bool EffectHappensAtInterval;
     
     
@@ -109,7 +109,7 @@ public class SplineEffect
     {
         if (!m_SingleSingleEffectHappened)
         {
-            OnEffectTrigger(ef,targetPos);
+            onAttack(ef,targetPos);
         }
     }
 

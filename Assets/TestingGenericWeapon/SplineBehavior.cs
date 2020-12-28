@@ -16,6 +16,8 @@ public class SplineBehavior
     public ProjectileFinalPoint FinalPoint;
     private EffectableTargetBank TargetBank;
 
+    private Vector2 initialExitPointPos;
+    private Vector2 initialFinalPointpos;
     public AnimationClip OnHitSingleAnimation;
     public AnimationClip OnHitContinuousAnimation;
 
@@ -87,17 +89,44 @@ public class SplineBehavior
     }
     private event Action<Effectable,Vector2> onConcurrentAttack; 
     
-    
+    public virtual void StopRenderingSpline()
+    {
+        SplineController.LineRenderer.enabled = false;
+    }
+
+    public virtual void StartRenderingSpline(Effectable ef, Vector2 pos)
+    {
+        SplineController.LineRenderer.enabled = true;
+    }
+
+    private void ResetSpline()
+    {
+        int splineLength = SplineController.BgCurve.Points.Length;
+        for (int i = 0; i <= splineLength -1; i++)
+        {
+            
+            if (SplineController.BgCurve.Points.Length > 2) {
+                SplineController.BgCurve.Delete(SplineController.BgCurve.Points.Length -1);
+            }
+        }
+        SplineController.BgCurve.Points[0].PositionLocal = ExitPoint.transform.position;
+        SplineController.BgCurve.Points[1].PositionLocal = FinalPoint.Position;
+    }
 
     public void Init()
     {
         FinalPoint = SplineController.FinalPoint;
         ExitPoint = SplineController.ExitPoint;
+        initialFinalPointpos = FinalPoint.Position;
+        initialExitPointPos = ExitPoint.transform.position;
         TargetBank = SplineController.TargetBank;
         SplineMovement.Initialize(this);
         SplineMovement.onTargetPositionReached += SetOnPositionReachedTrue;
         onBehaviorStart += SplineMovement.OnMovementStart;
         onBehaviorEnd += SplineMovement.OnMovementEnd;
+        onBehaviorStart += StartRenderingSpline;
+        onBehaviorEnd += StopRenderingSpline;
+        onBehaviorEnd += ResetSpline;
         foreach (var effect in SplineEffect)
         {
             effect.InitEffect(SplineController);

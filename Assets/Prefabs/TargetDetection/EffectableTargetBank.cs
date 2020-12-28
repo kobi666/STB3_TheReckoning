@@ -38,6 +38,33 @@ public class EffectableTargetBank : TargetBank<Effectable>
         }
         return s;
     }
+    
+    public string TryToGetTargetClosestToPosition(Vector2 pos, string[] existingTargets, float minimumDistance)
+    {
+        string s = String.Empty;
+        float distance = 9999f;
+        foreach (Effectable ef in Targets.Values)
+        {
+            if (ef != null)
+            {
+                if (existingTargets.Contains(ef.name))
+                {
+                    continue;
+                }
+                float vd = Vector2.Distance(pos, ef.transform.position);
+                if (vd < minimumDistance)
+                {
+                    continue;
+                }
+                if (vd < distance)
+                {
+                    distance = vd;
+                    s = ef.name;
+                }
+            }
+        }
+        return s;
+    }
 
     public override void PostStart()
     {
