@@ -28,8 +28,8 @@ public class SelectorTest2 : SerializedMonoBehaviour
 
     [SerializeField]
     TowerSlotController selectedTowerSlot;
-    TowerController SelectedTowerController {
-        get => SelectedTowerSlot.TowerObjectController;
+    TowerControllerLegacy SelectedTowerControllerLegacy {
+        get => SelectedTowerSlot.towerObjectControllerLegacy;
     }
 
     public TowerSlotController SelectedTowerSlot {
@@ -83,22 +83,22 @@ public class SelectorTest2 : SerializedMonoBehaviour
 
 
     public void ExecNorth() {
-        SelectedTowerController.TowerActions.ButtonNorth?.ExecuteFunction();
+        SelectedTowerControllerLegacy.TowerActions.ButtonNorth?.ExecuteFunction();
     }
 
     public void ExecEast() {
         
-        SelectedTowerController.TowerActions.ButtonEast?.ExecuteFunction();
+        SelectedTowerControllerLegacy.TowerActions.ButtonEast?.ExecuteFunction();
     }
 
     public void ExecSouth() {
 
-        SelectedTowerController.TowerActions.ButtonSouth?.ExecuteFunction();
+        SelectedTowerControllerLegacy.TowerActions.ButtonSouth?.ExecuteFunction();
     }
 
     public void ExecWest() {
         
-        SelectedTowerController.TowerActions.ButtonWest?.ExecuteFunction();
+        SelectedTowerControllerLegacy.TowerActions.ButtonWest?.ExecuteFunction();
     }
 
 
@@ -128,7 +128,7 @@ public class SelectorTest2 : SerializedMonoBehaviour
 
     void DrawRange(TowerSlotController tsc)
     {
-        RangeDrawer.DrawCircle(SelectedTowerController.MainTowerComponent?.Data.componentRadius ?? 0);
+        RangeDrawer.DrawCircle(SelectedTowerControllerLegacy.MainTowerComponent?.Data.componentRadius ?? 0);
     }
 
     private void Awake()
@@ -262,10 +262,10 @@ public class SelectorTest2 : SerializedMonoBehaviour
         {
             towerSlotsWithPositions.Add(tscv2.Item1,tscv2.Item2);
         } 
-        PlayerControl.GamePlay.NorthButton.performed += ctx => ExecActionIfPossible(SelectedTowerController.TowerActions.ButtonNorth);
-        PlayerControl.GamePlay.EastButton.performed += ctx =>  ExecActionIfPossible(SelectedTowerController.TowerActions.ButtonEast);
-        PlayerControl.GamePlay.SouthButton.performed += ctx => ExecActionIfPossible(SelectedTowerController.TowerActions.ButtonSouth);
-        PlayerControl.GamePlay.WestButton.performed += ctx => ExecActionIfPossible(SelectedTowerController.TowerActions.ButtonWest);
+        PlayerControl.GamePlay.NorthButton.performed += ctx => ExecActionIfPossible(SelectedTowerControllerLegacy.TowerActions.ButtonNorth);
+        PlayerControl.GamePlay.EastButton.performed += ctx =>  ExecActionIfPossible(SelectedTowerControllerLegacy.TowerActions.ButtonEast);
+        PlayerControl.GamePlay.SouthButton.performed += ctx => ExecActionIfPossible(SelectedTowerControllerLegacy.TowerActions.ButtonSouth);
+        PlayerControl.GamePlay.WestButton.performed += ctx => ExecActionIfPossible(SelectedTowerControllerLegacy.TowerActions.ButtonWest);
         Vector2 FirstKey = Vector2.zero;
         foreach (var item in towerSlotsWithPositions)
         {

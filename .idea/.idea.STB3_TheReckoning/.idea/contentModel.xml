@@ -189,7 +189,7 @@
           </e>
         </e>
         <e p="BeamController.cs" t="Include" />
-        <e p="BeamTowerController.cs" t="Include" />
+        <e p="BeamTowerControllerLegacy.cs" t="Include" />
         <e p="BeamWeapon.cs" t="Include" />
         <e p="betterEventTest.cs" t="Include" />
         <e p="ComponentRotator.cs" t="Include" />
@@ -206,7 +206,7 @@
         <e p="Garbage" t="Include">
           <e p="OldStateMachine.cs" t="Include" />
           <e p="TestPlayerUnitSpawner.cs" t="Include" />
-          <e p="TestTowerController.cs" t="Include" />
+          <e p="TestTowerControllerLegacy.cs" t="Include" />
           <e p="TestWeaponController.cs" t="Include" />
           <e p="TowerTestScript.cs" t="Include" />
           <e p="TProjectileController.cs" t="Include" />
@@ -605,9 +605,18 @@
           </e>
           <e p="Sirenix" t="Include">
             <e p="Assemblies" t="Include">
-              <e p="link.xml" t="Include" />
+              <e p="link.xml.backup.txt" t="Include" />
+              <e p="NoEditor" t="Include">
+                <e p="Sirenix.Serialization.dll.backup.txt" t="Include" />
+                <e p="Sirenix.Utilities.dll.backup.txt" t="Include" />
+              </e>
+              <e p="NoEmitAndNoEditor" t="Include">
+                <e p="Sirenix.Serialization.dll.backup.txt" t="Include" />
+                <e p="Sirenix.Utilities.dll.backup.txt" t="Include" />
+              </e>
               <e p="Sirenix.OdinInspector.Attributes.xml" t="Include" />
               <e p="Sirenix.OdinInspector.Editor.xml" t="Include" />
+              <e p="Sirenix.Serialization.Config.dll.backup.txt" t="Include" />
               <e p="Sirenix.Serialization.Config.xml" t="Include" />
               <e p="Sirenix.Utilities.Editor.xml" t="Include" />
               <e p="Sirenix.Utilities.xml" t="Include" />
@@ -619,14 +628,14 @@
                   <e p="BuildAOTAutomation.cs" t="Include" />
                   <e p="EnsureOdinInspectorDefine.cs" t="Include" />
                   <e p="FixBrokenUnityObjectWrapperDrawer.cs" t="Include" />
+                  <e p="SerializedNetworkBehaviour.cs" t="Include" />
                   <e p="SyncListDrawer.cs" t="Include" />
                   <e p="SyncVarAttributeDrawer.cs" t="Include" />
                   <e p="Vector2IntMinMaxAttributeDrawer.cs" t="Include" />
                   <e p="VectorIntDrawers.cs" t="Include" />
+                  <e p="VectorIntFormatters.cs" t="Include" />
                   <e p="VectorIntPropertyResolvers.cs" t="Include" />
                 </e>
-                <e p="SerializedNetworkBehaviour.cs" t="Include" />
-                <e p="VectorIntFormatters.cs" t="Include" />
               </e>
             </e>
             <e p="README.txt" t="Include" />
@@ -1052,7 +1061,7 @@
             <e p="TestOrbitalGunsController.cs" t="Include" />
             <e p="TestOrbitalWeapon.cs" t="Include" />
             <e p="TowerComponentData.cs" t="Include" />
-            <e p="UnitSpawnerTowerController.cs" t="Include" />
+            <e p="UnitSpawnerTowerControllerLegacy.cs" t="Include" />
             <e p="WeaponController.cs" t="Include" />
             <e p="WeaponInterfaces.cs" t="Include" />
             <e p="WeaponRotator.cs" t="Include" />
@@ -1064,16 +1073,19 @@
             <e p="WeaponUtils.cs" t="Include" />
           </e>
           <e p="Towers" t="Include">
-            <e p="ArcingBombTowerController.cs" t="Include" />
+            <e p="ArcingBombTowerControllerLegacy.cs" t="Include" />
             <e p="EmptyTowerSlot.cs" t="Include" />
-            <e p="OrbitalGunTowerController.cs" t="Include" />
+            <e p="OrbitalGunTowerControllerLegacy.cs" t="Include" />
             <e p="SlotController.cs" t="Include" />
             <e p="SlotParentManager.cs" t="Include" />
             <e p="Tower.cs" t="Include" />
+            <e p="TowerAction.cs" t="Include" />
             <e p="TowerActionManager.cs" t="Include" />
             <e p="TowerArsenal.cs" t="Include" />
             <e p="TowerController.cs" t="Include" />
+            <e p="TowerControllerLegacy.cs" t="Include" />
             <e p="TowerCrosshairData.cs" t="Include" />
+            <e p="TowerLocationManager.cs" t="Include" />
             <e p="TowerSlot.cs" t="Include" />
             <e p="TowerSlotController.cs" t="Include" />
             <e p="TowerSlotManager.cs" t="Include" />
@@ -1204,7 +1216,6 @@
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
       <e p="ScriptInspector.csproj" t="IncludeRecursive" />
-      <e p="Sirenix.OdinInspector.CompatibilityLayer.csproj" t="IncludeRecursive" />
       <e p="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj" t="IncludeRecursive" />
       <e p="STB3_TheReckoning.sln" t="IncludeFlat" />
       <e p="Temp\bin" t="ExcludeRecursive" />

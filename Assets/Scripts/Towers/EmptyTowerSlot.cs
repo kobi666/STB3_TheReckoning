@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class EmptyTowerSlot : TowerController
+public class EmptyTowerSlot : TowerControllerLegacy
 {
     public void PlaceTestTower1() {
         Debug.Log("1");

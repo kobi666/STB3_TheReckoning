@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using UnityEngine;
 using System;
 
+[System.Serializable]
 public class SplineAttack : WeaponAttack
 {
-    [TypeFilter("GetSplineAttacks")] [LabelText("Attack Function")] [OdinSerialize]
-    public SplineAttackProperties SplineAttackType;
-    
+    [TypeFilter("GetSplineAttacks")] [LabelText("Attack Function")][SerializeReference]
+    public SplineAttackProperties SplineAttackType = new SplineAttackProperties();
+
+
     private static IEnumerable<Type> GetSplineAttacks()
     {
         var q = typeof(SplineAttackProperties).Assembly.GetTypes()
             .Where(x => !x.IsAbstract) // Excludes BaseClass
             .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
-            .Where(x => typeof(SplineAttackProperties).IsAssignableFrom(x)); // Excludes classes not inheriting from BaseClass
+            .Where(x => x.IsSubclassOf(typeof(SplineAttackProperties)));
         
         return q;
     }

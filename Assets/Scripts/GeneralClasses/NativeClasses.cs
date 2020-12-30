@@ -254,7 +254,7 @@ public class TowerItem {
                 return actions;
             }
             else {
-                actions = TowerPrefab.GetComponent<TowerController>().TowerActions;
+                actions = TowerPrefab.GetComponent<TowerControllerLegacy>().TowerActions;
                 return actions;
             }
         }
@@ -294,12 +294,11 @@ public class TowerSlotActions  {
 }
 
 [System.Serializable]
-public class TowerAction : UnityEvent<TowerController>
+public class TowerActionLegacy : UnityEvent<TowerControllerLegacy>
 {
-    public TowerController TowerController;
+    [FormerlySerializedAs("TowerController")] public TowerControllerLegacy towerControllerLegacy;
     public GameObject UpgradePrefab;
     public string ActionName;
-
 }
 
 [System.Serializable]
@@ -312,7 +311,7 @@ public class TowerSlotAction {
     [SerializeField]
     public event Action ActionFunctions = null;
 
-    public TowerAction MainAction = new TowerAction();
+    [FormerlySerializedAs("MainAction")] public TowerActionLegacy mainActionLegacy = new TowerActionLegacy();
     public int ActionCost;
     public Predicate<TowerComponent> ExecutionCondition = null;
     public TowerSlotAction(TowerComponent towerComponent, string actionDescription, Sprite buttonSprite, Action action) {

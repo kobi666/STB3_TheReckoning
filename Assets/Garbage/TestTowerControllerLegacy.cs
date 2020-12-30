@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestTowerController : TowerController
+public class TestTowerControllerLegacy : TowerControllerLegacy
 {
     
     public SpriteRenderer SR;

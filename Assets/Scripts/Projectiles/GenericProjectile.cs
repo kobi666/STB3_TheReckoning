@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Sirenix.Serialization;
 using UnityEditor;
 
-public class GenericProjectile : SerializedMonoBehaviour,IQueueable<GenericProjectile>,IActiveObject<GenericProjectile>
+public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IActiveObject<GenericProjectile>
 {
     [OdinSerialize]
     public ProjectileEffect BaseProjectileEffect;

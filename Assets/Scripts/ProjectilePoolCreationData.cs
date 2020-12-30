@@ -7,10 +7,11 @@ using System.Linq;
 using Random = UnityEngine.Random;
 
 [HideLabel]
+[System.Serializable]
 public class ProjectilePoolCreationData
 {
     
-    [TypeFilter("GetMovementFunctions")]
+    [TypeFilter("GetMovementFunctions")][SerializeReference]
     public ProjectileMovementFunction projectileMovement;
 
     [HideLabel] public ProjectileEffect projectileEffect;
@@ -23,7 +24,7 @@ public class ProjectilePoolCreationData
         var q = typeof(ProjectileMovementFunction).Assembly.GetTypes()
             .Where(x => !x.IsAbstract) // Excludes BaseClass
             .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
-            .Where(x => typeof(ProjectileMovementFunction).IsAssignableFrom(x)); // Excludes classes not inheriting from BaseClass
+            .Where(x => x.IsSubclassOf(typeof(ProjectileMovementFunction))); // Excludes classes not inheriting from BaseClass
         
         return q;
     }

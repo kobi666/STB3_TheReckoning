@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix;
 
-public class TowerController : MonoBehaviour
+public class TowerLocationManager : MonoBehaviour
 {
     
 }

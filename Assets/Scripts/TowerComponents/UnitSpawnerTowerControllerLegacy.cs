@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitSpawnerTowerController : TowerController
+public class UnitSpawnerTowerControllerLegacy : TowerControllerLegacy
 {
     // Start is called before the first frame update
     public override void PostAwake() {

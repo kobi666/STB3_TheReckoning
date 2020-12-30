@@ -11,26 +11,30 @@ using MyBox;
 using Sirenix.Utilities;
 
 [System.Serializable]
-public abstract class SplineAttackProperties : AttackProperties
+public class SplineAttackProperties : AttackProperties
 {
     public Effectable MainTarget;
     public Vector2 TargetPosition;
-
     
-
     public SplineBehavior SplineBehavior0
     {
-        get => Splines[0];
+        get => SplineBehavior;
     }
 
     public SplineController SplineController0
     {
         get => SplineBehavior0.SplineController;
     }
-    [OdinSerialize] [GUIColor(1, 0.6f, 0.4f)] public List<SplineBehavior> Splines {get; set;} 
+
+    [SerializeField] [GUIColor(1, 0.6f, 0.4f)]
+    public SplineBehavior SplineBehavior;
     public float AttackDuration = 2;
     private float AttackProgressCounter = 0f;
-    public abstract void SpecificPropertiesInit();
+
+    public virtual void SpecificPropertiesInit()
+    {
+        
+    }
 
     public void InitializeAttackProperties(GenericWeaponController parentWeapon)
     {
@@ -39,20 +43,20 @@ public abstract class SplineAttackProperties : AttackProperties
     }
     public void InitlizeProperties()
     {
-        foreach (var spline in Splines)
-        {
-            if (spline != null)
+        
+            if (SplineBehavior != null)
             {
-                spline.Init();
-                onAttackStart += spline.OnBehaviorStart;
-                onAttackEnd += spline.OnBehaviorEnd;
+                SplineBehavior.Init();
+                onAttackStart += SplineBehavior.OnBehaviorStart;
+                onAttackEnd += SplineBehavior.OnBehaviorEnd;
             }
-        }
+        
     }
     
     [ShowInInspector]
     private bool asyncAttackInProgress = false;
 
+    [ShowInInspector]
     public bool AsyncAttackInProgress
     {
         get => asyncAttackInProgress;
@@ -62,7 +66,10 @@ public abstract class SplineAttackProperties : AttackProperties
         }
     }
 
-    public abstract void SplineAttackFunction(Effectable targetEffectable, Vector2 TargetPosition);
+    public virtual void SplineAttackFunction(Effectable targetEffectable, Vector2 TargetPosition)
+    {
+        
+    }
 
 
     public event Action<Effectable,Vector2> onAttackStart;
@@ -113,7 +120,7 @@ public class OneSplineFromOriginToTarget : SplineAttackProperties
 
     public override void SplineAttackFunction(Effectable targetEffectable, Vector2 TargetPosition)
     {
-        Splines[0].InvokeSplineBehavior(targetEffectable, TargetPosition);
+        SplineBehavior.InvokeSplineBehavior(targetEffectable, TargetPosition);
     }
 }
 
@@ -126,6 +133,7 @@ public class LeapingSplines : SplineAttackProperties
     public float ExtraDiscoveryRange;
     public float MinimumLeapDistance;
     public int Leaps = 2;
+    [SerializeReference]
     public Dictionary<string,(Effectable,Vector2)> LeapingTargets = new Dictionary<string, (Effectable, Vector2)>();
     [Required]
     public EffectableTargetBank ExtraRangeTargetBank;
@@ -204,6 +212,21 @@ public class LeapingSplines : SplineAttackProperties
                     }
                 }
             }
+        
+    }
+}
+
+
+[System.Serializable]
+public class testSplineAttackProperties : SplineAttackProperties
+{
+    public override void SpecificPropertiesInit()
+    {
+        
+    }
+
+    public override void SplineAttackFunction(Effectable targetEffectable, Vector2 TargetPosition)
+    {
         
     }
 }

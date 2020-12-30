@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrbitalGunTowerController : TowerController
+public class OrbitalGunTowerControllerLegacy : TowerControllerLegacy
 {
     OrbitalGunsControllerGeneric orbitalGunsController;
     

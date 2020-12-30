@@ -15,7 +15,7 @@ public class ProjectileEffect
     public float ProjectileLifeTime = 3f;    //public ProjectileMovementFunction MovementFunctions = new ProjectileMovementFunction();
     public bool OnHitEffect;
 
-    [HideLabel, ShowIf("OnHitEffect"), TypeFilter("GetFilteredTypeList")] [OdinSerialize]
+    [HideLabel, ShowIf("OnHitEffect"), TypeFilter("GetFilteredTypeList")][SerializeReference]
     public List<Effect> onHitEffects = new List<Effect>()
     {
         new Damage()
@@ -33,7 +33,7 @@ public class ProjectileEffect
     
     public bool OnPositionReachedEffect;
 
-    [HideLabel, ShowIf("OnPositionReachedEffect")] [TypeFilter("GetFilteredTypeList")] [OdinSerialize]
+    [HideLabel, ShowIf("OnPositionReachedEffect")] [TypeFilter("GetFilteredTypeList")][SerializeReference]
     public List<Effect> onPositionReachedEffects = new List<Effect>()
     {
         new Damage()
@@ -57,7 +57,7 @@ public class ProjectileEffect
         var q = typeof(Effect).Assembly.GetTypes()
             .Where(x => !x.IsAbstract) // Excludes BaseClass
             .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
-            .Where(x => typeof(Effect).IsAssignableFrom(x)); // Excludes classes not inheriting from BaseClass
+            .Where(x => x.IsSubclassOf(typeof(Effect)));
         
         return q;
     }

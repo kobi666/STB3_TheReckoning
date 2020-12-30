@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public abstract class WeaponAttack
+public class WeaponAttack
 {
-    public abstract void Attack(Effectable singleTarget, Vector2 SingleTargetPosition);
-    
-    public abstract void InitlizeAttack(GenericWeaponController weapon);
+    public virtual void Attack(Effectable singleTarget, Vector2 SingleTargetPosition)
+    {
+        
+    }
+
+    public virtual void InitlizeAttack(GenericWeaponController weapon)
+    {
+        
+    }
 }

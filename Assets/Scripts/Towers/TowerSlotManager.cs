@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Serialization;
 
 public class TowerSlotManager : MonoBehaviour
 {
@@ -16,17 +17,17 @@ public class TowerSlotManager : MonoBehaviour
             towerSlot = value;
         }
     }
-    [SerializeField]
-    TowerController towerSlotController;
-    public TowerController TowerSlotController {
-        get => towerSlotController;
+    [FormerlySerializedAs("towerSlotController")] [SerializeField]
+    TowerControllerLegacy towerSlotControllerLegacy;
+    public TowerControllerLegacy TowerSlotControllerLegacy {
+        get => towerSlotControllerLegacy;
         set {
-            towerSlotController = value;
+            towerSlotControllerLegacy = value;
         }
     }
 
     public TowerSlotActions Actions {
-        get => TowerSlotController.TowerActions;
+        get => TowerSlotControllerLegacy.TowerActions;
     }
     
     public void ExecNorth() {
@@ -67,7 +68,7 @@ public class TowerSlotManager : MonoBehaviour
         OldTowerSlot = TowerSlot;
         TowerSlot = Instantiate(newTowerPrefab, transform.position,Quaternion.identity, gameObject.transform);
         TowerSlot.name = (towerSlot.name + UnityEngine.Random.Range(10000, 99999).ToString());
-        TowerSlotController = TowerSlot.GetComponent<TowerController>();
+        TowerSlotControllerLegacy = TowerSlot.GetComponent<TowerControllerLegacy>();
         Destroy(OldTowerSlot);
         OnReplaceTower();
     }

@@ -6,10 +6,11 @@ using System;
 using System.Linq;
 using Sirenix.Serialization;
 
+[System.Serializable]
 public class SplineEffect
 {
     public bool MainTargetEffect = true;
-    [HideLabel, ShowIf("MainTargetEffect"), TypeFilter("GetFilteredTypeList")] [OdinSerialize]
+    [HideLabel, ShowIf("MainTargetEffect"), TypeFilter("GetFilteredTypeList")][SerializeReference]
     public List<Effect> MainTargetEffects = new List<Effect>()
     {
         new Damage()
@@ -44,7 +45,7 @@ public class SplineEffect
     
     public bool AffectsTargetsOnPath;
 
-    [HideLabel, ShowIf("AffectsTargetsOnPath")] [TypeFilter("GetFilteredTypeList")] [OdinSerialize]
+    [HideLabel, ShowIf("AffectsTargetsOnPath")] [TypeFilter("GetFilteredTypeList")][SerializeReference]
     public List<Effect> OnPathTargetsEffects = new List<Effect>()
     {
         new Damage()

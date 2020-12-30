@@ -6,6 +6,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 
+[System.Serializable]
 public class SplineBehavior
 {
     [Required]
@@ -15,16 +16,19 @@ public class SplineBehavior
     [HideInInspector]
     public ProjectileFinalPoint FinalPoint;
     private EffectableTargetBank TargetBank;
+    
+    [ShowInInspector]
+    public int testInt { get; set; }
 
     private Vector2 initialExitPointPos;
     private Vector2 initialFinalPointpos;
     public AnimationClip OnHitSingleAnimation;
     public AnimationClip OnHitContinuousAnimation;
 
-    [TypeFilter("GetSplineEffects")] [OdinSerialize][GUIColor(0.3f, 0.8f, 0.8f, 1f)]
-    public List<SplineEffect> SplineEffect;
-    [TypeFilter("GetSplineMovements")] [OdinSerialize][GUIColor(0, 1, 0)][BoxGroup]
-    public SplineMovementFunction SplineMovement;
+    [TypeFilter("GetSplineEffects")] [GUIColor(0.3f, 0.8f, 0.8f, 1f)][SerializeReference]
+    public List<SplineEffect> SplineEffect = new List<SplineEffect>();
+    [TypeFilter("GetSplineMovements")] [GUIColor(0, 1, 0)][BoxGroup][SerializeReference]
+    public SplineMovementFunction SplineMovement = new StraightLaZor();
 
     public event Action onBehaviorEnd;
     public void OnBehaviorEnd()

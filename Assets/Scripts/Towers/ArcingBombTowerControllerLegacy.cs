@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BeamTowerController : TowerController
+public class ArcingBombTowerControllerLegacy : TowerControllerLegacy
 {
     // Start is called before the first frame update
     public override TowerSlotAction NorthAction()
     {
-        return null;
+        return new TowerSlotAction();
     }
 
     public override bool NorthExecutionCondition(TowerComponent tc)
@@ -17,7 +17,7 @@ public class BeamTowerController : TowerController
 
     public override TowerSlotAction EastAction()
     {
-        return null;
+        return new TowerSlotAction();
     }
 
     public override bool EastExecutionCondition(TowerComponent tc)
@@ -27,7 +27,7 @@ public class BeamTowerController : TowerController
 
     public override TowerSlotAction SouthAction()
     {
-        return null;
+        return new TowerSlotAction();
     }
 
     public override bool SouthExecutionCondition(TowerComponent tc)
@@ -37,7 +37,7 @@ public class BeamTowerController : TowerController
 
     public override TowerSlotAction WestAction()
     {
-        return null;
+        return new TowerSlotAction();
     }
 
     public override bool WestExecutionCondition(TowerComponent tc)
@@ -50,9 +50,9 @@ public class BeamTowerController : TowerController
         
     }
 
-    protected void Start()
+    void Start()
     {
-        
+        base.Start();
     }
 
     public override void PostAwake()
@@ -61,5 +61,8 @@ public class BeamTowerController : TowerController
     }
 
     // Update is called once per frame
-    
+    void Update()
+    {
+        
+    }
 }

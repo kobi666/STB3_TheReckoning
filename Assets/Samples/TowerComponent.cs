@@ -6,7 +6,7 @@ using Animancer;
 using MyBox;
 using Sirenix.OdinInspector;
 
-public abstract class TowerComponent : SerializedMonoBehaviour
+public abstract class TowerComponent : MonoBehaviour
 {
     public bool RotatingComponent;
     [ShowIf("RotatingComponent")]
@@ -26,7 +26,7 @@ public abstract class TowerComponent : SerializedMonoBehaviour
     [ShowIf("legacyTower")]
     public TowerComponentData Data;
     
-    public TowerController ParentTower;
+    public TowerControllerLegacy ParentTower;
 
    
     public TowerSlotController parentTowerSlot;
@@ -69,7 +69,7 @@ public abstract class TowerComponent : SerializedMonoBehaviour
     protected void Start()
     {
         parentTowerComponent = parentTowerComponent ?? GetComponentInParent<TowerComponent>() ?? null;
-        ParentTower =  ParentTower ?? GetComponentInParent<TowerController>() ?? null;
+        ParentTower =  ParentTower ?? GetComponentInParent<TowerControllerLegacy>() ?? null;
         ParentTowerSlot = ParentTower.ParentSlotController ?? parentTowerComponent.ParentTower.ParentSlotController ?? null;
     }
 }

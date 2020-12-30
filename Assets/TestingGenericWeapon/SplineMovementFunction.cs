@@ -6,9 +6,12 @@ using System;
 using BansheeGz.BGSpline.Curve;
 
 [System.Serializable]
-public abstract class SplineMovementFunction
+public class SplineMovementFunction
 {
-    public abstract void MovementFunction(Vector2 targetPosition);
+    public virtual void MovementFunction(Vector2 targetPosition)
+    {
+        
+    }
     
     public bool Oscilating;
     [ShowIf("Oscilating")] public (float, float) beamOsciliationOffsetMinMax { get; set; } = (0.05f,0.05f);
@@ -95,7 +98,10 @@ public abstract class SplineMovementFunction
         
     }
 
-    public abstract void InitSplineProperties();
+    public virtual void InitSplineProperties()
+    {
+        
+    }
 
     public void TeleportFinalPoint(Vector2 targetPosition)
     {

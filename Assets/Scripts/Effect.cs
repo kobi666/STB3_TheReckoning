@@ -6,12 +6,20 @@ using UnityEngine;
 
 
 [System.Serializable]
-public abstract class Effect
+public class Effect
 {
     public GenericWeaponController ParentWeapon;
-    public abstract void Apply(Effectable ef, Vector2 targetPos);
+
+    public virtual void Apply(Effectable ef, Vector2 targetPos)
+    {
+        
+    }
     public bool IsAOE;
-    public abstract void InitializeEffectForWeapon(GenericWeaponController parentWeapon);
+
+    public virtual void InitializeEffectForWeapon(GenericWeaponController parentWeapon)
+    {
+        
+    }
 }
 
 

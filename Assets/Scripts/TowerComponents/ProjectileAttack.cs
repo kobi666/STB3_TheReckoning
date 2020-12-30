@@ -13,7 +13,7 @@ public class ProjectileAttack : WeaponAttack
 {
     [TypeFilter("GetProjectileAttacks")]
     [LabelText("Attack Function")]
-    [OdinSerialize]
+    [SerializeReference]
     public ProjectileAttackProperties AttackProperties = new ShootOneProjectile();
     
     private static IEnumerable<Type> GetProjectileAttacks()
@@ -21,8 +21,7 @@ public class ProjectileAttack : WeaponAttack
         var q = typeof(ProjectileAttackProperties).Assembly.GetTypes()
             .Where(x => !x.IsAbstract) // Excludes BaseClass
             .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
-            .Where(x => typeof(ProjectileAttackProperties).IsAssignableFrom(x)); // Excludes classes not inheriting from BaseClass
-        
+            .Where(x => x.IsSubclassOf(typeof(ProjectileAttackProperties))); // Excludes classes not inheriting from BaseClass
         return q;
     }
 

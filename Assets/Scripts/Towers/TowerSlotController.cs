@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using UnityEngine.Serialization;
 
 public class TowerSlotController : MonoBehaviour
 {
@@ -41,13 +42,13 @@ public class TowerSlotController : MonoBehaviour
         get => towerObject;
         set {
             towerObject = value;
-            TowerObjectController = value?.GetComponent<TowerController>() ?? null;
+            towerObjectControllerLegacy = value?.GetComponent<TowerControllerLegacy>() ?? null;
         }
     }
 
     
 
-    public TowerController TowerObjectController;
+    [FormerlySerializedAs("TowerObjectController")] public TowerControllerLegacy towerObjectControllerLegacy;
     public TowerSlotActions Actions;
 
     public void ExecNorth() {

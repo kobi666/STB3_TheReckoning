@@ -27,11 +27,11 @@ public class GenericWeaponController : TowerComponent
     private static ValueDropdownList<int> valueList = new ValueDropdownList<int>()
     {
         {"Projectile Effect", 0},
-        {"Area Of Effect", 1},
-        {"Beam Effect",2}
+        {"Beam Effect",4},
+        {"Area Of Effect", 1}
     };
 
-    [ShowIf("WeaponType", 0)][BoxGroup][OdinSerialize]
+    [ShowIf("WeaponType", 0)][BoxGroup]
     public ProjectileAttack projectileAttack;
 
     void FireProjectileAttack()
@@ -52,11 +52,11 @@ public class GenericWeaponController : TowerComponent
 
 
 
-    [ShowIf("WeaponType", 1)] [OdinSerialize][TypeFilter("GetAOEAttacks")]
+    [ShowIf("WeaponType", 1)][TypeFilter("GetAOEAttacks")]
     public AOEAttack AoeAttack = new TriggerAOEOnce();
 
-    [ShowIf("WeaponType", 2)] [OdinSerialize]
-    public SplineAttack SplineAttack;
+    /*[ShowIf("WeaponType", 4)]*/[SerializeField]
+    public SplineAttack SplineAttack = new SplineAttack();
     public string WeaponName;
 
     public void InitWeapon()
@@ -81,7 +81,7 @@ public class GenericWeaponController : TowerComponent
             onAttackCease += AoeAttack.StopAOEAttack;
         }
 
-        if (WeaponType == 2)
+        if (WeaponType == 4)
         {
             SplineAttack.InitlizeAttack(this);
             onAttack += FireSplineAttack;
@@ -414,7 +414,7 @@ public class GenericWeaponController : TowerComponent
             }
         }
 
-        ParentTower = ParentTower ?? GetComponentInParent<TowerController>();
+        ParentTower = ParentTower ?? GetComponentInParent<TowerControllerLegacy>();
         onAttackInitiate += projectileExitPoint.StartAsyncRotation;
         onAttackCease += projectileExitPoint.StopAsyncRotation;
         InitWeapon();
