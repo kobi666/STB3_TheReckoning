@@ -9991,7 +9991,7 @@ PrefabInstance:
     - target: {fileID: 6179209486908814511, guid: 678ce1cca5a806e438b1cc2f4154e498,
         type: 3}
       propertyPath: CounterMax
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6179209486908814511, guid: 678ce1cca5a806e438b1cc2f4154e498,
         type: 3}
@@ -10006,7 +10006,7 @@ PrefabInstance:
     - target: {fileID: 6179209486908814511, guid: 678ce1cca5a806e438b1cc2f4154e498,
         type: 3}
       propertyPath: Data.componentRadius
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6179209486908814511, guid: 678ce1cca5a806e438b1cc2f4154e498,
         type: 3}
@@ -10187,7 +10187,7 @@ PrefabInstance:
     - target: {fileID: 6179209486908814511, guid: 678ce1cca5a806e438b1cc2f4154e498,
         type: 3}
       propertyPath: SplineAttack.SplineAttackType.SplineBehavior.SplineMovement.BeamWidth
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6179209486908814511, guid: 678ce1cca5a806e438b1cc2f4154e498,
         type: 3}
@@ -10442,7 +10442,7 @@ PrefabInstance:
     - target: {fileID: 6179209486908814511, guid: 678ce1cca5a806e438b1cc2f4154e498,
         type: 3}
       propertyPath: SplineAttack.SplineAttackType.SplineBehavior.SplineEffect.Array.data[0].OnPathTargetsEffects.Array.data[0].DamageRange.min
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6179209486908814511, guid: 678ce1cca5a806e438b1cc2f4154e498,
         type: 3}

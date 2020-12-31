@@ -55,7 +55,7 @@ public class GenericWeaponController : TowerComponent
     [ShowIf("WeaponType", 1)][TypeFilter("GetAOEAttacks")]
     public AOEAttack AoeAttack = new TriggerAOEOnce();
 
-    /*[ShowIf("WeaponType", 4)]*/[SerializeField]
+    [ShowIf("WeaponType", 4)][SerializeField]
     public SplineAttack SplineAttack = new SplineAttack();
     public string WeaponName;
 
