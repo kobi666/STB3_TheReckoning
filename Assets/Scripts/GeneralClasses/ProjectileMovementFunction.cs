@@ -8,11 +8,14 @@ using DG.Tweening;
 using Random = UnityEngine.Random;
 
 [System.Serializable]
-public abstract class ProjectileMovementFunction
+public class ProjectileMovementFunction
 {
-    public abstract void MovementFunction(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos,
+    public virtual void MovementFunction(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos,
         Vector2 TargetPos,
-        float speed);
+        float speed)
+    {
+        
+    }
 
     public event Action onTargetLost;
     private bool TargetLost
@@ -25,7 +28,8 @@ public abstract class ProjectileMovementFunction
         }
     }
     private bool targetLost = false;
-
+    
+    [SerializeField]
     public float speed;
 
     [ShowInInspector] protected float ProgressCounter = 0;

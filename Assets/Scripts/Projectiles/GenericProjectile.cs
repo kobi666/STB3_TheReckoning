@@ -11,10 +11,10 @@ using UnityEditor;
 
 public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IActiveObject<GenericProjectile>
 {
-    [OdinSerialize]
+    [SerializeReference]
     public ProjectileEffect BaseProjectileEffect;
 
-    [OdinSerialize] public ProjectileMovementFunction MovementFunction;
+    [SerializeReference] public ProjectileMovementFunction MovementFunction;
     private ProjectileDynamicData DynamicData = new ProjectileDynamicData();
     [ShowInInspector] private Vector2 TargetPos
     {
@@ -412,13 +412,12 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
 
     void OnEnable()
     {
-        
         RangeDetector.enabled = false;
         RangeDetector.enabled = true;
         selfCollider.enabled = false;
         selfCollider.enabled = true;
         ActivePool?.AddObjectToActiveObjectPool(this);
-        hitCounter = BaseProjectileEffect.HitCounter;
+        
     }
 
     protected void OnDisable()
@@ -431,6 +430,7 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
         targetPositionSet = false;
         GameObjectPool.Instance.RemoveObjectFromAllPools(name,name);
         QueuePool?.ObjectQueue.Enqueue(this);
+        hitCounter = BaseProjectileEffect.HitCounter;
     }
 
 

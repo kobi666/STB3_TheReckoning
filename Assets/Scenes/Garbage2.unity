@@ -391,7 +391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &96792801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,7 +448,7 @@ MonoBehaviour:
     damageRange:
       min: 0
       max: 0
-    fireRate: 2
+    fireRate: 0
     enemyTarget: {fileID: 0}
     playerTarget: {fileID: 0}
   ParentTower: {fileID: 0}
@@ -468,7 +468,7 @@ MonoBehaviour:
   TargetBank: {fileID: 0}
   testAsyncAttackcounter: 0
   AttackCounter: 0
-  CounterMax: 8
+  CounterMax: 1
   ExternalAttackLock: 0
   canattackFieldPH: 0
   projectileFinalPoint: {fileID: 0}
@@ -501,7 +501,7 @@ MonoBehaviour:
         ExitPoint: {fileID: 663737635}
         FinalPoint: {fileID: 239997165}
     00000001:
-      type: {class: OneSplineFromOriginToTarget, ns: , asm: Assembly-CSharp}
+      type: {class: SplineAttackProperties, ns: , asm: Assembly-CSharp}
       data:
         ParentWeapon: {fileID: 0}
         MainTarget: {fileID: 0}
@@ -520,14 +520,14 @@ MonoBehaviour:
     00000002:
       type: {class: MoveStraight, ns: , asm: Assembly-CSharp}
       data:
-        speed: 0
+        speed: 5
     00000003:
       type: {class: Damage, ns: , asm: Assembly-CSharp}
       data:
         ParentWeapon: {fileID: 96792801}
         IsAOE: 0
         DamageRange:
-          min: 20
+          min: 30
           max: 30
     00000004:
       type: {class: Damage, ns: , asm: Assembly-CSharp}
@@ -10462,7 +10462,7 @@ PrefabInstance:
     - target: {fileID: 8464629832649451065, guid: 678ce1cca5a806e438b1cc2f4154e498,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9109107771619974216, guid: 678ce1cca5a806e438b1cc2f4154e498,
         type: 3}

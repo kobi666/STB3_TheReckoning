@@ -25,7 +25,7 @@ public abstract class ProjectileAttackProperties : AttackProperties
     public bool AsyncAttackInProgress;
     
     
-    [OdinSerialize] public List<ProjectilePoolCreationData> Projectiles = new List<ProjectilePoolCreationData>();
+    [SerializeField] public List<ProjectilePoolCreationData> Projectiles = new List<ProjectilePoolCreationData>();
 
     public async void Attack(Effectable singleTarget,
         Vector2 singleTargetPosition)
