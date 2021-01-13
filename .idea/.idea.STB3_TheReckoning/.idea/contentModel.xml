@@ -978,6 +978,9 @@
             <e p="WeaponTypes.cs" t="Include" />
           </e>
           <e p="GenericRotator.cs" t="Include" />
+          <e p="interfaces" t="Include">
+            <e p="WeaponInterfaces.cs" t="Include" />
+          </e>
           <e p="Levels-rooms" t="Include">
             <e p="LevelManager.cs" t="Include" />
             <e p="RoomBorder.cs" t="Include" />
@@ -1063,7 +1066,6 @@
             <e p="TowerComponentData.cs" t="Include" />
             <e p="UnitSpawnerTowerControllerLegacy.cs" t="Include" />
             <e p="WeaponController.cs" t="Include" />
-            <e p="WeaponInterfaces.cs" t="Include" />
             <e p="WeaponRotator.cs" t="Include" />
             <e p="Weapons" t="Include">
               <e p="BeamUtilities.cs" t="Include" />
@@ -1175,6 +1177,7 @@
             <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
+        <e p="TowerActions.cs" t="Include" />
         <e p="TowerPosIndicator.cs" t="Include" />
         <e p="TowerSlotParentManager.cs" t="Include" />
         <e p="TriggerTest.cs" t="Include" />

@@ -10,8 +10,18 @@ public class WeaponAttack
         
     }
 
+    public virtual void StopAttack()
+    {
+        
+    }
+
     public virtual void InitlizeAttack(GenericWeaponController weapon)
     {
         
+    }
+
+    public virtual List<Effect> GetEffects()
+    {
+        return null;
     }
 }

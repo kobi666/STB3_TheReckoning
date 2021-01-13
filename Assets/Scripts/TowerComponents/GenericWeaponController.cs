@@ -9,16 +9,28 @@ using System.Threading.Tasks;
 using Sirenix;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
+using UnityEngine.Serialization;
 
 
 [RequireComponent(typeof(EffectableTargetBank))]
 public class GenericWeaponController : TowerComponent
 {
+    [FormerlySerializedAs("WeaponType")]
     [ValueDropdown("valueList")]
     [HideLabel]
     [BoxGroup]
     [SerializeField]
-    protected int WeaponType;
+    protected int WeaponTypeInt;
+
+    private WeaponAttack weaponAttack;
+
+    public WeaponAttack WeaponAttack
+    {
+        get => weaponAttack;
+        set => weaponAttack = value;
+    }
+
+
 
     public bool RotatingTurret;
     private GenericRotator GenericRotator;
@@ -30,13 +42,15 @@ public class GenericWeaponController : TowerComponent
         {"Beam Effect",4},
         {"Area Of Effect", 1}
     };
+    
+    
 
     [ShowIf("WeaponType", 0)][BoxGroup]
     public ProjectileAttack projectileAttack;
 
     void FireProjectileAttack()
     {
-        projectileAttack.AttackProperties.Attack(Target.Effectable,Target.transform.position);
+        projectileAttack.Attack(Target.Effectable,Target.transform.position);
     }
 
     void FireSplineAttack()
@@ -61,32 +75,36 @@ public class GenericWeaponController : TowerComponent
 
     public void InitWeapon()
     {
-        if (WeaponType == 0)
+        if (WeaponTypeInt == 0)
         {
-            projectileAttack.InitlizeAttack(this);
-            onAttack += FireProjectileAttack;
-            /*onAttackInitiate += projectileFinalPoint.StartAsyncRotation;
-            onAttackCease += projectileFinalPoint.StopAsyncRotation;*/
-            if (!projectileAttack.AttackProperties.Projectiles.Any(x => x.projectileEffect.Homing))
+            WeaponAttack = projectileAttack;
+            /*projectileAttack.InitlizeAttack(this);
+            onAttack += FireProjectileAttack;*/
+            /*if (!projectileAttack.AttackProperties.Projectiles.Any(x => x.projectileEffect.Homing))
             {
                 RotatingTurret = true;
-            }
+            }*/
         }
 
-        if (WeaponType == 1)
+        if (WeaponTypeInt == 1)
         {
-            AoeAttack.AOESize = Data.componentRadius;
-            AoeAttack.InitlizeAttack(this);
+            WeaponAttack = AoeAttack;
+            /*AoeAttack.InitlizeAttack(this);
             onAttack += FireAOEAttack;
-            onAttackCease += AoeAttack.StopAOEAttack;
+            onAttackCease += AoeAttack.StopAOEAttack;*/
         }
 
-        if (WeaponType == 4)
+        if (WeaponTypeInt == 4)
         {
-            SplineAttack.InitlizeAttack(this);
+            WeaponAttack = SplineAttack;
+            /*SplineAttack.InitlizeAttack(this);
             onAttack += FireSplineAttack;
-            onAttackCease += SplineAttack.StopSplineAttack;
+            onAttackCease += SplineAttack.StopSplineAttack;*/
         }
+        
+        WeaponAttack.InitlizeAttack(this);
+        onAttack += WeaponAttack.Attack;
+        onAttackCease += WeaponAttack.StopAttack;
         if (RotatingTurret)
         {
             onAttackInitiate += GenericRotator.StartAsyncRotation;
@@ -100,6 +118,16 @@ public class GenericWeaponController : TowerComponent
             .Where(x => !x.IsAbstract) // Excludes BaseClass
             .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
             .Where(x => typeof(AOEAttack).IsAssignableFrom(x)); // Excludes classes not inheriting from BaseClass
+        
+        return q;
+    }
+    
+    private static IEnumerable<Type> getWeaponTypes()
+    {
+        var q = typeof(WeaponAttack).Assembly.GetTypes()
+            .Where(x => !x.IsAbstract) // Excludes BaseClass
+            .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
+            .Where(x => x.IsSubclassOf(typeof(WeaponAttack))); // Excludes classes not inheriting from BaseClass
         
         return q;
     }
@@ -295,11 +323,11 @@ public class GenericWeaponController : TowerComponent
     }
 
 
-    event Action onAttack;
+    event Action<Effectable,Vector2> onAttack;
 
     void OnAttack()
     {
-        onAttack?.Invoke();
+        onAttack?.Invoke(Target.Effectable, Target.TargetTransform.position);
     }
 
     
@@ -414,7 +442,7 @@ public class GenericWeaponController : TowerComponent
             }
         }
 
-        ParentTower = ParentTower ?? GetComponentInParent<TowerControllerLegacy>();
+        ParentTowerLegacy = ParentTowerLegacy ?? GetComponentInParent<TowerControllerLegacy>();
         onAttackInitiate += projectileExitPoint.StartAsyncRotation;
         onAttackCease += projectileExitPoint.StopAsyncRotation;
         InitWeapon();

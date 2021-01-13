@@ -17,6 +17,7 @@ public class PlayerResources : MonoBehaviour
     public int chronoquilla { get; private set; }
 
     public event Action<int> updateMoneyz;
+    public event Action<int> onMoneyzUpdate;
 
     public void UpdateMoneyz(int moneyzValue)
     {
@@ -26,6 +27,7 @@ public class PlayerResources : MonoBehaviour
     void UpdateTheMoneyz(int moneyzAmount)
     {
         moneyz += (moneyzAmount);
+        onMoneyzUpdate?.Invoke(moneyz);
     }
     
     

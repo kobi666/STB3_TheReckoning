@@ -5,6 +5,7 @@ using System;
 using Animancer;
 using MyBox;
 using Sirenix.OdinInspector;
+using UnityEngine.Serialization;
 
 public abstract class TowerComponent : MonoBehaviour
 {
@@ -12,8 +13,6 @@ public abstract class TowerComponent : MonoBehaviour
     [ShowIf("RotatingComponent")]
     public float RotationSpeed = 5;
     
-    
-    public bool IsMainTowerComponent = true;
     // Start is called before the first frame update
     public bool debug;
     [ConditionalField("debug")]
@@ -26,8 +25,8 @@ public abstract class TowerComponent : MonoBehaviour
     [ShowIf("legacyTower")]
     public TowerComponentData Data;
     
-    public TowerControllerLegacy ParentTower;
-
+    [FormerlySerializedAs("ParentTower")] public TowerControllerLegacy ParentTowerLegacy;
+    public TowerController ParentTowerConroller;
    
     public TowerSlotController parentTowerSlot;
     public TowerComponent parentTowerComponent;
@@ -41,7 +40,7 @@ public abstract class TowerComponent : MonoBehaviour
             }
             else
             {
-                parentTowerSlot = ParentTower.ParentSlotController ?? ParentTower.GetComponentInParent<TowerSlotController>() ?? null;
+                parentTowerSlot = ParentTowerLegacy.ParentSlotController ?? ParentTowerLegacy.GetComponentInParent<TowerSlotController>() ?? null;
                 return parentTowerSlot;
             }
         }
@@ -65,11 +64,14 @@ public abstract class TowerComponent : MonoBehaviour
         Animancer = GetComponent<AnimancerComponent>() ?? null;
         PostAwake();
     }
+    
+    
 
     protected void Start()
     {
+        //legacy
         parentTowerComponent = parentTowerComponent ?? GetComponentInParent<TowerComponent>() ?? null;
-        ParentTower =  ParentTower ?? GetComponentInParent<TowerControllerLegacy>() ?? null;
-        ParentTowerSlot = ParentTower.ParentSlotController ?? parentTowerComponent.ParentTower.ParentSlotController ?? null;
+        ParentTowerLegacy =  ParentTowerLegacy ?? GetComponentInParent<TowerControllerLegacy>() ?? null;
+        ParentTowerSlot = ParentTowerLegacy.ParentSlotController ?? parentTowerComponent.ParentTowerLegacy.ParentSlotController ?? null;
     }
 }

@@ -27,6 +27,33 @@ public class SplineAttack : WeaponAttack
         SplineAttackType.StartAsyncSplineAttack(singleTarget, SingleTargetPosition);
     }
 
+    public override void StopAttack()
+    {
+        StopSplineAttack();
+    }
+
+    public override List<Effect> GetEffects()
+    {
+        List<Effect> listeffect = new List<Effect>();
+        foreach (var sb in SplineAttackType.SplineBehaviors )
+        {
+            foreach (var se in sb.SplineEffect)
+            {
+                foreach (var mtef in se.MainTargetEffects)
+                {
+                    listeffect.Add(mtef);
+                }
+
+                foreach (var opef in se.OnPathTargetsEffects)
+                {
+                    listeffect.Add(opef);
+                }
+            }
+        }
+
+        return listeffect;
+    }
+
     public void StopSplineAttack()
     {
         SplineAttackType.StopAttack();

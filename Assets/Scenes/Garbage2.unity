@@ -406,7 +406,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotatingComponent: 0
   RotationSpeed: 5
-  IsMainTowerComponent: 1
   debug: 0
   SR: {fileID: 0}
   Animancer: {fileID: 0}
@@ -451,12 +450,13 @@ MonoBehaviour:
     fireRate: 0
     enemyTarget: {fileID: 0}
     playerTarget: {fileID: 0}
-  ParentTower: {fileID: 0}
+  ParentTowerLegacy: {fileID: 0}
+  ParentTowerConroller: {fileID: 0}
   parentTowerSlot: {fileID: 0}
   parentTowerComponent: {fileID: 0}
   RangeDetector: {fileID: 0}
   RangeCollider: {fileID: 0}
-  WeaponType: 0
+  WeaponType: 4
   RotatingTurret: 0
   projectileAttack:
     AttackProperties:
@@ -506,6 +506,25 @@ MonoBehaviour:
         ParentWeapon: {fileID: 0}
         MainTarget: {fileID: 0}
         TargetPosition: {x: 0, y: 0}
+        SplineBehaviors:
+        - SplineController: {fileID: 0}
+          ExitPoint: {fileID: 0}
+          FinalPoint: {fileID: 0}
+          OnHitSingleAnimation: {fileID: 0}
+          OnHitContinuousAnimation: {fileID: 0}
+          SplineEffect: []
+          SplineMovement:
+            id: 5
+          SplineDuration: 0
+        - SplineController: {fileID: 0}
+          ExitPoint: {fileID: 0}
+          FinalPoint: {fileID: 0}
+          OnHitSingleAnimation: {fileID: 0}
+          OnHitContinuousAnimation: {fileID: 0}
+          SplineEffect: []
+          SplineMovement:
+            id: 6
+          SplineDuration: 0
         SplineBehavior:
           SplineController: {fileID: 0}
           ExitPoint: {fileID: 0}
@@ -514,7 +533,7 @@ MonoBehaviour:
           OnHitContinuousAnimation: {fileID: 0}
           SplineEffect: []
           SplineMovement:
-            id: 5
+            id: 7
           SplineDuration: 0
         AttackDuration: 2
     00000002:
@@ -538,6 +557,26 @@ MonoBehaviour:
           min: 0
           max: 0
     00000005:
+      type: {class: StraightLaZor, ns: , asm: Assembly-CSharp}
+      data:
+        Oscilating: 0
+        FinalPointTeleportsToTarget: 0
+        TravelSpeed: 0.5
+        exitPoint: {fileID: 0}
+        splineController: {fileID: 0}
+        finalPoint: {fileID: 0}
+        BeamWidth: 0
+    00000006:
+      type: {class: StraightLaZor, ns: , asm: Assembly-CSharp}
+      data:
+        Oscilating: 0
+        FinalPointTeleportsToTarget: 0
+        TravelSpeed: 0.5
+        exitPoint: {fileID: 0}
+        splineController: {fileID: 0}
+        finalPoint: {fileID: 0}
+        BeamWidth: 0
+    00000007:
       type: {class: StraightLaZor, ns: , asm: Assembly-CSharp}
       data:
         Oscilating: 0
@@ -3467,16 +3506,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2f52d3b03ad2742aa7e95d07dbc297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testAction:
-    id: 0
+  Actions:
+    North:
+      id: 0
+    East:
+      id: 0
+    South:
+      id: 0
+    West:
+      id: 0
   references:
     version: 1
     00000000:
-      type: {class: someTestAction, ns: , asm: Assembly-CSharp}
-      data:
-        parentTowerControllerLegacy: {fileID: 0}
-        Cost: 0
-        testFloat: 0
+      type: {class: , ns: , asm: }
 --- !u!114 &744210914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3489,6 +3531,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d1dba04a3ec5b4aaed6d6b6213106d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TowerActionManager: {fileID: 0}
+  TowerComponents: []
 --- !u!4 &744210915
 Transform:
   m_ObjectHideFlags: 0
@@ -9658,6 +9702,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7060959318558857126, guid: c58585bc9b0cab848915a7f86d298d18,
         type: 3}
+      propertyPath: ParentTowerLegacy
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7060959318558857126, guid: c58585bc9b0cab848915a7f86d298d18,
+        type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 0}
@@ -10123,6 +10172,11 @@ PrefabInstance:
         type: 3}
       propertyPath: SplineAttack.SplineAttackType.SplineBehavior.FinalPoint
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179209486908814511, guid: 678ce1cca5a806e438b1cc2f4154e498,
+        type: 3}
+      propertyPath: SplineAttack.SplineAttackType.SplineBehaviors.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6179209486908814511, guid: 678ce1cca5a806e438b1cc2f4154e498,
         type: 3}

@@ -7,11 +7,17 @@ using UnityEngine.Serialization;
 
 public class TowerSlotController : MonoBehaviour
 {
+    
     public event Action onPathDiscoveryEvent;
     public Vector2 lowestProximityPointFound;
     public void OnPathDiscoveryEvent()
     {
         onPathDiscoveryEvent?.Invoke();
+    }
+
+    public TowerActions TowerActions
+    {
+        get => childTower.TowerActionManager.Actions;
     }
 
     void TryToFindHighestProximityPathDiscoveryPoint()
@@ -46,8 +52,19 @@ public class TowerSlotController : MonoBehaviour
         }
     }
 
+    private TowerController oldTower;
+    private TowerController childTower;
+
+    public TowerController ChildTower
+    {
+        get => childTower;
+        set => childTower = value;
+    }
+    
     
 
+    
+    //legacy actions
     [FormerlySerializedAs("TowerObjectController")] public TowerControllerLegacy towerObjectControllerLegacy;
     public TowerSlotActions Actions;
 
@@ -68,7 +85,7 @@ public class TowerSlotController : MonoBehaviour
         Actions.ButtonWest?.ExecuteFunction();
     }
 
-    public void PlaceNewTower(GameObject TowerPrefab) {
+    public void PlaceNewTowerLegacy(GameObject TowerPrefab) {
         if (TowerObject != null) {
             OldTowerObject = TowerObject;
             TowerObject = null;
@@ -79,6 +96,21 @@ public class TowerSlotController : MonoBehaviour
         SelectorTest2.instance.SelectedTowerSlot = this;
         if (OldTowerObject != null) {
             Destroy(OldTowerObject);
+        }
+        SR.sprite = null;
+    }
+    
+    public void PlaceNewTower(TowerController newTowerPrefab) {
+        if (childTower != null) {
+            oldTower = childTower;
+            childTower = null;
+        }
+        TowerController newTower = Instantiate(newTowerPrefab, transform.position, Quaternion.identity, gameObject.transform);
+        childTower = newTower;
+        TowerObject.name = (newTowerPrefab.name + UnityEngine.Random.Range(10000, 99999).ToString());
+        SelectorTest2.instance.SelectedTowerSlot = this;
+        if (oldTower != null) {
+            Destroy(oldTower);
         }
         SR.sprite = null;
     }
@@ -95,6 +127,7 @@ public class TowerSlotController : MonoBehaviour
         }
     }
 
+    
     public event Action onTowerPositionCalculation;
 
     public void OnTowerPositionCalculation()
@@ -119,7 +152,7 @@ public class TowerSlotController : MonoBehaviour
         /*TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoopOver(gameObject, SelectorTest2.instance.towerSlotsWithPositions, TowerUtils.Cardinal8,6);*/
         OnTowerPositionCalculation();
         if (TowerObject == null) {
-            PlaceNewTower(TowerArsenal.arsenal.EmptyTowerSlot.TowerPrefab);
+            PlaceNewTowerLegacy(TowerArsenal.arsenal.EmptyTowerSlot.TowerPrefab);
         }
 
     }

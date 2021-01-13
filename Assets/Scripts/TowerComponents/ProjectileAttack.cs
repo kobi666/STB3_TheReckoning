@@ -31,6 +31,31 @@ public class ProjectileAttack : WeaponAttack
         AttackProperties.Attack(singleTarget,SingleTargetPosition);
     }
 
+    public override void StopAttack()
+    {
+        //not implamented for now
+    }
+    
+    
+    public override List<Effect> GetEffects()
+    {
+        List<Effect> listEffect = new List<Effect>();
+        foreach (var projEffect in AttackProperties.Projectiles)
+        {
+            foreach (var ef in projEffect.projectileEffect.onHitEffects)
+            {
+                listEffect.Add(ef);
+            }
+
+            foreach (var ef in projEffect.projectileEffect.onPositionReachedEffects)
+            {
+                listEffect.Add(ef);
+            }
+        }
+
+        return listEffect;
+    }
+
     public override void InitlizeAttack(GenericWeaponController weapon)
     {
         AttackProperties.InitializeAttack(weapon);

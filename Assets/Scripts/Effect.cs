@@ -8,6 +8,10 @@ using UnityEngine;
 [System.Serializable]
 public class Effect
 {
+    public virtual string Effectname()
+    {
+        return "NoNameNull";
+    }
     public GenericWeaponController ParentWeapon;
 
     public virtual void Apply(Effectable ef, Vector2 targetPos)
@@ -27,6 +31,11 @@ public class Effect
 [HideLabel]
 public class Damage : Effect
 {
+    public override string Effectname()
+    {
+        return "Damage";
+    }
+
     [ShowInInspector]
     public DamageRange DamageRange = new DamageRange();
     

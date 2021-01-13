@@ -253,6 +253,8 @@ public class SelectorTest2 : SerializedMonoBehaviour
         moveLock = 0.7f;
         PlayerControl = new PlayerInput();
     }
+    
+    public bool Legacy = false;
 
     // Start is called before the first frame update
     void Start()
@@ -261,11 +263,32 @@ public class SelectorTest2 : SerializedMonoBehaviour
         foreach (var tscv2 in TowerSlotParentManager.instance.TowerslotControllers.Values)
         {
             towerSlotsWithPositions.Add(tscv2.Item1,tscv2.Item2);
-        } 
-        PlayerControl.GamePlay.NorthButton.performed += ctx => ExecActionIfPossible(SelectedTowerControllerLegacy.TowerActions.ButtonNorth);
-        PlayerControl.GamePlay.EastButton.performed += ctx =>  ExecActionIfPossible(SelectedTowerControllerLegacy.TowerActions.ButtonEast);
-        PlayerControl.GamePlay.SouthButton.performed += ctx => ExecActionIfPossible(SelectedTowerControllerLegacy.TowerActions.ButtonSouth);
-        PlayerControl.GamePlay.WestButton.performed += ctx => ExecActionIfPossible(SelectedTowerControllerLegacy.TowerActions.ButtonWest);
+        }
+
+        if (Legacy)
+        {
+            PlayerControl.GamePlay.NorthButton.performed += ctx =>
+                ExecActionIfPossible(SelectedTowerControllerLegacy.TowerActions.ButtonNorth);
+            PlayerControl.GamePlay.EastButton.performed += ctx =>
+                ExecActionIfPossible(SelectedTowerControllerLegacy.TowerActions.ButtonEast);
+            PlayerControl.GamePlay.SouthButton.performed += ctx =>
+                ExecActionIfPossible(SelectedTowerControllerLegacy.TowerActions.ButtonSouth);
+            PlayerControl.GamePlay.WestButton.performed += ctx =>
+                ExecActionIfPossible(SelectedTowerControllerLegacy.TowerActions.ButtonWest);
+        }
+
+        if (!Legacy)
+        {
+            PlayerControl.GamePlay.NorthButton.performed +=
+                ctx => SelectedTowerSlot.TowerActions.North.ExecuteAction(SelectedTowerSlot);
+            PlayerControl.GamePlay.EastButton.performed +=
+                ctx => SelectedTowerSlot.TowerActions.East.ExecuteAction(SelectedTowerSlot);
+            PlayerControl.GamePlay.SouthButton.performed +=
+                ctx => SelectedTowerSlot.TowerActions.South.ExecuteAction(SelectedTowerSlot);
+            PlayerControl.GamePlay.WestButton.performed +=
+                ctx => SelectedTowerSlot.TowerActions.West.ExecuteAction(SelectedTowerSlot);
+        }
+
         Vector2 FirstKey = Vector2.zero;
         foreach (var item in towerSlotsWithPositions)
         {

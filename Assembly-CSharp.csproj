@@ -242,7 +242,6 @@
      <Compile Include="Assets\Scripts\TowerComponents\TowerComponentData.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\UnitSpawnerTowerControllerLegacy.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\WeaponController.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\WeaponInterfaces.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\WeaponRotator.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\WeaponUtils.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\Weapons\BeamUtilities.cs" />
@@ -284,6 +283,7 @@
      <Compile Include="Assets\Scripts\Units\UnitType.cs" />
      <Compile Include="Assets\Scripts\Units\UnitTypes.cs" />
      <Compile Include="Assets\Scripts\Units\UnitUtils.cs" />
+     <Compile Include="Assets\Scripts\interfaces\WeaponInterfaces.cs" />
      <Compile Include="Assets\Scripts\parent1.cs" />
      <Compile Include="Assets\Scripts\testInterface.cs" />
      <Compile Include="Assets\Shaker.cs" />
@@ -304,6 +304,7 @@
      <Compile Include="Assets\TestingGenericWeapon\SplineDynamicData.cs" />
      <Compile Include="Assets\TestingGenericWeapon\SplineMovementFunction.cs" />
      <Compile Include="Assets\TextMesh Pro\ProjectileEffect.cs" />
+     <Compile Include="Assets\TowerActions.cs" />
      <Compile Include="Assets\TowerPosIndicator.cs" />
      <Compile Include="Assets\TowerSlotParentManager.cs" />
      <Compile Include="Assets\TriggerTest.cs" />

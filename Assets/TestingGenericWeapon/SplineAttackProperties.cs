@@ -16,9 +16,11 @@ public class SplineAttackProperties : AttackProperties
     public Effectable MainTarget;
     public Vector2 TargetPosition;
     
+    [SerializeField] [GUIColor(1, 0.6f, 0.4f)]
+    public List<SplineBehavior> SplineBehaviors = new List<SplineBehavior>();
     public SplineBehavior SplineBehavior0
     {
-        get => SplineBehavior;
+        get => SplineBehaviors[0];
     }
 
     public SplineController SplineController0
@@ -26,8 +28,7 @@ public class SplineAttackProperties : AttackProperties
         get => SplineBehavior0.SplineController;
     }
 
-    [SerializeField] [GUIColor(1, 0.6f, 0.4f)]
-    public SplineBehavior SplineBehavior;
+    
     public float AttackDuration = 2;
     private float AttackProgressCounter = 0f;
 
@@ -43,14 +44,23 @@ public class SplineAttackProperties : AttackProperties
     }
     public void InitlizeProperties()
     {
-        
-            if (SplineBehavior != null)
+        if (SplineBehaviors.Count > 0) {
+            foreach (var sb in SplineBehaviors)
             {
-                SplineBehavior.Init();
-                onAttackStart += SplineBehavior.OnBehaviorStart;
-                onAttackEnd += SplineBehavior.OnBehaviorEnd;
+                if (sb != null)
+                {
+                  sb.Init();
+                  onAttackStart += sb.OnBehaviorStart;
+                  onAttackEnd += sb.OnBehaviorEnd;
+                }
             }
+        }
         
+        /*if (SplineBehavior0 != null)
+            {
+                SplineBehavior0.Init();
+                
+            }*/
     }
     
     [ShowInInspector]
@@ -120,7 +130,7 @@ public class OneSplineFromOriginToTarget : SplineAttackProperties
 
     public override void SplineAttackFunction(Effectable targetEffectable, Vector2 TargetPosition)
     {
-        SplineBehavior.InvokeSplineBehavior(targetEffectable, TargetPosition);
+        SplineBehavior0.InvokeSplineBehavior(targetEffectable, TargetPosition);
     }
 }
 
