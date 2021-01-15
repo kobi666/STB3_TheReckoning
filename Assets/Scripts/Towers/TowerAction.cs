@@ -38,7 +38,7 @@ public class TowerAction
    
    
 
-   private bool PlayerHasEnoughMoney = false;
+   private bool PlayerHasEnoughMoney = true;
    private bool ActionCounterIsZero = true;
 
    public bool CanActionExecute()
@@ -114,7 +114,8 @@ public class BuffDamage : TowerAction
    public override void InitAction(TowerSlotController tsc)
    {
       Damage damage = new Damage();
-      List<Effect> efs = tsc.ChildTower.WeaponController.WeaponAttack.GetEffects();
+      List<Effect> efs = new List<Effect>();
+      efs = tsc.ChildTower.WeaponController.WeaponAttack.GetEffects();
       foreach (var ef in efs)
       {
          if (ef.Effectname() == damage.Effectname())
@@ -130,8 +131,8 @@ public class BuffDamage : TowerAction
       {
          de.DamageRange.min += BuffValues.min;
          de.DamageRange.max += BuffValues.max;
-         actionCounter += 1;
       }
+      actionCounter += 1;
    }
 
    public override bool SpecificExecuteCondition(TowerSlotController tsc)

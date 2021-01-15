@@ -25,11 +25,12 @@ public class TowerController : MonoBehaviour
         }
         TowerActionManager = GetComponent<TowerActionManager>();
         onInit += delegate(TowerSlotController towerSlotController) { parentSlotController = towerSlotController;};
+        onInit += delegate(TowerSlotController controller) { WeaponController = GetComponentInChildren<GenericWeaponController>(); };
         onInit += TowerActionManager.initActionManager;
     }
 
     protected void Start()
     {
-        WeaponController = GetComponentInChildren<GenericWeaponController>();
+         
     }
 }

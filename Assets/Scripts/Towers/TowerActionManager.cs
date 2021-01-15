@@ -8,6 +8,7 @@ using UnityEngine;
 [System.Serializable]
 public class TowerActionManager : MonoBehaviour
 {
+    public PlayerInput PlayerInput;
     private TowerSlotController parentSlotController;
     private TowerController parentTowerController;
     public TowerActions Actions = new TowerActions();
@@ -17,5 +18,16 @@ public class TowerActionManager : MonoBehaviour
         parentSlotController = tsc;
         parentTowerController = tsc.ChildTower;
         Actions.initActions(tsc);
+    }
+
+    private void Awake()
+    {
+        PlayerInput = new PlayerInput();
+        PlayerInput.TestButtons.T.performed += ctx => Actions.North.ExecuteAction(parentSlotController);
+    }
+
+    private void Start()
+    {
+        
     }
 }

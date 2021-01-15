@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class ComponentRotator : SerializedMonoBehaviour
+public class ComponentRotator : MonoBehaviour
 {
     public float RotationSpeed;
     public Transform TargetTransform;

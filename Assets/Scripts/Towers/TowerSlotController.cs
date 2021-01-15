@@ -148,12 +148,13 @@ public class TowerSlotController : MonoBehaviour
 
     protected void Start() {
         SR = GetComponent<SpriteRenderer>();
-        
+        ChildTower = GetComponentInChildren<TowerController>();
         /*TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoopOver(gameObject, SelectorTest2.instance.towerSlotsWithPositions, TowerUtils.Cardinal8,6);*/
         OnTowerPositionCalculation();
-        if (TowerObject == null) {
+        /*if (TowerObject == null) {
             PlaceNewTowerLegacy(TowerArsenal.arsenal.EmptyTowerSlot.TowerPrefab);
-        }
+        }*/
+        ChildTower.OnInit(this);
 
     }
 

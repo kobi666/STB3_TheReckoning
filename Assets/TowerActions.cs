@@ -8,6 +8,7 @@ using UnityEngine;
 [System.Serializable]
 public class TowerActions
 {
+    private TowerSlotController parentTowerSlotController;
     [TypeFilter("GetTowerActions")][SerializeReference]
     public TowerAction North;
     [TypeFilter("GetTowerActions")][SerializeReference]
@@ -16,13 +17,20 @@ public class TowerActions
     public TowerAction South;
     [TypeFilter("GetTowerActions")][SerializeReference]
     public TowerAction West;
+    
+    [Button]
+    void north()
+    {
+        North.ExecuteAction(parentTowerSlotController);
+    }
 
     public void initActions(TowerSlotController tsc)
     {
-        North.InitAction(tsc);
-        East.InitAction(tsc);
-        South.InitAction(tsc);
-        West.InitAction(tsc);
+        parentTowerSlotController = tsc;
+        North?.InitAction(tsc);
+        East?.InitAction(tsc);
+        South?.InitAction(tsc);
+        West?.InitAction(tsc);
     }
     
     private static IEnumerable<Type> GetTowerActions()

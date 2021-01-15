@@ -650,11 +650,17 @@
  <Reference Include="Unity.InputSystem">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.TextMeshPro.Editor">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.CollabProxy.Editor">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
@@ -665,17 +671,11 @@
  <Reference Include="Unity.VisualStudio.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.UI">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
- </Reference>
  <Reference Include="Unity.TextMeshPro">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
- <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -12,10 +12,10 @@ using Sirenix.Serialization;
 using UnityEngine.Serialization;
 
 
-[RequireComponent(typeof(EffectableTargetBank))]
+[RequireComponent(typeof(EffectableTargetBank))][Searchable]
 public class GenericWeaponController : TowerComponent
 {
-    [FormerlySerializedAs("WeaponType")]
+    
     [ValueDropdown("valueList")]
     [HideLabel]
     [BoxGroup]
@@ -45,7 +45,7 @@ public class GenericWeaponController : TowerComponent
     
     
 
-    [ShowIf("WeaponType", 0)][BoxGroup]
+    [ShowIf("WeaponTypeInt", 0)][BoxGroup]
     public ProjectileAttack projectileAttack;
 
     void FireProjectileAttack()
@@ -66,10 +66,10 @@ public class GenericWeaponController : TowerComponent
 
 
 
-    [ShowIf("WeaponType", 1)][TypeFilter("GetAOEAttacks")]
+    [ShowIf("WeaponTypeInt", 1)][TypeFilter("GetAOEAttacks")]
     public AOEAttack AoeAttack = new TriggerAOEOnce();
 
-    [ShowIf("WeaponType", 4)][SerializeField]
+    [ShowIf("WeaponTypeInt", 4)][SerializeField]
     public SplineAttack SplineAttack = new SplineAttack();
     public string WeaponName;
 
@@ -406,6 +406,13 @@ public class GenericWeaponController : TowerComponent
     }
     public override void PostAwake() {
         
+        
+    }
+
+
+
+    
+    protected void Start() {
         TargetBank = GetComponent<EffectableTargetBank>();
         if (TargetBank != null) {
             TargetBank.onTargetAdd += OnEnemyEnteredRange;
@@ -418,18 +425,12 @@ public class GenericWeaponController : TowerComponent
         
         
         if (RotatingComponent) {
-        onAttackInitiate += RotateTowardsTarget;
-        onAttackCease += ComponentRotator.StopRotating;
+            onAttackInitiate += RotateTowardsTarget;
+            onAttackCease += ComponentRotator.StopRotating;
         }
         
         onEnemyEnteredRange += StandardOnTargetEnteredRange;
         onEnemyLeftRange += StandardOnTargetLeftRange;
-    }
-
-
-
-    
-    protected void Start() {
         RangeDetector = GetComponentInChildren<RangeDetector>() ?? null;
         projectileExitPoint = GetComponentInChildren<ProjectileExitPoint>() ?? null;
         projectileFinalPoint = GetComponentInChildren<ProjectileFinalPoint>() ?? null;
@@ -449,6 +450,9 @@ public class GenericWeaponController : TowerComponent
         projectileFinalPoint.Position = new Vector2(projectileFinalPoint.Position.x + (Data.componentRadius), projectileFinalPoint.Position.y);
     }
 
+    
+    
+    //once state machine is in place transfer to async function
     protected void Update()
     {
         if (AttackCounter < CounterMax)

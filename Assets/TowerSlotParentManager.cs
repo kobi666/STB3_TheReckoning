@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class TowerSlotParentManager : SerializedMonoBehaviour
+public class TowerSlotParentManager : MonoBehaviour
 {
     public static TowerSlotParentManager instance;
 
@@ -71,11 +71,6 @@ public class TowerSlotParentManager : SerializedMonoBehaviour
         }
     }
 
-    void Start()
-    {
-        
-    }
 
-    
-    
+
 }
