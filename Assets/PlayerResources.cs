@@ -8,6 +8,27 @@ using UnityEngine.Events;
 public class PlayerResources : MonoBehaviour
 {
     public static PlayerResources instance;
+    static bool instantiated = false;
+
+    public static PlayerResources Instance
+    {
+        get
+        {
+            if (instantiated == false)
+            {
+                GameObject g = new GameObject();
+                g.AddComponent<PlayerResources>();
+                Instance = g.GetComponent<PlayerResources>();
+            }
+
+            return instance;
+        }
+        set
+        {
+            instance = value;
+            instantiated = true;
+        }
+    }
 
     private TextMeshPro tmpro;
     public int StartupMoneyz;

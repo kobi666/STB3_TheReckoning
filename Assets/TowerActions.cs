@@ -17,6 +17,20 @@ public class TowerActions
     public TowerAction South;
     [TypeFilter("GetTowerActions")][SerializeReference]
     public TowerAction West;
+
+    public TowerAction[] Actions
+    {
+        get
+        {
+            return new TowerAction[]
+            {
+                North,
+                East,
+                South,
+                West
+            };
+        }
+    }
     
     [Button]
     void north()

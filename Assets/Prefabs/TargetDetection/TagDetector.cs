@@ -36,6 +36,7 @@ public abstract class TagDetector : MonoBehaviour
         onTargetExit?.Invoke(targetName, callerName);
     }
 
+    public abstract float GetSize();
     public abstract void SetSize(float newSize);
 
     private ContactPoint2D[] cp;

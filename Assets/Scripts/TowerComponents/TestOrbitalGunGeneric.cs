@@ -35,6 +35,28 @@ public class TestOrbitalGunGeneric : OrbitalWeaponGeneric
     }
 
 
-    
+    public override void InitComponent()
+    {
+        throw new NotImplementedException();
+    }
 
+    public override List<Effect> GetEffectList()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void UpdateEffect(Effect ef, List<Effect> appliedEffects)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override List<TagDetector> GetRangeDetectors()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors)
+    {
+        throw new NotImplementedException();
+    }
 }

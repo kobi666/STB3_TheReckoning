@@ -12,6 +12,12 @@ public class SplineDetector : TagDetector
     {
         base.OnTriggerEnter2D(other);
     }
+
+    public override float GetSize()
+    {
+        return 9999f;
+    }
+
     public override void SetSize(float newSize)
     {
         

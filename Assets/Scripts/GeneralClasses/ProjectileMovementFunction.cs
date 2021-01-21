@@ -7,9 +7,23 @@ using System.Threading.Tasks;
 using DG.Tweening;
 using Random = UnityEngine.Random;
 
+[Serializable]
+public class ProjectileMovementDynamicData
+{
+    public float Speed;
+    public float ArcingValue;
+}
+
+
+
+
+
+
 [System.Serializable]
 public class ProjectileMovementFunction
 {
+    [HideInInspector]
+    public ProjectileMovementDynamicData ProjectileMovementDynamicData = new ProjectileMovementDynamicData();
     public virtual void MovementFunction(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos,
         Vector2 TargetPos,
         float speed)
@@ -28,9 +42,8 @@ public class ProjectileMovementFunction
         }
     }
     private bool targetLost = false;
-    
-    [SerializeField]
-    public float speed;
+
+    public float Speed;
 
     [ShowInInspector] protected float ProgressCounter = 0;
 
@@ -61,8 +74,8 @@ public class ProjectileMovementFunction
     {
         while (ProgressCounter <= 1f && ExternalMovementLock == false)
         {
-            ProgressCounter += speed * StaticObjects.Instance.DeltaGameTime;
-            MovementFunction(projectileTransform, null, originPos, TargetPos, speed);
+            ProgressCounter += Speed * StaticObjects.Instance.DeltaGameTime;
+            MovementFunction(projectileTransform, null, originPos, TargetPos, Speed);
             await Task.Yield();
         }
 
@@ -77,7 +90,7 @@ public class ProjectileMovementFunction
         Vector2 cachedPosition = targetTarnsform.position;
         while (ProgressCounter <= 1f && ExternalMovementLock == false)
         {
-            ProgressCounter += StaticObjects.Instance.DeltaGameTime * speed;
+            ProgressCounter += StaticObjects.Instance.DeltaGameTime * Speed;
             if (targetLost == false) {
                 if (targetTarnsform != null)
                 {
@@ -91,7 +104,7 @@ public class ProjectileMovementFunction
             /*cachedPosition = targetTarnsform
                 ? (Vector2)targetTarnsform.position
                 : cachedPosition;*/
-            MovementFunction(projectileTransform, null, originPos, cachedPosition, speed);
+            MovementFunction(projectileTransform, null, originPos, cachedPosition, Speed);
             await Task.Yield();
         }
         OnPositionReached();

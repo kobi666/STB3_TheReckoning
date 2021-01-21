@@ -78,6 +78,11 @@ public class RangeDetector : TagDetector,IQueueable<RangeDetector>
         RangeCollider = GetComponent<CircleCollider2D>() ?? null;
     }
 
+    public override float GetSize()
+    {
+        return RangeCollider.radius;
+    }
+
     public override void SetSize(float range) {
         if (RangeCollider == null) {
             RangeCollider = gameObject.GetComponent<CircleCollider2D>();

@@ -6,9 +6,11 @@ using UnityEngine;
 using UniRx;
 
 [System.Serializable]
-public abstract class ProjectileAttackProperties : AttackProperties
+public abstract class ProjectileAttackProperties : AttackProperties,IhasExitAndFinalPoint
 {
     public abstract int ProjectileMultiplier { get; set; }
+    
+    
 
     public void InitializeAttackProperties(GenericWeaponController parentWeapon)
     {
@@ -33,4 +35,12 @@ public abstract class ProjectileAttackProperties : AttackProperties
         onAttack?.Invoke();
         AttackFunction(singleTarget, singleTargetPosition);
     }
+
+    public abstract List<ProjectileFinalPoint> GetFinalPoints();
+
+
+
+
+    public abstract List<ProjectileExitPoint> GetExitPoints();
+
 }

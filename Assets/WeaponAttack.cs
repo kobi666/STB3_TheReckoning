@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class WeaponAttack
+public abstract class WeaponAttack : IHasEffects,IHasRangeComponent
 {
+    public GenericWeaponController parentWeaponController;
     public virtual void Attack(Effectable singleTarget, Vector2 SingleTargetPosition)
     {
         
@@ -24,4 +25,20 @@ public class WeaponAttack
     {
         return null;
     }
+
+    public virtual List<Effect> GetEffectList()
+    {
+        return null;
+    }
+
+    public virtual void UpdateEffect(Effect ef, List<Effect> appliedEffects)
+    {
+        
+    }
+
+    public abstract List<TagDetector> GetRangeDetectors();
+
+
+    public abstract void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors);
+
 }

@@ -7,12 +7,21 @@ using MyBox;
 using Sirenix.OdinInspector;
 using UnityEngine.Serialization;
 
-public abstract class TowerComponent : MonoBehaviour
+public abstract class TowerComponent : MonoBehaviour, IHasEffects,IHasRangeComponent
 {
+    public abstract void InitComponent();
+    public event Action onInitComponent;
+
+    public void OnInitComponent()
+    {
+        InitComponent();
+        onInitComponent?.Invoke();
+    }
+    
     public bool RotatingComponent;
     [ShowIf("RotatingComponent")]
     public float RotationSpeed = 5;
-    
+
     // Start is called before the first frame update
     public bool debug;
     [ConditionalField("debug")]
@@ -74,4 +83,16 @@ public abstract class TowerComponent : MonoBehaviour
         ParentTowerLegacy =  ParentTowerLegacy ?? GetComponentInParent<TowerControllerLegacy>() ?? null;
         ParentTowerSlot = ParentTowerLegacy.ParentSlotController ?? parentTowerComponent.ParentTowerLegacy.ParentSlotController ?? null;
     }
+
+    public abstract List<Effect> GetEffectList();
+
+    public abstract void UpdateEffect(Effect ef, List<Effect> appliedEffects);
+
+    public abstract List<TagDetector> GetRangeDetectors();
+
+    public virtual void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors)
+    {
+        Data.componentRadius = Data.componentRadius += RangeSizeDelta;
+    }
+
 }

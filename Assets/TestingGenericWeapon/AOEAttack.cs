@@ -74,6 +74,28 @@ public class TriggerAOEOnce : AOEAttack
         }
     }
 
+    public override List<TagDetector> GetRangeDetectors()
+    {
+        List<TagDetector> ds = new List<TagDetector>();
+        foreach (var aoeb in AoeBehaviors)
+        {
+            foreach (var aoec in aoeb.AoeControllers)
+            {
+                ds.Add(aoec.Detector);
+            }
+        }
+
+        return ds;
+    }
+
+    public override void UpdateRange(float rangeDelta, List<TagDetector> detectors)
+    {
+        foreach (var d in detectors)
+        {
+            //float f = d.
+        }
+    }
+
     public override void AdditionalinitBehaviors()
     {
         

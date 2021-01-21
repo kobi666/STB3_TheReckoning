@@ -126,6 +126,7 @@
      <Compile Include="Assets\Garbage\TestTowerControllerLegacy.cs" />
      <Compile Include="Assets\Garbage\TestWeaponController.cs" />
      <Compile Include="Assets\Garbage\TowerTestScript.cs" />
+     <Compile Include="Assets\Garbage\WeaponUpdates.cs" />
      <Compile Include="Assets\GenericAOEController.cs" />
      <Compile Include="Assets\GenericTowerController.cs" />
      <Compile Include="Assets\LaserTest.cs" />
@@ -245,7 +246,6 @@
      <Compile Include="Assets\Scripts\TowerComponents\WeaponRotator.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\WeaponUtils.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\Weapons\BeamUtilities.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\Weapons\BeamWeaponAsync.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\Weapons\TowerWeaponAttacks.cs" />
      <Compile Include="Assets\Scripts\Towers\ArcingBombTowerControllerLegacy.cs" />
      <Compile Include="Assets\Scripts\Towers\EmptyTowerSlot.cs" />
@@ -283,6 +283,7 @@
      <Compile Include="Assets\Scripts\Units\UnitType.cs" />
      <Compile Include="Assets\Scripts\Units\UnitTypes.cs" />
      <Compile Include="Assets\Scripts\Units\UnitUtils.cs" />
+     <Compile Include="Assets\Scripts\Updateable.cs" />
      <Compile Include="Assets\Scripts\interfaces\WeaponInterfaces.cs" />
      <Compile Include="Assets\Scripts\parent1.cs" />
      <Compile Include="Assets\Scripts\testInterface.cs" />

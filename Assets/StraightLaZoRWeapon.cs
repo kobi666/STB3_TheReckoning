@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StraightLaZoRWeapon : BeamWeaponAsync
+public class StraightLaZoRWeapon 
 {
-    public override void PostStart()
+    public void PostStart()
     {
         
     }
 
     protected void Start()
     {
-        base.Start();
+            
     }
 
     

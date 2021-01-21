@@ -10,13 +10,13 @@ using Random = UnityEngine.Random;
 [System.Serializable]
 public class ProjectilePoolCreationData
 {
-    
     [TypeFilter("GetMovementFunctions")][SerializeReference]
     public ProjectileMovementFunction projectileMovement;
 
     [HideLabel] public ProjectileEffect projectileEffect;
     public GenericProjectile ProjectileBase;
     static Vector3 nowhere = new Vector3(9999,9999,9999);
+    private PoolObjectQueue<GenericProjectile> projectilePool;
     
      
     private static IEnumerable<Type> GetMovementFunctions()
@@ -27,6 +27,15 @@ public class ProjectilePoolCreationData
             .Where(x => x.IsSubclassOf(typeof(ProjectileMovementFunction))); // Excludes classes not inheriting from BaseClass
         
         return q;
+    }
+
+    public void UpdateProjectilePool()
+    {
+        foreach (var proj in projectilePool.ObjectQueue)
+        {
+            proj.BaseProjectileEffect = projectileEffect;
+            proj.MovementFunction.ProjectileMovementDynamicData = projectileMovement.ProjectileMovementDynamicData;
+        }
     }
 
     public PoolObjectQueue<GenericProjectile> CreatePool()
@@ -43,6 +52,7 @@ public class ProjectilePoolCreationData
         proj.gameObject.SetActive(false);
         PoolObjectQueue<GenericProjectile> pool = new PoolObjectQueue<GenericProjectile>(proj, 10, placeholder);
         //pool.ObjectQueue.Enqueue(proj);
+        projectilePool = pool;
         return pool;
     }
     public PoolObjectQueue<GenericProjectile> CreatePool(string ParentName)
@@ -58,6 +68,7 @@ public class ProjectilePoolCreationData
         proj.gameObject.SetActive(false);
         PoolObjectQueue<GenericProjectile> pool = new PoolObjectQueue<GenericProjectile>(proj, 10, placeholder);
         //pool.ObjectQueue.Enqueue(proj);
+        projectilePool = pool;
         return pool;
     }
 }

@@ -23,10 +23,37 @@ public class ArcingProjectileLauncherController : WeaponController
         
     }
 
+    public override void InitComponent()
+    {
+        throw new System.NotImplementedException();
+    }
+
     void Start()
     {
       base.Start();
     }
+
+    public override List<Effect> GetEffectList()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void UpdateEffect(Effect ef, List<Effect> appliedEffects)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override List<TagDetector> GetRangeDetectors()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    
 
     // Update is called once per frame
     

@@ -43,7 +43,19 @@ public class ShootOneProjectile : ProjectileAttackProperties
         
     }
 
-    
+    public override List<ProjectileFinalPoint> GetFinalPoints()
+    {
+        List<ProjectileFinalPoint> lpfp = new List<ProjectileFinalPoint>();
+        lpfp.Add(FinalPoint);
+        return lpfp;
+    }
+
+    public override List<ProjectileExitPoint> GetExitPoints()
+    {
+        List<ProjectileExitPoint> pepl = new List<ProjectileExitPoint>();
+        pepl.Add(ExitPoint);
+        return pepl;
+    }
 }
 
 
@@ -67,6 +79,20 @@ public class ShootOneProjectile : ProjectileAttackProperties
         public override void InitializeAttack(GenericWeaponController parentWeapon)
         {
             projectilePool = Projectiles[0].CreatePool();
+        }
+        
+        public override List<ProjectileFinalPoint> GetFinalPoints()
+        {
+            List<ProjectileFinalPoint> lpfp = new List<ProjectileFinalPoint>();
+            lpfp.Add(FinalPoint);
+            return lpfp;
+        }
+
+        public override List<ProjectileExitPoint> GetExitPoints()
+        {
+            List<ProjectileExitPoint> pepl = new List<ProjectileExitPoint>();
+            pepl.Add(ExitPoint);
+            return pepl;
         }
 
         public override async void AttackFunction(Effectable singleTarget,

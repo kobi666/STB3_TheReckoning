@@ -28,13 +28,20 @@ public class ProjectileFinalPoint : MonoBehaviour
     {
         EffectableTargetBank = GetComponent<EffectableTargetBank>() ?? null;
     }
+
+    public void UpdatePositionAccordingToRadius(float radius)
+    {
+        transform.position = new Vector2(transform.position.x + radius, transform.position.y);
+    }
     
     protected void Start() {
         parentTowerComponent = transform.parent?.GetComponent<WeaponController>() ?? null;
         RangeDetector = RangeDetector ?? GetComponentInChildren<RangeDetector>() ?? null;
-        if (parentTowerComponent != null) {
-            transform.position = new Vector2(transform.position.x + parentTowerComponent.Data.componentRadius, transform.position.y);
+        if (parentTowerComponent != null)
+        {
+            UpdatePositionAccordingToRadius(parentTowerComponent.Data.componentRadius);
         }
+
         ParentWeaponController = GetComponentInParent<GenericWeaponController>();
     }
     

@@ -165,24 +165,6 @@ public class RoomBorders {
     public RoomBorder Right;
 }
 
-
-[System.Serializable]
-public class Buffs<T> {
-
-    public Dictionary<string, T> BuffStack;
-    public Buffs(T t) {
-        BuffStack = new Dictionary<string, T>();
-    }
-}
-
-public class Nerfs<T> {
-
-    public Dictionary<string, T> NerfStack;
-    public Nerfs(T t) {
-        NerfStack = new Dictionary<string, T>();
-    }
-}
-
 [System.Serializable]
 public class TargetUnit
 {

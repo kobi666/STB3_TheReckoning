@@ -15,7 +15,6 @@ using UnityEngine.Serialization;
 [RequireComponent(typeof(EffectableTargetBank))][Searchable]
 public class GenericWeaponController : TowerComponent
 {
-    
     [ValueDropdown("valueList")]
     [HideLabel]
     [BoxGroup]
@@ -101,7 +100,8 @@ public class GenericWeaponController : TowerComponent
             onAttack += FireSplineAttack;
             onAttackCease += SplineAttack.StopSplineAttack;*/
         }
-        
+
+        WeaponAttack.parentWeaponController = this;
         WeaponAttack.InitlizeAttack(this);
         onAttack += WeaponAttack.Attack;
         onAttackCease += WeaponAttack.StopAttack;
@@ -250,6 +250,12 @@ public class GenericWeaponController : TowerComponent
             Target = FindSingleTargetNearestToEndOfSpline();
         }
     }
+
+    public List<Effect> GetEffects()
+    {
+        return WeaponAttack.GetEffects();
+    }
+
     string CurrentLowestProximtyTargetName;
     TargetUnit FindSingleTargetNearestToEndOfSpline() {
         TargetUnit tu = null;
@@ -404,6 +410,12 @@ public class GenericWeaponController : TowerComponent
         GenericRotator = GetComponent<GenericRotator>();
         onTargetAdd += SetTarget;
     }
+
+    public override void InitComponent()
+    {
+        InitWeapon();
+    }
+
     public override void PostAwake() {
         
         
@@ -447,11 +459,34 @@ public class GenericWeaponController : TowerComponent
         onAttackInitiate += projectileExitPoint.StartAsyncRotation;
         onAttackCease += projectileExitPoint.StopAsyncRotation;
         InitWeapon();
-        projectileFinalPoint.Position = new Vector2(projectileFinalPoint.Position.x + (Data.componentRadius), projectileFinalPoint.Position.y);
+        projectileFinalPoint.UpdatePositionAccordingToRadius(Data.componentRadius);
     }
 
+    public override List<Effect> GetEffectList()
+    {
+        return WeaponAttack.GetEffectList();
+    }
+
+    public override void UpdateEffect(Effect ef,List<Effect> appliedEffects)
+    {
+        WeaponAttack.UpdateEffect(ef,appliedEffects);
+    }
+
+    public override List<TagDetector> GetRangeDetectors()
+    {
+        return WeaponAttack.GetRangeDetectors();
+    }
+
+    public override void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors)
+    {
+        base.UpdateRange(RangeSizeDelta, detectors);
+        WeaponAttack.UpdateRange(RangeSizeDelta,detectors);
+    }
+
+
     
-    
+
+
     //once state machine is in place transfer to async function
     protected void Update()
     {

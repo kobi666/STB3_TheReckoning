@@ -1,16 +1,31 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
+
+public enum EffectNames
+{
+    None = 0,
+    Damage = 1,
+    Freeze = 2,
+    Slow = 3,
+    SplitMultipleProjectiles = 4,
+}
 
 [System.Serializable]
 public class Effect
 {
-    public virtual string Effectname()
+    public virtual void UpdateEffectValues(Effect ef)
     {
-        return "NoNameNull";
+        
+    }
+    public virtual EffectNames EffectName()
+    {
+        return EffectNames.None;
     }
     public GenericWeaponController ParentWeapon;
 
@@ -31,9 +46,16 @@ public class Effect
 [HideLabel]
 public class Damage : Effect
 {
-    public override string Effectname()
+    public override void UpdateEffectValues(Effect ef)
     {
-        return "Damage";
+        Damage d = ef as Damage;
+        DamageRange.min += d.DamageRange.min;
+        DamageRange.max += d.DamageRange.max;
+    }
+
+    public override EffectNames EffectName()
+    {
+        return EffectNames.Damage;
     }
 
     [ShowInInspector]
@@ -48,6 +70,8 @@ public class Damage : Effect
     {
         
     }
+    
+    
 }
 
 
@@ -130,3 +154,5 @@ public class DoSomethingWithPrefab : Effect
         
     }
 }
+
+

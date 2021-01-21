@@ -210,6 +210,7 @@
           <e p="TestWeaponController.cs" t="Include" />
           <e p="TowerTestScript.cs" t="Include" />
           <e p="TProjectileController.cs" t="Include" />
+          <e p="WeaponUpdates.cs" t="Include" />
         </e>
         <e p="Garbage.cs" t="Include" />
         <e p="genericAOEController.cs" t="Include" />
@@ -1069,7 +1070,6 @@
             <e p="WeaponRotator.cs" t="Include" />
             <e p="Weapons" t="Include">
               <e p="BeamUtilities.cs" t="Include" />
-              <e p="BeamWeaponAsync.cs" t="Include" />
               <e p="TowerWeaponAttacks.cs" t="Include" />
             </e>
             <e p="WeaponUtils.cs" t="Include" />
@@ -1114,6 +1114,7 @@
             <e p="UnitTypes.cs" t="Include" />
             <e p="UnitUtils.cs" t="Include" />
           </e>
+          <e p="Updateable.cs" t="Include" />
         </e>
         <e p="Shaker.cs" t="Include" />
         <e p="SplineController.cs" t="Include" />

@@ -54,6 +54,19 @@ public class SplineAttack : WeaponAttack
         return listeffect;
     }
 
+    public override List<TagDetector> GetRangeDetectors()
+    {
+        List<TagDetector> lr = new List<TagDetector>();
+        lr.Add(parentWeaponController.RangeDetector);
+        return lr;
+    }
+
+    public override void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors)
+    {
+        float s = parentWeaponController.RangeDetector.RangeRadius + RangeSizeDelta;
+        parentWeaponController.RangeDetector.SetSize(s);
+    }
+
     public void StopSplineAttack()
     {
         SplineAttackType.StopAttack();
