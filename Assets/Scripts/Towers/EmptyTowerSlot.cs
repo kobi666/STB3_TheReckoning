@@ -57,7 +57,7 @@ public class EmptyTowerSlot : TowerControllerLegacy
     }
     public void PlaceTestTower3() {
         
-        ParentSlotController.PlaceNewTowerLegacy(TowerArsenal.arsenal.EmptyTowerSlot.TowerPrefab);
+        ParentSlotController.PlaceNewTowerLegacy(TowerArsenal.arsenal.EmptyTowerSlotLegacy.TowerPrefab);
     }
     public void PlaceTestTower4() {
         

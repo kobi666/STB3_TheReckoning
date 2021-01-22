@@ -13,7 +13,7 @@ using UnityEngine.Serialization;
 
 
 [RequireComponent(typeof(EffectableTargetBank))][Searchable]
-public class GenericWeaponController : TowerComponent
+public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint
 {
     [ValueDropdown("valueList")]
     [HideLabel]
@@ -110,6 +110,7 @@ public class GenericWeaponController : TowerComponent
             onAttackInitiate += GenericRotator.StartAsyncRotation;
             onAttackCease += GenericRotator.StopAsyncRotation;
         }
+        WeaponAttack.SetInitialFinalPointPosition();
     }
     
     private static IEnumerable<Type> GetAOEAttacks()
@@ -203,11 +204,11 @@ public class GenericWeaponController : TowerComponent
             return projectileExitPoint?.transform.position ?? transform.position;
         }
     }
-    public ProjectileFinalPoint projectileFinalPoint;
-    public Transform ProjectileFinalPointTransform { get => projectileFinalPoint.transform;}
+    public ProjectileFinalPoint ProjectileFinalPoint;
+    public Transform ProjectileFinalPointTransform { get => ProjectileFinalPoint.transform;}
     public Vector2 ProjectileFinalPointV2 {
         get {
-            return projectileFinalPoint?.transform.position ?? Target?.UnitController.transform.position ?? transform.position;
+            return ProjectileFinalPoint?.transform.position ?? Target?.UnitController.transform.position ?? transform.position;
         }
     }
 
@@ -436,16 +437,18 @@ public class GenericWeaponController : TowerComponent
         onAttackCease += StopAsyncAttack;
         
         
-        if (RotatingComponent) {
-            onAttackInitiate += RotateTowardsTarget;
-            onAttackCease += ComponentRotator.StopRotating;
-        }
+        
         
         onEnemyEnteredRange += StandardOnTargetEnteredRange;
         onEnemyLeftRange += StandardOnTargetLeftRange;
         RangeDetector = GetComponentInChildren<RangeDetector>() ?? null;
         projectileExitPoint = GetComponentInChildren<ProjectileExitPoint>() ?? null;
-        projectileFinalPoint = GetComponentInChildren<ProjectileFinalPoint>() ?? null;
+        ProjectileFinalPoint = GetComponentInChildren<ProjectileFinalPoint>() ?? null;
+        if (RotatingComponent) {
+            onAttackInitiate += RotateTowardsTarget;
+            onAttackCease += ComponentRotator.StopRotating;
+            ProjectileFinalPoint.UpdatePositionAccordingToRadius(Data.componentRadius);
+        }
         if (TargetBank != null) {
             if (Data.componentRadius == 0) {
                 Data.componentRadius = 1;
@@ -459,7 +462,7 @@ public class GenericWeaponController : TowerComponent
         onAttackInitiate += projectileExitPoint.StartAsyncRotation;
         onAttackCease += projectileExitPoint.StopAsyncRotation;
         InitWeapon();
-        projectileFinalPoint.UpdatePositionAccordingToRadius(Data.componentRadius);
+        
     }
 
     public override List<Effect> GetEffectList()
@@ -502,5 +505,24 @@ public class GenericWeaponController : TowerComponent
         }
     }
 
-    
+
+    public List<ProjectileFinalPoint> GetFinalPoints()
+    {
+        return WeaponAttack.GetFinalPoints();
+    }
+
+    public void SetInitialFinalPointPosition()
+    {
+        WeaponAttack.SetInitialFinalPointPosition();
+    }
+
+    public List<ProjectileExitPoint> GetExitPoints()
+    {
+        return WeaponAttack.GetExitPoints();
+    }
+
+    public void SetInitialExitPointPosition()
+    {
+        WeaponAttack.SetInitialExitPointPosition();
+    }
 }

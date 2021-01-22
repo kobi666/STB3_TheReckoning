@@ -223,7 +223,7 @@ public class TargetUnit
 }
 
 [System.Serializable]
-public class TowerItem {
+public class TowerItemLegacy {
     [SerializeField]
     public GameObject TowerPrefab;
     [SerializeField]

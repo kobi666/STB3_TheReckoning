@@ -11,7 +11,7 @@ using MyBox;
 using Sirenix.Utilities;
 
 [System.Serializable]
-public class SplineAttackProperties : AttackProperties
+public abstract class SplineAttackProperties : AttackProperties
 {
     public Effectable MainTarget;
     public Vector2 TargetPosition;

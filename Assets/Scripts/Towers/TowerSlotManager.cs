@@ -89,7 +89,7 @@ public class TowerSlotManager : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = null;
         
         if (TowerSlot == null) {
-           TowerReplacementSequence(TowerArsenal.arsenal.EmptyTowerSlot.TowerPrefab);
+           TowerReplacementSequence(TowerArsenal.arsenal.EmptyTowerSlotLegacy.TowerPrefab);
         }
         
     }

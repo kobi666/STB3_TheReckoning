@@ -18,12 +18,12 @@ public class TowerUtils : MonoBehaviour
 
     public static TowerSlotActions DefaultSlotActions = new TowerSlotActions(null,null,null,null);
 
-    public static void PlaceTowerInSlot(TowerItem tower, GameObject TargetSlotObject, GameObject towerSlotParent) {
+    public static void PlaceTowerInSlot(TowerItemLegacy tower, GameObject TargetSlotObject, GameObject towerSlotParent) {
         TargetSlotObject = Instantiate(tower.TowerPrefab,towerSlotParent.transform.position, Quaternion.identity, towerSlotParent.transform);
         TargetSlotObject.name = (tower.TowerPrefab.name + UnityEngine.Random.Range(10000, 99999).ToString());
     }
 
-    public static GameObject PlaceTowerInSlotGO(TowerItem tower, GameObject towerSlotParent) {
+    public static GameObject PlaceTowerInSlotGO(TowerItemLegacy tower, GameObject towerSlotParent) {
         GameObject newGO = GameObject.Instantiate(tower.TowerPrefab,towerSlotParent.transform.position, Quaternion.identity, towerSlotParent.transform);
         newGO.name = (tower.TowerPrefab.name + UnityEngine.Random.Range(10000, 99999).ToString());
         return newGO;

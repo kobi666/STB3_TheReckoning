@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public abstract class WeaponAttack : IHasEffects,IHasRangeComponent
+public abstract class WeaponAttack : IHasEffects,IHasRangeComponent,IhasExitAndFinalPoint
 {
     public GenericWeaponController parentWeaponController;
     public virtual void Attack(Effectable singleTarget, Vector2 SingleTargetPosition)
@@ -40,5 +40,12 @@ public abstract class WeaponAttack : IHasEffects,IHasRangeComponent
 
 
     public abstract void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors);
+
+    public abstract List<ProjectileFinalPoint> GetFinalPoints();
+    public abstract void SetInitialFinalPointPosition();
+    
+
+    public abstract List<ProjectileExitPoint> GetExitPoints();
+    public abstract void SetInitialExitPointPosition();
 
 }

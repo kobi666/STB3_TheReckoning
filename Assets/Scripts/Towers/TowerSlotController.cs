@@ -41,7 +41,7 @@ public class TowerSlotController : MonoBehaviour
     public Dictionary<Vector2, TowerPositionData> TowerSlotsByDirections8 = new Dictionary<Vector2, TowerPositionData>();
     public DebugTowerPositionData[] TowersDebug = new DebugTowerPositionData[8];
     // Start is called before the first frame update
-    public GameObject OldTowerObject;
+    public GameObject OldTowerObjectLegacy;
     [SerializeField]
     GameObject towerObject;
     public GameObject TowerObject {
@@ -87,15 +87,15 @@ public class TowerSlotController : MonoBehaviour
 
     public void PlaceNewTowerLegacy(GameObject TowerPrefab) {
         if (TowerObject != null) {
-            OldTowerObject = TowerObject;
+            OldTowerObjectLegacy = TowerObject;
             TowerObject = null;
         }
         GameObject newTower = Instantiate(TowerPrefab, transform.position, Quaternion.identity, gameObject.transform);
         TowerObject = newTower;
         TowerObject.name = (TowerPrefab.name + UnityEngine.Random.Range(10000, 99999).ToString());
         SelectorTest2.instance.SelectedTowerSlot = this;
-        if (OldTowerObject != null) {
-            Destroy(OldTowerObject);
+        if (OldTowerObjectLegacy != null) {
+            Destroy(OldTowerObjectLegacy);
         }
         SR.sprite = null;
     }
@@ -105,9 +105,12 @@ public class TowerSlotController : MonoBehaviour
             oldTower = childTower;
             childTower = null;
         }
-        TowerController newTower = Instantiate(newTowerPrefab, transform.position, Quaternion.identity, gameObject.transform);
+
+        TowerController newTower =
+            Instantiate(newTowerPrefab, transform.position, Quaternion.identity, gameObject.transform);
+        newTower.ParentSlotController = this;
         childTower = newTower;
-        TowerObject.name = (newTowerPrefab.name + UnityEngine.Random.Range(10000, 99999).ToString());
+        childTower.name = (newTowerPrefab.name + UnityEngine.Random.Range(10000, 99999).ToString());
         SelectorTest2.instance.SelectedTowerSlot = this;
         if (oldTower != null) {
             Destroy(oldTower);
@@ -154,6 +157,10 @@ public class TowerSlotController : MonoBehaviour
         /*if (TowerObject == null) {
             PlaceNewTowerLegacy(TowerArsenal.arsenal.EmptyTowerSlot.TowerPrefab);
         }*/
+        if (ChildTower == null)
+        {
+            PlaceNewTower(TowerArsenal.arsenal.EmptyTowerSlot.TowerPrefab);
+        }
         ChildTower.OnInit(this);
 
     }

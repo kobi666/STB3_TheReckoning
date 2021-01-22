@@ -4,11 +4,24 @@ using UnityEngine;
 
 public class TowerArsenal : MonoBehaviour
 {
-    public TowerItem EmptyTowerSlot;
-    public TowerItem TestTower1;
-    public TowerItem TestTower2;
-    public TowerItem TestTower3;
-    public TowerItem TestTower4;
+    [HideInInspector]
+    public TowerItemLegacy EmptyTowerSlotLegacy;
+    [HideInInspector]
+    public TowerItemLegacy TestTower1;
+    [HideInInspector]
+    public TowerItemLegacy TestTower2;
+    [HideInInspector]
+    public TowerItemLegacy TestTower3;
+    [HideInInspector]
+    public TowerItemLegacy TestTower4;
+
+    public TowerPlacementItem EmptyTowerSlot;
+    public TowerPlacementItem BaseTowerNorth;
+    public TowerPlacementItem BaseTowerEast;
+    public TowerPlacementItem BaseTowerSouth;
+    public TowerPlacementItem BaseTowerWest;
+    
+        
 
     public static TowerArsenal arsenal;
     private void Awake() {

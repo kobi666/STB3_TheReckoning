@@ -39,6 +39,16 @@ public abstract class AOEAttack : WeaponAttack
         
     }
 
+    public override void SetInitialFinalPointPosition()
+    {
+        
+    }
+
+    public override void SetInitialExitPointPosition()
+    {
+        
+    }
+
     public override void InitlizeAttack(GenericWeaponController weapon)
     {
         AOESize = weapon.Data.componentRadius;
@@ -66,6 +76,11 @@ public abstract class AOEAttack : WeaponAttack
 
 public class TriggerAOEOnce : AOEAttack
 {
+    public override void AdditionalinitBehaviors()
+    {
+        
+    }
+
     public override void Attack(Effectable singleTarget, Vector2 SingleTargetPosition)
     {
         foreach (var aoeBehavior in AoeBehaviors)
@@ -96,10 +111,19 @@ public class TriggerAOEOnce : AOEAttack
         }
     }
 
-    public override void AdditionalinitBehaviors()
+    public override List<ProjectileFinalPoint> GetFinalPoints()
     {
-        
+        return new List<ProjectileFinalPoint>();
     }
+
+    
+
+    public override List<ProjectileExitPoint> GetExitPoints()
+    {
+        return new List<ProjectileExitPoint>();
+    }
+
+    
     
     
 }

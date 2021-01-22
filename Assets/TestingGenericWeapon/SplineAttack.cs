@@ -9,7 +9,7 @@ using System;
 public class SplineAttack : WeaponAttack
 {
     [TypeFilter("GetSplineAttacks")] [LabelText("Attack Function")][SerializeReference]
-    public SplineAttackProperties SplineAttackType = new SplineAttackProperties();
+    public SplineAttackProperties SplineAttackType = new OneSplineFromOriginToTarget();
 
 
     private static IEnumerable<Type> GetSplineAttacks()
@@ -65,6 +65,44 @@ public class SplineAttack : WeaponAttack
     {
         float s = parentWeaponController.RangeDetector.RangeRadius + RangeSizeDelta;
         parentWeaponController.RangeDetector.SetSize(s);
+    }
+
+    public override List<ProjectileFinalPoint> GetFinalPoints()
+    {
+        List<ProjectileFinalPoint> lpfp = new List<ProjectileFinalPoint>();
+        foreach (var sb in SplineAttackType.SplineBehaviors)
+        {
+            foreach (var fp in sb.GetFinalPoints())
+            {
+                lpfp.Add(fp);
+            }
+        }
+
+        return lpfp;
+    }
+
+    public override void SetInitialFinalPointPosition()
+    {
+        
+    }
+
+    public override List<ProjectileExitPoint> GetExitPoints()
+    {
+        List<ProjectileExitPoint> lpep = new List<ProjectileExitPoint>();
+        foreach (var sb in SplineAttackType.SplineBehaviors)
+        {
+            foreach (var fp in sb.GetExitPoints())
+            {
+                lpep.Add(fp);
+            }
+        }
+
+        return lpep;
+    }
+
+    public override void SetInitialExitPointPosition()
+    {
+        throw new NotImplementedException();
     }
 
     public void StopSplineAttack()

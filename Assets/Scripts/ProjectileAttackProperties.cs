@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 using UniRx;
@@ -10,6 +11,10 @@ public abstract class ProjectileAttackProperties : AttackProperties,IhasExitAndF
 {
     public abstract int ProjectileMultiplier { get; set; }
     
+    [Required]
+    public List<ProjectileFinalPoint> ProjectileFinalPoints = new List<ProjectileFinalPoint>();
+    [Required]
+    public List<ProjectileExitPoint> ProjectileExitPoints = new List<ProjectileExitPoint>();
     
 
     public void InitializeAttackProperties(GenericWeaponController parentWeapon)
@@ -36,11 +41,29 @@ public abstract class ProjectileAttackProperties : AttackProperties,IhasExitAndF
         AttackFunction(singleTarget, singleTargetPosition);
     }
 
-    public abstract List<ProjectileFinalPoint> GetFinalPoints();
+    public List<ProjectileFinalPoint> GetFinalPoints()
+    {
+        return ProjectileFinalPoints;
+    }
+
+    public void SetInitialFinalPointPosition()
+    {
+        foreach (var fp in GetFinalPoints())
+        {
+            var position = fp.transform.position;
+            Vector2 pos = (Vector2)position +
+                          new Vector2(ParentWeapon.Data.componentRadius, position.y);
+        }
+    }
 
 
+    public  List<ProjectileExitPoint> GetExitPoints()
+    {
+        return ProjectileExitPoints;
+    }
 
-
-    public abstract List<ProjectileExitPoint> GetExitPoints();
-
+    public void SetInitialExitPointPosition()
+    {
+        throw new NotImplementedException();
+    }
 }

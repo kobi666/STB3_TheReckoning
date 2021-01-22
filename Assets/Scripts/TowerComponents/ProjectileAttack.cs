@@ -96,6 +96,26 @@ public class ProjectileAttack : WeaponAttack
         }
     }
 
+    public override List<ProjectileFinalPoint> GetFinalPoints()
+    {
+        return ProjectileAttackProperties.GetFinalPoints();
+    }
+
+    public override void SetInitialFinalPointPosition()
+    {
+        ProjectileAttackProperties.SetInitialFinalPointPosition();
+    }
+
+    public override List<ProjectileExitPoint> GetExitPoints()
+    {
+        return ProjectileAttackProperties.GetExitPoints();
+    }
+
+    public override void SetInitialExitPointPosition()
+    {
+        ProjectileAttackProperties.SetInitialExitPointPosition();
+    }
+
     public override void InitlizeAttack(GenericWeaponController weapon)
     {
         ProjectileAttackProperties.InitializeAttack(weapon);

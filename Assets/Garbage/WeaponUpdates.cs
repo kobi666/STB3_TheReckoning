@@ -18,5 +18,9 @@ public interface IHasRangeComponent
 public interface IhasExitAndFinalPoint
 {
     List<ProjectileFinalPoint> GetFinalPoints();
+    void SetInitialFinalPointPosition();
+    
     List<ProjectileExitPoint> GetExitPoints();
+    void SetInitialExitPointPosition();
+
 }

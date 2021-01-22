@@ -7,7 +7,7 @@ using Sirenix.Serialization;
 using UnityEngine;
 
 [System.Serializable]
-public class SplineBehavior
+public class SplineBehavior : IhasExitAndFinalPoint
 {
     [Required]
     public SplineController SplineController;
@@ -156,5 +156,29 @@ public class SplineBehavior
         SplineMovement.MoveSpline(targetEffectable.transform.position);
         OnPosReachedAttack(targetEffectable,targetPosition);
         onConcurrentAttack?.Invoke(targetEffectable,targetPosition);
+    }
+
+    public List<ProjectileFinalPoint> GetFinalPoints()
+    {
+        List<ProjectileFinalPoint> lpfp = new List<ProjectileFinalPoint>();
+        lpfp.Add(FinalPoint);
+        return lpfp;
+    }
+
+    public void SetInitialFinalPointPosition()
+    {
+        
+    }
+
+    public List<ProjectileExitPoint> GetExitPoints()
+    {
+        List<ProjectileExitPoint> lpep = new List<ProjectileExitPoint>();
+        lpep.Add(ExitPoint);
+        return lpep;
+    }
+
+    public void SetInitialExitPointPosition()
+    {
+        
     }
 }

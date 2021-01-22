@@ -247,6 +247,7 @@
      <Compile Include="Assets\Scripts\TowerComponents\WeaponUtils.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\Weapons\BeamUtilities.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\Weapons\TowerWeaponAttacks.cs" />
+     <Compile Include="Assets\Scripts\TowerPlacementItem.cs" />
      <Compile Include="Assets\Scripts\Towers\ArcingBombTowerControllerLegacy.cs" />
      <Compile Include="Assets\Scripts\Towers\EmptyTowerSlot.cs" />
      <Compile Include="Assets\Scripts\Towers\OrbitalGunTowerControllerLegacy.cs" />
@@ -290,7 +291,6 @@
      <Compile Include="Assets\Shaker.cs" />
      <Compile Include="Assets\SplineController.cs" />
      <Compile Include="Assets\SplineDetector.cs" />
-     <Compile Include="Assets\StraightLaZoRWeapon.cs" />
      <Compile Include="Assets\TagSelectorPropertyDrawer.cs" />
      <Compile Include="Assets\TestCalculateTowerPositions.cs" />
      <Compile Include="Assets\TestConditionalDropDown.cs" />

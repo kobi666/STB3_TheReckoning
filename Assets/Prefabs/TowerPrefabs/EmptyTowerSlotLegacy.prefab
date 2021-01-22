@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4344787683947181734}
   - component: {fileID: 104591601388329238}
   m_Layer: 0
-  m_Name: EmptyTowerSlot
+  m_Name: EmptyTowerSlotLegacy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -95,6 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94451eb8f64a914484a074f7c089aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TowerActionManager: {fileID: 0}
+  MainTowerComponent: {fileID: 0}
   debug: 0
   TowersDebug:
   - Direction: 
@@ -146,7 +147,7 @@ MonoBehaviour:
     ClockWiseTower: {fileID: 0}
     CounterClockWiseTower: {fileID: 0}
   OrbitalGunsController: {fileID: 0}
-  slotController: {fileID: 0}
+  parentSlotController: {fileID: 0}
   TowerSprite: {fileID: 0}
   TowerSpriteRenderer: {fileID: 0}
   TowerActions:
@@ -154,39 +155,43 @@ MonoBehaviour:
       TowerComponent: {fileID: 0}
       ActionDescription: Empty Action
       ButtonSprite: {fileID: 0}
-      MainAction:
+      mainActionLegacy:
         m_PersistentCalls:
           m_Calls: []
-        TowerController: {fileID: 0}
+        towerControllerLegacy: {fileID: 0}
         UpgradePrefab: {fileID: 0}
+        ActionName: 
       ActionCost: 0
     ButtonEast:
       TowerComponent: {fileID: 0}
       ActionDescription: Empty Action
       ButtonSprite: {fileID: 0}
-      MainAction:
+      mainActionLegacy:
         m_PersistentCalls:
           m_Calls: []
-        TowerController: {fileID: 0}
+        towerControllerLegacy: {fileID: 0}
         UpgradePrefab: {fileID: 0}
+        ActionName: 
       ActionCost: 0
     ButtonSouth:
       TowerComponent: {fileID: 0}
       ActionDescription: Empty Action
       ButtonSprite: {fileID: 0}
-      MainAction:
+      mainActionLegacy:
         m_PersistentCalls:
           m_Calls: []
-        TowerController: {fileID: 0}
+        towerControllerLegacy: {fileID: 0}
         UpgradePrefab: {fileID: 0}
+        ActionName: 
       ActionCost: 0
     ButtonWest:
       TowerComponent: {fileID: 0}
       ActionDescription: Empty Action
       ButtonSprite: {fileID: 0}
-      MainAction:
+      mainActionLegacy:
         m_PersistentCalls:
           m_Calls: []
-        TowerController: {fileID: 0}
+        towerControllerLegacy: {fileID: 0}
         UpgradePrefab: {fileID: 0}
+        ActionName: 
       ActionCost: 0

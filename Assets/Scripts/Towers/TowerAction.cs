@@ -8,7 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using UnityEngine.Serialization;
 
 [System.Serializable]
-public class TowerAction
+public abstract class TowerAction
 {
    
    public static IEnumerable<Type> GetTowerActions()
@@ -50,12 +50,9 @@ public class TowerAction
       }
    }
 
-   public virtual void InitActionSpecific(TowerSlotController tsc)
-   {
-      
-   }
-   
-   
+   public abstract void InitActionSpecific(TowerSlotController tsc);
+
+
 
    private void EnoughMoneyzCheck(int moneyz)
    {
@@ -107,10 +104,7 @@ public class TowerAction
       return false;
    }
 
-   public virtual void Action(TowerSlotController tsc)
-   {
-      
-   }
+   public abstract void Action(TowerSlotController tsc);
 
    public void ExecuteAction(TowerSlotController tsc)
    {
@@ -136,7 +130,7 @@ public class TowerAction
 
 
 [System.Serializable]
-public class UpgradeToNewTower : TowerAction
+public class UpgradeToNewTowerLegacy : TowerAction
 {
    [SerializeField]
    public TowerController UpgradeTowerObject;
@@ -160,7 +154,7 @@ public class UpgradeToNewTower : TowerAction
 public class UpdateDamage : TowerAction
 {
    
-   [ShowInInspector] private List<Effect> DamageEffects = new List<Effect>();
+   private List<Effect> DamageEffects = new List<Effect>();
    public Damage DamageUpdate = new Damage();
    public override void InitActionSpecific(TowerSlotController tsc)
    {
@@ -234,6 +228,94 @@ public class UpdateRange : TowerAction
    public override bool SpecificExecuteCondition(TowerSlotController tsc)
    {
       return base.SpecificExecuteCondition(tsc);
+   }
+}
+
+
+[Serializable]
+public class PlaceNewTower : TowerAction
+{
+   public TowerController TowerPrefab;
+   public override void InitActionSpecific(TowerSlotController tsc)
+   {
+      
+   }
+
+   public override void Action(TowerSlotController tsc)
+   {
+      ParentSlotController.PlaceNewTower(TowerPrefab);
+   }
+
+   public override bool SpecificExecuteCondition(TowerSlotController tsc)
+   {
+      return base.SpecificExecuteCondition(tsc);
+   }
+}
+
+public class PlaceNorthTower : TowerAction
+{
+   public override void InitActionSpecific(TowerSlotController tsc)
+   {
+      Cost = TowerArsenal.arsenal.BaseTowerNorth.Cost;
+   }
+
+   public override void Action(TowerSlotController tsc)
+   {
+      ParentSlotController.PlaceNewTower(TowerArsenal.arsenal.BaseTowerNorth.TowerPrefab);
+   }
+
+   public override bool SpecificExecuteCondition(TowerSlotController tsc)
+   {
+      return base.SpecificExecuteCondition(tsc);
+   }
+}
+
+public class PlaceEastTower : TowerAction
+{
+   public override void InitActionSpecific(TowerSlotController tsc)
+   {
+      Cost = TowerArsenal.arsenal.BaseTowerEast.Cost;
+   }
+
+   public override void Action(TowerSlotController tsc)
+   {
+      ParentSlotController.PlaceNewTower(TowerArsenal.arsenal.BaseTowerEast.TowerPrefab);
+   }
+
+   public override bool SpecificExecuteCondition(TowerSlotController tsc)
+   {
+      return base.SpecificExecuteCondition(tsc);
+   }
+}
+
+public class PlaceSouthTower : TowerAction
+{
+   public override void InitActionSpecific(TowerSlotController tsc)
+   {
+      Cost = TowerArsenal.arsenal.BaseTowerSouth.Cost;
+   }
+
+   public override void Action(TowerSlotController tsc)
+   {
+      ParentSlotController.PlaceNewTower(TowerArsenal.arsenal.BaseTowerSouth.TowerPrefab);
+   }
+
+   public override bool SpecificExecuteCondition(TowerSlotController tsc)
+   {
+      return base.SpecificExecuteCondition(tsc);
+   }
+}
+
+public class PlaceWestTower : TowerAction
+{
+   public override void InitActionSpecific(TowerSlotController tsc)
+   {
+      Cost = TowerArsenal.arsenal.BaseTowerWest.Cost;
+   }
+
+   public override void Action(TowerSlotController tsc)
+   {
+      ParentSlotController.PlaceNewTower(TowerArsenal.arsenal.BaseTowerWest.TowerPrefab);
    }
 }
 

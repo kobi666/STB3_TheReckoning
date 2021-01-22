@@ -37,6 +37,22 @@ public class TowerActions
     {
         North.ExecuteAction(parentTowerSlotController);
     }
+    [Button]
+    void east()
+    {
+        East.ExecuteAction(parentTowerSlotController);
+    }
+    [Button]
+    void south()
+    {
+        South.ExecuteAction(parentTowerSlotController);
+    }
+    
+    [Button]
+    void west()
+    {
+        West.ExecuteAction(parentTowerSlotController);
+    }
 
     public void initActions(TowerSlotController tsc)
     {
