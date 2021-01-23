@@ -30,6 +30,7 @@ public class DeathManager : MonoBehaviour
             {
                GameObject g = new GameObject();
                g.AddComponent<DeathManager>();
+               g.name = "DeathManager";
                Instance = g.GetComponent<DeathManager>();
             }
 

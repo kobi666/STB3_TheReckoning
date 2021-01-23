@@ -89,7 +89,7 @@ public class ProjectileAttack : WeaponAttack
     public override void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors)
     {
         float s = parentWeaponController.RangeDetector.GetSize() + RangeSizeDelta;
-        parentWeaponController.RangeDetector.SetSize(s);
+        parentWeaponController.RangeDetector.UpdateSize(s);
         foreach (var fp in ProjectileAttackProperties.GetFinalPoints())
         {
            fp.UpdatePositionAccordingToRadius(s); 

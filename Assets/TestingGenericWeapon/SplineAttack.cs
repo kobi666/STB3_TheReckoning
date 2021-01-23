@@ -9,7 +9,7 @@ using System;
 public class SplineAttack : WeaponAttack
 {
     [TypeFilter("GetSplineAttacks")] [LabelText("Attack Function")][SerializeReference]
-    public SplineAttackProperties SplineAttackType = new OneSplineFromOriginToTarget();
+    public SplineAttackProperties SplineAttackProperties = new OneSplineFromOriginToTarget();
 
 
     private static IEnumerable<Type> GetSplineAttacks()
@@ -24,7 +24,7 @@ public class SplineAttack : WeaponAttack
     
     public override void Attack(Effectable singleTarget, Vector2 SingleTargetPosition)
     {
-        SplineAttackType.StartAsyncSplineAttack(singleTarget, SingleTargetPosition);
+        SplineAttackProperties.StartAsyncSplineAttack(singleTarget, SingleTargetPosition);
     }
 
     public override void StopAttack()
@@ -35,7 +35,7 @@ public class SplineAttack : WeaponAttack
     public override List<Effect> GetEffects()
     {
         List<Effect> listeffect = new List<Effect>();
-        foreach (var sb in SplineAttackType.SplineBehaviors )
+        foreach (var sb in SplineAttackProperties.SplineBehaviors )
         {
             foreach (var se in sb.SplineEffect)
             {
@@ -64,13 +64,13 @@ public class SplineAttack : WeaponAttack
     public override void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors)
     {
         float s = parentWeaponController.RangeDetector.RangeRadius + RangeSizeDelta;
-        parentWeaponController.RangeDetector.SetSize(s);
+        parentWeaponController.RangeDetector.UpdateSize(s);
     }
 
     public override List<ProjectileFinalPoint> GetFinalPoints()
     {
         List<ProjectileFinalPoint> lpfp = new List<ProjectileFinalPoint>();
-        foreach (var sb in SplineAttackType.SplineBehaviors)
+        foreach (var sb in SplineAttackProperties.SplineBehaviors)
         {
             foreach (var fp in sb.GetFinalPoints())
             {
@@ -83,13 +83,17 @@ public class SplineAttack : WeaponAttack
 
     public override void SetInitialFinalPointPosition()
     {
+        foreach (var sb in SplineAttackProperties.SplineBehaviors)
+        {
+            sb.SetInitialFinalPointPosition();
+        }
         
     }
 
     public override List<ProjectileExitPoint> GetExitPoints()
     {
         List<ProjectileExitPoint> lpep = new List<ProjectileExitPoint>();
-        foreach (var sb in SplineAttackType.SplineBehaviors)
+        foreach (var sb in SplineAttackProperties.SplineBehaviors)
         {
             foreach (var fp in sb.GetExitPoints())
             {
@@ -102,17 +106,17 @@ public class SplineAttack : WeaponAttack
 
     public override void SetInitialExitPointPosition()
     {
-        throw new NotImplementedException();
+        
     }
 
     public void StopSplineAttack()
     {
-        SplineAttackType.StopAttack();
+        SplineAttackProperties.StopAttack();
     }
 
     public override void InitlizeAttack(GenericWeaponController parentWeapon)
     {
-        SplineAttackType.InitlizeProperties();
-        SplineAttackType.SpecificPropertiesInit();
+        SplineAttackProperties.InitlizeProperties();
+        SplineAttackProperties.SpecificPropertiesInit();
     }
 }

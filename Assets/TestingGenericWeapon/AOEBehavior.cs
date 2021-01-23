@@ -6,6 +6,7 @@ using System.Linq;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 
+[Serializable]
 public class AOEBehavior
 {
     public List<GenericAOEController> AoeControllers = new List<GenericAOEController>();
@@ -24,7 +25,7 @@ public class AOEBehavior
                 {
                     aoeEffect.InitEffect(AoeControllers);
                 }
-                aoeController.Detector.SetSize(AOESize);
+                aoeController.Detector.UpdateSize(AOESize);
             }
         }
     }

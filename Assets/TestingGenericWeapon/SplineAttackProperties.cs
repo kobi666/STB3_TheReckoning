@@ -160,7 +160,7 @@ public class LeapingSplines : SplineAttackProperties
             ExtraRangeTargetBank.Detector = ChainTargetDiscoveryDetector;
             ExtraRangeTargetBank.InitRangeDetectorEvents();
         }
-        ChainTargetDiscoveryDetector.SetSize(ParentWeapon.Data.componentRadius + ExtraDiscoveryRange);
+        ChainTargetDiscoveryDetector.UpdateSize(ParentWeapon.Data.componentRadius + ExtraDiscoveryRange);
         onAttackStart += SetInitialTargetTarget;
         onAttackEnd += delegate { LeapingTargets.Clear(); };
         onAttackEnd += delegate { TargetCounter = 0; };

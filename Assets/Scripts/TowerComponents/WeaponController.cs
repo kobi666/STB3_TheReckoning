@@ -248,7 +248,7 @@ public abstract class WeaponController : TowerComponent
                 Data.componentRadius = 1;
             }
             else if (Data.componentRadius != 0) {
-                RangeDetector.SetSize(Data.componentRadius);
+                RangeDetector.UpdateSize(Data.componentRadius);
             }
         }
         PostStart();

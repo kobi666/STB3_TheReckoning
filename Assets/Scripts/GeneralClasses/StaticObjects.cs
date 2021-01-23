@@ -25,6 +25,7 @@ public class StaticObjects : MonoBehaviour
             if (instantiated == false)
             {
                 GameObject g = new GameObject();
+                g.name = "StaticObjects";
                 g.AddComponent<StaticObjects>();
                 Instance = g.GetComponent<StaticObjects>();
             }

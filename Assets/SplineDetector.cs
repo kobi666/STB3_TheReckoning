@@ -18,7 +18,7 @@ public class SplineDetector : TagDetector
         return 9999f;
     }
 
-    public override void SetSize(float newSize)
+    public override void UpdateSize(float newSize)
     {
         
     }

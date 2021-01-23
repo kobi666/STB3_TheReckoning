@@ -12,6 +12,8 @@ public class SplineMovementFunction
     {
         
     }
+
+    [HideInInspector] public bool ParentIsRotatingTowardsTarget;
     
     public bool Oscilating;
     [ShowIf("Oscilating")] public (float, float) beamOsciliationOffsetMinMax { get; set; } = (0.05f,0.05f);
@@ -94,8 +96,6 @@ public class SplineMovementFunction
             onFinalPointMovement += FinalPointTravelToTarget;
         }
         InitSplineProperties();
-        
-        
     }
 
     public virtual void InitSplineProperties()
@@ -105,29 +105,42 @@ public class SplineMovementFunction
 
     public void TeleportFinalPoint(Vector2 targetPosition)
     {
-        finalPoint.Position = targetPosition;
+        finalPoint.transform.position = targetPosition;
         TargetPositionReached = true;
     }
 
     public void ResetMovementProperties()
     {
-        finalPoint.Position = exitPoint.transform.position;
+        finalPoint.transform.position = exitPoint.transform.position;
         distanceCounter = 0;
     }
 
     public void FinalPointTravelToTarget(Vector2 targetPosition)
     {
-        //distanceCounter += Vector2.Distance()
-            //finalPoint.Position = Vector2.Lerp(exitPoint.transform.position, targetPosition, distanceCounter);
-            finalPoint.Position = Vector2.MoveTowards(finalPoint.Position, targetPosition,
+        if (!ParentIsRotatingTowardsTarget) {
+            finalPoint.transform.position = Vector2.MoveTowards(finalPoint.transform.position, targetPosition,
                 TravelSpeed * StaticObjects.Instance.DeltaGameTime);
             if (!targetPositionReached)
             {
-                if (finalPoint.Position == targetPosition)
+                if (finalPoint.transform.position == (Vector3)targetPosition)
                 {
                     TargetPositionReached = true;
                 }
             }
+        }
+        else
+        {
+            Vector2 PosXOnly = new Vector2(targetPosition.x, finalPoint.transform.position.y);
+            finalPoint.transform.position = Vector2.MoveTowards(finalPoint.transform.position, PosXOnly,
+                TravelSpeed * StaticObjects.Instance.DeltaGameTime);
+            if (!targetPositionReached)
+            {
+                if (finalPoint.transform.position == (Vector3)targetPosition)
+                {
+                    TargetPositionReached = true;
+                }
+            }
+        }
 
     }
 
@@ -194,7 +207,7 @@ public class StraightLaZor : SplineMovementFunction
     public override void MovementFunction(Vector2 targetPosition)
     {
         splineController.points[0].PositionWorld = exitPoint.transform.position;
-        splineController.points[splineController.points.Length - 1].PositionWorld = finalPoint.Position;
+        splineController.points[splineController.points.Length - 1].PositionWorld = finalPoint.transform.position;
     }
 
     public override void InitSplineProperties()

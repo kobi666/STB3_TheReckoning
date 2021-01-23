@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using System.Threading.Tasks;
 
-public class GenericAOEController : SerializedMonoBehaviour
+public class GenericAOEController : MonoBehaviour
 {
     public TagDetector Detector;
     private float range;
@@ -15,7 +15,7 @@ public class GenericAOEController : SerializedMonoBehaviour
         get => range;
         set
         {
-            Detector.SetSize(value);
+            Detector.UpdateSize(value);
             range = value;
         }
     }

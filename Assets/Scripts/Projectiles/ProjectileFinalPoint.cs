@@ -11,12 +11,11 @@ public class ProjectileFinalPoint : MonoBehaviour
     private GenericWeaponController ParentWeaponController;
     public float rotationSpeed = 1;
     public Transform PositionTransform;
+    [HideInInspector] public float InitialPositionX;
+    [HideInInspector] public Vector2 InitialPosition;
+    
 
-    public Vector2 Position
-    {
-        get => PositionTransform.position;
-        set => PositionTransform.position = value;
-    }
+    
     public TargetUnit Target
     {
         get => ParentWeaponController?.Target;
@@ -26,7 +25,14 @@ public class ProjectileFinalPoint : MonoBehaviour
     public EffectableTargetBank EffectableTargetBank;
     protected void Awake()
     {
+        InitialPositionX = transform.position.x;
+        InitialPosition = transform.position;
         EffectableTargetBank = GetComponent<EffectableTargetBank>() ?? null;
+    }
+
+    public void ReturnToInitialPosition()
+    {
+        transform.position = InitialPosition;
     }
 
     public void UpdatePositionAccordingToRadius(float radius)

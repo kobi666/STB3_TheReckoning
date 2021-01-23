@@ -33,7 +33,7 @@ public class ShootOneProjectile : ProjectileAttackProperties
             var transform = proj.transform;
             transform.rotation = ProjectileExitPoints[0].transform.rotation;
             transform.position = ProjectileExitPoints[0].transform.position;
-            proj.TargetPosition = ProjectileFinalPoints[0].Position; // can also be projectile final point position
+            proj.TargetPosition = ProjectileFinalPoints[0].transform.position; // can also be projectile final point position
             proj.EffectableTarget = singleTarget ?? null;
             proj.Activate();
             AsyncAttackInProgress = false;
@@ -81,7 +81,7 @@ public class ShootOneProjectile : ProjectileAttackProperties
                         var transform = proj.transform;
                         transform.position = ProjectileExitPoints[0].transform.position;
                         transform.rotation = ProjectileExitPoints[0].transform.rotation;
-                        proj.TargetPosition = ProjectileFinalPoints[0].Position; //can also be projectile final point position
+                        proj.TargetPosition = ProjectileFinalPoints[0].transform.position; //can also be projectile final point position
                         proj.EffectableTarget = singleTarget ?? null;
                         
                         proj.Activate();

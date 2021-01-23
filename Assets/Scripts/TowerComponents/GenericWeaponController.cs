@@ -47,21 +47,6 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint
     [ShowIf("WeaponTypeInt", 0)][BoxGroup]
     public ProjectileAttack projectileAttack;
 
-    void FireProjectileAttack()
-    {
-        projectileAttack.Attack(Target.Effectable,Target.transform.position);
-    }
-
-    void FireSplineAttack()
-    {
-        SplineAttack.Attack(Target.Effectable, Target.transform.position);
-    }
-
-    void FireAOEAttack()
-    {
-        AoeAttack.Attack(Target.Effectable,Target.transform.position);
-    }
-
 
 
 
@@ -71,6 +56,17 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint
     [ShowIf("WeaponTypeInt", 4)][SerializeField]
     public SplineAttack SplineAttack = new SplineAttack();
     public string WeaponName;
+
+    private void SetFinalPointPosOnAttackStart(Effectable ef, Vector2 targetPos)
+    {
+        if (RotatingTurret)
+        {
+            foreach (var fp in WeaponAttack.GetFinalPoints())
+            {
+                fp.transform.position = fp.InitialPosition;
+            }
+        }
+    }
 
     public void InitWeapon()
     {
@@ -95,10 +91,9 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint
 
         if (WeaponTypeInt == 4)
         {
+            
             WeaponAttack = SplineAttack;
-            /*SplineAttack.InitlizeAttack(this);
-            onAttack += FireSplineAttack;
-            onAttackCease += SplineAttack.StopSplineAttack;*/
+            
         }
 
         WeaponAttack.parentWeaponController = this;
@@ -118,7 +113,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint
         var q = typeof(AOEAttack).Assembly.GetTypes()
             .Where(x => !x.IsAbstract) // Excludes BaseClass
             .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
-            .Where(x => typeof(AOEAttack).IsAssignableFrom(x)); // Excludes classes not inheriting from BaseClass
+            .Where(x => x.IsSubclassOf(typeof(AOEAttack))); // Excludes classes not inheriting from BaseClass
         
         return q;
     }
@@ -447,14 +442,13 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint
         if (RotatingComponent) {
             onAttackInitiate += RotateTowardsTarget;
             onAttackCease += ComponentRotator.StopRotating;
-            ProjectileFinalPoint.UpdatePositionAccordingToRadius(Data.componentRadius);
         }
         if (TargetBank != null) {
             if (Data.componentRadius == 0) {
                 Data.componentRadius = 1;
             }
             else if (Data.componentRadius != 0) {
-                RangeDetector.SetSize(Data.componentRadius);
+                RangeDetector.UpdateSize(Data.componentRadius);
             }
         }
 

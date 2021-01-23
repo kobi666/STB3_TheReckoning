@@ -16,6 +16,8 @@ public class SplineBehavior : IhasExitAndFinalPoint
     [HideInInspector]
     public ProjectileFinalPoint FinalPoint;
     private EffectableTargetBank TargetBank;
+
+    [HideInInspector] public bool parentIsRotatingTowardsTarget = false;
     
     [ShowInInspector]
     public int testInt { get; set; }
@@ -114,20 +116,21 @@ public class SplineBehavior : IhasExitAndFinalPoint
             }
         }
         SplineController.BgCurve.Points[0].PositionLocal = ExitPoint.transform.position;
-        SplineController.BgCurve.Points[1].PositionLocal = FinalPoint.Position;
+        SplineController.BgCurve.Points[1].PositionLocal = FinalPoint.transform.position;
     }
 
     public void Init()
     {
         FinalPoint = SplineController.FinalPoint;
         ExitPoint = SplineController.ExitPoint;
-        initialFinalPointpos = FinalPoint.Position;
+        initialFinalPointpos = FinalPoint.transform.position;
         initialExitPointPos = ExitPoint.transform.position;
         TargetBank = SplineController.TargetBank;
         SplineMovement.Initialize(this);
         SplineMovement.onTargetPositionReached += SetOnPositionReachedTrue;
         onBehaviorStart += SplineMovement.OnMovementStart;
         onBehaviorEnd += SplineMovement.OnMovementEnd;
+        onBehaviorStart += delegate(Effectable effectable, Vector2 vector2) { SetInitialFinalPointPosition(); };
         onBehaviorStart += StartRenderingSpline;
         onBehaviorEnd += StopRenderingSpline;
         onBehaviorEnd += ResetSpline;
@@ -167,7 +170,14 @@ public class SplineBehavior : IhasExitAndFinalPoint
 
     public void SetInitialFinalPointPosition()
     {
-        
+        {
+            int index = 0;
+            foreach (var fp in GetFinalPoints())
+            {
+                fp.transform.position = GetExitPoints()[index].transform.position;
+                index += 1;
+            }
+        }
     }
 
     public List<ProjectileExitPoint> GetExitPoints()

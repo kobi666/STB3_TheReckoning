@@ -19,7 +19,7 @@ public class ArcingAOEProjectileController : AOEProjectile
         MiddlePos = ProjectileUtils.GetArcingMiddlePosition(InitPos, TargetPosition, Data.ArcValue);
         TargetBank.Detector.transform.parent =
             GameObjectPool.Instance.PlaceHoldersDict[QueuePool.PlaceholderName].transform;
-        RangeDetector.SetSize(Data.EffectRadius);
+        RangeDetector.UpdateSize(Data.EffectRadius);
     }
 
     void GrowRangeDetectorToEffectRadius()
@@ -35,7 +35,7 @@ public class ArcingAOEProjectileController : AOEProjectile
         TargetBank.Detector.gameObject.SetActive(false);
         TargetBank.Detector.transform.localScale = new Vector3(1,1,1);
         moveCounter = 0;
-        RangeDetector.SetSize(0);
+        RangeDetector.UpdateSize(0);
         base.OnDisable();
     }
     

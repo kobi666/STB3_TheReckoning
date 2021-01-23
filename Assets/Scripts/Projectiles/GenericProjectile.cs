@@ -219,11 +219,11 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
         {
             if (BaseProjectileEffect.EffectRadius <= 0)
             {
-                rangeDetector.SetSize(1);
+                rangeDetector.UpdateSize(1);
             }
             else
             {
-                rangeDetector.SetSize(BaseProjectileEffect.EffectRadius);
+                rangeDetector.UpdateSize(BaseProjectileEffect.EffectRadius);
             } 
         }
     }

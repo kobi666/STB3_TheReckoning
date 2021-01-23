@@ -1,13 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public abstract class AOEAttack : WeaponAttack
+public class AOEAttack : WeaponAttack
 {
     public List<AOEBehavior> AoeBehaviors;
     public float AOESize = 1;
-    public abstract void AdditionalinitBehaviors();
+
+    public virtual void AdditionalinitBehaviors()
+    {
+        
+    }
     public override void Attack(Effectable singleTarget, Vector2 SingleTargetPosition)
     {
         foreach (var ab in AoeBehaviors)
@@ -39,9 +44,41 @@ public abstract class AOEAttack : WeaponAttack
         
     }
 
+    public override List<TagDetector> GetRangeDetectors()
+    {
+        List<TagDetector> ltd = new List<TagDetector>();
+        foreach (var aoeBehavior in AoeBehaviors)
+        {
+            foreach (var aoeController in aoeBehavior.AoeControllers)
+            {
+                ltd.Add(aoeController.Detector);
+            }
+        }
+
+        return ltd;
+    }
+
+    public override void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors)
+    {
+        foreach (var detector in detectors)
+        {
+            detector.UpdateSize(RangeSizeDelta);
+        }
+    }
+
+    public override List<ProjectileFinalPoint> GetFinalPoints()
+    {
+        return new List<ProjectileFinalPoint>();
+    }
+
     public override void SetInitialFinalPointPosition()
     {
         
+    }
+
+    public override List<ProjectileExitPoint> GetExitPoints()
+    {
+        return new List<ProjectileExitPoint>();
     }
 
     public override void SetInitialExitPointPosition()
@@ -74,6 +111,7 @@ public abstract class AOEAttack : WeaponAttack
     }
 }
 
+[Serializable]
 public class TriggerAOEOnce : AOEAttack
 {
     public override void AdditionalinitBehaviors()
@@ -101,14 +139,6 @@ public class TriggerAOEOnce : AOEAttack
         }
 
         return ds;
-    }
-
-    public override void UpdateRange(float rangeDelta, List<TagDetector> detectors)
-    {
-        foreach (var d in detectors)
-        {
-            //float f = d.
-        }
     }
 
     public override List<ProjectileFinalPoint> GetFinalPoints()

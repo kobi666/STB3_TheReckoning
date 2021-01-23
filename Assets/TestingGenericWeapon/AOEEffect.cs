@@ -7,9 +7,10 @@ using UnityEngine;
 using System;
 using System.Threading.Tasks;
 
+[Serializable]
 public class AOEEffect 
 {
-    [TypeFilter("GetFilteredTypeList")][OdinSerialize]
+    [TypeFilter("GetFilteredTypeList")][SerializeReference]
     public List<Effect> Effects;
     private List<GenericAOEController> AoeControllers;
     
@@ -18,7 +19,7 @@ public class AOEEffect
         var q = typeof(Effect).Assembly.GetTypes()
             .Where(x => !x.IsAbstract) // Excludes BaseClass
             .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
-            .Where(x => typeof(Effect).IsAssignableFrom(x)); // Excludes classes not inheriting from BaseClass
+            .Where(x => x.IsSubclassOf(typeof(Effect))); // Excludes classes not inheriting from BaseClass
         
         return q;
     }
