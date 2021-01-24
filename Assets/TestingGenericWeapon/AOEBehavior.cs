@@ -9,6 +9,7 @@ using Sirenix.Serialization;
 [Serializable]
 public class AOEBehavior
 {
+    [Required]
     public List<GenericAOEController> AoeControllers = new List<GenericAOEController>();
     [OdinSerialize]
     public List<AOEEffect> Effects;

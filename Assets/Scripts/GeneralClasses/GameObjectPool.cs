@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Animancer;
+using MyBox;
 
 public class GameObjectPool : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class GameObjectPool : MonoBehaviour
     public Dictionary<string, PoolObjectQueue<AreaOfEffectController>> AOEObjectPoolQueue = new Dictionary<string, PoolObjectQueue<AreaOfEffectController>>();
     public Dictionary<string,PoolObjectQueue<SingleAnimationObject>> SingleAnimationPoolQueue = new Dictionary<string, PoolObjectQueue<SingleAnimationObject>>();
     public Dictionary<string,PoolObjectQueue<AreaEffect>> AreaEffectPoolQueue = new Dictionary<string, PoolObjectQueue<AreaEffect>>();
+    public Dictionary<string,PoolObjectQueue<EffectAnimationController>> EffectAnimationPoolQueue = new Dictionary<string, PoolObjectQueue<EffectAnimationController>>();
     
     
 
@@ -37,7 +40,23 @@ public class GameObjectPool : MonoBehaviour
         return null;
     }
     
-    
+    public PoolObjectQueue<EffectAnimationController> GetEffectAnimationQueue() {
+        if (EffectAnimationPoolQueue.IsNullOrEmpty())
+        {
+            GameObject eac = new GameObject();
+            eac.name = "EffectAnimation";
+            eac.AddComponent<SpriteRenderer>();
+            eac.AddComponent<AnimancerComponent>();
+            eac.GetOrAddComponent<AnimationController>();
+            EffectAnimationController effectAnimationController = eac.GetOrAddComponent<EffectAnimationController>();
+            CreateNewObjectQueue<EffectAnimationController>(EffectAnimationPoolQueue,effectAnimationController);
+            return EffectAnimationPoolQueue[eac.name];
+        }
+        else
+        {
+            return EffectAnimationPoolQueue["EffectAnimation"];
+        }
+    }
     
     public PoolObjectQueue<Projectile> GetProjectileQueue(Projectile prefab) {
         if (ProjectilesObjectPoolQueue.ContainsKey(prefab.name)) {

@@ -8,6 +8,12 @@ public interface IHasEffects
     void UpdateEffect(Effect ef, List<Effect> appliedEffects);
 }
 
+public interface IHasEffectAnimation
+{
+    EffectAnimationController EffectAnimationController { get; set; }
+    void InitEffectAnimation(AnimationClip animationClip);
+}
+
 
 public interface IHasRangeComponent
 {

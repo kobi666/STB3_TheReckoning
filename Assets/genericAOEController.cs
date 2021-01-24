@@ -6,6 +6,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using System.Threading.Tasks;
 
+[Serializable]
 public class GenericAOEController : MonoBehaviour
 {
     public TagDetector Detector;
