@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using Animancer;
 
-public abstract class PlayerUnitController : UnitController,ITypeTag
+public abstract class PlayerUnitController : UnitController,ITypeTag,IActiveObject<PlayerUnitController>
 {
     static string Tag = "Player_Unit";
     public string TypeTag {get => Tag;}
@@ -83,10 +83,7 @@ public abstract class PlayerUnitController : UnitController,ITypeTag
         onAttack += PlayAttackAnimation;
         LateStart();
     }
-    
-    
-    
 
-    
-    
+
+    public ActiveObjectPool<PlayerUnitController> ActivePool { get; set; }
 }

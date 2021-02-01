@@ -45,8 +45,11 @@ public class WeaponUtils
     
 
     public static IEnumerator RotateTowardsTarget(Transform self, Transform target, float rotationSpeed) {
-        while (true) {
-            Vector2 vecToTarget = target.position - self.position;
+        Vector2 cachedPos = new Vector2();
+        while (true)
+        {
+            cachedPos = target?.position ?? cachedPos;
+            Vector2 vecToTarget = cachedPos - (Vector2)self.position;
             float angleToTarget = Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg;
             Quaternion q = Quaternion.AngleAxis(angleToTarget, Vector3.forward);
             self.rotation = Quaternion.Slerp(self.rotation, q, StaticObjects.Instance.DeltaGameTime * rotationSpeed);

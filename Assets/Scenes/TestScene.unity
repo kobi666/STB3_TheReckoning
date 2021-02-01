@@ -359,7 +359,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &51121984
 PrefabInstance:
@@ -511,7 +511,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &75089964
 GameObject:
@@ -1373,9 +1373,13 @@ MonoBehaviour:
     parentWeaponController: {fileID: 0}
     ProjectileAttackProperties:
       id: 0
+  AoeAttack:
+    parentWeaponController: {fileID: 0}
+    AoeBehaviors: []
+    AOESize: 1
   SplineAttack:
     parentWeaponController: {fileID: 0}
-    SplineAttackType:
+    SplineAttackProperties:
       id: 1
   WeaponName: 
   TargetBank: {fileID: 0}
@@ -1384,7 +1388,7 @@ MonoBehaviour:
   CounterMax: 1
   ExternalAttackLock: 0
   canattackFieldPH: 0
-  projectileFinalPoint: {fileID: 0}
+  ProjectileFinalPoint: {fileID: 0}
   inAttackState: 0
   references:
     version: 1
@@ -1392,12 +1396,12 @@ MonoBehaviour:
       type: {class: ShootOneProjectile, ns: , asm: Assembly-CSharp}
       data:
         ParentWeapon: {fileID: 0}
+        ProjectileFinalPoints: []
+        ProjectileExitPoints: []
         AsyncAttackInProgress: 0
         Projectiles: []
-        ExitPoint: {fileID: 0}
-        FinalPoint: {fileID: 0}
     00000001:
-      type: {class: SplineAttackProperties, ns: , asm: Assembly-CSharp}
+      type: {class: OneSplineFromOriginToTarget, ns: , asm: Assembly-CSharp}
       data:
         ParentWeapon: {fileID: 0}
         MainTarget: {fileID: 0}
@@ -2451,7 +2455,7 @@ Transform:
   m_Children:
   - {fileID: 980338548}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &509437626
 GameObject:
@@ -2744,7 +2748,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &597150692
 GameObject:
@@ -4609,7 +4613,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &980338546
 GameObject:
@@ -6427,7 +6431,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6978,78 +6982,6 @@ MonoBehaviour:
     c2: 0
     c3: 0
     c4: 0
---- !u!1 &1560966267
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1560966270}
-  - component: {fileID: 1560966269}
-  - component: {fileID: 1560966268}
-  m_Layer: 0
-  m_Name: TowerCrosshair
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1560966268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560966267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de2f52d3b03ad2742aa7e95d07dbc297, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Actions:
-    North:
-      id: 0
-    East:
-      id: 0
-    South:
-      id: 0
-    West:
-      id: 0
-  references:
-    version: 1
-    00000000:
-      type: {class: , ns: , asm: }
---- !u!114 &1560966269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560966267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 840a1b8cd6ca90d44afb2cdacf6b5140, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Data:
-    MovementDuration: 0
-    CurrentTowerSlot: {fileID: 0}
---- !u!4 &1560966270
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560966267}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9869396, y: 1.7888391, z: -5.4179688}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1561793111
 GameObject:
   m_ObjectHideFlags: 0
@@ -7238,9 +7170,13 @@ MonoBehaviour:
     parentWeaponController: {fileID: 0}
     ProjectileAttackProperties:
       id: 0
+  AoeAttack:
+    parentWeaponController: {fileID: 0}
+    AoeBehaviors: []
+    AOESize: 1
   SplineAttack:
     parentWeaponController: {fileID: 0}
-    SplineAttackType:
+    SplineAttackProperties:
       id: 1
   WeaponName: 
   TargetBank: {fileID: 0}
@@ -7249,7 +7185,7 @@ MonoBehaviour:
   CounterMax: 1
   ExternalAttackLock: 0
   canattackFieldPH: 0
-  projectileFinalPoint: {fileID: 0}
+  ProjectileFinalPoint: {fileID: 0}
   inAttackState: 0
   references:
     version: 1
@@ -7257,12 +7193,12 @@ MonoBehaviour:
       type: {class: ShootOneProjectile, ns: , asm: Assembly-CSharp}
       data:
         ParentWeapon: {fileID: 0}
+        ProjectileFinalPoints: []
+        ProjectileExitPoints: []
         AsyncAttackInProgress: 0
         Projectiles: []
-        ExitPoint: {fileID: 0}
-        FinalPoint: {fileID: 0}
     00000001:
-      type: {class: SplineAttackProperties, ns: , asm: Assembly-CSharp}
+      type: {class: OneSplineFromOriginToTarget, ns: , asm: Assembly-CSharp}
       data:
         ParentWeapon: {fileID: 0}
         MainTarget: {fileID: 0}
@@ -7729,7 +7665,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1696303028
 GameObject:
@@ -7816,38 +7752,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28357eec19cb4242891a4e0436a641e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: PlayerControl
-      Entry: 6
-      Data: 
-    - Name: towerSlotsWithPositions
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.Vector2, UnityEngine.CoreModule],[TowerSlotController,
-        Assembly-CSharp]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[UnityEngine.Vector2,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
   SecondDiscoveryRangeMultiplier: 5
   SecondDiscoveryRange: 0
   RangeDrawer: {fileID: 609893254}
@@ -8203,7 +8107,7 @@ PrefabInstance:
     - target: {fileID: 7037164978080949391, guid: cab4a7aa26fdfb54a89bb1b047f58bf5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 7037164978080949391, guid: cab4a7aa26fdfb54a89bb1b047f58bf5,
         type: 3}
@@ -10882,7 +10786,7 @@ PrefabInstance:
     - target: {fileID: 7367793775600174100, guid: 3ad66c7245385a94e8b06bb4e04b86f2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7367793775600174100, guid: 3ad66c7245385a94e8b06bb4e04b86f2,
         type: 3}
@@ -10974,7 +10878,7 @@ PrefabInstance:
     - target: {fileID: 4584915094406051469, guid: ea74d1b1b162f434e853439ab362fc6d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 4584915094406051469, guid: ea74d1b1b162f434e853439ab362fc6d,
         type: 3}
@@ -11120,7 +11024,7 @@ PrefabInstance:
     - target: {fileID: 6892659532509377283, guid: bb2436c6546a1c542a53192bd2a46d4d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6892659532509377283, guid: bb2436c6546a1c542a53192bd2a46d4d,
         type: 3}
@@ -11466,7 +11370,7 @@ PrefabInstance:
     - target: {fileID: 7929002344866318311, guid: fe37bb6951d0f8a43b55b3c5754f0214,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7929002344866318311, guid: fe37bb6951d0f8a43b55b3c5754f0214,
         type: 3}

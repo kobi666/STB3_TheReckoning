@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 public class AnimationController : MonoBehaviour
 {
 
-    public AnimationClip Clip = null;
+    public AnimationClip Clip;
     
     public AnimancerState CurrentAnimationState;
     public void PlaySingleAnimation(AnimationClip clip) {
@@ -30,6 +30,12 @@ public class AnimationController : MonoBehaviour
     public void PlayLoopingAnimation(AnimationClip clip) {
         if (clip != null) {
         CurrentAnimationState = animancer.Play(clip);
+        }
+    }
+    
+    public void PlayLoopingAnimation() {
+        if (Clip != null) {
+            CurrentAnimationState = animancer.Play(Clip);
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using Sirenix.OdinInspector;
 
-public class SelectorTest2 : SerializedMonoBehaviour
+public class SelectorTest2 : MonoBehaviour
 {
 
     float FirstDiscoveryRange;

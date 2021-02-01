@@ -22,6 +22,7 @@ public class AOEBehavior
         {
             if (aoeController != null)
             {
+                aoeController.Range = AOESize;
                 foreach (var aoeEffect in Effects)
                 {
                     aoeEffect.InitEffect(AoeControllers);

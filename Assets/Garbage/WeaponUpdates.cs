@@ -10,8 +10,8 @@ public interface IHasEffects
 
 public interface IHasEffectAnimation
 {
-    EffectAnimationController EffectAnimationController { get; set; }
-    void InitEffectAnimation(AnimationClip animationClip);
+    List<EffectAnimationController> EffectAnimationControllers { get; set; }
+    void InitEffectAnimation();
 }
 
 

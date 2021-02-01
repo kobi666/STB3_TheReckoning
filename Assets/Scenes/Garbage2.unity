@@ -752,6 +752,7 @@ MonoBehaviour:
         Targets: []
         TargetsNames: []
         EffectInProgress: 0
+        AnimationClip: {fileID: 7400000, guid: 90c1144721e9a234babf34d45394ecd5, type: 2}
       DelayInAttackStartms: 5
       AOESize: 1
     AOESize: 1
@@ -3491,6 +3492,7 @@ MonoBehaviour:
         Targets: []
         TargetsNames: []
         EffectInProgress: 0
+        AnimationClip: {fileID: 0}
       DelayInAttackStartms: 5
       AOESize: 1
     AOESize: 1
@@ -5749,6 +5751,7 @@ MonoBehaviour:
             AOE: 0
           ProjectileBase: {fileID: 5907068859232098816, guid: d813ad87313d18d44be4fa1af9e6195a,
             type: 3}
+          OnHitAnimation: {fileID: 0}
     00000001:
       type: {class: OneSplineFromOriginToTarget, ns: , asm: Assembly-CSharp}
       data:
@@ -10138,7 +10141,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 0.38, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -10154,7 +10157,7 @@ Animator:
   m_GameObject: {fileID: 1738414120}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: af6729299f2b17c43a8003037a89acd6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5da2187ccdecc6a4ea3d90b8e29929d4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -10920,7 +10923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1856956669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11184,7 +11187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &2003727841
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11229,7 +11232,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.49, y: 0.49}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -11247,8 +11250,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e4d6022e1f71842bf5711bd2d9d629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extEffectInUse: 0
   SpriteRenderer: {fileID: 0}
   AnimancerComponent: {fileID: 0}
+  AnimationController: {fileID: 0}
 --- !u!114 &2003727843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11273,7 +11278,7 @@ Animator:
   m_GameObject: {fileID: 2003727840}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ba0d20e30e8ff524eb36317e34f28403, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

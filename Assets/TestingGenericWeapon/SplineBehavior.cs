@@ -7,7 +7,7 @@ using Sirenix.Serialization;
 using UnityEngine;
 
 [System.Serializable]
-public class SplineBehavior : IhasExitAndFinalPoint
+public class SplineBehavior : IhasExitAndFinalPoint,IHasEffectAnimation
 {
     [Required]
     public SplineController SplineController;
@@ -24,8 +24,6 @@ public class SplineBehavior : IhasExitAndFinalPoint
 
     private Vector2 initialExitPointPos;
     private Vector2 initialFinalPointpos;
-    public AnimationClip OnHitSingleAnimation;
-    public AnimationClip OnHitContinuousAnimation;
 
     [TypeFilter("GetSplineEffects")] [GUIColor(0.3f, 0.8f, 0.8f, 1f)][SerializeReference]
     public List<SplineEffect> SplineEffect = new List<SplineEffect>();
@@ -148,6 +146,8 @@ public class SplineBehavior : IhasExitAndFinalPoint
                 onConcurrentAttack += effect.OnEffectTrigger;
             }
         }
+
+        InitEffectAnimation();
     }
     
     [ShowInInspector]
@@ -190,5 +190,21 @@ public class SplineBehavior : IhasExitAndFinalPoint
     public void SetInitialExitPointPosition()
     {
         
+    }
+
+    
+    public AnimationClip SplineEndAnimation;
+    public List<EffectAnimationController> EffectAnimationControllers { get; set; } = new List<EffectAnimationController>();
+    public void InitEffectAnimation()
+    {
+        if (SplineEndAnimation != null)
+        {
+            EffectAnimationController eac = GameObjectPool.Instance.GetEffectAnimationQueue().Get();
+            eac.AnimationClip = SplineEndAnimation;
+            EffectAnimationControllers.Add(eac);
+            SplineMovement.onFinalPointUpdate += EffectAnimationControllers[0].MoveToPosition;
+            onBehaviorStart += delegate(Effectable effectable, Vector2 vector2) { eac.PlayLoopingAnimation();  };
+            onBehaviorEnd += eac.StopEffectAnimation;
+        }
     }
 }

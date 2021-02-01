@@ -10,7 +10,7 @@ using Sirenix.Serialization;
 
 [System.Serializable]
 [BoxGroup]
-public class ProjectileEffect
+public class ProjectileEffect 
 {
     public float ProjectileLifeTime = 3f;    //public ProjectileMovementFunction MovementFunctions = new ProjectileMovementFunction();
     public bool OnHitEffect;

@@ -40,11 +40,13 @@ public class GameObjectPool : MonoBehaviour
         return null;
     }
     
-    public PoolObjectQueue<EffectAnimationController> GetEffectAnimationQueue() {
+    public PoolObjectQueue<EffectAnimationController> GetEffectAnimationQueue()
+    {
+        
         if (EffectAnimationPoolQueue.IsNullOrEmpty())
         {
             GameObject eac = new GameObject();
-            eac.name = "EffectAnimation";
+            eac.name = EffectAnimationController.DefaultName;
             eac.AddComponent<SpriteRenderer>();
             eac.AddComponent<AnimancerComponent>();
             eac.GetOrAddComponent<AnimationController>();
@@ -52,10 +54,7 @@ public class GameObjectPool : MonoBehaviour
             CreateNewObjectQueue<EffectAnimationController>(EffectAnimationPoolQueue,effectAnimationController);
             return EffectAnimationPoolQueue[eac.name];
         }
-        else
-        {
-            return EffectAnimationPoolQueue["EffectAnimation"];
-        }
+        return EffectAnimationPoolQueue[EffectAnimationController.DefaultName];
     }
     
     public PoolObjectQueue<Projectile> GetProjectileQueue(Projectile prefab) {

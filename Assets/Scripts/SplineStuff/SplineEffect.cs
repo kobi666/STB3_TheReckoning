@@ -77,16 +77,16 @@ public class SplineEffect
             if (MainTargetEffect)
             {
                 t_targets = TargetBank.Targets.Values.ToArray();
-                foreach (var t in t_targets)
+                foreach (var tef in t_targets)
                 {
-                    if (t.name == ef.name)
+                    if (tef.name == ef.name)
                     {
                         continue;
                     }
 
-                    if (t?.IsTargetable() ?? false)
+                    if (tef?.IsTargetable() ?? false)
                     {
-                        onPathEffect?.Invoke(t,targetPos);
+                        onPathEffect?.Invoke(tef,targetPos);
                     }
                 }
             }
@@ -241,10 +241,10 @@ public class SplineEffect
         onEffectEnd += delegate { SingleEffectHappened = false; };
 
     }
-    
-    
-    
-    
+
     
 
+
+    
+    
 }

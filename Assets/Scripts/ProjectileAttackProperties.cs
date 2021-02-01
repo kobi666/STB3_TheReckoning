@@ -16,7 +16,6 @@ public abstract class ProjectileAttackProperties : AttackProperties,IhasExitAndF
     [Required]
     public List<ProjectileExitPoint> ProjectileExitPoints = new List<ProjectileExitPoint>();
     
-
     public void InitializeAttackProperties(GenericWeaponController parentWeapon)
     {
         ParentWeapon = parentWeapon;
@@ -53,6 +52,7 @@ public abstract class ProjectileAttackProperties : AttackProperties,IhasExitAndF
             var position = fp.transform.position;
             Vector2 pos = (Vector2)position +
                           new Vector2(ParentWeapon.Data.componentRadius, position.y);
+            fp.transform.position = pos;
         }
     }
 

@@ -80,8 +80,10 @@ public class SplineMovementFunction
     public SplineController splineController;
     [HideInInspector]
     public ProjectileFinalPoint finalPoint;
-    private event Action<Vector2> onFinalPointMovement; 
+    public event Action<Vector2> onFinalPointMovement;
 
+
+    public event Action<Vector2> onFinalPointUpdate; 
     public void Initialize(SplineBehavior sb)
     {
         splineController = sb.SplineController;
@@ -106,6 +108,7 @@ public class SplineMovementFunction
     public void TeleportFinalPoint(Vector2 targetPosition)
     {
         finalPoint.transform.position = targetPosition;
+        onFinalPointUpdate?.Invoke(targetPosition);
         TargetPositionReached = true;
     }
 
@@ -114,12 +117,16 @@ public class SplineMovementFunction
         finalPoint.transform.position = exitPoint.transform.position;
         distanceCounter = 0;
     }
-
+    
+    
     public void FinalPointTravelToTarget(Vector2 targetPosition)
     {
         if (!ParentIsRotatingTowardsTarget) {
-            finalPoint.transform.position = Vector2.MoveTowards(finalPoint.transform.position, targetPosition,
+            Vector2 position = finalPoint.transform.position;
+            position = Vector2.MoveTowards(position, targetPosition,
                 TravelSpeed * StaticObjects.Instance.DeltaGameTime);
+            finalPoint.transform.position = position;
+            onFinalPointUpdate?.Invoke(position);
             if (!targetPositionReached)
             {
                 if (finalPoint.transform.position == (Vector3)targetPosition)

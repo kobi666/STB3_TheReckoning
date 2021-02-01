@@ -9,8 +9,11 @@ using System.Threading.Tasks;
 using Sirenix.Serialization;
 using UnityEditor;
 
-public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IActiveObject<GenericProjectile>
+public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IActiveObject<GenericProjectile>,IHasEffectAnimation
 {
+
+    public EffectAnimationController EffectAnimationController;
+    public AnimationClip OnHitAnimation;
     [SerializeReference]
     public ProjectileEffect BaseProjectileEffect;
 
@@ -190,8 +193,6 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
     }
 
     public SpriteRenderer SpriteRenderer;
-    public SingleAnimationObject OnHitAnimation;
-    PoolObjectQueue<SingleAnimationObject> onHitAnimationQueuePool;
 
     public Dictionary<string,Effectable> ActiveTargets => GameObjectPool.Instance.ActiveEffectables.Pool;
     ActiveObjectPool<GenericProjectile> activePool;
@@ -210,6 +211,71 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
     public event Action<Effectable,Vector2> onHitSingleTarget;
     public void OnHitSingleTarget(Effectable ef,Vector2 targetPos) {
         onHitSingleTarget?.Invoke(ef, ef?.transform.position ?? transform.position);
+    }
+
+    public List<EffectAnimationController> EffectAnimationControllers { get; set; } = new List<EffectAnimationController>();
+
+    /*public void InitEffectAnimation()
+    {
+        if (OnHitAnimation != null)
+        {
+            EffectAnimationController = GameObjectPool.Instance.GetEffectAnimationQueue().Get();
+            EffectAnimationController.AnimationClip = OnHitAnimation;
+            if (BaseProjectileEffect.TriggersOnCollision)
+            {
+                onTargetHit += delegate(Effectable effectable, Vector2 vector2) { PlayAnimationOnce(effectable.transform.position); };
+            }
+
+            if (BaseProjectileEffect.OnPositionReachedEffect)
+                
+            {
+                onTargetPositionReachedEffect += delegate(Effectable effectable, Vector2 targetPos) {  PlayAnimationOnce(targetPos);};
+            }
+        }
+    }*/
+
+    void PlayAnimationOnHit(Effectable ef, Vector2 targetPos)
+    {
+        foreach (var eac in EffectAnimationControllers)
+        {
+            eac.PlayOnceAtPosition(ef.transform.position);
+        }
+    }
+
+    void PlayAnimationOnPosReached(Effectable ef, Vector2 pos)
+    {
+        foreach (var eac in EffectAnimationControllers)
+        {
+            eac.PlayOnceAtPosition(pos);
+        }
+    }
+    
+    public void InitEffectAnimation()
+    {
+        if (OnHitAnimation != null)
+        {
+            EffectAnimationController eac = GameObjectPool.Instance.GetEffectAnimationQueue().Get();
+            EffectAnimationControllers.Add(eac);
+            eac.transform.position = transform.position;
+            eac.AnimationClip = OnHitAnimation;
+            //EffectAnimationController = eac;
+
+            if (BaseProjectileEffect.TriggersOnCollision)
+            {
+                onTargetHit += PlayAnimationOnHit;
+            }
+
+            if (!BaseProjectileEffect.OnPositionReachedEffect)
+            {
+                onTargetPositionReachedEffect += PlayAnimationOnPosReached;
+            }
+        }
+    }
+
+
+    void PlayAnimationOnce(Vector2 targetPos)
+    {
+        EffectAnimationController.PlayOnceAtPosition(targetPos);
     }
 
 
@@ -321,14 +387,10 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
 
     protected void Start()
     {
-        //onTargetPositionReached += delegate { targetPositionSet = false; };
+        EffectAnimationController = GameObjectPool.Instance.GetEffectAnimationQueue().Get();
         onHitCounterZero += delegate {gameObject.SetActive(false);};
-        
-        if (OnHitAnimation != null) {
-            onHitAnimationQueuePool = GameObjectPool.Instance.GetSingleAnimationObjectQueue(OnHitAnimation);
-            onTargetHit += delegate(Effectable effectable,Vector2 targetPos) { PlayOnHitAnimation(effectable); };
-        }
         gameObject.tag = TypeTag;
+        
     }
 
     //public EffectableTargetBank TargetBank {get;set;}
@@ -354,38 +416,22 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
     
     public float Speed {get => Data.Speed ; set {Data.Speed = value;}}
     public int Damage { get => Data.Damage ; set {Data.Damage = value;}}
-
     
-
-    public void PlayOnHitAnimation(Effectable ef) {
-        SingleAnimationObject sao = onHitAnimationQueuePool.Get();
-        sao.transform.position = transform.position;
-        sao.gameObject.SetActive(true);
-        sao.PlayOnceAndDisable();
-    }
-
-    public void PlayOnHitAnimationAtPosition(Effectable effectable, Vector2 TargetPosition) {
-        SingleAnimationObject sao = onHitAnimationQueuePool.Get();
-        sao.transform.position = TargetPosition;
-        sao.gameObject.SetActive(true);
-        sao.PlayOnceAndDisable();
-    }
+    
 
     public void InitProjectile()
     {
+        InitEffectAnimation();
         if (BaseProjectileEffect != null)
         {
             InitProjectileEffects();
             initAOEProperties();
         }
-
         if (BaseProjectileEffect == null)
         {
 
             Debug.LogWarning("Init projectile called with effect null");
         }
-
-
         if (MovementFunction != null)
         {
             InitProjectileMovement();
@@ -400,6 +446,8 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
         MovementFunction.onPositionReached += OnTargetPositionReached;
         
         projectileInitlized = true;
+        
+        
     }
 
     void Disable()
@@ -434,7 +482,5 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
     }
 
 
-
-
-
+    
 }

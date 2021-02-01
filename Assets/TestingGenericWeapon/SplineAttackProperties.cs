@@ -206,13 +206,8 @@ public class LeapingSplines : SplineAttackProperties
 
                 if (TrackingAllTargets)
                 {
-                    for (int i = 0; i < LeapingTargets.Count; i++)
+                    for (int i = 0; i < LeapingTargets.Count - 1; i++)
                     {
-                        if (i >= LeapingTargets.Count - 1)
-                        {
-                            continue;
-                        }
-
                         if (LeapingTargets.Values.ToArray()[i].Item1 != null)
                         {
                             leapingPosisitions[i] = LeapingTargets.Values.ToArray()[i].Item1.transform.position;

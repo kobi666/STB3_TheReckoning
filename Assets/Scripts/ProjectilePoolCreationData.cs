@@ -8,13 +8,15 @@ using Random = UnityEngine.Random;
 
 [HideLabel]
 [System.Serializable]
-public class ProjectilePoolCreationData
+public class ProjectilePoolCreationData : IHasEffectAnimation
 {
     [TypeFilter("GetMovementFunctions")][SerializeReference]
     public ProjectileMovementFunction projectileMovement;
 
     [HideLabel] public ProjectileEffect projectileEffect;
     public GenericProjectile ProjectileBase;
+    public AnimationClip OnHitAnimation = null;
+    
     static Vector3 nowhere = new Vector3(9999,9999,9999);
     private PoolObjectQueue<GenericProjectile> projectilePool;
     
@@ -43,7 +45,7 @@ public class ProjectilePoolCreationData
         GenericProjectile proj = GameObject.Instantiate(ProjectileBase, nowhere, Quaternion.identity);
         proj.BaseProjectileEffect = projectileEffect;
         proj.MovementFunction = projectileMovement;
-        proj.InitProjectile();
+        proj.OnHitAnimation = OnHitAnimation;
         proj.gameObject.SetActive(true);
         proj.name = ProjectileBase + "_" + Random.Range(0, 999999);
         GameObject placeholder = GameObject.Instantiate(new GameObject(), Vector3.zero, Quaternion.identity,
@@ -52,6 +54,7 @@ public class ProjectilePoolCreationData
         proj.gameObject.SetActive(false);
         PoolObjectQueue<GenericProjectile> pool = new PoolObjectQueue<GenericProjectile>(proj, 10, placeholder);
         //pool.ObjectQueue.Enqueue(proj);
+        proj.InitProjectile();
         projectilePool = pool;
         return pool;
     }
@@ -61,6 +64,7 @@ public class ProjectilePoolCreationData
         proj.BaseProjectileEffect = projectileEffect;
         proj.MovementFunction = projectileMovement;
         proj.gameObject.SetActive(true);
+        proj.OnHitAnimation = OnHitAnimation;
         proj.name = ParentName + "_" + ProjectileBase.name + "_" + Random.Range(0, 999999);
         GameObject placeholder = GameObject.Instantiate(new GameObject(), Vector3.zero, Quaternion.identity,
             GameObjectPool.Instance.transform);
@@ -70,5 +74,11 @@ public class ProjectilePoolCreationData
         //pool.ObjectQueue.Enqueue(proj);
         projectilePool = pool;
         return pool;
+    }
+
+    public List<EffectAnimationController> EffectAnimationControllers { get; set; } = new List<EffectAnimationController>();
+    public void InitEffectAnimation()
+    {
+        
     }
 }

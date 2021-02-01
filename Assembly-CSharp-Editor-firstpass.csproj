@@ -653,6 +653,9 @@
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.2D.Animation.Runtime">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
@@ -668,20 +671,50 @@
  <Reference Include="Unity.Timeline">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.2D.Animation.Triangle.Runtime">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="PsdPlugin">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Mathematics">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Psdimporter.Editor">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.InternalAPIEngineBridge.001">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Common.Runtime">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Animation.Editor">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VisualStudio.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Mathematics.Editor">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.TextMeshPro">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Common.Editor">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.InternalAPIEditorBridge.001">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
@@ -691,6 +724,10 @@
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{128c3589-08ae-d1d3-d7b1-488de5f10c72}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="Sirenix.OdinInspector.Modules.UnityMathematics.csproj">
+      <Project>{f5e8b68c-a276-5883-3300-b9a0a74e665e}</Project>
+      <Name>Sirenix.OdinInspector.Modules.UnityMathematics</Name>
     </ProjectReference>
     <ProjectReference Include="UniRx.csproj">
       <Project>{25802a85-b3b3-cd9a-eb46-51e86eaeebb4}</Project>

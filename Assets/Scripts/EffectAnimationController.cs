@@ -7,15 +7,25 @@ using UnityEngine;
 [RequireComponent(typeof(AnimancerComponent),typeof(Animator),typeof(AnimationController))]
 public class EffectAnimationController : MonoBehaviour,IQueueable<EffectAnimationController>
 {
+    [HideInInspector] public bool extEffectInUse;
+    private int sortingOrderInt;
+    public static string DefaultName = "EffectAnimationController";
     public SpriteRenderer SpriteRenderer;
     public AnimancerComponent AnimancerComponent;
     public AnimationController AnimationController;
     public Type QueueableType { get; set; }
     public PoolObjectQueue<EffectAnimationController> QueuePool { get; set; }
-    public AnimationClip AnimationClip
-    {
+
+    public AnimationClip AnimationClip {
+    
         get => AnimationController.Clip;
         set => AnimationController.Clip = value;
+    }
+
+
+    public void MoveToPosition(Vector2 pos)
+    {
+        transform.position = pos;
     }
 
     private bool animationInProgress = false;
@@ -37,9 +47,19 @@ public class EffectAnimationController : MonoBehaviour,IQueueable<EffectAnimatio
         }
     }
 
+    public void StopEffectAnimation()
+    {
+        AnimationController.animancer.Stop();
+    }
+
     public void PlayAnimationOnce()
     {
-        
+        AnimationController.PlaySingleAnimation(AnimationClip);
+    }
+
+    public void PlayLoopingAnimation()
+    {
+        AnimationController.PlayLoopingAnimation();
     }
 
     private float AnimationTimeCounter = 0;
@@ -66,6 +86,8 @@ public class EffectAnimationController : MonoBehaviour,IQueueable<EffectAnimatio
         SpriteRenderer = GetComponent<SpriteRenderer>();
         AnimancerComponent = GetComponent<AnimancerComponent>();
         AnimationController = GetComponent<AnimationController>();
+        sortingOrderInt = SortingLayer.NameToID("Projectiles");
+        SpriteRenderer.sortingLayerID = sortingOrderInt;
     }
 
     public void PlayOnceAtPosition(Vector2 targetPos)

@@ -6,7 +6,7 @@ using Sirenix;
 using Sirenix.OdinInspector;
 
 [RequireComponent(typeof(LineRenderer))]
-public class RangeDrawer : SerializedMonoBehaviour
+public class RangeDrawer : MonoBehaviour
 {
     public LineRenderer LineRenderer;
     public float LineWidth;

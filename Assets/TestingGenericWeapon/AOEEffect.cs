@@ -6,9 +6,10 @@ using Sirenix.Serialization;
 using UnityEngine;
 using System;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 [Serializable]
-public class AOEEffect 
+public class AOEEffect : IHasEffectAnimation
 {
     [TypeFilter("GetFilteredTypeList")][SerializeReference]
     public List<Effect> Effects;
@@ -83,6 +84,7 @@ public class AOEEffect
     
     public async void ApplyEffectOnce()
     {
+        //change later to field based delay
         await Task.Delay(50);
         GetTargets();
         if (Targets != null)
@@ -105,6 +107,7 @@ public class AOEEffect
     }
     public async void ApplyEffectForDuration()
     {
+        //change later to field based delay
         await Task.Delay(5);
         if (!EffectInProgress)
         {
@@ -175,6 +178,57 @@ public class AOEEffect
         {
             onAOEEffect += ApplyEffectOnce;
         }
+
+        InitEffectAnimation();
     }
-    
+
+    void PlayAOEEffectAnimationOverTime()
+    {
+        foreach (var eac in EffectAnimationControllers)
+        {
+            eac.PlayAnimationForDuration(EffectDuration);
+        }
+    }
+
+    void PlayEffectAnimationOnce()
+    {
+        foreach (var eac in EffectAnimationControllers)
+        {
+            eac.PlayAnimationOnce();
+        }
+    }
+
+    public AnimationClip AnimationClip = null;
+    [ItemCanBeNull] public List<EffectAnimationController> EffectAnimationControllers { get; set; } = new List<EffectAnimationController>();
+    public void InitEffectAnimation()
+    {
+        if (AnimationClip != null)
+        {
+            foreach (var aoec in AoeControllers)
+            {
+                EffectAnimationController eac = GameObjectPool.Instance.GetEffectAnimationQueue().Get();
+                EffectAnimationControllers.Add(eac);
+                var transform = aoec.transform;
+                eac.transform.position = transform.position;
+                eac.transform.localScale = new Vector2(aoec.Range,aoec.Range);
+                eac.transform.parent = transform;
+            }
+
+            foreach (var eac in EffectAnimationControllers)
+            {
+                eac.AnimationClip = AnimationClip;
+            }
+            
+             
+            if (EffectOverTime)
+            {
+                onAOEEffect += PlayAOEEffectAnimationOverTime;
+            }
+
+            if (!EffectOverTime)
+            {
+                onAOEEffect += PlayEffectAnimationOnce;
+            }
+        }
+    }
 }
