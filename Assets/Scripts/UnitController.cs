@@ -2,12 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 using Animancer;
+using Sirenix.OdinInspector;
 
 [RequireComponent(typeof(UnitAnimationController))]
 
-public abstract class UnitController : MonoBehaviour,IQueueable<UnitController>,IActiveObject<UnitController>
+[Serializable]
+public abstract class UnitController : MonoBehaviour,IQueueable<UnitController>,IActiveObject<UnitController>,IHasEffects
 {
+    [TypeFilter("GetEffects")][SerializeReference]
+    public List<Effect> AttackEffects = new List<Effect>();
+    
+    
+    
+    private static IEnumerable<Type> GetEffects()
+    {
+        var q = typeof(Effect).Assembly.GetTypes()
+            .Where(x => !x.IsAbstract) // Excludes BaseClass
+            .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
+            .Where(x => x.IsSubclassOf(typeof(Effect))); // Excludes classes not inheriting from BaseClass
+        
+        return q;
+    }
+    
     public Type QueueableType {get;set;}
     public virtual void OnEnqueue() {}
     public ActiveObjectPool<UnitController> activePool;
@@ -139,7 +157,14 @@ public abstract class UnitController : MonoBehaviour,IQueueable<UnitController>,
         GameObjectPool.Instance.RemoveObjectFromAllPools(name,name);
     }
 
-    
 
-    
+    public List<Effect> GetEffectList()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void UpdateEffect(Effect ef, List<Effect> appliedEffects)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -4,8 +4,20 @@ using UnityEngine;
 using System;
 using Animancer;
 
-public abstract class PlayerUnitController : UnitController,ITypeTag,IActiveObject<PlayerUnitController>
+public abstract class PlayerUnitController : UnitController,ITypeTag,IActiveObject<PlayerUnitController>,IQueueable<PlayerUnitController>
 {
+
+
+    public void ApplyEffectOnTarget()
+    {
+        foreach (var ef in AttackEffects)
+        {
+            ef.Apply(Data.EffectableTarget,Data.EffectableTarget.transform.position);
+        }
+    }
+    
+    
+    
     static string Tag = "Player_Unit";
     public string TypeTag {get => Tag;}
     private int unitBaseIndex = 0;
@@ -86,4 +98,14 @@ public abstract class PlayerUnitController : UnitController,ITypeTag,IActiveObje
 
 
     public ActiveObjectPool<PlayerUnitController> ActivePool { get; set; }
+    public PoolObjectQueue<PlayerUnitController> QueuePool { get; set; }
+    public List<Effect> GetEffectList()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void UpdateEffect(Effect ef, List<Effect> appliedEffects)
+    {
+        throw new NotImplementedException();
+    }
 }

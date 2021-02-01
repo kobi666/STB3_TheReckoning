@@ -26,8 +26,8 @@ public class PlayerUnitUtils
     }
 
     public static void AttackEnemyUnit(PlayerUnitController self) {
-        self.Data.EffectableTarget?.ApplyDamage(self.Data.DamageRange.RandomDamage());
-        //self.Target?.LifeManager.DamageToUnit(self.Data.DamageRange.RandomDamage());
+        //self.Data.EffectableTarget?.ApplyDamage(self.Data.DamageRange.RandomDamage());
+        self.ApplyEffectOnTarget();
     }
     
     public static bool StandardIsTargetable(PlayerUnitController pc) {

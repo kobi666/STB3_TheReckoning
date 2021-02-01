@@ -128,7 +128,7 @@ public abstract class PlayerUnitSpawner : TowerComponent
         DeathManager.Instance.onPlayerUnitDeath += OnUnitDeath;
         onUnitDeath += RemoveUnitFromIndex;
         RallyPoint = GetComponentInChildren<PlayerUnitRallyPoint>() ?? null;
-        RallyPoint.transform.position = ParentTowerSlot.lowestProximityPointFound;
+        RallyPoint.transform.position = ParentTowerSlot?.lowestProximityPointFound ?? transform.position;
         SpawningPointComponent = GetComponentInChildren<PlayerUnitSpawningPoint>() ?? null;
         for (int i = 0 ; i < Data.SpawnerData.maxUnits ; i++) {
             SpawnPlayerUnitAndAddToIndex(i);
