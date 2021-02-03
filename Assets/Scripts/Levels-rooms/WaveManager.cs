@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    public UnitController TestPrefab;
+    public EnemyUnitController TestPrefab;
     Wave TestWave = new Wave(3);
     public static WaveManager Instance;
     public List<GameObject> Paths;

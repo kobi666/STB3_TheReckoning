@@ -276,6 +276,7 @@
      <Compile Include="Assets\Scripts\Units\NormalUnitStates.cs" />
      <Compile Include="Assets\Scripts\Units\PlayerUnitAfterEffects.cs" />
      <Compile Include="Assets\Scripts\Units\PlayerUnitController.cs" />
+     <Compile Include="Assets\Scripts\Units\PlayerUnitPoolCreationData.cs" />
      <Compile Include="Assets\Scripts\Units\PlayerUnitUtils.cs" />
      <Compile Include="Assets\Scripts\Units\StateDebug.cs" />
      <Compile Include="Assets\Scripts\Units\StateMachine.cs" />
@@ -331,6 +332,7 @@
      <Compile Include="Assets\betterEventTest.cs" />
      <Compile Include="Assets\instantiateTest.cs" />
      <Compile Include="Assets\instantiateTestspawner.cs" />
+     <Compile Include="Assets\pathGeneratorTest.cs" />
      <Compile Include="Assets\test12.cs" />
      <Compile Include="Assets\test13.cs" />
      <Compile Include="Assets\test16.cs" />

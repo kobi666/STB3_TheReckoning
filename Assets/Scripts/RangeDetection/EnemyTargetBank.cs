@@ -59,9 +59,12 @@ public class EnemyTargetBank : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Enemy")) {
-        tempEc = GameObjectPool.Instance.ActiveUnitPool.Pool[other.name] as EnemyUnitController ;
-        AddObjectToTargets(tempEc);
-        targetEnteredRange?.Invoke(tempEc);
+            if (GameObjectPool.Instance.ActiveUnitPool.Pool.ContainsKey(other.name))
+            {
+                tempEc = GameObjectPool.Instance.ActiveUnitPool.Pool[other.name] as EnemyUnitController;
+                AddObjectToTargets(tempEc);
+                targetEnteredRange?.Invoke(tempEc);
+            }
         }
     }
 

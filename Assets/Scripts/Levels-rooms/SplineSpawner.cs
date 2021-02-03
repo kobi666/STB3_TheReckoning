@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using BezierSolution;
 using UnityEngine;
 
 public class SplineSpawner : MonoBehaviour
@@ -7,7 +8,7 @@ public class SplineSpawner : MonoBehaviour
     // Start is called before the first frame update
     WaveManager _waveManager = WaveManager.Instance;
     public GameObject TestEnemyPrefab;
-   public GameObject PathsParentObject;
+   public pathGeneratorTest PathsParentObject;
 
    public IEnumerator StartWave(Wave _wave) {
        foreach (Subwave s in _wave.Subwaves) {
@@ -19,19 +20,19 @@ public class SplineSpawner : MonoBehaviour
    }
 
    [SerializeField]
-   List<GameObject> _splineGOs;
+   List<BezierSpline> _splineGOs;
    List<BezierSolution.BezierSpline> Splines = new List<BezierSolution.BezierSpline>();
    public List<Vector2> _initialPoints;
-   List<Vector2> InitilizeInitPoints(List<GameObject> SplineGoList) {
+   List<Vector2> InitilizeInitPoints(List<BezierSpline> SplineGoList) {
        List<Vector2> list = new List<Vector2>();
-       foreach (GameObject SplineGO in SplineGoList)
+       foreach (var SplineGO in SplineGoList)
        {
-           list.Add(SplineGO.GetComponent<BezierSolution.BezierSpline>()._EndPoints[0].transform.position);
+           list.Add(SplineGO._EndPoints[0].transform.position);
        }
        return list;
        }
    
-   public List<GameObject> SplineGOs {
+   public List<BezierSpline> SplineGOs {
        
        get => _splineGOs;
        set {
@@ -56,13 +57,13 @@ public class SplineSpawner : MonoBehaviour
         //yield return new WaitForSeconds(_subwave._timeToSpawnEntireSubwave());
    }
 
-   public void SpawnEnemyToSpline(GameObject _enemyGO, GameObject _spline, Vector2 _position) {
+   public void SpawnEnemyToSpline(GameObject _enemyGO, BezierSpline _spline, Vector2 _position) {
        GameObject E = GameObject.Instantiate(_enemyGO, _position, Quaternion.identity);
        E.name = (E.name + Random.Range(10000, 99999).ToString());
        E.GetComponent<BezierSolution.UnitWalker>().spline = _spline.GetComponent<BezierSolution.BezierSpline>();
    }
 
-   public void SpawnEnemyToSplineFromQueue(PoolObjectQueue<UnitController> queue, BezierSolution.BezierSpline spline) {
+   public void SpawnEnemyToSplineFromQueue(PoolObjectQueue<EnemyUnitController> queue, BezierSolution.BezierSpline spline) {
        UnitController unit = queue.Get();
        unit.gameObject.SetActive(true);
        unit.Walker.spline = spline;
@@ -98,10 +99,10 @@ public class SplineSpawner : MonoBehaviour
         yield break;
     }
 
-    public IEnumerator SpawnEnemiesToSplineFromQueueAtInterval_RandomSpline (int numberOfEnemies, float intervalBetweenSpawns, UnitController enemyPrefab) {
-        PoolObjectQueue<UnitController> queue = GameObjectPool.Instance.GetUnitQueue(enemyPrefab);
+    public IEnumerator SpawnEnemiesToSplineFromQueueAtInterval_RandomSpline (int numberOfEnemies, float intervalBetweenSpawns, EnemyUnitController enemyPrefab) {
+        PoolObjectQueue<EnemyUnitController> queue = GameObjectPool.Instance.GetUnitQueue(enemyPrefab);
         for (int i = 0 ; i < numberOfEnemies ; i++) {
-            int r = Random.Range(0,Splines.Count -1);
+            int r = Random.Range(0,Splines.Count);
             SpawnEnemyToSplineFromQueue(queue, Splines[r]);
             yield return new WaitForSeconds(intervalBetweenSpawns);
         }
@@ -113,14 +114,13 @@ public class SplineSpawner : MonoBehaviour
 
 
    private void Awake() {
-       PathsParentObject = gameObject.transform.parent.gameObject;
-       foreach (var item in PathsParentObject.GetComponentsInChildren<BezierSolution.BezierSpline>())
-       {
-           SplineGOs.Add(item.gameObject);
-       }
+       
    }
 
-   private void Start() {
+   private void Start()
+   {
+       PathsParentObject = PathsParentObject ?? GetComponentInParent<pathGeneratorTest>();
+       SplineGOs = PathsParentObject.Splines;
        _initialPoints = InitilizeInitPoints(SplineGOs);
        foreach (var item in SplineGOs)
        {

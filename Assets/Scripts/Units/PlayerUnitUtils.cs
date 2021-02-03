@@ -60,7 +60,7 @@ public class PlayerUnitUtils
             attackAction?.Invoke();
             maxCounter = 0.0f;
             }
-            maxCounter += ((StaticObjects.Instance.DeltaGameTime * (PlayerUnitAfterEffects.instance.MeleeAttackRateWithMultiplier(attackRate)) / 10.0F));
+            maxCounter += ((StaticObjects.Instance.DeltaGameTime / 10.0F));
             yield return new WaitForFixedUpdate();
         }
         yield break;

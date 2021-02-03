@@ -14,9 +14,10 @@ public class PlayerResources : MonoBehaviour
     {
         get
         {
-            if (instantiated == false)
+            if (instance == null)
             {
                 GameObject g = new GameObject();
+                g.name = "PlayerResources";
                 g.AddComponent<PlayerResources>();
                 Instance = g.GetComponent<PlayerResources>();
             }

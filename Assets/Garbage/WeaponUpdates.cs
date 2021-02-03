@@ -30,3 +30,13 @@ public interface IhasExitAndFinalPoint
     void SetInitialExitPointPosition();
 
 }
+
+
+public interface ISpawnsPlayerUnits
+{
+    List<PlayerUnitPoolCreationData> Units { get; set; }
+    Dictionary<string, PoolObjectQueue<PlayerUnitController>> UnitPools { get; set; }
+
+    void InitPools();
+
+}

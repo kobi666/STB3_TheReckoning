@@ -8,7 +8,6 @@ using System;
 [System.Serializable]
 public class UnitData
 {
-    // Start is called before the first frame update
     public bool CanBeStoppedByOtherUnit;
     public Dictionary<string, GameObject> TargetsInRange;
     public int AttackRate;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
@@ -19,6 +20,17 @@ public enum EffectNames
 [System.Serializable]
 public class Effect
 {
+    public static IEnumerable<Type> GetEffects()
+    {
+        var q = typeof(Effect).Assembly.GetTypes()
+            .Where(x => !x.IsAbstract) // Excludes BaseClass
+            .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
+            .Where(x => x.IsSubclassOf(typeof(Effect))); // Excludes classes not inheriting from BaseClass
+        
+        return q;
+    }
+    
+    
     public virtual void UpdateEffectValues(Effect ef)
     {
         

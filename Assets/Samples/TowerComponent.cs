@@ -81,7 +81,7 @@ public abstract class TowerComponent : MonoBehaviour, IHasEffects,IHasRangeCompo
         //legacy
         parentTowerComponent = parentTowerComponent ?? GetComponentInParent<TowerComponent>() ?? null;
         ParentTowerLegacy =  ParentTowerLegacy ?? GetComponentInParent<TowerControllerLegacy>() ?? null;
-        ParentTowerSlot = ParentTowerLegacy.ParentSlotController ?? parentTowerComponent.ParentTowerLegacy.ParentSlotController ?? null;
+        ParentTowerSlot = parentTowerSlot ?? GetComponentInParent<TowerSlotController>() ?? null;
     }
 
     public abstract List<Effect> GetEffectList();

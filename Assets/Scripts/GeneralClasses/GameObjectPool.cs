@@ -9,7 +9,7 @@ public class GameObjectPool : MonoBehaviour
 {
     public Dictionary<string, PoolObjectQueue<RangeDetector>> RangeDetectorObjectPoolQueue = new Dictionary<string, PoolObjectQueue<RangeDetector>>();
     public Dictionary<string, PoolObjectQueue<Projectile>> ProjectilesObjectPoolQueue = new Dictionary<string, PoolObjectQueue<Projectile>>();
-    public Dictionary<string, PoolObjectQueue<UnitController>> UnitObjectPoolQueue = new Dictionary<string, PoolObjectQueue<UnitController>>();
+    public Dictionary<string, PoolObjectQueue<EnemyUnitController>> EnemyUnitObjectPoolQueue = new Dictionary<string, PoolObjectQueue<EnemyUnitController>>();
     public Dictionary<string, PoolObjectQueue<PathDiscoveryPoint>> PathDiscoveryPointObjectPoolQueue = new Dictionary<string, PoolObjectQueue<PathDiscoveryPoint>>();
 
     public Dictionary<string, PoolObjectQueue<GenericProjectile>> GenericProjectilesObjectPoolQueue = new Dictionary<string, PoolObjectQueue<GenericProjectile>>();
@@ -117,13 +117,13 @@ public class GameObjectPool : MonoBehaviour
         }
     }
 
-    public PoolObjectQueue<UnitController> GetUnitQueue(UnitController prefab) {
-        if (UnitObjectPoolQueue.ContainsKey(prefab.name)) {
-            return UnitObjectPoolQueue[prefab.name];
+    public PoolObjectQueue<EnemyUnitController> GetUnitQueue(EnemyUnitController prefab) {
+        if (EnemyUnitObjectPoolQueue.ContainsKey(prefab.name)) {
+            return EnemyUnitObjectPoolQueue[prefab.name];
         }
         else {
-            CreateNewObjectQueue<UnitController>(UnitObjectPoolQueue, prefab);
-            return UnitObjectPoolQueue[prefab.name];
+            CreateNewObjectQueue<EnemyUnitController>(EnemyUnitObjectPoolQueue, prefab);
+            return EnemyUnitObjectPoolQueue[prefab.name];
         }
     }
     public TargetUnit GetTargetUnit(string targetName) {

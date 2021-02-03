@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public abstract class EnemyUnitController : UnitController,ITypeTag
+public abstract class EnemyUnitController : UnitController,ITypeTag,IQueueable<EnemyUnitController>
 {
     public bool ShouldGiveMoneyzOnDeath = true;
     public int MoneyzAmount;
@@ -62,7 +62,7 @@ public abstract class EnemyUnitController : UnitController,ITypeTag
         //States.Death.OnEnterState += Unit
         LateStart();
     }
-    
-    
-    
+
+
+    public PoolObjectQueue<EnemyUnitController> QueuePool { get; set; }
 }

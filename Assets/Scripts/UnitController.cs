@@ -9,7 +9,7 @@ using Sirenix.OdinInspector;
 [RequireComponent(typeof(UnitAnimationController))]
 
 [Serializable]
-public abstract class UnitController : MonoBehaviour,IQueueable<UnitController>,IActiveObject<UnitController>,IHasEffects
+public abstract class UnitController : MonoBehaviour,IActiveObject<UnitController>,IHasEffects
 {
     [TypeFilter("GetEffects")][SerializeReference]
     public List<Effect> AttackEffects = new List<Effect>();
@@ -34,10 +34,7 @@ public abstract class UnitController : MonoBehaviour,IQueueable<UnitController>,
     public float Proximity {
         get => Walker?.ProximityToEndOfSplineFunc() ?? 90210.0f;
     }
-
-
-    PoolObjectQueue<UnitController> queuePool;
-    public PoolObjectQueue<UnitController> QueuePool {get => queuePool;set{queuePool = value;}}
+    
     bool spriteXDirection;
     public bool SpriteXDirection {
         get => spriteXDirection;
@@ -113,7 +110,7 @@ public abstract class UnitController : MonoBehaviour,IQueueable<UnitController>,
     /////TESTTTTT DELETE MEEEE
     public IEnumerator DieAfterTwoSeconds() {
         yield return new WaitForSeconds(2.0f);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
     
     private void Awake() {

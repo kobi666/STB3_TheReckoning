@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public abstract class PlayerUnitSpawner : TowerComponent
+[Serializable]
+public class PlayerPlayerUnitSpawner : TowerComponent
 {
-    
     public bool ExternalSpawningLock = false;
     public virtual bool CanSpawn() {
         if (ExternalSpawningLock != true) {
@@ -74,7 +74,7 @@ public abstract class PlayerUnitSpawner : TowerComponent
 
     Dictionary<int,IEnumerator> SpawningCoroutines = new Dictionary<int, IEnumerator>();
     IEnumerator SpawnPlayerUnitAfterCounterAndAddToIndexWithCounter(int unitBaseIndex) {
-        float counter = 0;
+        /*float counter = 0;
         while (this != null) {
             counter += StaticObjects.Instance.DeltaGameTime;
             if (counter >= Data.SpawnerData.playerUnitSpawnTime) {
@@ -88,11 +88,12 @@ public abstract class PlayerUnitSpawner : TowerComponent
                 yield break;
             }
             yield return new WaitForFixedUpdate();
-        }
+        }*/
+        return null;
     }
 
     public void SpawnPlayerUnitAndAddToIndex(int unitBaseIndex) {
-            PlayerUnitController puc = PlayerUnitSpawnerUtils.SpawnPlayerUnit(Data.SpawnerData.playerUnitPrefab, SpawningPointPosition, unitBaseIndex);
+            /*//PlayerUnitController puc = PlayerUnitSpawnerUtils.SpawnPlayerUnitFromSpawner(this,unitBaseIndex);
             rallyPoint.transform.position = 
             puc.Data.SetPosition = GetRallyPoint(unitBaseIndex);
             try {
@@ -100,7 +101,7 @@ public abstract class PlayerUnitSpawner : TowerComponent
             }
             catch (Exception e) {
                 Debug.LogWarning(e.Message);
-            }
+            }*/
     }
 
 
@@ -117,10 +118,26 @@ public abstract class PlayerUnitSpawner : TowerComponent
     }}
 
 
+    public override void InitComponent()
+    {
+        
+    }
+
+    public override void PostAwake()
+    {
+        
+    }
+
+    protected void Awake()
+    {
+        base.Awake();
+        InitPools();
+    }
+
     public PlayerUnitSpawningPoint SpawningPointComponent;
     //Name, index, counter, Prefab
 //    Dictionary<string, (int,float,PlayerUnitController)> Units;
-    public abstract void PostStart();
+    
     protected void Start() {
         base.Start();
         onUnitDeath += invokeSpawnOnUnitDeath;
@@ -133,7 +150,44 @@ public abstract class PlayerUnitSpawner : TowerComponent
         for (int i = 0 ; i < Data.SpawnerData.maxUnits ; i++) {
             SpawnPlayerUnitAndAddToIndex(i);
         }
-        PostStart();
     }
     
+    public List<PlayerUnitPoolCreationData> units = new List<PlayerUnitPoolCreationData>();
+    public List<PlayerUnitPoolCreationData> Units { get => units;
+        set => units = value;
+    }
+    public Dictionary<string, PoolObjectQueue<PlayerUnitController>> UnitPools { get; set; } = new Dictionary<string, PoolObjectQueue<PlayerUnitController>>();
+    public void InitPools()
+    {
+        foreach (var unitdata in Units)
+        {
+            GameObject ph = new GameObject();
+            ph.name = "placeholder_" + unitdata.UnitPrefabBase.name;
+            ph.transform.parent = this.transform;
+            PlayerUnitController unitInstance = GameObject.Instantiate(unitdata.UnitPrefabBase);
+            unitInstance.transform.position = new Vector2(9999, 9999);
+            unitInstance.Data = unitdata.UnitData;
+            UnitPools.Add(unitdata.UnitPrefabBase.name, new PoolObjectQueue<PlayerUnitController>(unitInstance,5, ph));
+        }
+    }
+
+    public override List<Effect> GetEffectList()
+    {
+        return null;
+    }
+
+    public override void UpdateEffect(Effect ef, List<Effect> appliedEffects)
+    {
+        
+    }
+
+    public override List<TagDetector> GetRangeDetectors()
+    {
+        return null;
+    }
+
+    public override void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors)
+    {
+        base.UpdateRange(RangeSizeDelta, detectors);
+    }
 }

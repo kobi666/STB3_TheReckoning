@@ -396,13 +396,13 @@ public class SubWavePackage {
     [SerializeField]
     public float _intervalBetweenSpawns;
     public int _amountOfUnits;
-    public UnitController _unitPrefab;
+    public EnemyUnitController _unitPrefab;
     public string _splineOrder;
     public int _splinePosition;
     public float _timeToSpawnEntireSubwave() {
         return (_intervalBetweenSpawns * _amountOfUnits);
     }
-    public SubWavePackage(float IntervalBetweenSpawns, int AmountOfUnits, UnitController UnitPrefab, string SplineOrder ) {
+    public SubWavePackage(float IntervalBetweenSpawns, int AmountOfUnits, EnemyUnitController UnitPrefab, string SplineOrder ) {
         _intervalBetweenSpawns = IntervalBetweenSpawns;
         _amountOfUnits = AmountOfUnits;
         _unitPrefab = UnitPrefab;
@@ -410,7 +410,7 @@ public class SubWavePackage {
         _splinePosition = -1;
     }
 
-    public SubWavePackage(float IntervalBetweenSpawns, int AmountOfUnits, UnitController UnitPrefab, string SplineOrder, int SplinePosition ) {
+    public SubWavePackage(float IntervalBetweenSpawns, int AmountOfUnits, EnemyUnitController UnitPrefab, string SplineOrder, int SplinePosition ) {
         _intervalBetweenSpawns = IntervalBetweenSpawns;
         _amountOfUnits = AmountOfUnits;
         _unitPrefab = UnitPrefab;

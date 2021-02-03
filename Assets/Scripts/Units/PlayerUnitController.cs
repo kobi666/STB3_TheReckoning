@@ -6,8 +6,6 @@ using Animancer;
 
 public abstract class PlayerUnitController : UnitController,ITypeTag,IActiveObject<PlayerUnitController>,IQueueable<PlayerUnitController>
 {
-
-
     public void ApplyEffectOnTarget()
     {
         foreach (var ef in AttackEffects)
@@ -98,7 +96,9 @@ public abstract class PlayerUnitController : UnitController,ITypeTag,IActiveObje
 
 
     public ActiveObjectPool<PlayerUnitController> ActivePool { get; set; }
-    public PoolObjectQueue<PlayerUnitController> QueuePool { get; set; }
+
+    private PoolObjectQueue<PlayerUnitController> queuePool;
+    public PoolObjectQueue<PlayerUnitController> QueuePool { get => queuePool; set => queuePool = value; }
     public List<Effect> GetEffectList()
     {
         throw new NotImplementedException();
