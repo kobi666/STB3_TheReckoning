@@ -5,6 +5,7 @@ using UnityEngine;
 public class EffectableUnit : Effectable
 {
     public UnitController unitController;
+    public GenericUnitController GenericUnitController;
     public override bool IsTargetable() {
         return unitController.IsTargetable();
     }

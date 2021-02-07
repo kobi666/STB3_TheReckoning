@@ -67,7 +67,7 @@ public abstract class UnitController : MonoBehaviour,IActiveObject<UnitControlle
     public SpriteRenderer SR;
 
     [SerializeField]
-    public UnitData Data;
+    public UnitDataLegacy dataLegacy;
 
     public ObjectState CurrentState {
         get => SM?.CurrentState ?? null;
@@ -111,6 +111,7 @@ public abstract class UnitController : MonoBehaviour,IActiveObject<UnitControlle
     public IEnumerator DieAfterTwoSeconds() {
         yield return new WaitForSeconds(2.0f);
         gameObject.SetActive(false);
+        
     }
     
     private void Awake() {
@@ -119,7 +120,7 @@ public abstract class UnitController : MonoBehaviour,IActiveObject<UnitControlle
         UnitCollider = GetComponent<Collider2D>();
         body = GetComponent<Rigidbody2D>();
         Animancer = GetComponent<AnimancerComponent>() ?? null;
-        LifeManager.HP = Data.HP;
+        LifeManager.HP = dataLegacy.HP;
         TargetBank = GetComponentInChildren<EnemyTargetBank>() ?? null;
         SM = GetComponent<StateMachine>() ?? null;
         States = new NormalUnitStates(this);
@@ -145,7 +146,7 @@ public abstract class UnitController : MonoBehaviour,IActiveObject<UnitControlle
         LifeManager.onUnitDeath += delegate {SM.SetState(States.Death);}; 
     }
 
-    private void OnEnable() {
+    protected void OnEnable() {
         activePool.AddObjectToActiveObjectPool(this);
         UnitCollider.enabled = true;
     }

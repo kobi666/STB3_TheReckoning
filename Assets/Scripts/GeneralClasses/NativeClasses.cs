@@ -470,6 +470,10 @@ public class Queueable : Component, IQueueable<Queueable> {
     public PoolObjectQueue<Queueable> QueuePool {get;set;}
 
     public void OnEnqueue() {}
+    public void OnDequeue()
+    {
+        
+    }
 }
 
 [System.Serializable]

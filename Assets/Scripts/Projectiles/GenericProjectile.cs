@@ -192,6 +192,11 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
         
     }
 
+    public void OnDequeue()
+    {
+        EffectableTarget = null;
+    }
+
     public SpriteRenderer SpriteRenderer;
 
     public Dictionary<string,Effectable> ActiveTargets => GameObjectPool.Instance.ActiveEffectables.Pool;

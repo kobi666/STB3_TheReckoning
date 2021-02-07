@@ -37,7 +37,6 @@ public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITarg
     {
         ActivePool = GameObjectPool.Instance.ActiveEffectables;
         ActivePool.AddObjectToActiveObjectPool(this);
-        OnFirstStart = true;
         PostStart();
     }
 

@@ -24,8 +24,8 @@ public class StateDebug : MonoBehaviour
 
     private void Update() {
         ChangeStateTextAndColor();
-        if (uc.Data.EnemyTarget != null) {
-        Debug.DrawLine(uc.transform.position, uc.Data.EnemyTarget.transform.position);
+        if (uc.dataLegacy.EnemyTarget != null) {
+        Debug.DrawLine(uc.transform.position, uc.dataLegacy.EnemyTarget.transform.position);
         }
     }
 }

@@ -166,7 +166,7 @@ public class PlayerPlayerUnitSpawner : TowerComponent
             ph.transform.parent = this.transform;
             PlayerUnitController unitInstance = GameObject.Instantiate(unitdata.UnitPrefabBase);
             unitInstance.transform.position = new Vector2(9999, 9999);
-            unitInstance.Data = unitdata.UnitData;
+            unitInstance.dataLegacy = unitdata.unitDataLegacy;
             UnitPools.Add(unitdata.UnitPrefabBase.name, new PoolObjectQueue<PlayerUnitController>(unitInstance,5, ph));
         }
     }

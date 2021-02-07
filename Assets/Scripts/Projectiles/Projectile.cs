@@ -12,6 +12,11 @@ public abstract class Projectile : SerializedMonoBehaviour, IQueueable<Projectil
         
     }
 
+    public void OnDequeue()
+    {
+        
+    }
+
     public SpriteRenderer SpriteRenderer;
     public SingleAnimationObject OnHitAnimation;
     PoolObjectQueue<SingleAnimationObject> onHitAnimationQueuePool;

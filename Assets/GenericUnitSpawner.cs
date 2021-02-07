@@ -93,7 +93,7 @@ public class GenericUnitSpawner : TowerComponent,ISpawnsPlayerUnits
     public void SpawnPlayerUnitAndAddToIndex(int unitBaseIndex) {
             PlayerUnitController puc = PlayerUnitSpawnerUtils.SpawnPlayerUnitFromSpawner(this,unitBaseIndex);
             rallyPoint.transform.position = 
-            puc.Data.SetPosition = GetRallyPoint(unitBaseIndex);
+            puc.dataLegacy.SetPosition = GetRallyPoint(unitBaseIndex);
             try {
             AddUnitToIndex(puc);
             }
@@ -164,7 +164,7 @@ public class GenericUnitSpawner : TowerComponent,ISpawnsPlayerUnits
             ph.transform.parent = this.transform;
             PlayerUnitController unitInstance = GameObject.Instantiate(unitdata.UnitPrefabBase);
             unitInstance.transform.position = new Vector2(9999, 9999);
-            unitInstance.Data = unitdata.UnitData;
+            unitInstance.dataLegacy = unitdata.unitDataLegacy;
             unitInstance.AttackEffects = unitdata.AttackEffects;
             
             

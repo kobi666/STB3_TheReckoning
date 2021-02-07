@@ -36,4 +36,9 @@ public class SplineController : MonoBehaviour,IQueueable<SplineController>
     {
         gameObject.SetActive(false);
     }
+
+    public void OnDequeue()
+    {
+        
+    }
 }

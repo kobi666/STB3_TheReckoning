@@ -10,7 +10,7 @@ public abstract class PlayerUnitController : UnitController,ITypeTag,IActiveObje
     {
         foreach (var ef in AttackEffects)
         {
-            ef.Apply(Data.EffectableTarget,Data.EffectableTarget.transform.position);
+            ef.Apply(dataLegacy.EffectableTarget,dataLegacy.EffectableTarget.transform.position);
         }
     }
     
@@ -34,12 +34,12 @@ public abstract class PlayerUnitController : UnitController,ITypeTag,IActiveObje
     public  void OnAttack() {
         onAttack?.Invoke(this);
     }
-    public EnemyUnitController Target { get => Data.EnemyTarget ?? null;}
+    public EnemyUnitController Target { get => dataLegacy.EnemyTarget ?? null;}
     
     // Start is called before the first frame update
     public bool isEnemyTargetSlotEmpty {
         get {
-            if (Data.EnemyTarget == null) {
+            if (dataLegacy.EnemyTarget == null) {
                 return true;
             }
             else
@@ -58,7 +58,15 @@ public abstract class PlayerUnitController : UnitController,ITypeTag,IActiveObje
     public abstract IEnumerator OnEnterJoinBattle();
     public abstract IEnumerator OnExitJoinBattle();
 
-    
+    protected void OnEnable()
+    {
+        base.OnEnable();
+        SM.StateChangeLocked = false;
+        SM.SetState(States.Default);
+        
+        
+        
+    }
 
     
 
@@ -74,7 +82,7 @@ public abstract class PlayerUnitController : UnitController,ITypeTag,IActiveObje
     // }
 
     void Test() {
-        Debug.LogWarning("Target found, its name is : " + (Data.EnemyTarget?.name ?? "No Object"));
+        Debug.LogWarning("Target found, its name is : " + (dataLegacy.EnemyTarget?.name ?? "No Object"));
     }
 
     
@@ -87,7 +95,7 @@ public abstract class PlayerUnitController : UnitController,ITypeTag,IActiveObje
         TargetBank.targetEnteredRange += OnTargetEnteredRange;
         States.JoinBattle.OnEnterState += OnEnterJoinBattle;
         States.JoinBattle.OnExitState += OnExitJoinBattle;
-        DeathManager.Instance.onEnemyUnitDeath += Data.SetEnemyTargetToNull;
+        DeathManager.Instance.onEnemyUnitDeath += dataLegacy.SetEnemyTargetToNull;
         States.Default.StateAnimation = IdleAnimation;
         States.PreBattle.StateAnimation = WalkingAnimation;
         onAttack += PlayAttackAnimation;
@@ -99,6 +107,13 @@ public abstract class PlayerUnitController : UnitController,ITypeTag,IActiveObje
 
     private PoolObjectQueue<PlayerUnitController> queuePool;
     public PoolObjectQueue<PlayerUnitController> QueuePool { get => queuePool; set => queuePool = value; }
+    public void OnDequeue()
+    {
+        LifeManager.HP = dataLegacy.HP;
+        //
+        //GameObjectPool.Instance.ActiveEffectables.AddObjectToActiveObjectPool();
+    }
+
     public List<Effect> GetEffectList()
     {
         throw new NotImplementedException();

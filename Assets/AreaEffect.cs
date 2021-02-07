@@ -38,4 +38,9 @@ public class AreaEffect : SerializedMonoBehaviour,IQueueable<AreaEffect>
 	{
 		gameObject.SetActive(false);
 	}
+
+	public void OnDequeue()
+	{
+		
+	}
 }

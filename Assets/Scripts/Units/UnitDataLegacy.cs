@@ -4,9 +4,18 @@ using UnityEngine;
 using System;
 
 
+public class UnitData
+{
+    public int HP;
+    public float MovementSpeed = 1;
+    public float AttackSpeed;
+    public float DiscoveryRadius = 1;
+
+}
+
 
 [System.Serializable]
-public class UnitData
+public class UnitDataLegacy
 {
     public bool CanBeStoppedByOtherUnit;
     public Dictionary<string, GameObject> TargetsInRange;

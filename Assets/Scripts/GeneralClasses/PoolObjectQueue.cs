@@ -22,6 +22,7 @@ public class PoolObjectQueue<T> where T : Component, IQueueable<T>
             AddObjectsToQueue(5);
         }
         T t = ObjectQueue.Dequeue();
+        t.OnDequeue();
         t.gameObject.SetActive(true);
         return t;
     }

@@ -10,7 +10,7 @@ public class PlayerUnitPoolCreationData
     [SerializeField]
     public PlayerUnitController UnitPrefabBase;
     [SerializeField]
-    public UnitData UnitData = new UnitData();
+    public UnitDataLegacy unitDataLegacy = new UnitDataLegacy();
     
     [TypeFilter("GetEffects")][SerializeReference]
     public List<Effect> AttackEffects = new List<Effect>();

@@ -7,15 +7,15 @@ public class PlayerUnitUtils
 {
     
     public static IEnumerator ReturnToBattlePosition(PlayerUnitController self) {
-        yield return self.SM.StartCoroutine(MoveToTargetAndInvokeAction(self, self.Data.SetPosition, self.Data.speed, false, null));
+        yield return self.SM.StartCoroutine(MoveToTargetAndInvokeAction(self, self.dataLegacy.SetPosition, self.dataLegacy.speed, false, null));
         yield break;
     }
 
     public static IEnumerator StandardPostBattleCheck(PlayerUnitController pc) {
         if (pc.TargetBank.TargetExists()) {
             if (pc.CanEnterNewBattle()) {
-                pc.Data.EnemyTarget = pc.TargetBank.FindSingleTargetNearestToEndOfSpline();
-                pc.Data.EffectableTarget = GameObjectPool.Instance.ActiveEffectables.Pool[pc.Data.EnemyTarget.name];
+                pc.dataLegacy.EnemyTarget = pc.TargetBank.FindSingleTargetNearestToEndOfSpline();
+                pc.dataLegacy.EffectableTarget = GameObjectPool.Instance.ActiveEffectables.Pool[pc.dataLegacy.EnemyTarget.name];
                 pc.SM.SetState(pc.States.PreBattle);
             }
         }
@@ -106,9 +106,11 @@ public class PlayerUnitUtils
 
     public static IEnumerator TellEnemyToPrepareFor1on1battleWithMe(EnemyUnitController ec, PlayerUnitController pc) {
         if (ec.CurrentState == ec.States.Default) {
-            ec.Data.PlayerTarget = pc;
-            ec.Data.EffectableTarget = GameObjectPool.Instance.ActiveEffectables.Pool[pc.name];
+            ec.dataLegacy.PlayerTarget = pc;
+            if (GameObjectPool.Instance.ActiveEffectables.Pool.ContainsKey(pc.name)) {
+            ec.dataLegacy.EffectableTarget = GameObjectPool.Instance.ActiveEffectables.Pool[pc.name];
             ec.SM.SetState(ec.States.PreBattle);
+            }
         }
         yield break;
     }

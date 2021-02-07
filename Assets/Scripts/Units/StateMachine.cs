@@ -27,7 +27,7 @@ public class StateMachine : MonoBehaviour
     }
     public bool StateInTransition = false;
     public void SetState(ObjectState _newState) {
-        if (CurrentState.IsFinalState != true) {
+        
             if (StateChangeLocked != true) {
                 StartCoroutine(StateChangeTransition(_newState));
                 }
@@ -41,7 +41,7 @@ public class StateMachine : MonoBehaviour
                 Debug.Log("Could not change state from " + CurrentState.stateName + " to " + _newState.stateName + " because STATE CHANGE LOCK is active");
                     }
                 }
-            }
+            
         }
 
     public void SetState(ObjectState _newState, bool interrupt) {

@@ -20,7 +20,7 @@ public class PlayerUnitSpawnerUtils
         puc.UnitBaseIndex = unitBaseIndex;
         puc.transform.position = spawner.SpawningPointPosition;
         //PlayerUnitController puc = SpawnPlayerUnit(spawner.Data.SpawnerData.playerUnitPrefab,spawner.SpawningPointPosition, unitBaseIndex);
-        puc.Data.SetPosition = spawner.GetRallyPoint(unitBaseIndex);
+        puc.dataLegacy.SetPosition = spawner.GetRallyPoint(unitBaseIndex);
         return puc;
     }
 

@@ -11,7 +11,7 @@ public abstract class EnemyUnitController : UnitController,ITypeTag,IQueueable<E
     public static string Tag = "Enemy";
     public string TypeTag {get => Tag;}
     
-    public PlayerUnitController Target { get => Data.PlayerTarget ?? null; set { Data.PlayerTarget = value;}}
+    public PlayerUnitController Target { get => dataLegacy.PlayerTarget ?? null; set { dataLegacy.PlayerTarget = value;}}
 
     public event Action<EnemyUnitController> onAttack;
     public void OnAttack() {
@@ -53,7 +53,7 @@ public abstract class EnemyUnitController : UnitController,ITypeTag,IQueueable<E
     {
         LifeManager.onUnitDeath += UpdateMoneyzOnDeath;
         gameObject.tag = TypeTag;
-        DeathManager.Instance.onPlayerUnitDeath += Data.RemovePlayerUnitTarget;
+        DeathManager.Instance.onPlayerUnitDeath += dataLegacy.RemovePlayerUnitTarget;
         if (tag == "Untagged") {
             tag = Tag;
         }
@@ -65,4 +65,8 @@ public abstract class EnemyUnitController : UnitController,ITypeTag,IQueueable<E
 
 
     public PoolObjectQueue<EnemyUnitController> QueuePool { get; set; }
+    public void OnDequeue()
+    {
+        LifeManager.HP = dataLegacy.HP;
+    }
 }

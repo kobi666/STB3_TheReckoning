@@ -8,7 +8,7 @@ public class EnemyUnitUtils : MonoBehaviour
     
 
     public static PlayerUnitController GetRandomPlayerUnitFromList(EnemyUnitController ec) {
-        return ec.Data.GetFirstPlayerUnitControllerFromList();
+        return ec.dataLegacy.GetFirstPlayerUnitControllerFromList();
     }
 
 // public static IEnumerator TellEnemyToPrepareFor1on1battleWithMe(EnemyUnitController ec, PlayerUnitController pc) {
@@ -19,11 +19,11 @@ public class EnemyUnitUtils : MonoBehaviour
 //         yield break;
 //     }
     public static IEnumerator StandardPostBattleCheck(EnemyUnitController self) {
-        PlayerUnitController pc = self.Data.GetFirstPlayerUnitControllerFromList();
+        PlayerUnitController pc = self.dataLegacy.GetFirstPlayerUnitControllerFromList();
         if (pc != null) {
-            yield return self.StartCoroutine(TellPlayerUnitToInitiateForDirectBattleWithMe(self.Data.GetFirstPlayerUnitControllerFromList()));
+            yield return self.StartCoroutine(TellPlayerUnitToInitiateForDirectBattleWithMe(self.dataLegacy.GetFirstPlayerUnitControllerFromList()));
             self.Target = pc;
-            self.Data.EffectableTarget = GameObjectPool.Instance.ActiveEffectables.Pool[pc.name];
+            self.dataLegacy.EffectableTarget = GameObjectPool.Instance.ActiveEffectables.Pool[pc.name];
             self.SM.SetState(self.States.PreBattle);
         }
         else {
@@ -56,7 +56,7 @@ public class EnemyUnitUtils : MonoBehaviour
     }
 
     public static void AttackPlayerUnit(EnemyUnitController self) {
-        self.Data.EffectableTarget.ApplyDamage(self.Data.DamageRange.RandomDamage());
+        self.dataLegacy.EffectableTarget?.ApplyDamage(self.dataLegacy.DamageRange.RandomDamage());
         //self.Target?.LifeManager.DamageToUnit(UnityEngine.Random.Range(self.Data.DamageRange.min,self.Data.DamageRange.max), self.Data.damageType);
     }
     // Start is called before the first frame update

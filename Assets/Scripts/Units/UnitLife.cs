@@ -15,10 +15,17 @@ public class UnitLifeManager
             hp_changed.Invoke(HP);
         }
     }
+    
+    [HideInInspector]
+    public int InitialHP;
     public UnitLifeManager(int hp, int armor, int special_armor, string tag, string name) {
         HP = hp;
         Armor = armor;
         SpecialArmor = special_armor;
+    }
+    public UnitLifeManager()
+    {
+        HP = InitialHP;
     }
     public event Action onUnitDeath;
     public void OnUnitDeath() {
@@ -26,19 +33,24 @@ public class UnitLifeManager
             onUnitDeath.Invoke();
         }
     }
-
+    
     [SerializeField]
-    int _HP;
+    int CurrentHP;
+
+
+    public void Init()
+    {
+        
+    }
     
-    
-    public int HP {get => _HP ; set {
+    public int HP {get => CurrentHP ; set {
         if (value <= 0) {
-            _HP = value;
+            CurrentHP = value;
             HP_changed(value);
             OnUnitDeath();
         }
         else {
-            _HP = value;
+            CurrentHP = value;
             HP_changed(value);
         }
     }}

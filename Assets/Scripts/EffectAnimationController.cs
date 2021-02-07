@@ -100,4 +100,9 @@ public class EffectAnimationController : MonoBehaviour,IQueueable<EffectAnimatio
     {
        gameObject.SetActive(false); 
     }
+
+    public void OnDequeue()
+    {
+        
+    }
 }

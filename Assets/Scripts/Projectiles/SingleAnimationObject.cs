@@ -13,6 +13,11 @@ public class SingleAnimationObject : AnimationController,IQueueable<SingleAnimat
         gameObject.SetActive(false);
     }
 
+    public void OnDequeue()
+    {
+        
+    }
+
     public void PlaySingleAnimationNonStop()
     {
         PlaySingleAnimation(AnimationClip);

@@ -14,4 +14,9 @@ public class ComponentSpriteController : MonoBehaviour,IQueueable<ComponentSprit
     {
         
     }
+
+    public void OnDequeue()
+    {
+        
+    }
 }

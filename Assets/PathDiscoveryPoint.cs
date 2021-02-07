@@ -22,6 +22,11 @@ public class PathDiscoveryPoint : MonoBehaviour,IQueueable<PathDiscoveryPoint>,I
         
     }
 
+    public void OnDequeue()
+    {
+        
+    }
+
     protected void OnDisable()
     {
         QueuePool?.ObjectQueue.Enqueue(this);

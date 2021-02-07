@@ -24,6 +24,12 @@ public class RangeDetector : TagDetector,IQueueable<RangeDetector>
     public void OnEnqueue() {
 
     }
+
+    public void OnDequeue()
+    {
+        
+    }
+
     PoolObjectQueue<RangeDetector> queuePool;
     public PoolObjectQueue<RangeDetector> QueuePool { get;set;}
     public CircleCollider2D RangeCollider;

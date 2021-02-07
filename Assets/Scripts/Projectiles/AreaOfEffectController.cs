@@ -39,6 +39,11 @@ public abstract class AreaOfEffectController : MonoBehaviour,IQueueable<AreaOfEf
     PoolObjectQueue<AreaOfEffectController> queuePool;
     public PoolObjectQueue<AreaOfEffectController> QueuePool {get => queuePool ;set {queuePool = value;}}
     public void OnEnqueue(){}
+    public void OnDequeue()
+    {
+        
+    }
+
     public abstract void PostStart();
 
     
