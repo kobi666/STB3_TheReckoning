@@ -365,14 +365,14 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
 
     public void OnHitMultipleTargets(Effectable effectable,Vector2 targetPos)
     {
-        Effectable[] _targets = EffectableTargetBank.Targets.Values.ToArray();
-        foreach (Effectable target in _targets)
+        (Effectable,bool)[] _targets = EffectableTargetBank.Targets.Values.ToArray();
+        foreach (var target in _targets)
         {
-            if (target == null)
+            if (target.Item1 == null)
             {
                 continue;
             }
-            onHitMultipleTargets?.Invoke(target,target?.transform.position ?? transform.position);
+            onHitMultipleTargets?.Invoke(target.Item1,target.Item1?.transform.position ?? transform.position);
         }
     }
 

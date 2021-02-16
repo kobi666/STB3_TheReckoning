@@ -9,7 +9,7 @@ public class AreaEffect : SerializedMonoBehaviour,IQueueable<AreaEffect>
 {
 	// Start is called before the first frame update
 	public EffectableTargetBank TargetBank;
-	protected Dictionary<string,Effectable> Targets
+	protected Dictionary<string,(Effectable,bool)> Targets
 	{
 		get => TargetBank.Targets;
 	}
@@ -18,9 +18,9 @@ public class AreaEffect : SerializedMonoBehaviour,IQueueable<AreaEffect>
 	{
 		foreach (var target in Targets.Values)
 		{
-			if (target != null)
+			if (target.Item1 != null)
 			{
-				effect.Apply(target, targetPos);
+				effect.Apply(target.Item1, targetPos);
 			} 
 		}
 	}

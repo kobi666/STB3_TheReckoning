@@ -18,7 +18,27 @@ public class GameObjectPool : MonoBehaviour
     public Dictionary<string,PoolObjectQueue<SingleAnimationObject>> SingleAnimationPoolQueue = new Dictionary<string, PoolObjectQueue<SingleAnimationObject>>();
     public Dictionary<string,PoolObjectQueue<AreaEffect>> AreaEffectPoolQueue = new Dictionary<string, PoolObjectQueue<AreaEffect>>();
     public Dictionary<string,PoolObjectQueue<EffectAnimationController>> EffectAnimationPoolQueue = new Dictionary<string, PoolObjectQueue<EffectAnimationController>>();
+    public List<string> Targetables = new List<string>();
+
+    public event Action<string,bool> onTargetableUpdate;
+
+    public void AddTargetable(string targetableName)
+    {
+        if (!Targetables.Contains(targetableName))
+        {
+            Targetables.Add(targetableName);
+            onTargetableUpdate?.Invoke(targetableName,true);
+        }
+    }
     
+    public void RemoveTargetable(string targetableName)
+    {
+        if (Targetables.Contains(targetableName))
+        {
+            Targetables.Remove(targetableName);
+            onTargetableUpdate?.Invoke(targetableName,false);
+        }
+    }
     
 
     public event Action<string,string> onObjectDisable;

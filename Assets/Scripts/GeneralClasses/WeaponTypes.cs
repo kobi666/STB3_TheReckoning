@@ -31,8 +31,6 @@ public class WeaponTypes
     public ProjectileEffect ProjectileEffect = new ProjectileEffect();
 
     [ShowIf("WeaponType", 1)]
-    [SerializeField]
-    protected Action<AOEProjectile>[] AoeEvent = new Action<AOEProjectile>[0];
 
     [ShowIf("WeaponType", 2)]
     [SerializeField]

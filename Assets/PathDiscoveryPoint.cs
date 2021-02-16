@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PathDiscoveryPoint : MonoBehaviour,IQueueable<PathDiscoveryPoint>,IActiveObject<PathDiscoveryPoint>
+public class PathDiscoveryPoint : MonoBehaviour,IQueueable<PathDiscoveryPoint>,IActiveObject<PathDiscoveryPoint>,ITargetable
 {
     public float Proximity;
     public Type QueueableType { get; set; }
@@ -48,4 +48,13 @@ public class PathDiscoveryPoint : MonoBehaviour,IQueueable<PathDiscoveryPoint>,I
     public ActiveObjectPool<PathDiscoveryPoint> ActivePool { get => activePool;
         set { activePool = value; }
     }
+
+    public bool CanOnlyBeHitOnce { get; set; }
+    public bool ExternalTargetableLock { get; set; }
+    public bool IsTargetable()
+    {
+        throw new NotImplementedException();
+    }
+
+    public event Action<bool> onTargetableStateChange;
 }

@@ -509,6 +509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HasTargets: 0
+  HasTargetableTargets: 0
   Detector: {fileID: 24721038}
 --- !u!4 &96792803
 Transform:
@@ -749,7 +751,6 @@ MonoBehaviour:
         EffectInterval: 0
         MaxTargets: 0
         maxTargets: 0
-        Targets: []
         TargetsNames: []
         EffectInProgress: 0
         AnimationClip: {fileID: 7400000, guid: 90c1144721e9a234babf34d45394ecd5, type: 2}
@@ -857,6 +858,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HasTargets: 0
+  HasTargetableTargets: 0
   Detector: {fileID: 807997303}
 --- !u!1001 &226475363
 PrefabInstance:
@@ -1109,7 +1112,6 @@ GameObject:
   - component: {fileID: 305598511}
   - component: {fileID: 305598510}
   - component: {fileID: 305598509}
-  - component: {fileID: 305598508}
   - component: {fileID: 305598507}
   - component: {fileID: 305598506}
   - component: {fileID: 305598505}
@@ -1118,6 +1120,8 @@ GameObject:
   - component: {fileID: 305598515}
   - component: {fileID: 305598514}
   - component: {fileID: 305598516}
+  - component: {fileID: 305598517}
+  - component: {fileID: 305598508}
   m_Layer: 0
   m_Name: GenericUnitController
   m_TagString: Untagged
@@ -1181,9 +1185,57 @@ MonoBehaviour:
   m_GameObject: {fileID: 305598504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c32557506351ede45b8a746987f773aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a712af620318774babfc79d6e43c603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentState:
+    DefaultState: 0
+    InitialState: 0
+    StateIsRunning: 0
+    SMObject: {fileID: 0}
+    OnEnterBehvaior: []
+    InStateBehavior: []
+    OnExitBehavior: []
+    SpecialEnterConditions: []
+    SpecialExitConditions: []
+    stateName: 0
+  NextState:
+    DefaultState: 0
+    InitialState: 0
+    StateIsRunning: 0
+    SMObject: {fileID: 0}
+    OnEnterBehvaior: []
+    InStateBehavior: []
+    OnExitBehavior: []
+    SpecialEnterConditions: []
+    SpecialExitConditions: []
+    stateName: 0
+  PreviousState:
+    DefaultState: 0
+    InitialState: 0
+    StateIsRunning: 0
+    SMObject: {fileID: 0}
+    OnEnterBehvaior: []
+    InStateBehavior: []
+    OnExitBehavior: []
+    SpecialEnterConditions: []
+    SpecialExitConditions: []
+    stateName: 0
+  DefaultState:
+    DefaultState: 0
+    InitialState: 0
+    StateIsRunning: 0
+    SMObject: {fileID: 0}
+    OnEnterBehvaior: []
+    InStateBehavior: []
+    OnExitBehavior: []
+    SpecialEnterConditions: []
+    SpecialExitConditions: []
+    stateName: 0
+  SMObject: {fileID: 305598509}
+  CanExecCurrentState: 1
+  references:
+    version: 1
 --- !u!114 &305598509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1196,17 +1248,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b2d6c38c30d9c46996e21d2d94193c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitStates:
+  - DefaultState: 0
+    InitialState: 1
+    StateIsRunning: 0
+    SMObject: {fileID: 305598509}
+    OnEnterBehvaior: []
+    InStateBehavior:
+    - id: 0
+    OnExitBehavior: []
+    SpecialEnterConditions: []
+    SpecialExitConditions: []
+    stateName: 5
+  - DefaultState: 1
+    InitialState: 0
+    StateIsRunning: 0
+    SMObject: {fileID: 305598509}
+    OnEnterBehvaior: []
+    InStateBehavior:
+    - id: 1
+    OnExitBehavior: []
+    SpecialEnterConditions: []
+    SpecialExitConditions: []
+    stateName: 1
   WalksOnPath: 0
   GroupTag: Enemy
   UnitDiscoveryRadius: 0
-  StateMachine: {fileID: 305598508}
   AnimationController: {fileID: 305598505}
   SpriteRenderer: {fileID: 305598510}
   UnitBattleManager: {fileID: 305598512}
-  LifeBarmanager: {fileID: 0}
-  RangeDetector: {fileID: 0}
+  LifeBarmanager: {fileID: 1635322703}
+  RangeDetector: {fileID: 1705855459}
   EffectableUnit: {fileID: 305598515}
   EffectableTargetBank: {fileID: 305598516}
+  StateMachine: {fileID: 305598517}
+  references:
+    version: 1
+    00000000:
+      type: {class: WalkAlongSpline, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        UnitObject: {fileID: 305598509}
+        Spline: {fileID: 1560164168}
+        Distance: 0
+        MovementSpeed: 1
+    00000001:
+      type: {class: DoNothing, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        UnitObject: {fileID: 0}
 --- !u!212 &305598510
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1266,13 +1354,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 305598504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.11, y: 0.43, z: 0}
+  m_LocalPosition: {x: -9.75, y: 3.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1397008014}
   - {fileID: 1705855458}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &305598512
 MonoBehaviour:
@@ -1361,7 +1449,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HasTargets: 0
+  HasTargetableTargets: 0
   Detector: {fileID: 1705855459}
+--- !u!114 &305598517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305598504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a712af620318774babfc79d6e43c603, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentState:
+    DefaultState: 0
+    InitialState: 0
+    StateIsRunning: 0
+    SMObject: {fileID: 0}
+    OnEnterBehvaior: []
+    InStateBehavior: []
+    OnExitBehavior: []
+    SpecialEnterConditions: []
+    SpecialExitConditions: []
+    stateName: 0
+  NextState:
+    DefaultState: 0
+    InitialState: 0
+    StateIsRunning: 0
+    SMObject: {fileID: 0}
+    OnEnterBehvaior: []
+    InStateBehavior: []
+    OnExitBehavior: []
+    SpecialEnterConditions: []
+    SpecialExitConditions: []
+    stateName: 0
+  PreviousState:
+    DefaultState: 0
+    InitialState: 0
+    StateIsRunning: 0
+    SMObject: {fileID: 0}
+    OnEnterBehvaior: []
+    InStateBehavior: []
+    OnExitBehavior: []
+    SpecialEnterConditions: []
+    SpecialExitConditions: []
+    stateName: 0
+  DefaultState:
+    DefaultState: 0
+    InitialState: 0
+    StateIsRunning: 0
+    SMObject: {fileID: 0}
+    OnEnterBehvaior: []
+    InStateBehavior: []
+    OnExitBehavior: []
+    SpecialEnterConditions: []
+    SpecialExitConditions: []
+    stateName: 0
+  SMObject: {fileID: 305598509}
+  CanExecCurrentState: 0
+  references:
+    version: 1
 --- !u!1 &324095688
 GameObject:
   m_ObjectHideFlags: 0
@@ -3883,7 +4033,6 @@ MonoBehaviour:
         EffectInterval: 0
         MaxTargets: 0
         maxTargets: 0
-        Targets: []
         TargetsNames: []
         EffectInProgress: 0
         AnimationClip: {fileID: 0}
@@ -3969,6 +4118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HasTargets: 0
+  HasTargetableTargets: 0
   Detector: {fileID: 1755767442}
 --- !u!4 &685690429
 Transform:
@@ -6189,6 +6340,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HasTargets: 0
+  HasTargetableTargets: 0
   Detector: {fileID: 2059493110}
 --- !u!114 &1147537317
 MonoBehaviour:
@@ -6424,7 +6577,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1214064204
 SpriteRenderer:
@@ -9624,7 +9777,7 @@ MonoBehaviour:
   closed: 0
   points:
   - controlType: 0
-    positionLocal: {x: -8.991437, y: 4.730794, z: 1}
+    positionLocal: {x: -8.900001, y: 4.730794, z: 1}
     controlFirstLocal: {x: 1, y: 0, z: 0}
     controlSecondLocal: {x: -1, y: 0, z: 0}
     pointTransform: {fileID: 0}
@@ -9664,7 +9817,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1584542912
 PrefabInstance:
@@ -9826,6 +9979,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1599538847}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1635322703 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6857228081308957645, guid: eec082e4a5501b540a7926b58d7acb72,
+    type: 3}
+  m_PrefabInstance: {fileID: 1397008013}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12b09c7f1b62f064cbdc667ea17dac6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1651976088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11777,6 +11942,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -11796,6 +11966,101 @@ PrefabInstance:
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[2]
       value: 
       objectReference: {fileID: 1772534451}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement
+      value: Assembly-CSharp MoveStraight
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement.Speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.HitCounter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.OnHitEffect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.ProjectileLifeTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onHitEffects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onHitEffects.Array.data[0]
+      value: Assembly-CSharp Damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onHitEffects.Array.data[0].IsAOE
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onPositionReachedEffects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement.ProjectileMovementDynamicData.Speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onPositionReachedEffects.Array.data[0]
+      value: Assembly-CSharp Damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onHitEffects.Array.data[0].ParentWeapon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onHitEffects.Array.data[0].DamageRange.max
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onHitEffects.Array.data[0].DamageRange.min
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement.ProjectileMovementDynamicData.ArcingValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onPositionReachedEffects.Array.data[0].IsAOE
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onPositionReachedEffects.Array.data[0].ParentWeapon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onPositionReachedEffects.Array.data[0].DamageRange.max
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onPositionReachedEffects.Array.data[0].DamageRange.min
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8977666039327672661, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: m_Size.x
@@ -12002,7 +12267,7 @@ Transform:
   - {fileID: 1727999246}
   - {fileID: 1936327878}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1899685753
 PrefabInstance:
@@ -12369,7 +12634,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1968966790
 MonoBehaviour:

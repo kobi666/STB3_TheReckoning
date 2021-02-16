@@ -41,7 +41,7 @@ public class AOEEffect : IHasEffectAnimation
     [ShowIf("MaxTargets")] [HideLabel] public int maxTargets;
     private int targetsCounter;
 
-    public List<Effectable> Targets = new List<Effectable>();
+    public List<(Effectable,bool)> Targets = new List<(Effectable,bool)>();
     public List<string> TargetsNames = new List<string>();
 
     private void GetTargets()
@@ -55,7 +55,7 @@ public class AOEEffect : IHasEffectAnimation
             {
                 foreach (var ef in aoeController.TargetBank.Targets.Values)
                 {
-                    if (ef != null)
+                    if (ef.Item1 != null)
                     {
                         Targets.Add(ef);
                     }
@@ -71,10 +71,10 @@ public class AOEEffect : IHasEffectAnimation
                 foreach (var ef in aoeController.TargetBank.Targets.Values)
                 {
                     if (TargetsNames != null) {
-                        if (ef != null && !TargetsNames.Contains(ef.name))
+                        if (ef.Item1 != null && !TargetsNames.Contains(ef.Item1.name))
                         {
                             Targets.Add(ef);
-                            TargetsNames.Add(ef.name);
+                            TargetsNames.Add(ef.Item1.name);
                         }
                     }
                 }
@@ -92,7 +92,7 @@ public class AOEEffect : IHasEffectAnimation
             foreach (var ef in Targets)
             {
                 //onEffect?.Invoke(ef);
-                OnEffect(ef,ef.transform.position);
+                OnEffect(ef.Item1,ef.Item1.transform.position);
             }
         }
     }
@@ -125,7 +125,7 @@ public class AOEEffect : IHasEffectAnimation
                         intervalCounter = 0;
                         foreach (var effectable in Targets)
                         {
-                            OnEffect(effectable,effectable.transform.position);
+                            OnEffect(effectable.Item1,effectable.Item1.transform.position);
                         }
                     }
                 }

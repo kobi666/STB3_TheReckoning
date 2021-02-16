@@ -66,7 +66,7 @@ public class EnemyUnitUtils : MonoBehaviour
     }
 
     public static bool StandardIsTargetable(EnemyUnitController ec) {
-        if (ec.CurrentState != ec.States.Death) {
+        if (ec.CurrentStateLegacy != ec.States.Death) {
             return true;
         }
         return false;

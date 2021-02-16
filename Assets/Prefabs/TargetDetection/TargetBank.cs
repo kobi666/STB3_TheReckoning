@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using MyBox;
 using Sirenix.OdinInspector;
 using UnityEngine.Serialization;
 
 [System.Serializable]
-public abstract class TargetBank<T> : MonoBehaviour where T : Component
+public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
 
 {
+
+    public bool HasTargets;
     private void OnEnable()
     {
         InitRangeDetectorEvents();
@@ -18,6 +21,44 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     {
         DisableRangedetectorEvents();
     }
+
+
+    public bool HasTargetableTargets;
+
+    public event Action<string,bool> onTargetableChange;
+
+    void TargetablesCheck(string targetableName,bool targetableState)
+    {
+        if (!Targets.IsNullOrEmpty())
+        {
+            if (Targets.ContainsKey(targetableName))
+            {
+                if (targetableState)
+                {
+                    HasTargetableTargets = true;
+                    Targets[targetableName] = (Targets[targetableName].Item1, true);
+                    return;
+                }
+
+                if (!targetableState)
+                {
+                    Targets[targetableName] = (Targets[targetableName].Item1, false);
+                }
+
+                foreach (var target in Targets)
+                {
+                    if (target.Value.Item2)
+                    {
+                        HasTargetableTargets = true;
+                        return;
+                    }
+                }
+            }
+        }
+        HasTargetableTargets = false;
+        
+    }
+    
 
     public event Action onTargetsUpdate;
     
@@ -39,7 +80,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
     /// you can then do so that attacks that have multiple weapons \ splines \ etc, can only fire or aquire a target
     /// in case it has not been marked as taken, up to you.
     /// </summary>
-    public Dictionary<string,T> Targets = new Dictionary<string,T>();
+    public Dictionary<string,(T,bool)> Targets = new Dictionary<string,(T,bool)>();
 
     public abstract T TryToGetTargetOfType(GameObject GO);
     
@@ -56,11 +97,15 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
         clearNulls();
         T t = TryToGetTargetOfType(targetGO);
         if (t != null) {
-            
             if (!Targets.ContainsKey(targetGO.name))
             {
-                Targets.Add(targetGO.name, t);
+                Targets.Add(targetGO.name, (t,t.IsTargetable()));
                 OnTargetAdd(t);
+                if (t.IsTargetable())
+                {
+                    HasTargetableTargets = true;
+                }
+                HasTargets = true;
             }
         }
     }
@@ -69,7 +114,11 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
         clearNulls();
         if (Targets.ContainsKey(targetName)) {
             Targets.Remove(targetName);
-            //Debug.LogWarning(name + " : " + "Target " + targetName + " was removed by" + callerName  );
+            if (Targets.IsNullOrEmpty())
+            {
+                HasTargets = false;
+                HasTargetableTargets = false;
+            }
         }
     }
 
@@ -77,11 +126,12 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
         if (Targets.Count > 0) {
             foreach (var item in Targets)
             {
-                if (item.Value == null) {
+                if (item.Value.Item1 == null) {
                     Targets.Remove(item.Key);
                     onTargetsUpdate?.Invoke();
                 }
             }
+            
         }
     }
 
@@ -93,6 +143,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : Component
         Detector =  Detector ?? GetComponentInChildren<RangeDetector>() ?? null;
         onTryToAddTarget += AddTarget;
         onTargetRemove += RemoveTarget;
+        GameObjectPool.Instance.onTargetableUpdate += TargetablesCheck;
     }
 
     public void InitRangeDetectorEvents() {

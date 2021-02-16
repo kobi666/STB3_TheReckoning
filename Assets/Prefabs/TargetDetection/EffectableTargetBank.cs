@@ -20,7 +20,7 @@ public class EffectableTargetBank : TargetBank<Effectable>
     {
         string s = String.Empty;
         float distance = 9999f;
-        foreach (Effectable ef in Targets.Values)
+        foreach ((Effectable ef,bool isTargetable) in Targets.Values)
         {
             if (ef != null)
             {
@@ -43,7 +43,7 @@ public class EffectableTargetBank : TargetBank<Effectable>
     {
         string s = String.Empty;
         float distance = 9999f;
-        foreach (Effectable ef in Targets.Values)
+        foreach ((Effectable ef,bool targetable) in Targets.Values)
         {
             if (ef != null)
             {

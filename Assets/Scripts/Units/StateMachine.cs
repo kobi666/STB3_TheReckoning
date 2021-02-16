@@ -26,35 +26,35 @@ public class StateMachine : MonoBehaviour
         AttackCoroutine = ac;
     }
     public bool StateInTransition = false;
-    public void SetState(ObjectState _newState) {
+    public void SetState(ObjectStateLegacy newStateLegacy) {
         
             if (StateChangeLocked != true) {
-                StartCoroutine(StateChangeTransition(_newState));
+                StartCoroutine(StateChangeTransition(newStateLegacy));
                 }
             else {
-                if (CurrentState.IsFinalState == true) 
+                if (currentStateLegacy.IsFinalState == true) 
                 {
-                    Debug.Log(CurrentState.stateName + " is a final state");
+                    Debug.Log(currentStateLegacy.stateName + " is a final state");
                     }
                 else 
                 {
-                Debug.Log("Could not change state from " + CurrentState.stateName + " to " + _newState.stateName + " because STATE CHANGE LOCK is active");
+                Debug.Log("Could not change state from " + currentStateLegacy.stateName + " to " + newStateLegacy.stateName + " because STATE CHANGE LOCK is active");
                     }
                 }
             
         }
 
-    public void SetState(ObjectState _newState, bool interrupt) {
+    public void SetState(ObjectStateLegacy newStateLegacy, bool interrupt) {
         if (StateChangeLocked != true) {
-        CurrentState.StateTransitionInterrupted = true;
-        StartCoroutine(StateChangeTransition(_newState));
+        currentStateLegacy.StateTransitionInterrupted = true;
+        StartCoroutine(StateChangeTransition(newStateLegacy));
         }
         else {
-            if (CurrentState.IsFinalState == true) {
-                Debug.Log(CurrentState.stateName + " is a final state");
+            if (currentStateLegacy.IsFinalState == true) {
+                Debug.Log(currentStateLegacy.stateName + " is a final state");
             }
             else {
-            Debug.Log("Could not change state from " + CurrentState.stateName + " to " + _newState.stateName + " because STATE CHANGE LOCK is active");
+            Debug.Log("Could not change state from " + currentStateLegacy.stateName + " to " + newStateLegacy.stateName + " because STATE CHANGE LOCK is active");
             }
         }
     }
@@ -62,8 +62,8 @@ public class StateMachine : MonoBehaviour
    
     public bool StateChangeLocked;
     
-    public bool ConditionToChangeToNewState (ObjectState _cur, ObjectState _new) {
-        if (CurrentState.ExitEventIsNotEmpty()) {
+    public bool ConditionToChangeToNewState (ObjectStateLegacy _cur, ObjectStateLegacy _new) {
+        if (currentStateLegacy.ExitEventIsNotEmpty()) {
             if (_new.EnterEventIsNotEmpty()) {
                 return true;
             }
@@ -78,19 +78,19 @@ public class StateMachine : MonoBehaviour
         }
     }
 
-    public IEnumerator StateChangeTransition(ObjectState _newState) {
-        if (StateChangeLocked == false && ConditionToChangeToNewState(CurrentState, _newState) == true) {
+    public IEnumerator StateChangeTransition(ObjectStateLegacy newStateLegacy) {
+        if (StateChangeLocked == false && ConditionToChangeToNewState(currentStateLegacy, newStateLegacy) == true) {
             OnStateChange();
             InitilizeAttackCoroutine(null);
             InitilizeMovementCoroutine(null);
-            CurrentState = _newState;
+            currentStateLegacy = newStateLegacy;
             StateInTransition = true;
 //            Debug.Log("Changed to State :" + _newState.stateName);
-            yield return StartCoroutine(CurrentState.InvokeExitStateFunctions());
-            yield return StartCoroutine(_newState.InvokeEnterStateFunctions());
+            yield return StartCoroutine(currentStateLegacy.InvokeExitStateFunctions());
+            yield return StartCoroutine(newStateLegacy.InvokeEnterStateFunctions());
 //            Debug.Log("State Transition from " + CurrentState.stateName + " to " + _newState.stateName + " Finished" );
             StateInTransition = false;
-            if (_newState.isFinalState == true) {
+            if (newStateLegacy.isFinalState == true) {
             StateChangeLocked = true;
             }
             else {
@@ -128,7 +128,7 @@ public class StateMachine : MonoBehaviour
 
     
     
-    public ObjectState CurrentState;
+    public ObjectStateLegacy currentStateLegacy;
 
     
     }

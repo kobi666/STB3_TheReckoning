@@ -2,15 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using BansheeGz.BGSpline.Components;
 
 
 public class UnitData
+{
+    public UnitMetaData MetaData = new UnitMetaData();
+    public UnitDynamicData DynamicData = new UnitDynamicData();
+}
+
+public class UnitMetaData
 {
     public int HP;
     public float MovementSpeed = 1;
     public float AttackSpeed;
     public float DiscoveryRadius = 1;
+}
 
+public class UnitDynamicData
+{
+    public Vector2 TargetPosition;
+    public Vector2 BasePosition;
+    public BGCcMath Spline;
+    public float DistanceOnSpline;
 }
 
 

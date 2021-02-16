@@ -69,8 +69,8 @@ public abstract class UnitController : MonoBehaviour,IActiveObject<UnitControlle
     [SerializeField]
     public UnitDataLegacy dataLegacy;
 
-    public ObjectState CurrentState {
-        get => SM?.CurrentState ?? null;
+    public ObjectStateLegacy CurrentStateLegacy {
+        get => SM?.currentStateLegacy ?? null;
     }
 
     public event Action<string> onTargetIdentified;
@@ -129,8 +129,8 @@ public abstract class UnitController : MonoBehaviour,IActiveObject<UnitControlle
             Walker.xDirectionChanged += SetXdirection;
         }
         SR = GetComponent<SpriteRenderer>() ?? null;
-        States.InitialState.OnEnterState += OnEnterInitialState;
-        States.InitialState.OnExitState += OnExitInitialState;
+        States.InitialStateLegacy.OnEnterState += OnEnterInitialState;
+        States.InitialStateLegacy.OnExitState += OnExitInitialState;
         States.Default.OnEnterState += OnEnterDefault;
         States.Default.OnExitState += OnExitDefault;
         States.PreBattle.OnEnterState += OnEnterPreBattle;
@@ -141,7 +141,7 @@ public abstract class UnitController : MonoBehaviour,IActiveObject<UnitControlle
         States.PostBattle.OnExitState += OnExitPostBattle;
         States.Death.OnEnterState += OnEnterDeath;
         States.Death.OnExitState += OnExitDeath;
-        SM.CurrentState = States.InitialState;
+        SM.currentStateLegacy = States.InitialStateLegacy;
         LifeManager.onUnitDeath += AnnounceDeath;
         LifeManager.onUnitDeath += delegate {SM.SetState(States.Death);}; 
     }

@@ -11,7 +11,7 @@ public class BasicMeleePlayerUnit : PlayerUnitController
     }
     
     public override bool CanEnterNewBattle() {
-        if (CurrentState == States.Default || CurrentState == States.JoinBattle || CurrentState == States.PostBattle ) {
+        if (CurrentStateLegacy == States.Default || CurrentStateLegacy == States.JoinBattle || CurrentStateLegacy == States.PostBattle ) {
             return true;
         }
         return false;

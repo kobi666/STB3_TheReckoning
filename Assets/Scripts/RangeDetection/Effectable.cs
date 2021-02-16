@@ -19,6 +19,19 @@ public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITarg
     public bool ExternalTargetableLock {get => externalTargetableLock; set {externalTargetableLock = value;}}
 
     public abstract bool IsTargetable();
+    public event Action<bool> onTargetableStateChange;
+
+    void UpdateTargetableState(bool targetableState)
+    {
+        if (targetableState == true)
+        {
+            GameObjectPool.Instance.AddTargetable(name);
+        }
+        else
+        {
+            GameObjectPool.Instance.RemoveTargetable(name);
+        }
+    }
 
     public abstract void ApplyDamage(int damageAmount);
     public abstract void ApplyExplosion(float explosionValue);
@@ -37,6 +50,7 @@ public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITarg
     {
         ActivePool = GameObjectPool.Instance.ActiveEffectables;
         ActivePool.AddObjectToActiveObjectPool(this);
+        onTargetableStateChange += UpdateTargetableState;
         PostStart();
     }
 
@@ -45,6 +59,7 @@ public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITarg
     
     void OnDisable()
     {
+        UpdateTargetableState(false);
         GameObjectPool.Instance.RemoveObjectFromAllPools(name,name);
     }
 }

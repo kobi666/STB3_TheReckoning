@@ -12,36 +12,15 @@ public class SplineWalker : MonoBehaviour
 
     private void Awake()
     {
-    }
-
-    /*void moveEffectCounter()
-    {
-        moveEffectCounter().dissolve += 5;
-    }
-
-
-    IEnumerator StartEffect()
-    {
-        float counter = 0;
-        while (counter < 1)
-        {
-            counter += Time.deltaTime;
-            moveEffectCounter
-            yield return null;
-        }
-        yield break;
         
-    }*/
-    
-    
+    }
 
-   
 
     private float distance;
     private Vector3 tagent;
     void Update()
     {
-        Vector2 TargetPos = BgCcMath.CalcPositionAndTangentByDistance(distance, out tagent);
+        Vector2 TargetPos = BgCcMath.CalcPositionByDistance(distance);
         transform.position = TargetPos;
         distance += 0.1f * Time.deltaTime;
     }

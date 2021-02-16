@@ -9,8 +9,8 @@ public class StateDebug : MonoBehaviour
     TextMeshPro text;
     
     void ChangeStateTextAndColor() {
-        text.text = uc.CurrentState.stateName.ToUpper();
-        text.color = uc.CurrentState.textColor;
+        text.text = uc.CurrentStateLegacy.stateName.ToUpper();
+        text.color = uc.CurrentStateLegacy.textColor;
     }
     
     // Start is called before the first frame update

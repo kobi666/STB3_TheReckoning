@@ -247,6 +247,9 @@
      <Compile Include="Assets\Scripts\PlayerObjects\CursorUtils.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\DebugCrosshair.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\GenericStateMachine\GenericSMClasses.cs" />
+     <Compile Include="Assets\Scripts\PlayerObjects\GenericStateMachine\UnitBehaviors\UnitBehaviors.cs" />
+     <Compile Include="Assets\Scripts\PlayerObjects\GenericStateMachine\UnitState.cs" />
+     <Compile Include="Assets\Scripts\PlayerObjects\GenericStateMachine\UnitStateMachine.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\PlayerControllerUtilis.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\PlayerData.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\SelectorTest.cs" />
@@ -259,8 +262,6 @@
      <Compile Include="Assets\Scripts\ProjectileAttackSequences.cs" />
      <Compile Include="Assets\Scripts\ProjectilePoolCreationData.cs" />
      <Compile Include="Assets\Scripts\Projectiles\AOEAnimationController.cs" />
-     <Compile Include="Assets\Scripts\Projectiles\AOEProjectile.cs" />
-     <Compile Include="Assets\Scripts\Projectiles\ArcingAOEProjectileController.cs" />
      <Compile Include="Assets\Scripts\Projectiles\AreaOfEffectController.cs" />
      <Compile Include="Assets\Scripts\Projectiles\DirectHitProjectile.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Explosion.cs" />
@@ -273,7 +274,6 @@
      <Compile Include="Assets\Scripts\Projectiles\ProjectileUtils.cs" />
      <Compile Include="Assets\Scripts\Projectiles\SingleAnimationObject.cs" />
      <Compile Include="Assets\Scripts\Projectiles\TargetFacingStraightShotDirectHitProjectile.cs" />
-     <Compile Include="Assets\Scripts\Projectiles\arcingAOEProjectile.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\DefaultEffectableUnit.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\Effectable.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\Effector.cs" />
@@ -347,7 +347,7 @@
      <Compile Include="Assets\Scripts\Units\UnitAnimationController.cs" />
      <Compile Include="Assets\Scripts\Units\UnitDataLegacy.cs" />
      <Compile Include="Assets\Scripts\Units\UnitLife.cs" />
-     <Compile Include="Assets\Scripts\Units\UnitStates.cs" />
+     <Compile Include="Assets\Scripts\Units\UnitStatesLegacy.cs" />
      <Compile Include="Assets\Scripts\Units\UnitType.cs" />
      <Compile Include="Assets\Scripts\Units\UnitTypes.cs" />
      <Compile Include="Assets\Scripts\Units\UnitUtils.cs" />
@@ -360,6 +360,7 @@
      <Compile Include="Assets\SplineDetector.cs" />
      <Compile Include="Assets\SplineWalker.cs" />
      <Compile Include="Assets\TagSelectorPropertyDrawer.cs" />
+     <Compile Include="Assets\TestAshkenazi.cs" />
      <Compile Include="Assets\TestCalculateTowerPositions.cs" />
      <Compile Include="Assets\TestConditionalDropDown.cs" />
      <Compile Include="Assets\TestPlayerControllerOfir.cs" />

@@ -39,9 +39,9 @@ public interface IQueueable<T> where T : Component, IQueueable<T> {
 }
 
 public interface ITargetable {
-    bool CanOnlyBeHitOnce{get;set;}
     bool ExternalTargetableLock {get;set;}
     bool IsTargetable();
+    event Action<bool> onTargetableStateChange;
 }
 
 public interface IActiveObject<T> where T : Component,IActiveObject<T> {

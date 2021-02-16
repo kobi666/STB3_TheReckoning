@@ -38,7 +38,7 @@ public class ProjectileUtils
         return proj;
     }
 
-    public static Projectile SpawnArcingAOEProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, float arcValue, float speed, float effectRadius, Action<Effectable> onReachAction)
+    /*public static Projectile SpawnArcingAOEProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, float arcValue, float speed, float effectRadius, Action<Effectable> onReachAction)
     {
         ArcingAOEProjectileController proj = pool.GetInactive() as ArcingAOEProjectileController;
         proj.transform.position = exitPoint;
@@ -49,7 +49,7 @@ public class ProjectileUtils
         proj.placeholderAction = onReachAction;
         proj.gameObject.SetActive(true);
         return proj;
-    } 
+    } */
 
     public static void MoveStraightUntilReachedTargetPosition(Transform self, Vector2 targetPosition, float speed, Action onTargetPositionReach) {
         if ((Vector2)self.position != targetPosition) {

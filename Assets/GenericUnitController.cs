@@ -4,8 +4,13 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitController>,IActiveObject<GenericUnitController>,IHasEffects,IHasRangeComponent
+
+[Serializable]
+public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitController>,IActiveObject<GenericUnitController>,IHasEffects,IHasRangeComponent,IHasStateMachine
 {
+    [SerializeField]
+    public List<UnitState> UnitStates =  new List<UnitState>();
+    
     public bool WalksOnPath;
     private UnitLifeManager UnitLifeManager = new UnitLifeManager();
     public UnitData Data = new UnitData();
@@ -18,20 +23,27 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
     public SpriteRenderer SpriteRenderer;
     public UnitBattleManager UnitBattleManager;
     public LifeBarmanager LifeBarmanager;
-    public RangeDetector RangeDetector;
+    public TagDetector RangeDetector;
     public EffectableUnit EffectableUnit;
     public EffectableTargetBank EffectableTargetBank;
+    public UnitStateMachine StateMachine;
     
 
     void Init()
     {
-        UnitLifeManager.InitialHP = Data.HP;
+        UnitLifeManager.InitialHP = Data.MetaData.HP;
         UnitLifeManager.Init();
-        UpdateRange(Data.DiscoveryRadius,GetRangeDetectors());
+        UpdateRange(Data.MetaData.DiscoveryRadius,GetRangeDetectors());
+        foreach (var s in UnitStates)
+        {
+            s.Init(this);
+        }
+        StateMachine.Init(this,UnitStates);
     }
     
     protected void Awake()
     {
+        StateMachine = GetComponent<UnitStateMachine>();
         tag = GroupTag;
         //StateMachine = StateMachine ?? GetComponent<GenericStateMachine>();
         AnimationController = AnimationController ?? GetComponent<AnimationController>();
@@ -86,4 +98,6 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
             d.UpdateSize(RangeSizeDelta);
         }
     }
+
+    
 }

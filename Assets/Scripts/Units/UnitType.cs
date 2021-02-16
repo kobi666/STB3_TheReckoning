@@ -23,7 +23,7 @@ public class UnitType
 
     public UnitType(MonoBehaviour _monobehavior, StateMachine _stateMachine) {
         States = new NormalUnitStates(_monobehavior);
-        _stateMachine.CurrentState = States.Default;
+        _stateMachine.currentStateLegacy = States.Default;
     }
 
      

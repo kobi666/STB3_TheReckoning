@@ -23,12 +23,12 @@ public class TowerSlotController : MonoBehaviour
     void TryToFindHighestProximityPathDiscoveryPoint()
     {
         float proximity = 0;
-        PathDiscoveryPoint[] points = PathDiscoveryTargetBank.Targets.Values.ToArray();
-        foreach (PathDiscoveryPoint point in points)
+        (PathDiscoveryPoint,bool)[] points = PathDiscoveryTargetBank.Targets.Values.ToArray();
+        foreach (var point in points)
         {
-            if (proximity < point.Proximity)
+            if (proximity < point.Item1.Proximity)
             {
-                lowestProximityPointFound = point.transform.position;
+                lowestProximityPointFound = point.Item1.transform.position;
             }
         }
     }

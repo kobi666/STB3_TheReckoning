@@ -188,8 +188,8 @@ public class LeapingSplines : SplineAttackProperties
                                 LeapingTargets.Keys.ToArray());
                         if (NextTargetName != String.Empty)
                         {
-                            LeapingTargets.Add(NextTargetName, (ExtraRangeTargetBank.Targets[NextTargetName],
-                                ExtraRangeTargetBank.Targets[NextTargetName].transform.position));
+                            LeapingTargets.Add(NextTargetName, (ExtraRangeTargetBank.Targets[NextTargetName].Item1,
+                                ExtraRangeTargetBank.Targets[NextTargetName].Item1.transform.position));
                             TargetCounter += 1;
                             SplineBehavior0.SplineMovement.TargetPositionReached = false;
                             BGCurvePointI lastPoint = SplineController0.BgCurve.Points.Last();

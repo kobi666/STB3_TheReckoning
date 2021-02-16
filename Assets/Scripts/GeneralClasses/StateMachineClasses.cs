@@ -10,13 +10,13 @@ public abstract class States {
 
 
 [System.Serializable]
-public class ObjectState : IEquatable<ObjectState> {
+public class ObjectStateLegacy : IEquatable<ObjectStateLegacy> {
 
     public AnimationClip StateAnimation = null;
     public Color textColor;
     public bool StateTransitionInterrupted;
 
-    public bool Equals(ObjectState other)
+    public bool Equals(ObjectStateLegacy other)
    {
       if (other == null)
          return false;
@@ -34,29 +34,29 @@ public class ObjectState : IEquatable<ObjectState> {
       if (obj == null)
          return false;
 
-      ObjectState otherUnitState = obj as ObjectState;
-      if (otherUnitState == null)
+      ObjectStateLegacy otherUnitStateLegacy = obj as ObjectStateLegacy;
+      if (otherUnitStateLegacy == null)
          return false;
       else
-         return Equals(otherUnitState);
+         return Equals(otherUnitStateLegacy);
    }
 
-    public static bool operator == (ObjectState thisUnitState, ObjectState otherUnitState)
+    public static bool operator == (ObjectStateLegacy thisUnitStateLegacy, ObjectStateLegacy otherUnitStateLegacy)
    {
-      if (((object)thisUnitState) == null || ((object)otherUnitState) == null) {
-         return System.Object.Equals(thisUnitState, otherUnitState);
+      if (((object)thisUnitStateLegacy) == null || ((object)otherUnitStateLegacy) == null) {
+         return System.Object.Equals(thisUnitStateLegacy, otherUnitStateLegacy);
       }
 
-      return thisUnitState.Equals(otherUnitState);
+      return thisUnitStateLegacy.Equals(otherUnitStateLegacy);
    }
 
-   public static bool operator != (ObjectState thisUnitState, ObjectState otherUnitState)
+   public static bool operator != (ObjectStateLegacy thisUnitStateLegacy, ObjectStateLegacy otherUnitStateLegacy)
    {
-      if (((object)thisUnitState) == null || ((object)otherUnitState) == null) {
-         return ! System.Object.Equals(thisUnitState, otherUnitState);
+      if (((object)thisUnitStateLegacy) == null || ((object)otherUnitStateLegacy) == null) {
+         return ! System.Object.Equals(thisUnitStateLegacy, otherUnitStateLegacy);
       }
 
-      return ! thisUnitState.Equals(otherUnitState);
+      return ! thisUnitStateLegacy.Equals(otherUnitStateLegacy);
    }
 
    
@@ -79,7 +79,7 @@ public class ObjectState : IEquatable<ObjectState> {
             return false;
         }
     }
-    public ObjectState(bool _isfinalState, string _name, MonoBehaviour _self, Color color) {
+    public ObjectStateLegacy(bool _isfinalState, string _name, MonoBehaviour _self, Color color) {
         IsFinalState = _isfinalState;
         StateName = _name;
         exec = _self;

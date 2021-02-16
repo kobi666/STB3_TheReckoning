@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using System.Reflection;
 
-public class UnitStates 
+public class UnitStatesLegacy 
 {
     
     public static StringAndBool[] NormalEnemy() {

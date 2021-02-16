@@ -31,7 +31,7 @@ public class PlayerUnitUtils
     }
     
     public static bool StandardIsTargetable(PlayerUnitController pc) {
-        if (pc.CurrentState != pc.States.Death) {
+        if (pc.CurrentStateLegacy != pc.States.Death) {
             return true;
         }
         return false;
@@ -39,14 +39,14 @@ public class PlayerUnitUtils
 
     public static bool StandardConditionToAttack(PlayerUnitController pc) {
         
-        if (pc.CurrentState == pc.States.InDirectBattle || pc.CurrentState == pc.States.JoinBattle) {
+        if (pc.CurrentStateLegacy == pc.States.InDirectBattle || pc.CurrentStateLegacy == pc.States.JoinBattle) {
             if (pc.Target?.IsTargetable() ?? false) {
                 return true;
             }
         }
         return false;
     }
-    public static bool StandardEnterDirectBattleCondition(ObjectState us, EnemyUnitController ec, NormalUnitStates states) {
+    public static bool StandardEnterDirectBattleCondition(ObjectStateLegacy us, EnemyUnitController ec, NormalUnitStates states) {
         if (us == states.Default || us == states.PostBattle) {
                 return true;
         }
@@ -96,7 +96,7 @@ public class PlayerUnitUtils
         yield break;
     }
     public static bool CheckIfEnemyIsInBattleWithOtherUnit(EnemyUnitController ec) {
-        if (ec.SM.CurrentState == ec.States.PreBattle || ec.SM.CurrentState == ec.States.InDirectBattle) {
+        if (ec.SM.currentStateLegacy == ec.States.PreBattle || ec.SM.currentStateLegacy == ec.States.InDirectBattle) {
             return true;
         }
         else {
@@ -105,7 +105,7 @@ public class PlayerUnitUtils
     }
 
     public static IEnumerator TellEnemyToPrepareFor1on1battleWithMe(EnemyUnitController ec, PlayerUnitController pc) {
-        if (ec.CurrentState == ec.States.Default) {
+        if (ec.CurrentStateLegacy == ec.States.Default) {
             ec.dataLegacy.PlayerTarget = pc;
             if (GameObjectPool.Instance.ActiveEffectables.Pool.ContainsKey(pc.name)) {
             ec.dataLegacy.EffectableTarget = GameObjectPool.Instance.ActiveEffectables.Pool[pc.name];

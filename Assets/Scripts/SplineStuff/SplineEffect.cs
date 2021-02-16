@@ -66,7 +66,7 @@ public class SplineEffect
         }
     }
 
-    private Effectable[] t_targets;
+    private (Effectable,bool)[] t_targets;
 
     private bool onPathEffectInProgress;
     private void ApplyEffectOnPathTargets(Effectable ef,Vector2 targetPos)
@@ -79,14 +79,14 @@ public class SplineEffect
                 t_targets = TargetBank.Targets.Values.ToArray();
                 foreach (var tef in t_targets)
                 {
-                    if (tef.name == ef.name)
+                    if (tef.Item1.name == ef.name)
                     {
                         continue;
                     }
 
-                    if (tef?.IsTargetable() ?? false)
+                    if (tef.Item1?.IsTargetable() ?? false)
                     {
-                        onPathEffect?.Invoke(tef,targetPos);
+                        onPathEffect?.Invoke(tef.Item1,targetPos);
                     }
                 }
             }
@@ -95,9 +95,9 @@ public class SplineEffect
                 t_targets = TargetBank.Targets.Values.ToArray();
                 foreach (var t in t_targets)
                     {
-                        if (t?.IsTargetable() ?? false)
+                        if (t.Item1?.IsTargetable() ?? false)
                         {
-                            onPathEffect?.Invoke(t,targetPos);
+                            onPathEffect?.Invoke(t.Item1,targetPos);
                         }
                     }
             }
@@ -157,22 +157,22 @@ public class SplineEffect
     {
         foreach (var target in TargetBank.Targets.Values)
         {
-            if (target == null)
+            if (target.Item1 == null)
             {
                 continue;
             }
 
             if (MainTargetEffect)
             {
-                if (target.name == ef.name)
+                if (target.Item1.name == ef.name)
                 {
                     continue;
                 }
             }
 
-            if (target.IsTargetable())
+            if (target.Item1.IsTargetable())
             {
-                onPathEffect?.Invoke(target,targetPos);
+                onPathEffect?.Invoke(target.Item1,targetPos);
             }
         }
     }
