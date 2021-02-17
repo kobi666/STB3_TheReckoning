@@ -7,7 +7,7 @@ using UnityEngine;
 [Serializable]
 public abstract class ObjectState<T> where T: IHasStateMachine
 {
-    [LabelText("Default State?")]
+    [LabelText("Default State?")][InfoBox("-------------------")]
     public bool DefaultState;
     
     [LabelText("Initial State?")]

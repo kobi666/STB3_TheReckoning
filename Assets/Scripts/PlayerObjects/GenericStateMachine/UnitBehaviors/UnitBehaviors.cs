@@ -40,12 +40,31 @@ namespace UnitBehaviors
         public override void InitBehavior()
         {
             TargetBank = UnitObject.EffectableTargetBank;
-            Detector = UnitObject.RangeDetector;
+            Detector = Detector ?? UnitObject.RangeDetector;
         }
 
         public override bool ExecCondition()
         {
-            return TargetBank.HasTargetableTargets;
+            return !TargetBank.HasTargetableTargets;
+        }
+    }
+
+    public class ChangeState : UnitBehavior
+    {
+        public UnitStates State;
+        public override void Behavior()
+        {
+            UnitObject.StateMachine.SetState(State.ToString());
+        }
+
+        public override void InitBehavior()
+        {
+            
+        }
+
+        public override bool ExecCondition()
+        {
+            return false;
         }
     }
 

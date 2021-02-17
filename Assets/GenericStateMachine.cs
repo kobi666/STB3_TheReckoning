@@ -12,14 +12,22 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
     public T PreviousState;
     public T DefaultState;
     public TS SMObject;
+    private Dictionary<string,T> States = new Dictionary<string,T>();
     
     public abstract string EmptyStateName { get; }
 
     public bool CanExecCurrentState = true;
+
+    private int counter;
     public async void ExecuteCurrentState()
     {
         if (CurrentState.StateIsRunning == false)
         {
+            if (CurrentState.StateName == EmptyStateName)
+            {
+                Debug.LogWarning(new Exception("Empty state entered or empty state name"));
+                return;
+            }
             CurrentState.OnStateEnterActions();
             CurrentState.StateIsRunning = true;
             if (CurrentState.StateEnterConditions())
@@ -36,10 +44,11 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
                         break;
                     }
                 }
-            CurrentState.OnStateExitActions();
+                CurrentState.OnStateExitActions();
             CurrentState.StateIsRunning = false;
         }
         ChangeState(NextStateResolver());
+        
     }
 
     public T NextStateResolver()
@@ -54,11 +63,27 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
         return DefaultState;
     }
 
-    private void ChangeState(T State)
+    public void ChangeState(T state)
     {
         PreviousState = CurrentState;
-        CurrentState = State;
-        ExecuteCurrentState();
+        CurrentState = state;
+        if (PreviousState.StateName == CurrentState.StateName)
+        {
+            counter += 1;
+        }
+        else
+        {
+            counter = 0;
+        }
+
+        if (counter < 3)
+        {
+            ExecuteCurrentState();
+        }
+        else
+        {
+            throw new Exception("Same State Loop!");
+        }
     }
 
     public void SetState(T nextState)
@@ -67,11 +92,25 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
         CanExecCurrentState = false;
     }
 
+    public void SetState(string stateName)
+    {
+        if (States.ContainsKey(stateName))
+        {
+            if (stateName != EmptyStateName)
+            {
+                NextState = States[stateName];
+                CanExecCurrentState = false;
+            }
+        }
+    }
+
     public void Init(TS smObject, List<T> states)
     {
         SMObject = smObject;
+        
         foreach (var state in states)
         {
+            state.Init(SMObject);
             if (state.DefaultState)
             {
                 DefaultState = state;
@@ -80,6 +119,15 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
             if (state.InitialState)
             {
                 CurrentState = state;
+            }
+
+            try
+            {
+                States.Add(state.StateName, state);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Same State Key exists twice");
             }
         }
         ExecuteCurrentState();

@@ -16,7 +16,9 @@ public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITarg
     }
 
     bool externalTargetableLock;
-    public bool ExternalTargetableLock {get => externalTargetableLock; set {externalTargetableLock = value;}}
+    public bool ExternalTargetableLock {get => externalTargetableLock; set
+    {
+        externalTargetableLock = value; IsTargetable();}}
 
     public abstract bool IsTargetable();
     public event Action<bool> onTargetableStateChange;

@@ -30,7 +30,7 @@ public class EffectableUnit : Effectable
     public override bool IsTargetable()
     {
         if (gameObject.activeSelf == true) {
-            if (ExternalTargetableLock)
+            if (ExternalTargetableLock == false)
             {
                 if (GenericUnitController.StateMachine.currentState.stateName != UnitStates.Death)
                 {

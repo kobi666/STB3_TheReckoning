@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [Serializable]
 public enum UnitStates
@@ -14,10 +15,14 @@ public enum UnitStates
     InDirectBattle,
     AssistingBattle,
     MovingAlongPath,
-    Death
+    Death,
+    Testing
 }
 
-[Serializable]
+
+
+
+[Serializable][BoxGroup][GUIColor(1f,0f,0f)]
 public class UnitState : ObjectState<GenericUnitController>
 {
     [SerializeReference][TypeFilter("GetBehaviors")]
@@ -44,17 +49,22 @@ public class UnitState : ObjectState<GenericUnitController>
     {
         foreach (var behavior in OnEnterBehvaior)
         {
+            behavior.Init(SMObject);
             onStateEnterActions += behavior.InvokeBehavior;
+            
         }
 
         foreach (var behavior in InStateBehavior)
         {
+            behavior.Init(SMObject);
             inStateActions += behavior.InvokeBehavior;
             stateExitConditions += behavior.ExecCondition;
+            
         }
 
         foreach (var behavior  in OnExitBehavior)
         {
+            behavior.Init(SMObject);
             onStateExitActions += behavior.InvokeBehavior;
         }
 
@@ -96,6 +106,20 @@ public abstract class  UnitStateCondition
     
 }
 
+public static class GetRandomGuiColor
+{
+    public static String GetS()
+    {
+        float a = Random.Range(0.1f, 1f);
+        float b = Random.Range(0.1f, 1f);
+        float c = Random.Range(0.1f, 1f);
+        string s = a.ToString() + b.ToString() + c.ToString() + "1f";
+        
+        return s;
+    }
+}
+
+
 [Serializable]
 public abstract class UnitBehavior
 {
@@ -107,7 +131,7 @@ public abstract class UnitBehavior
     {
         UnitData = unit.Data;
         UnitObject = unit;
-        
+        InitBehavior();
     }
 
     public abstract void InitBehavior();

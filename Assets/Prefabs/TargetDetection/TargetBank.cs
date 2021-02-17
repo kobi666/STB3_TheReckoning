@@ -23,7 +23,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
     }
 
 
-    public bool HasTargetableTargets;
+    public bool HasTargetableTargets = false;
 
     public event Action<string,bool> onTargetableChange;
 
@@ -80,6 +80,8 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
     /// you can then do so that attacks that have multiple weapons \ splines \ etc, can only fire or aquire a target
     /// in case it has not been marked as taken, up to you.
     /// </summary>
+    ///
+    [SerializeReference] 
     public Dictionary<string,(T,bool)> Targets = new Dictionary<string,(T,bool)>();
 
     public abstract T TryToGetTargetOfType(GameObject GO);
@@ -89,11 +91,14 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
         onTargetAdd?.Invoke(t);
         onTargetsUpdate?.Invoke();
         Collision c;
-        
     }
     
 
     void AddTarget(GameObject targetGO) {
+        if (targetGO.name == name)
+        {
+            return;
+        }
         clearNulls();
         T t = TryToGetTargetOfType(targetGO);
         if (t != null) {
