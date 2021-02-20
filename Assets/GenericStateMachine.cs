@@ -2,14 +2,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 [Serializable]
 public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : ObjectState<TS> where TS : IHasStateMachine
 {
+    [ShowInInspector]
+    private string currentState
+    {
+        get => CurrentState.StateName;
+    }
+    
+    [ShowInInspector]
+    private bool stateIsRunning
+    {
+        get => CurrentState.StateIsRunning;
+    }
+    
+    
+    [HideInInspector]
     public T CurrentState;
+    [HideInInspector]
     public T NextState;
+    [HideInInspector]
     public T PreviousState;
+    [HideInInspector]
     public T DefaultState;
     public TS SMObject;
     private Dictionary<string,T> States = new Dictionary<string,T>();
@@ -25,7 +43,7 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
         {
             if (CurrentState.StateName == EmptyStateName)
             {
-                Debug.LogWarning(new Exception("Empty state entered or empty state name"));
+                Debug.LogWarning(new Exception("Empty state entered or empty state name on : " + gameObject.name));
                 return;
             }
             CurrentState.OnStateEnterActions();

@@ -24,7 +24,7 @@ public class UnitDynamicData
     public Vector2 TargetPosition;
     public Vector2 BasePosition;
     public BGCcMath Spline;
-    public float DistanceOnSpline;
+    public float DistanceOnPath;
 }
 
 

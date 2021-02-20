@@ -125,12 +125,14 @@ public abstract class UnitBehavior
 {
     public UnitData UnitData;
     public GenericUnitController UnitObject;
+    public EffectableTargetBank TargetBank;
     public abstract void Behavior();
 
     public void Init(GenericUnitController unit)
     {
         UnitData = unit.Data;
         UnitObject = unit;
+        TargetBank = UnitObject.EffectableTargetBank;
         InitBehavior();
     }
 

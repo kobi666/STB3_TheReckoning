@@ -139,6 +139,7 @@
      <Compile Include="Assets\PathDiscoveryTargetBank.cs" />
      <Compile Include="Assets\PathDiscoveryWalker.cs" />
      <Compile Include="Assets\PathRenderer.cs" />
+     <Compile Include="Assets\PathWalker.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Chooser\Chooser.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Chooser\Interfaces\IChooser.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\ColliderButton\ColliderButton.cs" />
@@ -417,6 +418,7 @@
      <Compile Include="Assets\testSplineCon.cs" />
      <Compile Include="Assets\testclass.cs" />
      <Compile Include="Assets\testscript2.cs" />
+     <Compile Include="Assets\testwalker.cs" />
      <Compile Include="Assets\uniteventTest.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\BansheeGz\BGCollider\readme.txt" />

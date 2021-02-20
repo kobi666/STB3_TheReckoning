@@ -19,7 +19,13 @@ public class ShootOneProjectile : ProjectileAttackProperties
     
     public override void InitializeAttack(GenericWeaponController parentWeapon)
     {
+        if (!Projectiles.IsNullOrEmpty()) {
         projectilePool = Projectiles[0].CreatePool();
+        }
+        else
+        {
+            Debug.LogWarning("Empty Projectile");
+        }
     }
     
     

@@ -8,6 +8,32 @@ using UnityEngine;
 [Serializable]
 public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitController>,IActiveObject<GenericUnitController>,IHasEffects,IHasRangeComponent,IHasStateMachine
 {
+    private void OnEnable()
+    {
+        try
+        {
+            GameObjectPool.Instance.ActiveUnits.Add(name,this);
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning(e);
+        }
+        
+    }
+
+    private void OnDisable()
+    {
+        try
+        {
+            GameObjectPool.Instance.ActiveUnits.Remove(name);
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning(e);
+        }
+    }
+
+
     [SerializeField]
     public List<UnitState> UnitStates =  new List<UnitState>();
     
@@ -27,6 +53,7 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
     public EffectableUnit EffectableUnit;
     public EffectableTargetBank EffectableTargetBank;
     public UnitStateMachine StateMachine;
+    public PathWalker PathWalker;
     
 
     void Init()
@@ -58,6 +85,7 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
     {
         LifeBarmanager = GetComponentInChildren<LifeBarmanager>();
         RangeDetector = GetComponentInChildren<RangeDetector>();
+        PathWalker = PathWalker ?? GetComponentInChildren<PathWalker>();
         Init();
     }
 

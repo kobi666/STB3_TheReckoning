@@ -63,7 +63,7 @@ public class SplineAttack : WeaponAttack
 
     public override void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors)
     {
-        float s = parentWeaponController.RangeDetector.RangeRadius + RangeSizeDelta;
+        float s = parentWeaponController.RangeDetector.GetSize() + RangeSizeDelta;
         parentWeaponController.RangeDetector.UpdateSize(s);
     }
 

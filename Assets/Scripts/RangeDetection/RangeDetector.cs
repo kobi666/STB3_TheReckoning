@@ -7,6 +7,9 @@ using UnityEditor;
 
 public class RangeDetector : TagDetector,IQueueable<RangeDetector>
 {
+    [ColorPalette] public Color Color = Color.red;
+
+
     private RangeDebug _rangeDebug;
     float rangeRadius = 1;
     public float RangeRadius {
@@ -78,10 +81,23 @@ public class RangeDetector : TagDetector,IQueueable<RangeDetector>
     }
     */
 
-    void Awake()
+private void OnDrawGizmos()
+{
+    Gizmos.color = Color;
+}
+
+private void OnDrawGizmosSelected()
+{
+    Gizmos.color = Color;
+}
+
+void Awake()
     {
+        
         base.Awake();
         RangeCollider = GetComponent<CircleCollider2D>() ?? null;
+        OnDrawGizmosSelected();
+        OnDrawGizmos();
     }
 
     public override float GetSize()

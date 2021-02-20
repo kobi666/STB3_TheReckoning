@@ -22,7 +22,7 @@ public class GenericAOEController : MonoBehaviour
     }
     public EffectableTargetBank TargetBank;
 
-    protected void Awake()
+    protected void Start()
     {
         Detector = Detector ?? GetComponentInChildren<TagDetector>();
         TargetBank = TargetBank ?? GetComponent<EffectableTargetBank>();

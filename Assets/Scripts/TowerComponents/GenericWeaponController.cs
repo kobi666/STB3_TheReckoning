@@ -15,6 +15,9 @@ using UnityEngine.Serialization;
 [RequireComponent(typeof(EffectableTargetBank))][Searchable]
 public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint
 {
+
+    public bool Autonomous = true;
+    
     [ValueDropdown("valueList")]
     [HideLabel]
     [BoxGroup]
@@ -225,13 +228,19 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint
         TargetUnit tu = GameObjectPool.Instance.GetTargetUnit(ef.name);
         if (Target?.Effectable == null) {
             OnTargetAdd(tu);
-            InAttackState = true;
+            if (Autonomous)
+            {
+                InAttackState = true;
+            }
         }
         if (Target?.Effectable != null) {
             
             if (tu.Proximity < Target.Proximity) {
                 OnTargetAdd(tu);
-                InAttackState = true;
+                if (Autonomous)
+                {
+                    InAttackState = true;
+                }
             }
         }
     }
@@ -381,7 +390,6 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint
                 inAttackState = false;
                 OnAttackCease();
             }
-            
         }
     }
 
@@ -436,7 +444,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint
         
         onEnemyEnteredRange += StandardOnTargetEnteredRange;
         onEnemyLeftRange += StandardOnTargetLeftRange;
-        RangeDetector = GetComponentInChildren<RangeDetector>() ?? null;
+        RangeDetector = RangeDetector ?? GetComponentInChildren<TagDetector>();
         projectileExitPoint = GetComponentInChildren<ProjectileExitPoint>() ?? null;
         ProjectileFinalPoint = GetComponentInChildren<ProjectileFinalPoint>() ?? null;
         if (RotatingComponent) {
@@ -453,8 +461,10 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint
         }
 
         ParentTowerLegacy = ParentTowerLegacy ?? GetComponentInParent<TowerControllerLegacy>();
+        if (projectileExitPoint != null) {
         onAttackInitiate += projectileExitPoint.StartAsyncRotation;
         onAttackCease += projectileExitPoint.StopAsyncRotation;
+        }
         InitWeapon();
         
     }

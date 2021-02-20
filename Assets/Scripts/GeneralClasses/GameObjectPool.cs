@@ -18,6 +18,8 @@ public class GameObjectPool : MonoBehaviour
     public Dictionary<string,PoolObjectQueue<SingleAnimationObject>> SingleAnimationPoolQueue = new Dictionary<string, PoolObjectQueue<SingleAnimationObject>>();
     public Dictionary<string,PoolObjectQueue<AreaEffect>> AreaEffectPoolQueue = new Dictionary<string, PoolObjectQueue<AreaEffect>>();
     public Dictionary<string,PoolObjectQueue<EffectAnimationController>> EffectAnimationPoolQueue = new Dictionary<string, PoolObjectQueue<EffectAnimationController>>();
+    public Dictionary<string,GenericUnitController> ActiveUnits = new Dictionary<string, GenericUnitController>();
+    
     public List<string> Targetables = new List<string>();
 
     public event Action<string,bool> onTargetableUpdate;

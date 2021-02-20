@@ -61,9 +61,8 @@ public abstract class TowerComponent : MonoBehaviour, IHasEffects,IHasRangeCompo
     
     
     public EnemyTargetBank EnemyTargetBank {get ; private set;}
-
-    [ConditionalField("debug")]
-    public RangeDetector RangeDetector;
+    
+    public TagDetector RangeDetector;
     
     [ConditionalField("debug")]
     public CircleCollider2D RangeCollider;    

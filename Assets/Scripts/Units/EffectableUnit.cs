@@ -32,7 +32,7 @@ public class EffectableUnit : Effectable
         if (gameObject.activeSelf == true) {
             if (ExternalTargetableLock == false)
             {
-                if (GenericUnitController.StateMachine.currentState.stateName != UnitStates.Death)
+                if (GenericUnitController.StateMachine.CurrentState.stateName != UnitStates.Death)
                 {
                     targetable = true;
                     return true;

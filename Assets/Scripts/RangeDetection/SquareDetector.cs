@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SquareDetector : TagDetector
 {
-
     public BoxCollider2D BoxCollider;
     
     public override float GetSize()
@@ -14,7 +13,7 @@ public class SquareDetector : TagDetector
 
     public override void UpdateSize(float SizeDelta)
     {
-        
+        BoxCollider.size = new Vector2(SizeDelta,SizeDelta);
     }
 
     void Awake()
