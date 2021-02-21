@@ -6,26 +6,27 @@ using TMPro;
 public class StateDebug : MonoBehaviour
 {
     UnitController uc;
+    private GenericUnitController gnc;
     TextMeshPro text;
     
-    void ChangeStateTextAndColor() {
-        text.text = uc.CurrentStateLegacy.stateName.ToUpper();
-        text.color = uc.CurrentStateLegacy.textColor;
+    void ChangeStateTextAndColor()
+    {
+        text.text = gnc.StateMachine.CurrentState.StateName;
     }
     
     // Start is called before the first frame update
     void Start()
     {
         text = GetComponent<TextMeshPro>();
-        uc = transform.parent.GetComponent<UnitController>() ?? null;
+        gnc = transform.parent.GetComponent<GenericUnitController>() ?? null;
         // ChangeStateTextAndColor();
         //uc.SM.onStateChange += ChangeStateTextAndColor;
     }
 
     private void Update() {
         ChangeStateTextAndColor();
-        if (uc.dataLegacy.EnemyTarget != null) {
-        Debug.DrawLine(uc.transform.position, uc.dataLegacy.EnemyTarget.transform.position);
+        if (gnc.UnitBattleManager.targetExists) {
+        Debug.DrawLine(gnc.transform.position, gnc.UnitBattleManager.TargetUnit.transform.position);
         }
     }
 }

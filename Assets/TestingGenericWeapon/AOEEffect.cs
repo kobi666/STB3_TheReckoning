@@ -116,8 +116,8 @@ public class AOEEffect : IHasEffectAnimation
             intervalCounter = 0;
             while (DurationCounter < EffectDuration && EffectInProgress == true)
             {
-                DurationCounter += StaticObjects.Instance.DeltaGameTime;
-                intervalCounter += StaticObjects.Instance.DeltaGameTime;
+                DurationCounter += StaticObjects.DeltaGameTime;
+                intervalCounter += StaticObjects.DeltaGameTime;
                 if (intervalCounter > EffectInterval)
                 {
                     GetTargets();

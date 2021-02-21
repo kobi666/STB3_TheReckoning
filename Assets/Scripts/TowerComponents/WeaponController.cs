@@ -260,11 +260,11 @@ public abstract class WeaponController : TowerComponent
         if (AttackCounter < CounterMax)
         {
             if (Data.fireRate > 0) {
-            AttackCounter += StaticObjects.Instance.DeltaGameTime * Data.fireRate;
+            AttackCounter += StaticObjects.DeltaGameTime * Data.fireRate;
             }
             else
             { 
-                AttackCounter += StaticObjects.Instance.DeltaGameTime;
+                AttackCounter += StaticObjects.DeltaGameTime;
             }
         }
         

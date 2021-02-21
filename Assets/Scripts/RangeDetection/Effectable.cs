@@ -23,6 +23,11 @@ public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITarg
     public abstract bool IsTargetable();
     public event Action<bool> onTargetableStateChange;
 
+    public void OnTargetStateChange(bool state)
+    {
+        onTargetableStateChange?.Invoke(state);
+    }
+
     void UpdateTargetableState(bool targetableState)
     {
         if (targetableState == true)
@@ -45,18 +50,18 @@ public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITarg
         if (OnFirstStart == false) {
         ActivePool.AddObjectToActiveObjectPool(this);
         }
+        
     }
 
     
-    void Start()
+    protected void Start()
     {
         ActivePool = GameObjectPool.Instance.ActiveEffectables;
         ActivePool.AddObjectToActiveObjectPool(this);
         onTargetableStateChange += UpdateTargetableState;
-        PostStart();
     }
 
-    public abstract void PostStart();
+    
 
     
     void OnDisable()

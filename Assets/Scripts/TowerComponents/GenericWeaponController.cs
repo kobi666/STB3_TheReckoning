@@ -500,11 +500,11 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint
         if (AttackCounter < CounterMax)
         {
             if (Data.fireRate > 0) {
-            AttackCounter += StaticObjects.Instance.DeltaGameTime * Data.fireRate;
+            AttackCounter += StaticObjects.DeltaGameTime * Data.fireRate;
             }
             else
             { 
-                AttackCounter += StaticObjects.Instance.DeltaGameTime;
+                AttackCounter += StaticObjects.DeltaGameTime;
             }
         }
     }

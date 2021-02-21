@@ -94,7 +94,7 @@ public class ShootOneProjectile : ProjectileAttackProperties
                         timeCounter = timebetweenProjectiles;
                         counter -= 1;
                     }
-                    timeCounter -= StaticObjects.Instance.DeltaGameTime;
+                    timeCounter -= StaticObjects.DeltaGameTime;
                     await Task.Yield();
                 }
 

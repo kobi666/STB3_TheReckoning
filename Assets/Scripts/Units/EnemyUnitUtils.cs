@@ -43,7 +43,7 @@ public class EnemyUnitUtils : MonoBehaviour
             self.OnAttack();
             maxCounter = 0.0f;
             }
-            maxCounter += ((StaticObjects.Instance.DeltaGameTime / 10.0F));
+            maxCounter += ((StaticObjects.DeltaGameTime / 10.0F));
             yield return new WaitForFixedUpdate();
         }
         yield break;

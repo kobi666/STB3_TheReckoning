@@ -13,6 +13,8 @@ public class PathWalker : MonoBehaviour
     [HideInInspector]
     public bool SplineAttached;
 
+    public bool Direction = true;
+
     private void OnEnable()
     {
         EndOfPathReached = false;
@@ -20,7 +22,16 @@ public class PathWalker : MonoBehaviour
 
     public float ProximityToPathEnd
     {
-        get => SplineTotalLength - CurrentDistanceOnSpline;
+        get
+        {
+            if (Direction == true) { 
+            return SplineTotalLength - CurrentDistanceOnSpline;
+            }
+            else
+            {
+                return 0 + CurrentDistanceOnSpline;
+            }
+        }
     }
     public BGCcMath Spline
     {
@@ -43,6 +54,7 @@ public class PathWalker : MonoBehaviour
     public Transform ObjectTransform;
 
     public event Action onPathEnd;
+    public event Action onReversePathEnd;
 
     public event Action<float> onPathMovement;
 
@@ -73,25 +85,47 @@ public class PathWalker : MonoBehaviour
 
     private float currentDistanceOnSpline = 999f;
 
-    private bool EndOfPathReached;
+    public bool EndOfPathReached;
     
     [ShowInInspector]
     public float CurrentDistanceOnSpline { 
         get => currentDistanceOnSpline;
         set
         {
-            if (CurrentDistanceOnSpline < SplineTotalLength) {
-            currentDistanceOnSpline = value;
-            }
-            if (currentDistanceOnSpline >= SplineTotalLength)
+            if (!SplineAttached)
             {
-                /*if (OnPath)
-                {*/
+                EndOfPathReached = true;
+                return;
+            }
+            if (Direction) {
+                if (CurrentDistanceOnSpline < SplineTotalLength) {
+                currentDistanceOnSpline = value;
+                }
+                if (currentDistanceOnSpline >= SplineTotalLength)
+                {
+                    /*if (OnPath)
+                    {*/
+                        if (!EndOfPathReached) {
+                        onPathEnd?.Invoke();
+                        EndOfPathReached = true;
+                        }
+                    //}
+                }
+            }
+            else if (!Direction)
+            {
+                if (CurrentDistanceOnSpline <= 0) {
+                    currentDistanceOnSpline = value;
+                }
+                if (currentDistanceOnSpline <= 0)
+                {
+                    /*if (OnPath)
+                    {*/
                     if (!EndOfPathReached) {
-                    onPathEnd?.Invoke();
-                    EndOfPathReached = true;
+                        onReversePathEnd?.Invoke();
                     }
-                //}
+                    //}
+                }
             }
         }
     }

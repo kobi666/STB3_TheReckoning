@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 
@@ -45,15 +46,27 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
 
     public float UnitDiscoveryRadius;
     //public GenericStateMachine StateMachine;
+    
+    [FoldoutGroup("Components")]
     public AnimationController AnimationController;
+    [FoldoutGroup("Components")]
     public SpriteRenderer SpriteRenderer;
+    [FoldoutGroup("Components")]
     public UnitBattleManager UnitBattleManager;
+    [FoldoutGroup("Components")]
     public LifeBarmanager LifeBarmanager;
+    [FoldoutGroup("Components")]
     public TagDetector RangeDetector;
+    [FoldoutGroup("Components")]
     public EffectableUnit EffectableUnit;
+    [FoldoutGroup("Components")]
     public EffectableTargetBank EffectableTargetBank;
+    [FoldoutGroup("Components")]
     public UnitStateMachine StateMachine;
+    [FoldoutGroup("Components")]
     public PathWalker PathWalker;
+    [FoldoutGroup("Components")] 
+    public UnitMovementController UnitMovementController;
     
 
     void Init()
@@ -79,7 +92,8 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
         UnitBattleManager = UnitBattleManager ?? GetComponent<UnitBattleManager>();
         EffectableUnit = EffectableUnit ?? GetComponent<EffectableUnit>();
         EffectableTargetBank = EffectableTargetBank ?? GetComponent<EffectableTargetBank>();
-        
+        UnitMovementController = UnitMovementController ?? GetComponent<UnitMovementController>();
+        UnitMovementController.UnitTransform = transform;
     }
 
     protected void Start()

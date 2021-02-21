@@ -9,39 +9,39 @@ namespace UnitBehaviors
 {
     public class WalkAlongSpline : UnitBehavior
     {
-        public BGCcMath Spline;
         public float Distance = 0;
         public float MovementSpeed = 1;
+        [Required]
+        private PathWalker PathWalker;
+        
         public override void Behavior()
         {
-            Distance += StaticObjects.Instance.DeltaGameTime * MovementSpeed;
-            UnitObject.transform.position = Spline.CalcPositionByDistance(Distance);
+            PathWalker.OnPathMovement(StaticObjects.DeltaGameTime * MovementSpeed);
         }
 
         public override void InitBehavior()
         {
-            Spline = UnitData.DynamicData.Spline;
+            PathWalker = UnitObject.PathWalker;
         }
 
         public override bool ExecCondition()
         {
-            return (Spline && Distance < 1) ;
+            return (PathWalker?.EndOfPathReached ?? false) ;
         }
     }
 
     public class WaitForEnemiesToEnterRange : UnitBehavior
     {
         public TagDetector Detector;
-        private EffectableTargetBank TargetBank;
+        
         private bool TargetableInRange;
         public override void Behavior()
         {
-            
+            Debug.LogWarning("still Waiting");
         }
 
         public override void InitBehavior()
         {
-            TargetBank = UnitObject.EffectableTargetBank;
             Detector = Detector ?? UnitObject.RangeDetector;
         }
 
@@ -91,10 +91,10 @@ namespace UnitBehaviors
     public class MoveTowardsTarget : UnitBehavior
     {
         public UnitBattleManager UnitBattleManager;
-        [Required]
-        public GenericWeaponController GenericWeaponController;
         public float MovementSpeed = 1;
-        private EffectableTargetBank AttackAreaTargetbank;
+        [Required]
+        public EffectableTargetBank AttackAreaTargetbank;
+        private UnitMovementController UnitMovementController;
 
         private string targetname
         {
@@ -102,29 +102,27 @@ namespace UnitBehaviors
         }
         public override void Behavior()
         {
-            UnitObject.transform.position = Vector2.MoveTowards(UnitObject.transform.position,
-                UnitBattleManager.TargetUnit.transform.position, MovementSpeed * StaticObjects.Instance.DeltaGameTime);
+            UnitMovementController.MoveTowardsTarget(UnitBattleManager.TargetUnit.transform.position);
         }
 
         public override void InitBehavior()
         {
             UnitBattleManager = UnitObject.UnitBattleManager;
-            GenericWeaponController = UnitBattleManager.MeleeWeapon;
-            AttackAreaTargetbank = GenericWeaponController.TargetBank;
+            UnitMovementController = UnitObject.UnitMovementController;
         }
 
         public override bool ExecCondition()
         {
-            if (UnitBattleManager.targetExists) {
-                if (GameObjectPool.Instance.Targetables.Contains(targetname))
+            if (UnitBattleManager.targetExists)
+            {
+                if (AttackAreaTargetbank.Targets.ContainsKey(targetname))
                 {
-                    if (!AttackAreaTargetbank.Targets.ContainsKey(targetname))
-                    {
-                        return false;
-                    }
+                    return false;
                 }
+                return true;
             }
-            return true;
+
+            return false;
         }
     }
     public enum TargetPriority
@@ -184,6 +182,24 @@ namespace UnitBehaviors
         public override bool ExecCondition()
         {
             return UnitObject.EffectableTargetBank.HasTargetableTargets;
+        }
+    }
+
+    public class Fight : UnitBehavior
+    {
+        public override void Behavior()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void InitBehavior()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override bool ExecCondition()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

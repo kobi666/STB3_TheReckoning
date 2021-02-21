@@ -74,7 +74,7 @@ public abstract class OrbitalWeaponGeneric : WeaponController, IOrbital<OrbitalW
         Vector2 vecToTarget = Target.transform.position - transform.position;
         float angleToTarget = Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg;
         Quaternion q = Quaternion.AngleAxis(angleToTarget, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, q, StaticObjects.Instance.DeltaGameTime * Data.orbitalData.rotationSpeed);
+        transform.rotation = Quaternion.Slerp(transform.rotation, q, StaticObjects.DeltaGameTime * Data.orbitalData.rotationSpeed);
     }
     
 
@@ -84,7 +84,7 @@ public abstract class OrbitalWeaponGeneric : WeaponController, IOrbital<OrbitalW
 
     public virtual IEnumerator DefaultOrbitCoroutine() {
         while (true) {
-            AngleForOrbit += StaticObjects.Instance.DeltaGameTime * OrbitingSpeed;
+            AngleForOrbit += StaticObjects.DeltaGameTime * OrbitingSpeed;
             transform.position = (Vector2)OrbitBase.position + (WeaponUtils.DegreeToVector2(AngleForOrbit) * DistanceFromOrbitalBase);
             yield return new WaitForFixedUpdate();
         }

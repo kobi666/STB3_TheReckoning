@@ -7,7 +7,8 @@ public class EffectableUnit : Effectable
 {
     public UnitController unitController;
     public GenericUnitController GenericUnitController;
-    private bool _targetable;
+    private UnitStateMachine StateMachine;
+    private bool _targetable = false;
     public bool targetable
     {
         get
@@ -19,7 +20,7 @@ public class EffectableUnit : Effectable
             if (value != _targetable)
             {
                 _targetable = value;
-                onTargetableStateChange?.Invoke(name, _targetable);
+                OnTargetStateChange(value);
             }
         }
     }
@@ -32,7 +33,7 @@ public class EffectableUnit : Effectable
         if (gameObject.activeSelf == true) {
             if (ExternalTargetableLock == false)
             {
-                if (GenericUnitController.StateMachine.CurrentState.stateName != UnitStates.Death)
+                if (StateMachine.CurrentState.stateName != UnitStates.Death)
                 {
                     targetable = true;
                     return true;
@@ -43,8 +44,9 @@ public class EffectableUnit : Effectable
         targetable = false;
         return false;
     }
+    
 
-    public event Action<string, bool> onTargetableStateChange;
+    
 
     public override void ApplyFreeze(float FreezeAmount, float TotalFreezeProbability) {
 
@@ -62,9 +64,11 @@ public class EffectableUnit : Effectable
 
     }
 
-    public override void PostStart() {
+    protected void Start() {
+        base.Start();
         unitController = unitController ?? GetComponent<UnitController>();
         GenericUnitController = GenericUnitController ?? GetComponent<GenericUnitController>();
-
+        StateMachine = GenericUnitController.StateMachine;
+        IsTargetable();
     }
 }

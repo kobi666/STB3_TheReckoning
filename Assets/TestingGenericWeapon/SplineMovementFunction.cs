@@ -124,7 +124,7 @@ public class SplineMovementFunction
         if (!ParentIsRotatingTowardsTarget) {
             Vector2 position = finalPoint.transform.position;
             position = Vector2.MoveTowards(position, targetPosition,
-                TravelSpeed * StaticObjects.Instance.DeltaGameTime);
+                TravelSpeed * StaticObjects.DeltaGameTime);
             finalPoint.transform.position = position;
             onFinalPointUpdate?.Invoke(position);
             if (!targetPositionReached)
@@ -139,7 +139,7 @@ public class SplineMovementFunction
         {
             Vector2 PosXOnly = new Vector2(targetPosition.x, finalPoint.transform.position.y);
             finalPoint.transform.position = Vector2.MoveTowards(finalPoint.transform.position, PosXOnly,
-                TravelSpeed * StaticObjects.Instance.DeltaGameTime);
+                TravelSpeed * StaticObjects.DeltaGameTime);
             if (!targetPositionReached)
             {
                 if (finalPoint.transform.position == (Vector3)targetPosition)
@@ -193,11 +193,11 @@ public class SplineMovementFunction
 
         if (_widthDirection == true)
         {
-            CurrentBeamWidth += StaticObjects.Instance.DeltaGameTime * OscilationSpeed;
+            CurrentBeamWidth += StaticObjects.DeltaGameTime * OscilationSpeed;
         }
         else
         {
-            CurrentBeamWidth -= StaticObjects.Instance.DeltaGameTime * OscilationSpeed;
+            CurrentBeamWidth -= StaticObjects.DeltaGameTime * OscilationSpeed;
         }
     }
 

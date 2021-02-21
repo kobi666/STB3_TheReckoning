@@ -74,7 +74,7 @@ public class EffectAnimationController : MonoBehaviour,IQueueable<EffectAnimatio
             AnimationController.PlayLoopingAnimation(AnimationClip);
             while (AnimationTimeCounter <= MaxAnimationTime)
             {
-                AnimationTimeCounter += StaticObjects.Instance.DeltaGameTime;
+                AnimationTimeCounter += StaticObjects.DeltaGameTime;
             }
 
             AnimationInProgress = false;

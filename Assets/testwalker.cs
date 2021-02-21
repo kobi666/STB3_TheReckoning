@@ -6,6 +6,7 @@ using UnityEngine;
 public class testwalker : MonoBehaviour
 {
    private PathWalker pw;
+   public float MovementSpeed = 1;
 
    private void Start()
    {
@@ -15,6 +16,6 @@ public class testwalker : MonoBehaviour
 
    private void Update()
    {
-      pw.OnPathMovement(Time.deltaTime / 3);
+      pw.OnPathMovement(MovementSpeed * StaticObjects.DeltaGameTime);
    }
 }

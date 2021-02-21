@@ -75,7 +75,7 @@ public class GenericUnitSpawner : TowerComponent,ISpawnsPlayerUnits
     IEnumerator SpawnPlayerUnitAfterCounterAndAddToIndexWithCounter(int unitBaseIndex) {
         float counter = 0;
         while (this != null) {
-            counter += StaticObjects.Instance.DeltaGameTime;
+            counter += StaticObjects.DeltaGameTime;
             if (counter >= Data.SpawnerData.playerUnitSpawnTime) {
                 PlayerUnitController puc = PlayerUnitSpawnerUtils.SpawnPlayerUnitFromSpawner(this, unitBaseIndex);
                 try {

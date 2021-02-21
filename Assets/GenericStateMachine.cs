@@ -56,7 +56,8 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
             CurrentState.StateIsRunning = true;
             if (CurrentState.StateEnterConditions())
                 CanExecCurrentState = true;
-                while (CurrentState?.StateExitConditions() ?? false)
+                NextState = null;
+                while (CurrentState?.RunningStateConditions() ?? false)
                 {
                     if (CanExecCurrentState)
                     {
@@ -70,8 +71,9 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
                 }
                 CurrentState.OnStateExitActions();
             CurrentState.StateIsRunning = false;
+            ChangeState(NextStateResolver());
         }
-        ChangeState(NextStateResolver());
+        
         
     }
 
@@ -83,7 +85,6 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
             return NextState;
             }
         }
-        
         return DefaultState;
     }
 

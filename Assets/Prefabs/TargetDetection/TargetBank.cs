@@ -92,6 +92,13 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
         onTargetsUpdate?.Invoke();
         Collision c;
     }
+
+    private List<string> excludedNames = new List<string>();
+
+    public void AddNameExclusion(string objectName)
+    {
+        excludedNames.Add(objectName);
+    }
     
 
     void AddTarget(GameObject targetGO) {
@@ -145,6 +152,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
     
     void Awake()
     {
+        excludedNames.Add(name);
         Detector =  Detector ?? GetComponentInChildren<RangeDetector>() ?? null;
         onTryToAddTarget += AddTarget;
         onTargetRemove += RemoveTarget;

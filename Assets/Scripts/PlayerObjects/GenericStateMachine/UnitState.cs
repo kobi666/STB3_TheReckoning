@@ -22,7 +22,7 @@ public enum UnitStates
 
 
 
-[Serializable][BoxGroup][GUIColor(1f,0f,0f)]
+[Serializable][BoxGroup]//[GUIColor(1f,0f,0f)]
 public class UnitState : ObjectState<GenericUnitController>
 {
     [SerializeReference][TypeFilter("GetBehaviors")]
@@ -59,7 +59,6 @@ public class UnitState : ObjectState<GenericUnitController>
             behavior.Init(SMObject);
             inStateActions += behavior.InvokeBehavior;
             stateExitConditions += behavior.ExecCondition;
-            
         }
 
         foreach (var behavior  in OnExitBehavior)
@@ -100,7 +99,6 @@ public abstract class  UnitStateCondition
             .Where(x => !x.IsAbstract) // Excludes BaseClass
             .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
             .Where(x => x.IsSubclassOf(typeof(UnitStateCondition))); // Excludes classes not inheriting from BaseClass
-        
         return q;
     }
     

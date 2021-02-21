@@ -105,11 +105,11 @@ public abstract class BeamWeapon : WeaponController
             startFireCounter = 0;
         }
 
-        startFireCounter += StaticObjects.Instance.DeltaGameTime;
+        startFireCounter += StaticObjects.DeltaGameTime;
         if (BeamSwitch == false)
         {
             if (startFireCounter <= Data.BeamData.CooldownTime)
-            startFireCounter += StaticObjects.Instance.DeltaGameTime;
+            startFireCounter += StaticObjects.DeltaGameTime;
             if (startFireCounter >= Data.BeamData.CooldownTime)
             {
                 BeamDurationTimer = Data.BeamData.BeamDuration;

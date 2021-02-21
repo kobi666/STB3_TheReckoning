@@ -103,7 +103,7 @@ public abstract class SplineAttackProperties : AttackProperties
             }*/
             while (AttackProgressCounter < AttackDuration && AsyncAttackInProgress == true && MainTarget != null)
             {
-                AttackProgressCounter += StaticObjects.Instance.DeltaGameTime;
+                AttackProgressCounter += StaticObjects.DeltaGameTime;
                 SplineAttackFunction(MainTarget, TargetPosition);
                 await Task.Yield();
             }
@@ -178,7 +178,7 @@ public class LeapingSplines : SplineAttackProperties
                 LeapingTargets.Values.ToArray()[TargetCounter].Item2);
             if (SplineBehavior0.SplineMovement.TargetPositionReached)
             {
-                DelayCounter += StaticObjects.Instance.DeltaGameTime;
+                DelayCounter += StaticObjects.DeltaGameTime;
                 if (DelayCounter >= DelayBetweenLeaps) {
                     if (TargetCounter < Leaps)
                     {

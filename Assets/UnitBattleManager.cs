@@ -27,13 +27,13 @@ public class UnitBattleManager : MonoBehaviour
     }
 
     public GenericWeaponController MeleeWeapon;
-    public List<GenericWeaponController> OtherWeapons = new List<GenericWeaponController>();
+    public List<GenericWeaponController> AllWeapons = new List<GenericWeaponController>();
     public AnimationClip OnAttackAnimation;
     public AnimationClip OnSpecialAttackAnimation;
 
     void updateTargetState(string tname, bool state)
     {
-        if (tname == TargetUnit.name)
+        if (tname == TargetUnit?.name)
         {
             if (state == false)
             {
@@ -56,14 +56,19 @@ public class UnitBattleManager : MonoBehaviour
 
     private void Start()
     {
-        if (!OtherWeapons.IsNullOrEmpty())
+        if (AllWeapons.IsNullOrEmpty())
         {
-            OtherWeapons = GetComponentsInChildren<GenericWeaponController>().ToList();
+            AllWeapons = GetComponentsInChildren<GenericWeaponController>().ToList();
         }
 
+        foreach (var weapon in AllWeapons)
+        {
+            weapon.TargetBank.AddNameExclusion(name);
+        }
         GameObjectPool.Instance.onTargetableUpdate += updateTargetState;
         if (MeleeWeapon) {
         MeleeWeapon.TargetBank.onTargetRemove += removeTarget;
         }
+        
     }
 }

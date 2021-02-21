@@ -179,7 +179,7 @@ public class SplineEffect
 
     void EffectOnInterval(Effectable ef,Vector2 targetPos)
     {
-        EffectIntervalCounter += StaticObjects.Instance.DeltaGameTime;
+        EffectIntervalCounter += StaticObjects.DeltaGameTime;
         if (EffectIntervalCounter >= EffectInterval)
         {
             onAttack?.Invoke(ef,targetPos);

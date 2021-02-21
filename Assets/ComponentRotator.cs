@@ -58,7 +58,7 @@ public class ComponentRotator : MonoBehaviour
         Vector2 vecToTarget = TargetPosition - (Vector2)transform.position;
         float angleToTarget = Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg;
         Quaternion q = Quaternion.AngleAxis(angleToTarget, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, q, StaticObjects.Instance.DeltaGameTime * RotationSpeed);
+        transform.rotation = Quaternion.Slerp(transform.rotation, q, StaticObjects.DeltaGameTime * RotationSpeed);
     }
     
 

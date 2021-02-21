@@ -5,11 +5,11 @@ using UnityEngine;
 public class StaticObjects : MonoBehaviour
 {
     public RangeDetector RangeDetector;
-    public float GameTimeMultiplier = 1.0000f;
+    public static float GameTimeMultiplier = 1.0000f;
     public float GameTime = 0.0000f;
     // Start is called before the first frame update
     public static Transform PPH;
-    public float DeltaGameTime {
+    public static float DeltaGameTime {
         get {
             return Time.deltaTime * GameTimeMultiplier;
         }

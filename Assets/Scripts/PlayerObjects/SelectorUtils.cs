@@ -27,7 +27,7 @@ public class SelectorUtils
             float x = transform.transform.position.x * Mathf.Sin(Mathf.PI * Time.deltaTime * ShakeAmount) * 0.1f;
             float y = transform.transform.position.y * Mathf.Sin(Mathf.PI * Time.deltaTime *  ShakeAmount) * 0.1f;
             transform.position = new Vector2(x, y);
-            counter -= StaticObjects.Instance.DeltaGameTime;
+            counter -= StaticObjects.DeltaGameTime;
             yield return new WaitForFixedUpdate();
         }
         yield break;
