@@ -1405,6 +1405,7 @@ MonoBehaviour:
     - id: 0
     OnExitBehavior:
     - id: 1
+    - id: 2
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 1
@@ -1414,7 +1415,7 @@ MonoBehaviour:
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
     InStateBehavior:
-    - id: 2
+    - id: 3
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
@@ -1424,16 +1425,28 @@ MonoBehaviour:
     StateIsRunning: 0
     SMObject: {fileID: 305598509}
     OnEnterBehvaior:
-    - id: 3
-    InStateBehavior:
     - id: 4
-    OnExitBehavior: []
+    InStateBehavior:
+    - id: 5
+    OnExitBehavior:
+    - id: 6
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 2
   WalksOnPath: 0
+  Data:
+    MetaData:
+      HP: 0
+      MovementSpeed: 1
+      AttackSpeed: 0
+      DiscoveryRadius: 3
+    DynamicData:
+      TargetPosition: {x: 0, y: 0}
+      BasePosition: {x: 0, y: 0}
+      Spline: {fileID: 0}
+      DistanceOnPath: 0
   GroupTag: Enemy
-  UnitDiscoveryRadius: 2
+  UnitDiscoveryRadius: 4
   AnimationController: {fileID: 305598505}
   SpriteRenderer: {fileID: 305598510}
   UnitBattleManager: {fileID: 305598512}
@@ -1448,34 +1461,123 @@ MonoBehaviour:
     00000000:
       type: {class: WaitForEnemiesToEnterRange, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            BasePosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
         UnitObject: {fileID: 305598509}
         TargetBank: {fileID: 0}
         Detector: {fileID: 1705855459}
     00000001:
+      type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            BasePosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 305598509}
+        TargetBank: {fileID: 305598516}
+        TargetPriority: 0
+    00000002:
       type: {class: ChangeState, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            BasePosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
         UnitObject: {fileID: 0}
         TargetBank: {fileID: 0}
         State: 2
-    00000002:
+    00000003:
       type: {class: DoNothing, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            BasePosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
         UnitObject: {fileID: 0}
         TargetBank: {fileID: 0}
-    00000003:
+    00000004:
       type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            BasePosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 305598509}
+        TargetBank: {fileID: 305598516}
         TargetPriority: 0
-    00000004:
+    00000005:
       type: {class: MoveTowardsTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            BasePosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
         UnitObject: {fileID: 305598509}
         TargetBank: {fileID: 305598516}
         UnitBattleManager: {fileID: 305598512}
         GenericWeaponController: {fileID: 847913323}
-        MovementSpeed: 1
+        MovementSpeed: 0.02
+    00000006:
+      type: {class: ChangeState, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            BasePosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        State: 7
 --- !u!212 &305598510
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1535,7 +1637,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 305598504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.29, y: 0.72, z: 0}
+  m_LocalPosition: {x: -1.33, y: 0.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1397008014}
@@ -1557,7 +1659,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetExists: 0
-  Weapons: []
+  MeleeWeapon: {fileID: 847913323}
+  OtherWeapons: []
   OnAttackAnimation: {fileID: 0}
   OnSpecialAttackAnimation: {fileID: 0}
 --- !u!61 &305598513
@@ -5635,13 +5738,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 742638072}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b260fea9b37e354438e3d7b057071994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetExists: 0
-  Weapons: []
+  MeleeWeapon: {fileID: 0}
+  OtherWeapons: []
   OnAttackAnimation: {fileID: 0}
   OnSpecialAttackAnimation: {fileID: 0}
 --- !u!114 &742638080
@@ -5705,6 +5809,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitStates: []
   WalksOnPath: 0
+  Data:
+    MetaData:
+      HP: 0
+      MovementSpeed: 1
+      AttackSpeed: 0
+      DiscoveryRadius: 1
+    DynamicData:
+      TargetPosition: {x: 0, y: 0}
+      BasePosition: {x: 0, y: 0}
+      Spline: {fileID: 0}
+      DistanceOnPath: 0
   GroupTag: Enemy
   UnitDiscoveryRadius: 0
   AnimationController: {fileID: 742638080}

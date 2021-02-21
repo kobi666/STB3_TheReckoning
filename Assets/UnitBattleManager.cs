@@ -25,7 +25,9 @@ public class UnitBattleManager : MonoBehaviour
             }
         }
     }
-    public List<GenericWeaponController> Weapons = new List<GenericWeaponController>();
+
+    public GenericWeaponController MeleeWeapon;
+    public List<GenericWeaponController> OtherWeapons = new List<GenericWeaponController>();
     public AnimationClip OnAttackAnimation;
     public AnimationClip OnSpecialAttackAnimation;
 
@@ -44,13 +46,24 @@ public class UnitBattleManager : MonoBehaviour
     public event Action onAttackCease;
     public event Action onAttack;
 
+    void removeTarget(string targetName, string caller)
+    {
+        if (TargetUnit?.name == targetName)
+        {
+            TargetUnit = null;
+        }
+    }
+
     private void Start()
     {
-        if (!Weapons.IsNullOrEmpty())
+        if (!OtherWeapons.IsNullOrEmpty())
         {
-            Weapons = GetComponentsInChildren<GenericWeaponController>().ToList();
+            OtherWeapons = GetComponentsInChildren<GenericWeaponController>().ToList();
         }
 
         GameObjectPool.Instance.onTargetableUpdate += updateTargetState;
+        if (MeleeWeapon) {
+        MeleeWeapon.TargetBank.onTargetRemove += removeTarget;
+        }
     }
 }

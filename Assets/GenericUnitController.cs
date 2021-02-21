@@ -43,7 +43,7 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
     [TagSelector]
     public string GroupTag;
 
-    public float UnitDiscoveryRadius = 1;
+    public float UnitDiscoveryRadius;
     //public GenericStateMachine StateMachine;
     public AnimationController AnimationController;
     public SpriteRenderer SpriteRenderer;
@@ -60,11 +60,12 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
     {
         UnitLifeManager.InitialHP = Data.MetaData.HP;
         UnitLifeManager.Init();
-        UpdateRange(Data.MetaData.DiscoveryRadius,GetRangeDetectors());
+        UpdateRange(Data.MetaData.DiscoveryRadius, GetRangeDetectors());
         foreach (var s in UnitStates)
         {
             s.Init(this);
         }
+        
         StateMachine.Init(this,UnitStates);
     }
     

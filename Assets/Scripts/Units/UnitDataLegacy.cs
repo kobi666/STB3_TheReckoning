@@ -5,12 +5,14 @@ using System;
 using BansheeGz.BGSpline.Components;
 
 
+[System.Serializable]
 public class UnitData
 {
     public UnitMetaData MetaData = new UnitMetaData();
     public UnitDynamicData DynamicData = new UnitDynamicData();
 }
 
+[Serializable]
 public class UnitMetaData
 {
     public int HP;
@@ -19,6 +21,7 @@ public class UnitMetaData
     public float DiscoveryRadius = 1;
 }
 
+[Serializable]
 public class UnitDynamicData
 {
     public Vector2 TargetPosition;

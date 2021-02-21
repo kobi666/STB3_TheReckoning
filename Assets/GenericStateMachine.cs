@@ -13,7 +13,13 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
     {
         get => CurrentState.StateName;
     }
-    
+
+    [ShowInInspector]
+    private string defaultState
+    {
+        get => DefaultState.StateName;
+    }
+
     [ShowInInspector]
     private bool stateIsRunning
     {

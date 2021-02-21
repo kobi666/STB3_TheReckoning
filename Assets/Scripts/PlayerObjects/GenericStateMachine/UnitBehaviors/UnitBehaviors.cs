@@ -103,12 +103,13 @@ namespace UnitBehaviors
         public override void Behavior()
         {
             UnitObject.transform.position = Vector2.MoveTowards(UnitObject.transform.position,
-                UnitBattleManager.TargetUnit.transform.position, MovementSpeed);
+                UnitBattleManager.TargetUnit.transform.position, MovementSpeed * StaticObjects.Instance.DeltaGameTime);
         }
 
         public override void InitBehavior()
         {
             UnitBattleManager = UnitObject.UnitBattleManager;
+            GenericWeaponController = UnitBattleManager.MeleeWeapon;
             AttackAreaTargetbank = GenericWeaponController.TargetBank;
         }
 
@@ -119,11 +120,11 @@ namespace UnitBehaviors
                 {
                     if (!AttackAreaTargetbank.Targets.ContainsKey(targetname))
                     {
-                        return true;
+                        return false;
                     }
                 }
             }
-            return false;
+            return true;
         }
     }
     public enum TargetPriority
@@ -172,7 +173,7 @@ namespace UnitBehaviors
         
         public override void Behavior()
         {
-            
+            GetTargetAccordingToPriority();
         }
 
         public override void InitBehavior()
