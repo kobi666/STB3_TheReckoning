@@ -62,9 +62,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45e3e4dba7d88844960d76ea319698e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RangeCollider: {fileID: 0}
   DiscoverableTags:
   - Enemy
+  Color: {r: 1, g: 0, b: 0, a: 1}
+  RangeCollider: {fileID: 5142296622837540736}
 --- !u!50 &7849223301348544466
 Rigidbody2D:
   serializedVersion: 4
@@ -105,6 +106,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163239116545929887, guid: cb7ed116fb505b141a2003744443a683,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9163239116545929887, guid: cb7ed116fb505b141a2003744443a683,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -120,6 +126,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163239116545929887, guid: cb7ed116fb505b141a2003744443a683,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9163239116545929887, guid: cb7ed116fb505b141a2003744443a683,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -131,16 +142,6 @@ PrefabInstance:
     - target: {fileID: 9163239116545929887, guid: cb7ed116fb505b141a2003744443a683,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9163239116545929887, guid: cb7ed116fb505b141a2003744443a683,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9163239116545929887, guid: cb7ed116fb505b141a2003744443a683,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9163239116545929887, guid: cb7ed116fb505b141a2003744443a683,

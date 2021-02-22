@@ -8,6 +8,8 @@ using UnityEngine;
 [Serializable]
 public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : ObjectState<TS> where TS : IHasStateMachine
 {
+    public bool InitOnStartup;
+    
     [ShowInInspector]
     private string currentState
     {
@@ -155,7 +157,8 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
                 throw new Exception("Same State Key exists twice");
             }
         }
-        ExecuteCurrentState();
+        
+        if (InitOnStartup) ExecuteCurrentState();
     }
     
     

@@ -78,7 +78,7 @@ public abstract class WeaponController : TowerComponent
     public Transform ProjectileFinalPointTransform { get => projectileFinalPoint.transform;}
     public Vector2 ProjectileFinalPointV2 {
         get {
-            return projectileFinalPoint?.transform.position ?? Target?.UnitController.transform.position ?? transform.position;
+            return projectileFinalPoint?.transform.position ?? Target?.transform.position ?? transform.position;
         }
     }
 

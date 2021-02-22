@@ -5,6 +5,7 @@ using System;
 
 public class LifeBarmanager : MonoBehaviour
 {
+    private GenericUnitController GenericUnitController;
     SpriteRenderer ParentSpriteRenderer;
     int maxLife;
     float initialX;
@@ -23,10 +24,11 @@ public class LifeBarmanager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GenericUnitController = transform.parent.GetComponent<GenericUnitController>();
         ParentSpriteRenderer = transform.parent.GetComponent<SpriteRenderer>();
         initialX = LifeBarMaskPositon.position.x;
-        maxLife = transform.parent.GetComponent<UnitController>()?.dataLegacy.HP ?? 0 ;
-        Life = transform.parent.GetComponent<UnitController>()?.LifeManager ?? null;
+        maxLife = transform.parent.GetComponent<GenericUnitController>().Data.MetaData.HP;
+        Life = transform.parent.GetComponent<GenericUnitController>()?.UnitLifeManager ?? null;
         if (Life != null) {
             Life.damageTaken += UpdateLifeBar; 
         }

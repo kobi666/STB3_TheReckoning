@@ -35,18 +35,51 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
     }
 
 
-    [SerializeField]
+    [SerializeField][FoldoutGroup("states")]
     public List<UnitState> UnitStates =  new List<UnitState>();
     
     public bool WalksOnPath;
-    private UnitLifeManager UnitLifeManager = new UnitLifeManager();
+    public UnitLifeManager UnitLifeManager = new UnitLifeManager();
     public UnitData Data = new UnitData();
     [TagSelector]
     public string GroupTag;
-
-    public float UnitDiscoveryRadius;
     //public GenericStateMachine StateMachine;
-    
+    private BoxCollider2D selfCollider;
+
+
+
+    private bool xDirection;
+    private bool XDirection
+    {
+        get => xDirection;
+        set
+        {
+            if (value != xDirection)
+            {
+                UnitBattleManager.FlipAttackArea(value);
+                SpriteRenderer.flipX = value;
+            }
+
+            xDirection = value;
+        }
+    }
+    public void FlipDirection(Vector2 targetPos)
+    {
+        if (transform.position.x > targetPos.x)
+        {
+            XDirection = true;
+        }
+
+        if (transform.position.x < targetPos.x)
+        {
+            XDirection = false;
+        }
+    }
+
+
+
+
+
     [FoldoutGroup("Components")]
     public AnimationController AnimationController;
     [FoldoutGroup("Components")]
@@ -78,22 +111,24 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
         {
             s.Init(this);
         }
-        
         StateMachine.Init(this,UnitStates);
     }
     
     protected void Awake()
     {
+        selfCollider = GetComponent<BoxCollider2D>();
         StateMachine = GetComponent<UnitStateMachine>();
         tag = GroupTag;
         //StateMachine = StateMachine ?? GetComponent<GenericStateMachine>();
         AnimationController = AnimationController ?? GetComponent<AnimationController>();
         SpriteRenderer = SpriteRenderer ?? GetComponent<SpriteRenderer>();
         UnitBattleManager = UnitBattleManager ?? GetComponent<UnitBattleManager>();
+        
         EffectableUnit = EffectableUnit ?? GetComponent<EffectableUnit>();
         EffectableTargetBank = EffectableTargetBank ?? GetComponent<EffectableTargetBank>();
         UnitMovementController = UnitMovementController ?? GetComponent<UnitMovementController>();
         UnitMovementController.UnitTransform = transform;
+        UnitMovementController.GenericUnitController = this;
     }
 
     protected void Start()

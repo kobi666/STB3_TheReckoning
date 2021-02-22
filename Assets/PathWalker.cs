@@ -9,11 +9,14 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class PathWalker : MonoBehaviour
 {
+    private SpriteRenderer SpriteRenderer;
     public BGCcMath spline;
     [HideInInspector]
     public bool SplineAttached;
 
-    public bool Direction = true;
+    public GenericUnitController parentUnit;
+
+    public bool PathDirection = true;
 
     private void OnEnable()
     {
@@ -24,7 +27,7 @@ public class PathWalker : MonoBehaviour
     {
         get
         {
-            if (Direction == true) { 
+            if (PathDirection == true) { 
             return SplineTotalLength - CurrentDistanceOnSpline;
             }
             else
@@ -97,7 +100,7 @@ public class PathWalker : MonoBehaviour
                 EndOfPathReached = true;
                 return;
             }
-            if (Direction) {
+            if (PathDirection) {
                 if (CurrentDistanceOnSpline < SplineTotalLength) {
                 currentDistanceOnSpline = value;
                 }
@@ -112,7 +115,7 @@ public class PathWalker : MonoBehaviour
                     //}
                 }
             }
-            else if (!Direction)
+            else if (!PathDirection)
             {
                 if (CurrentDistanceOnSpline <= 0) {
                     currentDistanceOnSpline = value;
@@ -123,6 +126,7 @@ public class PathWalker : MonoBehaviour
                     {*/
                     if (!EndOfPathReached) {
                         onReversePathEnd?.Invoke();
+                        EndOfPathReached = true;
                     }
                     //}
                 }
@@ -135,20 +139,35 @@ public class PathWalker : MonoBehaviour
         get => Spline.CalcPositionByDistance(CurrentDistanceOnSpline);
     }
 
+    private float directionInt
+    {
+        get
+        {
+            if (PathDirection)
+            {
+                return 1;
+            }
+            return -1;
+        }
+    }
     public void MoveAlongSpline(float distancedelta)
     {
-        CurrentDistanceOnSpline += distancedelta;
+        CurrentDistanceOnSpline += distancedelta * directionInt;
+        parentUnit.FlipDirection(TargetPosition);
+        parentUnit.FlipDirection(TargetPosition);
         ObjectTransform.position = TargetPosition;
     }
     
 
     private void Start()
     {
+        ObjectTransform = transform.parent;
+        parentUnit = ObjectTransform.GetComponent<GenericUnitController>();
         currentDistanceOnSpline = 0;
-        SplineTotalLength = Spline.GetDistance();
+        SplineTotalLength = Spline?.GetDistance() ?? 0;
         onPathShift += delegate(bool b) { OnPath = b; };
         onPathMovement += MoveAlongSpline;
-        ObjectTransform = transform.parent;
         Spline = Spline;
+        
     }
 }

@@ -165,12 +165,17 @@ public class RoomBorders {
     public RoomBorder Right;
 }
 
+
+
+/// <summary>
+/// I Seriously have to fix this shit, I'm generating a class on every Target Identifcation when I have everything I need in an object pool.
+/// probably change this into a struct once i figure out how GC works on those. Jesus this is going to be a painful refactor....
+/// </summary>
 [System.Serializable]
 public class TargetUnit
 {
-
     [SerializeField] private Transform targetTransform;
-    
+    public GenericUnitController GenericUnitController;
     public Transform TargetTransform
     {
         get => targetTransform;
@@ -181,14 +186,7 @@ public class TargetUnit
     {
         
     }*/
-
-    UnitController unitController = null;
-    public UnitController UnitController {
-        get => unitController;
-        set {
-            unitController = value;
-        }
-    }
+    
     [SerializeField]
     Effectable effectable = null;
     public Effectable Effectable {
@@ -201,26 +199,32 @@ public class TargetUnit
     public string name {get => Effectable?.name ?? null;}
     public Transform transform {get => Effectable?.transform ?? null;
     }
-    public float Proximity {get => UnitController.Proximity;}
+    public float Proximity {get => GenericUnitController.PathWalker.ProximityToPathEnd;}
 
     public TargetUnit(string targetName) {
-        try {
-            UnitController = GameObjectPool.Instance.ActiveUnitPool.Pool[targetName];
+        try
+        {
+            GenericUnitController = GameObjectPool.Instance.ActiveUnits[targetName];
+            
             Effectable = GameObjectPool.Instance.ActiveEffectables.Pool[targetName];
             TargetTransform = transform;
         }
         catch(Exception e) {
             Debug.LogWarning(e.Message);
         }
-        if (UnitController == null || Effectable == null) {
-            UnitController = null;
+        if (GenericUnitController == null || Effectable == null) {
             Effectable = null;
             TargetTransform = null;
+            GenericUnitController = null;
             Debug.LogWarning("Target did not have either an effectable or a unit controller, null value returned.");
         }
     }
 
 }
+
+
+
+
 
 [System.Serializable]
 public class TowerItemLegacy {

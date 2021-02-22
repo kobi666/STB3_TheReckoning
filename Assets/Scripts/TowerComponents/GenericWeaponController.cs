@@ -132,7 +132,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint
     }
     
     
-    [ConditionalField("debug")]
+    [ShowIf("debug")]
     public EffectableTargetBank TargetBank;
 
     private ComponentRotator componentRotator = null;
@@ -206,7 +206,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint
     public Transform ProjectileFinalPointTransform { get => ProjectileFinalPoint.transform;}
     public Vector2 ProjectileFinalPointV2 {
         get {
-            return ProjectileFinalPoint?.transform.position ?? Target?.UnitController.transform.position ?? transform.position;
+            return ProjectileFinalPoint?.transform.position ?? Target?.transform.position ?? transform.position;
         }
     }
 
@@ -429,7 +429,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint
 
     
     protected void Start() {
-        TargetBank = GetComponent<EffectableTargetBank>();
+        TargetBank = TargetBank ?? GetComponent<EffectableTargetBank>();
         if (TargetBank != null) {
             TargetBank.onTargetAdd += OnEnemyEnteredRange;
             TargetBank.onTargetRemove += OnEnemyLeftRange;

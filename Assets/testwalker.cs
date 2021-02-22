@@ -16,6 +16,6 @@ public class testwalker : MonoBehaviour
 
    private void Update()
    {
-      pw.OnPathMovement(MovementSpeed * StaticObjects.DeltaGameTime);
+      //pw.OnPathMovement(MovementSpeed * StaticObjects.DeltaGameTime);
    }
 }

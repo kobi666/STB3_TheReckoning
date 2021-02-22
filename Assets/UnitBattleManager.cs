@@ -4,11 +4,43 @@ using UnityEngine;
 using System;
 using System.Linq;
 using MyBox;
+using Sirenix.OdinInspector;
 
 public class UnitBattleManager : MonoBehaviour
 {
-    private GenericUnitController targetUnit;
+    
+    [Required]
+    public BoxCollider2D AttackArea;
+
+    private float AttackAreaOffset
+    {
+        get => AttackArea.bounds.extents.x;
+    }
+
+    private Vector2 AttackAreaOffsetV2
+    {
+        get => new Vector2(AttackAreaOffset,0);
+    }
+
+    /// <summary>
+    /// true means flip to left, false means flip to right
+    /// </summary>
+    /// <param name="direction"></param>
+    public void FlipAttackArea(bool direction)
+    {
+        var transform1 = MeleeWeapon.transform;
+        if (direction)
+        {
+            transform1.position = (Vector2)transform.position - AttackAreaOffsetV2;
+        }
+        else
+        {
+            transform1.position = (Vector2)transform.position + AttackAreaOffsetV2;
+        }
+    }
+    
     public bool targetExists;
+    private GenericUnitController targetUnit;
     public GenericUnitController TargetUnit
     {
         get => targetUnit;
@@ -25,6 +57,8 @@ public class UnitBattleManager : MonoBehaviour
             }
         }
     }
+    
+    
 
     public GenericWeaponController MeleeWeapon;
     public List<GenericWeaponController> AllWeapons = new List<GenericWeaponController>();
@@ -41,6 +75,8 @@ public class UnitBattleManager : MonoBehaviour
             }
         }
     }
+
+    
 
     public event Action onAttackInitiate;
     public event Action onAttackCease;
@@ -68,6 +104,7 @@ public class UnitBattleManager : MonoBehaviour
         GameObjectPool.Instance.onTargetableUpdate += updateTargetState;
         if (MeleeWeapon) {
         MeleeWeapon.TargetBank.onTargetRemove += removeTarget;
+        FlipAttackArea(true);
         }
         
     }

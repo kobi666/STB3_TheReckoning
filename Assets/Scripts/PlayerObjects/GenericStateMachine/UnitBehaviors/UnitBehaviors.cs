@@ -37,7 +37,7 @@ namespace UnitBehaviors
         private bool TargetableInRange;
         public override void Behavior()
         {
-            Debug.LogWarning("still Waiting");
+            
         }
 
         public override void InitBehavior()
@@ -57,6 +57,7 @@ namespace UnitBehaviors
         public override void Behavior()
         {
             UnitObject.StateMachine.SetState(State.ToString());
+            Debug.LogWarning("Set state to " + State + " on Unit : " + UnitObject.name);
         }
 
         public override void InitBehavior()

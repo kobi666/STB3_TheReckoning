@@ -19,6 +19,7 @@ public interface IHasRangeComponent
 {
     List<TagDetector> GetRangeDetectors();
     void UpdateRange(float RangeSizeDelta, List<TagDetector> detectorsToApplyChangeOn);
+    
 }
 
 public interface IhasExitAndFinalPoint

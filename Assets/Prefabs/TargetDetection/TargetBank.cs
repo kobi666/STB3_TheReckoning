@@ -62,7 +62,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
 
     public event Action onTargetsUpdate;
     
-    [FormerlySerializedAs("RangeDetector")] public TagDetector Detector;
+    public TagDetector Detector;
     public event Action<GameObject> onTryToAddTarget;
     public void OnTryToAddTarget(GameObject targetGO) {
         onTryToAddTarget?.Invoke(targetGO);
@@ -153,7 +153,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
     void Awake()
     {
         excludedNames.Add(name);
-        Detector =  Detector ?? GetComponentInChildren<RangeDetector>() ?? null;
+        Detector =  Detector ?? GetComponentInChildren<RangeDetector>();
         onTryToAddTarget += AddTarget;
         onTargetRemove += RemoveTarget;
         GameObjectPool.Instance.onTargetableUpdate += TargetablesCheck;
