@@ -12,6 +12,9 @@ public class UnitBattleManager : MonoBehaviour
     [Required]
     public BoxCollider2D AttackArea;
 
+    [Required] 
+    public GenericAOEController AoeController;
+
     private float AttackAreaOffset
     {
         get => AttackArea.bounds.extents.x;
@@ -56,6 +59,30 @@ public class UnitBattleManager : MonoBehaviour
                 targetExists = true;
             }
         }
+    }
+
+    public event Action onFightStart;
+
+    public void OnFightStart()
+    {
+        onFightStart?.Invoke();
+    }
+    public void StartFight()
+    {
+        MeleeWeapon.Target = GameObjectPool.Instance.GetTargetUnit(TargetUnit.name);
+        MeleeWeapon.InAttackState = true;
+    }
+
+    public event Action onFightEnd;
+
+    public void OnFightEnd() {
+        onFightEnd?.Invoke();
+    }
+
+    public void EndFight()
+    {
+        MeleeWeapon.Target = null;
+        MeleeWeapon.InAttackState = false;
     }
     
     
@@ -106,6 +133,9 @@ public class UnitBattleManager : MonoBehaviour
         MeleeWeapon.TargetBank.onTargetRemove += removeTarget;
         FlipAttackArea(true);
         }
-        
+
+        onFightStart += StartFight;
+        onFightEnd += EndFight;
+
     }
 }

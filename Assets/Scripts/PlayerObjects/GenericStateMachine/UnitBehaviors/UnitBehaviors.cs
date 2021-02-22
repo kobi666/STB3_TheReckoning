@@ -91,7 +91,6 @@ namespace UnitBehaviors
 
     public class MoveTowardsTarget : UnitBehavior
     {
-        public UnitBattleManager UnitBattleManager;
         public float MovementSpeed = 1;
         [Required]
         public EffectableTargetBank AttackAreaTargetbank;
@@ -108,7 +107,6 @@ namespace UnitBehaviors
 
         public override void InitBehavior()
         {
-            UnitBattleManager = UnitObject.UnitBattleManager;
             UnitMovementController = UnitObject.UnitMovementController;
         }
 
@@ -139,7 +137,6 @@ namespace UnitBehaviors
     public class GetTarget : UnitBehavior
     {
         public TargetPriority TargetPriority;
-        private UnitBattleManager UnitBattleManager;
 
         void GetTargetAccordingToPriority()
         {
@@ -177,7 +174,7 @@ namespace UnitBehaviors
 
         public override void InitBehavior()
         {
-            UnitBattleManager = UnitObject.UnitBattleManager;
+            
         }
 
         public override bool ExecCondition()
@@ -190,17 +187,61 @@ namespace UnitBehaviors
     {
         public override void Behavior()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public override void InitBehavior()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public override bool ExecCondition()
         {
-            throw new System.NotImplementedException();
+            if (UnitBattleManager.targetExists)
+            {
+                if (AttackAreaTargetBank.Targets.ContainsKey(UnitObject.UnitBattleManager
+                    .TargetUnit.name))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
+    public class StartFight : UnitBehavior
+    {
+        public override void Behavior()
+        {
+            UnitBattleManager.OnFightStart();
+        }
+
+        public override void InitBehavior()
+        {
+            
+        }
+
+        public override bool ExecCondition()
+        {
+            return true;
+        }
+    }
+
+    public class EndFight : UnitBehavior
+    {
+        public override void Behavior()
+        {
+            UnitBattleManager.OnFightEnd();
+        }
+
+        public override void InitBehavior()
+        {
+            
+        }
+
+        public override bool ExecCondition()
+        {
+            return true;
         }
     }
 }

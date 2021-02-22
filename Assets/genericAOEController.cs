@@ -9,7 +9,14 @@ using System.Threading.Tasks;
 [Serializable]
 public class GenericAOEController : MonoBehaviour
 {
+    [Required]
     public TagDetector Detector;
+
+    public string SingleTargetName;
+    public event Action<string> onSingleTargetSet;
+    
+    [ShowInInspector]
+    public ITargeter parentTargeter;
     private float range;
     public float Range
     {
@@ -26,5 +33,8 @@ public class GenericAOEController : MonoBehaviour
     {
         Detector = Detector ?? GetComponentInChildren<TagDetector>();
         TargetBank = TargetBank ?? GetComponent<EffectableTargetBank>();
+        parentTargeter = transform.parent.GetComponent<ITargeter>();
+        onSingleTargetSet += delegate(string s) { SingleTargetName = s; };
+        parentTargeter.onTargetSet += onSingleTargetSet.Invoke;
     }
 }

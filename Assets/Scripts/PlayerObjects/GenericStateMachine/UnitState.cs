@@ -25,13 +25,13 @@ public enum UnitStates
 [Serializable][BoxGroup]//[GUIColor(1f,0f,0f)]
 public class UnitState : ObjectState<GenericUnitController>
 {
-    [SerializeReference][TypeFilter("GetBehaviors")]
+    [SerializeReference][TypeFilter("GetBehaviors")][GUIColor(1,0,0)]
     public List<UnitBehavior> OnEnterBehvaior;
 
-    [SerializeReference][TypeFilter("GetBehaviors")]
+    [SerializeReference][TypeFilter("GetBehaviors")][GUIColor(0,1,0)]
     public List<UnitBehavior> InStateBehavior;
     
-    [SerializeReference][TypeFilter("GetBehaviors")]
+    [SerializeReference][TypeFilter("GetBehaviors")][GUIColor(0,0.5f,1)]
     public List<UnitBehavior> OnExitBehavior;
     
     private bool extraStateConditions = false;
@@ -122,8 +122,14 @@ public static class GetRandomGuiColor
 public abstract class UnitBehavior
 {
     public UnitData UnitData;
+    [FoldoutGroup("Components")]
     public GenericUnitController UnitObject;
+    [FoldoutGroup("Components")]
     public EffectableTargetBank TargetBank;
+    [FoldoutGroup("Components")]
+    public EffectableTargetBank AttackAreaTargetBank;
+    [FoldoutGroup("Components")]
+    public UnitBattleManager UnitBattleManager;
     public abstract void Behavior();
 
     public void Init(GenericUnitController unit)
@@ -131,6 +137,8 @@ public abstract class UnitBehavior
         UnitData = unit.Data;
         UnitObject = unit;
         TargetBank = UnitObject.EffectableTargetBank;
+        UnitBattleManager = UnitObject.UnitBattleManager;
+        AttackAreaTargetBank = UnitBattleManager.MeleeWeapon.TargetBank;
         InitBehavior();
     }
 

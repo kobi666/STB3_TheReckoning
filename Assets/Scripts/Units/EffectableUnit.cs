@@ -53,7 +53,7 @@ public class EffectableUnit : Effectable
     }
 
     public override void ApplyDamage(int damageAmount) {
-        unitController.LifeManager.DamageToUnit(damageAmount);
+        GenericUnitController.UnitLifeManager.DamageToUnit(damageAmount);
     }
 
     public override void ApplyExplosion(float explosionValue) {

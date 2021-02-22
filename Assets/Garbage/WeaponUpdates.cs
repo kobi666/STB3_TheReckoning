@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,6 +41,11 @@ public interface ISpawnsPlayerUnits
 
     void InitPools();
 
+}
+
+public interface ITargeter
+{
+    event Action<string> onTargetSet;
 }
 
 

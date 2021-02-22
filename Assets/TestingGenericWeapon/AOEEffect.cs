@@ -15,6 +15,7 @@ public class AOEEffect : IHasEffectAnimation
     public List<Effect> Effects;
     private List<GenericAOEController> AoeControllers;
     
+    
     private static IEnumerable<Type> GetFilteredTypeList()
     {
         var q = typeof(Effect).Assembly.GetTypes()
@@ -29,7 +30,8 @@ public class AOEEffect : IHasEffectAnimation
     
     private float intervalCounter;
     private float DurationCounter = 0;
-    
+    public bool SingleTarget = false;
+    public string singleTargetName;
     public bool EffectOverTime;
     
     [ShowIf("EffectOverTime")]
@@ -43,7 +45,8 @@ public class AOEEffect : IHasEffectAnimation
 
     public List<(Effectable,bool)> Targets = new List<(Effectable,bool)>();
     public List<string> TargetsNames = new List<string>();
-
+    
+    [Button]
     private void GetTargets()
     {
         if (Targets != null)
@@ -53,12 +56,18 @@ public class AOEEffect : IHasEffectAnimation
         if (EffectStacks) {
             foreach (var aoeController in AoeControllers)
             {
-                foreach (var ef in aoeController.TargetBank.Targets.Values)
-                {
-                    if (ef.Item1 != null)
+                if (!SingleTarget) {
+                    foreach (var ef in aoeController.TargetBank.Targets.Values)
                     {
-                        Targets.Add(ef);
+                        if (ef.Item1 != null)
+                        {
+                            Targets.Add(ef);
+                        }
                     }
+                }
+                else if (SingleTarget && singleTargetName != string.Empty)
+                {
+                    Targets.Add(aoeController.TargetBank.Targets[singleTargetName]);
                 }
             }
         }
@@ -67,18 +76,26 @@ public class AOEEffect : IHasEffectAnimation
         {
             TargetsNames?.Clear();
             foreach (var aoeController in AoeControllers)
-            {
-                foreach (var ef in aoeController.TargetBank.Targets.Values)
                 {
-                    if (TargetsNames != null) {
-                        if (ef.Item1 != null && !TargetsNames.Contains(ef.Item1.name))
+                    if (!SingleTarget) {
+                        foreach (var ef in aoeController.TargetBank.Targets.Values)
                         {
-                            Targets.Add(ef);
-                            TargetsNames.Add(ef.Item1.name);
+                            if (TargetsNames != null) {
+                                if (ef.Item1 != null && !TargetsNames.Contains(ef.Item1.name))
+                                {
+                                    Targets.Add(ef);
+                                    TargetsNames.Add(ef.Item1.name);
+                                }
+                            }
                         }
                     }
-                }
+                    else if (SingleTarget && singleTargetName != string.Empty)
+                    {
+                        Targets.Add(aoeController.TargetBank.Targets[singleTargetName]);
+                        TargetsNames.Add(singleTargetName);
+                    }
             }
+            
         }
     }
     
@@ -158,11 +175,13 @@ public class AOEEffect : IHasEffectAnimation
 
     public void InitEffect(List<GenericAOEController> aoes)
     {
+        
         AoeControllers = aoes;
         foreach (var aoeController in AoeControllers)
         {
             aoeController.Detector.gameObject.SetActive(false);
             aoeController.Detector.gameObject.SetActive(true);
+            aoeController.onSingleTargetSet += delegate(string s) { singleTargetName = s; };
         }
         foreach (var effect in Effects)
         {

@@ -13,7 +13,7 @@ using UnityEngine.Serialization;
 
 
 [RequireComponent(typeof(EffectableTargetBank))][Searchable]
-public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint
+public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITargeter
 {
 
     public bool Autonomous = true;
@@ -364,9 +364,12 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint
         get => Data.targetUnit;
         set {
             Data.targetUnit = value;
-            GenericRotator.Target = value?.transform;    
+            GenericRotator.Target = value?.transform;
+            onTargetSet?.Invoke(Target?.name ?? string.Empty);
         }
     }
+
+    
 
     [SerializeField]
     bool inAttackState = false;
@@ -529,4 +532,6 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint
     {
         WeaponAttack.SetInitialExitPointPosition();
     }
+
+    public event Action<string> onTargetSet;
 }
