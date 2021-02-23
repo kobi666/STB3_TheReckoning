@@ -7,12 +7,14 @@ using UnityEngine;
 [Serializable]
 public abstract class ObjectState<T> where T: IHasStateMachine
 {
-    [LabelText("Default State?")][InfoBox("-------------------")]
+    [LabelText("Default State?")]
     public bool DefaultState;
     
     [LabelText("Initial State?")]
     public bool InitialState;
     public bool StateIsRunning = false;
+    
+    [PropertyOrder(-1)][GUIColor(232 , 0 , 254)]
     public abstract string StateName { get; }
 
     public T SMObject;

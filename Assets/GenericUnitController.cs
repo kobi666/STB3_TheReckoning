@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 [Serializable]
@@ -35,8 +36,8 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
     }
 
 
-    [SerializeField][FoldoutGroup("states")]
-    public List<UnitState> UnitStates =  new List<UnitState>();
+    [FormerlySerializedAs("UnitStates")] [SerializeField][FoldoutGroup("states")]
+    public List<UnitState> States =  new List<UnitState>();
     
     public bool WalksOnPath;
     public UnitLifeManager UnitLifeManager = new UnitLifeManager();
@@ -107,12 +108,21 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
         UnitLifeManager.InitialHP = Data.MetaData.HP;
         UnitLifeManager.Init();
         UpdateRange(Data.MetaData.DiscoveryRadius, GetRangeDetectors());
-        foreach (var s in UnitStates)
+        foreach (var s in States)
         {
             s.Init(this);
         }
-        StateMachine.Init(this,UnitStates);
+        StateMachine.Init(this,States);
+        UnitLifeManager.onUnitDeath += OnDeath;
     }
+
+    public event Action onDeath;
+    void OnDeath()
+    {
+        onDeath?.Invoke();
+    }
+    
+    
     
     protected void Awake()
     {
@@ -129,6 +139,7 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
         UnitMovementController = UnitMovementController ?? GetComponent<UnitMovementController>();
         UnitMovementController.UnitTransform = transform;
         UnitMovementController.GenericUnitController = this;
+        onDeath += delegate { StateMachine.SetState(UnitStates.Death.ToString()); };
     }
 
     protected void Start()

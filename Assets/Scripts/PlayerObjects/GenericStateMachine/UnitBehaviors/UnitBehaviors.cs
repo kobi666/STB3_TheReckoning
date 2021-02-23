@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BansheeGz.BGSpline.Components;
@@ -7,10 +8,10 @@ using UnityEngine;
 
 namespace UnitBehaviors
 {
-    public class WalkAlongSpline : UnitBehavior
+    public class WalkAlongSpline : UnitConcurrentBehavior
     {
         public float Distance = 0;
-        public float MovementSpeed = 1;
+        public float MovementSpeed;
         [Required]
         private PathWalker PathWalker;
         
@@ -22,6 +23,7 @@ namespace UnitBehaviors
         public override void InitBehavior()
         {
             PathWalker = UnitObject.PathWalker;
+            MovementSpeed = UnitObject.UnitMovementController.MovementSpeed;
         }
 
         public override bool ExecCondition()
@@ -30,7 +32,9 @@ namespace UnitBehaviors
         }
     }
 
-    public class WaitForEnemiesToEnterRange : UnitBehavior
+    
+
+    public class WaitForEnemiesToEnterRange : UnitConcurrentBehavior
     {
         public TagDetector Detector;
         
@@ -50,14 +54,130 @@ namespace UnitBehaviors
             return !TargetBank.HasTargetableTargets;
         }
     }
+    
+    [Serializable][GUIColor(1,1,1)]
+    public class BehaviorToState
+    {
+        [TypeFilter("GetBehaviors")][SerializeReference]
+        public List<UnitConcurrentBehavior> Behaviors = new List<UnitConcurrentBehavior>();
+        public UnitStates AutomaticState;
 
-    public class ChangeState : UnitBehavior
+        private IEnumerable<Type> GetBehaviors()
+        {
+            return UnitConcurrentBehavior.GetConcurrentBehaviors();
+        }
+    }
+
+    public class DivergingBehaviors : UnitConcurrentBehavior
+    {
+        [SerializeField]
+        public List<BehaviorToState> BehaviorsToState = new List<BehaviorToState>();
+        private event Func<bool> conditions;
+        private UnitStates NextState = UnitStates.None;
+        public override void Behavior()
+        {
+            foreach (var bs in BehaviorsToState)
+            {
+                foreach (var b in bs.Behaviors)
+                {
+                    b.InvokeBehavior();
+                }
+            }
+        }
+
+        public bool EvaluateConditions()
+        {
+            bool eval = true;
+            foreach (var behavior in BehaviorsToState)
+            {
+                foreach (var bs in BehaviorsToState)
+                {
+                    foreach (var b in bs.Behaviors)
+                    {
+                        if (b.ExecCondition())
+                        {
+                            continue;
+                        }
+                        eval = false;
+                        break;
+                    }
+                    if (eval == false)
+                    {
+                        if (bs.AutomaticState != UnitStates.None)
+                        {
+                            parentState.AutomaticNextState = bs.AutomaticState;
+                        }
+                        break;
+                    }
+                }
+            }
+            return eval;
+        }
+
+        public override void InitBehavior()
+        {
+            foreach (var bs in BehaviorsToState)
+            {
+                foreach (var b in bs.Behaviors)
+                {
+                    b.Init(UnitObject, parentState);
+                }
+            }
+        }
+
+        public override bool ExecCondition()
+        {
+            return EvaluateConditions();
+        }
+    }
+
+    
+
+    
+
+    public class MoveToBasePosition : UnitConcurrentBehavior
+    {
+        UnitMovementController UnitMovementController;
+        private Transform unitTransform;
+        public override void Behavior()
+        {
+            UnitMovementController.MoveTowardsTarget(UnitData.DynamicData.BasePosition);
+        }
+
+        public override void InitBehavior()
+        {
+            unitTransform = UnitObject.transform;
+            UnitMovementController = UnitObject.UnitMovementController;
+        }
+
+        public override bool ExecCondition()
+        {
+            return ((Vector2)unitTransform.position != UnitData.DynamicData.BasePosition);
+        }
+    }
+
+    public class ChangeState : UnitSingleBehvaior
     {
         public UnitStates State;
         public override void Behavior()
         {
-            UnitObject.StateMachine.SetState(State.ToString());
-            Debug.LogWarning("Set state to " + State + " on Unit : " + UnitObject.name);
+            UnitStates nextState = State;
+
+            bool Automatic()
+            {
+                return (parentState.AutomaticNextState != UnitStates.None);
+            }
+            if (Automatic())
+            {
+                State = parentState.AutomaticNextState;
+            }
+            UnitObject.StateMachine.SetState(nextState.ToString());
+            Debug.LogWarning("Set state to " + nextState + " on Unit : " + UnitObject.name + " automatic : " + Automatic());
+            UnitObject.EffectableUnit.IsTargetable();
+            if (Automatic())
+            {
+                parentState.AutomaticNextState = UnitStates.None;
+            }
         }
 
         public override void InitBehavior()
@@ -71,7 +191,7 @@ namespace UnitBehaviors
         }
     }
 
-    public class DoNothing : UnitBehavior
+    public class DoNothing : UnitConcurrentBehavior
     {
         public override void Behavior()
         {
@@ -89,7 +209,7 @@ namespace UnitBehaviors
         }
     }
 
-    public class MoveTowardsTarget : UnitBehavior
+    public class MoveTowardsTarget : UnitConcurrentBehavior
     {
         public float MovementSpeed = 1;
         [Required]
@@ -134,7 +254,7 @@ namespace UnitBehaviors
         Random
     }
 
-    public class GetTarget : UnitBehavior
+    public class GetTarget : UnitSingleBehvaior
     {
         public TargetPriority TargetPriority;
 
@@ -183,7 +303,7 @@ namespace UnitBehaviors
         }
     }
 
-    public class Fight : UnitBehavior
+    public class Fight : UnitConcurrentBehavior
     {
         public override void Behavior()
         {
@@ -209,7 +329,7 @@ namespace UnitBehaviors
         }
     }
 
-    public class StartFight : UnitBehavior
+    public class StartFight : UnitSingleBehvaior
     {
         public override void Behavior()
         {
@@ -227,7 +347,7 @@ namespace UnitBehaviors
         }
     }
 
-    public class EndFight : UnitBehavior
+    public class EndFight : UnitSingleBehvaior
     {
         public override void Behavior()
         {
@@ -244,6 +364,8 @@ namespace UnitBehaviors
             return true;
         }
     }
+    
+    
 }
 
 

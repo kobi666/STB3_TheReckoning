@@ -37,6 +37,8 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
     public T PreviousState;
     [HideInInspector]
     public T DefaultState;
+
+    public T InitialState;
     public TS SMObject;
     private Dictionary<string,T> States = new Dictionary<string,T>();
     
@@ -146,6 +148,7 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
             if (state.InitialState)
             {
                 CurrentState = state;
+                InitialState = state;
             }
 
             try

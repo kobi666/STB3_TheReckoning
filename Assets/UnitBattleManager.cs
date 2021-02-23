@@ -34,11 +34,11 @@ public class UnitBattleManager : MonoBehaviour
         var transform1 = MeleeWeapon.transform;
         if (direction)
         {
-            transform1.position = (Vector2)transform.position - AttackAreaOffsetV2;
+            transform1.position = (Vector2)transform.position - (AttackAreaOffsetV2 * 1.5f);
         }
         else
         {
-            transform1.position = (Vector2)transform.position + AttackAreaOffsetV2;
+            transform1.position = (Vector2)transform.position + (AttackAreaOffsetV2 * 1.5f);
         }
     }
     

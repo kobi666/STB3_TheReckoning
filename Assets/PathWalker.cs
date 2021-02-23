@@ -136,7 +136,7 @@ public class PathWalker : MonoBehaviour
 
     private Vector2 TargetPosition
     {
-        get => Spline.CalcPositionByDistance(CurrentDistanceOnSpline);
+        get => Spline?.CalcPositionByDistance(CurrentDistanceOnSpline) ?? transform.position;
     }
 
     private float directionInt

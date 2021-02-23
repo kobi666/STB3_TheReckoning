@@ -15,6 +15,7 @@ public enum UnitStates
     InDirectBattle,
     AssistingBattle,
     MovingAlongPath,
+    ReturnToBasePosition,
     Death,
     Testing
 }
@@ -25,13 +26,15 @@ public enum UnitStates
 [Serializable][BoxGroup]//[GUIColor(1f,0f,0f)]
 public class UnitState : ObjectState<GenericUnitController>
 {
-    [SerializeReference][TypeFilter("GetBehaviors")][GUIColor(1,0,0)]
+    [SerializeReference][TypeFilter("GetSingleBehaviors")][GUIColor(1,0,0)]
     public List<UnitBehavior> OnEnterBehvaior;
 
-    [SerializeReference][TypeFilter("GetBehaviors")][GUIColor(0,1,0)]
+    [HideInInspector] public UnitStates AutomaticNextState;
+
+    [SerializeReference][TypeFilter("GetConcurrentBehaviors")][GUIColor(0,1,0)]
     public List<UnitBehavior> InStateBehavior;
     
-    [SerializeReference][TypeFilter("GetBehaviors")][GUIColor(0,0.5f,1)]
+    [SerializeReference][TypeFilter("GetSingleBehaviors")][GUIColor(0,0.5f,1)]
     public List<UnitBehavior> OnExitBehavior;
     
     private bool extraStateConditions = false;
@@ -43,27 +46,28 @@ public class UnitState : ObjectState<GenericUnitController>
     [SerializeReference][TypeFilter("GetConditions")][ShowIf("extraStateConditions")]
     public List<UnitStateCondition> SpecialExitConditions;
     
+    [PropertyOrder(-1)][GUIColor(0.8f , 0 , 0.9f)][InfoBox("-------------------")]
     public UnitStates stateName;
     public override string StateName { get => stateName.ToString(); }
     public override void InitState(GenericUnitController t)
     {
         foreach (var behavior in OnEnterBehvaior)
         {
-            behavior.Init(SMObject);
+            behavior.Init(SMObject,this);
             onStateEnterActions += behavior.InvokeBehavior;
             
         }
 
         foreach (var behavior in InStateBehavior)
         {
-            behavior.Init(SMObject);
+            behavior.Init(SMObject,this);
             inStateActions += behavior.InvokeBehavior;
             stateExitConditions += behavior.ExecCondition;
         }
 
         foreach (var behavior  in OnExitBehavior)
         {
-            behavior.Init(SMObject);
+            behavior.Init(SMObject,this);
             onStateExitActions += behavior.InvokeBehavior;
         }
 
@@ -81,6 +85,16 @@ public class UnitState : ObjectState<GenericUnitController>
     private static IEnumerable<Type> GetBehaviors()
     {
         return UnitBehavior.GetUnitBehaviors();
+    }
+
+    private static IEnumerable<Type> GetConcurrentBehaviors()
+    {
+        return UnitConcurrentBehavior.GetConcurrentBehaviors();
+    }
+
+    private static IEnumerable<Type> GetSingleBehaviors()
+    {
+        return UnitSingleBehvaior.GetSingleBehaviors();
     }
 
     private static IEnumerable<Type> GetConditions()
@@ -131,8 +145,10 @@ public abstract class UnitBehavior
     [FoldoutGroup("Components")]
     public UnitBattleManager UnitBattleManager;
     public abstract void Behavior();
+    [HideInInspector]
+    public UnitState parentState;
 
-    public void Init(GenericUnitController unit)
+    public void Init(GenericUnitController unit, UnitState parentState)
     {
         UnitData = unit.Data;
         UnitObject = unit;
@@ -158,6 +174,34 @@ public abstract class UnitBehavior
             .Where(x => !x.IsAbstract) // Excludes BaseClass
             .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
             .Where(x => x.IsSubclassOf(typeof(UnitBehavior))); // Excludes classes not inheriting from BaseClass
+        
+        return q;
+    }
+}
+
+[Serializable]
+public abstract class UnitConcurrentBehavior : UnitBehavior
+{
+    public static IEnumerable<Type> GetConcurrentBehaviors()
+    {
+        var q = typeof(UnitConcurrentBehavior).Assembly.GetTypes()
+            .Where(x => !x.IsAbstract) // Excludes BaseClass
+            .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
+            .Where(x => x.IsSubclassOf(typeof(UnitConcurrentBehavior))); // Excludes classes not inheriting from BaseClass
+        
+        return q;
+    }
+}
+
+[Serializable]
+public abstract class UnitSingleBehvaior : UnitBehavior
+{
+    public static IEnumerable<Type> GetSingleBehaviors()
+    {
+        var q = typeof(UnitSingleBehvaior).Assembly.GetTypes()
+            .Where(x => !x.IsAbstract) // Excludes BaseClass
+            .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
+            .Where(x => x.IsSubclassOf(typeof(UnitSingleBehvaior))); // Excludes classes not inheriting from BaseClass
         
         return q;
     }

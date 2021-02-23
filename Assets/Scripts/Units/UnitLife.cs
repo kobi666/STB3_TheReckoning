@@ -40,7 +40,7 @@ public class UnitLifeManager
 
     public void Init()
     {
-        
+        CurrentHP = InitialHP;
     }
     
     public int HP {get => CurrentHP ; set {
