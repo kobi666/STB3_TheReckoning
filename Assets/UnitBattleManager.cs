@@ -133,9 +133,11 @@ public class UnitBattleManager : MonoBehaviour
         MeleeWeapon.TargetBank.onTargetRemove += removeTarget;
         FlipAttackArea(true);
         }
-
+        onFightStart += delegate { AoeController.OnSingleTargetSet(TargetUnit.name); };
         onFightStart += StartFight;
+        
         onFightEnd += EndFight;
+        onFightEnd += delegate { AoeController.OnSingleTargetClear(); };
 
     }
 }

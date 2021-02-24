@@ -7,6 +7,7 @@ using UnityEngine;
 using System;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
+using Sirenix.Utilities;
 
 [Serializable]
 public class AOEEffect : IHasEffectAnimation
@@ -89,7 +90,7 @@ public class AOEEffect : IHasEffectAnimation
                             }
                         }
                     }
-                    else if (SingleTarget && singleTargetName != string.Empty)
+                    else if (singleTargetName != string.Empty)
                     {
                         Targets.Add(aoeController.TargetBank.Targets[singleTargetName]);
                         TargetsNames.Add(singleTargetName);
@@ -104,7 +105,7 @@ public class AOEEffect : IHasEffectAnimation
         //change later to field based delay
         await Task.Delay(50);
         GetTargets();
-        if (Targets != null)
+        if (!Targets.IsNullOrEmpty())
         {
             foreach (var ef in Targets)
             {

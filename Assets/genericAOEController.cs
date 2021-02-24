@@ -14,6 +14,16 @@ public class GenericAOEController : MonoBehaviour
 
     public string SingleTargetName;
     public event Action<string> onSingleTargetSet;
+
+    public void OnSingleTargetSet(string singleTargetName)
+    {
+        onSingleTargetSet?.Invoke(singleTargetName);
+    }
+
+    public void OnSingleTargetClear()
+    {
+        OnSingleTargetSet(string.Empty);
+    }
     
     [ShowInInspector]
     public ITargeter parentTargeter;
