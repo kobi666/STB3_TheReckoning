@@ -311,7 +311,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     public async void StartAsyncAttack() {
         testAsyncAttackcounter += 1;
         AsyncAttackInProgress = true;
-        while (CanAttack() && AsyncAttackInProgress == true) {
+        while (CanAttack() && AsyncAttackInProgress) {
             if (AttackCounter >= CounterMax)
             {
                 Attack();
@@ -411,11 +411,24 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         ComponentRotator.StartRotatingTowardsTarget();
     }
 
+
+    void UpdateTargetState(string targetName, bool state)
+    {
+        if (targetName == Target?.name)
+        {
+            if (state == false)
+            {
+                Target = null;
+            }
+        }
+    }
+
     protected void Awake()
     {
         base.Awake();
         GenericRotator = GetComponent<GenericRotator>();
         onTargetAdd += SetTarget;
+        GameObjectPool.Instance.onTargetableUpdate += UpdateTargetState;
     }
 
     public override void InitComponent()
