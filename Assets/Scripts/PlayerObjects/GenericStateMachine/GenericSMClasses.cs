@@ -64,7 +64,7 @@ public abstract class ObjectState<T> where T: IHasStateMachine
 
 public interface IHasStateMachine
 {
-    
+    void OnEnterStateDefaultBehavior();
 }
 
 

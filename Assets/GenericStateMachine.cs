@@ -56,6 +56,7 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
                 Debug.LogWarning(new Exception("Empty state entered or empty state name on : " + gameObject.name));
                 return;
             }
+            SMObject.OnEnterStateDefaultBehavior();
             CurrentState.OnStateEnterActions();
             CurrentState.StateIsRunning = true;
             if (CurrentState.StateEnterConditions())

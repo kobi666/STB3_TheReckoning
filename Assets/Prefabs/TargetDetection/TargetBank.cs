@@ -185,8 +185,17 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
         //InitRangeDetectorEvents();
         DeathManager.Instance.onEnemyUnitDeath += OnTargetRemove;
         DeathManager.Instance.onPlayerUnitDeath += OnTargetRemove;
+        GameObjectPool.Instance.onTargetableUpdate += OnTargetableRemove;
         GameObjectPool.Instance.onObjectDisable += OnTargetRemove;
         PostStart();
+    }
+
+    public void OnTargetableRemove(string tname, bool tstate)
+    {
+        if (!tstate)
+        {
+            OnTargetRemove(tname,this.name);
+        }
     }
 
     public abstract void PostStart();

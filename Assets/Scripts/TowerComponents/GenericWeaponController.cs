@@ -166,7 +166,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     public bool canattackFieldPH;
     public virtual bool CanAttack() {
         if (ExternalAttackLock == false) {
-            if (Target != null) {
+            if (TargetExists) {
                 canattackFieldPH = true;
                 return true;
             }
@@ -220,7 +220,6 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     void SetTarget(TargetUnit tu)
     {
         Target = tu;
-        
     }
     
     
@@ -267,10 +266,10 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         float p = 999999.0f;
         foreach (var item in TargetBank.Targets)
         {
-            if (!GameObjectPool.Instance.ActiveUnitPool.Pool.ContainsKey(item.Key)) {
+            if (!GameObjectPool.Instance.Targetables.Contains(item.Key)) {
                 continue;
             }
-            float tp = GameObjectPool.Instance.ActiveUnitPool.Pool[item.Key].Proximity;
+            float tp = GameObjectPool.Instance.ActiveUnits[item.Key].PathWalker.ProximityToPathEnd;
             if (tp < p) {
                 p = tp;
                 tu = GameObjectPool.Instance.GetTargetUnit(item.Key);
@@ -311,15 +310,10 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     public async void StartAsyncAttack() {
         testAsyncAttackcounter += 1;
         AsyncAttackInProgress = true;
-        while (CanAttack() && AsyncAttackInProgress) {
-            if (AttackCounter >= CounterMax)
+        while (AsyncAttackInProgress) {
+            if (CanAttack() && AttackCounter >= CounterMax)
             {
                 Attack();
-            }
-
-            if (CanAttack() == false)
-            {
-                Debug.LogWarning("Can attack is false bu i'm still attacking");
             }
             await Task.Yield();
         }
@@ -366,8 +360,18 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
             Data.targetUnit = value;
             GenericRotator.Target = value?.transform;
             onTargetSet?.Invoke(Target?.name ?? string.Empty);
+            if (value != null)
+            {
+                TargetExists = true;
+            }
+            else
+            {
+                TargetExists = false;
+            }
         }
     }
+    [GUIColor(1,0,0)]
+    public bool TargetExists = false;
 
     
 

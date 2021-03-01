@@ -188,5 +188,9 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
         }
     }
 
-    
+
+    public void OnEnterStateDefaultBehavior()
+    {
+        EffectableUnit.IsTargetable();
+    }
 }
