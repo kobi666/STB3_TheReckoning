@@ -25,7 +25,7 @@ public abstract class TowerAction
    
    [FormerlySerializedAs("ParentTowerController")] public TowerControllerLegacy parentTowerControllerLegacy;
    public TowerSlotController ParentSlotController;
-   public TowerComponent TowerComponent;
+   public TowerComponent towerComponent;
 
    public event Action<TowerSlotController> onInitAction;
 
@@ -38,7 +38,7 @@ public abstract class TowerAction
       ParentSlotController = tsc;
       PlayerResources.Instance.onMoneyzUpdate += EnoughMoneyzCheck;
       //PlayerResources.Instance.UpdateMoneyz(0);
-      if (TowerComponent == null)
+      if (towerComponent == null)
       {
          InitActionSpecific(tsc);
       }
@@ -46,7 +46,7 @@ public abstract class TowerAction
       {
          InitActionSpecific(tsc);
          onInitAction += InitActionSpecific;
-         TowerComponent.onInitComponent += OnInitAction;
+         towerComponent.onInitComponent += OnInitAction;
       }
    }
 
@@ -158,13 +158,13 @@ public class UpdateDamage : TowerAction
    public Damage DamageUpdate = new Damage();
    public override void InitActionSpecific(TowerSlotController tsc)
    {
-      var q = TowerComponent.GetEffectList().Where(x => x.EffectName() == DamageUpdate.EffectName()).ToList();
+      var q = towerComponent.GetEffectList().Where(x => x.EffectName() == DamageUpdate.EffectName()).ToList();
       DamageEffects = q;
    }
 
    public override void Action(TowerSlotController tsc)
    {
-      TowerComponent.UpdateEffect(DamageUpdate, DamageEffects);
+      towerComponent.UpdateEffect(DamageUpdate, DamageEffects);
    }
 
    public override bool SpecificExecuteCondition(TowerSlotController tsc)
@@ -183,7 +183,7 @@ public class CompundAction : TowerAction
    {
       foreach (var towerAction in Actions)
       {
-         towerAction.TowerComponent = TowerComponent;
+         towerAction.towerComponent = towerComponent;
          towerAction.InitAction(tsc);
       }
    }
@@ -217,12 +217,12 @@ public class UpdateRange : TowerAction
    public float RangeUpdate = 0.5f;
    public override void InitActionSpecific(TowerSlotController tsc)
    {
-      DetectorsToApplyOn = TowerComponent.GetRangeDetectors();
+      DetectorsToApplyOn = towerComponent.GetTagDetectors();
    }
 
    public override void Action(TowerSlotController tsc)
    {
-      TowerComponent.UpdateRange(RangeUpdate,DetectorsToApplyOn);
+      towerComponent.UpdateRange(RangeUpdate,DetectorsToApplyOn);
    }
 
    public override bool SpecificExecuteCondition(TowerSlotController tsc)

@@ -289,7 +289,7 @@ public class TowerActionLegacy : UnityEvent<TowerControllerLegacy>
 
 [System.Serializable]
 public class TowerSlotAction {
-    public TowerComponent TowerComponent = null;
+    public TowerComponent towerComponent = null;
     [SerializeField]
     public string ActionDescription = "Empty Action";
     [SerializeField]
@@ -301,7 +301,7 @@ public class TowerSlotAction {
     public int ActionCost;
     public Predicate<TowerComponent> ExecutionCondition = null;
     public TowerSlotAction(TowerComponent towerComponent, string actionDescription, Sprite buttonSprite, Action action) {
-        TowerComponent = towerComponent;
+        this.towerComponent = towerComponent;
         ActionDescription = actionDescription;
         ButtonSprite = buttonSprite;
         ActionFunctions += action;
@@ -312,7 +312,7 @@ public class TowerSlotAction {
 
     }
     public void ExecuteFunction() {
-        if (ExecutionCondition != null && ExecutionCondition.Invoke(TowerComponent) == true ) {
+        if (ExecutionCondition != null && ExecutionCondition.Invoke(towerComponent) == true ) {
         ActionFunctions?.Invoke();
         }
     }

@@ -128,7 +128,7 @@ public class SelectorTest2 : MonoBehaviour
 
     void DrawRange(TowerSlotController tsc)
     {
-        RangeDrawer.DrawCircle(SelectedTowerControllerLegacy?.MainTowerComponent?.Data.componentRadius ?? 0);
+        RangeDrawer.DrawCircle(SelectedTowerControllerLegacy?.mainTowerComponent?.Data.componentRadius ?? 0);
     }
 
     private void Awake()

@@ -7,7 +7,7 @@ using MyBox;
 using Sirenix.OdinInspector;
 using UnityEngine.Serialization;
 
-public abstract class TowerComponent : MonoBehaviour, IHasEffects,IHasRangeComponent
+public abstract class TowerComponent : MonoBehaviour, IHasEffects,IHasRangeComponents
 {
     public abstract void InitComponent();
     public event Action onInitComponent;
@@ -77,7 +77,7 @@ public abstract class TowerComponent : MonoBehaviour, IHasEffects,IHasRangeCompo
 
     protected void Start()
     {
-        //legacy
+        RangeDetector = RangeDetector ?? GetComponentInChildren<TagDetector>();
         parentTowerComponent = parentTowerComponent ?? GetComponentInParent<TowerComponent>() ?? null;
         ParentTowerLegacy =  ParentTowerLegacy ?? GetComponentInParent<TowerControllerLegacy>() ?? null;
         ParentTowerSlot = parentTowerSlot ?? GetComponentInParent<TowerSlotController>() ?? null;
@@ -87,7 +87,8 @@ public abstract class TowerComponent : MonoBehaviour, IHasEffects,IHasRangeCompo
 
     public abstract void UpdateEffect(Effect ef, List<Effect> appliedEffects);
 
-    public abstract List<TagDetector> GetRangeDetectors();
+    public float rangeSize { get => Data.componentRadius; set => Data.componentRadius = value; }
+    public abstract List<TagDetector> GetTagDetectors();
 
     public virtual void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors)
     {

@@ -194,6 +194,7 @@
         <e p="betterEventTest.cs" t="Include" />
         <e p="ComponentRotator.cs" t="Include" />
         <e p="ComponentSpriteController.cs" t="Include" />
+        <e p="DistanceTester.cs" t="Include" />
         <e p="Editor" t="Include">
           <e p="ConditionalFieldAttribute.cs" t="Include" />
           <e p="GenericMethodSelector.cs" t="Include" />
@@ -224,10 +225,12 @@
         <e p="LaserTest2.cs" t="Include" />
         <e p="LaserWeaponTest.cs" t="Include" />
         <e p="ofirtest2.cs" t="Include" />
+        <e p="PathController.cs" t="Include" />
         <e p="PathDiscoveryPoint.cs" t="Include" />
         <e p="PathDiscoveryTargetBank.cs" t="Include" />
         <e p="PathDiscoveryWalker.cs" t="Include" />
         <e p="pathGeneratorTest.cs" t="Include" />
+        <e p="PathPointFinder.cs" t="Include" />
         <e p="PathRenderer.cs" t="Include" />
         <e p="PathWalker.cs" t="Include" />
         <e p="Pixelplacement" t="Include">
@@ -1091,6 +1094,9 @@
           </e>
           <e p="Effect.cs" t="Include" />
           <e p="EffectAnimationController.cs" t="Include" />
+          <e p="ExtensionMethods" t="Include">
+            <e p="ExtensionMethods.cs" t="Include" />
+          </e>
           <e p="GeneralClasses" t="Include">
             <e p="ActiveObjectPool.cs" t="Include" />
             <e p="AnimationController.cs" t="Include" />
@@ -1257,6 +1263,7 @@
             <e p="UnitDataLegacy.cs" t="Include" />
             <e p="UnitLife.cs" t="Include" />
             <e p="UnitMovementController.cs" t="Include" />
+            <e p="UnitPoolCreationData.cs" t="Include" />
             <e p="UnitStatesLegacy.cs" t="Include" />
             <e p="UnitType.cs" t="Include" />
             <e p="UnitTypes.cs" t="Include" />
@@ -1267,6 +1274,7 @@
         <e p="Shaker.cs" t="Include" />
         <e p="SplineController.cs" t="Include" />
         <e p="SplineDetector.cs" t="Include" />
+        <e p="SplinePathController.cs" t="Include" />
         <e p="SplineWalker.cs" t="Include" />
         <e p="TagSelectorPropertyDrawer.cs" t="Include" />
         <e p="test12.cs" t="Include" />

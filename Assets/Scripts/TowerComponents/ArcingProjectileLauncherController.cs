@@ -43,7 +43,7 @@ public class ArcingProjectileLauncherController : WeaponController
         throw new System.NotImplementedException();
     }
 
-    public override List<TagDetector> GetRangeDetectors()
+    public override List<TagDetector> GetTagDetectors()
     {
         throw new System.NotImplementedException();
     }

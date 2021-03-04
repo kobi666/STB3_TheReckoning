@@ -4,13 +4,20 @@ using UnityEngine;
 using System;
 using MyBox;
 using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine.Serialization;
 
 [System.Serializable]
 public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
 
 {
-
+#if UNITY_EDITOR
+    [TagSelector]
+# endif
+    [SerializeField]
+    public List<string> DiscoverableTags;
+    
+    [ShowInInspector]
     public bool HasTargets;
     private void OnEnable()
     {
@@ -22,7 +29,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
         DisableRangedetectorEvents();
     }
 
-
+    [ShowInInspector]
     public bool HasTargetableTargets = false;
 
     public event Action<string,bool> onTargetableChange;
@@ -64,8 +71,10 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
     
     public TagDetector Detector;
     public event Action<GameObject> onTryToAddTarget;
-    public void OnTryToAddTarget(GameObject targetGO) {
+    public void OnTryToAddTarget(GameObject targetGO, string _tag) {
+        if (DiscoverableTags.Contains(_tag)) {
         onTryToAddTarget?.Invoke(targetGO);
+        }
     }
 
     public event Action<string,string> onTargetRemove;

@@ -10,7 +10,7 @@ public abstract class TowerControllerLegacy : MonoBehaviour,ITypeTag
 {
     [ConditionalField("debug")] public TowerActionManager TowerActionManager;
 
-    public TowerComponent MainTowerComponent;
+    public TowerComponent mainTowerComponent;
     public bool debug;
     static string Tag = "Tower";
     public string TypeTag {get => Tag;}

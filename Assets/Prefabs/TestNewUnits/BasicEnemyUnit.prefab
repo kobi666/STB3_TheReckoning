@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 3766923884328374419}
   - component: {fileID: 3766923884328374416}
   m_Layer: 0
-  m_Name: Targetr
+  m_Name: BasicEnemyUnit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,8 +205,8 @@ MonoBehaviour:
   EffectableUnit: {fileID: 3766923884328374420}
   EffectableTargetBank: {fileID: 3766923884328374418}
   StateMachine: {fileID: 3766923884328374419}
-  PathWalker: {fileID: 0}
-  UnitMovementController: {fileID: 0}
+  PathWalker: {fileID: 5766828789754081071}
+  UnitMovementController: {fileID: 3766923884328374416}
   references:
     version: 1
     00000000:
@@ -718,6 +718,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DiscoverableTags:
+  - Player_Unit
   HasTargets: 0
   HasTargetableTargets: 0
   Detector: {fileID: 8294459362404161711}
@@ -1000,6 +1002,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3766923884331605876}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5766828789754081071 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7224100814137897051, guid: db3ce021091af8d40b4cc5af19ce83ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 3766923884331605876}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf73b54f2baede4997ee86173e755c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3766923884738731233
 PrefabInstance:
   m_ObjectHideFlags: 0

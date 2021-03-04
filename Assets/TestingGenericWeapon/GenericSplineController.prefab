@@ -174,10 +174,6 @@ EdgeCollider2D:
   - {x: 0, y: 0}
   - {x: 0, y: 0}
   - {x: 0, y: 0}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!114 &2350894109049245227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,7 +250,6 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -386,35 +381,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: Targets
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[Effectable,
-        Assembly-CSharp]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+  DiscoverableTags:
+  - Enemy
+  HasTargets: 0
+  HasTargetableTargets: 0
   Detector: {fileID: 2350894109049245207}
 --- !u!114 &2350894109049245201
 MonoBehaviour:
@@ -454,6 +424,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2275542799276280031, guid: 43b0a984e43ce9c48816a023d43ea06f,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275542799276280031, guid: 43b0a984e43ce9c48816a023d43ea06f,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -469,6 +444,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2275542799276280031, guid: 43b0a984e43ce9c48816a023d43ea06f,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275542799276280031, guid: 43b0a984e43ce9c48816a023d43ea06f,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -481,16 +461,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2275542799276280031, guid: 43b0a984e43ce9c48816a023d43ea06f,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2275542799276280031, guid: 43b0a984e43ce9c48816a023d43ea06f,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2275542799276280031, guid: 43b0a984e43ce9c48816a023d43ea06f,
         type: 3}
@@ -541,6 +511,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 8626309326448447657, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626309326448447657, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.621
       objectReference: {fileID: 0}
@@ -556,6 +531,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8626309326448447657, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626309326448447657, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -567,16 +547,6 @@ PrefabInstance:
     - target: {fileID: 8626309326448447657, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8626309326448447657, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8626309326448447657, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8626309326448447657, guid: 61ea4ee2eca8f71439394924b1b5cf3a,

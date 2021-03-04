@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 
 
 [Serializable]
-public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitController>,IActiveObject<GenericUnitController>,IHasEffects,IHasRangeComponent,IHasStateMachine
+public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitController>,IActiveObject<GenericUnitController>,IHasEffects,IHasRangeComponents,IHasStateMachine
 {
     private void OnEnable()
     {
@@ -107,7 +107,7 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
     {
         UnitLifeManager.InitialHP = Data.MetaData.HP;
         UnitLifeManager.Init();
-        UpdateRange(Data.MetaData.DiscoveryRadius, GetRangeDetectors());
+        UpdateRange(Data.MetaData.DiscoveryRadius, GetTagDetectors());
         foreach (var s in States)
         {
             s.Init(this);
@@ -173,7 +173,9 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
         
     }
 
-    public List<TagDetector> GetRangeDetectors()
+    public float rangeSize { get => Data.MetaData.DiscoveryRadius; set => Data.MetaData.DiscoveryRadius = value; }
+
+    public List<TagDetector> GetTagDetectors()
     {
         List<TagDetector> rds = new List<TagDetector>();
         rds.Add(RangeDetector);

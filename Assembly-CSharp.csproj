@@ -117,6 +117,7 @@
      <Compile Include="Assets\BeamWeapon.cs" />
      <Compile Include="Assets\ComponentRotator.cs" />
      <Compile Include="Assets\ComponentSpriteController.cs" />
+     <Compile Include="Assets\DistanceTester.cs" />
      <Compile Include="Assets\EnumeratorPlaceHolder.cs" />
      <Compile Include="Assets\ExternalUtils\Direction.cs" />
      <Compile Include="Assets\Garbage.cs" />
@@ -135,9 +136,11 @@
      <Compile Include="Assets\LaserTest.cs" />
      <Compile Include="Assets\LaserTest2.cs" />
      <Compile Include="Assets\LaserWeaponTest.cs" />
+     <Compile Include="Assets\PathController.cs" />
      <Compile Include="Assets\PathDiscoveryPoint.cs" />
      <Compile Include="Assets\PathDiscoveryTargetBank.cs" />
      <Compile Include="Assets\PathDiscoveryWalker.cs" />
+     <Compile Include="Assets\PathPointFinder.cs" />
      <Compile Include="Assets\PathRenderer.cs" />
      <Compile Include="Assets\PathWalker.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Chooser\Chooser.cs" />
@@ -215,6 +218,7 @@
      <Compile Include="Assets\Scripts\Askenzi\Test333.cs" />
      <Compile Include="Assets\Scripts\Effect.cs" />
      <Compile Include="Assets\Scripts\EffectAnimationController.cs" />
+     <Compile Include="Assets\Scripts\ExtensionMethods\ExtensionMethods.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\ActiveObjectPool.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\AnimationController.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\DeathManager.cs" />
@@ -351,6 +355,7 @@
      <Compile Include="Assets\Scripts\Units\UnitDataLegacy.cs" />
      <Compile Include="Assets\Scripts\Units\UnitLife.cs" />
      <Compile Include="Assets\Scripts\Units\UnitMovementController.cs" />
+     <Compile Include="Assets\Scripts\Units\UnitPoolCreationData.cs" />
      <Compile Include="Assets\Scripts\Units\UnitStatesLegacy.cs" />
      <Compile Include="Assets\Scripts\Units\UnitType.cs" />
      <Compile Include="Assets\Scripts\Units\UnitTypes.cs" />
@@ -362,6 +367,7 @@
      <Compile Include="Assets\Shaker.cs" />
      <Compile Include="Assets\SplineController.cs" />
      <Compile Include="Assets\SplineDetector.cs" />
+     <Compile Include="Assets\SplinePathController.cs" />
      <Compile Include="Assets\SplineWalker.cs" />
      <Compile Include="Assets\TagSelectorPropertyDrawer.cs" />
      <Compile Include="Assets\TestAshkenazi.cs" />

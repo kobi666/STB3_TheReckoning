@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -20,13 +21,18 @@ public class ActiveObjectPool<T> where T : Component,IActiveObject<T>
     public void AddObjectToActiveObjectPool(T t) {
         if (!Pool.ContainsKey(t.name)) {
             Pool.Add(t.name, t);
+            onObjectAdded?.Invoke(t.name);
         }
         
     }
 
+    public event Action<string> onObjectDisabled;
+    public event Action<string> onObjectAdded;
+
     public void RemoveObjectFromPool(string objectName) {
         if (Pool.ContainsKey(objectName)) {
             Pool.Remove(objectName);
+            onObjectDisabled?.Invoke(objectName);
         }
     }
 

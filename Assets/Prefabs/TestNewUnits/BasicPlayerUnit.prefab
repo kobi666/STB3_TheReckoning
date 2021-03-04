@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 3605666164734579109}
   - component: {fileID: 3605666164734579108}
   m_Layer: 0
-  m_Name: PlayerUnit
+  m_Name: BasicPlayerUnit
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,8 +220,8 @@ MonoBehaviour:
   EffectableUnit: {fileID: 3605666164734579104}
   EffectableTargetBank: {fileID: 3605666164734579111}
   StateMachine: {fileID: 3605666164734579110}
-  PathWalker: {fileID: 0}
-  UnitMovementController: {fileID: 0}
+  PathWalker: {fileID: 6217447090304381352}
+  UnitMovementController: {fileID: 3605666164734579109}
   references:
     version: 1
     00000000:
@@ -861,6 +861,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DiscoverableTags:
+  - Enemy
   HasTargets: 0
   HasTargetableTargets: 0
   Detector: {fileID: 8454661457757351925}
@@ -1058,6 +1060,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3605666163048858099}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6217447090304381352 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7224100814137897051, guid: db3ce021091af8d40b4cc5af19ce83ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 3605666163048858099}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf73b54f2baede4997ee86173e755c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3605666163267995762
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1269,6 +1283,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eec082e4a5501b540a7926b58d7acb72, type: 3}
+--- !u!4 &7863323288222899409 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6857228081308957647, guid: eec082e4a5501b540a7926b58d7acb72,
+    type: 3}
+  m_PrefabInstance: {fileID: 3605666163647178526}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7863323288222899411 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6857228081308957645, guid: eec082e4a5501b540a7926b58d7acb72,
@@ -1281,12 +1301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b09c7f1b62f064cbdc667ea17dac6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &7863323288222899409 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6857228081308957647, guid: eec082e4a5501b540a7926b58d7acb72,
-    type: 3}
-  m_PrefabInstance: {fileID: 3605666163647178526}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3605666163685623412
 PrefabInstance:
   m_ObjectHideFlags: 0

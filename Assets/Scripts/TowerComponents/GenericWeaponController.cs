@@ -499,9 +499,9 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         WeaponAttack.UpdateEffect(ef,appliedEffects);
     }
 
-    public override List<TagDetector> GetRangeDetectors()
+    public override List<TagDetector> GetTagDetectors()
     {
-        return WeaponAttack.GetRangeDetectors();
+        return WeaponAttack.GetTagDetectors();
     }
 
     public override void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors)

@@ -181,7 +181,7 @@ public class PlayerPlayerUnitSpawner : TowerComponent
         
     }
 
-    public override List<TagDetector> GetRangeDetectors()
+    public override List<TagDetector> GetTagDetectors()
     {
         return null;
     }

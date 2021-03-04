@@ -9,7 +9,7 @@ public class GenericTowerController : SerializedMonoBehaviour
 {
     public TowerActionManager TowerActionManager;
     
-    public TowerComponent MainTowerComponent;
+    public TowerComponent mainTowerComponent;
     public bool debug;
     static string Tag = "Tower";
     public string TypeTag {get => Tag;}

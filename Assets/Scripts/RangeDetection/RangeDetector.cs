@@ -16,7 +16,6 @@ public class RangeDetector : TagDetector,IQueueable<RangeDetector>
         get => rangeRadius ;
         set {
             rangeRadius = value;
-            UpdateSize(value);
         } 
     }
     
@@ -91,6 +90,17 @@ private void OnDrawGizmosSelected()
     Gizmos.color = Color;
 }
 
+public override bool IsPositionInRange(Vector2 pos)
+{
+    Vector2 self = transform.position;
+    if ((self - pos).sqrMagnitude < rangeRadius * rangeRadius)
+    {
+        return true;
+    }
+
+    return false;
+}
+
 void Awake()
     {
         
@@ -104,20 +114,24 @@ void Awake()
     {
         return RangeCollider.radius;
     }
-
-    public override void UpdateSize(float range) {
+    
+    
+    
+    public override void UpdateSize(float size) {
         if (RangeCollider == null) {
             RangeCollider = gameObject.GetComponent<CircleCollider2D>();
         }
 
-        RangeCollider.radius = range;
+        RangeCollider.radius = size;
         if (_rangeDebug == null)
         {
             _rangeDebug = GetComponentInChildren<RangeDebug>() ?? null;
         }
         if (_rangeDebug?.gameObject.activeSelf == true) {
-        _rangeDebug.transform.localScale = new Vector3(range,range,range);
+        _rangeDebug.transform.localScale = new Vector3(size,size,size);
         }
+
+        RangeRadius = size;
     }
 
     

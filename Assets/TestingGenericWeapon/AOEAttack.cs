@@ -44,7 +44,7 @@ public class AOEAttack : WeaponAttack
         
     }
 
-    public override List<TagDetector> GetRangeDetectors()
+    public override List<TagDetector> GetTagDetectors()
     {
         List<TagDetector> ltd = new List<TagDetector>();
         foreach (var aoeBehavior in AoeBehaviors)
@@ -127,7 +127,7 @@ public class TriggerAOEOnce : AOEAttack
         }
     }
 
-    public override List<TagDetector> GetRangeDetectors()
+    public override List<TagDetector> GetTagDetectors()
     {
         List<TagDetector> ds = new List<TagDetector>();
         foreach (var aoeb in AoeBehaviors)

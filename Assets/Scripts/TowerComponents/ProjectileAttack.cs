@@ -79,7 +79,7 @@ public class ProjectileAttack : WeaponAttack
         }
     }
 
-    public override List<TagDetector> GetRangeDetectors()
+    public override List<TagDetector> GetTagDetectors()
     {
         List<TagDetector> lr = new List<TagDetector>();
         lr.Add(parentWeaponController.RangeDetector);

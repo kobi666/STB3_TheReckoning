@@ -16,9 +16,10 @@ public interface IHasEffectAnimation
 }
 
 
-public interface IHasRangeComponent
+public interface IHasRangeComponents
 {
-    List<TagDetector> GetRangeDetectors();
+    float rangeSize { get; set; }
+    List<TagDetector> GetTagDetectors();
     void UpdateRange(float RangeSizeDelta, List<TagDetector> detectorsToApplyChangeOn);
     
 }

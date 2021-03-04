@@ -54,7 +54,7 @@ public class SplineAttack : WeaponAttack
         return listeffect;
     }
 
-    public override List<TagDetector> GetRangeDetectors()
+    public override List<TagDetector> GetTagDetectors()
     {
         List<TagDetector> lr = new List<TagDetector>();
         lr.Add(parentWeaponController.RangeDetector);

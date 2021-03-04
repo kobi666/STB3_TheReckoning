@@ -5,6 +5,8 @@ using System;
 using Animancer;
 using MyBox;
 
+
+[DefaultExecutionOrder(-1)]
 public class GameObjectPool : MonoBehaviour
 {
     public Dictionary<string, PoolObjectQueue<RangeDetector>> RangeDetectorObjectPoolQueue = new Dictionary<string, PoolObjectQueue<RangeDetector>>();
@@ -160,6 +162,7 @@ public class GameObjectPool : MonoBehaviour
 
     public ActiveObjectPool<Projectile> ActiveProjectiles = new ActiveObjectPool<Projectile>();
     public ActiveObjectPool<PathDiscoveryPoint> ActivePathDiscoveryPoints = new ActiveObjectPool<PathDiscoveryPoint>();
+    public ActiveObjectPool<SplinePathController> ActiveSplines = new ActiveObjectPool<SplinePathController>();
     
     public void RemoveObjectFromAllPools(string objectName, string callerName) {
         ActiveEffectables.RemoveObjectFromPool(objectName);
@@ -183,7 +186,7 @@ public class GameObjectPool : MonoBehaviour
         {
             if (instantiated == false)
             {
-                GameObject g = new GameObject();
+                GameObject g = Instantiate(new GameObject());
                 g.name = "GameObjectPool";
                 g.AddComponent<GameObjectPool>();
                 Instance = g.GetComponent<GameObjectPool>();

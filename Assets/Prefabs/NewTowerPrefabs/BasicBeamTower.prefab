@@ -53,6 +53,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DiscoverableTags:
+  - Enemy
+  HasTargets: 0
+  HasTargetableTargets: 0
   Detector: {fileID: 6079510234450622701}
 --- !u!114 &1370178199741855897
 MonoBehaviour:
@@ -77,6 +81,7 @@ MonoBehaviour:
     effectableTarget: {fileID: 0}
     targetUnit:
       targetTransform: {fileID: 0}
+      GenericUnitController: {fileID: 0}
       effectable: {fileID: 0}
     orbitalData:
       maxNumberOfOrbitals: 0
@@ -118,12 +123,17 @@ MonoBehaviour:
   parentTowerComponent: {fileID: 0}
   RangeDetector: {fileID: 0}
   RangeCollider: {fileID: 0}
+  Autonomous: 1
   WeaponTypeInt: 4
   RotatingTurret: 0
   projectileAttack:
     parentWeaponController: {fileID: 0}
     ProjectileAttackProperties:
       id: 0
+  AoeAttack:
+    parentWeaponController: {fileID: 0}
+    AoeBehaviors: []
+    AOESize: 1
   SplineAttack:
     parentWeaponController: {fileID: 0}
     SplineAttackProperties:
@@ -136,6 +146,7 @@ MonoBehaviour:
   ExternalAttackLock: 0
   canattackFieldPH: 0
   ProjectileFinalPoint: {fileID: 0}
+  TargetExists: 0
   inAttackState: 0
   references:
     version: 1
@@ -164,6 +175,7 @@ MonoBehaviour:
             AOE: 0
           ProjectileBase: {fileID: 5907068859232098816, guid: d813ad87313d18d44be4fa1af9e6195a,
             type: 3}
+          OnHitAnimation: {fileID: 0}
     00000001:
       type: {class: OneSplineFromOriginToTarget, ns: , asm: Assembly-CSharp}
       data:
@@ -175,13 +187,12 @@ MonoBehaviour:
           ExitPoint: {fileID: 0}
           FinalPoint: {fileID: 0}
           parentIsRotatingTowardsTarget: 0
-          OnHitSingleAnimation: {fileID: 0}
-          OnHitContinuousAnimation: {fileID: 0}
           SplineEffect:
           - id: 5
           SplineMovement:
             id: 6
           SplineDuration: 0
+          SplineEndAnimation: {fileID: 0}
         AttackDuration: 4
     00000002:
       type: {class: MoveStraight, ns: , asm: Assembly-CSharp}

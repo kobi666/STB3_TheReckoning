@@ -50,7 +50,7 @@ public class TestOrbitalGunGeneric : OrbitalWeaponGeneric
         throw new NotImplementedException();
     }
 
-    public override List<TagDetector> GetRangeDetectors()
+    public override List<TagDetector> GetTagDetectors()
     {
         throw new NotImplementedException();
     }

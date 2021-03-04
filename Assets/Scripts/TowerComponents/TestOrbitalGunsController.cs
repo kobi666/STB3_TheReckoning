@@ -41,7 +41,7 @@ public class TestOrbitalGunsController : OrbitalGunsControllerGeneric
         throw new NotImplementedException();
     }
 
-    public override List<TagDetector> GetRangeDetectors()
+    public override List<TagDetector> GetTagDetectors()
     {
         throw new NotImplementedException();
     }
