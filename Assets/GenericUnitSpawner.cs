@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MyBox;
 using NUnit.Framework.Internal;
 using Sirenix.OdinInspector;
+using SpawningBehaviors;
 using UnityEngine;
 
 public class GenericUnitSpawner : TowerComponent
@@ -13,8 +14,15 @@ public class GenericUnitSpawner : TowerComponent
     public Dictionary<string,SplinePathController> PathSplines = new Dictionary<string, SplinePathController>();
     
     
-    public UnitPoolCreationData UnitPoolCreationData = new UnitPoolCreationData();
+    [TypeFilter("getBehaviors")][SerializeReference]
+    public SpawningBehavior SpawningBehavior;
 
+    private IEnumerable<Type> getBehaviors()
+    {
+        return SpawningBehavior.GetBehaviors();
+    }
+    
+    
     public PathPointFinder PathPointFinder;
     public Vector2 SpawningPoint;
     public Vector2? UnitSetPosition = null;
@@ -43,12 +51,7 @@ public class GenericUnitSpawner : TowerComponent
 
 
 
-    public IEnumerator WaitAlittleAndFindMiddlePoint()
-    {
-        yield return new WaitForEndOfFrame();
-        UnitSetPosition = UnitSetPosition ?? PathPointFinder.GetPathPointByPriority();
-        yield break;
-    }
+    
     
 
     
@@ -56,7 +59,6 @@ public class GenericUnitSpawner : TowerComponent
     {
         base.Start();
         RangeDetector.UpdateSize(Data.componentRadius);
-        StartCoroutine(WaitAlittleAndFindMiddlePoint());
     }
 
     

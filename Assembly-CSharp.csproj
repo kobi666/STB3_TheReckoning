@@ -349,6 +349,8 @@
      <Compile Include="Assets\Scripts\Units\PlayerUnitController.cs" />
      <Compile Include="Assets\Scripts\Units\PlayerUnitPoolCreationData.cs" />
      <Compile Include="Assets\Scripts\Units\PlayerUnitUtils.cs" />
+     <Compile Include="Assets\Scripts\Units\SpawningBehavior.cs" />
+     <Compile Include="Assets\Scripts\Units\SpawningBehaviors.cs" />
      <Compile Include="Assets\Scripts\Units\StateDebug.cs" />
      <Compile Include="Assets\Scripts\Units\StateMachine.cs" />
      <Compile Include="Assets\Scripts\Units\UnitAnimationController.cs" />
