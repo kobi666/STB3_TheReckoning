@@ -15,10 +15,69 @@ public class PathPointFinder : MonoBehaviour
     
     [Required]
     public RangeDetector RangeDetector;
+
+    public bool OnlyTargetSpecificPaths = false;
+    [ShowIf("OnlyTargetSpecificPaths")][ValidateInput("specificPathsNotEmpty", "List Cannot Be Empty")]
+    public List<PathController> SpecifiedPaths;
+
+    bool specificPathsNotEmpty()
+    {
+        return !SpecifiedPaths.IsNullOrEmpty();
+    }
     
     [Required]
     public IHasRangeComponents ParentRangeController;
+    
+    [Serializable]
+    public enum PathPointType
+    {
+        None,
+        MiddlePoint,
+        ClosestToEnd,
+        ClosestToStart,
+        SetPosition
+    }
 
+    public PathPointType[] pathPointTypePriority;
+
+    public Vector2? GetPathPointByPriority()
+    {
+        Vector2? placeholderV2 = null;
+        if (!pathPointTypePriority.IsNullOrEmpty()) {
+            foreach (var ppp in pathPointTypePriority)
+        {
+            if (ppp == PathPointType.MiddlePoint)
+            {
+                placeholderV2 = FindMiddlePoint();
+                if (placeholderV2 != null)
+                {
+                    return placeholderV2;
+                }
+            }
+
+            if (ppp == PathPointType.ClosestToEnd)
+            {
+                placeholderV2 = FindClosestPointToEndOfSpline();
+                if (placeholderV2 != null)
+                {
+                    return placeholderV2;
+                }
+            }
+            if (ppp == PathPointType.ClosestToStart)
+            {
+                placeholderV2 = FindClosestToStart();
+                if (placeholderV2 != null)
+                {
+                    return placeholderV2;
+                }
+            }
+            
+        }
+            
+        }
+
+        return placeholderV2;
+    }
 
     private void Awake()
     {
@@ -44,24 +103,60 @@ public class PathPointFinder : MonoBehaviour
         }
 
         return v2;
-
     }
 
+    public Vector2? FindClosestToStart()
+    {
+        Vector2? v2p = null;
+        shortestSplinePath = FindShortestSpline();
+        SplinePathController spc = PathSplines[shortestSplinePath];
+        foreach (var v2 in spc.splinePoints)
+        {
+            if (RangeDetector.IsPositionInRange(v2.Value))
+            {
+                return v2.Value;
+            }
+        }
+
+        return v2p;
+    }
+    
 
     [ShowInInspector]
     public Dictionary<string,SplinePathController> PathSplines = new Dictionary<string, SplinePathController>();
-    
+
+
+    private List<string> specificPathNames = new List<string>();
     public event Action onPathFound;
     void AddPathSplines(GameObject go, string _tag)
     {
         if (_tag == splineTag) {
             if (GameObjectPool.Instance.ActiveSplines.Contains(go.name))
             {
+                if (OnlyTargetSpecificPaths)
+                {
+                    if (specificPathNames.IsNullOrEmpty())
+                    {
+                        specificPathNames.Clear();
+                        foreach (var specificPath in SpecifiedPaths)
+                        {
+                            specificPathNames.Add(specificPath.name);
+                        }
+                    }
+
+                    if (!specificPathNames.Contains(GameObjectPool.Instance.ActiveSplines.Pool[go.name].parentPath.name))
+                    {
+                        return;
+                    }
+                }
                 if (GameObjectPool.Instance.ActiveSplines.Pool[go.name].SplineType == SplineTypes.Main) {
                     try
                     {
-                        PathSplines.Add(go.name,GameObjectPool.Instance.ActiveSplines.Pool[go.name]);
-                        onPathFound?.Invoke();
+                        {
+                            PathSplines.Add(go.name,GameObjectPool.Instance.ActiveSplines.Pool[go.name]);
+                            onPathFound?.Invoke();    
+                        }
+                        
                     }
                     catch (Exception e)
                     {

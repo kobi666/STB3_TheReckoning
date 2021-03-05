@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -42,6 +43,18 @@ public class AOEAttack : WeaponAttack
 
         return listEffect;
         
+    }
+
+    public override void SetEffectList(List<Effect> effects)
+    {
+        foreach (var aoebeahavior in AoeBehaviors)
+        {
+            foreach (var aoeEffect in aoebeahavior.Effects)
+            {
+                aoeEffect.Effects.Clear();
+                aoeEffect.Effects = effects;
+            }
+        }
     }
 
     public override List<TagDetector> GetTagDetectors()
@@ -144,6 +157,16 @@ public class TriggerAOEOnce : AOEAttack
     public override List<ProjectileFinalPoint> GetFinalPoints()
     {
         return new List<ProjectileFinalPoint>();
+    }
+    
+    public static IEnumerable<Type> GetAOEAttacks()
+    {
+        var q = typeof(AOEAttack).Assembly.GetTypes()
+            .Where(x => !x.IsAbstract) // Excludes BaseClass
+            .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
+            .Where(x => x.IsSubclassOf(typeof(AOEAttack))); // Excludes classes not inheriting from BaseClass
+        
+        return q;
     }
 
     

@@ -79,6 +79,11 @@ public class ProjectileAttack : WeaponAttack
         }
     }
 
+    public override void SetEffectList(List<Effect> effects)
+    {
+        Debug.LogWarning("Redundent");
+    }
+
     public override List<TagDetector> GetTagDetectors()
     {
         List<TagDetector> lr = new List<TagDetector>();

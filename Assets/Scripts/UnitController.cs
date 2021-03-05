@@ -165,4 +165,9 @@ public abstract class UnitController : MonoBehaviour,IActiveObject<UnitControlle
     {
         throw new NotImplementedException();
     }
+
+    public void SetEffectList(List<Effect> effects)
+    {
+        throw new NotImplementedException();
+    }
 }

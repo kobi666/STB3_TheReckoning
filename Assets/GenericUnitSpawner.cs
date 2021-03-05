@@ -11,6 +11,9 @@ public class GenericUnitSpawner : TowerComponent
 {
     [ShowInInspector]
     public Dictionary<string,SplinePathController> PathSplines = new Dictionary<string, SplinePathController>();
+    
+    
+    public UnitPoolCreationData UnitPoolCreationData = new UnitPoolCreationData();
 
     public PathPointFinder PathPointFinder;
     public Vector2 SpawningPoint;
@@ -43,7 +46,7 @@ public class GenericUnitSpawner : TowerComponent
     public IEnumerator WaitAlittleAndFindMiddlePoint()
     {
         yield return new WaitForEndOfFrame();
-        UnitSetPosition = UnitSetPosition ?? PathPointFinder.FindMiddlePoint();
+        UnitSetPosition = UnitSetPosition ?? PathPointFinder.GetPathPointByPriority();
         yield break;
     }
     
@@ -88,3 +91,4 @@ public class GenericUnitSpawner : TowerComponent
         }
     }
 }
+

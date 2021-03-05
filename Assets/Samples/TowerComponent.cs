@@ -34,11 +34,14 @@ public abstract class TowerComponent : MonoBehaviour, IHasEffects,IHasRangeCompo
     [ShowIf("legacyTower")]
     public TowerComponentData Data;
     
-    [FormerlySerializedAs("ParentTower")] public TowerControllerLegacy ParentTowerLegacy;
+    [FormerlySerializedAs("ParentTower")][FoldoutGroup("parentComponents")] public TowerControllerLegacy ParentTowerLegacy;
+    [FoldoutGroup("parentComponents")]
     public TowerController ParentTowerConroller;
-   
+    [FoldoutGroup("parentComponents")]
     public TowerSlotController parentTowerSlot;
+    [FoldoutGroup("parentComponents")]
     public TowerComponent parentTowerComponent;
+    [FoldoutGroup("parentComponents")]
     public TowerSlotController ParentTowerSlot
     {
         get
@@ -86,6 +89,10 @@ public abstract class TowerComponent : MonoBehaviour, IHasEffects,IHasRangeCompo
     public abstract List<Effect> GetEffectList();
 
     public abstract void UpdateEffect(Effect ef, List<Effect> appliedEffects);
+    public void SetEffectList(List<Effect> effects)
+    {
+        Debug.LogWarning("Redundent");
+    }
 
     public float rangeSize { get => Data.componentRadius; set => Data.componentRadius = value; }
     public abstract List<TagDetector> GetTagDetectors();

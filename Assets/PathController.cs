@@ -1,18 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PathController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+   public List<SplinePathController> ChildSplines = new List<SplinePathController>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+   protected void Start()
+   {
+      ChildSplines = GetComponentsInChildren<SplinePathController>().ToList();
+      foreach (var spc in ChildSplines)
+      {
+         spc.parentPath = this;
+      }
+   }
 }

@@ -7,6 +7,7 @@ public interface IHasEffects
 {
     List<Effect> GetEffectList();
     void UpdateEffect(Effect ef, List<Effect> appliedEffects);
+    void SetEffectList(List<Effect> effects);
 }
 
 public interface IHasEffectAnimation

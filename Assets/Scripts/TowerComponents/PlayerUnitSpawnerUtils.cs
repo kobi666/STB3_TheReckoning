@@ -14,7 +14,7 @@ public class PlayerUnitSpawnerUtils
         return puc;
     }
 
-    public static PlayerUnitController SpawnPlayerUnitFromSpawner(GenericUnitSpawner spawner, int unitBaseIndex)
+    /*public static PlayerUnitController SpawnPlayerUnitFromSpawner(GenericUnitSpawner spawner, int unitBaseIndex)
     {
         PlayerUnitController puc = spawner.UnitPools[spawner.Units[0].UnitPrefabBase.name].Get();
         puc.UnitBaseIndex = unitBaseIndex;
@@ -22,7 +22,7 @@ public class PlayerUnitSpawnerUtils
         //PlayerUnitController puc = SpawnPlayerUnit(spawner.Data.SpawnerData.playerUnitPrefab,spawner.SpawningPointPosition, unitBaseIndex);
         puc.dataLegacy.SetPosition = spawner.GetRallyPoint(unitBaseIndex);
         return puc;
-    }
+    }*/
 
     
     public static Vector2 RadianToVector2(float radian)

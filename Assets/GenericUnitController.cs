@@ -173,6 +173,11 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
         
     }
 
+    public void SetEffectList(List<Effect> effects)
+    {
+        Debug.LogWarning("Redundent");
+    }
+
     public float rangeSize { get => Data.MetaData.DiscoveryRadius; set => Data.MetaData.DiscoveryRadius = value; }
 
     public List<TagDetector> GetTagDetectors()

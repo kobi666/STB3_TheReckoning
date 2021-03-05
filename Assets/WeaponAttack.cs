@@ -36,6 +36,9 @@ public abstract class WeaponAttack : IHasEffects,IHasRangeComponents,IhasExitAnd
         
     }
 
+    public abstract void SetEffectList(List<Effect> effects);
+    
+
     public float rangeSize { get; set; }
     public abstract List<TagDetector> GetTagDetectors();
 

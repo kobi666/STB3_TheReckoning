@@ -71,6 +71,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         }
     }
 
+    public bool WeaponInitialized = false;
     public void InitWeapon()
     {
         if (WeaponTypeInt == 0)
@@ -109,6 +110,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
             onAttackCease += GenericRotator.StopAsyncRotation;
         }
         WeaponAttack.SetInitialFinalPointPosition();
+        WeaponInitialized = true;
     }
     
     private static IEnumerable<Type> GetAOEAttacks()

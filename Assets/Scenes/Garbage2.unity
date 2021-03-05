@@ -777,6 +777,7 @@ MonoBehaviour:
     SplineAttackProperties:
       id: 1
   WeaponName: 
+  WeaponInitialized: 0
   TargetBank: {fileID: 0}
   testAsyncAttackcounter: 0
   AttackCounter: 0
@@ -1390,6 +1391,7 @@ MonoBehaviour:
     SplineAttackProperties:
       id: 2
   WeaponName: 
+  WeaponInitialized: 0
   TargetBank: {fileID: 0}
   testAsyncAttackcounter: 0
   AttackCounter: 0
@@ -6544,6 +6546,7 @@ MonoBehaviour:
     SplineAttackProperties:
       id: 2
   WeaponName: 
+  WeaponInitialized: 0
   TargetBank: {fileID: 0}
   testAsyncAttackcounter: 0
   AttackCounter: 0
@@ -12639,6 +12642,7 @@ MonoBehaviour:
     SplineAttackProperties:
       id: 1
   WeaponName: testWeapon
+  WeaponInitialized: 0
   TargetBank: {fileID: 0}
   testAsyncAttackcounter: 0
   AttackCounter: 0
@@ -22983,9 +22987,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1986634436}
-  - component: {fileID: 1986634435}
   - component: {fileID: 1986634434}
   - component: {fileID: 1986634437}
+  - component: {fileID: 1986634435}
   m_Layer: 0
   m_Name: GenPlayerUnitSpawner
   m_TagString: TowerComponent
@@ -23053,7 +23057,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1986634433}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393b3af39b8543e4ba654c51bfba4051, type: 3}
+  m_Script: {fileID: 11500000, guid: 3be68628a550d4e4c920976eb8e08f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RotatingComponent: 0
@@ -23107,7 +23111,7 @@ MonoBehaviour:
   ParentTowerConroller: {fileID: 0}
   parentTowerSlot: {fileID: 0}
   parentTowerComponent: {fileID: 0}
-  RangeDetector: {fileID: 1390890101}
+  RangeDetector: {fileID: 0}
   RangeCollider: {fileID: 0}
   PathPointFinder: {fileID: 0}
   SpawningPoint: {x: 0, y: 0}
@@ -23140,6 +23144,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splineTag: Spline
   RangeDetector: {fileID: 1390890101}
+  OnlyTargetSpecificPaths: 1
+  SpecifiedPaths: []
+  pathPointTypePriority: 030000000200000001000000
 --- !u!1 &2000437305
 GameObject:
   m_ObjectHideFlags: 0
@@ -25626,6 +25633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3042081e9d4de924a9facfb5f718ac5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChildSplines: []
 --- !u!4 &2043551630
 Transform:
   m_ObjectHideFlags: 0
