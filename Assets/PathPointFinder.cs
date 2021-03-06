@@ -78,11 +78,47 @@ public class PathPointFinder : MonoBehaviour
 
         return placeholderV2;
     }
-
-    private void Awake()
+    
+    public Vector2? GetPathPointByPriority(PathPointType[] pointTypePriorty)
     {
-        
+        Vector2? placeholderV2 = null;
+        if (!pathPointTypePriority.IsNullOrEmpty()) {
+            foreach (var ppp in pointTypePriorty)
+            {
+                if (ppp == PathPointType.MiddlePoint)
+                {
+                    placeholderV2 = FindMiddlePoint();
+                    if (placeholderV2 != null)
+                    {
+                        return placeholderV2;
+                    }
+                }
+
+                if (ppp == PathPointType.ClosestToEnd)
+                {
+                    placeholderV2 = FindClosestPointToEndOfSpline();
+                    if (placeholderV2 != null)
+                    {
+                        return placeholderV2;
+                    }
+                }
+                if (ppp == PathPointType.ClosestToStart)
+                {
+                    placeholderV2 = FindClosestToStart();
+                    if (placeholderV2 != null)
+                    {
+                        return placeholderV2;
+                    }
+                }
+            
+            }
+            
+        }
+
+        return placeholderV2;
     }
+
+    
 
     public Vector2? FindMiddlePoint()
     {

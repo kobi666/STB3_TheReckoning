@@ -708,6 +708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2c8e9fee8787c4b84f4836239ec567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Autonomous: 1
   RotatingComponent: 0
   RotationSpeed: 5
   debug: 0
@@ -761,7 +762,6 @@ MonoBehaviour:
   parentTowerComponent: {fileID: 0}
   RangeDetector: {fileID: 0}
   RangeCollider: {fileID: 0}
-  Autonomous: 1
   WeaponTypeInt: 0
   RotatingTurret: 0
   projectileAttack:
@@ -1304,6 +1304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2c8e9fee8787c4b84f4836239ec567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Autonomous: 1
   RotatingComponent: 0
   RotationSpeed: 5
   debug: 0
@@ -1357,7 +1358,6 @@ MonoBehaviour:
   parentTowerComponent: {fileID: 0}
   RangeDetector: {fileID: 0}
   RangeCollider: {fileID: 0}
-  Autonomous: 1
   WeaponTypeInt: 1
   RotatingTurret: 0
   projectileAttack:
@@ -3562,6 +3562,141 @@ PrefabInstance:
       propertyPath: UnitMovementController
       value: 
       objectReference: {fileID: 387065299}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0]
+      value: Assembly-CSharp UnitBehaviors.AnnounceDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].TargetBank
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].UnitObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].UnitBattleManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].AttackAreaTargetBank
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].UnitData.MetaData.HP
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].parentState.SMObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].parentState.stateName
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].parentState.DefaultState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].parentState.InitialState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].parentState.StateIsRunning
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].UnitData.DynamicData.Spline
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].UnitData.MetaData.AttackSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].parentState.AutomaticNextState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].UnitData.MetaData.MovementSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].UnitData.MetaData.DiscoveryRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].UnitData.DynamicData.BasePosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].UnitData.DynamicData.BasePosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].UnitData.DynamicData.DistanceOnPath
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].UnitData.DynamicData.TargetPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].UnitData.DynamicData.TargetPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].parentState.OnExitBehavior.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].parentState.InStateBehavior.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].parentState.OnEnterBehvaior.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].parentState.SpecialExitConditions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].parentState.SpecialEnterConditions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375148, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
       propertyPath: m_RootOrder
@@ -6017,7 +6152,6 @@ MonoBehaviour:
       DiscoveryRadius: 4
     DynamicData:
       TargetPosition: {x: 0, y: 0}
-      BasePosition: {x: 0, y: 0}
       Spline: {fileID: 0}
       DistanceOnPath: 0
   GroupTag: Enemy
@@ -6044,7 +6178,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -6076,7 +6209,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -6107,7 +6239,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -6138,7 +6269,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -6169,7 +6299,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -6201,7 +6330,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -6232,7 +6360,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -6460,6 +6587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2c8e9fee8787c4b84f4836239ec567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Autonomous: 1
   RotatingComponent: 0
   RotationSpeed: 5
   debug: 0
@@ -6513,7 +6641,6 @@ MonoBehaviour:
   parentTowerComponent: {fileID: 0}
   RangeDetector: {fileID: 0}
   RangeCollider: {fileID: 0}
-  Autonomous: 1
   WeaponTypeInt: 1
   RotatingTurret: 0
   projectileAttack:
@@ -12573,6 +12700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2c8e9fee8787c4b84f4836239ec567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Autonomous: 1
   RotatingComponent: 1
   RotationSpeed: 5
   debug: 0
@@ -12626,7 +12754,6 @@ MonoBehaviour:
   parentTowerComponent: {fileID: 0}
   RangeDetector: {fileID: 0}
   RangeCollider: {fileID: 0}
-  Autonomous: 1
   WeaponTypeInt: 0
   RotatingTurret: 0
   projectileAttack:
@@ -21391,6 +21518,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1880234342}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1892162057 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+    type: 3}
+  m_PrefabInstance: {fileID: 3605666164968079763}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b2d6c38c30d9c46996e21d2d94193c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1899685753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22376,7 +22515,6 @@ MonoBehaviour:
       DiscoveryRadius: 3
     DynamicData:
       TargetPosition: {x: 0, y: 0}
-      BasePosition: {x: 0, y: 0}
       Spline: {fileID: 0}
       DistanceOnPath: 0
   GroupTag: Player_Unit
@@ -22403,7 +22541,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 1959560672}
@@ -22434,7 +22571,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 1959560672}
@@ -22465,7 +22601,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -22496,7 +22631,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -22526,7 +22660,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 1959560672}
@@ -22557,7 +22690,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 1959560672}
@@ -22589,7 +22721,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -23060,6 +23191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be68628a550d4e4c920976eb8e08f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Autonomous: 1
   RotatingComponent: 0
   RotationSpeed: 5
   debug: 0
@@ -23111,10 +23243,36 @@ MonoBehaviour:
   ParentTowerConroller: {fileID: 0}
   parentTowerSlot: {fileID: 0}
   parentTowerComponent: {fileID: 0}
-  RangeDetector: {fileID: 0}
+  RangeDetector: {fileID: 1390890101}
   RangeCollider: {fileID: 0}
+  SpawnerBehavior:
+    id: 0
   PathPointFinder: {fileID: 0}
   SpawningPoint: {x: 0, y: 0}
+  MaxUnits: 3
+  references:
+    version: 1
+    00000000:
+      type: {class: SpawnSingleUnitToBasePosition, ns: , asm: Assembly-CSharp}
+      data:
+        PathPointFinder: {fileID: 1986634437}
+        ParentComponent: {fileID: 1986634435}
+        BehaviorInProgress: 0
+        unitCreationData:
+        - ParentGameObject: {fileID: 1986634433}
+          GenericUnitController: {fileID: 1892162057}
+          GroupTag: Player_Unit
+          TargetGroupTag: Enemy
+          MeleeEffects: []
+          UnitMetaData:
+            HP: 300
+            MovementSpeed: 1
+            AttackSpeed: 1
+            DiscoveryRadius: 1
+        SpawningCounter: 0
+        SpawnInterval: 5
+        PathPointTypesByPriority: 01000000
+        SpawnMaxUnitsOnStartup: 0
 --- !u!4 &1986634436
 Transform:
   m_ObjectHideFlags: 0
@@ -23144,9 +23302,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splineTag: Spline
   RangeDetector: {fileID: 1390890101}
-  OnlyTargetSpecificPaths: 1
+  OnlyTargetSpecificPaths: 0
   SpecifiedPaths: []
-  pathPointTypePriority: 030000000200000001000000
+  pathPointTypePriority: 010000000300000002000000
 --- !u!1 &2000437305
 GameObject:
   m_ObjectHideFlags: 0
@@ -23722,7 +23880,6 @@ MonoBehaviour:
       DiscoveryRadius: 3
     DynamicData:
       TargetPosition: {x: 0, y: 0}
-      BasePosition: {x: 0, y: 0}
       Spline: {fileID: 0}
       DistanceOnPath: 0
   GroupTag: Player_Unit
@@ -23749,7 +23906,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 2011446938}
@@ -23780,7 +23936,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 2011446938}
@@ -23811,7 +23966,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -23842,7 +23996,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -23872,7 +24025,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 2011446938}
@@ -23903,7 +24055,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 2011446938}
@@ -23935,7 +24086,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -26070,7 +26220,6 @@ MonoBehaviour:
       DiscoveryRadius: 4
     DynamicData:
       TargetPosition: {x: 0, y: 0}
-      BasePosition: {x: 0, y: 0}
       Spline: {fileID: 0}
       DistanceOnPath: 0
   GroupTag: Enemy
@@ -26097,7 +26246,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -26129,7 +26277,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -26160,7 +26307,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -26191,7 +26337,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -26222,7 +26367,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -26254,7 +26398,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -26285,7 +26428,6 @@ MonoBehaviour:
             DiscoveryRadius: 1
           DynamicData:
             TargetPosition: {x: 0, y: 0}
-            BasePosition: {x: 0, y: 0}
             Spline: {fileID: 0}
             DistanceOnPath: 0
         UnitObject: {fileID: 0}
@@ -27088,6 +27230,11 @@ PrefabInstance:
       propertyPath: AoeAttack.AoeBehaviors.Array.data[0].Effects.Array.data[0].Effects.Array.data[0].DamageRange.min
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579108, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3605666164734579131, guid: 12231a54bec1b164f9b5d52a40e86e76,
         type: 3}
       propertyPath: m_Name
@@ -27168,6 +27315,151 @@ PrefabInstance:
       propertyPath: UnitMovementController
       value: 
       objectReference: {fileID: 3605666164968079764}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[0].InitialState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[4].InitialState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0]
+      value: Assembly-CSharp UnitBehaviors.AnnounceDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].TargetBank
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].UnitObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].UnitBattleManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].AttackAreaTargetBank
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].UnitData.MetaData.HP
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].parentState.SMObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].parentState.stateName
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].parentState.DefaultState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].parentState.InitialState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].parentState.StateIsRunning
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].UnitData.DynamicData.Spline
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].UnitData.MetaData.AttackSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].parentState.AutomaticNextState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].UnitData.MetaData.MovementSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].UnitData.MetaData.DiscoveryRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].UnitData.DynamicData.BasePosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].UnitData.DynamicData.BasePosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].UnitData.DynamicData.DistanceOnPath
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].UnitData.DynamicData.TargetPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].UnitData.DynamicData.TargetPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].parentState.OnExitBehavior.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].parentState.InStateBehavior.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].parentState.OnEnterBehvaior.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].parentState.SpecialExitConditions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].parentState.SpecialEnterConditions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12231a54bec1b164f9b5d52a40e86e76, type: 3}
 --- !u!114 &3605666164968079764 stripped

@@ -5,18 +5,12 @@ using System;
 
 public class DeathManager : MonoBehaviour
 {
-    public event Action<string, string> onUnitDeath;
+    public event Action<string> onUnitDeath;
     public event Action<string,string> onEnemyUnitDeath;
     public event Action<string,string> onPlayerUnitDeath;
 
-    public void OnUnitDeath(string unitTag, string unitName) {
-        if (unitTag == "Player_Unit") {
-            onPlayerUnitDeath?.Invoke(unitName,name);
-        }
-        if (unitTag == "Enemy") {
-            onEnemyUnitDeath?.Invoke(unitName,name);
-        }
-        onUnitDeath?.Invoke(unitTag, unitName);
+    public void OnUnitDeath(string unitName) {
+        onUnitDeath?.Invoke(unitName);
     }
 
     public static DeathManager instance = null;

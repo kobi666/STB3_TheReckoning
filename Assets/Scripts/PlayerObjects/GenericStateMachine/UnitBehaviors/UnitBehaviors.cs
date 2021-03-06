@@ -8,6 +8,25 @@ using UnityEngine;
 
 namespace UnitBehaviors
 {
+    public class AnnounceDeath : UnitSingleBehvaior
+    {
+        public override void Behavior()
+        {
+            DeathManager.Instance.OnUnitDeath(UnitObject.name);
+        }
+
+        public override void InitBehavior()
+        {
+            
+        }
+
+        public override bool ExecCondition()
+        {
+            return true;
+        }
+    }
+    
+    
     public class WalkAlongSpline : UnitConcurrentBehavior
     {
         public float Distance = 0;
@@ -152,7 +171,8 @@ namespace UnitBehaviors
 
         public override bool ExecCondition()
         {
-            return ((Vector2)unitTransform.position != UnitData.DynamicData.BasePosition);
+            bool b = ((Vector2) unitTransform.position != UnitData.DynamicData.BasePosition);
+            return b;
         }
     }
 

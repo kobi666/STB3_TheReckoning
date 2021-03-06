@@ -12,27 +12,12 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
 {
     private void OnEnable()
     {
-        try
-        {
-            GameObjectPool.Instance.ActiveUnits.Add(name,this);
-        }
-        catch (Exception e)
-        {
-            Debug.LogWarning(e);
-        }
-        
+        GameObjectPool.Instance.OnUnitEnable(this);
     }
 
     private void OnDisable()
     {
-        try
-        {
-            GameObjectPool.Instance.ActiveUnits.Remove(name);
-        }
-        catch (Exception e)
-        {
-            Debug.LogWarning(e);
-        }
+        GameObjectPool.Instance.OnUnitDisable(name);
     }
 
 
@@ -44,7 +29,6 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
     public UnitData Data = new UnitData();
     [TagSelector]
     public string GroupTag;
-    //public GenericStateMachine StateMachine;
     private BoxCollider2D selfCollider;
 
 
@@ -147,6 +131,10 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
         LifeBarmanager = GetComponentInChildren<LifeBarmanager>();
         RangeDetector = GetComponentInChildren<RangeDetector>();
         PathWalker = PathWalker ?? GetComponentInChildren<PathWalker>();
+        if (Data.DynamicData.BasePosition == null)
+        {
+            Data.DynamicData.BasePosition = new Vector2();
+        }
         Init();
     }
 
@@ -159,7 +147,7 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
 
     public void OnDequeue()
     {
-        
+        gameObject.SetActive(false);
     }
 
     public ActiveObjectPool<GenericUnitController> ActivePool { get; set; }

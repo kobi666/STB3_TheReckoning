@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using BansheeGz.BGSpline.Components;
+using Sirenix.OdinInspector;
 
 
 [System.Serializable]
@@ -25,7 +26,8 @@ public class UnitMetaData
 public class UnitDynamicData
 {
     public Vector2 TargetPosition;
-    public Vector2 BasePosition;
+    [ShowInInspector]
+    public Vector2? BasePosition;
     public BGCcMath Spline;
     public float DistanceOnPath;
 }

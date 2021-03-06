@@ -9,6 +9,7 @@ using UnityEngine.Serialization;
 
 public abstract class TowerComponent : MonoBehaviour, IHasEffects,IHasRangeComponents
 {
+    public bool Autonomous = true;
     public abstract void InitComponent();
     public event Action onInitComponent;
 

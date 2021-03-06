@@ -16,7 +16,7 @@ using UnityEngine.Serialization;
 public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITargeter
 {
 
-    public bool Autonomous = true;
+    
     
     [ValueDropdown("valueList")]
     [HideLabel]

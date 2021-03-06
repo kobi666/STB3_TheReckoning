@@ -20,6 +20,24 @@ public class GameObjectPool : MonoBehaviour
     public Dictionary<string,PoolObjectQueue<SingleAnimationObject>> SingleAnimationPoolQueue = new Dictionary<string, PoolObjectQueue<SingleAnimationObject>>();
     public Dictionary<string,PoolObjectQueue<AreaEffect>> AreaEffectPoolQueue = new Dictionary<string, PoolObjectQueue<AreaEffect>>();
     public Dictionary<string,PoolObjectQueue<EffectAnimationController>> EffectAnimationPoolQueue = new Dictionary<string, PoolObjectQueue<EffectAnimationController>>();
+
+    public event Action<string> onUnitDisable;
+    public void OnUnitDisable(string unitName)
+    {
+        if (ActiveUnits.ContainsKey(unitName))
+        {
+            ActiveUnits.Remove(unitName);
+            onUnitDisable?.Invoke(unitName);
+        }
+    }
+    public event Action<string> onUnitEnable;
+
+    public void OnUnitEnable(GenericUnitController unit)
+    {
+        ActiveUnits.Add(unit.name,unit);
+        onUnitEnable?.Invoke(unit.name);
+    }
+    
     public Dictionary<string,GenericUnitController> ActiveUnits = new Dictionary<string, GenericUnitController>();
     
     public List<string> Targetables = new List<string>();
@@ -203,5 +221,10 @@ public class GameObjectPool : MonoBehaviour
 
     private void Awake() {
         Instance = this;
+    }
+
+    protected void Start()
+    {
+        DeathManager.Instance.onUnitDeath += OnUnitDisable;
     }
 }

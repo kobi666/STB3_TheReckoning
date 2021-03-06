@@ -7,11 +7,15 @@ using System.Reflection;
 using System.Linq;
 
 [Serializable]
-    public abstract class SpawningBehavior : IHasEffects
+    public abstract class SpawnerBehavior : IHasEffects
     {
         public PathPointFinder PathPointFinder;
         
         public abstract List<UnitPoolCreationData> UnitCreationData { get; }
+
+        
+
+        
 
         public event Action onBehaviorStart;
         public event Action onBehaviorEnd;
@@ -23,18 +27,20 @@ using System.Linq;
             set
             {
                 externalSpawningLock = value;
-                if (value == false)
-                {
-                    BehaviorInProgress = false;
-                }
             }
         }
-        public TowerComponent ParentComponent;
+        public GenericUnitSpawner ParentComponent;
 
-        public void InitBehavior(TowerComponent parentComponent,PathPointFinder pointFinder)
+        public void InitBehavior(GenericUnitSpawner parentSpawner,PathPointFinder pointFinder)
         {
-            ParentComponent = parentComponent;
+            ParentComponent = parentSpawner;
             PathPointFinder = pointFinder;
+            onBehaviorStart += InvokeBehavior;
+            SpecificBehaviorInit();
+            if (ParentComponent.Autonomous)
+            {
+                onBehaviorStart?.Invoke();
+            }
         }
 
         public abstract void SpecificBehaviorInit();
@@ -45,7 +51,7 @@ using System.Linq;
             if (BehaviorInProgress == false)
             {
                 BehaviorInProgress = true;
-                while (ExternalSpawningLock)
+                while (ExecCondition() && BehaviorInProgress)
                 {
                     Behavior();
                     await Task.Yield();
@@ -54,6 +60,13 @@ using System.Linq;
                 BehaviorInProgress = false;
             }
         }
+
+        private bool ExecCondition()
+        {
+            return !ExternalSpawningLock && BehaviorConditions();
+        }
+
+        public abstract bool BehaviorConditions();
 
         public abstract void Behavior();
 
@@ -67,10 +80,10 @@ using System.Linq;
         
         public static IEnumerable<Type> GetBehaviors()
         {
-            var q = typeof(SpawningBehavior).Assembly.GetTypes()
+            var q = typeof(SpawnerBehavior).Assembly.GetTypes()
             .Where(x => !x.IsAbstract) // Excludes BaseClass
             .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
-            .Where(x => x.IsSubclassOf(typeof(SpawningBehavior))); // Excludes classes not inheriting from BaseClass
+            .Where(x => x.IsSubclassOf(typeof(SpawnerBehavior))); // Excludes classes not inheriting from BaseClass
             return q;
         }
     }

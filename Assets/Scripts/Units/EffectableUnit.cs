@@ -7,7 +7,10 @@ public class EffectableUnit : Effectable
 {
     public UnitController unitController;
     public GenericUnitController GenericUnitController;
-    private UnitStateMachine StateMachine;
+    private UnitStateMachine StateMachine
+    {
+        get => GenericUnitController.StateMachine;
+    }
     private bool _targetable = false;
     public bool targetable
     {
@@ -68,7 +71,7 @@ public class EffectableUnit : Effectable
         base.Start();
         unitController = unitController ?? GetComponent<UnitController>();
         GenericUnitController = GenericUnitController ?? GetComponent<GenericUnitController>();
-        StateMachine = GenericUnitController.StateMachine;
+        //StateMachine = GenericUnitController.StateMachine;
         IsTargetable();
     }
 }

@@ -1,25 +1,77 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using MyBox;
 using NUnit.Framework.Internal;
 using Sirenix.OdinInspector;
-using SpawningBehaviors;
+
 using UnityEngine;
 
+[RequireComponent(typeof(PathPointFinder))]
 public class GenericUnitSpawner : TowerComponent
 {
     [ShowInInspector]
     public Dictionary<string,SplinePathController> PathSplines = new Dictionary<string, SplinePathController>();
+
+    private Dictionary<string,GenericUnitController> ManagedUnits = new Dictionary<string,GenericUnitController>();
+    
+
+    public bool MaxUnitsReached;
+    private int numberOfManagedUnits;
+    public int NumberOfManagedUnits
+    {
+        get => numberOfManagedUnits;
+        set
+        {
+            numberOfManagedUnits = value;
+            if (numberOfManagedUnits >= MaxUnits)
+            {
+                MaxUnitsReached = true;
+            }
+            else
+            {
+                MaxUnitsReached = false;
+            }
+        }
+    }
+
+    public event Action<int, string> onUnitAdd;
+
+    public void OnUnitAdd(int NumOfManagedUnits, string newUnitName)
+    {
+        onUnitAdd?.Invoke(NumOfManagedUnits,newUnitName);
+    }
+    public void AddManagedUnit(GenericUnitController unit)
+    {
+        if (!ManagedUnits.ContainsKey(unit.name))
+        {
+            ManagedUnits.Add(unit.name,unit);
+        }
+
+        NumberOfManagedUnits = ManagedUnits.Count();
+
+    }
+    
+
     
     
+    
+
     [TypeFilter("getBehaviors")][SerializeReference]
-    public SpawningBehavior SpawningBehavior;
+    public SpawnerBehavior SpawnerBehavior;
 
     private IEnumerable<Type> getBehaviors()
     {
-        return SpawningBehavior.GetBehaviors();
+        return SpawnerBehavior.GetBehaviors();
+    }
+
+    public GenericUnitController SpawnUnitInactive(PoolObjectQueue<GenericUnitController> _unitPool)
+    {
+        GenericUnitController guc = _unitPool.GetInactive();
+        AddManagedUnit(guc);
+        return guc;
     }
     
     
@@ -27,9 +79,12 @@ public class GenericUnitSpawner : TowerComponent
     public Vector2 SpawningPoint;
     public Vector2? UnitSetPosition = null;
     public Vector2? ClosestPointToBase = null;
+    public int MaxUnits = 3;
     public override void InitComponent()
     {
-        
+        SpawnerBehavior.InitBehavior(this,PathPointFinder);
+        string firstNameOrEmpty;
+
     }
 
     public event Action onPathUpdate;
@@ -43,22 +98,27 @@ public class GenericUnitSpawner : TowerComponent
     {
         base.Awake();
         PathPointFinder = GetComponent<PathPointFinder>();
-        //  PathPointFinder.onPathFound +=
+    }
+
+    void RemoveUnitFromManagedUnits(string unitName)
+    {
+        if (ManagedUnits.ContainsKey(unitName))
+        {
+            ManagedUnits.Remove(unitName);
+        }
+
+        NumberOfManagedUnits = ManagedUnits.Count();
     }
 
 
 
-
-
-
-    
-    
-
-    
     protected void Start()
     {
         base.Start();
         RangeDetector.UpdateSize(Data.componentRadius);
+        DeathManager.Instance.onUnitDeath += RemoveUnitFromManagedUnits;
+        //GameObjectPool.Instance.ActiveUnits
+        InitComponent();
     }
 
     
@@ -93,4 +153,6 @@ public class GenericUnitSpawner : TowerComponent
         }
     }
 }
+
+
 

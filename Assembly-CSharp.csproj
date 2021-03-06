@@ -349,7 +349,6 @@
      <Compile Include="Assets\Scripts\Units\PlayerUnitController.cs" />
      <Compile Include="Assets\Scripts\Units\PlayerUnitPoolCreationData.cs" />
      <Compile Include="Assets\Scripts\Units\PlayerUnitUtils.cs" />
-     <Compile Include="Assets\Scripts\Units\SpawningBehavior.cs" />
      <Compile Include="Assets\Scripts\Units\SpawningBehaviors.cs" />
      <Compile Include="Assets\Scripts\Units\StateDebug.cs" />
      <Compile Include="Assets\Scripts\Units\StateMachine.cs" />
@@ -367,6 +366,7 @@
      <Compile Include="Assets\Scripts\parent1.cs" />
      <Compile Include="Assets\Scripts\testInterface.cs" />
      <Compile Include="Assets\Shaker.cs" />
+     <Compile Include="Assets\SpawnerBehavior.cs" />
      <Compile Include="Assets\SplineController.cs" />
      <Compile Include="Assets\SplineDetector.cs" />
      <Compile Include="Assets\SplinePathController.cs" />

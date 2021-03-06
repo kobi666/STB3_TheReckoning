@@ -84,7 +84,7 @@ public abstract class UnitController : MonoBehaviour,IActiveObject<UnitControlle
     }
 
     void AnnounceDeath() {
-        DeathManager.Instance.OnUnitDeath(tag, name);
+        DeathManager.Instance.OnUnitDeath(name);
     }
 
     
