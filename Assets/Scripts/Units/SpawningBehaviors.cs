@@ -2,30 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using System.Threading.Tasks;
 using System.Reflection;
 using System.Linq;
 using MyBox;
 using Sirenix.OdinInspector;
+using System.Threading.Tasks;
 
-///public classes used in this class are PathPointFinder : ParentComponent
-/// 
-
-
-
-    [Serializable]
+[Serializable]
     public class SpawnSingleUnitToBasePosition : SpawnerBehavior
     {
         public List<UnitPoolCreationData> unitCreationData = new List<UnitPoolCreationData>();
         public override List<UnitPoolCreationData> UnitCreationData { get => unitCreationData; }
         private PoolObjectQueue<GenericUnitController> UnitQueuePool;
-        
-        
-        
-        public Vector2? UnitBasePosition;
-        public float SpawningCounter;
-        public float SpawnInterval = 5f;
-        
+
+
+        private Vector2? unitBasePosition;
+
+        public Vector2? UnitBasePosition
+        {
+            get => unitBasePosition;
+            set
+            {
+                unitBasePosition = value;
+                if (unitBasePosition != null)
+                {
+                    if (ParentComponent.Autonomous)
+                    {
+                        OnBehaviorStart();
+                    }
+                }
+            }
+        }
+
+
         [ValidateInput("validatePathPoints", "Pick at least one")]
         public PathPointFinder.PathPointType[] PathPointTypesByPriority;
 
@@ -34,9 +43,14 @@ using Sirenix.OdinInspector;
             return !PathPointTypesByPriority.IsNullOrEmpty();
         }
         public bool SpawnMaxUnitsOnStartup;
-        public override void SpecificBehaviorInit()
+        public override async void SpecificBehaviorInit()
         {
             UnitQueuePool = UnitCreationData[0].CreateUnitPool();
+            PathPointFinder.onPathFound += SetUnitBasePosition;
+        }
+
+        void SetUnitBasePosition()
+        {
             UnitBasePosition = PathPointFinder.GetPathPointByPriority(PathPointTypesByPriority);
         }
 
@@ -46,20 +60,15 @@ using Sirenix.OdinInspector;
 
         public override bool BehaviorConditions()
         {
-            return !ParentComponent.MaxUnitsReached;
+            return ParentComponent.NumberOfManagedUnits < ParentComponent.MaxUnits;
         }
 
         public override void Behavior()
         {
-            if (SpawningCounter < SpawnInterval)
-            {
-                SpawningCounter += StaticObjects.DeltaGameTime;
-            }
-
-            if (SpawningCounter >= SpawnInterval)
+            if (SpawnCounter >= SpawnInterval)
             {
                 SpawnUnitToBasePosition();
-                SpawningCounter = 0;
+                SpawnCounter = 0;
             }
             
         }

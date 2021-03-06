@@ -164,6 +164,12 @@ public class PathPointFinder : MonoBehaviour
 
     private List<string> specificPathNames = new List<string>();
     public event Action onPathFound;
+    
+    [Button]
+    public void OnPathFound()
+    {
+        onPathFound?.Invoke();
+    }
     void AddPathSplines(GameObject go, string _tag)
     {
         if (_tag == splineTag) {

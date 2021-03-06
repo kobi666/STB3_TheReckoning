@@ -13,11 +13,16 @@ using System.Linq;
         
         public abstract List<UnitPoolCreationData> UnitCreationData { get; }
 
-        
+        public float SpawnInterval = 5f;
 
         
 
         public event Action onBehaviorStart;
+
+        public void OnBehaviorStart()
+        {
+            onBehaviorStart?.Invoke();
+        }
         public event Action onBehaviorEnd;
         
         private bool externalSpawningLock;
@@ -35,25 +40,27 @@ using System.Linq;
         {
             ParentComponent = parentSpawner;
             PathPointFinder = pointFinder;
-            onBehaviorStart += InvokeBehavior;
             SpecificBehaviorInit();
-            if (ParentComponent.Autonomous)
-            {
-                onBehaviorStart?.Invoke();
-            }
+            onBehaviorStart += InvokeBehavior;
         }
 
         public abstract void SpecificBehaviorInit();
 
+        public float SpawnCounter;
         public bool BehaviorInProgress = false;
         public async void InvokeBehavior()
         {
             if (BehaviorInProgress == false)
             {
                 BehaviorInProgress = true;
-                while (ExecCondition() && BehaviorInProgress)
+                while (BehaviorInProgress)
                 {
+                    if (SpawnCounter < SpawnInterval) {
+                    SpawnCounter += StaticObjects.DeltaGameTime;
+                    }
+                    if (ExecCondition()) {
                     Behavior();
+                    }
                     await Task.Yield();
                 }
 
