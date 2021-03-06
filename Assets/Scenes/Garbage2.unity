@@ -5735,7 +5735,7 @@ PrefabInstance:
     - target: {fileID: 7849223301348544466, guid: 0136b884f776412409c134b6ba98b7cf,
         type: 3}
       propertyPath: m_UseFullKinematicContacts
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0136b884f776412409c134b6ba98b7cf, type: 3}
@@ -23127,7 +23127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1986634434
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23245,6 +23245,7 @@ MonoBehaviour:
   parentTowerComponent: {fileID: 0}
   RangeDetector: {fileID: 1390890101}
   RangeCollider: {fileID: 0}
+  MaxUnitsReached: 0
   SpawnerBehavior:
     id: 0
   PathPointFinder: {fileID: 0}
@@ -23256,10 +23257,12 @@ MonoBehaviour:
       type: {class: SpawnSingleUnitToBasePosition, ns: , asm: Assembly-CSharp}
       data:
         PathPointFinder: {fileID: 1986634437}
+        SpawnInterval: 5
         ParentComponent: {fileID: 1986634435}
+        SpawnCounter: 0
         BehaviorInProgress: 0
         unitCreationData:
-        - ParentGameObject: {fileID: 1986634433}
+        - ParentGameObject: {fileID: 0}
           GenericUnitController: {fileID: 1892162057}
           GroupTag: Player_Unit
           TargetGroupTag: Enemy
@@ -23269,8 +23272,6 @@ MonoBehaviour:
             MovementSpeed: 1
             AttackSpeed: 1
             DiscoveryRadius: 1
-        SpawningCounter: 0
-        SpawnInterval: 5
         PathPointTypesByPriority: 01000000
         SpawnMaxUnitsOnStartup: 0
 --- !u!4 &1986634436
@@ -27243,7 +27244,7 @@ PrefabInstance:
     - target: {fileID: 3605666164734579131, guid: 12231a54bec1b164f9b5d52a40e86e76,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3605666164734579132, guid: 12231a54bec1b164f9b5d52a40e86e76,
         type: 3}
@@ -27501,7 +27502,7 @@ PrefabInstance:
     - target: {fileID: 3766923884328374417, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328374422, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}

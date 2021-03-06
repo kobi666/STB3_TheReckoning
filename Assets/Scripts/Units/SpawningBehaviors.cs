@@ -46,12 +46,21 @@ using System.Threading.Tasks;
         public override async void SpecificBehaviorInit()
         {
             UnitQueuePool = UnitCreationData[0].CreateUnitPool();
-            PathPointFinder.onPathFound += SetUnitBasePosition;
+            onPositionRecalculation += SetUnitBasePosition;
         }
 
+        
+        
         void SetUnitBasePosition()
         {
-            UnitBasePosition = PathPointFinder.GetPathPointByPriority(PathPointTypesByPriority);
+            if (SpecifiedBasePosition == null)
+            {
+                UnitBasePosition = PathPointFinder.GetPathPointByPriority(PathPointTypesByPriority);
+            }
+            else
+            {
+                UnitBasePosition = SpecifiedBasePosition;
+            }
         }
 
         

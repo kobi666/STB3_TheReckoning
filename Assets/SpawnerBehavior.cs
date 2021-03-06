@@ -5,17 +5,25 @@ using System;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.Linq;
+using Sirenix.OdinInspector;
 
 [Serializable]
     public abstract class SpawnerBehavior : IHasEffects
     {
         public PathPointFinder PathPointFinder;
+        [HideInInspector] public Vector2? SpecifiedBasePosition = null;
         
         public abstract List<UnitPoolCreationData> UnitCreationData { get; }
 
         public float SpawnInterval = 5f;
 
+        public event Action onPositionRecalculation;
         
+        [Button]
+        public void OnPositionRecalculation()
+        {
+            onPositionRecalculation?.Invoke();
+        }
 
         public event Action onBehaviorStart;
 
@@ -40,6 +48,7 @@ using System.Linq;
         {
             ParentComponent = parentSpawner;
             PathPointFinder = pointFinder;
+            PathPointFinder.onPathFound += OnPositionRecalculation;
             SpecificBehaviorInit();
             onBehaviorStart += InvokeBehavior;
         }

@@ -165,7 +165,6 @@ public class PathPointFinder : MonoBehaviour
     private List<string> specificPathNames = new List<string>();
     public event Action onPathFound;
     
-    [Button]
     public void OnPathFound()
     {
         onPathFound?.Invoke();
