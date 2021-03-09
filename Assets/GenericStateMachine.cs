@@ -7,6 +7,8 @@ using UnityEngine;
 [Serializable]
 public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : ObjectState<TS> where TS : IHasStateMachine
 {
+    public bool DebugStateMachine;
+    
     public bool InitOnStartup;
     
     [ShowInInspector]
@@ -36,6 +38,8 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
     public T PreviousState;
     [HideInInspector]
     public T DefaultState;
+    [HideInInspector] 
+    public T InterruptState;
 
     public T InitialState;
     public TS SMObject;
@@ -44,7 +48,7 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
     public abstract string EmptyStateName { get; }
 
     public bool CanExecCurrentState = true;
-
+    
     private int counter;
     private float debugCounter;
     public async void ExecuteCurrentState()
@@ -77,6 +81,11 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
                 CurrentState.OnStateExitActions();
             CurrentState.StateIsRunning = false;
             T nextState = NextStateResolver();
+            if (DebugStateMachine)
+            {
+                
+                Debug.LogError( name + " Current State : " + CurrentState.StateName +  " |||  Next State : " + nextState.StateName);
+            }
             ChangeState(nextState);
         }
         
@@ -85,10 +94,41 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
 
     public T NextStateResolver()
     {
-        if (NextState != null)
+        if (InterruptState == null)
         {
-            if (NextState.StateName != EmptyStateName) {
-            return NextState;
+            if (CurrentState.AutomaticNextState != EmptyStateName) {
+                if (States.ContainsKey(CurrentState.AutomaticNextState))
+                {
+                    return States[CurrentState.AutomaticNextState];
+                }
+            }
+        }
+
+        if (InterruptState != null)
+        {
+            if (InterruptState.StateName == EmptyStateName)
+            {
+                if (CurrentState.AutomaticNextState != EmptyStateName) {
+                    if (States.ContainsKey(CurrentState.AutomaticNextState))
+                    {
+                        if (CurrentState.AutomaticNextState != EmptyStateName)
+                        {
+                            //Debug.LogWarning("");
+                            T t = States[CurrentState.AutomaticNextState];
+                            return t;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (InterruptState != null)
+        {
+            if (InterruptState.StateName != EmptyStateName) {
+                if (States.ContainsKey(InterruptState?.StateName))
+                {
+                    return InterruptState;
+                }
             }
         }
         return DefaultState;
@@ -96,6 +136,7 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
 
     public void ChangeState(T state)
     {
+        
         PreviousState = CurrentState;
         CurrentState = state;
         if (PreviousState.StateName == CurrentState.StateName)
@@ -110,6 +151,14 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
         if (counter < 3)
         {
             ExecuteCurrentState();
+            if (InterruptState != null) {
+                if (state.StateName == InterruptState.StateName)
+                {
+                    InterruptState = null;
+                }
+            }
+
+            NextState = null;
         }
         else
         {
@@ -129,7 +178,7 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
         {
             if (stateName != EmptyStateName)
             {
-                NextState = States[stateName];
+                InterruptState = States[stateName];
                 CanExecCurrentState = false;
             }
         }
@@ -162,6 +211,8 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
                 throw new Exception("Same State Key exists twice");
             }
         }
+
+        InterruptState = null;
         
         if (InitOnStartup) ExecuteCurrentState();
     }

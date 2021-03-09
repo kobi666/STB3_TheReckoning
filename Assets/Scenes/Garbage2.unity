@@ -3618,6 +3618,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].parentState.FinalState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
       propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].parentState.DefaultState
       value: 0
       objectReference: {fileID: 0}
@@ -3644,6 +3649,11 @@ PrefabInstance:
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
       propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].parentState.AutomaticNextState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[4].OnEnterBehvaior.Array.data[0].parentState.automaticNextState
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
@@ -5744,67 +5754,86 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a712af620318774babfc79d6e43c603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugStateMachine: 0
   InitOnStartup: 1
   CurrentState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
   NextState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
   PreviousState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
   DefaultState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
+  InterruptState:
+    DefaultState: 0
+    InitialState: 0
+    StateIsRunning: 0
+    FinalState: 0
+    SMObject: {fileID: 0}
+    OnEnterBehvaior: []
+    InStateBehavior: []
+    OnExitBehavior: []
+    SpecialEnterConditions: []
+    SpecialExitConditions: []
+    stateName: 0
+    automaticNextState: 0
   InitialState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
   SMObject: {fileID: 666719938}
   CanExecCurrentState: 0
   references:
@@ -5969,9 +5998,9 @@ MonoBehaviour:
   - DefaultState: 1
     InitialState: 1
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior:
     - id: 0
     - id: 1
@@ -5981,12 +6010,13 @@ MonoBehaviour:
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 5
+    automaticNextState: 0
   - DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior:
     - id: 4
     OnExitBehavior:
@@ -5994,18 +6024,20 @@ MonoBehaviour:
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 2
+    automaticNextState: 0
   - DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior:
     - id: 6
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 1
+    automaticNextState: 0
   WalksOnPath: 0
   UnitLifeManager:
     UnitInVaulenrable: 0
@@ -6058,14 +6090,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         Distance: 0
         MovementSpeed: 1
     00000001:
@@ -6089,14 +6122,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         Detector: {fileID: 1950213395}
     00000002:
       type: {class: ChangeState, ns: UnitBehaviors, asm: Assembly-CSharp}
@@ -6119,14 +6153,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         State: 2
     00000003:
       type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
@@ -6149,14 +6184,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         TargetPriority: 0
     00000004:
       type: {class: MoveTowardsTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
@@ -6179,14 +6215,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         MovementSpeed: 1
         AttackAreaTargetbank: {fileID: 1204687516}
     00000005:
@@ -6210,14 +6247,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         State: 1
     00000006:
       type: {class: DoNothing, ns: UnitBehaviors, asm: Assembly-CSharp}
@@ -6240,14 +6278,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
 --- !u!212 &666719939
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21864,67 +21903,86 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a712af620318774babfc79d6e43c603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugStateMachine: 0
   InitOnStartup: 1
   CurrentState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
   NextState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
   PreviousState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
   DefaultState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
+  InterruptState:
+    DefaultState: 0
+    InitialState: 0
+    StateIsRunning: 0
+    FinalState: 0
+    SMObject: {fileID: 0}
+    OnEnterBehvaior: []
+    InStateBehavior: []
+    OnExitBehavior: []
+    SpecialEnterConditions: []
+    SpecialExitConditions: []
+    stateName: 0
+    automaticNextState: 0
   InitialState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
   SMObject: {fileID: 1959560672}
   CanExecCurrentState: 0
   references:
@@ -22089,9 +22147,9 @@ MonoBehaviour:
   - DefaultState: 1
     InitialState: 1
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior:
     - id: 0
     OnExitBehavior:
@@ -22100,25 +22158,27 @@ MonoBehaviour:
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 1
+    automaticNextState: 0
   - DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior:
     - id: 3
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 7
+    automaticNextState: 0
   - DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 1959560672}
     OnEnterBehvaior:
     - id: 4
-    AutomaticNextState: 0
     InStateBehavior:
     - id: 5
     OnExitBehavior:
@@ -22126,6 +22186,7 @@ MonoBehaviour:
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 2
+    automaticNextState: 0
   WalksOnPath: 0
   UnitLifeManager:
     UnitInVaulenrable: 0
@@ -22178,14 +22239,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         Detector: {fileID: 969799771}
     00000001:
       type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
@@ -22208,14 +22270,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         TargetPriority: 0
     00000002:
       type: {class: ChangeState, ns: UnitBehaviors, asm: Assembly-CSharp}
@@ -22238,14 +22301,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         State: 2
     00000003:
       type: {class: DoNothing, ns: UnitBehaviors, asm: Assembly-CSharp}
@@ -22268,14 +22332,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
     00000004:
       type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
@@ -22297,14 +22362,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         TargetPriority: 0
     00000005:
       type: {class: MoveTowardsTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
@@ -22327,14 +22393,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         MovementSpeed: 0.2
         AttackAreaTargetbank: {fileID: 331271314}
     00000006:
@@ -22358,14 +22425,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         State: 7
 --- !u!212 &1959560673
 SpriteRenderer:
@@ -23228,67 +23296,86 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a712af620318774babfc79d6e43c603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugStateMachine: 0
   InitOnStartup: 1
   CurrentState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
   NextState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
   PreviousState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
   DefaultState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
+  InterruptState:
+    DefaultState: 0
+    InitialState: 0
+    StateIsRunning: 0
+    FinalState: 0
+    SMObject: {fileID: 0}
+    OnEnterBehvaior: []
+    InStateBehavior: []
+    OnExitBehavior: []
+    SpecialEnterConditions: []
+    SpecialExitConditions: []
+    stateName: 0
+    automaticNextState: 0
   InitialState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
   SMObject: {fileID: 2011446938}
   CanExecCurrentState: 0
   references:
@@ -23453,9 +23540,9 @@ MonoBehaviour:
   - DefaultState: 1
     InitialState: 1
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior:
     - id: 0
     OnExitBehavior:
@@ -23464,25 +23551,27 @@ MonoBehaviour:
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 1
+    automaticNextState: 0
   - DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior:
     - id: 3
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 7
+    automaticNextState: 0
   - DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 2011446938}
     OnEnterBehvaior:
     - id: 4
-    AutomaticNextState: 0
     InStateBehavior:
     - id: 5
     OnExitBehavior:
@@ -23490,6 +23579,7 @@ MonoBehaviour:
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 2
+    automaticNextState: 0
   WalksOnPath: 0
   UnitLifeManager:
     UnitInVaulenrable: 0
@@ -23542,14 +23632,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         Detector: {fileID: 1690138490}
     00000001:
       type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
@@ -23572,14 +23663,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         TargetPriority: 0
     00000002:
       type: {class: ChangeState, ns: UnitBehaviors, asm: Assembly-CSharp}
@@ -23602,14 +23694,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         State: 2
     00000003:
       type: {class: DoNothing, ns: UnitBehaviors, asm: Assembly-CSharp}
@@ -23632,14 +23725,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
     00000004:
       type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
@@ -23661,14 +23755,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         TargetPriority: 0
     00000005:
       type: {class: MoveTowardsTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
@@ -23691,14 +23786,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         MovementSpeed: 0.2
         AttackAreaTargetbank: {fileID: 423069927}
     00000006:
@@ -23722,14 +23818,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         State: 7
 --- !u!212 &2011446939
 SpriteRenderer:
@@ -25550,67 +25647,86 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a712af620318774babfc79d6e43c603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugStateMachine: 0
   InitOnStartup: 1
   CurrentState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
   NextState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
   PreviousState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
   DefaultState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
+  InterruptState:
+    DefaultState: 0
+    InitialState: 0
+    StateIsRunning: 0
+    FinalState: 0
+    SMObject: {fileID: 0}
+    OnEnterBehvaior: []
+    InStateBehavior: []
+    OnExitBehavior: []
+    SpecialEnterConditions: []
+    SpecialExitConditions: []
+    stateName: 0
+    automaticNextState: 0
   InitialState:
     DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 0
+    automaticNextState: 0
   SMObject: {fileID: 2063864599}
   CanExecCurrentState: 0
   references:
@@ -25775,9 +25891,9 @@ MonoBehaviour:
   - DefaultState: 1
     InitialState: 1
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior:
     - id: 0
     - id: 1
@@ -25787,12 +25903,13 @@ MonoBehaviour:
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 5
+    automaticNextState: 0
   - DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior:
     - id: 4
     OnExitBehavior:
@@ -25800,18 +25917,20 @@ MonoBehaviour:
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 2
+    automaticNextState: 0
   - DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
+    FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
-    AutomaticNextState: 0
     InStateBehavior:
     - id: 6
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 1
+    automaticNextState: 0
   WalksOnPath: 0
   UnitLifeManager:
     UnitInVaulenrable: 0
@@ -25864,14 +25983,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         Distance: 0
         MovementSpeed: 1
     00000001:
@@ -25895,14 +26015,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         Detector: {fileID: 2088380390}
     00000002:
       type: {class: ChangeState, ns: UnitBehaviors, asm: Assembly-CSharp}
@@ -25925,14 +26046,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         State: 2
     00000003:
       type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
@@ -25955,14 +26077,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         TargetPriority: 0
     00000004:
       type: {class: MoveTowardsTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
@@ -25985,14 +26108,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         MovementSpeed: 1
         AttackAreaTargetbank: {fileID: 588171728}
     00000005:
@@ -26016,14 +26140,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
         State: 1
     00000006:
       type: {class: DoNothing, ns: UnitBehaviors, asm: Assembly-CSharp}
@@ -26046,14 +26171,15 @@ MonoBehaviour:
           DefaultState: 0
           InitialState: 0
           StateIsRunning: 0
+          FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
-          AutomaticNextState: 0
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
           SpecialExitConditions: []
           stateName: 0
+          automaticNextState: 0
 --- !u!212 &2063864600
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26883,6 +27009,11 @@ PrefabInstance:
       propertyPath: SMObject
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579110, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: DebugStateMachine
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3605666164734579131, guid: 12231a54bec1b164f9b5d52a40e86e76,
         type: 3}
       propertyPath: m_Name
@@ -26990,13 +27121,58 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
         type: 3}
+      propertyPath: States.Array.data[0].automaticNextState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].automaticNextState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[3].automaticNextState
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[3].OnExitBehavior.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
       propertyPath: States.Array.data[5].OnEnterBehvaior.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
         type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0]
+      value: Assembly-CSharp UnitBehaviors.GetTarget
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
       propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0]
       value: Assembly-CSharp UnitBehaviors.AnnounceDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].TargetBank
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].UnitObject
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
         type: 3}
@@ -27010,8 +27186,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
         type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].TargetPriority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].UnitBattleManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
       propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].UnitBattleManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].AttackAreaTargetBank
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].UnitData.MetaData.HP
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].parentState.SMObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].parentState.stateName
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
         type: 3}
@@ -27030,7 +27236,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
         type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].parentState.FinalState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
       propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].parentState.stateName
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].parentState.DefaultState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].parentState.InitialState
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
@@ -27045,6 +27266,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
         type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].parentState.StateIsRunning
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].UnitData.DynamicData.Spline
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
       propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].parentState.StateIsRunning
       value: 0
       objectReference: {fileID: 0}
@@ -27055,8 +27286,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
         type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].UnitData.MetaData.AttackSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].parentState.automaticNextState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
       propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].UnitData.MetaData.AttackSpeed
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].UnitData.MetaData.MovementSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
         type: 3}
@@ -27070,8 +27316,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
         type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].UnitData.MetaData.DiscoveryRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
       propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].UnitData.MetaData.DiscoveryRadius
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].UnitData.DynamicData.DistanceOnPath
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
         type: 3}
@@ -27086,6 +27342,31 @@ PrefabInstance:
     - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
         type: 3}
       propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].UnitData.DynamicData.DistanceOnPath
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].UnitData.DynamicData.TargetPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].UnitData.DynamicData.TargetPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].parentState.OnExitBehavior.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].parentState.InStateBehavior.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].parentState.OnEnterBehvaior.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
@@ -27111,6 +27392,16 @@ PrefabInstance:
     - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
         type: 3}
       propertyPath: States.Array.data[5].OnEnterBehvaior.Array.data[0].parentState.OnEnterBehvaior.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].parentState.SpecialExitConditions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
+        type: 3}
+      propertyPath: States.Array.data[2].OnExitBehavior.Array.data[0].parentState.SpecialEnterConditions.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3605666164734579134, guid: 12231a54bec1b164f9b5d52a40e86e76,
@@ -27229,7 +27520,7 @@ PrefabInstance:
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
       propertyPath: Data.MetaData.HP
-      value: 30000
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
@@ -27268,6 +27559,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
+      propertyPath: States.Array.data[0].automaticNextState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].automaticNextState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
       propertyPath: States.Array.data[5].OnExitBehavior.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -27275,6 +27586,16 @@ PrefabInstance:
         type: 3}
       propertyPath: States.Array.data[5].InStateBehavior.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0]
+      value: Assembly-CSharp UnitBehaviors.GetTarget
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0]
+      value: Assembly-CSharp UnitBehaviors.GetTarget
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
@@ -27290,6 +27611,26 @@ PrefabInstance:
         type: 3}
       propertyPath: States.Array.data[5].OnExitBehavior.Array.data[0].State
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].TargetBank
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].UnitObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].TargetBank
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].UnitObject
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
@@ -27313,12 +27654,62 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].TargetPriority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].TargetPriority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].UnitBattleManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].UnitBattleManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
       propertyPath: States.Array.data[5].OnExitBehavior.Array.data[0].UnitBattleManager
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
       propertyPath: States.Array.data[5].InStateBehavior.Array.data[0].UnitBattleManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].AttackAreaTargetBank
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].UnitData.MetaData.HP
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].parentState.SMObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].AttackAreaTargetBank
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].UnitData.MetaData.HP
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].parentState.SMObject
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
@@ -27335,6 +27726,16 @@ PrefabInstance:
         type: 3}
       propertyPath: States.Array.data[5].OnExitBehavior.Array.data[0].parentState.SMObject
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].parentState.stateName
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].parentState.stateName
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
@@ -27358,6 +27759,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].parentState.FinalState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].parentState.FinalState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
       propertyPath: States.Array.data[5].InStateBehavior.Array.data[0].parentState.stateName
       value: 0
       objectReference: {fileID: 0}
@@ -27369,6 +27780,26 @@ PrefabInstance:
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
       propertyPath: States.Array.data[5].InStateBehavior.Array.data[0].parentState.FinalState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].parentState.DefaultState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].parentState.InitialState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].parentState.DefaultState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].parentState.InitialState
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
@@ -27393,8 +27824,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].parentState.StateIsRunning
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].parentState.StateIsRunning
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
       propertyPath: States.Array.data[5].OnExitBehavior.Array.data[0].parentState.StateIsRunning
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].UnitData.DynamicData.Spline
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].UnitData.DynamicData.Spline
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
@@ -27413,7 +27864,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].UnitData.MetaData.AttackSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].UnitData.MetaData.AttackSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
       propertyPath: States.Array.data[5].OnExitBehavior.Array.data[0].UnitData.MetaData.AttackSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].parentState.automaticNextState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].parentState.automaticNextState
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
@@ -27428,7 +27899,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
+      propertyPath: States.Array.data[5].OnExitBehavior.Array.data[0].parentState.automaticNextState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].UnitData.MetaData.MovementSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].UnitData.MetaData.MovementSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
       propertyPath: States.Array.data[5].InStateBehavior.Array.data[0].parentState.AutomaticNextState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[5].InStateBehavior.Array.data[0].parentState.automaticNextState
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
@@ -27443,6 +27934,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].UnitData.MetaData.DiscoveryRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].UnitData.MetaData.DiscoveryRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
       propertyPath: States.Array.data[5].OnExitBehavior.Array.data[0].UnitData.MetaData.DiscoveryRadius
       value: 1
       objectReference: {fileID: 0}
@@ -27453,12 +27954,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].UnitData.DynamicData.DistanceOnPath
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].UnitData.DynamicData.DistanceOnPath
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
       propertyPath: States.Array.data[5].OnExitBehavior.Array.data[0].UnitData.DynamicData.DistanceOnPath
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
       propertyPath: States.Array.data[5].InStateBehavior.Array.data[0].UnitData.DynamicData.DistanceOnPath
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].UnitData.DynamicData.TargetPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].UnitData.DynamicData.TargetPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].parentState.OnExitBehavior.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].UnitData.DynamicData.TargetPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].UnitData.DynamicData.TargetPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].parentState.OnExitBehavior.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
@@ -27474,6 +28015,26 @@ PrefabInstance:
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
       propertyPath: States.Array.data[5].OnExitBehavior.Array.data[0].parentState.OnExitBehavior.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].parentState.InStateBehavior.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].parentState.OnEnterBehvaior.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].parentState.InStateBehavior.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].parentState.OnEnterBehvaior.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
@@ -27513,7 +28074,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
         type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].parentState.SpecialExitConditions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].parentState.SpecialExitConditions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
       propertyPath: States.Array.data[5].OnExitBehavior.Array.data[0].parentState.SpecialExitConditions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[0].OnExitBehavior.Array.data[0].parentState.SpecialEnterConditions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,
+        type: 3}
+      propertyPath: States.Array.data[1].OnExitBehavior.Array.data[0].parentState.SpecialEnterConditions.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3766923884328375146, guid: 8d6d88a14bdf8214ba32fde6f8029f17,

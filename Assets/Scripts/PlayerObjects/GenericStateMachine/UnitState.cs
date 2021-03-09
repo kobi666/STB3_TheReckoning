@@ -29,7 +29,7 @@ public class UnitState : ObjectState<GenericUnitController>
     [SerializeReference][TypeFilter("GetSingleBehaviors")][GUIColor(1,0,0)]
     public List<UnitBehavior> OnEnterBehvaior;
 
-    [HideInInspector] public UnitStates AutomaticNextState;
+    
 
     [SerializeReference][TypeFilter("GetConcurrentBehaviors")][GUIColor(0,1,0)]
     public List<UnitBehavior> InStateBehavior;
@@ -48,6 +48,20 @@ public class UnitState : ObjectState<GenericUnitController>
     
     [PropertyOrder(-1)][GUIColor(0.8f , 0 , 0.9f)][InfoBox("-------------------")]
     public UnitStates stateName;
+
+    public UnitStates automaticNextState;
+    
+    
+    public override string AutomaticNextState
+    {
+        get => automaticNextState.ToString();
+        set
+        {
+            automaticNextState = (UnitStates)Enum.Parse(typeof(UnitStates),value,true);
+        }
+    }
+    
+
     public override string StateName { get => stateName.ToString(); }
     public override void InitState(GenericUnitController t)
     {

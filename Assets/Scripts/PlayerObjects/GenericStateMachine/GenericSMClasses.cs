@@ -10,6 +10,9 @@ public abstract class ObjectState<T> where T: IHasStateMachine
     [LabelText("Initial State?")]
     public bool InitialState;
     public bool StateIsRunning = false;
+    public bool FinalState;
+
+    public abstract string AutomaticNextState { get; set; }
 
     [PropertyOrder(-1)][GUIColor(232 , 0 , 254)]
     public abstract string StateName { get; }

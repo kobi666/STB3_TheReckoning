@@ -150,7 +150,7 @@ namespace UnitBehaviors
                     {
                         if (bs.AutomaticState != UnitStates.None)
                         {
-                            UnitObject.StateMachine.SetState(bs.AutomaticState.ToString());
+                            parentState.AutomaticNextState = bs.AutomaticState.ToString();
                         }
                         
                         break;
