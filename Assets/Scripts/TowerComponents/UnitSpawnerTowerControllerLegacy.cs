@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class UnitSpawnerTowerControllerLegacy : TowerControllerLegacy
+﻿public class UnitSpawnerTowerControllerLegacy : TowerControllerLegacy
 {
     // Start is called before the first frame update
     public override void PostAwake() {

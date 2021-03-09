@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using MyBox;
+﻿using MyBox;
 using UnityEngine;
 
 public class testclass : MonoBehaviour

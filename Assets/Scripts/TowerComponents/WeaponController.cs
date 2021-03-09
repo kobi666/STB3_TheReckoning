@@ -1,10 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
-using UnityEngine.Events;
-using Animancer;
-using TMPro;
 using System.Threading.Tasks;
 using MyBox;
 
@@ -40,8 +35,7 @@ public abstract class WeaponController : TowerComponent
         }
     }
     
-    [ConditionalField("debug")]
-    public PoolObjectQueue<Projectile> ProjectileQueuePool;
+    
     
     [ConditionalField("debug")]
     public bool ExternalAttackLock = false;
@@ -237,7 +231,7 @@ public abstract class WeaponController : TowerComponent
 
     public abstract void PostStart();
     protected void Start() {
-        RangeDetector = GetComponentInChildren<RangeDetector>() ?? null;
+        /*RangeDetector = GetComponentInChildren<RangeDetector>() ?? null;
         if (Data.projectileData.projectilePrefab != null) {
         ProjectileQueuePool = GameObjectPool.Instance.GetProjectileQueue(Data.projectileData.projectilePrefab);
         }
@@ -251,7 +245,7 @@ public abstract class WeaponController : TowerComponent
                 RangeDetector.UpdateSize(Data.componentRadius);
             }
         }
-        PostStart();
+        PostStart();*/
     }
 
     protected void Update()

@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
-using Sirenix;
 using Sirenix.OdinInspector;
-using System.Threading.Tasks;
 using System.Linq;
-using Sirenix.Serialization;
 
 [System.Serializable]
 [BoxGroup]

@@ -1,13 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using UnityEngine;
 using System;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using Sirenix.Utilities;
+using MyBox;
+
+//using Sirenix.Utilities;
 
 [Serializable]
 public class AOEEffect : IHasEffectAnimation

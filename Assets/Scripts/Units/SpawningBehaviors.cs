@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
-using System.Reflection;
-using System.Linq;
 using MyBox;
 using Sirenix.OdinInspector;
-using System.Threading.Tasks;
+using Random = UnityEngine.Random;
+using DegreeUtils;
 
 [Serializable]
     public class SpawnSingleUnitToBasePosition : SpawnerBehavior
@@ -14,7 +12,14 @@ using System.Threading.Tasks;
         public List<UnitPoolCreationData> unitCreationData = new List<UnitPoolCreationData>();
         public override List<UnitPoolCreationData> UnitCreationData { get => unitCreationData; }
         private PoolObjectQueue<GenericUnitController> UnitQueuePool;
-
+        public float distanceFromBasePosition = 0.5f;
+        
+        [ShowInInspector]
+        private Vector2?[] UnitRallyPoints;
+        private void GetUnitRallyPositions()
+        {
+            UnitRallyPoints = ParentComponent.GetSpreadPositions(ParentComponent.MaxUnits, UnitBasePosition, distanceFromBasePosition);
+        }
 
         private Vector2? unitBasePosition;
 
@@ -45,8 +50,10 @@ using System.Threading.Tasks;
         public bool SpawnMaxUnitsOnStartup;
         public override async void SpecificBehaviorInit()
         {
-            UnitQueuePool = UnitCreationData[0].CreateUnitPool();
+            UnitQueuePool = UnitCreationData[0].CreateUnitPool(ParentComponent.MaxUnits);
             onPositionRecalculation += SetUnitBasePosition;
+            onPositionRecalculation += GetUnitRallyPositions;
+            ParentComponent.onMaxUnitsChanged += GetUnitRallyPositions;
         }
 
         
@@ -86,7 +93,17 @@ using System.Threading.Tasks;
 
         public int SpawningIndex
         {
-            get => spawningIndex;
+            get
+            {
+                if (ParentComponent.MaxUnits == 1)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return spawningIndex;
+                }
+            }
             set
             {
                 if (value > ParentComponent.MaxUnits)
@@ -103,7 +120,14 @@ using System.Threading.Tasks;
         void SpawnUnitToBasePosition()
         {
             GenericUnitController guc = ParentComponent.SpawnUnitInactive(UnitQueuePool);
-            guc.Data.DynamicData.BasePosition = UnitBasePosition;
+            if (PathPointTypesByPriority[0] == PathPointFinder.PathPointType.RandomPosition)
+            {
+                guc.Data.DynamicData.BasePosition = new Vector2(Random.Range(-100f,100f),Random.Range(-100f,100f)); 
+            }
+            else {
+            guc.Data.DynamicData.BasePosition = UnitRallyPoints[SpawningIndex];
+            SpawningIndex++;
+            }
             guc.gameObject.SetActive(true);
         }
 

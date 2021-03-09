@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class WeaponRotator : Rotator<OrbitalWeaponGeneric>
+﻿public class WeaponRotator : Rotator<OrbitalWeaponGeneric>
 {
     public OrbitalGunsControllerGeneric parentTowerComponent;
     public TowerComponent ParentTowerComponent {get=> parentTowerComponent;set { ParentTowerComponent = value;}}

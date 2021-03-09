@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using System.Threading.Tasks;
-using DG.Tweening;
-using Random = UnityEngine.Random;
 
 [Serializable]
 public class ProjectileMovementDynamicData

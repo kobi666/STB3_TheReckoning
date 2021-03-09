@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using UnityEngine;
 
 [Serializable]
 public abstract class ObjectState<T> where T: IHasStateMachine
@@ -13,7 +10,7 @@ public abstract class ObjectState<T> where T: IHasStateMachine
     [LabelText("Initial State?")]
     public bool InitialState;
     public bool StateIsRunning = false;
-    
+
     [PropertyOrder(-1)][GUIColor(232 , 0 , 254)]
     public abstract string StateName { get; }
 

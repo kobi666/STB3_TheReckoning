@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using System;
 using System.Linq;
-using Sirenix.Serialization;
 
 [System.Serializable]
 public class SplineEffect

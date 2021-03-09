@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
@@ -11,11 +10,12 @@ public enum UnitStates
 {
     None,
     Idle,
+    
     MovingToBattlePos,
     InDirectBattle,
     AssistingBattle,
     MovingAlongPath,
-    ReturnToBasePosition,
+    MoveToBasePosition,
     Death,
     Testing
 }

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
-public class AreaEffect : SerializedMonoBehaviour,IQueueable<AreaEffect>
+public class AreaEffect : MonoBehaviour,IQueueable<AreaEffect>
 {
 	// Start is called before the first frame update
 	public EffectableTargetBank TargetBank;

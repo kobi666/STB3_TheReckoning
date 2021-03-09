@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Threading.Tasks;
+using MyBox;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
-using Sirenix.Utilities;
+//using Sirenix.Utilities;
 
 [System.Serializable]
 public class ShootOneProjectile : ProjectileAttackProperties 

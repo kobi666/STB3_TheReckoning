@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Animancer;
-using System;
+﻿using UnityEngine;
 
 public class AOEAnimationController : AnimationController
 {

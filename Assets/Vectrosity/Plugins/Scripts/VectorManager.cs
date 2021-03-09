@@ -3,7 +3,6 @@
 
 using UnityEngine;
 using System.Collections.Generic;
-using Vectrosity;
 
 namespace Vectrosity {
 public class VectorManager {

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class TowerComponentData 
@@ -11,7 +9,6 @@ public class TowerComponentData
     public TargetUnit targetUnit = null;
 
     public TowerComponentOrbitalControllerData orbitalData;
-    public TowerComponentProjectileData projectileData;
     public TowerComponentUnitSpawnerData SpawnerData;
     public TowerComponentBeamData BeamData;
     [SerializeField]

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Events;
-using System.Threading.Tasks;
-using Sirenix.Serialization;
 using UnityEditor;
 
 public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IActiveObject<GenericProjectile>,IHasEffectAnimation

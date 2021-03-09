@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
-using MyBox;
 using UnityEngine.Serialization;
 using UnityEngine.Events;
 
@@ -45,15 +43,6 @@ public class TowerComponentBeamData
     public bool IsOscillating;
     public float BeamOsciliationSpeed;
     public float BeamMovementSpeed;
-}
-
-
-[System.Serializable]
-public class TowerComponentProjectileData
-{
-    public float projectileSpeed;
-    public Projectile projectilePrefab;
-    public float aoeProjectileRadius;
 }
 
 

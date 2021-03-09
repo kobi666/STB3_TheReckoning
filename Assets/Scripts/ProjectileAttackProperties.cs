@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using UnityEngine;
-using UniRx;
 
 [System.Serializable]
 public abstract class ProjectileAttackProperties : AttackProperties,IhasExitAndFinalPoint

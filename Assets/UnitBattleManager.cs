@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
@@ -131,6 +130,7 @@ public class UnitBattleManager : MonoBehaviour
         GameObjectPool.Instance.onTargetableUpdate += updateTargetState;
         if (MeleeWeapon) {
         MeleeWeapon.TargetBank.onTargetRemove += removeTarget;
+        
         FlipAttackArea(true);
         }
         onFightStart += delegate { AoeController.OnSingleTargetSet(TargetUnit.name); };

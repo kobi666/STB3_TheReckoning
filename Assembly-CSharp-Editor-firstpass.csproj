@@ -51,11 +51,6 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Plugins\Better Events\Editor\BetterEventDrawer.cs" />
-     <Compile Include="Assets\Plugins\Better Events\Editor\BetterEventListDrawer.cs" />
-     <Compile Include="Assets\Plugins\Better Events\Editor\BetterEventProcessor.cs" />
-     <Compile Include="Assets\Plugins\Better Events\Editor\DelegateInfo.cs" />
-     <Compile Include="Assets\Plugins\Better Events\Editor\MethodSelector.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierPointEditor.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierPointExtraDataDrawer.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierSplineEditor.cs" />

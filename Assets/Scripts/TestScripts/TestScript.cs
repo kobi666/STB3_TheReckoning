@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
+﻿using UnityEngine;
 
 public class TestScript : MonoBehaviour
 {
@@ -33,10 +30,7 @@ public class TestScript : MonoBehaviour
         
     }
 
-    public Vector2 MiddlePos()
-    {
-        return ProjectileUtils.GetArcingMiddlePosition(InitPos, TargetPosition, arcValue);
-    }
+    
 
     private void Start()
     {

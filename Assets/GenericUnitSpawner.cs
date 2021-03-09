@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using MyBox;
-using NUnit.Framework.Internal;
 using Sirenix.OdinInspector;
+using DegreeUtils;
 
 using UnityEngine;
 
@@ -70,6 +67,7 @@ public class GenericUnitSpawner : TowerComponent
     public GenericUnitController SpawnUnitInactive(PoolObjectQueue<GenericUnitController> _unitPool)
     {
         GenericUnitController guc = _unitPool.GetInactive();
+        
         AddManagedUnit(guc);
         return guc;
     }
@@ -79,7 +77,24 @@ public class GenericUnitSpawner : TowerComponent
     public Vector2 SpawningPoint;
     public Vector2? UnitSetPosition = null;
     public Vector2? ClosestPointToBase = null;
-    public int MaxUnits = 3;
+
+    public event Action onMaxUnitsChanged;
+    [OnValueChanged("OnMaxUnitsChanged")]
+    public int maxUnits = 3;
+
+    public int MaxUnits
+    {
+        get => maxUnits;
+        set
+        {
+            onMaxUnitsChanged?.Invoke(); 
+        }
+    }
+
+    private void OnMaxUnitsChanged()
+    {
+        onMaxUnitsChanged?.Invoke();
+    }
     public override void InitComponent()
     {
         SpawnerBehavior.InitBehavior(this,PathPointFinder);
@@ -119,6 +134,7 @@ public class GenericUnitSpawner : TowerComponent
         DeathManager.Instance.onUnitDeath += RemoveUnitFromManagedUnits;
         //GameObjectPool.Instance.ActiveUnits
         InitComponent();
+        
     }
 
     

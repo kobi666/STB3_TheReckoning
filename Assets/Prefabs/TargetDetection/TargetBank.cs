@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
 using MyBox;
 using Sirenix.OdinInspector;
 using UnityEditor;
-using UnityEngine.Serialization;
 
 [System.Serializable]
 public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable

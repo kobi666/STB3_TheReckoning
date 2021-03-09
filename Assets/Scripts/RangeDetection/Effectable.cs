@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
-using Sirenix.OdinInspector;
 
 public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITargetable
 {
@@ -67,6 +64,6 @@ public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITarg
     void OnDisable()
     {
         UpdateTargetableState(false);
-        GameObjectPool.Instance.RemoveObjectFromAllPools(name,name);
+        GameObjectPool.Instance?.RemoveObjectFromAllPools(name,name);
     }
 }

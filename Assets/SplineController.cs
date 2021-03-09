@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using BansheeGz.BGSpline.Curve;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class SplineController : MonoBehaviour,IQueueable<SplineController>

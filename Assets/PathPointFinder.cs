@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using System;
 using MyBox;
 using UnityEditor;
+using Random = UnityEngine.Random;
 
 public class PathPointFinder : MonoBehaviour
 {
@@ -35,7 +35,8 @@ public class PathPointFinder : MonoBehaviour
         MiddlePoint,
         ClosestToEnd,
         ClosestToStart,
-        SetPosition
+        SetPosition,
+        RandomPosition
     }
 
     public PathPointType[] pathPointTypePriority;
@@ -70,6 +71,12 @@ public class PathPointFinder : MonoBehaviour
                 {
                     return placeholderV2;
                 }
+            }
+
+            if (ppp == PathPointType.RandomPosition)
+            {
+                placeholderV2 = new Vector2(Random.Range(-100f,100f),Random.Range(-100f,100f));
+                return placeholderV2;
             }
             
         }
@@ -109,6 +116,11 @@ public class PathPointFinder : MonoBehaviour
                     {
                         return placeholderV2;
                     }
+                }
+                if (ppp == PathPointType.RandomPosition)
+                {
+                    placeholderV2 = new Vector2(Random.Range(-100f,100f),Random.Range(-100f,100f));
+                    return placeholderV2;
                 }
             
             }
@@ -191,18 +203,10 @@ public class PathPointFinder : MonoBehaviour
                     }
                 }
                 if (GameObjectPool.Instance.ActiveSplines.Pool[go.name].SplineType == SplineTypes.Main) {
-                    try
                     {
-                        {
                             PathSplines.Add(go.name,GameObjectPool.Instance.ActiveSplines.Pool[go.name]);
                             onPathFound?.Invoke();    
                         }
-                        
-                    }
-                    catch (Exception e)
-                    {
-                        Debug.LogWarning(e);
-                    }
                 }
             }
         }

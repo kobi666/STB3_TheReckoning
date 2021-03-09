@@ -1,11 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
-
-public class ProjectileUtils 
+﻿public class ProjectileUtils 
 {
-    public static Projectile SpawnProjectileFromPool(PoolObjectQueue<Projectile> pool) {
+    /*public static Projectile SpawnProjectileFromPool(PoolObjectQueue<Projectile> pool) {
         return pool.Get();
     }
 
@@ -36,7 +31,7 @@ public class ProjectileUtils
         proj.Damage = damage;
         proj.gameObject.SetActive(true);
         return proj;
-    }
+    }*/
 
     /*public static Projectile SpawnArcingAOEProjectile(PoolObjectQueue<Projectile> pool, Vector2 exitPoint, Vector2 targetPosition, float arcValue, float speed, float effectRadius, Action<Effectable> onReachAction)
     {
@@ -51,59 +46,6 @@ public class ProjectileUtils
         return proj;
     } */
 
-    public static void MoveStraightUntilReachedTargetPosition(Transform self, Vector2 targetPosition, float speed, Action onTargetPositionReach) {
-        if ((Vector2)self.position != targetPosition) {
-        self.position = Vector2.MoveTowards(self.position,targetPosition,speed * StaticObjects.DeltaGameTime);
-        }
-        else if ((Vector2)self.position == targetPosition) {
-            onTargetPositionReach.Invoke();
-        }
-    }
-
-    public static Vector2 GetArcingMiddlePosition(Vector2 initPos, Vector2 targetPos, float arcValue)
-    {
-        Vector2 arcDirection = Vector2.up;
-        if (arcValue < 0) {
-            arcDirection = Vector2.down;
-        }
-        Vector2 middlePos = initPos + (targetPos - initPos) / 2 + arcDirection * Mathf.Abs(arcValue);
-
-        return middlePos;
-    }
-    public static void MoveInArcToPosition(Transform projectileTransform, Vector2 initPos, Vector2 middlePos,
-        Vector2 targetPosition, ref Vector2 initToMiddle, ref Vector2 middleToTarget, float speed, ref float counter)
-    {
-        if (counter <= 1f)
-        {
-            counter += speed * StaticObjects.DeltaGameTime;
-            initToMiddle = Vector2.Lerp(initPos, middlePos, counter);
-            middleToTarget = Vector2.Lerp(middlePos, targetPosition, counter);
-            projectileTransform.position = Vector2.Lerp(initToMiddle, middleToTarget, counter);
-        }
-        
-    }
-    
-
-    public static IEnumerator MoveInArcAndInvokeActionCoroutine(Transform projectileTransform, Vector2 targetPos, float arcValue, float speed, Action action) {
-    float movementSpeed = speed;
-    Vector2 initPos = projectileTransform.position;
-    Vector2 arcDirection = Vector2.up;
-    if (arcValue < 0) {
-        arcDirection = Vector2.down;
-    }
-    Vector2 middlePos = initPos + (targetPos - initPos) / 2 + arcDirection * Mathf.Abs(arcValue);
-    float count = 0;
-    while (count < 0.97f) {
-        count += StaticObjects.DeltaGameTime * movementSpeed;
-        Vector2 m1 = Vector2.Lerp( initPos, middlePos, count );
-        Vector3 m2 = Vector2.Lerp( middlePos, targetPos, count );
-        projectileTransform.position = Vector2.Lerp(m1, m2, count);
-        projectileTransform.Rotate(Vector3.forward * 350 * Time.deltaTime, Space.Self);
-        yield return new WaitForFixedUpdate();
-    }
-    action.Invoke();
-    yield break;
-}
     
     
 

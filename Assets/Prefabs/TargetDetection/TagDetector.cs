@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEditor;
@@ -11,6 +10,21 @@ public abstract class TagDetector : MonoBehaviour
     [TagSelector][SerializeField]
 # endif
     public string[] DiscoverableTags = new string[] { };
+
+    public bool DebugTargetByTag;
+    
+#if UNITY_EDITOR
+    [TagSelector]
+# endif
+    [SerializeField][ShowIf("DebugTargetByTag")]
+    public string DebugTargetTag;
+
+    void DebugTarget(GameObject go, string _tag)
+    {
+        if (_tag == DebugTargetTag) {
+        Debug.LogError(go.name + " " + _tag);
+        }
+    }
     public void AddTagToDiscoverableTags(string _tag) {
         
         for (int i = 0; i < DiscoverableTags.Length ; i++)
@@ -60,6 +74,11 @@ public abstract class TagDetector : MonoBehaviour
             if (!String.IsNullOrEmpty(item)) {
                 DiscoverableTagsList.Add(item);
             }
+        }
+
+        if (DebugTargetByTag)
+        {
+            onTargetEnter += DebugTarget;
         }
     }
 }

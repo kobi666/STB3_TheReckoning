@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ArcingBombTowerControllerLegacy : TowerControllerLegacy
+﻿public class ArcingBombTowerControllerLegacy : TowerControllerLegacy
 {
     // Start is called before the first frame update
     public override TowerSlotAction NorthAction()

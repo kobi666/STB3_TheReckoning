@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class OrbitalGunTowerControllerLegacy : TowerControllerLegacy
+﻿public class OrbitalGunTowerControllerLegacy : TowerControllerLegacy
 {
     OrbitalGunsControllerGeneric orbitalGunsController;
     

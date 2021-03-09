@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Animancer;
 using System;
-using Sirenix.OdinInspector;
 
 public class AnimationController : MonoBehaviour
 {

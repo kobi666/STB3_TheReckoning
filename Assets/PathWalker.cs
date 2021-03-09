@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using BansheeGz.BGSpline.Components;
-using MyBox;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -11,6 +8,7 @@ public class PathWalker : MonoBehaviour
 {
     private SpriteRenderer SpriteRenderer;
     public BGCcMath spline;
+    public SplinePathController SplinePathController;
     [HideInInspector]
     public bool SplineAttached;
 
@@ -133,7 +131,8 @@ public class PathWalker : MonoBehaviour
             }
         }
     }
-
+    
+    [ShowInInspector]
     private Vector2 TargetPosition
     {
         get => Spline?.CalcPositionByDistance(CurrentDistanceOnSpline) ?? transform.position;
@@ -167,7 +166,6 @@ public class PathWalker : MonoBehaviour
         SplineTotalLength = Spline?.GetDistance() ?? 0;
         onPathShift += delegate(bool b) { OnPath = b; };
         onPathMovement += MoveAlongSpline;
-        Spline = Spline;
-        
+        Spline = SplinePathController?.BgCcMath ?? Spline;
     }
 }

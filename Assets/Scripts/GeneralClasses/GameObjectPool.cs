@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Animancer;
@@ -10,7 +9,6 @@ using MyBox;
 public class GameObjectPool : MonoBehaviour
 {
     public Dictionary<string, PoolObjectQueue<RangeDetector>> RangeDetectorObjectPoolQueue = new Dictionary<string, PoolObjectQueue<RangeDetector>>();
-    public Dictionary<string, PoolObjectQueue<Projectile>> ProjectilesObjectPoolQueue = new Dictionary<string, PoolObjectQueue<Projectile>>();
     public Dictionary<string, PoolObjectQueue<EnemyUnitController>> EnemyUnitObjectPoolQueue = new Dictionary<string, PoolObjectQueue<EnemyUnitController>>();
     public Dictionary<string, PoolObjectQueue<PathDiscoveryPoint>> PathDiscoveryPointObjectPoolQueue = new Dictionary<string, PoolObjectQueue<PathDiscoveryPoint>>();
 
@@ -34,7 +32,15 @@ public class GameObjectPool : MonoBehaviour
 
     public void OnUnitEnable(GenericUnitController unit)
     {
-        ActiveUnits.Add(unit.name,unit);
+        /*try
+        {*/
+            ActiveUnits.Add(unit.name,unit);
+        /*}
+        catch (Exception e)
+        {
+            Debug.LogWarning(e.Message  + " : " + unit.name);
+        }*/
+        
         onUnitEnable?.Invoke(unit.name);
     }
     
@@ -99,18 +105,10 @@ public class GameObjectPool : MonoBehaviour
         return EffectAnimationPoolQueue[EffectAnimationController.DefaultName];
     }
     
-    public PoolObjectQueue<Projectile> GetProjectileQueue(Projectile prefab) {
-        if (ProjectilesObjectPoolQueue.ContainsKey(prefab.name)) {
-            return ProjectilesObjectPoolQueue[prefab.name];
-        }
-        else {
-            CreateNewObjectQueue<Projectile>(ProjectilesObjectPoolQueue, prefab);
-            return ProjectilesObjectPoolQueue[prefab.name];
-        }
-    }
+    
     
     public PoolObjectQueue<GenericProjectile> GetOrCreateGenericProjectileQueue(GenericProjectile prefab) {
-        if (ProjectilesObjectPoolQueue.ContainsKey(prefab.name)) {
+        if (GenericProjectilesObjectPoolQueue.ContainsKey(prefab.name)) {
             return GenericProjectilesObjectPoolQueue[prefab.name];
         }
         else {
@@ -178,14 +176,14 @@ public class GameObjectPool : MonoBehaviour
     public ActiveObjectPool<Effectable> ActiveEffectables = new ActiveObjectPool<Effectable>();
     public ActiveObjectPool<GenericProjectile> ActiveGenericProjectiles = new ActiveObjectPool<GenericProjectile>();
 
-    public ActiveObjectPool<Projectile> ActiveProjectiles = new ActiveObjectPool<Projectile>();
+    
     public ActiveObjectPool<PathDiscoveryPoint> ActivePathDiscoveryPoints = new ActiveObjectPool<PathDiscoveryPoint>();
     public ActiveObjectPool<SplinePathController> ActiveSplines = new ActiveObjectPool<SplinePathController>();
     
     public void RemoveObjectFromAllPools(string objectName, string callerName) {
         ActiveEffectables.RemoveObjectFromPool(objectName);
         ActiveUnitPool.RemoveObjectFromPool(objectName);
-        ActiveProjectiles.RemoveObjectFromPool(objectName);
+        ActiveGenericProjectiles.RemoveObjectFromPool(objectName);
         ActiveGenericProjectiles.RemoveObjectFromPool(objectName);
         OnObjectDisable(objectName);
     }

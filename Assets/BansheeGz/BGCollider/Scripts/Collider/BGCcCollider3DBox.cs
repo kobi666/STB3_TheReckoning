@@ -4,9 +4,6 @@
    </copyright>
 */
 
-using System;
-using System.Collections.Generic;
-using BansheeGz.BGSpline.Curve;
 using UnityEngine;
 
 namespace BansheeGz.BGSpline.Components

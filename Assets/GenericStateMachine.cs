@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Sirenix.OdinInspector;
@@ -47,6 +46,7 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
     public bool CanExecCurrentState = true;
 
     private int counter;
+    private float debugCounter;
     public async void ExecuteCurrentState()
     {
         if (CurrentState.StateIsRunning == false)
@@ -76,7 +76,8 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
                 }
                 CurrentState.OnStateExitActions();
             CurrentState.StateIsRunning = false;
-            ChangeState(NextStateResolver());
+            T nextState = NextStateResolver();
+            ChangeState(nextState);
         }
         
         

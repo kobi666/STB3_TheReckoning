@@ -188,16 +188,13 @@
             </e>
           </e>
         </e>
-        <e p="BeamController.cs" t="Include" />
         <e p="BeamTowerControllerLegacy.cs" t="Include" />
         <e p="BeamWeapon.cs" t="Include" />
-        <e p="betterEventTest.cs" t="Include" />
         <e p="ComponentRotator.cs" t="Include" />
         <e p="ComponentSpriteController.cs" t="Include" />
         <e p="DistanceTester.cs" t="Include" />
         <e p="Editor" t="Include">
           <e p="ConditionalFieldAttribute.cs" t="Include" />
-          <e p="GenericMethodSelector.cs" t="Include" />
           <e p="TagSelectorPropertyDrawer.cs" t="Include" />
         </e>
         <e p="EnumeratorPlaceHolder.cs" t="Include" />
@@ -213,7 +210,6 @@
           <e p="TProjectileController.cs" t="Include" />
           <e p="WeaponUpdates.cs" t="Include" />
         </e>
-        <e p="Garbage.cs" t="Include" />
         <e p="genericAOEController.cs" t="Include" />
         <e p="GenericStateMachine.cs" t="Include" />
         <e p="GenericTowerController.cs" t="Include" />
@@ -224,7 +220,6 @@
         <e p="LaserTest.cs" t="Include" />
         <e p="LaserTest2.cs" t="Include" />
         <e p="LaserWeaponTest.cs" t="Include" />
-        <e p="ofirtest2.cs" t="Include" />
         <e p="PathController.cs" t="Include" />
         <e p="PathDiscoveryPoint.cs" t="Include" />
         <e p="PathDiscoveryTargetBank.cs" t="Include" />
@@ -425,20 +420,6 @@
                 <e p="PlayableAssetTransition.cs" t="Include" />
               </e>
             </e>
-          </e>
-          <e p="Better Events" t="Include">
-            <e p="BetterEvent.cs" t="Include" />
-            <e p="BetterEventEntry.cs" t="Include" />
-            <e p="Editor" t="Include">
-              <e p="BetterEventDrawer.cs" t="Include" />
-              <e p="BetterEventListDrawer.cs" t="Include" />
-              <e p="BetterEventProcessor.cs" t="Include" />
-              <e p="DelegateInfo.cs" t="Include" />
-              <e p="MethodSelector.cs" t="Include" />
-            </e>
-            <e p="ExampleMonoBehaviour.cs" t="Include" />
-            <e p="NoType.cs" t="Include" />
-            <e p="SpecificReturnTypes.cs" t="Include" />
           </e>
           <e p="BezierSolution" t="Include">
             <e p="BezierPoint.cs" t="Include" />
@@ -1089,9 +1070,7 @@
           <e p="TowerComponent.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
-          <e p="Askenzi" t="Include">
-            <e p="Test333.cs" t="Include" />
-          </e>
+          <e p="DegreeUtils.cs" t="Include" />
           <e p="Effect.cs" t="Include" />
           <e p="EffectAnimationController.cs" t="Include" />
           <e p="ExtensionMethods" t="Include">
@@ -1156,23 +1135,17 @@
             <e p="TowerCrosshairMovementController.cs" t="Include" />
           </e>
           <e p="ProjectileAttackProperties.cs" t="Include" />
-          <e p="ProjectileAttackSequence.cs" t="Include" />
-          <e p="ProjectileAttackSequences.cs" t="Include" />
           <e p="ProjectilePoolCreationData.cs" t="Include" />
           <e p="Projectiles" t="Include">
             <e p="AOEAnimationController.cs" t="Include" />
             <e p="AreaOfEffectController.cs" t="Include" />
-            <e p="DirectHitProjectile.cs" t="Include" />
             <e p="Explosion.cs" t="Include" />
             <e p="ExplosionController.cs" t="Include" />
             <e p="GenericProjectile.cs" t="Include" />
-            <e p="OnTargetReachedProjectile.cs" t="Include" />
-            <e p="Projectile.cs" t="Include" />
             <e p="ProjectileExitPoint.cs" t="Include" />
             <e p="ProjectileFinalPoint.cs" t="Include" />
             <e p="ProjectileUtils.cs" t="Include" />
             <e p="SingleAnimationObject.cs" t="Include" />
-            <e p="TargetFacingStraightShotDirectHitProjectile.cs" t="Include" />
           </e>
           <e p="RangeDetection" t="Include">
             <e p="DefaultEffectableUnit.cs" t="Include" />
@@ -1207,10 +1180,7 @@
             <e p="PlayerUnitSpawnerUtils.cs" t="Include" />
             <e p="PlayerUnitSpawningPoint.cs" t="Include" />
             <e p="ProjectileAttack.cs" t="Include" />
-            <e p="ProjectileAttacks.cs" t="Include" />
-            <e p="ProjectileFactory.cs" t="Include" />
             <e p="ProjectileMovementFunctions.cs" t="Include" />
-            <e p="ProjectileProperties.cs" t="Include" />
             <e p="TestOrbitalGun.cs" t="Include" />
             <e p="TestOrbitalGunGeneric.cs" t="Include" />
             <e p="TestOrbitalGunsController.cs" t="Include" />
@@ -1279,21 +1249,8 @@
         <e p="SplinePathController.cs" t="Include" />
         <e p="SplineWalker.cs" t="Include" />
         <e p="TagSelectorPropertyDrawer.cs" t="Include" />
-        <e p="test12.cs" t="Include" />
-        <e p="test13.cs" t="Include" />
-        <e p="test16.cs" t="Include" />
-        <e p="test17.cs" t="Include" />
-        <e p="test3.cs" t="Include" />
-        <e p="test4.cs" t="Include" />
-        <e p="test5.cs" t="Include" />
-        <e p="test6.cs" t="Include" />
-        <e p="test7.cs" t="Include" />
-        <e p="test8.cs" t="Include" />
-        <e p="test9.cs" t="Include" />
-        <e p="TestAshkenazi.cs" t="Include" />
         <e p="TestCalculateTowerPositions.cs" t="Include" />
         <e p="testclass.cs" t="Include" />
-        <e p="TestConditionalDropDown.cs" t="Include" />
         <e p="TestingGenericWeapon" t="Include">
           <e p="AOEAttack.cs" t="Include" />
           <e p="AOEBehavior.cs" t="Include" />

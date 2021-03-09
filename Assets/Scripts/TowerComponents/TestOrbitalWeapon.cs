@@ -1,13 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
-using System.Threading.Tasks;
-
-
-
-
-public abstract class TestOrbitalWeapon : TestWeaponController//, IOrbital<TestOrbitalWeapon>
+﻿public abstract class TestOrbitalWeapon : TestWeaponController//, IOrbital<TestOrbitalWeapon>
 {
     /*WeaponRotator rotator;
     public WeaponRotator Rotator {get => rotator;set { rotator = value;}}

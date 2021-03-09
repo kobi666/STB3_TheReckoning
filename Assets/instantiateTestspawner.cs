@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using System.Security.Cryptography;
-using System.Runtime.Serialization;
 
 public class instantiateTestspawner : MonoBehaviour
 {

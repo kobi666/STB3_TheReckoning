@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using MyBox;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class GenericTowerController : SerializedMonoBehaviour
+public class GenericTowerController : MonoBehaviour
 {
     public TowerActionManager TowerActionManager;
     

@@ -1,14 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using UnityEngine;
 using System.Threading.Tasks;
 using System;
 using BansheeGz.BGSpline.Curve;
-using MyBox;
-using Sirenix.Utilities;
 
 [System.Serializable]
 public abstract class SplineAttackProperties : AttackProperties

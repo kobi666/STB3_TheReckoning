@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using MyBox;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
@@ -10,9 +11,12 @@ using UnityEngine.Serialization;
 [Serializable]
 public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitController>,IActiveObject<GenericUnitController>,IHasEffects,IHasRangeComponents,IHasStateMachine
 {
+    private bool firstRun = true;
     private void OnEnable()
     {
-        GameObjectPool.Instance.OnUnitEnable(this);
+        if (!firstRun) {
+            Init();
+        }
     }
 
     private void OnDisable()
@@ -27,10 +31,28 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
     public bool WalksOnPath;
     public UnitLifeManager UnitLifeManager = new UnitLifeManager();
     public UnitData Data = new UnitData();
+#if UNITY_EDITOR
     [TagSelector]
+# endif
+    [SerializeField,ValidateInput("gtNotEmpty")]
     public string GroupTag;
+#if UNITY_EDITOR
+    [TagSelector]
+# endif
+    [SerializeField,ValidateInput("ttNotEmpty")]
+    public string[] TargetTags;
     private BoxCollider2D selfCollider;
 
+
+    bool ttNotEmpty()
+    {
+        return !TargetTags.IsNullOrEmpty();
+    }
+
+    bool gtNotEmpty()
+    {
+        return !GroupTag.IsNullOrEmpty();
+    }
 
 
     private bool xDirection;
@@ -98,6 +120,10 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
         }
         StateMachine.Init(this,States);
         UnitLifeManager.onUnitDeath += OnDeath;
+        if (!TargetTags.IsNullOrEmpty()) {
+        UnitBattleManager.MeleeWeapon.TargetBank.DiscoverableTags = TargetTags.ToList();
+        GameObjectPool.Instance.OnUnitEnable(this);
+        }
     }
 
     public event Action onDeath;
@@ -123,7 +149,13 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
         UnitMovementController = UnitMovementController ?? GetComponent<UnitMovementController>();
         UnitMovementController.UnitTransform = transform;
         UnitMovementController.GenericUnitController = this;
-        onDeath += delegate { StateMachine.SetState(UnitStates.Death.ToString()); };
+        onDeath += SetStateToDeath;
+    }
+
+    private void SetStateToDeath()
+    {
+        Debug.LogError("!!! " + gameObject.name);
+        StateMachine.SetState(UnitStates.Death.ToString());
     }
 
     protected void Start()
@@ -136,6 +168,7 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
             Data.DynamicData.BasePosition = new Vector2();
         }
         Init();
+        firstRun = false;
     }
 
     public Type QueueableType { get; set; }

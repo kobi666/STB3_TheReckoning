@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using System.Linq;
-using System.Threading.Tasks;
-using Sirenix.Serialization;
-using Random = UnityEngine.Random;
 
 [System.Serializable]
 public class ProjectileAttack : WeaponAttack

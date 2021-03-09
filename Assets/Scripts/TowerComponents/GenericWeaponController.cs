@@ -1,15 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
-using System.Reflection;
 using MyBox;
 using System.Threading.Tasks;
-using Sirenix;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
-using UnityEngine.Serialization;
 
 
 [RequireComponent(typeof(EffectableTargetBank))][Searchable]

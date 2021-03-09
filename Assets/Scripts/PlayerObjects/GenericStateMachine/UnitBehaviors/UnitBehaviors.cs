@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using BansheeGz.BGSpline.Components;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -23,6 +21,33 @@ namespace UnitBehaviors
         public override bool ExecCondition()
         {
             return true;
+        }
+    }
+
+    public class MoveToBeginingOfSpline : UnitConcurrentBehavior
+    {
+        private PathWalker PathWalker;
+        private Vector2? BeginingOfSpline = null;
+        public override void Behavior()
+        {
+            UnitObject.UnitMovementController.MoveTowardsTarget(BeginingOfSpline);
+        }
+
+        void RecheckPosition()
+        {
+            BeginingOfSpline = PathWalker.spline.Curve.Points[0].PositionWorld;
+        }
+
+        public override void InitBehavior()
+        {
+            PathWalker = UnitObject.PathWalker;
+            BeginingOfSpline = PathWalker.spline.Curve.Points[0].PositionWorld;
+            PathWalker.SplinePathController.parentPath.onPathUpdate += RecheckPosition;
+        }
+
+        public override bool ExecCondition()
+        {
+            return PathWalker.SplineAttached && BeginingOfSpline != null && UnitObject.transform.position != BeginingOfSpline;
         }
     }
     
@@ -47,7 +72,8 @@ namespace UnitBehaviors
 
         public override bool ExecCondition()
         {
-            return (PathWalker?.EndOfPathReached ?? false) ;
+            bool b = PathWalker.EndOfPathReached == false;
+            return b;
         }
     }
 
@@ -124,8 +150,9 @@ namespace UnitBehaviors
                     {
                         if (bs.AutomaticState != UnitStates.None)
                         {
-                            parentState.AutomaticNextState = bs.AutomaticState;
+                            UnitObject.StateMachine.SetState(bs.AutomaticState.ToString());
                         }
+                        
                         break;
                     }
                 }
@@ -182,22 +209,9 @@ namespace UnitBehaviors
         public override void Behavior()
         {
             UnitStates nextState = State;
-
-            bool Automatic()
-            {
-                return (parentState.AutomaticNextState != UnitStates.None);
-            }
-            if (Automatic())
-            {
-                State = parentState.AutomaticNextState;
-            }
             UnitObject.StateMachine.SetState(nextState.ToString());
-            Debug.LogWarning("Set state to " + nextState + " on Unit : " + UnitObject.name + " automatic : " + Automatic());
+            Debug.LogWarning("Set state to " + nextState + " on Unit : " + UnitObject.name );
             UnitObject.EffectableUnit.IsTargetable();
-            if (Automatic())
-            {
-                parentState.AutomaticNextState = UnitStates.None;
-            }
         }
 
         public override void InitBehavior()

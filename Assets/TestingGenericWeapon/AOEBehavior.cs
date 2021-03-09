@@ -1,17 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
-using System.Linq;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
+
 
 [Serializable]
 public class AOEBehavior
 {
     [Required]
     public List<GenericAOEController> AoeControllers = new List<GenericAOEController>();
-    [OdinSerialize]
+    [SerializeField]
     public List<AOEEffect> Effects;
 
     public int DelayInAttackStartms = 5;

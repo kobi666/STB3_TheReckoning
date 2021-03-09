@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class PoolObjectQueue<T> where T : Component, IQueueable<T>
 {
@@ -32,6 +30,8 @@ public class PoolObjectQueue<T> where T : Component, IQueueable<T>
             AddObjectsToQueue(5);
         }
         T t = ObjectQueue.Dequeue();
+        t.gameObject.SetActive(false);
+        t.gameObject.SetActive(true);
         return t;
     }
 

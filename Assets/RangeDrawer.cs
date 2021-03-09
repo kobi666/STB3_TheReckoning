@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Sirenix;
-using Sirenix.OdinInspector;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
 public class RangeDrawer : MonoBehaviour

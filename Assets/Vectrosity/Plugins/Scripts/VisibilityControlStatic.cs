@@ -4,7 +4,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using Vectrosity;
 
 namespace Vectrosity {
 [AddComponentMenu("Vectrosity/VisibilityControlStatic")]

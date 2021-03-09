@@ -1,13 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
-using UnityEngine.Events;
-using Animancer;
-using TMPro;
-using System.Threading.Tasks;
-
-public abstract class TestWeaponController : TowerComponent
+﻿public abstract class TestWeaponController : TowerComponent
 {
 
     /*

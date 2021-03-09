@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Threading.Tasks;
-using Sirenix.OdinInspector;
 
 public class ProjectileFinalPoint : MonoBehaviour
 {

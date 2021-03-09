@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
-
-public class EffectableUnit : Effectable
+﻿public class EffectableUnit : Effectable
 {
     public UnitController unitController;
     public GenericUnitController GenericUnitController;

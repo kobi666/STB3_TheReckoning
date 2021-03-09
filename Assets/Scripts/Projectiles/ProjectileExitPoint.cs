@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Sirenix.OdinInspector;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Threading.Tasks;
 
 public class ProjectileExitPoint : MonoBehaviour

@@ -1,11 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerUnitSpawnerUtils
 {
-    
-
     public static PlayerUnitController SpawnPlayerUnit(PlayerUnitController unitPrefab, Vector2 targetPosition, int unitBaseIndex) {
         PlayerUnitController puc = GameObject.Instantiate(unitPrefab, targetPosition, Quaternion.identity);
         puc.name = unitPrefab.name + "_" + UnityEngine.Random.Range(10000,50000);
