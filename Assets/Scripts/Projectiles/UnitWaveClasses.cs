@@ -5,6 +5,11 @@ using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
+namespace UnitSpawning
+{
+    
+
+
     [Serializable]
     public class UnitWave
     {
@@ -41,6 +46,11 @@ using UnityEngine;
         
         [OnInspectorInit]
         public abstract void init();
+        
+        public (bool, bool, bool, bool, bool) GetRowData()
+        {
+            
+        } 
     }
 
 [Serializable]
@@ -56,18 +66,24 @@ public class ArrowShape : UnitBatch
         batchStructure[0, 2] = true;
         batchStructure[4, 2] = true;
     }
+    
+    
 
     private bool[,] batchStructure = new bool[5, 3];
-
-    
-
-
-
 }
+
+public class SingleRandomSpline : UnitBatch
+{
+    public override bool[,] BatchStructure { get; }
+    public override void init()
+    {
+        throw new NotImplementedException();
+    }
+} 
     
 
     
     
-    
+}    
 
 
