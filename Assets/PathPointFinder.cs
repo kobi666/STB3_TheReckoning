@@ -213,7 +213,7 @@ public class PathPointFinder : MonoBehaviour
     }
 
     private string shortestSplinePath;
-    string  FindShortestSpline()
+    public string  FindShortestSpline()
     {
         string sname = string.Empty;
         if (!PathSplines.IsNullOrEmpty())

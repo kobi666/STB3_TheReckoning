@@ -55,6 +55,9 @@ using Sirenix.OdinInspector;
 
         public float SpawnCounter;
         public bool BehaviorInProgress = false;
+        
+        
+        [Button("Start SpawnerBehavior")]
         public async void InvokeBehavior()
         {
             if (BehaviorInProgress == false)
@@ -64,10 +67,14 @@ using Sirenix.OdinInspector;
                 {
                     if (SpawnCounter < SpawnInterval) {
                     SpawnCounter += StaticObjects.DeltaGameTime;
+                    if (SpawnCounter >= SpawnInterval) { 
+                        if (ExecCondition()) {
+                            Behavior();
+                            SpawnCounter = 0;
+                        }
                     }
-                    if (ExecCondition()) {
-                    Behavior();
                     }
+                    
                     await Task.Yield();
                 }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MyBox;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -314,7 +315,10 @@ namespace UnitBehaviors
                 }
                 if (!t_target)
                 {
-                    t_target = GameObjectPool.Instance.ActiveUnits[TargetBank.Targets.Keys.First()];
+                    if (!TargetBank.Targets.IsNullOrEmpty()) {
+                        if (GameObjectPool.Instance.ActiveUnits.ContainsKey(TargetBank.Targets.Keys.First()))
+                        t_target = GameObjectPool.Instance.ActiveUnits[TargetBank.Targets.Keys.First()];
+                    }
                 }
 
                 UnitBattleManager.TargetUnit = t_target;

@@ -24,7 +24,8 @@ public class SplineController : MonoBehaviour,IQueueable<SplineController>
         Detector = Detector ?? GetComponent<SplineDetector>();
         LineRenderer = GetComponent<LineRenderer>();
         FinalPoint = FinalPoint ?? GetComponentInChildren<ProjectileFinalPoint>();
-        ExitPoint = ExitPoint ?? GetComponentInChildren<ProjectileExitPoint>();
+	    ExitPoint = ExitPoint ?? GetComponentInChildren<ProjectileExitPoint>();
+        
     }
 
     public Type QueueableType { get; set; }

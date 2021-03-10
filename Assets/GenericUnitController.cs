@@ -154,7 +154,7 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
 
     private void SetStateToDeath()
     {
-        Debug.LogError("!!! " + gameObject.name);
+        //Debug.LogError("!!! " + gameObject.name);
         StateMachine.SetState(UnitStates.Death.ToString());
     }
 

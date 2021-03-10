@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MyBox;
 using UnityEngine;
 
 public class PathController : MonoBehaviour
@@ -13,6 +14,8 @@ public class PathController : MonoBehaviour
    {
       onPathUpdate?.Invoke();
    }
+
+   public event Action onPathSplinesFound;
    protected void Start()
    {
       ChildSplines = GetComponentsInChildren<SplinePathController>().ToList();
@@ -20,5 +23,11 @@ public class PathController : MonoBehaviour
       {
          spc.parentPath = this;
       }
+
+      if (!ChildSplines.IsNullOrEmpty())
+      {
+         onPathSplinesFound?.Invoke();
+      }
+      
    }
 }

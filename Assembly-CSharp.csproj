@@ -134,6 +134,7 @@
      <Compile Include="Assets\LaserTest.cs" />
      <Compile Include="Assets\LaserTest2.cs" />
      <Compile Include="Assets\LaserWeaponTest.cs" />
+     <Compile Include="Assets\MapManager.cs" />
      <Compile Include="Assets\PathController.cs" />
      <Compile Include="Assets\PathDiscoveryPoint.cs" />
      <Compile Include="Assets\PathDiscoveryTargetBank.cs" />
@@ -272,6 +273,7 @@
      <Compile Include="Assets\Scripts\Projectiles\ProjectileFinalPoint.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ProjectileUtils.cs" />
      <Compile Include="Assets\Scripts\Projectiles\SingleAnimationObject.cs" />
+     <Compile Include="Assets\Scripts\Projectiles\UnitWaveClasses.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\DefaultEffectableUnit.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\Effectable.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\Effector.cs" />

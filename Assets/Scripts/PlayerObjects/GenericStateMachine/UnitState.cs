@@ -48,8 +48,14 @@ public class UnitState : ObjectState<GenericUnitController>
     
     [PropertyOrder(-1)][GUIColor(0.8f , 0 , 0.9f)][InfoBox("-------------------")]
     public UnitStates stateName;
-
+    
+    [ValidateInput("checkIfEmptyAutomatic", "Next State will Default")]
     public UnitStates automaticNextState;
+
+    bool checkIfEmptyAutomatic()
+    {
+        return automaticNextState != UnitStates.None;
+    }
     
     
     public override string AutomaticNextState
