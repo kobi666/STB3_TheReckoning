@@ -2,10 +2,12 @@
 using UnityEngine;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using MyBox;
 using Sirenix.OdinInspector;
 using Random = UnityEngine.Random;
 using DegreeUtils;
+using UnitSpawning;
 
 [Serializable]
 public class SpawnSingleUnitToBasePosition : SpawnerBehavior
@@ -182,7 +184,8 @@ public class SpawnWaves : SpawnerBehavior
         if (PathController == null) {
         PathController = PathPointFinder.PathSplines[PathPointFinder.FindShortestSpline()].parentPath;
         }
-        onBehaviorEnd += delegate { SpawningBatchInProgress = false; };
+        onBehaviorEnd += delegate { SpawningWaveInProgress = false; };
+        
     }
     
 
@@ -193,18 +196,56 @@ public class SpawnWaves : SpawnerBehavior
         return ParentComponent.NumberOfManagedUnits < ParentComponent.MaxUnits;
     }
 
-    public bool SpawningBatchInProgress;
+    public bool SpawningWaveInProgress;
     public int formationRowIndex = 0;
+    private float batchTimerCounter = 0;
+    private float WaveTimerCounter = 0;
+    private int waveCounter;
     public override async void Behavior()
     {
-        GenericUnitController guc = GameObject.Instantiate(TestEnemy);
-        guc.Data.DynamicData.BasePosition = PathSplines[0].splinePoints[0];
-        guc.gameObject.SetActive(true);
+        if (SpawningWaveInProgress == true)
+        {
+            return;
+        }
+
+        if (SpawningWaveInProgress == false)
+        {
+            foreach (var wave in Waves)
+            {
+                while (!wave.WaveFinished)
+                {
+                    foreach (var batch in wave.BatchGroup)
+                    {
+                        while (!batch.AllBatchesFinished)
+                        {
+                            await Task.Delay(batch.TimeBetweenRowsMS);
+                            bool[] formation = batch.GetRow();
+                            for (int i = 0; i < formation.Length; i++)
+                            {
+                                SpawnUnitByColumn(i);
+                            }
+
+                            await Task.Yield();
+                        }
+                    }
+
+                    await Task.Yield();
+                }
+            }
+
+            SpawningWaveInProgress = false;
+        }
     }
 
-    public void SpawnUnitByFormation()
+    public void SpawnUnitByColumn(int splineIndex)
     {
-        
+        GenericUnitController guc = GameObject.Instantiate(TestEnemy);
+        guc.PathWalker.spline = PathSplines[splineIndex].BgCcMath;
+        guc.Data.DynamicData.Spline = PathSplines[splineIndex].BgCcMath;
+        //change to spawning position
+        guc.transform.position = ParentComponent.transform.position;
+        guc.Data.DynamicData.BasePosition = PathSplines[splineIndex].splinePoints[0];
+        guc.gameObject.SetActive(true);
     }
 
     public override List<Effect> GetEffectList()

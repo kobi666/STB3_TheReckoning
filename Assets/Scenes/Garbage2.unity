@@ -11194,7 +11194,7 @@ MonoBehaviour:
     id: 0
   PathPointFinder: {fileID: 0}
   SpawningPoint: {x: 0, y: 0}
-  maxUnits: 3
+  maxUnits: 100
   references:
     version: 1
     00000000:
@@ -11208,16 +11208,12 @@ MonoBehaviour:
         TestEnemy: {fileID: 1001698691}
         PathPointTypesByPriority: 01000000
         PathController: {fileID: 2043551629}
-        Waves: []
-        UnitWave:
-          IntervalBetweenBatcheGroup: 0
-          Batches:
-          - id: 1
-    00000001:
-      type: {class: ArrowShape, ns: , asm: Assembly-CSharp}
-      data:
-        AmountOfBatches: 0
-        TimeBetweenBatches: 0.5
+        Waves:
+        - WaveStartupTime: 3
+          BatchGroup: []
+          WaveFinished: 0
+        SpawningWaveInProgress: 0
+        formationRowIndex: 0
 --- !u!114 &532368330
 MonoBehaviour:
   m_ObjectHideFlags: 0
