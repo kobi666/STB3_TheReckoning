@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PathController : MonoBehaviour
 {
-   public List<SplinePathController> ChildSplines = new List<SplinePathController>();
+   public SortedList<SplineTypes,SplinePathController> ChildSplines = new SortedList<SplineTypes,SplinePathController>();
 
    public event Action onPathUpdate;
 
@@ -18,10 +18,11 @@ public class PathController : MonoBehaviour
    public event Action onPathSplinesFound;
    protected void Start()
    {
-      ChildSplines = GetComponentsInChildren<SplinePathController>().ToList();
-      foreach (var spc in ChildSplines)
+      var _ChildSplines = GetComponentsInChildren<SplinePathController>();
+      foreach (var spc in _ChildSplines)
       {
          spc.parentPath = this;
+         ChildSplines.Add(spc.SplineType, spc);
       }
 
       if (!ChildSplines.IsNullOrEmpty())

@@ -71,7 +71,9 @@ public class SplinePathController : MonoBehaviour,IActiveObject<SplinePathContro
 
 public enum SplineTypes
 {
-    Main,
-    SeconderyUpper,
-    SeconderyLower
+    Top = 0,
+    MiddleTop = 1,
+    Main = 2,
+    MiddleBottom = 3,
+    Bottom = 4
 }

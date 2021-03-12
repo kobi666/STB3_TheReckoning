@@ -160,7 +160,7 @@ public class SpawnWaves : SpawnerBehavior
 
     public PathController PathController;
 
-    public List<SplinePathController> PathSplines
+    public SortedList<SplineTypes,SplinePathController> PathSplines
     {
         get => PathController.ChildSplines;
     }
@@ -222,7 +222,10 @@ public class SpawnWaves : SpawnerBehavior
                             bool[] formation = batch.GetRow();
                             for (int i = 0; i < formation.Length; i++)
                             {
-                                SpawnUnitByColumn(i);
+                                if (formation[i])
+                                {
+                                    SpawnUnitByColumn(i);
+                                }
                             }
 
                             await Task.Yield();
@@ -240,11 +243,12 @@ public class SpawnWaves : SpawnerBehavior
     public void SpawnUnitByColumn(int splineIndex)
     {
         GenericUnitController guc = GameObject.Instantiate(TestEnemy);
-        guc.PathWalker.spline = PathSplines[splineIndex].BgCcMath;
-        guc.Data.DynamicData.Spline = PathSplines[splineIndex].BgCcMath;
+        guc.PathWalker.SplinePathController = PathSplines[(SplineTypes)splineIndex];
+        guc.PathWalker.Spline = guc.PathWalker.SplinePathController.BgCcMath;
+        guc.Data.DynamicData.Spline = PathSplines[(SplineTypes)splineIndex].BgCcMath;
         //change to spawning position
         guc.transform.position = ParentComponent.transform.position;
-        guc.Data.DynamicData.BasePosition = PathSplines[splineIndex].splinePoints[0];
+        guc.Data.DynamicData.BasePosition = PathSplines[(SplineTypes)splineIndex].splinePoints[0];
         guc.gameObject.SetActive(true);
     }
 

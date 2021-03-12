@@ -139,7 +139,7 @@ namespace UnitSpawning
 
         public bool[] GetRow()
         {
-            bool[] ba =  Enumerable.Range(0, BatchStructure.GetLength(0) -1)
+            bool[] ba =  Enumerable.Range(0, BatchStructure.GetLength(0))
                 .Select(x => BatchStructure[ x, ColumnCounter])
                 .ToArray();
             
