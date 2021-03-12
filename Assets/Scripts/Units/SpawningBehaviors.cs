@@ -218,16 +218,23 @@ public class SpawnWaves : SpawnerBehavior
                     {
                         while (!batch.AllBatchesFinished)
                         {
-                            await Task.Delay(batch.TimeBetweenRowsMS);
-                            bool[] formation = batch.GetRow();
-                            for (int i = 0; i < formation.Length; i++)
+                            for (int aa = 0; aa < batch.AmountOfBatches; aa++)
                             {
-                                if (formation[i])
+                                for (int bb = 0; bb < batch.BatchStructure.GetLength(1) ; bb++)
                                 {
-                                    SpawnUnitByColumn(i);
+                                    await Task.Delay(batch.TimeBetweenRowsMS);
+                                    bool[] formation = batch.GetRow();
+                                    for (int cc = 0; cc < formation.Length; cc++)
+                                    {
+                                        if (formation[cc])
+                                        {
+                                            SpawnUnitByColumn(cc);
+                                        }
+                                        await Task.Yield();
+                                    }
                                 }
                             }
-
+                            
                             await Task.Yield();
                         }
                     }
@@ -240,6 +247,7 @@ public class SpawnWaves : SpawnerBehavior
         }
     }
 
+    private int namecounter;
     public void SpawnUnitByColumn(int splineIndex)
     {
         GenericUnitController guc = GameObject.Instantiate(TestEnemy);
@@ -248,6 +256,8 @@ public class SpawnWaves : SpawnerBehavior
         guc.Data.DynamicData.Spline = PathSplines[(SplineTypes)splineIndex].BgCcMath;
         //change to spawning position
         guc.transform.position = ParentComponent.transform.position;
+        guc.name = guc.name + namecounter;
+        namecounter++;
         guc.Data.DynamicData.BasePosition = PathSplines[(SplineTypes)splineIndex].splinePoints[0];
         guc.gameObject.SetActive(true);
     }

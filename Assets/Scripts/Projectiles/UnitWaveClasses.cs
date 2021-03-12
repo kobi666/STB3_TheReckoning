@@ -128,12 +128,16 @@ namespace UnitSpawning
             get => columnCounter;
             set
             {
-                columnCounter = value;
-                if (columnCounter > BatchStructure.GetLength(1))
+                if (value > BatchStructure.GetLength(1) - 1)
                 {
                     columnCounter = 0;
                     BatchFinished = true;
                 }
+                else
+                {
+                    columnCounter = value;    
+                }
+                
             }
         }
 
