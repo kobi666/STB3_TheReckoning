@@ -12,6 +12,14 @@ public class PathWalker : MonoBehaviour
     [HideInInspector]
     public bool SplineAttached;
 
+    private Rigidbody2D Rigidbody2D;
+
+    private void Awake()
+    {
+        
+    }
+
+
     public GenericUnitController parentUnit;
 
     public bool PathDirection = true;
@@ -154,7 +162,8 @@ public class PathWalker : MonoBehaviour
         CurrentDistanceOnSpline += distancedelta * directionInt;
         parentUnit.FlipDirection(TargetPosition);
         parentUnit.FlipDirection(TargetPosition);
-        ObjectTransform.position = TargetPosition;
+        //ObjectTransform.position = TargetPosition;
+        Rigidbody2D.MovePosition(TargetPosition);
     }
     
 
@@ -167,5 +176,6 @@ public class PathWalker : MonoBehaviour
         onPathShift += delegate(bool b) { OnPath = b; };
         onPathMovement += MoveAlongSpline;
         Spline = SplinePathController?.BgCcMath ?? Spline;
+        Rigidbody2D = transform.parent.GetComponent<Rigidbody2D>();
     }
 }
