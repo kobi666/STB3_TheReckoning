@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 using UnityEditor;
 
 [System.Serializable]
-public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
+public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGameObjectID
 
 {
 #if UNITY_EDITOR
@@ -15,6 +15,10 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
     [SerializeField]
     public List<string> DiscoverableTags;
     
+    
+    
+    [Required] public MyGameObject parentMyGameObject;
+    public int GameObjectID { get => parentMyGameObject.GameObjectID; }
     [ShowInInspector]
     public bool HasTargets;
     private void OnEnable()
@@ -32,22 +36,22 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
 
     public event Action<string,bool> onTargetableChange;
 
-    void TargetablesCheck(string targetableName,bool targetableState)
+    void TargetablesCheck(int gameObjectID,bool targetableState)
     {
         if (!Targets.IsNullOrEmpty())
         {
-            if (Targets.ContainsKey(targetableName))
+            if (Targets.ContainsKey(gameObjectID))
             {
                 if (targetableState)
                 {
                     HasTargetableTargets = true;
-                    Targets[targetableName] = (Targets[targetableName].Item1, true);
+                    Targets[gameObjectID] = (Targets[gameObjectID].Item1, true);
                     return;
                 }
 
                 if (!targetableState)
                 {
-                    Targets[targetableName] = (Targets[targetableName].Item1, false);
+                    Targets[gameObjectID] = (Targets[gameObjectID].Item1, false);
                 }
 
                 foreach (var target in Targets)
@@ -67,17 +71,18 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
 
     public event Action onTargetsUpdate;
     
-    public TagDetector Detector;
-    public event Action<GameObject> onTryToAddTarget;
-    public void OnTryToAddTarget(GameObject targetGO, string _tag) {
-        if (DiscoverableTags.Contains(_tag)) {
-        onTryToAddTarget?.Invoke(targetGO);
-        }
+    [Required]
+    public CollisionDetector Detector;
+    public event Action<int> onTryToAddTarget;
+    public void OnTryToAddTarget(int targetGameObjectID) {
+        
+        onTryToAddTarget?.Invoke(targetGameObjectID);
+        
     }
 
-    public event Action<string,string> onTargetRemove;
-    public void OnTargetRemove(string targetName, string callerName) {
-        onTargetRemove?.Invoke(targetName, callerName);
+    public event Action<int> onTargetRemove;
+    public void OnTargetRemove(int gameObjectID) {
+        onTargetRemove?.Invoke(gameObjectID);
     }
     
     
@@ -89,9 +94,9 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
     /// </summary>
     ///
     [SerializeReference] 
-    public Dictionary<string,(T,bool)> Targets = new Dictionary<string,(T,bool)>();
+    public Dictionary<int,(T,bool)> Targets = new Dictionary<int,(T,bool)>();
 
-    public abstract T TryToGetTargetOfType(GameObject GO);
+    public abstract T TryToGetTargetOfType(int gameObjectID);
     
     public event Action<T> onTargetAdd;
     public void OnTargetAdd(T t) {
@@ -108,17 +113,17 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
     }
     
 
-    void AddTarget(GameObject targetGO) {
-        if (targetGO.name == name)
+    void AddTarget(int _gameobjectID) {
+        if (_gameobjectID == GameObjectID)
         {
             return;
         }
         clearNulls();
-        T t = TryToGetTargetOfType(targetGO);
+        T t = TryToGetTargetOfType(GameObjectID);
         if (t != null) {
-            if (!Targets.ContainsKey(targetGO.name))
+            if (!Targets.ContainsKey(_gameobjectID))
             {
-                Targets.Add(targetGO.name, (t,t.IsTargetable()));
+                Targets.Add(_gameobjectID, (t,t.IsTargetable()));
                 OnTargetAdd(t);
                 if (t.IsTargetable())
                 {
@@ -129,10 +134,10 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
         }
     }
 
-    void RemoveTarget(String targetName, string callerName) {
+    void RemoveTarget(int gameObjectID) {
         clearNulls();
-        if (Targets.ContainsKey(targetName)) {
-            Targets.Remove(targetName);
+        if (Targets.ContainsKey(gameObjectID)) {
+            Targets.Remove(gameObjectID);
             if (Targets.IsNullOrEmpty())
             {
                 HasTargets = false;
@@ -160,22 +165,14 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
     void Awake()
     {
         excludedNames.Add(name);
-        Detector =  Detector ?? GetComponentInChildren<RangeDetector>();
         onTryToAddTarget += AddTarget;
         onTargetRemove += RemoveTarget;
         GameObjectPool.Instance.onTargetableUpdate += TargetablesCheck;
     }
 
     public void InitRangeDetectorEvents() {
-        if (Detector == null)
-        {
-            Detector = GetComponentInChildren<RangeDetector>();
-        }
-        
-        if (Detector != null) {
         Detector.onTargetEnter += OnTryToAddTarget;
         Detector.onTargetExit += OnTargetRemove;
-        }
     }
 
     void DisableRangedetectorEvents()
@@ -189,19 +186,16 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable
     // Start is called before the first frame update
     void Start()
     {
-        //InitRangeDetectorEvents();
-        DeathManager.Instance.onEnemyUnitDeath += OnTargetRemove;
-        DeathManager.Instance.onPlayerUnitDeath += OnTargetRemove;
         GameObjectPool.Instance.onTargetableUpdate += OnTargetableRemove;
         GameObjectPool.Instance.onObjectDisable += OnTargetRemove;
         PostStart();
     }
 
-    public void OnTargetableRemove(string tname, bool tstate)
+    public void OnTargetableRemove(int targetGameObjectID, bool tstate)
     {
         if (!tstate)
         {
-            OnTargetRemove(tname,this.name);
+            OnTargetRemove(targetGameObjectID);
         }
     }
 

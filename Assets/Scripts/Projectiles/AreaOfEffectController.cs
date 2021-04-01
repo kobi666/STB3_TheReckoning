@@ -21,7 +21,7 @@ public abstract class AreaOfEffectController : MonoBehaviour,IQueueable<AreaOfEf
     public void ApplyEffectsOnTargets() {
         int counter = 0;
         Effectable[] targets = new Effectable[TargetBank.Targets.Count];
-        foreach (KeyValuePair<string,(Effectable,bool)> item in TargetBank.Targets)
+        foreach (KeyValuePair<int,(Effectable,bool)> item in TargetBank.Targets)
         {
             if (item.Value.Item1 != null) {
             targets[counter] = item.Value.Item1;

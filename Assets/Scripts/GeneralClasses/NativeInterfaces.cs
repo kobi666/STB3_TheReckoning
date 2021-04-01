@@ -44,7 +44,7 @@ public interface ITargetable {
     event Action<bool> onTargetableStateChange;
 }
 
-public interface IActiveObject<T> where T : Component,IActiveObject<T> {
+public interface IActiveObject<T> where T : IhasGameObjectID,IActiveObject<T> {
     ActiveObjectPool<T> ActivePool {get;set;}
 }
 

@@ -6,7 +6,7 @@ public class AreaEffect : MonoBehaviour,IQueueable<AreaEffect>
 {
 	// Start is called before the first frame update
 	public EffectableTargetBank TargetBank;
-	protected Dictionary<string,(Effectable,bool)> Targets
+	protected Dictionary<int,(Effectable,bool)> Targets
 	{
 		get => TargetBank.Targets;
 	}
@@ -22,7 +22,7 @@ public class AreaEffect : MonoBehaviour,IQueueable<AreaEffect>
 		}
 	}
 
-	public TagDetector Detector
+	public CollisionDetector Detector
 	{
 		get => TargetBank?.Detector;
 	}

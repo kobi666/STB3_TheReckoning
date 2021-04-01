@@ -5,24 +5,24 @@ using UnityEngine;
 public class EffectableTargetBank : TargetBank<Effectable>
 {
 
-    public override Effectable TryToGetTargetOfType(GameObject go)
+    public override Effectable TryToGetTargetOfType(int gameObjectID)
     {
         Effectable ef = null;
-        if (GameObjectPool.Instance.ActiveEffectables.Contains(go.name)) {
-        ef = GameObjectPool.Instance.ActiveEffectables.Pool[go.name] ?? null;
+        if (GameObjectPool.Instance.ActiveEffectables.Contains(gameObjectID)) {
+        ef = GameObjectPool.Instance.ActiveEffectables.Pool[gameObjectID] ?? null;
         }
         return ef;
     }
 
-    public string TryToGetTargetClosestToPosition(Vector2 pos, string[] existingTargets)
+    public int TryToGetTargetClosestToPosition(Vector2 pos, int[] existingTargets)
     {
-        string s = String.Empty;
+        int s = 0;
         float distance = 9999f;
         foreach ((Effectable ef,bool isTargetable) in Targets.Values)
         {
             if (ef != null)
             {
-                if (existingTargets.Contains(ef.name))
+                if (existingTargets.Contains(ef.GameObjectID))
                 {
                     continue;
                 }   
@@ -30,7 +30,7 @@ public class EffectableTargetBank : TargetBank<Effectable>
                 if (vd < distance)
                 {
                     distance = vd;
-                    s = ef.name;
+                    s = ef.GameObjectID;
                 }
             }
         }
@@ -63,6 +63,8 @@ public class EffectableTargetBank : TargetBank<Effectable>
         }
         return s;
     }
+
+    
 
     public override void PostStart()
     {

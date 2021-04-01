@@ -40,32 +40,24 @@ public abstract class TagDetector : MonoBehaviour
     }
     List<string> DiscoverableTagsList = new List<string>();
     // Start is called before the first frame update
-    public event Action<GameObject,string> onTargetEnter;
-    public void OnTargetEnter(GameObject target, string _tag) {
+    public event Action<MyGameObject,string> onTargetEnter;
+    public void OnTargetEnter(MyGameObject target, string _tag) {
         onTargetEnter?.Invoke(target, _tag);
     }
 
-    public event Action<string,string> onTargetExit;
-    public void OnTargetExit(string targetName, string callerName) {
-        onTargetExit?.Invoke(targetName, callerName);
+    public event Action<int,string> onTargetExit;
+    public void OnTargetExit(int gameObjectID, string callerName) {
+        onTargetExit?.Invoke(gameObjectID, callerName);
     }
 
     public abstract float GetSize();
     public abstract void UpdateSize(float newSize);
 
     private ContactPoint2D[] cp;
-    protected void OnTriggerEnter2D(Collider2D other) {
-        OnTargetEnter(other.gameObject, other.tag);
-            //var t = other.
-    }
 
     public abstract bool IsPositionInRange(Vector2 pos);
 
-    private void OnTriggerExit2D(Collider2D other) {
-        if (DiscoverableTagsList.Contains(other.tag)) {
-            OnTargetExit(other.name, name);
-        }
-    }
+    
 
     protected void Awake()
     {
@@ -74,11 +66,6 @@ public abstract class TagDetector : MonoBehaviour
             if (!String.IsNullOrEmpty(item)) {
                 DiscoverableTagsList.Add(item);
             }
-        }
-
-        if (DebugTargetByTag)
-        {
-            onTargetEnter += DebugTarget;
         }
     }
 }

@@ -3,7 +3,7 @@ using TMPro;
 
 public class StateDebug : MonoBehaviour
 {
-    UnitController uc;
+    
     private GenericUnitController gnc;
     TextMeshPro text;
     

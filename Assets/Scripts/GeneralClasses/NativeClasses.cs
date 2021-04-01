@@ -60,13 +60,11 @@ public class TowerComponentOrbitalControllerData
         get => _numOfOrbitals;
         set => _numOfOrbitals = value;
     }
-    public OrbitalWeaponGeneric orbitalGunPrefab;
 }
 
 [System.Serializable]
 public class TowerComponentUnitSpawnerData
 {
-    public PlayerUnitController playerUnitPrefab;
     public int maxUnits;
     public float playerUnitSpawnTime;
 }
@@ -190,12 +188,12 @@ public class TargetUnit
     }
     public float Proximity {get => GenericUnitController.PathWalker.ProximityToPathEnd;}
 
-    public TargetUnit(string targetName) {
+    public TargetUnit(int targetGameObjectID) {
         try
         {
-            GenericUnitController = GameObjectPool.Instance.ActiveUnits[targetName];
+            GenericUnitController = GameObjectPool.Instance.ActiveUnits[targetGameObjectID];
             
-            Effectable = GameObjectPool.Instance.ActiveEffectables.Pool[targetName];
+            Effectable = GameObjectPool.Instance.ActiveEffectables.Pool[targetGameObjectID];
             TargetTransform = transform;
         }
         catch(Exception e) {
@@ -360,58 +358,9 @@ public struct StringAndBool {
 
 
 
-[System.Serializable]
-public class Subwave {
-    public SubWavePackage Package;
-    [SerializeField]
-    public float StartupPauseSeconds;
-    public Subwave(SubWavePackage _subWavePackage, float _startupPauseSeconds) {
-        Package = _subWavePackage;
-        StartupPauseSeconds = _startupPauseSeconds;
-    }
-}
 
 public class PlayerUnitStateMachine {
     
-}
-
-[System.Serializable]
-public class Wave {
-    public Subwave[] Subwaves;
-    //PlaceHolder comment for effect on entire wave
-    public Wave(int _amountOfWaves) {
-        Subwaves = new Subwave[_amountOfWaves];
-    }
-}
-
-[System.Serializable]
-public class SubWavePackage {
-    [SerializeField]
-    public float _intervalBetweenSpawns;
-    public int _amountOfUnits;
-    public EnemyUnitController _unitPrefab;
-    public string _splineOrder;
-    public int _splinePosition;
-    public float _timeToSpawnEntireSubwave() {
-        return (_intervalBetweenSpawns * _amountOfUnits);
-    }
-    public SubWavePackage(float IntervalBetweenSpawns, int AmountOfUnits, EnemyUnitController UnitPrefab, string SplineOrder ) {
-        _intervalBetweenSpawns = IntervalBetweenSpawns;
-        _amountOfUnits = AmountOfUnits;
-        _unitPrefab = UnitPrefab;
-        _splineOrder = SplineOrder;
-        _splinePosition = -1;
-    }
-
-    public SubWavePackage(float IntervalBetweenSpawns, int AmountOfUnits, EnemyUnitController UnitPrefab, string SplineOrder, int SplinePosition ) {
-        _intervalBetweenSpawns = IntervalBetweenSpawns;
-        _amountOfUnits = AmountOfUnits;
-        _unitPrefab = UnitPrefab;
-        _splineOrder = SplineOrder;
-        _splinePosition = SplinePosition;
-    }
-
-
 }
 
 [System.Serializable]

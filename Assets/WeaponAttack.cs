@@ -39,10 +39,10 @@ public abstract class WeaponAttack : IHasEffects,IHasRangeComponents,IhasExitAnd
     
 
     public float rangeSize { get; set; }
-    public abstract List<TagDetector> GetTagDetectors();
+    public abstract List<CollisionDetector> GetTagDetectors();
 
 
-    public abstract void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors);
+    public abstract void UpdateRange(float RangeSizeDelta, List<CollisionDetector> detectors);
 
     public abstract List<ProjectileFinalPoint> GetFinalPoints();
     public abstract void SetInitialFinalPointPosition();

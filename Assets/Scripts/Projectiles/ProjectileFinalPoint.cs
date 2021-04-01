@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Threading.Tasks;
+using Sirenix.OdinInspector;
 
 public class ProjectileFinalPoint : MonoBehaviour
 {
-    WeaponController parentTowerComponent;
     private GenericWeaponController ParentWeaponController;
     public float rotationSpeed = 1;
     public Transform PositionTransform;
@@ -17,7 +17,8 @@ public class ProjectileFinalPoint : MonoBehaviour
         get => ParentWeaponController?.Target;
     }
     
-    public RangeDetector RangeDetector;
+    [Required]
+    public CollisionDetector RangeDetector;
     public EffectableTargetBank EffectableTargetBank;
     protected void Awake()
     {
@@ -47,13 +48,6 @@ public class ProjectileFinalPoint : MonoBehaviour
     }
     
     protected void Start() {
-        parentTowerComponent = transform.parent?.GetComponent<WeaponController>() ?? null;
-        RangeDetector = RangeDetector ?? GetComponentInChildren<RangeDetector>() ?? null;
-        if (parentTowerComponent != null)
-        {
-            UpdatePositionAccordingToRadius(parentTowerComponent.Data.componentRadius);
-        }
-
         ParentWeaponController = GetComponentInParent<GenericWeaponController>();
     }
     

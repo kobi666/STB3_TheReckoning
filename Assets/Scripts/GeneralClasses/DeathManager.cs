@@ -3,12 +3,12 @@ using System;
 
 public class DeathManager : MonoBehaviour
 {
-    public event Action<string> onUnitDeath;
+    public event Action<int> onUnitDeath;
     public event Action<string,string> onEnemyUnitDeath;
     public event Action<string,string> onPlayerUnitDeath;
 
-    public void OnUnitDeath(string unitName) {
-        onUnitDeath?.Invoke(unitName);
+    public void OnUnitDeath(int unitGameObjectID) {
+        onUnitDeath?.Invoke(unitGameObjectID);
     }
 
     public static DeathManager instance = null;
@@ -43,8 +43,7 @@ public class DeathManager : MonoBehaviour
 
     void Start()
     {
-        onPlayerUnitDeath += GameObjectPool.Instance.RemoveObjectFromAllPools;
-        onEnemyUnitDeath += GameObjectPool.Instance.RemoveObjectFromAllPools;
+        
     }
     
 }

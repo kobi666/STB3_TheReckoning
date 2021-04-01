@@ -17,8 +17,8 @@ public class UnitMovementController : MonoBehaviour
     {
         GenericUnitController.FlipDirection((Vector2)targetPos);
         
-        Rigidbody2D.MovePosition(Vector2.MoveTowards(UnitTransform.position, (Vector2)targetPos,
-        MovementSpeed * StaticObjects.DeltaGameTime));
+        transform.position = Vector2.MoveTowards(UnitTransform.position, (Vector2)targetPos,
+        MovementSpeed * StaticObjects.DeltaGameTime);
         /*UnitTransform.position = Vector2.MoveTowards(UnitTransform.position, (Vector2)targetPos,
         MovementSpeed * StaticObjects.DeltaGameTime);*/
     }

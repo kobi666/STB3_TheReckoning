@@ -18,8 +18,8 @@ public interface IHasEffectAnimation
 public interface IHasRangeComponents
 {
     float rangeSize { get; set; }
-    List<TagDetector> GetTagDetectors();
-    void UpdateRange(float RangeSizeDelta, List<TagDetector> detectorsToApplyChangeOn);
+    List<CollisionDetector> GetTagDetectors();
+    void UpdateRange(float RangeSizeDelta, List<CollisionDetector> detectorsToApplyChangeOn);
     
 }
 
@@ -34,18 +34,11 @@ public interface IhasExitAndFinalPoint
 }
 
 
-public interface ISpawnsPlayerUnits
-{
-    List<PlayerUnitPoolCreationData> Units { get; set; }
-    Dictionary<string, PoolObjectQueue<PlayerUnitController>> UnitPools { get; set; }
 
-    void InitPools();
-
-}
 
 public interface ITargeter
 {
-    event Action<string> onTargetSet;
+    event Action<int> onTargetSet;
 }
 
 

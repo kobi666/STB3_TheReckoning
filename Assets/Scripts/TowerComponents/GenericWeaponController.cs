@@ -128,8 +128,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         return q;
     }
     
-    
-    [ShowIf("debug")]
+    [Required]
     public EffectableTargetBank TargetBank;
 
     private ComponentRotator componentRotator = null;
@@ -221,7 +220,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     
     
     public void StandardOnTargetEnteredRange(GenericWeaponController self, Effectable ef) {
-        TargetUnit tu = GameObjectPool.Instance.GetTargetUnit(ef.name);
+        TargetUnit tu = GameObjectPool.Instance.GetTargetUnit(ef.GameObjectID);
         if (Target?.Effectable == null) {
             OnTargetAdd(tu);
             if (Autonomous)
@@ -241,10 +240,10 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         }
     }
 
-    public virtual void StandardOnTargetLeftRange(string targetName,string callerName) {
-        if (Target?.name == targetName)
+    public virtual void StandardOnTargetLeftRange(int targetGameObjectID,string callerName) {
+        if (Target.GenericUnitController?.GameObjectID == targetGameObjectID)
         {
-            Target = FindSingleTargetNearestToEndOfSpline(targetName);
+            Target = FindSingleTargetNearestToEndOfSpline(targetGameObjectID);
         }
         else
         {
@@ -276,20 +275,20 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         return tu;
     }
     
-    TargetUnit FindSingleTargetNearestToEndOfSpline(string formerTargetName) {
+    TargetUnit FindSingleTargetNearestToEndOfSpline(int formerTargetGameObjectID) {
         TargetUnit tu = null;
         float p = 999999.0f;
         foreach (var item in TargetBank.Targets)
         {
-            if (!GameObjectPool.Instance.ActiveUnitPool.Pool.ContainsKey(item.Key)) {
+            if (!GameObjectPool.Instance.ActiveUnits.ContainsKey(item.Key)) {
                 continue;
             }
 
-            if (item.Key == formerTargetName)
+            if (item.Key == formerTargetGameObjectID)
             {
                 continue;
             }
-            float tp = GameObjectPool.Instance.ActiveUnitPool.Pool[item.Key].Proximity;
+            float tp = GameObjectPool.Instance.ActiveUnits[item.Key].Proximity;
             if (tp < p) {
                 p = tp;
                 tu = GameObjectPool.Instance.GetTargetUnit(item.Key);
@@ -345,9 +344,9 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         }
 
     }
-    public event Action<string,string> onEnemyLeftRange;
-    public void OnEnemyLeftRange(string targetName,string callerName) {
-        onEnemyLeftRange?.Invoke(targetName ?? null, name ?? null);
+    public event Action<int,string> onEnemyLeftRange;
+    public void OnEnemyLeftRange(int gameObjectID) {
+        onEnemyLeftRange?.Invoke(gameObjectID, name);
     }
     
     [ShowInInspector]
@@ -356,7 +355,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         set {
             Data.targetUnit = value;
             GenericRotator.Target = value?.transform;
-            onTargetSet?.Invoke(Target?.name ?? string.Empty);
+            onTargetSet?.Invoke(Target?.GenericUnitController.GameObjectID ?? 0);
             if (value != null)
             {
                 TargetExists = true;
@@ -413,9 +412,9 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     }
 
 
-    void UpdateTargetState(string targetName, bool state)
+    void UpdateTargetState(int targetGameObjectID, bool state)
     {
-        if (targetName == Target?.name)
+        if (targetGameObjectID == Target.GenericUnitController?.GameObjectID)
         {
             if (state == false)
             {
@@ -446,13 +445,9 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
 
     
     protected void Start() {
-        TargetBank = TargetBank ?? GetComponent<EffectableTargetBank>();
-        if (TargetBank != null) {
-            TargetBank.onTargetAdd += OnEnemyEnteredRange;
-            TargetBank.onTargetRemove += OnEnemyLeftRange;
-            //TargetBank.onConcurrentProximityCheck += OnConcurrentTargetCheck;
-        }
-        
+        base.Start();
+        TargetBank.onTargetAdd += OnEnemyEnteredRange;
+        TargetBank.onTargetRemove += OnEnemyLeftRange;
         onAttackInitiate += StartAsyncAttack;
         onAttackCease += StopAsyncAttack;
         
@@ -461,7 +456,6 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         
         onEnemyEnteredRange += StandardOnTargetEnteredRange;
         onEnemyLeftRange += StandardOnTargetLeftRange;
-        RangeDetector = RangeDetector ?? GetComponentInChildren<TagDetector>();
         projectileExitPoint = GetComponentInChildren<ProjectileExitPoint>() ?? null;
         ProjectileFinalPoint = GetComponentInChildren<ProjectileFinalPoint>() ?? null;
         if (RotatingComponent) {
@@ -496,12 +490,12 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         WeaponAttack.UpdateEffect(ef,appliedEffects);
     }
 
-    public override List<TagDetector> GetTagDetectors()
+    public override List<CollisionDetector> GetTagDetectors()
     {
         return WeaponAttack.GetTagDetectors();
     }
 
-    public override void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors)
+    public override void UpdateRange(float RangeSizeDelta, List<CollisionDetector> detectors)
     {
         base.UpdateRange(RangeSizeDelta, detectors);
         WeaponAttack.UpdateRange(RangeSizeDelta,detectors);
@@ -547,5 +541,5 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         WeaponAttack.SetInitialExitPointPosition();
     }
 
-    public event Action<string> onTargetSet;
+    public event Action<int> onTargetSet;
 }

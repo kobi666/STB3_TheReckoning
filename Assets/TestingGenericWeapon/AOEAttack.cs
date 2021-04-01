@@ -56,7 +56,7 @@ public class AOEAttack : WeaponAttack
         }
     }
 
-    public override List<TagDetector> GetTagDetectors()
+    /*public override List<TagDetector> GetTagDetectors()
     {
         List<TagDetector> ltd = new List<TagDetector>();
         foreach (var aoeBehavior in AoeBehaviors)
@@ -68,9 +68,24 @@ public class AOEAttack : WeaponAttack
         }
 
         return ltd;
+    }*/
+
+
+    public override List<CollisionDetector> GetTagDetectors()
+    {
+        List<CollisionDetector> ds = new List<CollisionDetector>();
+        foreach (var aoeb in AoeBehaviors)
+        {
+            foreach (var aoec in aoeb.AoeControllers)
+            {
+                ds.Add(aoec.Detector);
+            }
+        }
+
+        return ds;
     }
 
-    public override void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors)
+    public override void UpdateRange(float RangeSizeDelta, List<CollisionDetector> detectors)
     {
         foreach (var detector in detectors)
         {
@@ -139,9 +154,9 @@ public class TriggerAOEOnce : AOEAttack
         }
     }
 
-    public override List<TagDetector> GetTagDetectors()
+    public override List<CollisionDetector> GetTagDetectors()
     {
-        List<TagDetector> ds = new List<TagDetector>();
+        List<CollisionDetector> ds = new List<CollisionDetector>();
         foreach (var aoeb in AoeBehaviors)
         {
             foreach (var aoec in aoeb.AoeControllers)
@@ -152,6 +167,8 @@ public class TriggerAOEOnce : AOEAttack
 
         return ds;
     }
+    
+    
 
     public override List<ProjectileFinalPoint> GetFinalPoints()
     {

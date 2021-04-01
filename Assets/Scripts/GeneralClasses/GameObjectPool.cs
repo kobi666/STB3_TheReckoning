@@ -3,13 +3,18 @@ using UnityEngine;
 using System;
 using Animancer;
 using MyBox;
+using Sirenix.OdinInspector;
 
 
 [DefaultExecutionOrder(-1)]
 public class GameObjectPool : MonoBehaviour
 {
+    [ShowInInspector]
+    public Dictionary<int,int> CollisionIDToGameObjectID = new Dictionary<int, int>();
+    
+    
+    
     public Dictionary<string, PoolObjectQueue<RangeDetector>> RangeDetectorObjectPoolQueue = new Dictionary<string, PoolObjectQueue<RangeDetector>>();
-    public Dictionary<string, PoolObjectQueue<EnemyUnitController>> EnemyUnitObjectPoolQueue = new Dictionary<string, PoolObjectQueue<EnemyUnitController>>();
     public Dictionary<string, PoolObjectQueue<PathDiscoveryPoint>> PathDiscoveryPointObjectPoolQueue = new Dictionary<string, PoolObjectQueue<PathDiscoveryPoint>>();
 
     public Dictionary<string, PoolObjectQueue<GenericProjectile>> GenericProjectilesObjectPoolQueue = new Dictionary<string, PoolObjectQueue<GenericProjectile>>();
@@ -19,13 +24,13 @@ public class GameObjectPool : MonoBehaviour
     public Dictionary<string,PoolObjectQueue<AreaEffect>> AreaEffectPoolQueue = new Dictionary<string, PoolObjectQueue<AreaEffect>>();
     public Dictionary<string,PoolObjectQueue<EffectAnimationController>> EffectAnimationPoolQueue = new Dictionary<string, PoolObjectQueue<EffectAnimationController>>();
 
-    public event Action<string> onUnitDisable;
-    public void OnUnitDisable(string unitName)
+    public event Action<int> onUnitDisable;
+    public void OnUnitDisable(int gameObjectID)
     {
-        if (ActiveUnits.ContainsKey(unitName))
+        if (ActiveUnits.ContainsKey(gameObjectID))
         {
-            ActiveUnits.Remove(unitName);
-            onUnitDisable?.Invoke(unitName);
+            ActiveUnits.Remove(gameObjectID);
+            onUnitDisable?.Invoke(gameObjectID);
         }
     }
     public event Action<string> onUnitEnable;
@@ -34,7 +39,7 @@ public class GameObjectPool : MonoBehaviour
     {
         /*try
         {*/
-            ActiveUnits.Add(unit.name,unit);
+            ActiveUnits.Add(unit.GameObjectID,unit);
         /*}
         catch (Exception e)
         {
@@ -44,34 +49,34 @@ public class GameObjectPool : MonoBehaviour
         onUnitEnable?.Invoke(unit.name);
     }
     
-    public Dictionary<string,GenericUnitController> ActiveUnits = new Dictionary<string, GenericUnitController>();
+    public Dictionary<int,GenericUnitController> ActiveUnits = new Dictionary<int, GenericUnitController>();
     
-    public List<string> Targetables = new List<string>();
+    public List<int> Targetables = new List<int>();
 
-    public event Action<string,bool> onTargetableUpdate;
+    public event Action<int,bool> onTargetableUpdate;
 
-    public void AddTargetable(string targetableName)
+    public void AddTargetable(int targetabelGameobjectID)
     {
-        if (!Targetables.Contains(targetableName))
+        if (!Targetables.Contains(targetabelGameobjectID))
         {
-            Targetables.Add(targetableName);
-            onTargetableUpdate?.Invoke(targetableName,true);
+            Targetables.Add(targetabelGameobjectID);
+            onTargetableUpdate?.Invoke(targetabelGameobjectID,true);
         }
     }
     
-    public void RemoveTargetable(string targetableName)
+    public void RemoveTargetable(int gameObjectID)
     {
-        if (Targetables.Contains(targetableName))
+        if (Targetables.Contains(gameObjectID))
         {
-            Targetables.Remove(targetableName);
-            onTargetableUpdate?.Invoke(targetableName,false);
+            Targetables.Remove(gameObjectID);
+            onTargetableUpdate?.Invoke(gameObjectID,false);
         }
     }
     
 
-    public event Action<string,string> onObjectDisable;
-    public void OnObjectDisable(string objectName) {
-        onObjectDisable?.Invoke(objectName,name);
+    public event Action<int> onObjectDisable;
+    public void OnObjectDisable(int gameObjectID) {
+        onObjectDisable?.Invoke(gameObjectID);
     }
     
     public Dictionary<string,GameObject> PlaceHoldersDict = new Dictionary<string, GameObject>();
@@ -157,21 +162,12 @@ public class GameObjectPool : MonoBehaviour
         }
     }
 
-    public PoolObjectQueue<EnemyUnitController> GetUnitQueue(EnemyUnitController prefab) {
-        if (EnemyUnitObjectPoolQueue.ContainsKey(prefab.name)) {
-            return EnemyUnitObjectPoolQueue[prefab.name];
-        }
-        else {
-            CreateNewObjectQueue<EnemyUnitController>(EnemyUnitObjectPoolQueue, prefab);
-            return EnemyUnitObjectPoolQueue[prefab.name];
-        }
-    }
-    public TargetUnit GetTargetUnit(string targetName) {
-        TargetUnit tu = new TargetUnit(targetName);
+    
+    public TargetUnit GetTargetUnit(int gameObjectID) {
+        TargetUnit tu = new TargetUnit(gameObjectID);
         return tu;
     }
-
-    public ActiveObjectPool<UnitController> ActiveUnitPool = new ActiveObjectPool<UnitController>();
+    
     
     public ActiveObjectPool<Effectable> ActiveEffectables = new ActiveObjectPool<Effectable>();
     public ActiveObjectPool<GenericProjectile> ActiveGenericProjectiles = new ActiveObjectPool<GenericProjectile>();
@@ -180,12 +176,11 @@ public class GameObjectPool : MonoBehaviour
     public ActiveObjectPool<PathDiscoveryPoint> ActivePathDiscoveryPoints = new ActiveObjectPool<PathDiscoveryPoint>();
     public ActiveObjectPool<SplinePathController> ActiveSplines = new ActiveObjectPool<SplinePathController>();
     
-    public void RemoveObjectFromAllPools(string objectName, string callerName) {
-        ActiveEffectables.RemoveObjectFromPool(objectName);
-        ActiveUnitPool.RemoveObjectFromPool(objectName);
-        ActiveGenericProjectiles.RemoveObjectFromPool(objectName);
-        ActiveGenericProjectiles.RemoveObjectFromPool(objectName);
-        OnObjectDisable(objectName);
+    public void RemoveObjectFromAllPools(int GameObjectID, string callerName) {
+        ActiveEffectables.RemoveObjectFromPool(GameObjectID);
+        ActiveGenericProjectiles.RemoveObjectFromPool(GameObjectID);
+        ActiveGenericProjectiles.RemoveObjectFromPool(GameObjectID);
+        OnObjectDisable(GameObjectID);
     }
 
 

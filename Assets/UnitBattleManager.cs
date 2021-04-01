@@ -68,7 +68,7 @@ public class UnitBattleManager : MonoBehaviour
     }
     public void StartFight()
     {
-        MeleeWeapon.Target = GameObjectPool.Instance.GetTargetUnit(TargetUnit.name);
+        MeleeWeapon.Target = GameObjectPool.Instance.GetTargetUnit(TargetUnit.GameObjectID);
         MeleeWeapon.InAttackState = true;
     }
 
@@ -91,9 +91,9 @@ public class UnitBattleManager : MonoBehaviour
     public AnimationClip OnAttackAnimation;
     public AnimationClip OnSpecialAttackAnimation;
 
-    void updateTargetState(string tname, bool state)
+    void updateTargetState(int gameObjectID, bool state)
     {
-        if (tname == TargetUnit?.name)
+        if (gameObjectID == TargetUnit?.GameObjectID)
         {
             if (state == false)
             {
@@ -108,9 +108,9 @@ public class UnitBattleManager : MonoBehaviour
     public event Action onAttackCease;
     public event Action onAttack;
 
-    void removeTarget(string targetName, string caller)
+    void removeTarget(int gameObjectID)
     {
-        if (TargetUnit?.name == targetName)
+        if (TargetUnit?.GameObjectID == gameObjectID)
         {
             TargetUnit = null;
         }
@@ -133,7 +133,7 @@ public class UnitBattleManager : MonoBehaviour
         
         FlipAttackArea(true);
         }
-        onFightStart += delegate { AoeController.OnSingleTargetSet(TargetUnit.name); };
+        onFightStart += delegate { AoeController.OnSingleTargetSet(TargetUnit.GameObjectID); };
         onFightStart += StartFight;
         
         onFightEnd += EndFight;

@@ -193,7 +193,6 @@
           </e>
         </e>
         <e p="BeamTowerControllerLegacy.cs" t="Include" />
-        <e p="BeamWeapon.cs" t="Include" />
         <e p="ComponentRotator.cs" t="Include" />
         <e p="ComponentSpriteController.cs" t="Include" />
         <e p="DistanceTester.cs" t="Include" />
@@ -207,7 +206,6 @@
         </e>
         <e p="Garbage" t="Include">
           <e p="OldStateMachine.cs" t="Include" />
-          <e p="TestPlayerUnitSpawner.cs" t="Include" />
           <e p="TestTowerControllerLegacy.cs" t="Include" />
           <e p="TestWeaponController.cs" t="Include" />
           <e p="TowerTestScript.cs" t="Include" />
@@ -1049,7 +1047,6 @@
         <e p="RallyPointDiscoveryGenerator.cs" t="Include" />
         <e p="RangeDrawer.cs" t="Include" />
         <e p="Samples" t="Include">
-          <e p="BasicEnemyMeleeUnit.cs" t="Include" />
           <e p="Input System" t="Include">
             <e p="1.0.0-preview.5" t="Include">
               <e p="Custom Binding Composite" t="Include">
@@ -1120,9 +1117,8 @@
             <e p="RoomBorder.cs" t="Include" />
             <e p="RoomController.cs" t="Include" />
             <e p="RoomManager.cs" t="Include" />
-            <e p="SplineSpawner.cs" t="Include" />
-            <e p="WaveManager.cs" t="Include" />
           </e>
+          <e p="MyGameObject.cs" t="Include" />
           <e p="parent1.cs" t="Include" />
           <e p="PlayerObjects" t="Include">
             <e p="CursorUtils.cs" t="Include" />
@@ -1161,7 +1157,6 @@
             <e p="DefaultEffectableUnit.cs" t="Include" />
             <e p="Effectable.cs" t="Include" />
             <e p="Effector.cs" t="Include" />
-            <e p="EnemyTargetBank.cs" t="Include" />
             <e p="ObjectDetectionUtils.cs" t="Include" />
             <e p="RangeDebug.cs" t="Include" />
             <e p="RangeDetector.cs" t="Include" />
@@ -1179,29 +1174,13 @@
             <e p="TestScript.cs" t="Include" />
           </e>
           <e p="TowerComponents" t="Include">
-            <e p="ArcingProjectileLauncherController.cs" t="Include" />
             <e p="GenericWeaponController.cs" t="Include" />
-            <e p="OrbitalGunsController.cs" t="Include" />
-            <e p="OrbitalGunsControllerGeneric.cs" t="Include" />
-            <e p="OrbitalWeapon.cs" t="Include" />
-            <e p="OrbitalWeaponGeneric.cs" t="Include" />
-            <e p="PlayerUnitRallyPoint.cs" t="Include" />
-            <e p="PlayerUnitSpawner.cs" t="Include" />
-            <e p="PlayerUnitSpawnerUtils.cs" t="Include" />
-            <e p="PlayerUnitSpawningPoint.cs" t="Include" />
             <e p="ProjectileAttack.cs" t="Include" />
             <e p="ProjectileMovementFunctions.cs" t="Include" />
-            <e p="TestOrbitalGun.cs" t="Include" />
-            <e p="TestOrbitalGunGeneric.cs" t="Include" />
-            <e p="TestOrbitalGunsController.cs" t="Include" />
-            <e p="TestOrbitalWeapon.cs" t="Include" />
             <e p="TowerComponentData.cs" t="Include" />
             <e p="UnitSpawnerTowerControllerLegacy.cs" t="Include" />
-            <e p="WeaponController.cs" t="Include" />
-            <e p="WeaponRotator.cs" t="Include" />
             <e p="Weapons" t="Include">
               <e p="BeamUtilities.cs" t="Include" />
-              <e p="TowerWeaponAttacks.cs" t="Include" />
             </e>
             <e p="WeaponUtils.cs" t="Include" />
           </e>
@@ -1209,7 +1188,6 @@
           <e p="Towers" t="Include">
             <e p="ArcingBombTowerControllerLegacy.cs" t="Include" />
             <e p="EmptyTowerSlot.cs" t="Include" />
-            <e p="OrbitalGunTowerControllerLegacy.cs" t="Include" />
             <e p="SlotController.cs" t="Include" />
             <e p="SlotParentManager.cs" t="Include" />
             <e p="Tower.cs" t="Include" />
@@ -1225,18 +1203,12 @@
             <e p="TowerSlotManager.cs" t="Include" />
             <e p="TowerUtils.cs" t="Include" />
           </e>
-          <e p="UnitController.cs" t="Include" />
           <e p="Units" t="Include">
-            <e p="BasicMeleePlayerUnit.cs" t="Include" />
             <e p="EffectableUnit.cs" t="Include" />
-            <e p="EnemyUnitController.cs" t="Include" />
             <e p="EnemyUnitUtils.cs" t="Include" />
             <e p="LifeBarmanager.cs" t="Include" />
             <e p="NormalUnitStates.cs" t="Include" />
             <e p="PlayerUnitAfterEffects.cs" t="Include" />
-            <e p="PlayerUnitController.cs" t="Include" />
-            <e p="PlayerUnitPoolCreationData.cs" t="Include" />
-            <e p="PlayerUnitUtils.cs" t="Include" />
             <e p="SpawningBehaviors.cs" t="Include" />
             <e p="StateDebug.cs" t="Include" />
             <e p="StateMachine.cs" t="Include" />

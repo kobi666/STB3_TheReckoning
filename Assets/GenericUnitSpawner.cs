@@ -12,7 +12,7 @@ public class GenericUnitSpawner : TowerComponent
     [ShowInInspector]
     public Dictionary<string,SplinePathController> PathSplines = new Dictionary<string, SplinePathController>();
 
-    private Dictionary<string,GenericUnitController> ManagedUnits = new Dictionary<string,GenericUnitController>();
+    private Dictionary<int,GenericUnitController> ManagedUnits = new Dictionary<int,GenericUnitController>();
     
 
     public bool MaxUnitsReached;
@@ -42,9 +42,9 @@ public class GenericUnitSpawner : TowerComponent
     }
     public void AddManagedUnit(GenericUnitController unit)
     {
-        if (!ManagedUnits.ContainsKey(unit.name))
+        if (!ManagedUnits.ContainsKey(unit.gameObjectID))
         {
-            ManagedUnits.Add(unit.name,unit);
+            ManagedUnits.Add(unit.gameObjectID,unit);
         }
 
         NumberOfManagedUnits = ManagedUnits.Count();
@@ -115,11 +115,11 @@ public class GenericUnitSpawner : TowerComponent
         PathPointFinder = GetComponent<PathPointFinder>();
     }
 
-    void RemoveUnitFromManagedUnits(string unitName)
+    void RemoveUnitFromManagedUnits(int GameObjectID)
     {
-        if (ManagedUnits.ContainsKey(unitName))
+        if (ManagedUnits.ContainsKey(GameObjectID))
         {
-            ManagedUnits.Remove(unitName);
+            ManagedUnits.Remove(GameObjectID);
         }
 
         NumberOfManagedUnits = ManagedUnits.Count();
@@ -153,9 +153,9 @@ public class GenericUnitSpawner : TowerComponent
         
     }
 
-    public override List<TagDetector> GetTagDetectors()
+    public override List<CollisionDetector> GetTagDetectors()
     {
-        List<TagDetector> ltd = new List<TagDetector>();
+        List<CollisionDetector> ltd = new List<CollisionDetector>();
         ltd.Add(RangeDetector);
         return ltd;
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class PathDiscoveryPoint : MonoBehaviour,IQueueable<PathDiscoveryPoint>,IActiveObject<PathDiscoveryPoint>,ITargetable
+public class PathDiscoveryPoint : MonoBehaviour,IQueueable<PathDiscoveryPoint>,IActiveObject<PathDiscoveryPoint>,ITargetable,IhasGameObjectID
 {
     public float Proximity;
     public Type QueueableType { get; set; }
@@ -28,7 +28,7 @@ public class PathDiscoveryPoint : MonoBehaviour,IQueueable<PathDiscoveryPoint>,I
     protected void OnDisable()
     {
         QueuePool?.ObjectQueue.Enqueue(this);
-        GameObjectPool.Instance.RemoveObjectFromAllPools(name,name);
+        GameObjectPool.Instance.RemoveObjectFromAllPools(gameObjectID,name);
     }
 
     protected void OnEnable()
@@ -39,6 +39,7 @@ public class PathDiscoveryPoint : MonoBehaviour,IQueueable<PathDiscoveryPoint>,I
     protected void Awake()
     {
         ActivePool = GameObjectPool.Instance.ActivePathDiscoveryPoints;
+        gameObjectID = IDGenerator.GetGameObjectID();
     }
 
 
@@ -55,4 +56,6 @@ public class PathDiscoveryPoint : MonoBehaviour,IQueueable<PathDiscoveryPoint>,I
     }
 
     public event Action<bool> onTargetableStateChange;
+    public int GameObjectID { get => gameObjectID; }
+    public int gameObjectID;
 }

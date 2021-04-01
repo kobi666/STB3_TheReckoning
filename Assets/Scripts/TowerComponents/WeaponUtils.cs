@@ -5,40 +5,17 @@ public class WeaponUtils
 {
     
 
-    public static void StandardOnTargetDeathCheck(WeaponController self) {
-        EnemyUnitController ec = self.EnemyTargetBank.FindSingleTargetNearestToEndOfSpline();
-        if (ec != null) {
-            self.Data.EnemyTarget = ec;
-            self.OnAttackInitiate();
-        }
-    }
-
     
 
-    public static IEnumerator TestAttack(WeaponController self, EnemyUnitController ec) {
-        while (self.Target != null )  {
-            while (ec?.IsTargetable() ?? false) {
-                Debug.DrawLine(self.ProjectileExitPoint, ec.transform.position);   
-                yield return new WaitForFixedUpdate();
-            }
-            yield return new WaitForFixedUpdate();
-        }
-    }
+    
 
     
 
     
 
-    public static IEnumerator RotateTowardsEnemyTargetUnit(Transform self, EnemyUnitController target, float rotationSpeed) {
-        Transform targetTransform = target.transform;
-        while (target?.IsTargetable() ?? false) {
-            Vector2 vecToTarget = targetTransform.position - self.position;
-            float angleToTarget = Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg;
-            Quaternion q = Quaternion.AngleAxis(angleToTarget, Vector3.forward);
-            self.rotation = Quaternion.Slerp(self.rotation, q, StaticObjects.DeltaGameTime * rotationSpeed);
-            yield return new WaitForFixedUpdate();
-        }
-    }
+    
+
+    
     
     
 

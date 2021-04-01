@@ -127,8 +127,8 @@ public class LaserTest2 : MonoBehaviour
     private void Start()
     {
         _targetBank.onTargetAdd += delegate(Effectable effectable) { Target = effectable;};
-        _targetBank.onTargetRemove += delegate(string s, string s1) {
-            if (Target.name == s)
+        _targetBank.onTargetRemove += delegate(int s) {
+            if (Target.GameObjectID == s)
             {
                 Target = null;
             } };

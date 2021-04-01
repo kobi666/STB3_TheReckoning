@@ -211,7 +211,7 @@ public class CompundAction : TowerAction
 [Serializable]
 public class UpdateRange : TowerAction
 {
-   private List<TagDetector> DetectorsToApplyOn;
+   private List<CollisionDetector> DetectorsToApplyOn;
    public float RangeUpdate = 0.5f;
    public override void InitActionSpecific(TowerSlotController tsc)
    {

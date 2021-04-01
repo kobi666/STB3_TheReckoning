@@ -181,10 +181,10 @@ public class PathPointFinder : MonoBehaviour
     {
         onPathFound?.Invoke();
     }
-    void AddPathSplines(GameObject go, string _tag)
+    void AddPathSplines(MyGameObject go, string _tag)
     {
         if (_tag == splineTag) {
-            if (GameObjectPool.Instance.ActiveSplines.Contains(go.name))
+            if (GameObjectPool.Instance.ActiveSplines.Contains(go.GameObjectID))
             {
                 if (OnlyTargetSpecificPaths)
                 {
@@ -197,14 +197,14 @@ public class PathPointFinder : MonoBehaviour
                         }
                     }
 
-                    if (!specificPathNames.Contains(GameObjectPool.Instance.ActiveSplines.Pool[go.name].parentPath.name))
+                    if (!specificPathNames.Contains(GameObjectPool.Instance.ActiveSplines.Pool[go.GameObjectID].parentPath.name))
                     {
                         return;
                     }
                 }
-                if (GameObjectPool.Instance.ActiveSplines.Pool[go.name].SplineType == SplineTypes.Main) {
+                if (GameObjectPool.Instance.ActiveSplines.Pool[go.GameObjectID].SplineType == SplineTypes.Main) {
                     {
-                            PathSplines.Add(go.name,GameObjectPool.Instance.ActiveSplines.Pool[go.name]);
+                            PathSplines.Add(go.name,GameObjectPool.Instance.ActiveSplines.Pool[go.GameObjectID]);
                             onPathFound?.Invoke();    
                         }
                 }

@@ -6,7 +6,7 @@ using MyBox;
 using Sirenix.OdinInspector;
 using UnityEngine.Serialization;
 
-public abstract class TowerComponent : MonoBehaviour, IHasEffects,IHasRangeComponents
+public abstract class TowerComponent : MyGameObject, IHasEffects,IHasRangeComponents
 {
     public bool Autonomous = true;
     public abstract void InitComponent();
@@ -62,15 +62,14 @@ public abstract class TowerComponent : MonoBehaviour, IHasEffects,IHasRangeCompo
         }
     }
     
-    
-    public EnemyTargetBank EnemyTargetBank {get ; private set;}
-    
-    public TagDetector RangeDetector;
+    [Required]
+    public CollisionDetector RangeDetector;
     
     [ConditionalField("debug")]
     public CircleCollider2D RangeCollider;    
     public abstract void PostAwake();
     protected void Awake() {
+        base.Awake();
         SR = GetComponent<SpriteRenderer>() ?? null;
         Animancer = GetComponent<AnimancerComponent>() ?? null;
         PostAwake();
@@ -80,7 +79,6 @@ public abstract class TowerComponent : MonoBehaviour, IHasEffects,IHasRangeCompo
 
     protected void Start()
     {
-        RangeDetector = RangeDetector ?? GetComponentInChildren<TagDetector>();
         parentTowerComponent = parentTowerComponent ?? GetComponentInParent<TowerComponent>() ?? null;
         ParentTowerLegacy =  ParentTowerLegacy ?? GetComponentInParent<TowerControllerLegacy>() ?? null;
         ParentTowerSlot = parentTowerSlot ?? GetComponentInParent<TowerSlotController>() ?? null;
@@ -95,9 +93,9 @@ public abstract class TowerComponent : MonoBehaviour, IHasEffects,IHasRangeCompo
     }
 
     public float rangeSize { get => Data.componentRadius; set => Data.componentRadius = value; }
-    public abstract List<TagDetector> GetTagDetectors();
+    public abstract List<CollisionDetector> GetTagDetectors();
 
-    public virtual void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors)
+    public virtual void UpdateRange(float RangeSizeDelta, List<CollisionDetector> detectors)
     {
         Data.componentRadius = Data.componentRadius += RangeSizeDelta;
     }

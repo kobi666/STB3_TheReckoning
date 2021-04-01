@@ -4,16 +4,7 @@ using System;
 
 public class TowerUtils : MonoBehaviour
 {
-    public static void AddOrbitalGun(OrbitalGunsControllerGeneric self, WeaponRotator rotator, OrbitalWeaponGeneric gunPrefab) {
-        OrbitalWeaponGeneric ow =  Instantiate(gunPrefab,self.transform.position,Quaternion.identity) as OrbitalWeaponGeneric;
-        ow.transform.parent = self.transform;
-        ow.OrbitBase = self.transform;
-        ow.Rotator = rotator;
-        ow.parentTowerComponent = self;
-        ow.name = gunPrefab.name + UnityEngine.Random.Range(10,100000);
-        self.OrbitalGuns.Add(ow);
-        rotator.AddOrbital(ow);
-    }
+    
 
     public static TowerSlotActions DefaultSlotActions = new TowerSlotActions(null,null,null,null);
 

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 5907068859232098817}
   - component: {fileID: 5907068859232098830}
   - component: {fileID: 968862066791140733}
+  - component: {fileID: 8211369420494925144}
+  - component: {fileID: 1336342848312063452}
   m_Layer: 0
   m_Name: GenericProjectile
   m_TagString: Untagged
@@ -51,6 +53,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -99,8 +102,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a30b8e0c78c18da409628c632f0b5c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjectID: 0
+  EffectAnimationController: {fileID: 0}
+  OnHitAnimation: {fileID: 0}
   BaseProjectileEffect:
     id: 0
+  CollisionDetector: {fileID: 0}
+  DetectableCollider: {fileID: 0}
   MovementFunction:
     id: 0
   DiscoverableTags:
@@ -117,7 +125,6 @@ MonoBehaviour:
     TargetBank: {fileID: 0}
     RangeDetector: {fileID: 0}
   SpriteRenderer: {fileID: 0}
-  OnHitAnimation: {fileID: 0}
   targetPositionSet: 0
   references:
     version: 1
@@ -161,6 +168,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DiscoverableTags: []
+  parentMyGameObject: {fileID: 0}
+  HasTargets: 0
+  HasTargetableTargets: 0
   Detector: {fileID: 1632278185229698451}
 --- !u!50 &968862066791140733
 Rigidbody2D:
@@ -183,6 +194,44 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8211369420494925144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907068859232098831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caa475697a7ed9543a6259f255d9d087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentMyGameObject: {fileID: 5907068859232098816}
+  BoxColor: {r: 1, g: 1, b: 1, a: 1}
+  CollisionID: 0
+  BoxCollider2D: {fileID: 0}
+  CollisionTagInt: 0
+  CollisionTagsICanDetectInt: 0
+  tagsICanDetect: 00000000
+--- !u!114 &1336342848312063452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907068859232098831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71663229fcfdcae4c96e17b4b4a97bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentMyGameObject: {fileID: 5907068859232098816}
+  BoxColor: {r: 1, g: 1, b: 1, a: 1}
+  CollisionID: 0
+  BoxCollider2D: {fileID: 0}
+  CollisionTagInt: 0
+  CollisionTagsICanDetectInt: 0
+  collisionTag: 1
 --- !u!1001 &5907068860683543060
 PrefabInstance:
   m_ObjectHideFlags: 0

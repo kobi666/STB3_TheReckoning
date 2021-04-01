@@ -11,7 +11,7 @@ namespace UnitBehaviors
     {
         public override void Behavior()
         {
-            DeathManager.Instance.OnUnitDeath(UnitObject.name);
+            DeathManager.Instance.OnUnitDeath(UnitObject.GameObjectID);
         }
 
         public override void InitBehavior()
@@ -82,7 +82,7 @@ namespace UnitBehaviors
 
     public class WaitForEnemiesToEnterRange : UnitConcurrentBehavior
     {
-        public TagDetector Detector;
+        public CollisionDetector Detector;
         
         private bool TargetableInRange;
         public override void Behavior()
@@ -92,7 +92,7 @@ namespace UnitBehaviors
 
         public override void InitBehavior()
         {
-            Detector = Detector ?? UnitObject.RangeDetector;
+            Detector = Detector ?? UnitObject.CollisionDetector;
         }
 
         public override bool ExecCondition()
@@ -251,9 +251,9 @@ namespace UnitBehaviors
         public EffectableTargetBank AttackAreaTargetbank;
         private UnitMovementController UnitMovementController;
 
-        private string targetname
+        private int targetGameObjectID
         {
-            get => UnitBattleManager.TargetUnit.name;
+            get => UnitBattleManager.TargetUnit.GameObjectID;
         }
         public override void Behavior()
         {
@@ -269,7 +269,7 @@ namespace UnitBehaviors
         {
             if (UnitBattleManager.targetExists)
             {
-                if (AttackAreaTargetbank.Targets.ContainsKey(targetname))
+                if (AttackAreaTargetbank.Targets.ContainsKey(targetGameObjectID))
                 {
                     return false;
                 }
@@ -358,7 +358,7 @@ namespace UnitBehaviors
             if (UnitBattleManager.targetExists)
             {
                 if (AttackAreaTargetBank.Targets.ContainsKey(UnitObject.UnitBattleManager
-                    .TargetUnit.name))
+                    .TargetUnit.GameObjectID))
                 {
                     return true;
                 }

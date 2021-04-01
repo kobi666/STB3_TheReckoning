@@ -80,14 +80,14 @@ public class ProjectileAttack : WeaponAttack
         Debug.LogWarning("Redundent");
     }
 
-    public override List<TagDetector> GetTagDetectors()
+    public override List<CollisionDetector> GetTagDetectors()
     {
-        List<TagDetector> lr = new List<TagDetector>();
+        List<CollisionDetector> lr = new List<CollisionDetector>();
         lr.Add(parentWeaponController.RangeDetector);
         return lr;
     }
 
-    public override void UpdateRange(float RangeSizeDelta, List<TagDetector> detectors)
+    public override void UpdateRange(float RangeSizeDelta, List<CollisionDetector> detectors)
     {
         float s = parentWeaponController.RangeDetector.GetSize() + RangeSizeDelta;
         parentWeaponController.RangeDetector.UpdateSize(s);

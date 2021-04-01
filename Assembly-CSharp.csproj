@@ -70,6 +70,7 @@
      <Compile Include="Assets\Scripts\Towers\TowerSlotController.cs" />
      <Compile Include="Assets\PathController.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider3DBox.cs" />
+     <Compile Include="Assets\Scripts\MyGameObject.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Spline\Objects\BezierCurves.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurveReferenceToPoint.cs" />
      <Compile Include="Assets\Scripts\Projectiles\UnitWaveClasses.cs" />
@@ -88,10 +89,12 @@
      <Compile Include="Assets\Scripts\TowerComponents\GenericWeaponController.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\GO_PRXM.cs" />
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\CapInfo.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\UnitMover.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\TextColor.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\ProjectileMovementFunctions.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurveFormulaMath.cs" />
      <Compile Include="Assets\Scripts\Towers\TowerAction.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\DetectionTags.cs" />
      <Compile Include="Assets\TestingGenericWeapon\AOEEffect.cs" />
      <Compile Include="Assets\VDtest.cs" />
      <Compile Include="Assets\Scripts\Units\SpawningBehaviors.cs" />
@@ -99,7 +102,6 @@
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurveCalculatorClosestPoint.cs" />
      <Compile Include="Assets\Garbage\WeaponUpdates.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Explosion.cs" />
-     <Compile Include="Assets\Scripts\Units\PlayerUnitPoolCreationData.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Examples\Scripts\BGTestCurveMath.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\TowerComponentData.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\NativeClasses.cs" />
@@ -111,22 +113,19 @@
      <Compile Include="Assets\Scripts\TestScripts\TestInput.cs" />
      <Compile Include="Assets\SpawnerBehavior.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\PlayerData.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\CollidingObject.cs" />
      <Compile Include="Assets\EnumeratorPlaceHolder.cs" />
      <Compile Include="Assets\Scripts\Units\UnitPoolCreationData.cs" />
      <Compile Include="Assets\RallyPointDiscoveryGenerator.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\PlayerUnitSpawner.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\ColliderButton\Utilities\ColliderButtonSelector.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\OrbitalWeapon.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\OrbitalGunsControllerGeneric.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\RawImageColor.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\Rotate.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\WeaponTypes.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\TowerCrosshairManager.cs" />
-     <Compile Include="Assets\Scripts\Units\BasicMeleePlayerUnit.cs" />
      <Compile Include="Assets\Scripts\SplineStuff\SplineEffect.cs" />
-     <Compile Include="Assets\BeamWeapon.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\IDGenerator.cs" />
      <Compile Include="Assets\Scripts\Updateable.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\WeaponRotator.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\GWCS.cs" />
      <Compile Include="Assets\Scripts\Levels-rooms\RoomController.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurveBaseMath.cs" />
      <Compile Include="Assets\Scripts\testInterface.cs" />
@@ -142,7 +141,6 @@
      <Compile Include="Assets\Scripts\Units\UnitMovementController.cs" />
      <Compile Include="Assets\PathDiscoveryTargetBank.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\PanStereo.cs" />
-     <Compile Include="Assets\Samples\BasicEnemyMeleeUnit.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurvePointGO.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Utilities\Initialization.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\AnimationController.cs" />
@@ -164,13 +162,9 @@
      <Compile Include="Assets\Scripts\PlayerObjects\SelectorTest2.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurvePointComponent.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcSplitterPolyline.cs" />
-     <Compile Include="Assets\Scripts\Levels-rooms\SplineSpawner.cs" />
      <Compile Include="Assets\Scripts\TestScripts\TestScript.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Examples\Scripts\BGTestCurveDynamic.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\ValueFloat.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\ArcingProjectileLauncherController.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\TestOrbitalGunsController.cs" />
-     <Compile Include="Assets\Garbage\TestPlayerUnitSpawner.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\SplinePercentage.cs" />
      <Compile Include="Assets\GenericStateMachine.cs" />
      <Compile Include="Assets\UnitBattleManager.cs" />
@@ -184,7 +178,6 @@
      <Compile Include="Assets\Scripts\PlayerObjects\GenericStateMachine\UnitBehaviors\UnitBehaviors.cs" />
      <Compile Include="Assets\Scripts\Towers\TowerLocationManager.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Examples\Scripts\BGTestMainMenu.cs" />
-     <Compile Include="Assets\Scripts\Towers\OrbitalGunTowerControllerLegacy.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Examples\Scripts\BGTestCurveClosestPoint.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\StateMachine\State.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\DefaultEffectableUnit.cs" />
@@ -217,11 +210,9 @@
      <Compile Include="Assets\Pixelplacement\Surge\ColliderButton\ColliderButton.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\AnchoredPosition.cs" />
      <Compile Include="Assets\Scripts\Levels-rooms\RoomManager.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\TestOrbitalGunGeneric.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\Helpers\TweenUtilities.cs" />
      <Compile Include="Assets\Scripts\ProjectilePoolCreationData.cs" />
      <Compile Include="Assets\instantiateTest.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\PlayerUnitSpawnerUtils.cs" />
      <Compile Include="Assets\Scripts\Towers\SlotController.cs" />
      <Compile Include="Assets\Scripts\ExtensionMethods\ExtensionMethods.cs" />
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\VectorObject2D.cs" />
@@ -246,8 +237,6 @@
      <Compile Include="Assets\Scripts\GeneralClasses\DeathManager.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Utilities\Math.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\StaticObjects.cs" />
-     <Compile Include="Assets\Scripts\RangeDetection\EnemyTargetBank.cs" />
-     <Compile Include="Assets\Scripts\Units\PlayerUnitUtils.cs" />
      <Compile Include="Assets\Scripts\Towers\EmptyTowerSlot.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\FieldOfView.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\NativeInterfaces.cs" />
@@ -257,17 +246,15 @@
      <Compile Include="Assets\Scripts\TowerComponents\Weapons\BeamUtilities.cs" />
      <Compile Include="Assets\Scripts\Units\UnitLife.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\ValueVector3.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\WeaponController.cs" />
      <Compile Include="Assets\Scripts\Towers\TowerSlotManager.cs" />
      <Compile Include="Assets\ComponentSpriteController.cs" />
      <Compile Include="Assets\LaserWeaponTest.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcCursor.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\Effector.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\InGameObjectManager.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\OrbitalGunsController.cs" />
      <Compile Include="Assets\Scripts\Projectiles\AreaOfEffectController.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcCursorObjectScale.cs" />
-     <Compile Include="Assets\Scripts\UnitController.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\TestMover.cs" />
      <Compile Include="Assets\Scripts\interfaces\WeaponInterfaces.cs" />
      <Compile Include="Assets\Scripts\Units\EnemyUnitUtils.cs" />
      <Compile Include="Assets\ACT.cs" />
@@ -293,10 +280,8 @@
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\VectorUtilities.cs" />
      <Compile Include="Assets\PathDiscoveryPoint.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurveFormulas.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\OrbitalWeaponGeneric.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Examples\Scripts\BGTestPerformance.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\MethodDropDown.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\PlayerUnitRallyPoint.cs" />
      <Compile Include="Assets\testwalker.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcWithCursor.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\RangeDetector.cs" />
@@ -325,14 +310,13 @@
      <Compile Include="Assets\Scripts\Levels-rooms\LevelManager.cs" />
      <Compile Include="Assets\PlayerResources.cs" />
      <Compile Include="Assets\PathDiscoveryWalker.cs" />
-     <Compile Include="Assets\Scripts\Units\EnemyUnitController.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Examples\Scripts\BGSceneLoader.cs" />
      <Compile Include="Assets\Scripts\Units\UnitAnimationController.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcColliderMeshAbstract.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurve.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\Weapons\TowerWeaponAttacks.cs" />
      <Compile Include="Assets\SplineDetector.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\ValueColor.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\DetectableCollider.cs" />
      <Compile Include="Assets\Samples\TowerComponent.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\PoolObjectQueue.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider3DMesh.cs" />
@@ -360,7 +344,6 @@
      <Compile Include="Assets\Scripts\Towers\TowerController.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\PlayerControllerUtilis.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\Rotator.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\PlayerUnitSpawningPoint.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\Helpers\TweenEngine.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\CanvasGroupAlpha.cs" />
      <Compile Include="Assets\Scripts\TowerPlacementItem.cs" />
@@ -372,7 +355,7 @@
      <Compile Include="Assets\Pixelplacement\Surge\Spline\Utilities\SplineRenderer.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Examples\Scripts\BGTestCcChangeCursorLinear.cs" />
      <Compile Include="Assets\TestingGenericWeapon\SplineDynamicData.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\TestOrbitalWeapon.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\CollisionDetector.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider2DBox.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Examples\Scripts\BGTestCamera.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Examples\Scripts\BGPointControlAnimator2D.cs" />
@@ -380,7 +363,6 @@
      <Compile Include="Assets\Prefabs\TargetDetection\TagDetector.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\StateMachine\StateMachine.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\SpriteRendererColor.cs" />
-     <Compile Include="Assets\Scripts\Units\PlayerUnitController.cs" />
      <Compile Include="Assets\PathWalker.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\DebugText.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\GenericStateMachine\UnitStateMachine.cs" />
@@ -395,7 +377,6 @@
      <Compile Include="Assets\instantiateTestspawner.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Events\Events.cs" />
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\VisibilityControl.cs" />
-     <Compile Include="Assets\Scripts\Levels-rooms\WaveManager.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\SerializedFunc.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Spline\Objects\CurveDetail.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\UnitSpawnerTowerControllerLegacy.cs" />
@@ -404,21 +385,12 @@
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\LightRange.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Utilities\EditorUtilities.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\PerksAndNerfs.cs" />
-     <Compile Include="Assets\Scripts\TowerComponents\TestOrbitalGun.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\LocalRotation.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider3DAbstract.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Chooser\Interfaces\IChooser.cs" />
      <Compile Include="Assets\Scripts\Towers\SlotParentManager.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider2DEdge.cs" />
      <Compile Include="Assets\Prefabs\ProjectileDynamicData.cs" />
-     <Compile Include="Assets\Scripts\CollisionDetection\CollisionDetector.cs" />
-     <Compile Include="Assets\Scripts\CollisionDetection\DetectionTags.cs" />
-     <Compile Include="Assets\Scripts\CollisionDetection\GWCS.cs" />
-     <Compile Include="Assets\Scripts\CollisionDetection\TestMover.cs" />
-     <Compile Include="Assets\Scripts\CollisionDetection\IDGenerator.cs" />
-     <Compile Include="Assets\Scripts\CollisionDetection\UnitMover.cs" />
-     <Compile Include="Assets\Scripts\CollisionDetection\CollidingObject.cs" />
-     <Compile Include="Assets\Scripts\CollisionDetection\DetectableCollider.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\BansheeGz\BGCollider\readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -666,8 +638,14 @@
  <Reference Include="UnityEditor.UnityConnectModule">
  <HintPath>C:/UnityEditors/2020.3.0f1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Collections.LowLevel.ILSupport">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.collections@0.15.0-preview.21/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+ </Reference>
  <Reference Include="Sirenix.OdinInspector.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Burst.Unsafe">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.burst@1.4.1/Unity.Burst.Unsafe.dll</HintPath>
  </Reference>
  <Reference Include="Sirenix.OdinInspector.Attributes">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
@@ -684,20 +662,14 @@
  <Reference Include="Animancer.Lite">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Animancer/Internal/Core/Animancer.Lite.dll</HintPath>
  </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0-preview/Runtime/Newtonsoft.Json.dll</HintPath>
+ </Reference>
  <Reference Include="Sirenix.Serialization">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
  </Reference>
  <Reference Include="Sirenix.Utilities.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Burst.Unsafe">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.burst@1.4.1/Unity.Burst.Unsafe.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Collections.LowLevel.ILSupport">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.collections@0.15.0-preview.21/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll</HintPath>
- </Reference>
- <Reference Include="Newtonsoft.Json">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0-preview/Runtime/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/UnityEditors/2020.3.0f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -1071,6 +1043,10 @@
       <Project>{ab2a6646-2b48-3e6e-06dd-03f6e404f665}</Project>
       <Name>Unity.VSCode.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="com.unity.quicksearch.csproj">
+      <Project>{07ee602f-7dfb-e99a-0a1a-0db8e0bd1834}</Project>
+      <Name>com.unity.quicksearch</Name>
+    </ProjectReference>
     <ProjectReference Include="PsdPlugin.csproj">
       <Project>{2ef066bb-3eaf-203f-89b1-ab70b6c44444}</Project>
       <Name>PsdPlugin</Name>
@@ -1095,6 +1071,10 @@
       <Project>{5a09e247-dcad-a0fc-ebce-7b776dbf0c1c}</Project>
       <Name>Unity.TextMeshPro</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Burst.Editor.csproj">
+      <Project>{caf1a170-1cf3-4d78-59f2-24f447eb07fd}</Project>
+      <Name>Unity.Burst.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.2D.IK.Editor.csproj">
       <Project>{bd459538-6fb9-4e36-04b3-d0b2a9cfbc39}</Project>
       <Name>Unity.2D.IK.Editor</Name>
@@ -1118,6 +1098,10 @@
     <ProjectReference Include="Unity.Rider.Editor.csproj">
       <Project>{635894d9-bcb2-edee-0264-530e751d2f71}</Project>
       <Name>Unity.Rider.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Jobs.Editor.csproj">
+      <Project>{079c09e1-ffa3-b7bc-197b-13b449b1e611}</Project>
+      <Name>Unity.Jobs.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.Modules.UnityMathematics.csproj">
       <Project>{f5e8b68c-a276-5883-3300-b9a0a74e665e}</Project>
@@ -1147,6 +1131,14 @@
       <Project>{3a10130d-ca5b-fb61-a173-c43809519df6}</Project>
       <Name>InputSystem.Samples.Visualizers</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Burst.csproj">
+      <Project>{faca3a78-ecf2-cc35-051e-99581519dad7}</Project>
+      <Name>Unity.Burst</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Jobs.csproj">
+      <Project>{1132f4fd-c733-73c8-c7e7-1dd1d15569f1}</Project>
+      <Name>Unity.Jobs</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.2D.Animation.Triangle.Runtime.csproj">
       <Project>{94fa2ec3-d91f-8489-d189-2e7ac41f5170}</Project>
       <Name>Unity.2D.Animation.Triangle.Runtime</Name>
@@ -1171,6 +1163,10 @@
       <Project>{7931194a-1193-8824-0a15-7c603ed6ef67}</Project>
       <Name>Unity.2D.Common.Runtime</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Collections.csproj">
+      <Project>{2fda38ac-2328-da0b-2ca5-ab6c817cf260}</Project>
+      <Name>Unity.Collections</Name>
+    </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
       <Project>{98d1b84c-946c-21be-173a-4f536c124f96}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
@@ -1178,30 +1174,6 @@
     <ProjectReference Include="Unity.2D.Common.Editor.csproj">
       <Project>{fac1fd9c-efbc-428e-9d1b-a6a266baa961}</Project>
       <Name>Unity.2D.Common.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Collections.csproj">
-      <Project>{2fda38ac-2328-da0b-2ca5-ab6c817cf260}</Project>
-      <Name>Unity.Collections</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Jobs.Editor.csproj">
-      <Project>{079c09e1-ffa3-b7bc-197b-13b449b1e611}</Project>
-      <Name>Unity.Jobs.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Burst.Editor.csproj">
-      <Project>{caf1a170-1cf3-4d78-59f2-24f447eb07fd}</Project>
-      <Name>Unity.Burst.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Burst.csproj">
-      <Project>{faca3a78-ecf2-cc35-051e-99581519dad7}</Project>
-      <Name>Unity.Burst</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Jobs.csproj">
-      <Project>{1132f4fd-c733-73c8-c7e7-1dd1d15569f1}</Project>
-      <Name>Unity.Jobs</Name>
-    </ProjectReference>
-    <ProjectReference Include="com.unity.quicksearch.csproj">
-      <Project>{07ee602f-7dfb-e99a-0a1a-0db8e0bd1834}</Project>
-      <Name>com.unity.quicksearch</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

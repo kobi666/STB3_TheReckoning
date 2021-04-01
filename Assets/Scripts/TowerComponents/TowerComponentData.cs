@@ -15,35 +15,4 @@ public class TowerComponentData
     public DamageRange damageRange;
     public float fireRate;
 
-    [SerializeField]
-    EnemyUnitController enemyTarget;
-    
-    [SerializeField]
-    public EnemyUnitController EnemyTarget {
-        get { if (enemyTarget?.IsTargetable() ?? false) 
-            {
-                return enemyTarget;
-            }
-            else
-            {
-                return null;
-            }
-}
-        set {
-            enemyTarget = value;
-        }
-    }
-
-
-    
-    [SerializeField]
-    PlayerUnitController playerTarget;
-
-    public PlayerUnitController PlayerTarget {
-        get => playerTarget;
-        set {
-            playerTarget = value;
-        }
-    }
-    
 }

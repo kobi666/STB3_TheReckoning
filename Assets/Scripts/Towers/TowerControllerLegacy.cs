@@ -24,8 +24,7 @@ public abstract class TowerControllerLegacy : MonoBehaviour,ITypeTag
     public Dictionary<Vector2, TowerPositionData> TowerSlotsByDirections8 = new Dictionary<Vector2, TowerPositionData>();
     public DebugTowerPositionData[] TowersDebug = new DebugTowerPositionData[8];
 
-    [ConditionalField("debug")]
-    public OrbitalGunsController OrbitalGunsController;
+    
     [SerializeField]
     private TowerSlotController parentSlotController;
     public TowerSlotController ParentSlotController {
@@ -55,7 +54,6 @@ public abstract class TowerControllerLegacy : MonoBehaviour,ITypeTag
         TowerActions.ButtonSouth.ExecutionCondition = new Predicate<TowerComponent>(SouthExecutionCondition);
         TowerActions.ButtonWest.ExecutionCondition = new Predicate<TowerComponent>(WestExecutionCondition);
         PostStart();
-        OrbitalGunsController = GetComponentInChildren<OrbitalGunsController>();
     }
 
     protected void Awake()

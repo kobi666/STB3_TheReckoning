@@ -2,35 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActiveObjectPool<T> where T : Component,IActiveObject<T>
+public class ActiveObjectPool<T> where T : IhasGameObjectID,IActiveObject<T>
 {
 
-    public bool Contains(string objectName)
+    public bool Contains(int GameObjectID)
     {
-        return Pool.ContainsKey(objectName);
+        return Pool.ContainsKey(GameObjectID);
     }
     
-    Dictionary<string, T> pool = new Dictionary<string, T>();
-    public Dictionary<string,T> Pool {
+    Dictionary<int, T> pool = new Dictionary<int, T>();
+    public Dictionary<int,T> Pool {
         get => pool;
         
     }
 
     public void AddObjectToActiveObjectPool(T t) {
-        if (!Pool.ContainsKey(t.name)) {
-            Pool.Add(t.name, t);
-            onObjectAdded?.Invoke(t.name);
+        if (!Pool.ContainsKey(t.GameObjectID)) {
+            Pool.Add(t.GameObjectID, t);
+            onObjectAdded?.Invoke(t.GameObjectID);
         }
         
     }
 
-    public event Action<string> onObjectDisabled;
-    public event Action<string> onObjectAdded;
+    public event Action<int> onObjectDisabled;
+    public event Action<int> onObjectAdded;
 
-    public void RemoveObjectFromPool(string objectName) {
-        if (Pool.ContainsKey(objectName)) {
-            Pool.Remove(objectName);
-            onObjectDisabled?.Invoke(objectName);
+    public void RemoveObjectFromPool(int gameObjectID) {
+        if (Pool.ContainsKey(gameObjectID)) {
+            Pool.Remove(gameObjectID);
+            onObjectDisabled?.Invoke(gameObjectID);
         }
     }
 

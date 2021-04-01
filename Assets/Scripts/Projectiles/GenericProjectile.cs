@@ -5,13 +5,16 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEditor;
 
-public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IActiveObject<GenericProjectile>,IHasEffectAnimation
+[RequireComponent(typeof(CollisionDetector)),RequireComponent(typeof(DetectableCollider))]
+public class GenericProjectile : MyGameObject,IQueueable<GenericProjectile>,IActiveObject<GenericProjectile>,IHasEffectAnimation
 {
-
     public EffectAnimationController EffectAnimationController;
     public AnimationClip OnHitAnimation;
     [SerializeReference]
     public ProjectileEffect BaseProjectileEffect;
+
+    public CollisionDetector CollisionDetector;
+    public DetectableCollider DetectableCollider;
 
     [SerializeReference] public ProjectileMovementFunction MovementFunction;
     private ProjectileDynamicData DynamicData = new ProjectileDynamicData();
@@ -21,9 +24,8 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
     }
     private int hitCounter;
     private bool projectileInitlized = false;
-    private Collider2D selfCollider;
     
-    
+
 #if UNITY_EDITOR
     [TagSelectorAttribute]
 # endif
@@ -65,9 +67,9 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
     private float MaxLifeTimeCounter = 0;
     public event Action onHitCounterZero;
 
-    private RangeDetector rangeDetector
+    private CollisionDetector rangeDetector
     {
-        get => EffectableTargetBank.Detector as RangeDetector;
+        get => EffectableTargetBank.Detector;
         set => effectableTargetBank.Detector = value;
     }
     private EffectableTargetBank effectableTargetBank;
@@ -84,20 +86,7 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
         }
         set => effectableTargetBank = value;
     }
-
-    public RangeDetector RangeDetector
-    {
-        get
-        {
-            if (rangeDetector == null)
-            {
-                rangeDetector = GetComponentInChildren<RangeDetector>();
-            }
-
-            return rangeDetector;
-        }
-        set => rangeDetector = value;
-    }
+    
     public void OnHitCounterZero() {
         onHitCounterZero?.Invoke();
     }
@@ -122,45 +111,6 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
     public void OnMaxLifeTimeReached()
     {
         onMaxLifeTimeReached.Invoke();
-    }
-
-
-    public void OnTriggerEnter2D(Collider2D other) {
-        if (DiscoverableTagsList.Contains(other.tag))
-        {
-            if (BaseProjectileEffect.TriggersOnCollision)
-            {
-                if (BaseProjectileEffect.TriggersOnSpecificTarget)
-                {
-                    if (EffectableTarget != null) {
-                        if (EffectableTarget?.name == other.name)
-                        {
-                            string n = EffectableTarget.name;
-                            if (ActiveTargets?.ContainsKey(n) ?? false)
-                            {
-                                if (ActiveTargets[n].IsTargetable())
-                                    OnTargetHit(ActiveTargets[n],ActiveTargets[n]?.transform.position ?? transform.position);
-                                hitCounter -= 1;
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    if (GameObjectPool.Instance.ActiveEffectables?.Pool.ContainsKey(other.name) ?? false)
-                    {
-                        if (!TargetExclusionList.Contains(other.name)) 
-                        {
-                            if (ActiveTargets[other.name].IsTargetable()) 
-                            {
-                                OnTargetHit(ActiveTargets[other.name],ActiveTargets[other.name]?.transform.position ?? transform.position );
-                            }
-                        }
-                    }
-
-                }
-            }
-        }
     }
 
     void ReduceHitCounterAndInvokeOnHitCounterZero(Effectable ef,Vector2 targetPos)
@@ -195,7 +145,7 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
 
     public SpriteRenderer SpriteRenderer;
 
-    public Dictionary<string,Effectable> ActiveTargets => GameObjectPool.Instance.ActiveEffectables.Pool;
+    public Dictionary<int,Effectable> ActiveTargets => GameObjectPool.Instance.ActiveEffectables.Pool;
     ActiveObjectPool<GenericProjectile> activePool;
     public ActiveObjectPool<GenericProjectile> ActivePool { get => activePool; set { activePool = value;}}
     string TypeTag = "Projectile";
@@ -248,6 +198,45 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
         foreach (var eac in EffectAnimationControllers)
         {
             eac.PlayOnceAtPosition(pos);
+        }
+    }
+    
+    
+    public void OnTargetEnter(MyGameObject other) {
+        if (DiscoverableTagsList.Contains(other.tag))
+        {
+            if (BaseProjectileEffect.TriggersOnCollision)
+            {
+                if (BaseProjectileEffect.TriggersOnSpecificTarget)
+                {
+                    if (EffectableTarget != null) {
+                        if (EffectableTarget?.name == other.name)
+                        {
+                            int targetID = EffectableTarget.GameObjectID;
+                            if (ActiveTargets?.ContainsKey(targetID) ?? false)
+                            {
+                                if (ActiveTargets[targetID].IsTargetable())
+                                    OnTargetHit(ActiveTargets[targetID],ActiveTargets[targetID]?.transform.position ?? transform.position);
+                                hitCounter -= 1;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (GameObjectPool.Instance.ActiveEffectables?.Pool.ContainsKey(other.GameObjectID) ?? false)
+                    {
+                        if (!TargetExclusionList.Contains(other.name)) 
+                        {
+                            if (ActiveTargets[other.GameObjectID].IsTargetable()) 
+                            {
+                                OnTargetHit(ActiveTargets[other.GameObjectID],ActiveTargets[other.GameObjectID]?.transform.position ?? transform.position );
+                            }
+                        }
+                    }
+
+                }
+            }
         }
     }
     
@@ -374,10 +363,11 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
 
     protected void Awake()
     {
+        base.Awake();
+        CollisionDetector = GetComponent<CollisionDetector>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
         //onTargetPositionReached += delegate { SpriteRenderer.enabled = false; Debug.LogWarning(Time.time); };
         onTargetHit += delegate(Effectable effectable, Vector2 targetPos) { SpriteRenderer.enabled = false; };
-        selfCollider = GetComponent<Collider2D>();
         foreach (string item in DiscoverableTags)
         {
             if (!String.IsNullOrEmpty(item)) {
@@ -461,12 +451,7 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
 
     void OnEnable()
     {
-        RangeDetector.enabled = false;
-        RangeDetector.enabled = true;
-        selfCollider.enabled = false;
-        selfCollider.enabled = true;
         ActivePool?.AddObjectToActiveObjectPool(this);
-        
     }
 
     protected void OnDisable()
@@ -474,10 +459,9 @@ public class GenericProjectile : MonoBehaviour,IQueueable<GenericProjectile>,IAc
         TargetExclusionList.Clear();
         SpriteRenderer.enabled = false;
         DynamicData.Clear();
-        RangeDetector.enabled = false;
         MovementFunction.ExternalMovementLock = true;
         targetPositionSet = false;
-        GameObjectPool.Instance.RemoveObjectFromAllPools(name,name);
+        GameObjectPool.Instance.RemoveObjectFromAllPools(GameObjectID,name);
         QueuePool?.ObjectQueue.Enqueue(this);
         hitCounter = BaseProjectileEffect.HitCounter;
     }

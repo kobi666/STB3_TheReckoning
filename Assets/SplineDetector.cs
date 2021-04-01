@@ -3,10 +3,7 @@ using UnityEngine;
 
 public class SplineDetector : TagDetector
 {
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        base.OnTriggerEnter2D(other);
-    }
+    
 
     public override bool IsPositionInRange(Vector2 pos)
     {

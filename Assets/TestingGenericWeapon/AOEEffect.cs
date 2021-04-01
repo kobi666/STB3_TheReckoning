@@ -32,7 +32,7 @@ public class AOEEffect : IHasEffectAnimation
     private float intervalCounter;
     private float DurationCounter = 0;
     public bool SingleTarget = false;
-    public string singleTargetName;
+    public int singelTargetID;
     public bool EffectOverTime;
     
     [ShowIf("EffectOverTime")]
@@ -45,7 +45,7 @@ public class AOEEffect : IHasEffectAnimation
     private int targetsCounter;
 
     public List<(Effectable,bool)> Targets = new List<(Effectable,bool)>();
-    public List<string> TargetsNames = new List<string>();
+    public List<int> TargetsIDs = new List<int>();
     
     [Button]
     private void GetTargets()
@@ -66,34 +66,34 @@ public class AOEEffect : IHasEffectAnimation
                         }
                     }
                 }
-                else if (SingleTarget && singleTargetName != string.Empty)
+                else if (SingleTarget && singelTargetID != 0)
                 {
-                    Targets.Add(aoeController.TargetBank.Targets[singleTargetName]);
+                    Targets.Add(aoeController.TargetBank.Targets[singelTargetID]);
                 }
             }
         }
 
         if (!EffectStacks)
         {
-            TargetsNames?.Clear();
+            TargetsIDs?.Clear();
             foreach (var aoeController in AoeControllers)
                 {
                     if (!SingleTarget) {
                         foreach (var ef in aoeController.TargetBank.Targets.Values)
                         {
-                            if (TargetsNames != null) {
-                                if (ef.Item1 != null && !TargetsNames.Contains(ef.Item1.name))
+                            if (TargetsIDs != null) {
+                                if (ef.Item1 != null && !TargetsIDs.Contains(ef.Item1.GameObjectID))
                                 {
                                     Targets.Add(ef);
-                                    TargetsNames.Add(ef.Item1.name);
+                                    TargetsIDs.Add(ef.Item1.GameObjectID);
                                 }
                             }
                         }
                     }
-                    else if (singleTargetName != string.Empty)
+                    else if (singelTargetID != 0)
                     {
-                        Targets.Add(aoeController.TargetBank.Targets[singleTargetName]);
-                        TargetsNames.Add(singleTargetName);
+                        Targets.Add(aoeController.TargetBank.Targets[singelTargetID]);
+                        TargetsIDs.Add(singelTargetID);
                     }
             }
             
@@ -182,7 +182,7 @@ public class AOEEffect : IHasEffectAnimation
         {
             aoeController.Detector.gameObject.SetActive(false);
             aoeController.Detector.gameObject.SetActive(true);
-            aoeController.onSingleTargetSet += delegate(string s) { singleTargetName = s; };
+            aoeController.onSingleTargetSet += delegate(int s) { singelTargetID = s; };
         }
         foreach (var effect in Effects)
         {

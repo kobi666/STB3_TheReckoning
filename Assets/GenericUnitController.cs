@@ -9,7 +9,7 @@ using UnityEngine.Serialization;
 
 
 [Serializable]
-public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitController>,IActiveObject<GenericUnitController>,IHasEffects,IHasRangeComponents,IHasStateMachine
+public class GenericUnitController : MyGameObject,IQueueable<GenericUnitController>,IActiveObject<GenericUnitController>,IHasEffects,IHasRangeComponents,IHasStateMachine
 {
     private bool firstRun = true;
     private void OnEnable()
@@ -21,7 +21,7 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
 
     private void OnDisable()
     {
-        GameObjectPool.Instance.OnUnitDisable(name);
+        GameObjectPool.Instance.OnUnitDisable(GameObjectID);
     }
 
 
@@ -96,7 +96,7 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
     [FoldoutGroup("Components")]
     public LifeBarmanager LifeBarmanager;
     [FoldoutGroup("Components")]
-    public TagDetector RangeDetector;
+    public CollisionDetector CollisionDetector;
     [FoldoutGroup("Components")]
     public EffectableUnit EffectableUnit;
     [FoldoutGroup("Components")]
@@ -107,7 +107,8 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
     public PathWalker PathWalker;
     [FoldoutGroup("Components")] 
     public UnitMovementController UnitMovementController;
-    
+
+    public float Proximity => PathWalker.ProximityToPathEnd;
 
     void Init()
     {
@@ -161,7 +162,6 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
     protected void Start()
     {
         LifeBarmanager = GetComponentInChildren<LifeBarmanager>();
-        RangeDetector = GetComponentInChildren<RangeDetector>();
         PathWalker = PathWalker ?? GetComponentInChildren<PathWalker>();
         if (Data.DynamicData.BasePosition == null)
         {
@@ -201,18 +201,18 @@ public class GenericUnitController : MonoBehaviour,IQueueable<GenericUnitControl
 
     public float rangeSize { get => Data.MetaData.DiscoveryRadius; set => Data.MetaData.DiscoveryRadius = value; }
 
-    public List<TagDetector> GetTagDetectors()
+    public List<CollisionDetector> GetTagDetectors()
     {
-        List<TagDetector> rds = new List<TagDetector>();
-        rds.Add(RangeDetector);
+        List<CollisionDetector> rds = new List<CollisionDetector>();
+        rds.Add(CollisionDetector);
         return rds;
     }
 
-    public void UpdateRange(float RangeSizeDelta, List<TagDetector> detectorsToApplyChangeOn)
+    public void UpdateRange(float RangeSizeDelta, List<CollisionDetector> detectorsToApplyChangeOn)
     {
         foreach (var d in detectorsToApplyChangeOn)
         {
-            d.UpdateSize(RangeSizeDelta);
+            d?.UpdateSize(RangeSizeDelta);
         }
     }
 

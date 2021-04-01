@@ -1,6 +1,6 @@
 ﻿public class EffectableUnit : Effectable
 {
-    public UnitController unitController;
+    
     public GenericUnitController GenericUnitController;
     private UnitStateMachine StateMachine
     {
@@ -64,7 +64,6 @@
 
     protected void Start() {
         base.Start();
-        unitController = unitController ?? GetComponent<UnitController>();
         GenericUnitController = GenericUnitController ?? GetComponent<GenericUnitController>();
         //StateMachine = GenericUnitController.StateMachine;
         IsTargetable();

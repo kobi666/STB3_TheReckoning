@@ -3,14 +3,12 @@ using System;
 
 public class DefaultEffectableUnit : MonoBehaviour
 {
-    UnitController unitController;
+    
     public event Action unitDamaged;
     public event Action unitPoisioned;
     public event Action unitFroze;
     public event Action unitExploded;
-    public virtual void Damage(int damageAmount) {
-        unitController.LifeManager.DamageToUnit(damageAmount);
-    }
+    
 
     public virtual void Explosion(float explosionValue) {
 
@@ -25,10 +23,7 @@ public class DefaultEffectableUnit : MonoBehaviour
     }
 
     
-    void Awake()
-    {
-        unitController = GetComponent<UnitController>() ?? null;
-    }
+    
     
     
 }

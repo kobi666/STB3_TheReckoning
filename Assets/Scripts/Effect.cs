@@ -149,14 +149,7 @@ public class DoSomethingWithPrefab : Effect
     
     public override void Apply(Effectable ef,Vector2 targetPos)
     {
-        EffectableUnit efu = ef as EffectableUnit;
-        if (efu.unitController != null)
-        {
-            if (somePrefab != null)
-            {
-                GameObject someGo = GameObject.Instantiate(somePrefab);
-            }
-        }
+        
     }
 
     public override void InitializeEffectForWeapon(GenericWeaponController parentWeapon)

@@ -135,22 +135,22 @@ public class LeapingSplines : SplineAttackProperties
 {
     public bool TrackingAllTargets;
     [Required]
-    public RangeDetector ChainTargetDiscoveryDetector;
+    public CollisionDetector ChainTargetDiscoveryDetector;
     public float ExtraDiscoveryRange;
     public float MinimumLeapDistance;
     public int Leaps = 2;
     [SerializeReference]
-    public Dictionary<string,(Effectable,Vector2)> LeapingTargets = new Dictionary<string, (Effectable, Vector2)>();
+    public Dictionary<int,(Effectable,Vector2)> LeapingTargets = new Dictionary<int, (Effectable, Vector2)>();
     [Required]
     public EffectableTargetBank ExtraRangeTargetBank;
 
     private void SetInitialTargetTarget(Effectable ef, Vector2 pos)
     {
-        LeapingTargets.Add(ef.name,(ef,pos));
+        LeapingTargets.Add(ef.GameObjectID,(ef,pos));
     }
     public override void SpecificPropertiesInit()
     {
-        LeapingTargets = new Dictionary<string, (Effectable, Vector2)>();
+        LeapingTargets = new Dictionary<int, (Effectable, Vector2)>();
         if (ExtraRangeTargetBank.Detector == null)
         {
             ExtraRangeTargetBank.Detector = ChainTargetDiscoveryDetector;
@@ -178,14 +178,14 @@ public class LeapingSplines : SplineAttackProperties
                 if (DelayCounter >= DelayBetweenLeaps) {
                     if (TargetCounter < Leaps)
                     {
-                        string NextTargetName =
+                        int NextTargetID =
                             ExtraRangeTargetBank.TryToGetTargetClosestToPosition(
                                 LeapingTargets.Values.ToArray()[TargetCounter].Item1.transform.position,
                                 LeapingTargets.Keys.ToArray());
-                        if (NextTargetName != String.Empty)
+                        if (NextTargetID != 0)
                         {
-                            LeapingTargets.Add(NextTargetName, (ExtraRangeTargetBank.Targets[NextTargetName].Item1,
-                                ExtraRangeTargetBank.Targets[NextTargetName].Item1.transform.position));
+                            LeapingTargets.Add(NextTargetID, (ExtraRangeTargetBank.Targets[NextTargetID].Item1,
+                                ExtraRangeTargetBank.Targets[NextTargetID].Item1.transform.position));
                             TargetCounter += 1;
                             SplineBehavior0.SplineMovement.TargetPositionReached = false;
                             BGCurvePointI lastPoint = SplineController0.BgCurve.Points.Last();

@@ -295,11 +295,17 @@
  <Reference Include="UnityEditor.UWP.Extensions">
  <HintPath>C:/UnityEditors/2020.3.0f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Collections.LowLevel.ILSupport">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.collections@0.15.0-preview.21/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+ </Reference>
  <Reference Include="Sirenix.OdinInspector.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
  </Reference>
  <Reference Include="DOTweenEditor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Burst.Unsafe">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.burst@1.4.1/Unity.Burst.Unsafe.dll</HintPath>
  </Reference>
  <Reference Include="Sirenix.OdinInspector.Attributes">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
@@ -316,20 +322,14 @@
  <Reference Include="Animancer.Lite">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Animancer/Internal/Core/Animancer.Lite.dll</HintPath>
  </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0-preview/Runtime/Newtonsoft.Json.dll</HintPath>
+ </Reference>
  <Reference Include="Sirenix.Serialization">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
  </Reference>
  <Reference Include="Sirenix.Utilities.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Burst.Unsafe">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.burst@1.4.1/Unity.Burst.Unsafe.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Collections.LowLevel.ILSupport">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.collections@0.15.0-preview.21/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll</HintPath>
- </Reference>
- <Reference Include="Newtonsoft.Json">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0-preview/Runtime/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
@@ -714,6 +714,10 @@
       <Project>{ab2a6646-2b48-3e6e-06dd-03f6e404f665}</Project>
       <Name>Unity.VSCode.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="com.unity.quicksearch.csproj">
+      <Project>{07ee602f-7dfb-e99a-0a1a-0db8e0bd1834}</Project>
+      <Name>com.unity.quicksearch</Name>
+    </ProjectReference>
     <ProjectReference Include="PsdPlugin.csproj">
       <Project>{2ef066bb-3eaf-203f-89b1-ab70b6c44444}</Project>
       <Name>PsdPlugin</Name>
@@ -738,6 +742,10 @@
       <Project>{5a09e247-dcad-a0fc-ebce-7b776dbf0c1c}</Project>
       <Name>Unity.TextMeshPro</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Burst.Editor.csproj">
+      <Project>{caf1a170-1cf3-4d78-59f2-24f447eb07fd}</Project>
+      <Name>Unity.Burst.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.2D.IK.Editor.csproj">
       <Project>{bd459538-6fb9-4e36-04b3-d0b2a9cfbc39}</Project>
       <Name>Unity.2D.IK.Editor</Name>
@@ -761,6 +769,10 @@
     <ProjectReference Include="Unity.Rider.Editor.csproj">
       <Project>{635894d9-bcb2-edee-0264-530e751d2f71}</Project>
       <Name>Unity.Rider.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Jobs.Editor.csproj">
+      <Project>{079c09e1-ffa3-b7bc-197b-13b449b1e611}</Project>
+      <Name>Unity.Jobs.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.Modules.UnityMathematics.csproj">
       <Project>{f5e8b68c-a276-5883-3300-b9a0a74e665e}</Project>
@@ -790,6 +802,14 @@
       <Project>{3a10130d-ca5b-fb61-a173-c43809519df6}</Project>
       <Name>InputSystem.Samples.Visualizers</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Burst.csproj">
+      <Project>{faca3a78-ecf2-cc35-051e-99581519dad7}</Project>
+      <Name>Unity.Burst</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Jobs.csproj">
+      <Project>{1132f4fd-c733-73c8-c7e7-1dd1d15569f1}</Project>
+      <Name>Unity.Jobs</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.2D.Animation.Triangle.Runtime.csproj">
       <Project>{94fa2ec3-d91f-8489-d189-2e7ac41f5170}</Project>
       <Name>Unity.2D.Animation.Triangle.Runtime</Name>
@@ -814,6 +834,10 @@
       <Project>{7931194a-1193-8824-0a15-7c603ed6ef67}</Project>
       <Name>Unity.2D.Common.Runtime</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Collections.csproj">
+      <Project>{2fda38ac-2328-da0b-2ca5-ab6c817cf260}</Project>
+      <Name>Unity.Collections</Name>
+    </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
       <Project>{98d1b84c-946c-21be-173a-4f536c124f96}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
@@ -821,30 +845,6 @@
     <ProjectReference Include="Unity.2D.Common.Editor.csproj">
       <Project>{fac1fd9c-efbc-428e-9d1b-a6a266baa961}</Project>
       <Name>Unity.2D.Common.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Collections.csproj">
-      <Project>{2fda38ac-2328-da0b-2ca5-ab6c817cf260}</Project>
-      <Name>Unity.Collections</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Jobs.Editor.csproj">
-      <Project>{079c09e1-ffa3-b7bc-197b-13b449b1e611}</Project>
-      <Name>Unity.Jobs.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Burst.Editor.csproj">
-      <Project>{caf1a170-1cf3-4d78-59f2-24f447eb07fd}</Project>
-      <Name>Unity.Burst.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Burst.csproj">
-      <Project>{faca3a78-ecf2-cc35-051e-99581519dad7}</Project>
-      <Name>Unity.Burst</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Jobs.csproj">
-      <Project>{1132f4fd-c733-73c8-c7e7-1dd1d15569f1}</Project>
-      <Name>Unity.Jobs</Name>
-    </ProjectReference>
-    <ProjectReference Include="com.unity.quicksearch.csproj">
-      <Project>{07ee602f-7dfb-e99a-0a1a-0db8e0bd1834}</Project>
-      <Name>com.unity.quicksearch</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

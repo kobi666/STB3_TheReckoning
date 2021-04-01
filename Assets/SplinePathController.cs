@@ -5,7 +5,7 @@ using BansheeGz.BGSpline.Curve;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class SplinePathController : MonoBehaviour,IActiveObject<SplinePathController>
+public class SplinePathController : MonoBehaviour,IActiveObject<SplinePathController>,IhasGameObjectID
 {
 
     public PathController parentPath;
@@ -24,7 +24,7 @@ public class SplinePathController : MonoBehaviour,IActiveObject<SplinePathContro
 
     private void OnDisable()
     {
-        ActivePool.RemoveObjectFromPool(name);
+        ActivePool.RemoveObjectFromPool(GameObjectID);
     }
 
     public SplineTypes SplineType;
@@ -40,6 +40,7 @@ public class SplinePathController : MonoBehaviour,IActiveObject<SplinePathContro
 
     private void Awake()
     {
+        gameObjectID = IDGenerator.GetGameObjectID();
         ActivePool = GameObjectPool.Instance.ActiveSplines;
         EdgeCollider2D =  GetComponent<EdgeCollider2D>();
         SplineDetector =  GetComponent<SplineDetector>();
@@ -67,6 +68,8 @@ public class SplinePathController : MonoBehaviour,IActiveObject<SplinePathContro
     }
 
     public ActiveObjectPool<SplinePathController> ActivePool { get; set; }
+    public int GameObjectID { get => gameObjectID; }
+    public int gameObjectID;
 }
 
 public enum SplineTypes

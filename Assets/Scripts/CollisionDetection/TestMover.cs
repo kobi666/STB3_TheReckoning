@@ -64,7 +64,7 @@ public class TestMover : MonoBehaviour
     private void Awake()
     {
         BoxCollider2D = GetComponent<BoxCollider2D>();
-        DetectionID = IDGenerator.GetID();
+        DetectionID = IDGenerator.GetCollisionID();
         if (DetectionType == DetectionTypes.None)
         {
             DetectableTypeInt = 0;
@@ -167,18 +167,20 @@ public struct BittableSimulatedCollider
     public float2 position;
     public float width;
     public float height;
-    public int DetectionID;
+    public int CollisionID;
+    public int GameObjectID;
     public int DetectableType;
     public int TypesICanDetect;
 
-    public BittableSimulatedCollider(float _width, float _height, Vector2 _position, int detectionID, int detectableType, int typesICanDetect)
+    public BittableSimulatedCollider(float _width, float _height, Vector2 _position, int collisionID, int gameObjectID, int detectableType, int typesICanDetect)
     {
         position = _position;
         width = _width;
         height = _height;
-        DetectionID = detectionID;
+        CollisionID = collisionID;
         DetectableType = detectableType;
         TypesICanDetect = typesICanDetect;
+        GameObjectID = gameObjectID;
     }
 }
 

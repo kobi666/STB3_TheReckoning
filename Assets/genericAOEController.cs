@@ -6,19 +6,19 @@ using UnityEngine;
 public class GenericAOEController : MonoBehaviour
 {
     [Required]
-    public TagDetector Detector;
+    public CollisionDetector Detector;
 
-    public string SingleTargetName;
-    public event Action<string> onSingleTargetSet;
+    public int SingelTargetID;
+    public event Action<int> onSingleTargetSet;
 
-    public void OnSingleTargetSet(string singleTargetName)
+    public void OnSingleTargetSet(int singleTargetID)
     {
-        onSingleTargetSet?.Invoke(singleTargetName);
+        onSingleTargetSet?.Invoke(singleTargetID);
     }
 
     public void OnSingleTargetClear()
     {
-        OnSingleTargetSet(string.Empty);
+        OnSingleTargetSet(0);
     }
     
     [ShowInInspector]
@@ -37,10 +37,9 @@ public class GenericAOEController : MonoBehaviour
 
     protected void Start()
     {
-        Detector = Detector ?? GetComponentInChildren<TagDetector>();
         TargetBank = TargetBank ?? GetComponent<EffectableTargetBank>();
         parentTargeter = transform.parent.GetComponent<ITargeter>();
-        onSingleTargetSet += delegate(string s) { SingleTargetName = s; };
+        onSingleTargetSet += delegate(int s) { SingelTargetID = s; };
         parentTargeter.onTargetSet += onSingleTargetSet.Invoke;
     }
 }

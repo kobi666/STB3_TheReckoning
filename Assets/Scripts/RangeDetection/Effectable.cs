@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System;
+using Sirenix.OdinInspector;
 
-public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITargetable
+public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITargetable,IhasGameObjectID
 {
     bool OnFirstStart = true;
     public bool canOnlyBeHitOnce;
@@ -29,11 +30,11 @@ public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITarg
     {
         if (targetableState == true)
         {
-            GameObjectPool.Instance.AddTargetable(name);
+            GameObjectPool.Instance.AddTargetable(GameObjectID);
         }
         else
         {
-            GameObjectPool.Instance.RemoveTargetable(name);
+            GameObjectPool.Instance.RemoveTargetable(GameObjectID);
         }
     }
 
@@ -64,6 +65,10 @@ public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITarg
     void OnDisable()
     {
         UpdateTargetableState(false);
-        GameObjectPool.Instance?.RemoveObjectFromAllPools(name,name);
+        GameObjectPool.Instance?.RemoveObjectFromAllPools(GameObjectID,name);
     }
+
+    public int GameObjectID { get => ParentMyGameObject.gameObjectID; }
+    [Required]
+    public MyGameObject ParentMyGameObject;
 }

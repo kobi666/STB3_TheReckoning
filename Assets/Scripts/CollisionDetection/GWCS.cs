@@ -188,12 +188,16 @@ public class GWCS : MonoBehaviour
                     {
                         if (!detectorCheckedFlags.IsSet(otherColliderIndex))
                         {
+                            if (currentCollider.GameObjectID == allSimulatedColliders[otherColliderIndex].GameObjectID)
+                            {
+                                continue;
+                            }
                             if (TestDetection(currentCollider.TypesICanDetect,
                                 allSimulatedColliders[otherColliderIndex].DetectableType))
                             {
                                 if (CheckOverLapBetweenTwoColliders(index, otherColliderIndex))
                                 {
-                                    newTotalCollisionsByIndex.Add(index,allSimulatedColliders[otherColliderIndex].DetectionID);
+                                    newTotalCollisionsByIndex.Add(index,allSimulatedColliders[otherColliderIndex].CollisionID);
                                 }
                             }
                         }
@@ -230,7 +234,7 @@ public class GWCS : MonoBehaviour
             var newCollision = newTotalCollisionsByIndex.GetValuesForKey(index);
             do
             {
-                currentCollisions.Add(allSimulatedColliders[index].DetectionID, newCollision.Current);
+                currentCollisions.Add(allSimulatedColliders[index].CollisionID, newCollision.Current);
             } while (newCollision.MoveNext());
         }
     }
@@ -270,7 +274,7 @@ public class GWCS : MonoBehaviour
                 if (newCollisionNotFoundInOld)
                 {
                     //Debug.Log("Totally new collision found :" + newCollisions.Current);
-                    onEnterCollisions.Add(allSimulatedColliders[index].DetectionID, newCollisions.Current);
+                    onEnterCollisions.Add(allSimulatedColliders[index].CollisionID, newCollisions.Current);
                 }
             }
             
@@ -316,7 +320,7 @@ public class GWCS : MonoBehaviour
                 if (!oldCollisionFound)
                 {
                     /*Debug.Log("Found new Exit : " + oldCollisions.Current);*/
-                    onExitCollisions.Add(allSimulatedColliders[index].DetectionID, oldCollisions.Current);
+                    onExitCollisions.Add(allSimulatedColliders[index].CollisionID, oldCollisions.Current);
                 }
             }
         }
@@ -370,6 +374,7 @@ public class GWCS : MonoBehaviour
             AllSimulatedColliders[objCounter] = new BittableSimulatedCollider(size.x, size.y,
                 _obj.transform.position,
                 _obj.CollisionID,
+                _obj.GameObjectID,
                 _obj.CollisionTagInt,
                 _obj.CollisionTagsICanDetectInt);
             objCounter++;

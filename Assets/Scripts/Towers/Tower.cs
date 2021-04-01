@@ -4,7 +4,6 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     int componentCount = 0;
-    public EnemyTargetBank TargetBank;
 
     public Dictionary<int,TowerComponent> TowerComponents = new Dictionary<int, TowerComponent>();
 
@@ -15,8 +14,6 @@ public class Tower : MonoBehaviour
 
 
     private void Start() {
-        TargetBank = GetComponent<EnemyTargetBank>() ?? null;
-        
         foreach (var item in GetComponentsInChildren<TowerComponent>())
         {
             TowerComponents.Add(componentCount,item);

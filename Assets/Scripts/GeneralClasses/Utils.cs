@@ -141,9 +141,7 @@ public class Utils
              
     }
 
-    public static GameObject SetSingleEnemyTarget(GameObject _self, Collider2D[] _collisions) {
-        return FindEnemyNearestToEndOfPath(_self, _collisions);
-    }
+    
 
     public static GameObject[] GetCollidingObjectsOfType (GameObject _SelfGO, string _objectType, Collider2D[] _collisions)
     {
@@ -170,21 +168,6 @@ public class Utils
     public static GameObject[] GetObjectsOfTypeInRange(GameObject _self, string _type, Collider2D[] _collisions) {
         GameObject[] Enemies = GetCollidingObjectsOfType(_self, _type,_collisions);
         return Enemies;
-    }
-
-    public static GameObject FindEnemyNearestToEndOfPath(GameObject self, Collider2D[] _collisions) {
-        GameObject target = null;
-        float LowestProximity = 999.0f;
-        foreach (GameObject Enemy in GetEnemiesInRange(self, _collisions)) {
-            if (Enemy.GetComponent<BezierSolution.UnitWalker>().ProximityToEndOfSpline < LowestProximity && Enemy.GetComponent<EnemyUnitController>().IsTargetable() == true) {
-                target = Enemy;
-                LowestProximity = Enemy.GetComponent<BezierSolution.UnitWalker>().ProximityToEndOfSpline;
-            }
-            else {
-                continue;
-            }
-        }
-        return target;
     }
 
     public static IEnumerator IncrementCounterOverTimeAndInvokeAction(float counter, float counterMax, float IncrementMultiplier, bool condition, Action action) {
