@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e47f74f8807144bbc73c11220e654a, type: 3}
+  m_Name: TestSubGraph
+  m_EditorClassIdentifier: 
+  m_GraphModel:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: VSGraphModel, ns: DotsStencil, asm: Unity.VisualScripting.Ecs.Editor}
+      data:
+        m_AssetModel: {fileID: 11400000}
+        m_GraphNodeModels: []
+        m_EdgeModels: []
+        m_GraphEdgeModels: []
+        m_StickyNoteModels: []
+        m_GraphStickyNoteModels: []
+        m_PlacematModels: []
+        m_GraphPlacematModels: []
+        m_GraphVariableModels: []
+        m_GraphPortalModels: []
+        m_Stencil:
+          id: 1
+        m_Name: TestSubGraph
+    00000001:
+      type: {class: DotsStencil, ns: DotsStencil, asm: Unity.VisualScripting.Ecs.Editor}
+      data:
+        CompiledScriptingGraphAsset: {fileID: 259824501734605791}
+        Type: 1
+--- !u!114 &259824501734605791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0d133638b8a4a708ab07e8047ecd0c8, type: 3}
+  m_Name: TestSubGraph Runtime Graph
+  m_EditorClassIdentifier: 
+  Definition:
+    id: 0
+  HashCode: 1574718136
+  references:
+    version: 1
+    00000000:
+      type: {class: GraphDefinition, ns: Runtime, asm: Unity.VisualScripting.Ecs}
+      data:
+        NodeTable: []
+        PortInfoTable:
+        - IsDataPort: 0
+          IsOutputPort: 0
+          DataIndex: 0
+          NodeId:
+            m_NodeIndex: 0
+          PortName: NULL
+        DataPortTable:
+        - m_NodeIndex: 0
+        TriggerTable: 00000000
+        VariableInitValues: []
+        Strings: []
+        InputTriggers: []
+        OutputTriggers: []
+        SubgraphReferences: []
+        ComponentFields: []
+        EventFields: []
+        Variables: []
+        Inputs:
+          StartIndex: 0
+          Count: 0
+        Outputs:
+          StartIndex: 0
+          Count: 0
+        ContainsEventReceiver: 0

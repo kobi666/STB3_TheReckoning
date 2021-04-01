@@ -11,10 +11,12 @@ public class SquareDetector : TagDetector
         return ColliderSize;
     }
 
-    public override void UpdateSize(float size)
+    public override void UpdateSize(float newSize)
     {
-        BoxCollider.size = new Vector2(size,size);
-        ColliderSize = size;
+        var baseSize = BoxCollider.size;
+        baseSize = new Vector2(baseSize.x * newSize,baseSize.y * newSize);
+        BoxCollider.size = baseSize;
+        ColliderSize = newSize;
         ColliderBounds = BoxCollider.bounds;
     }
 

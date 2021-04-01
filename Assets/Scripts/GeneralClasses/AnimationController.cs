@@ -4,8 +4,9 @@ using System;
 
 public class AnimationController : MonoBehaviour
 {
-
     public AnimationClip Clip;
+    
+    
     
     public AnimancerState CurrentAnimationState;
     public void PlaySingleAnimation(AnimationClip clip) {
@@ -50,7 +51,6 @@ public class AnimationController : MonoBehaviour
         var state = animancer.Play(clip);
         state.Events.OnEnd += delegate { state.IsPlaying = false;};
         state.Events.OnEnd += OnEndAction;
-        //state.Events.OnEnd += delegate {gameObject.SetActive(false);};
         state.Events.OnEnd += delegate { state.Events.OnEnd = null;};
         }
     }

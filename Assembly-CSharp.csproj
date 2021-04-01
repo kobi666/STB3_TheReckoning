@@ -411,7 +411,14 @@
      <Compile Include="Assets\Scripts\Towers\SlotParentManager.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider2DEdge.cs" />
      <Compile Include="Assets\Prefabs\ProjectileDynamicData.cs" />
-     <Compile Include="Assets\TestEntity.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\CollisionDetector.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\DetectionTags.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\GWCS.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\TestMover.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\IDGenerator.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\UnitMover.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\CollidingObject.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\DetectableCollider.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\BansheeGz\BGCollider\readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -683,14 +690,14 @@
  <Reference Include="Sirenix.Utilities.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
  </Reference>
- <Reference Include="Newtonsoft.Json">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0-preview/Runtime/Newtonsoft.Json.dll</HintPath>
- </Reference>
  <Reference Include="Unity.Burst.Unsafe">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.burst@1.4.1/Unity.Burst.Unsafe.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Collections.LowLevel.ILSupport">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.collections@0.15.0-preview.21/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+ </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0-preview/Runtime/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/UnityEditors/2020.3.0f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -1037,158 +1044,14 @@
  <Reference Include="System.Xml.Serialization">
  <HintPath>C:/UnityEditors/2020.3.0f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
- <Reference Include="Unity.2D.Animation.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.InternalAPIEngineBridge.001">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
- </Reference>
- <Reference Include="Unity.VSCode.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
- </Reference>
- <Reference Include="PsdPlugin">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
- </Reference>
- <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.VisualStudio.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Timeline">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
- </Reference>
- <Reference Include="Unity.TextMeshPro">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
- </Reference>
- <Reference Include="Unity.2D.IK.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.2D.IK.Editor.dll</HintPath>
- </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.2D.Psdimporter.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.InternalAPIEditorBridge.001">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
- <Reference Include="Unity.InputSystem">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Rider.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Mathematics">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
- </Reference>
- <Reference Include="Unity.2D.IK.Runtime">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="Unity.2D.Animation.Triangle.Runtime">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="Unity.2D.Animation.Runtime">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Timeline.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Mathematics.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.2D.Common.Runtime">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="Unity.2D.Common.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Rendering.Hybrid.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Rendering.Hybrid.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Properties.UI.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Properties.UI.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Scenes">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Scenes.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Mathematics.Extensions.Hybrid">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Mathematics.Extensions.Hybrid.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Entities.BuildUtils">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Entities.BuildUtils.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Properties.UI">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Properties.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.ScriptableBuildPipeline">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Serialization">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Serialization.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Jobs">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Jobs.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Deformations">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Deformations.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Properties">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Properties.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.CacheServer">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/UnityEditor.CacheServer.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Jobs.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Jobs.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Scenes.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Scenes.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Collections">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Collections.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Entities.Hybrid.EndToEnd.Tests">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Entities.Hybrid.EndToEnd.Tests.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Entities.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Entities.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Entities.Hybrid">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Entities.Hybrid.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Transforms.Hybrid">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Transforms.Hybrid.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Burst">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Mathematics.Extensions">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Mathematics.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Transforms">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Transforms.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Entities">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Entities.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Rendering.Hybrid">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Rendering.Hybrid.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Serialization.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Serialization.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Burst.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.ScriptableBuildPipeline.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -1196,13 +1059,65 @@
       <Project>{128c3589-08ae-d1d3-d7b1-488de5f10c72}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.2D.Animation.Editor.csproj">
+      <Project>{671631a5-b0b4-0f2a-c825-98d9b85c0db2}</Project>
+      <Name>Unity.2D.Animation.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.InternalAPIEngineBridge.001.csproj">
+      <Project>{f52e1ba3-6c8d-d14a-a8e4-b2ff9fcea2c0}</Project>
+      <Name>Unity.InternalAPIEngineBridge.001</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VSCode.Editor.csproj">
+      <Project>{ab2a6646-2b48-3e6e-06dd-03f6e404f665}</Project>
+      <Name>Unity.VSCode.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="PsdPlugin.csproj">
+      <Project>{2ef066bb-3eaf-203f-89b1-ab70b6c44444}</Project>
+      <Name>PsdPlugin</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
+      <Project>{65bd9974-d6da-c4c1-ed75-5f57fbfd1fe4}</Project>
+      <Name>Unity.TextMeshPro.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
+      <Project>{e874929e-f531-f14e-9895-059294b499b3}</Project>
+      <Name>Unity.VisualStudio.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.InputSystem.VirtualMouseInput.csproj">
       <Project>{76a534b3-2042-71c2-62c4-6bb4d27de2c8}</Project>
       <Name>Unity.InputSystem.VirtualMouseInput</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Timeline.csproj">
+      <Project>{595aee01-bc2d-45e0-9163-57ff57c5879d}</Project>
+      <Name>Unity.Timeline</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.TextMeshPro.csproj">
+      <Project>{5a09e247-dcad-a0fc-ebce-7b776dbf0c1c}</Project>
+      <Name>Unity.TextMeshPro</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.IK.Editor.csproj">
+      <Project>{bd459538-6fb9-4e36-04b3-d0b2a9cfbc39}</Project>
+      <Name>Unity.2D.IK.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Psdimporter.Editor.csproj">
+      <Project>{65e3a8e4-3ddf-7655-6642-ce0abef39310}</Project>
+      <Name>Unity.2D.Psdimporter.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.InternalAPIEditorBridge.001.csproj">
+      <Project>{7df9d579-b523-17c0-d22a-1f08ef40f7de}</Project>
+      <Name>Unity.InternalAPIEditorBridge.001</Name>
+    </ProjectReference>
     <ProjectReference Include="ScriptInspector.csproj">
       <Project>{0200984e-7307-7a6b-107b-62c491592bdd}</Project>
       <Name>ScriptInspector</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.InputSystem.csproj">
+      <Project>{4d80603f-a58f-c234-50c9-071159105c65}</Project>
+      <Name>Unity.InputSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Rider.Editor.csproj">
+      <Project>{635894d9-bcb2-edee-0264-530e751d2f71}</Project>
+      <Name>Unity.Rider.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.Modules.UnityMathematics.csproj">
       <Project>{f5e8b68c-a276-5883-3300-b9a0a74e665e}</Project>
@@ -1216,21 +1131,77 @@
       <Project>{1bb719c8-2ea5-b563-0407-7e72ef3955a7}</Project>
       <Name>MyBox</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Mathematics.csproj">
+      <Project>{7fdde17e-a272-02f0-3573-5367aeb77bbb}</Project>
+      <Name>Unity.Mathematics</Name>
+    </ProjectReference>
     <ProjectReference Include="UniRx.csproj">
       <Project>{25802a85-b3b3-cd9a-eb46-51e86eaeebb4}</Project>
       <Name>UniRx</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.IK.Runtime.csproj">
+      <Project>{a8897053-913a-cd62-e22d-2b36f80d4ae6}</Project>
+      <Name>Unity.2D.IK.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="InputSystem.Samples.Visualizers.csproj">
       <Project>{3a10130d-ca5b-fb61-a173-c43809519df6}</Project>
       <Name>InputSystem.Samples.Visualizers</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.2D.Animation.Triangle.Runtime.csproj">
+      <Project>{94fa2ec3-d91f-8489-d189-2e7ac41f5170}</Project>
+      <Name>Unity.2D.Animation.Triangle.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Animation.Runtime.csproj">
+      <Project>{06829ac3-3568-b8ec-36e6-89f3887f0021}</Project>
+      <Name>Unity.2D.Animation.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Timeline.Editor.csproj">
+      <Project>{d6251307-ecf9-fba3-138d-4325603a477d}</Project>
+      <Name>Unity.Timeline.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Animancer.csproj">
       <Project>{c3d7cf78-3520-07ff-5c1c-81c3704561c7}</Project>
       <Name>Animancer</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Mathematics.Editor.csproj">
+      <Project>{f0352d2a-8707-7997-19b1-3687400ff2ec}</Project>
+      <Name>Unity.Mathematics.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Common.Runtime.csproj">
+      <Project>{7931194a-1193-8824-0a15-7c603ed6ef67}</Project>
+      <Name>Unity.2D.Common.Runtime</Name>
+    </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
       <Project>{98d1b84c-946c-21be-173a-4f536c124f96}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Common.Editor.csproj">
+      <Project>{fac1fd9c-efbc-428e-9d1b-a6a266baa961}</Project>
+      <Name>Unity.2D.Common.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Collections.csproj">
+      <Project>{2fda38ac-2328-da0b-2ca5-ab6c817cf260}</Project>
+      <Name>Unity.Collections</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Jobs.Editor.csproj">
+      <Project>{079c09e1-ffa3-b7bc-197b-13b449b1e611}</Project>
+      <Name>Unity.Jobs.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Burst.Editor.csproj">
+      <Project>{caf1a170-1cf3-4d78-59f2-24f447eb07fd}</Project>
+      <Name>Unity.Burst.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Burst.csproj">
+      <Project>{faca3a78-ecf2-cc35-051e-99581519dad7}</Project>
+      <Name>Unity.Burst</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Jobs.csproj">
+      <Project>{1132f4fd-c733-73c8-c7e7-1dd1d15569f1}</Project>
+      <Name>Unity.Jobs</Name>
+    </ProjectReference>
+    <ProjectReference Include="com.unity.quicksearch.csproj">
+      <Project>{07ee602f-7dfb-e99a-0a1a-0db8e0bd1834}</Project>
+      <Name>com.unity.quicksearch</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

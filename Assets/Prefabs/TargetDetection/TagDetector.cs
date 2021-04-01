@@ -51,7 +51,7 @@ public abstract class TagDetector : MonoBehaviour
     }
 
     public abstract float GetSize();
-    public abstract void UpdateSize(float size);
+    public abstract void UpdateSize(float newSize);
 
     private ContactPoint2D[] cp;
     protected void OnTriggerEnter2D(Collider2D other) {

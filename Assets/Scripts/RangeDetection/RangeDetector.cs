@@ -114,21 +114,21 @@ void Awake()
     
     
     
-    public override void UpdateSize(float size) {
+    public override void UpdateSize(float newSize) {
         if (RangeCollider == null) {
             RangeCollider = gameObject.GetComponent<CircleCollider2D>();
         }
 
-        RangeCollider.radius = size;
+        RangeCollider.radius = newSize;
         if (_rangeDebug == null)
         {
             _rangeDebug = GetComponentInChildren<RangeDebug>() ?? null;
         }
         if (_rangeDebug?.gameObject.activeSelf == true) {
-        _rangeDebug.transform.localScale = new Vector3(size,size,size);
+        _rangeDebug.transform.localScale = new Vector3(newSize,newSize,newSize);
         }
 
-        RangeRadius = size;
+        RangeRadius = newSize;
     }
 
     
