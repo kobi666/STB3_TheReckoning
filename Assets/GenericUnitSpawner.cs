@@ -42,9 +42,9 @@ public class GenericUnitSpawner : TowerComponent
     }
     public void AddManagedUnit(GenericUnitController unit)
     {
-        if (!ManagedUnits.ContainsKey(unit.gameObjectID))
+        if (!ManagedUnits.ContainsKey(unit.MyGameObjectID))
         {
-            ManagedUnits.Add(unit.gameObjectID,unit);
+            ManagedUnits.Add(unit.MyGameObjectID,unit);
         }
 
         NumberOfManagedUnits = ManagedUnits.Count();

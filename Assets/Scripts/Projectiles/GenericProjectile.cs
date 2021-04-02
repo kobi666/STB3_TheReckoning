@@ -212,7 +212,7 @@ public class GenericProjectile : MyGameObject,IQueueable<GenericProjectile>,IAct
                     if (EffectableTarget != null) {
                         if (EffectableTarget?.name == other.name)
                         {
-                            int targetID = EffectableTarget.GameObjectID;
+                            int targetID = EffectableTarget.MyGameObjectID;
                             if (ActiveTargets?.ContainsKey(targetID) ?? false)
                             {
                                 if (ActiveTargets[targetID].IsTargetable())
@@ -224,13 +224,13 @@ public class GenericProjectile : MyGameObject,IQueueable<GenericProjectile>,IAct
                 }
                 else
                 {
-                    if (GameObjectPool.Instance.ActiveEffectables?.Pool.ContainsKey(other.GameObjectID) ?? false)
+                    if (GameObjectPool.Instance.ActiveEffectables?.Pool.ContainsKey(other.MyGameObjectID) ?? false)
                     {
                         if (!TargetExclusionList.Contains(other.name)) 
                         {
-                            if (ActiveTargets[other.GameObjectID].IsTargetable()) 
+                            if (ActiveTargets[other.MyGameObjectID].IsTargetable()) 
                             {
-                                OnTargetHit(ActiveTargets[other.GameObjectID],ActiveTargets[other.GameObjectID]?.transform.position ?? transform.position );
+                                OnTargetHit(ActiveTargets[other.MyGameObjectID],ActiveTargets[other.MyGameObjectID]?.transform.position ?? transform.position );
                             }
                         }
                     }
@@ -363,7 +363,6 @@ public class GenericProjectile : MyGameObject,IQueueable<GenericProjectile>,IAct
 
     protected void Awake()
     {
-        base.Awake();
         CollisionDetector = GetComponent<CollisionDetector>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
         //onTargetPositionReached += delegate { SpriteRenderer.enabled = false; Debug.LogWarning(Time.time); };
@@ -461,7 +460,7 @@ public class GenericProjectile : MyGameObject,IQueueable<GenericProjectile>,IAct
         DynamicData.Clear();
         MovementFunction.ExternalMovementLock = true;
         targetPositionSet = false;
-        GameObjectPool.Instance.RemoveObjectFromAllPools(GameObjectID,name);
+        GameObjectPool.Instance.RemoveObjectFromAllPools(MyGameObjectID,name);
         QueuePool?.ObjectQueue.Enqueue(this);
         hitCounter = BaseProjectileEffect.HitCounter;
     }

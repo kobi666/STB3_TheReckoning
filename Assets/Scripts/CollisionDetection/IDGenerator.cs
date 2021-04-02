@@ -1,19 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class IDGenerator
+public class IDGenerator : MonoBehaviour
 {
-    public static int CollisionIDcounter = 1;
-    public static int GameIDCounter = 1;
+    public static IDGenerator Instance;
 
-    public static int GetCollisionID()
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    public  int CollisionIDcounter = 1;
+    public  int GameIDCounter = 1;
+
+    public  int GetCollisionID()
     {
         CollisionIDcounter++;
         return CollisionIDcounter - 1;
     }
     
-    public static int GetGameObjectID()
+    public  int GetGameObjectID()
     {
         GameIDCounter++;
         return GameIDCounter - 1;

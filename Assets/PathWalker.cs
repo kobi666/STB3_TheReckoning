@@ -60,6 +60,7 @@ public class PathWalker : MonoBehaviour
     }
 
     public float SplineTotalLength = 0;
+    [SerializeField]
     public Transform ObjectTransform;
 
     public event Action onPathEnd;

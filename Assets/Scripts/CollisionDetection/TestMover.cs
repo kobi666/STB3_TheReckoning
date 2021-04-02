@@ -64,7 +64,7 @@ public class TestMover : MonoBehaviour
     private void Awake()
     {
         BoxCollider2D = GetComponent<BoxCollider2D>();
-        DetectionID = IDGenerator.GetCollisionID();
+        DetectionID = IDGenerator.Instance.GetCollisionID();
         if (DetectionType == DetectionTypes.None)
         {
             DetectableTypeInt = 0;

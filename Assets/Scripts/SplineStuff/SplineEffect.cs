@@ -55,7 +55,7 @@ public class SplineEffect
 
     private void ApplyEffectOnMainTarget(Effectable ef,Vector2 targetPos)
     {
-        if (TargetBank.Targets.ContainsKey(ef.GameObjectID))
+        if (TargetBank.Targets.ContainsKey(ef.MyGameObjectID))
         {
             if (ef.IsTargetable())
             {
@@ -130,7 +130,7 @@ public class SplineEffect
 
     void EffectOnMainTarget(Effectable ef,Vector2 targetPos)
     {
-        if (TargetBank.Targets.ContainsKey(ef.GameObjectID))
+        if (TargetBank.Targets.ContainsKey(ef.MyGameObjectID))
         {
             if (ef.IsTargetable())
             {

@@ -82,10 +82,10 @@ public class AOEEffect : IHasEffectAnimation
                         foreach (var ef in aoeController.TargetBank.Targets.Values)
                         {
                             if (TargetsIDs != null) {
-                                if (ef.Item1 != null && !TargetsIDs.Contains(ef.Item1.GameObjectID))
+                                if (ef.Item1 != null && !TargetsIDs.Contains(ef.Item1.MyGameObjectID))
                                 {
                                     Targets.Add(ef);
-                                    TargetsIDs.Add(ef.Item1.GameObjectID);
+                                    TargetsIDs.Add(ef.Item1.MyGameObjectID);
                                 }
                             }
                         }

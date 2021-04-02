@@ -21,7 +21,7 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
 
     private void OnDisable()
     {
-        GameObjectPool.Instance.OnUnitDisable(GameObjectID);
+        GameObjectPool.Instance.OnUnitDisable(MyGameObjectID);
     }
 
 

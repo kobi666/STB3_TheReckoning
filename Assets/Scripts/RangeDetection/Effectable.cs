@@ -30,11 +30,11 @@ public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITarg
     {
         if (targetableState == true)
         {
-            GameObjectPool.Instance.AddTargetable(GameObjectID);
+            GameObjectPool.Instance.AddTargetable(MyGameObjectID);
         }
         else
         {
-            GameObjectPool.Instance.RemoveTargetable(GameObjectID);
+            GameObjectPool.Instance.RemoveTargetable(MyGameObjectID);
         }
     }
 
@@ -55,6 +55,7 @@ public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITarg
     protected void Start()
     {
         ActivePool = GameObjectPool.Instance.ActiveEffectables;
+        int objID = ParentMyGameObject.MyGameObjectID;
         ActivePool.AddObjectToActiveObjectPool(this);
         onTargetableStateChange += UpdateTargetableState;
     }
@@ -65,10 +66,10 @@ public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITarg
     void OnDisable()
     {
         UpdateTargetableState(false);
-        GameObjectPool.Instance?.RemoveObjectFromAllPools(GameObjectID,name);
+        GameObjectPool.Instance?.RemoveObjectFromAllPools(MyGameObjectID,name);
     }
 
-    public int GameObjectID { get => ParentMyGameObject.gameObjectID; }
+    public int MyGameObjectID { get => ParentMyGameObject.MyGameObjectID; }
     [Required]
     public MyGameObject ParentMyGameObject;
 }

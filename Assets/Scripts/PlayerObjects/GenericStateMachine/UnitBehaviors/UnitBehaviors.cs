@@ -11,7 +11,7 @@ namespace UnitBehaviors
     {
         public override void Behavior()
         {
-            DeathManager.Instance.OnUnitDeath(UnitObject.GameObjectID);
+            DeathManager.Instance.OnUnitDeath(UnitObject.MyGameObjectID);
         }
 
         public override void InitBehavior()
@@ -253,7 +253,7 @@ namespace UnitBehaviors
 
         private int targetGameObjectID
         {
-            get => UnitBattleManager.TargetUnit.GameObjectID;
+            get => UnitBattleManager.TargetUnit.MyGameObjectID;
         }
         public override void Behavior()
         {
@@ -358,7 +358,7 @@ namespace UnitBehaviors
             if (UnitBattleManager.targetExists)
             {
                 if (AttackAreaTargetBank.Targets.ContainsKey(UnitObject.UnitBattleManager
-                    .TargetUnit.GameObjectID))
+                    .TargetUnit.MyGameObjectID))
                 {
                     return true;
                 }

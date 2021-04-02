@@ -22,7 +22,7 @@ public class EffectableTargetBank : TargetBank<Effectable>
         {
             if (ef != null)
             {
-                if (existingTargets.Contains(ef.GameObjectID))
+                if (existingTargets.Contains(ef.MyGameObjectID))
                 {
                     continue;
                 }   
@@ -30,7 +30,7 @@ public class EffectableTargetBank : TargetBank<Effectable>
                 if (vd < distance)
                 {
                     distance = vd;
-                    s = ef.GameObjectID;
+                    s = ef.MyGameObjectID;
                 }
             }
         }

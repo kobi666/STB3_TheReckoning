@@ -1,19 +1,24 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Collections.Concurrent;
 using Animancer;
 using MyBox;
 using Sirenix.OdinInspector;
 
 
-[DefaultExecutionOrder(-1)]
+[DefaultExecutionOrder(-30)]
 public class GameObjectPool : MonoBehaviour
 {
     [ShowInInspector]
-    public Dictionary<int,int> CollisionIDToGameObjectID = new Dictionary<int, int>();
-    
-    
-    
+    public static ConcurrentDictionary<int,int> CollisionIDToGameObjectID = new ConcurrentDictionary<int, int>();
+
+    private void OnDisable()
+    {
+        CollisionIDToGameObjectID.Clear();
+    }
+
+
     public Dictionary<string, PoolObjectQueue<RangeDetector>> RangeDetectorObjectPoolQueue = new Dictionary<string, PoolObjectQueue<RangeDetector>>();
     public Dictionary<string, PoolObjectQueue<PathDiscoveryPoint>> PathDiscoveryPointObjectPoolQueue = new Dictionary<string, PoolObjectQueue<PathDiscoveryPoint>>();
 
@@ -39,7 +44,7 @@ public class GameObjectPool : MonoBehaviour
     {
         /*try
         {*/
-            ActiveUnits.Add(unit.GameObjectID,unit);
+            ActiveUnits.Add(unit.MyGameObjectID,unit);
         /*}
         catch (Exception e)
         {

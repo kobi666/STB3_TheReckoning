@@ -220,7 +220,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     
     
     public void StandardOnTargetEnteredRange(GenericWeaponController self, Effectable ef) {
-        TargetUnit tu = GameObjectPool.Instance.GetTargetUnit(ef.GameObjectID);
+        TargetUnit tu = GameObjectPool.Instance.GetTargetUnit(ef.MyGameObjectID);
         if (Target?.Effectable == null) {
             OnTargetAdd(tu);
             if (Autonomous)
@@ -241,7 +241,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     }
 
     public virtual void StandardOnTargetLeftRange(int targetGameObjectID,string callerName) {
-        if (Target.GenericUnitController?.GameObjectID == targetGameObjectID)
+        if (Target.GenericUnitController?.MyGameObjectID == targetGameObjectID)
         {
             Target = FindSingleTargetNearestToEndOfSpline(targetGameObjectID);
         }
@@ -354,8 +354,8 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         get => Data.targetUnit;
         set {
             Data.targetUnit = value;
-            GenericRotator.Target = value?.transform;
-            onTargetSet?.Invoke(Target?.GenericUnitController.GameObjectID ?? 0);
+            //GenericRotator.Target = value?.transform;
+            onTargetSet?.Invoke(Target?.GenericUnitController.MyGameObjectID ?? 0);
             if (value != null)
             {
                 TargetExists = true;
@@ -414,7 +414,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
 
     void UpdateTargetState(int targetGameObjectID, bool state)
     {
-        if (targetGameObjectID == Target.GenericUnitController?.GameObjectID)
+        if (targetGameObjectID == Target.GenericUnitController?.MyGameObjectID)
         {
             if (state == false)
             {

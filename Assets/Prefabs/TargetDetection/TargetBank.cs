@@ -17,8 +17,8 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
     
     
     
-    [Required] public MyGameObject parentMyGameObject;
-    public int GameObjectID { get => parentMyGameObject.GameObjectID; }
+    [Required][SerializeField] public MyGameObject parentMyGameObject;
+    public int MyGameObjectID { get => parentMyGameObject.MyGameObjectID; }
     [ShowInInspector]
     public bool HasTargets;
     private void OnEnable()
@@ -74,15 +74,16 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
     [Required]
     public CollisionDetector Detector;
     public event Action<int> onTryToAddTarget;
-    public void OnTryToAddTarget(int targetGameObjectID) {
-        
-        onTryToAddTarget?.Invoke(targetGameObjectID);
-        
+    public void OnTryToAddTarget(int targetCollisionID)
+    {
+        int GID = GameObjectPool.CollisionIDToGameObjectID[targetCollisionID];
+        onTryToAddTarget?.Invoke(GID);
     }
 
     public event Action<int> onTargetRemove;
-    public void OnTargetRemove(int gameObjectID) {
-        onTargetRemove?.Invoke(gameObjectID);
+    public void OnTargetRemove(int targetCollisionID) {
+        int GID = GameObjectPool.CollisionIDToGameObjectID[targetCollisionID];
+        onTargetRemove?.Invoke(GID);
     }
     
     
@@ -114,12 +115,12 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
     
 
     void AddTarget(int _gameobjectID) {
-        if (_gameobjectID == GameObjectID)
+        if (_gameobjectID == MyGameObjectID)
         {
             return;
         }
         clearNulls();
-        T t = TryToGetTargetOfType(GameObjectID);
+        T t = TryToGetTargetOfType(_gameobjectID);
         if (t != null) {
             if (!Targets.ContainsKey(_gameobjectID))
             {

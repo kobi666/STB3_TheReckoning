@@ -17,9 +17,9 @@ public class ActiveObjectPool<T> where T : IhasGameObjectID,IActiveObject<T>
     }
 
     public void AddObjectToActiveObjectPool(T t) {
-        if (!Pool.ContainsKey(t.GameObjectID)) {
-            Pool.Add(t.GameObjectID, t);
-            onObjectAdded?.Invoke(t.GameObjectID);
+        if (!Pool.ContainsKey(t.MyGameObjectID)) {
+            Pool.Add(t.MyGameObjectID, t);
+            onObjectAdded?.Invoke(t.MyGameObjectID);
         }
         
     }

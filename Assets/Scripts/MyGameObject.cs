@@ -1,35 +1,30 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 [DefaultExecutionOrder(-11)]
 public class MyGameObject : MonoBehaviour,IhasGameObjectID
 {
-    public int gameObjectID;
-
-    protected void Awake()
-    {
-        if (GameObjectID == 0) {
-        gameObjectID = IDGenerator.GetGameObjectID();
-        }
-    }
-
-    public int GameObjectID
+    [ShowInInspector]
+    private int myGameObjectID = 0;
+    
+    public int MyGameObjectID
     {
         get
         {
-            if (gameObjectID == 0)
+            if (myGameObjectID == 0)
             {
-                gameObjectID = IDGenerator.GetGameObjectID();
+                myGameObjectID = IDGenerator.Instance.GetGameObjectID();
             }
 
-            return gameObjectID;
+            return myGameObjectID;
         }
     }
 }
 
 public interface IhasGameObjectID
 {
-    int GameObjectID { get; }
+    int MyGameObjectID { get; }
 }

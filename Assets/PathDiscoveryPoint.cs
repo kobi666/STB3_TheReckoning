@@ -39,7 +39,7 @@ public class PathDiscoveryPoint : MonoBehaviour,IQueueable<PathDiscoveryPoint>,I
     protected void Awake()
     {
         ActivePool = GameObjectPool.Instance.ActivePathDiscoveryPoints;
-        gameObjectID = IDGenerator.GetGameObjectID();
+        gameObjectID = IDGenerator.Instance.GetGameObjectID();
     }
 
 
@@ -56,6 +56,6 @@ public class PathDiscoveryPoint : MonoBehaviour,IQueueable<PathDiscoveryPoint>,I
     }
 
     public event Action<bool> onTargetableStateChange;
-    public int GameObjectID { get => gameObjectID; }
+    public int MyGameObjectID { get => gameObjectID; }
     public int gameObjectID;
 }

@@ -8,9 +8,10 @@ using UnityEngine;
 public abstract class CollidingObject : MonoBehaviour
 {
     [Required] public MyGameObject ParentMyGameObject;
+    
     public int GameObjectID
     {
-        get => ParentMyGameObject.GameObjectID;
+        get => ParentMyGameObject.MyGameObjectID;
     }
     
     public int CollisionID;
@@ -27,14 +28,12 @@ public abstract class CollidingObject : MonoBehaviour
     
     
 
-    protected void Awake()
-    {
-        CollisionID = IDGenerator.GetCollisionID();
-    }
+    
 
 
     protected void Start()
     {
+        CollisionID = IDGenerator.Instance.GetCollisionID();
         BoxCollider2D = GetComponent<BoxCollider2D>();
         
         if (CollisionTag == DetectionTags.NONE)
@@ -50,7 +49,7 @@ public abstract class CollidingObject : MonoBehaviour
         
         BoxCollider2D.enabled = false;
         GWCS.instance.AddObject(this);
-        GameObjectPool.Instance.CollisionIDToGameObjectID.Add(CollisionID,GameObjectID);
+        GameObjectPool.CollisionIDToGameObjectID.TryAdd(CollisionID,GameObjectID);
     }
     
     

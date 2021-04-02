@@ -146,7 +146,7 @@ public class LeapingSplines : SplineAttackProperties
 
     private void SetInitialTargetTarget(Effectable ef, Vector2 pos)
     {
-        LeapingTargets.Add(ef.GameObjectID,(ef,pos));
+        LeapingTargets.Add(ef.MyGameObjectID,(ef,pos));
     }
     public override void SpecificPropertiesInit()
     {

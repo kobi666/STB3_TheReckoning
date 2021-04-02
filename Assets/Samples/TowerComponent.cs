@@ -69,7 +69,6 @@ public abstract class TowerComponent : MyGameObject, IHasEffects,IHasRangeCompon
     public CircleCollider2D RangeCollider;    
     public abstract void PostAwake();
     protected void Awake() {
-        base.Awake();
         SR = GetComponent<SpriteRenderer>() ?? null;
         Animancer = GetComponent<AnimancerComponent>() ?? null;
         PostAwake();
