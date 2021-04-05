@@ -12,6 +12,7 @@ using Unity.Collections;
 using Unity.Burst;
 using Unity.Mathematics;
 
+[DefaultExecutionOrder(-20)]
 public class GWCS : MonoBehaviour
 {
     public static GWCS instance;
@@ -232,10 +233,9 @@ public class GWCS : MonoBehaviour
         public void Execute(int index)
         {
             var newCollision = newTotalCollisionsByIndex.GetValuesForKey(index);
-            do
-            {
-                currentCollisions.Add(allSimulatedColliders[index].CollisionID, newCollision.Current);
-            } while (newCollision.MoveNext());
+            while (newCollision.MoveNext()) {
+            currentCollisions.Add(allSimulatedColliders[index].CollisionID, newCollision.Current);
+            }
         }
     }
     
@@ -470,7 +470,7 @@ public class GWCS : MonoBehaviour
                 
             while (allNewExits.MoveNext())
             {
-                detector.Value.OnTargetExit(allNewExits.Current);
+                detector.Value.OnTargetExit(allNewExits.Current,name);
             }
         }
         JH_postResolveJobHandle.Complete();
@@ -491,9 +491,10 @@ public class GWCS : MonoBehaviour
 
     public bool EnableSystem = true;
     public int frameCounter = 0;
+    public int UpdateRate = 3;
     private void Update()
     {
-        if (frameCounter > 5) {
+        if (frameCounter > UpdateRate) {
         ExecuteCollisionSystem();
         frameCounter = 0;
         }

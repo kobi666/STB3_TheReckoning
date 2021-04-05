@@ -159,7 +159,7 @@ public class RoomBorders {
 /// probably change this into a struct once i figure out how GC works on those. Jesus this is going to be a painful refactor....
 /// </summary>
 [System.Serializable]
-public class TargetUnit
+public class TargetUnit 
 {
     [SerializeField] private Transform targetTransform;
     public GenericUnitController GenericUnitController;
@@ -207,6 +207,7 @@ public class TargetUnit
         }
     }
 
+    
 }
 
 

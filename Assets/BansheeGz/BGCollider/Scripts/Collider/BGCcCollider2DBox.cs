@@ -29,6 +29,8 @@ namespace BansheeGz.BGSpline.Components
         private static readonly List<BoxCollider2D> TempColliders = new List<BoxCollider2D>();
         private static readonly List<Effector2D> TempEffectors = new List<Effector2D>();
 
+        
+
         //===============================================================================================
         //                                                    Editor stuff
         //===============================================================================================

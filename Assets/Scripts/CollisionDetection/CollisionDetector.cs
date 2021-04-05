@@ -4,14 +4,13 @@ using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 
-
 public class CollisionDetector : CollidingObject
 {
     private float ColliderSize;
     private Bounds ColliderBounds;
     
     public Color BoxColor = Color.white;
-    void OnDrawGizmos()
+    void OnDrawGizmosSelected()
     {
         Gizmos.color = BoxColor;
         if (BoxCollider2D != null)
@@ -67,9 +66,9 @@ public class CollisionDetector : CollidingObject
         onTargetEnter?.Invoke(collisionID);
     }
 
-    public event Action<int> onTargetExit;
-    public void OnTargetExit(int collisionID) {
-        onTargetExit?.Invoke(collisionID);
+    public event Action<int,string> onTargetExit;
+    public void OnTargetExit(int collisionID,string callerName) {
+        onTargetExit?.Invoke(collisionID,callerName);
     }
 
     public bool IsPositionInRange(Vector2 pos)
@@ -91,7 +90,4 @@ public class CollisionDetector : CollidingObject
         get => DetectionTags.NONE;
     }
     public override List<DetectionTags> TagsICanDetect { get => tagsICanDetect; }
-    
-
-    
 }

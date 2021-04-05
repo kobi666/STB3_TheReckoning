@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Detector: {fileID: 0}
+  SingelTargetID: 0
   TargetBank: {fileID: 6251829637899521290}
 --- !u!114 &6251829637899521290
 MonoBehaviour:
@@ -58,6 +59,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DiscoverableTags: []
+  parentMyGameObject: {fileID: 0}
   HasTargets: 0
   HasTargetableTargets: 0
   Detector: {fileID: 0}

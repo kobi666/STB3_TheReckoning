@@ -91,7 +91,7 @@ public class UnitBattleManager : MonoBehaviour
     public AnimationClip OnAttackAnimation;
     public AnimationClip OnSpecialAttackAnimation;
 
-    void updateTargetState(int gameObjectID, bool state)
+    void updateTargetState(int gameObjectID, bool state, string callerName)
     {
         if (gameObjectID == TargetUnit?.MyGameObjectID)
         {

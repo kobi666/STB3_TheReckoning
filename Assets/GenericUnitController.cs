@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 
-[Serializable]
+[Searchable][Serializable]
 public class GenericUnitController : MyGameObject,IQueueable<GenericUnitController>,IActiveObject<GenericUnitController>,IHasEffects,IHasRangeComponents,IHasStateMachine
 {
     private bool firstRun = true;

@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEditor;
 
-[RequireComponent(typeof(CollisionDetector)),RequireComponent(typeof(DetectableCollider))]
+[RequireComponent(typeof(DetectableCollider))]
 public class GenericProjectile : MyGameObject,IQueueable<GenericProjectile>,IActiveObject<GenericProjectile>,IHasEffectAnimation
 {
     public EffectAnimationController EffectAnimationController;
@@ -46,7 +46,7 @@ public class GenericProjectile : MyGameObject,IQueueable<GenericProjectile>,IAct
     }
     List<string> DiscoverableTagsList = new List<string>();
     
-    public List<string> TargetExclusionList = new List<string>();
+    public List<int> TargetExclusionList = new List<int>();
     
 
     public void Activate()
@@ -202,21 +202,20 @@ public class GenericProjectile : MyGameObject,IQueueable<GenericProjectile>,IAct
     }
     
     
-    public void OnTargetEnter(MyGameObject other) {
-        if (DiscoverableTagsList.Contains(other.tag))
-        {
-            if (BaseProjectileEffect.TriggersOnCollision)
+    public void OnTargetEnter(int targetCollisionID)
+    {
+        int GID = GameObjectPool.CollisionIDToGameObjectID[targetCollisionID].Item1;
+        if (BaseProjectileEffect.TriggersOnCollision)
             {
                 if (BaseProjectileEffect.TriggersOnSpecificTarget)
                 {
                     if (EffectableTarget != null) {
-                        if (EffectableTarget?.name == other.name)
+                        if (EffectableTarget?.MyGameObjectID == GID)
                         {
-                            int targetID = EffectableTarget.MyGameObjectID;
-                            if (ActiveTargets?.ContainsKey(targetID) ?? false)
+                            if (ActiveTargets?.ContainsKey(GID) ?? false)
                             {
-                                if (ActiveTargets[targetID].IsTargetable())
-                                    OnTargetHit(ActiveTargets[targetID],ActiveTargets[targetID]?.transform.position ?? transform.position);
+                                if (ActiveTargets[GID].IsTargetable())
+                                    OnTargetHit(ActiveTargets[GID],ActiveTargets[GID]?.transform.position ?? transform.position);
                                 hitCounter -= 1;
                             }
                         }
@@ -224,20 +223,19 @@ public class GenericProjectile : MyGameObject,IQueueable<GenericProjectile>,IAct
                 }
                 else
                 {
-                    if (GameObjectPool.Instance.ActiveEffectables?.Pool.ContainsKey(other.MyGameObjectID) ?? false)
+                    if (GameObjectPool.Instance.ActiveEffectables?.Pool.ContainsKey(GID) ?? false)
                     {
-                        if (!TargetExclusionList.Contains(other.name)) 
+                        if (!TargetExclusionList.Contains(GID)) 
                         {
-                            if (ActiveTargets[other.MyGameObjectID].IsTargetable()) 
+                            if (ActiveTargets[GID].IsTargetable()) 
                             {
-                                OnTargetHit(ActiveTargets[other.MyGameObjectID],ActiveTargets[other.MyGameObjectID]?.transform.position ?? transform.position );
+                                OnTargetHit(ActiveTargets[GID],ActiveTargets[GID]?.transform.position ?? transform.position );
                             }
                         }
                     }
 
                 }
             }
-        }
     }
     
     public void InitEffectAnimation()
@@ -363,7 +361,8 @@ public class GenericProjectile : MyGameObject,IQueueable<GenericProjectile>,IAct
 
     protected void Awake()
     {
-        CollisionDetector = GetComponent<CollisionDetector>();
+        CollisionDetector.onTargetEnter += OnTargetEnter;
+        //CollisionDetector = GetComponent<CollisionDetector>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
         //onTargetPositionReached += delegate { SpriteRenderer.enabled = false; Debug.LogWarning(Time.time); };
         onTargetHit += delegate(Effectable effectable, Vector2 targetPos) { SpriteRenderer.enabled = false; };

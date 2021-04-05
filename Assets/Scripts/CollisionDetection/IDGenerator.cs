@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(-20)]
 public class IDGenerator : MonoBehaviour
 {
     public static IDGenerator Instance;

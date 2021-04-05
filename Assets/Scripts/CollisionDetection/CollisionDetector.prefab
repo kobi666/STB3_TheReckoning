@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9053798066310498645}
   - component: {fileID: 9053798066310498647}
   - component: {fileID: 9053798066310498600}
+  - component: {fileID: 6945914222311010425}
   m_Layer: 0
   m_Name: CollisionDetector
   m_TagString: Untagged
@@ -71,9 +72,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ParentMyGameObject: {fileID: 0}
-  BoxColor: {r: 1, g: 1, b: 1, a: 1}
   CollisionID: 0
   BoxCollider2D: {fileID: 0}
   CollisionTagInt: 0
   CollisionTagsICanDetectInt: 0
+  BoxColor: {r: 1, g: 1, b: 1, a: 1}
   tagsICanDetect: 0000000002000000
+--- !u!114 &6945914222311010425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9053798066310498601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc219dcbba90e84b86e2ecf840e0266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2230726447646993015, guid: 0000000000000000d000000000000000, type: 0}
+  position: 0
+  direction: 0
+  tooltip: 

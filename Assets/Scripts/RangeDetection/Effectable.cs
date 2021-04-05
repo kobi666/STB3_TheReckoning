@@ -30,11 +30,11 @@ public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITarg
     {
         if (targetableState == true)
         {
-            GameObjectPool.Instance.AddTargetable(MyGameObjectID);
+            GameObjectPool.Instance.AddTargetable(MyGameObjectID,name);
         }
         else
         {
-            GameObjectPool.Instance.RemoveTargetable(MyGameObjectID);
+            GameObjectPool.Instance.RemoveTargetable(MyGameObjectID,name);
         }
     }
 

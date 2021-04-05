@@ -4,11 +4,28 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
+
 public abstract class CollidingObject : MonoBehaviour
 {
     [Required] public MyGameObject ParentMyGameObject;
     
+    [HideInInspector]
+    public bool RegisterToGWCS = true;
+    protected void OnEnable()
+    {
+        if (RegisterToGWCS) {
+        GWCS.instance.AddObject(this);
+        }
+    }
+
+    protected void OnDisable()
+    {
+        if (RegisterToGWCS)
+        {
+            GWCS.instance.RemoveObject(this);
+        }
+    }
+
     public int GameObjectID
     {
         get => ParentMyGameObject.MyGameObjectID;
@@ -22,35 +39,40 @@ public abstract class CollidingObject : MonoBehaviour
     
     public int CollisionTagInt;
     public int CollisionTagsICanDetectInt;
-    
-    
-    
-    
-    
 
-    
+
+    protected void Awake()
+    {
+        if (RegisterToGWCS)
+        {
+            CollisionID = IDGenerator.Instance.GetCollisionID();
+            BoxCollider2D = GetComponent<BoxCollider2D>();
+
+            if (CollisionTag == DetectionTags.NONE)
+            {
+                CollisionTagInt = 0;
+            }
+            else
+            {
+                CollisionTagInt = 1 << (int) CollisionTag;
+            }
+
+            CollisionTagsICanDetectInt = ConvertDetetableTypesToInt(TagsICanDetect);
+
+            BoxCollider2D.enabled = false;
+        }
+    }
 
 
     protected void Start()
     {
-        CollisionID = IDGenerator.Instance.GetCollisionID();
-        BoxCollider2D = GetComponent<BoxCollider2D>();
-        
-        if (CollisionTag == DetectionTags.NONE)
+        if (RegisterToGWCS)
         {
-            CollisionTagInt = 0;
+            GameObjectPool.CollisionIDToGameObjectID.TryAdd(CollisionID, (GameObjectID, name));
         }
-        else
-        {
-            CollisionTagInt = 1<<(int) CollisionTag;    
-        }
-        
-        CollisionTagsICanDetectInt = ConvertDetetableTypesToInt(TagsICanDetect);
-        
-        BoxCollider2D.enabled = false;
-        GWCS.instance.AddObject(this);
-        GameObjectPool.CollisionIDToGameObjectID.TryAdd(CollisionID,GameObjectID);
     }
+    
+    
     
     
     

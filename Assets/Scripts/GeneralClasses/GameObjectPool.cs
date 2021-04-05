@@ -11,7 +11,7 @@ using Sirenix.OdinInspector;
 public class GameObjectPool : MonoBehaviour
 {
     [ShowInInspector]
-    public static ConcurrentDictionary<int,int> CollisionIDToGameObjectID = new ConcurrentDictionary<int, int>();
+    public static ConcurrentDictionary<int,(int,string)> CollisionIDToGameObjectID = new ConcurrentDictionary<int, (int,string)>();
 
     private void OnDisable()
     {
@@ -58,30 +58,30 @@ public class GameObjectPool : MonoBehaviour
     
     public List<int> Targetables = new List<int>();
 
-    public event Action<int,bool> onTargetableUpdate;
+    public event Action<int,bool,string> onTargetableUpdate;
 
-    public void AddTargetable(int targetabelGameobjectID)
+    public void AddTargetable(int targetabelGameobjectID, string callerName)
     {
         if (!Targetables.Contains(targetabelGameobjectID))
         {
             Targetables.Add(targetabelGameobjectID);
-            onTargetableUpdate?.Invoke(targetabelGameobjectID,true);
+            onTargetableUpdate?.Invoke(targetabelGameobjectID,true,callerName);
         }
     }
     
-    public void RemoveTargetable(int gameObjectID)
+    public void RemoveTargetable(int gameObjectID,string callerName)
     {
         if (Targetables.Contains(gameObjectID))
         {
             Targetables.Remove(gameObjectID);
-            onTargetableUpdate?.Invoke(gameObjectID,false);
+            onTargetableUpdate?.Invoke(gameObjectID,false,callerName);
         }
     }
     
 
-    public event Action<int> onObjectDisable;
-    public void OnObjectDisable(int gameObjectID) {
-        onObjectDisable?.Invoke(gameObjectID);
+    public event Action<int,string> onObjectDisable;
+    public void OnObjectDisable(int gameObjectID,string callerName) {
+        onObjectDisable?.Invoke(gameObjectID,callerName);
     }
     
     public Dictionary<string,GameObject> PlaceHoldersDict = new Dictionary<string, GameObject>();
@@ -185,7 +185,7 @@ public class GameObjectPool : MonoBehaviour
         ActiveEffectables.RemoveObjectFromPool(GameObjectID);
         ActiveGenericProjectiles.RemoveObjectFromPool(GameObjectID);
         ActiveGenericProjectiles.RemoveObjectFromPool(GameObjectID);
-        OnObjectDisable(GameObjectID);
+        OnObjectDisable(GameObjectID,callerName);
     }
 
 

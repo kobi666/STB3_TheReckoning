@@ -193,11 +193,35 @@
           </e>
         </e>
         <e p="BeamTowerControllerLegacy.cs" t="Include" />
+        <e p="CGHierarchyIcons" t="Include">
+          <e p="Documentation" t="Include">
+            <e p="README.txt" t="Include" />
+          </e>
+          <e p="Editor" t="Include">
+            <e p="Helpers" t="Include">
+              <e p="TextureHelper.cs" t="Include" />
+            </e>
+            <e p="InspectorEditors" t="Include">
+              <e p="HierarchyIconEditor.cs" t="Include" />
+            </e>
+            <e p="UnityCallbacks" t="Include">
+              <e p="DestroyInstancesOnBuild.cs" t="Include" />
+              <e p="ShowIconOnHierarchyView.cs" t="Include" />
+            </e>
+            <e p="Windows" t="Include">
+              <e p="PickIconWindow.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Runtime" t="Include">
+            <e p="HierarchyIcon.cs" t="Include" />
+          </e>
+        </e>
         <e p="ComponentRotator.cs" t="Include" />
         <e p="ComponentSpriteController.cs" t="Include" />
         <e p="DistanceTester.cs" t="Include" />
         <e p="Editor" t="Include">
           <e p="ConditionalFieldAttribute.cs" t="Include" />
+          <e p="CustomBGCBoxColliderEditor.cs" t="Include" />
           <e p="TagSelectorPropertyDrawer.cs" t="Include" />
         </e>
         <e p="EnumeratorPlaceHolder.cs" t="Include" />
@@ -1067,8 +1091,11 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="CollisionDetection" t="Include">
+            <e p="ChildCollisionDetector.cs" t="Include" />
             <e p="CollidingObject.cs" t="Include" />
+            <e p="CollisionAggregator.cs" t="Include" />
             <e p="CollisionDetector.cs" t="Include" />
+            <e p="CustomBGCBoxCollider.cs" t="Include" />
             <e p="DetectableCollider.cs" t="Include" />
             <e p="DetectionTags.cs" t="Include" />
             <e p="GWCS.cs" t="Include" />
@@ -1322,6 +1349,9 @@
         <e p="WeaponAttack.cs" t="Include" />
       </e>
       <e p="com.unity.quicksearch.csproj" t="IncludeRecursive" />
+      <e p="HierarchyIcons.csproj" t="IncludeRecursive" />
+      <e p="HierarchyIcons.Player.csproj" t="IncludeRecursive" />
+      <e p="HierarchyIconsEditor.csproj" t="IncludeRecursive" />
       <e p="InputSystem.Samples.Visualizers.csproj" t="IncludeRecursive" />
       <e p="InputSystem.Samples.Visualizers.Player.csproj" t="IncludeRecursive" />
       <e p="Library" t="Include">

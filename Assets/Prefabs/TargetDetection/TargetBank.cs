@@ -29,6 +29,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
     protected void OnDisable()
     {
         DisableRangedetectorEvents();
+        Targets.Clear();
     }
 
     [ShowInInspector]
@@ -36,7 +37,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
 
     public event Action<string,bool> onTargetableChange;
 
-    void TargetablesCheck(int gameObjectID,bool targetableState)
+    void TargetablesCheck(int gameObjectID,bool targetableState,string callerName)
     {
         if (!Targets.IsNullOrEmpty())
         {
@@ -76,14 +77,23 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
     public event Action<int> onTryToAddTarget;
     public void OnTryToAddTarget(int targetCollisionID)
     {
-        int GID = GameObjectPool.CollisionIDToGameObjectID[targetCollisionID];
+        int GID = GameObjectPool.CollisionIDToGameObjectID[targetCollisionID].Item1;
         onTryToAddTarget?.Invoke(GID);
     }
 
     public event Action<int> onTargetRemove;
-    public void OnTargetRemove(int targetCollisionID) {
-        int GID = GameObjectPool.CollisionIDToGameObjectID[targetCollisionID];
+    public void OnTargetRemoveFromCollision(int targetCollisionID,string callerName) {
+        Debug.LogWarning(name + " : " + "collision ID " + targetCollisionID + "  removed by " + callerName);
+        int GID = GameObjectPool.CollisionIDToGameObjectID[targetCollisionID].Item1;
         onTargetRemove?.Invoke(GID);
+    }
+
+    public void OnTargetRemoveGID(int targetGameObjectID, string callerName)
+    {
+        if (Targets.ContainsKey(targetGameObjectID)) {
+        Debug.LogWarning(name + " : " + "GID " + targetGameObjectID + " removed by " + callerName);
+        onTargetRemove?.Invoke(targetGameObjectID);
+        }
     }
     
     
@@ -173,7 +183,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
 
     public void InitRangeDetectorEvents() {
         Detector.onTargetEnter += OnTryToAddTarget;
-        Detector.onTargetExit += OnTargetRemove;
+        Detector.onTargetExit += OnTargetRemoveFromCollision;
     }
 
     void DisableRangedetectorEvents()
@@ -181,22 +191,22 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
         if (Detector != null)
         {
             Detector.onTargetEnter -= OnTryToAddTarget;
-            Detector.onTargetExit -= OnTargetRemove;
+            Detector.onTargetExit -= OnTargetRemoveFromCollision;
         }
     }
     // Start is called before the first frame update
     void Start()
     {
         GameObjectPool.Instance.onTargetableUpdate += OnTargetableRemove;
-        GameObjectPool.Instance.onObjectDisable += OnTargetRemove;
+        GameObjectPool.Instance.onObjectDisable += OnTargetRemoveGID;
         PostStart();
     }
 
-    public void OnTargetableRemove(int targetGameObjectID, bool tstate)
+    public void OnTargetableRemove(int targetGameObjectID, bool tstate, string callerName)
     {
         if (!tstate)
         {
-            OnTargetRemove(targetGameObjectID);
+            OnTargetRemoveGID(targetGameObjectID,callerName);
         }
     }
 

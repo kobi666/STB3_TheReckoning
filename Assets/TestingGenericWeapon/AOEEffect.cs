@@ -180,8 +180,6 @@ public class AOEEffect : IHasEffectAnimation
         AoeControllers = aoes;
         foreach (var aoeController in AoeControllers)
         {
-            aoeController.Detector.gameObject.SetActive(false);
-            aoeController.Detector.gameObject.SetActive(true);
             aoeController.onSingleTargetSet += delegate(int s) { singelTargetID = s; };
         }
         foreach (var effect in Effects)

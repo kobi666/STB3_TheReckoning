@@ -241,7 +241,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     }
 
     public virtual void StandardOnTargetLeftRange(int targetGameObjectID,string callerName) {
-        if (Target.GenericUnitController?.MyGameObjectID == targetGameObjectID)
+        if (Target?.GenericUnitController?.MyGameObjectID == targetGameObjectID)
         {
             Target = FindSingleTargetNearestToEndOfSpline(targetGameObjectID);
         }
@@ -256,10 +256,11 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         return WeaponAttack.GetEffects();
     }
 
-    string CurrentLowestProximtyTargetName;
+    int CurrentLowestProximtyTargetID;
     TargetUnit FindSingleTargetNearestToEndOfSpline() {
         TargetUnit tu = null;
         float p = 999999.0f;
+        int foundTargetID = 0;
         foreach (var item in TargetBank.Targets)
         {
             if (!GameObjectPool.Instance.Targetables.Contains(item.Key)) {
@@ -269,15 +270,18 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
             if (tp < p) {
                 p = tp;
                 tu = GameObjectPool.Instance.GetTargetUnit(item.Key);
+                foundTargetID = item.Key;
             }
         }
-        CurrentLowestProximtyTargetName = tu?.name ?? "NULL";
+
+        CurrentLowestProximtyTargetID = foundTargetID;
         return tu;
     }
     
     TargetUnit FindSingleTargetNearestToEndOfSpline(int formerTargetGameObjectID) {
         TargetUnit tu = null;
         float p = 999999.0f;
+        int foundTargetID = 0;
         foreach (var item in TargetBank.Targets)
         {
             if (!GameObjectPool.Instance.ActiveUnits.ContainsKey(item.Key)) {
@@ -292,9 +296,11 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
             if (tp < p) {
                 p = tp;
                 tu = GameObjectPool.Instance.GetTargetUnit(item.Key);
+                foundTargetID = item.Key;
             }
         }
-        CurrentLowestProximtyTargetName = tu?.name ?? "NULL";
+
+        CurrentLowestProximtyTargetID = foundTargetID;
         return tu;
     }
 
@@ -412,7 +418,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     }
 
 
-    void UpdateTargetState(int targetGameObjectID, bool state)
+    void UpdateTargetState(int targetGameObjectID, bool state, string callerName)
     {
         if (targetGameObjectID == Target.GenericUnitController?.MyGameObjectID)
         {
