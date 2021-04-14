@@ -37,13 +37,14 @@ public class SplinePathController : MyGameObject,IActiveObject<SplinePathControl
     [SerializeField]
     public SplineDetector SplineDetector;
 
-    private void Awake()
+    protected void Awake()
     {
         //GameObjectID = IDGenerator.Instance.GetGameObjectID();
         ActivePool = GameObjectPool.Instance.ActiveSplines;
         EdgeCollider2D =  GetComponent<EdgeCollider2D>();
         SplineDetector =  GetComponent<SplineDetector>();
         OnPathUpdate += GetSplinePoints;
+        EdgeCollider2D.enabled = false;
     }
 
     public event Action OnPathUpdate;

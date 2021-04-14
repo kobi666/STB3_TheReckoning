@@ -246,6 +246,7 @@
         <e p="LaserTest.cs" t="Include" />
         <e p="LaserTest2.cs" t="Include" />
         <e p="LaserWeaponTest.cs" t="Include" />
+        <e p="MainPathController.cs" t="Include" />
         <e p="MapManager.cs" t="Include" />
         <e p="PathController.cs" t="Include" />
         <e p="PathDiscoveryPoint.cs" t="Include" />
@@ -1147,6 +1148,9 @@
           </e>
           <e p="MyGameObject.cs" t="Include" />
           <e p="parent1.cs" t="Include" />
+          <e p="PathControl" t="Include">
+            <e p="SeconderyPathController.cs" t="Include" />
+          </e>
           <e p="PlayerObjects" t="Include">
             <e p="CursorUtils.cs" t="Include" />
             <e p="DebugCrosshair.cs" t="Include" />
@@ -1190,6 +1194,7 @@
             <e p="SquareDetector.cs" t="Include" />
             <e p="TowerPositionData.cs" t="Include" />
           </e>
+          <e p="ScriptExtensions.cs" t="Include" />
           <e p="SplineStuff" t="Include">
             <e p="SplineEffect.cs" t="Include" />
           </e>

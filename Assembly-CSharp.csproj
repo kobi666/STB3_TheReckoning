@@ -396,6 +396,8 @@
      <Compile Include="Assets\Prefabs\ProjectileDynamicData.cs" />
      <Compile Include="Assets\Splinetest.cs" />
      <Compile Include="Assets\MainPathController.cs" />
+     <Compile Include="Assets\Scripts\PathControl\SeconderyPathController.cs" />
+     <Compile Include="Assets\Scripts\ScriptExtensions.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\BansheeGz\BGCollider\readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
