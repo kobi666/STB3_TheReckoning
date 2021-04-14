@@ -174,6 +174,10 @@ EdgeCollider2D:
   - {x: 0, y: 0}
   - {x: 0, y: 0}
   - {x: 0, y: 0}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!114 &2350894109049245227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +254,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -369,6 +374,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DiscoverableTags:
   - Enemy
+  DebugTargetByTag: 0
+  DebugTargetTag: 
 --- !u!114 &2350894109049245200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,9 +390,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DiscoverableTags:
   - Enemy
+  parentMyGameObject: {fileID: 0}
   HasTargets: 0
   HasTargetableTargets: 0
-  Detector: {fileID: 2350894109049245207}
+  Detector: {fileID: 0}
 --- !u!114 &2350894109049245201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,6 +502,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2191932398054562708, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
         type: 3}
+      propertyPath: RangeDetector
+      value: 
+      objectReference: {fileID: 4002109990356104242}
+    - target: {fileID: 2191932398054562708, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
+        type: 3}
+      propertyPath: EffectableTargetBank
+      value: 
+      objectReference: {fileID: 97934973264346581}
+    - target: {fileID: 2191932398054562708, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
+        type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 2191932398054562708, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
@@ -503,6 +521,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProjectileFinalPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 7680624880538412677, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
+        type: 3}
+      propertyPath: Detector
+      value: 
+      objectReference: {fileID: 4002109990356104242}
     - target: {fileID: 7680624880538412677, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
         type: 3}
       propertyPath: serializationData.Prefab
@@ -572,3 +595,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7767830797041982288}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &97934973264346581 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7680624880538412677, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7767830797041982288}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4002109990356104242 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6649205452354711394, guid: 61ea4ee2eca8f71439394924b1b5cf3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7767830797041982288}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caa475697a7ed9543a6259f255d9d087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

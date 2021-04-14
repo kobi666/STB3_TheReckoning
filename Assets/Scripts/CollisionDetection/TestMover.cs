@@ -161,7 +161,7 @@ public class TestMover : MonoBehaviour
 }
 
 
-
+//add offset and rotation
 public struct BittableSimulatedCollider 
 {
     public float2 position;

@@ -370,9 +370,10 @@ public class GWCS : MonoBehaviour
         int objCounter = 1;
         foreach (var _obj in AllObjects.Values)
         {
-            var size = _obj.BoxCollider2D.size;
+            var bc2d = _obj.BoxCollider2D;
+            var size = bc2d.size;
             AllSimulatedColliders[objCounter] = new BittableSimulatedCollider(size.x, size.y,
-                _obj.transform.position,
+                (Vector2)_obj.transform.position + bc2d.offset,
                 _obj.CollisionID,
                 _obj.GameObjectID,
                 _obj.CollisionTagInt,

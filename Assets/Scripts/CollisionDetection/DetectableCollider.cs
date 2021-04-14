@@ -8,7 +8,7 @@ public class DetectableCollider : CollidingObject
     public override DetectionTags CollisionTag { get => collisionTag; }
     public override List<DetectionTags> TagsICanDetect { get => new List<DetectionTags>(); }
     public Color BoxColor = Color.red;
-    void OnDrawGizmos()
+    void OnDrawGizmosSelected()
     {
         Gizmos.color = BoxColor;
         if (BoxCollider2D != null)

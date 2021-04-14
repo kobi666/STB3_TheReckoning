@@ -204,8 +204,7 @@ public class GameObjectPool : MonoBehaviour
             {
                 GameObject g = Instantiate(new GameObject());
                 g.name = "GameObjectPool";
-                g.AddComponent<GameObjectPool>();
-                Instance = g.GetComponent<GameObjectPool>();
+                Instance = g.AddComponent<GameObjectPool>();
             }
 
             return instance;

@@ -19,26 +19,27 @@ public class CollisionAggregator : CollisionDetector
 
     public void OnChildDetectorAdd(int targetCollisionID)
     {
-        int targetGID = GameObjectPool.CollisionIDToGameObjectID[targetCollisionID].Item1;
-        if (TargetsAndTargetCount.ContainsKey(targetGID))
+        
+        if (TargetsAndTargetCount.ContainsKey(targetCollisionID))
         {
-            TargetsAndTargetCount[targetGID]++;
+            TargetsAndTargetCount[targetCollisionID]++;
         }
         else
         {
-            TargetsAndTargetCount.Add(targetGID,1);
+            TargetsAndTargetCount.Add(targetCollisionID,1);
+            OnTargetEnter(targetCollisionID);
         }
     }
 
     public void OnChildDetectorRemove(int targetCollisionID, string callerName)
     {
-        int targetGID = GameObjectPool.CollisionIDToGameObjectID[targetCollisionID].Item1;
-        if (TargetsAndTargetCount.ContainsKey(targetGID))
+        if (TargetsAndTargetCount.ContainsKey(targetCollisionID))
         {
-            TargetsAndTargetCount[targetGID]--;
-            if (TargetsAndTargetCount[targetGID] <= 0)
+            TargetsAndTargetCount[targetCollisionID]--;
+            if (TargetsAndTargetCount[targetCollisionID] <= 0)
             {
-                TargetsAndTargetCount.Remove(targetGID);
+                TargetsAndTargetCount.Remove(targetCollisionID);
+                OnTargetExit(targetCollisionID,callerName);
             }
         }
     }

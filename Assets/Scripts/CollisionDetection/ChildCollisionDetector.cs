@@ -16,15 +16,18 @@ public class ChildCollisionDetector : CollisionDetector
         tagsICanDetect = detectionTags;
         ParentCollisionAggregator = parentCollisionAggregator;
         ParentMyGameObject = parentMyGameObject;
-        onTargetEnter += ParentCollisionAggregator.OnChildDetectorAdd;
-        onTargetExit += ParentCollisionAggregator.OnChildDetectorRemove;
         RegisterToGWCS = true;
-        base.Awake();
-        Start();
     }
 
     protected void Awake()
     {
-        RegisterToGWCS = false;
+        base.Awake();
+    }
+
+    protected void Start()
+    {
+        base.Start();
+        onTargetEnter += ParentCollisionAggregator.OnChildDetectorAdd;
+        onTargetExit += ParentCollisionAggregator.OnChildDetectorRemove;
     }
 }

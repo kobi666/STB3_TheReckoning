@@ -76,6 +76,7 @@
      <Compile Include="Assets\Scripts\Projectiles\UnitWaveClasses.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Singleton\Singleton.cs" />
      <Compile Include="Assets\Scripts\TestScripts\TestInputEvent.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\CollisionAggregator.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\ShakePosition.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\TextMeshColor.cs" />
      <Compile Include="Assets\testscript2.cs" />
@@ -142,6 +143,7 @@
      <Compile Include="Assets\PathDiscoveryTargetBank.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\PanStereo.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurvePointGO.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\ChildCollisionDetector.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Utilities\Initialization.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\AnimationController.cs" />
      <Compile Include="Assets\Scripts\Units\NormalUnitStates.cs" />
@@ -392,8 +394,8 @@
      <Compile Include="Assets\Scripts\Towers\SlotParentManager.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider2DEdge.cs" />
      <Compile Include="Assets\Prefabs\ProjectileDynamicData.cs" />
-     <Compile Include="Assets\Scripts\CollisionDetection\CollisionAggregator.cs" />
-     <Compile Include="Assets\Scripts\CollisionDetection\ChildCollisionDetector.cs" />
+     <Compile Include="Assets\Splinetest.cs" />
+     <Compile Include="Assets\MainPathController.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\BansheeGz\BGCollider\readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

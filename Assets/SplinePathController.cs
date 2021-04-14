@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class SplinePathController : MyGameObject,IActiveObject<SplinePathController>,IhasGameObjectID
 {
-
     public PathController parentPath;
     [ShowInInspector]
     public SortedList<int,Vector2> splinePoints = new SortedList<int,Vector2>();
