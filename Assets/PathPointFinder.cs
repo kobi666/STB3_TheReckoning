@@ -14,7 +14,7 @@ public class PathPointFinder : MonoBehaviour
     public string splineTag;
     
     [Required]
-    public RangeDetector RangeDetector;
+    public CollisionDetector RangeDetector;
 
     public bool OnlyTargetSpecificPaths = false;
     [ShowIf("OnlyTargetSpecificPaths")][ValidateInput("specificPathsNotEmpty", "List Cannot Be Empty")]
@@ -156,8 +156,8 @@ public class PathPointFinder : MonoBehaviour
     public Vector2? FindClosestToStart()
     {
         Vector2? v2p = null;
-        shortestSplinePath = FindShortestSpline();
-        SplinePathController spc = PathSplines[shortestSplinePath];
+        shortestSplinePathGID = FindShortestSpline();
+        SplinePathController spc = PathSplines[shortestSplinePathGID];
         foreach (var v2 in spc.splinePoints)
         {
             if (RangeDetector.IsPositionInRange(v2.Value))
@@ -171,7 +171,7 @@ public class PathPointFinder : MonoBehaviour
     
 
     [ShowInInspector]
-    public Dictionary<string,SplinePathController> PathSplines = new Dictionary<string, SplinePathController>();
+    public Dictionary<int,SplinePathController> PathSplines = new Dictionary<int, SplinePathController>();
 
 
     private List<string> specificPathNames = new List<string>();
@@ -181,10 +181,9 @@ public class PathPointFinder : MonoBehaviour
     {
         onPathFound?.Invoke();
     }
-    void AddPathSplines(MyGameObject go, string _tag)
+    void AddPathSplines(int targetGameObjectID)
     {
-        if (_tag == splineTag) {
-            if (GameObjectPool.Instance.ActiveSplines.Contains(go.MyGameObjectID))
+        if (GameObjectPool.Instance.ActiveSplines.Contains(targetGameObjectID))
             {
                 if (OnlyTargetSpecificPaths)
                 {
@@ -197,25 +196,25 @@ public class PathPointFinder : MonoBehaviour
                         }
                     }
 
-                    if (!specificPathNames.Contains(GameObjectPool.Instance.ActiveSplines.Pool[go.MyGameObjectID].parentPath.name))
+                    if (!specificPathNames.Contains(GameObjectPool.Instance.ActiveSplines.Pool[targetGameObjectID].parentPath.name))
                     {
                         return;
                     }
                 }
-                if (GameObjectPool.Instance.ActiveSplines.Pool[go.MyGameObjectID].SplineType == SplineTypes.Main) {
+                if (GameObjectPool.Instance.ActiveSplines.Pool[targetGameObjectID].SplineType == SplineTypes.Main_Middle) {
                     {
-                            PathSplines.Add(go.name,GameObjectPool.Instance.ActiveSplines.Pool[go.MyGameObjectID]);
+                            PathSplines.Add(targetGameObjectID,GameObjectPool.Instance.ActiveSplines.Pool[targetGameObjectID]);
                             onPathFound?.Invoke();    
                         }
                 }
             }
-        }
+        
     }
 
-    private string shortestSplinePath;
-    public string  FindShortestSpline()
+    private int shortestSplinePathGID;
+    public int  FindShortestSpline()
     {
-        string sname = string.Empty;
+        int sgid = 0;
         if (!PathSplines.IsNullOrEmpty())
         {
             float length = 999;
@@ -226,20 +225,20 @@ public class PathPointFinder : MonoBehaviour
                 if (l < length)
                 {
                     length = l;
-                    sname = ps.Key;
+                    sgid = ps.Key;
                 }
             }
         }
 
-        return sname;
+        return sgid;
     }
     
     public Vector2? FindClosestPointToEndOfSpline()
     {
-        shortestSplinePath = FindShortestSpline();
+        shortestSplinePathGID = FindShortestSpline();
         
-        SplinePathController spc = PathSplines[shortestSplinePath];
-        SortedList<int, Vector2> splinePoints = PathSplines[shortestSplinePath].splinePoints;
+        SplinePathController spc = PathSplines[shortestSplinePathGID];
+        SortedList<int, Vector2> splinePoints = PathSplines[shortestSplinePathGID].splinePoints;
         float closenss = 0f;
         Vector2? tv2 = null;
         foreach (var v2 in splinePoints)

@@ -107,6 +107,7 @@
      <Compile Include="Assets\Scripts\TowerComponents\TowerComponentData.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\NativeClasses.cs" />
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\VectorChar.cs" />
+     <Compile Include="Assets\MainPathController.cs" />
      <Compile Include="Assets\TriggerTest.cs" />
      <Compile Include="Assets\Samples\Input System\1.0.0-preview.5\Custom Binding Composite\CustomComposite.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ProjectileExitPoint.cs" />
@@ -121,6 +122,7 @@
      <Compile Include="Assets\Pixelplacement\Surge\ColliderButton\Utilities\ColliderButtonSelector.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\RawImageColor.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\Rotate.cs" />
+     <Compile Include="Assets\testbatch.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\WeaponTypes.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\TowerCrosshairManager.cs" />
      <Compile Include="Assets\Scripts\SplineStuff\SplineEffect.cs" />
@@ -141,6 +143,7 @@
      <Compile Include="Assets\Scripts\Projectiles\ProjectileUtils.cs" />
      <Compile Include="Assets\Scripts\Units\UnitMovementController.cs" />
      <Compile Include="Assets\PathDiscoveryTargetBank.cs" />
+     <Compile Include="Assets\UnitSpawnBatch.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\PanStereo.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurvePointGO.cs" />
      <Compile Include="Assets\Scripts\CollisionDetection\ChildCollisionDetector.cs" />
@@ -201,6 +204,7 @@
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider2DMesh.cs" />
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\VectorLine.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Examples\Scripts\BGTestCurveRuntime.cs" />
+     <Compile Include="Assets\Splinetest.cs" />
      <Compile Include="Assets\GenericUnitSpawner.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\ObjectDetectionUtils.cs" />
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\VisibilityControlAlways.cs" />
@@ -287,6 +291,7 @@
      <Compile Include="Assets\testwalker.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcWithCursor.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\RangeDetector.cs" />
+     <Compile Include="Assets\Scripts\PathControl\SeconderyPathController.cs" />
      <Compile Include="Assets\RangeDrawer.cs" />
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\VectorObject3D.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGPolylineSplitter.cs" />
@@ -373,6 +378,7 @@
      <Compile Include="Assets\Scripts\Projectiles\ExplosionController.cs" />
      <Compile Include="Assets\Scripts\CollisionDetection\CustomBGCBoxCollider.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\ProjectileMovementFunction.cs" />
+     <Compile Include="Assets\Scripts\ScriptExtensions.cs" />
      <Compile Include="Assets\Scripts\Projectiles\SingleAnimationObject.cs" />
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\VectorManager.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\TestUtilities.cs" />
@@ -394,10 +400,6 @@
      <Compile Include="Assets\Scripts\Towers\SlotParentManager.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider2DEdge.cs" />
      <Compile Include="Assets\Prefabs\ProjectileDynamicData.cs" />
-     <Compile Include="Assets\Splinetest.cs" />
-     <Compile Include="Assets\MainPathController.cs" />
-     <Compile Include="Assets\Scripts\PathControl\SeconderyPathController.cs" />
-     <Compile Include="Assets\Scripts\ScriptExtensions.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\BansheeGz\BGCollider\readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

@@ -8,7 +8,7 @@ public class DetectableCollider : CollidingObject
     public override DetectionTags CollisionTag { get => collisionTag; }
     public override List<DetectionTags> TagsICanDetect { get => new List<DetectionTags>(); }
     public Color BoxColor = Color.red;
-    void OnDrawGizmosSelected()
+    /*void OnDrawGizmosSelected()
     {
         Gizmos.color = BoxColor;
         if (BoxCollider2D != null)
@@ -41,5 +41,5 @@ public class DetectableCollider : CollidingObject
             Gizmos.DrawLine(Points[2], Points[3]);
             Gizmos.DrawLine(Points[3], Points[0]);
         }
-    }
+    }*/
 }

@@ -13,8 +13,7 @@ using UnitSpawning;
 public class SpawnSingleUnitToBasePosition : SpawnerBehavior
 {
     public List<UnitPoolCreationData> unitCreationData = new List<UnitPoolCreationData>();
-    public override List<UnitPoolCreationData> UnitCreationData { get => unitCreationData; }
-    private PoolObjectQueue<GenericUnitController> UnitQueuePool;
+    
     public float distanceFromBasePosition = 0.5f;
     
     [ShowInInspector]
@@ -53,7 +52,6 @@ public class SpawnSingleUnitToBasePosition : SpawnerBehavior
     public bool SpawnMaxUnitsOnStartup;
     public override async void SpecificBehaviorInit()
     {
-        UnitQueuePool = UnitCreationData[0].CreateUnitPool(ParentComponent.MaxUnits);
         onPositionRecalculation += SetUnitBasePosition;
         onPositionRecalculation += GetUnitRallyPositions;
         ParentComponent.onMaxUnitsChanged += GetUnitRallyPositions;
@@ -122,7 +120,7 @@ public class SpawnSingleUnitToBasePosition : SpawnerBehavior
 
     void SpawnUnitToBasePosition()
     {
-        GenericUnitController guc = ParentComponent.SpawnUnitInactive(UnitQueuePool);
+        GenericUnitController guc = ParentComponent.SpawnUnitInactive(UnitPools[0]);
         if (PathPointTypesByPriority[0] == PathPointFinder.PathPointType.RandomPosition)
         {
             guc.Data.DynamicData.BasePosition = new Vector2(Random.Range(-100f,100f),Random.Range(-100f,100f)); 
@@ -158,26 +156,35 @@ public class SpawnWaves : SpawnerBehavior
     [ValidateInput("validatePathPoints", "Pick at least one")]
     public PathPointFinder.PathPointType[] PathPointTypesByPriority;
 
-    public PathController PathController;
+    public MainPathController PathController;
 
-    public SortedList<SplineTypes,SplinePathController> PathSplines
+    public Dictionary<SplineTypes,SplinePathController> PathSplines
     {
-        get => PathController.ChildSplines;
+        get => PathController.SplinePaths;
     }
 
     private bool validatePathPoints()
     {
         return !PathPointTypesByPriority.IsNullOrEmpty();
     }
-    
-    
-    public override List<UnitPoolCreationData> UnitCreationData { get; }
-    
+
     [SerializeField]
     public List<UnitWave> Waves = new List<UnitWave>();
     
-    
-    
+    [ShowInInspector]
+    public Queue<bool[]> SpawnFormations = new Queue<bool[]>();
+    public bool[] GetSpawnFormation()
+    {
+        bool[] formation = SpawnFormations.Dequeue();
+        if (SpawnFormations.IsNullOrEmpty())
+        {
+            AllWavesFinished = true;
+        }
+
+        return formation;
+    }
+
+
 
     public override void SpecificBehaviorInit()
     {
@@ -185,8 +192,26 @@ public class SpawnWaves : SpawnerBehavior
         PathController = PathPointFinder.PathSplines[PathPointFinder.FindShortestSpline()].parentPath;
         }
         onBehaviorEnd += delegate { SpawningWaveInProgress = false; };
+        foreach (var wave in Waves)
+        {
+            wave.WaveInit();
+            for (int i = 0; i <= wave.WaveDelayInSpawnTimeMultiplier; i++)
+            {
+                SpawnFormations.Enqueue(new []{false,false,false,false,false});
+            }
+            for (int i = 0; i <= wave.AmountOfBatches; i++)
+            {
+                for (int j = 0; j < wave.BatchStructure.FormationLength; j++)
+                {
+                    SpawnFormations.Enqueue(wave.BatchStructure.GetColumn(j));
+                }
+                
+            }
+        }
         
     }
+    
+    
     
 
     public Vector2? UnitBasePosition;
@@ -196,61 +221,25 @@ public class SpawnWaves : SpawnerBehavior
         return ParentComponent.NumberOfManagedUnits < ParentComponent.MaxUnits;
     }
 
+    public override void Behavior()
+    {
+        
+    }
+
+
     public bool SpawningWaveInProgress;
     public int formationRowIndex = 0;
     private float batchTimerCounter = 0;
     private float WaveTimerCounter = 0;
     private int waveCounter;
-    public override async void Behavior()
-    {
-        if (SpawningWaveInProgress == true)
-        {
-            return;
-        }
+    private bool AllWavesFinished = false;
 
-        if (SpawningWaveInProgress == false)
-        {
-            foreach (var wave in Waves)
-            {
-                while (!wave.WaveFinished)
-                {
-                    foreach (var batch in wave.BatchGroup)
-                    {
-                        while (!batch.AllBatchesFinished)
-                        {
-                            for (int aa = 0; aa < batch.AmountOfBatches; aa++)
-                            {
-                                for (int bb = 0; bb < batch.BatchStructure.GetLength(1) ; bb++)
-                                {
-                                    await Task.Delay(batch.TimeBetweenRowsMS);
-                                    bool[] formation = batch.GetRow();
-                                    for (int cc = 0; cc < formation.Length; cc++)
-                                    {
-                                        if (formation[cc])
-                                        {
-                                            SpawnUnitByColumn(cc);
-                                        }
-                                        await Task.Yield();
-                                    }
-                                }
-                            }
-                            
-                            await Task.Yield();
-                        }
-                    }
-
-                    await Task.Yield();
-                }
-            }
-
-            SpawningWaveInProgress = false;
-        }
-    }
+    
 
     private int namecounter;
     public void SpawnUnitByColumn(int splineIndex)
     {
-        GenericUnitController guc = GameObject.Instantiate(TestEnemy);
+        GenericUnitController guc = UnitPools[0].GetInactive();
         guc.PathWalker.SplinePathController = PathSplines[(SplineTypes)splineIndex];
         guc.PathWalker.Spline = guc.PathWalker.SplinePathController.BgCcMath;
         guc.Data.DynamicData.Spline = PathSplines[(SplineTypes)splineIndex].BgCcMath;

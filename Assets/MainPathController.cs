@@ -15,7 +15,7 @@ public class MainPathController : SplinePathController
 
     public NumberOfPaths NumberOfPaths;
     public float singlePathWidth = 0.5f;
-    public List<SplinePathController> SplinePaths = new List<SplinePathController>();
+    public Dictionary<SplineTypes,SplinePathController> SplinePaths = new Dictionary<SplineTypes,SplinePathController>();
     
     [ShowInInspector]
     private float TotalPathWidth
@@ -26,9 +26,11 @@ public class MainPathController : SplinePathController
     protected void Awake()
     {
         base.Awake();
-        SplinePaths.Add(this);
+        
         CustomBgcBoxCollider = GetComponent<CustomBGCBoxCollider>();
         InitPath();
+        SplineType = SplineTypes.Main_Middle;
+        SplinePaths.Add(SplineType,this);
     }
     
     
@@ -37,29 +39,31 @@ public class MainPathController : SplinePathController
         if (NumberOfPaths != NumberOfPaths.One) {
             foreach (var pathPositionDelta in GetPathPositionDelta())
             {
-                SplinePaths.Add(CreateSeconderyPath(pathPositionDelta));
+                var sp = CreateSeconderyPath(pathPositionDelta.Item1);
+                sp.SplineType = pathPositionDelta.Item2;
+                SplinePaths.Add(sp.SplineType,sp);
             }
         }
         
     }
 
-    public float[] GetPathPositionDelta()
+    public (float,SplineTypes)[] GetPathPositionDelta()
     {
-        float[] floatArray = null;
+        (float,SplineTypes)[] floatArray = null;
 
         if (NumberOfPaths == NumberOfPaths.Three)
         {
-            floatArray = new float[2]
+            floatArray = new (float,SplineTypes)[2]
             {
-                singlePathWidth, -singlePathWidth
+                (singlePathWidth, SplineTypes.MiddleTop), (-singlePathWidth,SplineTypes.MiddleBottom)
             };
         }
 
         if (NumberOfPaths == NumberOfPaths.Five)
         {
-            floatArray = new float[4]
+            floatArray = new (float,SplineTypes)[4]
             {
-                singlePathWidth, -singlePathWidth, singlePathWidth * 2f, -singlePathWidth * 2f
+                (singlePathWidth, SplineTypes.MiddleTop), (-singlePathWidth,SplineTypes.MiddleBottom), (singlePathWidth * 2f, SplineTypes.Top), (-singlePathWidth * 2f,SplineTypes.Bottom)
             };
         }
         return floatArray;

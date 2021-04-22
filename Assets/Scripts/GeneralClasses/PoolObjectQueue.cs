@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class PoolObjectQueue<T> where T : Component, IQueueable<T>
 {
 
     public string PlaceholderName;
     int objectCounter = 0;
-    int ObjectCounter {
-        get {
-            objectCounter += 1;
-            return objectCounter;
-        }
+
+    private int ObjectCounter
+    {
+        get => objectCounter;
+        set => objectCounter = value;
     }
     public Queue<T> ObjectQueue;
     public T ObjectPrefab;
@@ -41,6 +42,7 @@ public class PoolObjectQueue<T> where T : Component, IQueueable<T>
                 T PooledObject = GameObject.Instantiate(ObjectPrefab);
                 PooledObject.transform.parent = PoolParentObject.transform;
                 PooledObject.name = ObjectPrefab.name + "_" + ObjectCounter;
+                ObjectCounter++;
                 PooledObject.QueuePool = this;
                 PooledObject.gameObject.SetActive(false);
                 PooledObject.OnEnqueue();

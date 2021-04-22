@@ -21,7 +21,7 @@ public class UnitPoolCreationData
 # endif
     public string TargetGroupTag;
     
-    [TypeFilter("getEffects")]
+    [TypeFilter("getEffects")][SerializeReference]
     public List<Effect> MeleeEffects;
 
     private IEnumerable<Type> getEffects()
@@ -40,8 +40,9 @@ public class UnitPoolCreationData
             GameObject.Instantiate(GenericUnitController, parent.transform);
         guc.gameObject.SetActive(false);
         guc.Data.MetaData = UnitMetaData;
-        if (!MeleeEffects.IsNullOrEmpty()) {
-        guc.UnitBattleManager.MeleeWeapon.WeaponAttack.SetEffectList(MeleeEffects);
+        if (!MeleeEffects.IsNullOrEmpty())
+        {
+            guc.UnitBattleManager.MeleeWeapon.ExternalEffectListForInitialization = MeleeEffects;
         }
         guc.GroupTag = GroupTag;
         guc.EffectableTargetBank.DiscoverableTags.Clear();
@@ -56,12 +57,14 @@ public class UnitPoolCreationData
     public PoolObjectQueue<GenericUnitController> CreateUnitPool(int MaxUnits)
     {
         GameObject parent = GameObject.Instantiate(new GameObject(), GameObjectPool.Instance.transform);
+        parent.name = ParentGameObject.name + "_" + GenericUnitController.name;
         GenericUnitController guc =
             GameObject.Instantiate(GenericUnitController, parent.transform);
         guc.gameObject.SetActive(false);
         guc.Data.MetaData = UnitMetaData;
-        if (!MeleeEffects.IsNullOrEmpty()) {
-            guc.UnitBattleManager.MeleeWeapon.WeaponAttack.SetEffectList(MeleeEffects);
+        if (!MeleeEffects.IsNullOrEmpty())
+        {
+            guc.UnitBattleManager.MeleeWeapon.ExternalEffectListForInitialization = MeleeEffects;
         }
         guc.GroupTag = GroupTag;
         guc.EffectableTargetBank.DiscoverableTags.Clear();

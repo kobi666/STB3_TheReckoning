@@ -163,8 +163,8 @@ public class PathWalker : MonoBehaviour
         CurrentDistanceOnSpline += distancedelta * directionInt;
         parentUnit.FlipDirection(TargetPosition);
         parentUnit.FlipDirection(TargetPosition);
-        //ObjectTransform.position = TargetPosition;
-        Rigidbody2D.MovePosition(TargetPosition);
+        ObjectTransform.position = TargetPosition;
+        //transform.position = TartPosition;
     }
     
 

@@ -223,6 +223,7 @@
           <e p="ConditionalFieldAttribute.cs" t="Include" />
           <e p="CustomBGCBoxColliderEditor.cs" t="Include" />
           <e p="TagSelectorPropertyDrawer.cs" t="Include" />
+          <e p="TwoDimensionalArrayDisplay.cs" t="Include" />
         </e>
         <e p="EnumeratorPlaceHolder.cs" t="Include" />
         <e p="ExternalUtils" t="Include">
@@ -606,6 +607,7 @@
               <e p="RequireLayerAttribute.cs" t="Include" />
               <e p="RequireLayerOtRagAttributeHandler.cs" t="Include" />
               <e p="RequireTagAttribute.cs" t="Include" />
+              <e p="SceneAttribute.cs" t="Include" />
               <e p="SearchableEnumAttribute.cs" t="Include" />
               <e p="SeparatorAttribute.cs" t="Include" />
               <e p="SpriteLayerAttribute.cs" t="Include" />
@@ -623,6 +625,7 @@
               <e p="MyAlgorithms.cs" t="Include" />
               <e p="MyCollections.cs" t="Include" />
               <e p="MyColor.cs" t="Include" />
+              <e p="MyCommonConstants.cs" t="Include" />
               <e p="MyCoroutines.cs" t="Include" />
               <e p="MyDebug.cs" t="Include" />
               <e p="MyDelayedActions.cs" t="Include" />
@@ -663,6 +666,7 @@
                 <e p="MyBoxFeatures.cs" t="Include" />
                 <e p="MyBoxInternalPath.cs" t="Include" />
                 <e p="MyBoxSettings.cs" t="Include" />
+                <e p="MyBoxStartupAsset.cs" t="Include" />
                 <e p="MyBoxUtilities.cs" t="Include" />
                 <e p="MyBoxVersion.cs" t="Include" />
                 <e p="MyBoxWindow.cs" t="Include" />
@@ -673,6 +677,12 @@
               <e p="TimeTest.cs" t="Include" />
               <e p="Undone" t="Include">
                 <e p="AnimationCreator.cs" t="Include" />
+                <e p="ECS" t="Include">
+                  <e p="Bool.cs" t="Include" />
+                  <e p="EventsSystem.cs" t="Include" />
+                  <e p="MyECSExtensions.cs" t="Include" />
+                  <e p="UniqueComponent.cs" t="Include" />
+                </e>
                 <e p="EmbeddedAnimationCreator.cs" t="Include" />
                 <e p="GLDraw.cs" t="Include" />
                 <e p="JsonDataManager" t="Include">
@@ -1264,6 +1274,7 @@
         <e p="Splinetest.cs" t="Include" />
         <e p="SplineWalker.cs" t="Include" />
         <e p="TagSelectorPropertyDrawer.cs" t="Include" />
+        <e p="testbatch.cs" t="Include" />
         <e p="TestCalculateTowerPositions.cs" t="Include" />
         <e p="testclass.cs" t="Include" />
         <e p="TestingGenericWeapon" t="Include">
@@ -1322,6 +1333,7 @@
         <e p="UnitAttackManager.cs" t="Include" />
         <e p="UnitBattleManager.cs" t="Include" />
         <e p="uniteventTest.cs" t="Include" />
+        <e p="UnitSpawnBatch.cs" t="Include" />
         <e p="VDtest.cs" t="Include" />
         <e p="Vectrosity" t="Include">
           <e p="Plugins" t="Include">

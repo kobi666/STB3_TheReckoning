@@ -10,7 +10,7 @@ public class CollisionDetector : CollidingObject
     private Bounds ColliderBounds;
     
     public Color BoxColor = Color.white;
-    void OnDrawGizmosSelected()
+    /*void OnDrawGizmosSelected()
     {
         Gizmos.color = BoxColor;
         if (BoxCollider2D != null)
@@ -43,7 +43,7 @@ public class CollisionDetector : CollidingObject
             Gizmos.DrawLine(Points[2], Points[3]);
             Gizmos.DrawLine(Points[3], Points[0]);
         }
-    }
+    }*/
     
     
     public float GetSize()

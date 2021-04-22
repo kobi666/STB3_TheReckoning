@@ -2,8 +2,32 @@
 All notable changes to this package will be documented in this file.
 
 ## [Unreleased]
-! wip AttributeBase
+- Added: ConditionalFields supports Enum Flag as conditions! Thanks to Dietmar Puschmann for this addition
+- Added: MyEditorEvents.OnEditorStarts event
+- Extensions: MyCollections.FirstIndex - more generalized version 
+- Extensions: MyCollections.SelectWithIndex and SelectManyWithIndex - like LINQ.Select, but with index passed along the item into selector
+- Extensions: MyCollections.GetWeightedRandom and GetWeightedRandomIndex
+- Changed: MyBox will only check for updates when editor opens
 
+## [1.6.2] - 2021-04-08
+- Fix: MyBox Window settings were not applied correctly
+
+## [1.6.1] - 2021-04-07
+- Changed: MyBox Window now contains all settings and some useful links
+- Fix: MyBox Updater now should properly update UPM version
+
+## [1.6.0] - 2021-04-05
+- Added: SceneAttribute to keep scene name in a string. Consider to use SceneReference type as it is more flexible
+- Changed: MyCollection.NextIndexInCircle() extension now works with offsets
+- Extension: MyString.Colored(UnityEngine.Color)
+- Extension: MyString.SurroundedWith()
+- Extension: GetObjectsOfLayerInChilds now also receives layer as a string
+- Extension: MySerializedProperty.GetValue() now works with collections
+- Fix: DisplayInspector now (finally) works right with Unity 2020.2 reorderable collections
+- Fix: SeparatorAttribute works better with collections
+- Fix: SeparatorAttribute looks not as ugly as before :D
+- Fix: ConditionalFieldAttribute optimizations and fixes
+- Fix: AnimationStateReference now works with collections
 
 ## [1.5.0] - 2020-07-15
 - Added: WarningsPool, used to log repeated message only one time

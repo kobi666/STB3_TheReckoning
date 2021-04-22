@@ -27,7 +27,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         set => weaponAttack = value;
     }
 
-
+    [HideInInspector] public List<Effect> ExternalEffectListForInitialization;
 
     public bool RotatingTurret;
     private GenericRotator GenericRotator;
@@ -95,6 +95,10 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
             
         }
 
+        if (!ExternalEffectListForInitialization.IsNullOrEmpty())
+        {
+            WeaponAttack.SetEffectList(ExternalEffectListForInitialization);
+        }
         WeaponAttack.parentWeaponController = this;
         WeaponAttack.InitlizeAttack(this);
         onAttack += WeaponAttack.Attack;

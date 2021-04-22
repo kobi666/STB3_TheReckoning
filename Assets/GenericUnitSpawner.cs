@@ -6,7 +6,7 @@ using DegreeUtils;
 
 using UnityEngine;
 
-[RequireComponent(typeof(PathPointFinder))]
+[RequireComponent(typeof(PathPointFinder)),Searchable]
 public class GenericUnitSpawner : TowerComponent
 {
     [ShowInInspector]
@@ -14,6 +14,8 @@ public class GenericUnitSpawner : TowerComponent
 
     private Dictionary<int,GenericUnitController> ManagedUnits = new Dictionary<int,GenericUnitController>();
     
+    public List<UnitPoolCreationData> Units = new List<UnitPoolCreationData>();
+    public List<PoolObjectQueue<GenericUnitController>> UnitPools = new List<PoolObjectQueue<GenericUnitController>>();
 
     public bool MaxUnitsReached;
     private int numberOfManagedUnits;
@@ -97,9 +99,11 @@ public class GenericUnitSpawner : TowerComponent
     }
     public override void InitComponent()
     {
+        foreach (var u in Units)
+        {
+            UnitPools.Add(u.CreateUnitPool(1000));
+        }
         SpawnerBehavior.InitBehavior(this,PathPointFinder);
-        string firstNameOrEmpty;
-
     }
 
     public event Action onPathUpdate;
@@ -134,7 +138,8 @@ public class GenericUnitSpawner : TowerComponent
         DeathManager.Instance.onUnitDeath += RemoveUnitFromManagedUnits;
         //GameObjectPool.Instance.ActiveUnits
         InitComponent();
-        
+        SpawnerBehavior.UnitPools = UnitPools;
+        SpawnerBehavior.InvokeBehavior();
     }
 
     
@@ -151,6 +156,11 @@ public class GenericUnitSpawner : TowerComponent
     public override void UpdateEffect(Effect ef, List<Effect> appliedEffects)
     {
         
+    }
+
+    protected void OnDisable()
+    {
+        SpawnerBehavior.BehaviorInProgress = false;
     }
 
     public override List<CollisionDetector> GetTagDetectors()

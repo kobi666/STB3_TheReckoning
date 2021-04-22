@@ -1,41 +1,20 @@
 # MyBox
 
-[![openupm](https://img.shields.io/npm/v/com.mybox?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.mybox/)
+[![openupm](https://img.shields.io/npm/v/com.domybest.mybox?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.domybest.mybox/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/Deadcows/MyBox/blob/master/LICENSE.md)
+<a href="https://www.buymeacoffee.com/andrewrumak" target="_blank"><img src="https://user-images.githubusercontent.com/969858/114297171-ca615080-9ab7-11eb-8010-0ae8762ff1f1.png" /></a>
+
+
+
 
 MyBox is a set of tools, features and extensions for Unity.<br />
 It is MyBox. Now it's yours too :raised_hands:<br />
 
 
-## Installation:
-
-### Install via OpenUPM
-
-The package is available on the [openupm registry](https://openupm.com). You may install it via [openupm-cli](https://github.com/openupm/openupm-cli).
-
-```
-openupm add com.mybox
-```
-
-### Install via Git URL
-You may install MyBox via <b>Unity Package Manager</b>:<br />
-Open Packages/manifest.json file in your project folder and put this line along with other dependencies<br />
-<pre>"com.mybox": "https://github.com/Deadcows/MyBox.git"</pre>
-Note how the comma lies at the end of every line in dependencies, except of the last line!
-
-To update, use Tools->MyBox->MyBox Window<br />
-MyBox will notify on new versions 🤗 <br /><br />
-
-❕If you got problems with update process simply remove "lock" section at the end of your Packages/manifest.json file.
-This will force Unity to redownload all git packages: <br />
-![](https://habrastorage.org/webt/zz/39/gd/zz39gd953fyel_zlvmonde-psva.png)
+## [Installation](https://github.com/Deadcows/MyBox/wiki/Installation)
 
 
-...or simply put MyBox folder downloaded from git somewhere under your Assets folder 🤨<br />
-
---------
-
-Tons of images below :point_down:
+Tons of images in docs below :point_down:
 
 ## [Attributes](https://github.com/Deadcows/MyBox/wiki/Attributes)
 **[AutoProperty](https://github.com/Deadcows/MyBox/wiki/Attributes#autoproperty)** — Assign fields automatically<br />
@@ -52,6 +31,7 @@ Tons of images below :point_down:
 **[PositiveValueOnly](https://github.com/Deadcows/MyBox/wiki/Attributes#positivevalueonly)** — Prohibit values below zero<br />
 **[ReadOnly](https://github.com/Deadcows/MyBox/wiki/Attributes#readonly)** — Draw property with disabled GUI<br />
 **[RequireTag and RequireLayer](https://github.com/Deadcows/MyBox/wiki/Attributes#requiretag-and-requirelayer)** — Automatically set Tag and Layer<br />
+**[Scene](https://github.com/Deadcows/MyBox/wiki/Attributes#scene)** — Friendly way to keep Scene name as a string. See also [SceneReference type](https://github.com/Deadcows/MyBox/wiki/Types#scenereference)<br />
 **[SearchableEnum](https://github.com/Deadcows/MyBox/wiki/Attributes#searchableenum)** — Nice UI for enums with lots of elements<br />
 **[Separator](https://github.com/Deadcows/MyBox/wiki/Attributes#separator)** — Draw separator with or without title<br />
 
@@ -59,7 +39,6 @@ Tons of images below :point_down:
 
 ## [Tools and Features](https://github.com/Deadcows/MyBox/wiki/Tools-and-Features)
 **[AssetPressetPreprocessor](https://github.com/Deadcows/MyBox/wiki/Tools-and-Features#assetpressetpreprocessor)** — Conditionally apply Presets to your assets on import<br />
-
 **[TimeTest](https://github.com/Deadcows/MyBox/wiki/Tools-and-Features#timetest)** — Measure performance with simple api<br />
 **[IPrepare](https://github.com/Deadcows/MyBox/wiki/Tools-and-Features#iprepare)** — Easy way to replace caching, calculations and asserts from playmode<br />
 **[Features](https://github.com/Deadcows/MyBox/wiki/Tools-and-Features#cleanup-empty-directories-and-autosave-features-and-some-hotkeys)** — Cleanup Empty Directories, AutoSave feature, Hotkeys<br />
@@ -69,7 +48,7 @@ Tons of images below :point_down:
 
 ## [Types](https://github.com/Deadcows/MyBox/wiki/Types)
 **[Guid Component](https://github.com/Deadcows/MyBox/wiki/Types#guidcomponent)** — Generate unique and persistent IDs<br />
-**[SceneReference Component](https://github.com/Deadcows/MyBox/wiki/Types#scenereference)** — Reference scene with Scene asset in inspector<br />
+**[SceneReference](https://github.com/Deadcows/MyBox/wiki/Types#scenereference)** — Reference scene with Scene asset in inspector<br />
 **[ActivateOnStart Component](https://github.com/Deadcows/MyBox/wiki/Types#activestateonstart-component)** — Set state of specific GO on game start<br />
 **[AnimationStateReference](https://github.com/Deadcows/MyBox/wiki/Types#animationstatereference)** — Specify AnimationClip on object with Animator<br />
 **[AssetPath and AssetFolderPath](https://github.com/Deadcows/MyBox/wiki/Types#assetpath-and-assetfolderpath)** — Inspector button to browse for folder or asset under Assets folder<br />

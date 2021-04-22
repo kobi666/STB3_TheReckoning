@@ -21,7 +21,7 @@ public class PathController : MonoBehaviour
       var _ChildSplines = GetComponentsInChildren<SplinePathController>();
       foreach (var spc in _ChildSplines)
       {
-         spc.parentPath = this;
+         //spc.parentPath = this;
          ChildSplines.Add(spc.SplineType, spc);
       }
 

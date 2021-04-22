@@ -43,7 +43,7 @@ namespace UnitBehaviors
         {
             PathWalker = UnitObject.PathWalker;
             BeginingOfSpline = PathWalker.spline.Curve.Points[0].PositionWorld;
-            PathWalker.SplinePathController.parentPath.onPathUpdate += RecheckPosition;
+            //PathWalker.SplinePathController.parentPath.onPathUpdate += RecheckPosition;
         }
 
         public override bool ExecCondition()
@@ -248,7 +248,7 @@ namespace UnitBehaviors
     {
         public float MovementSpeed = 1;
         [Required]
-        public EffectableTargetBank AttackAreaTargetbank;
+        
         private UnitMovementController UnitMovementController;
 
         private int targetGameObjectID
@@ -269,7 +269,7 @@ namespace UnitBehaviors
         {
             if (UnitBattleManager.targetExists)
             {
-                if (AttackAreaTargetbank.Targets.ContainsKey(targetGameObjectID))
+                if (AttackAreaTargetBank.Targets.ContainsKey(targetGameObjectID))
                 {
                     return false;
                 }

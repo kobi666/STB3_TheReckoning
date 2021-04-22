@@ -10,8 +10,8 @@ using Sirenix.OdinInspector;
     {
         public PathPointFinder PathPointFinder;
         [HideInInspector] public Vector2? SpecifiedBasePosition = null;
-        
-        public abstract List<UnitPoolCreationData> UnitCreationData { get; }
+
+        public List<PoolObjectQueue<GenericUnitController>> UnitPools;
 
         public float SpawnInterval = 5f;
 
