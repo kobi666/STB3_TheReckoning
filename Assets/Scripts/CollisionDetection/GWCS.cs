@@ -506,6 +506,8 @@ public class GWCS : MonoBehaviour
     {
         CurrentCollisions.Dispose();
         GridCells.Dispose();
+        AdditionQueue.Clear();
+        RemovalQueue.Clear();
     }
 }
 

@@ -205,7 +205,6 @@ public class SpawnWaves : SpawnerBehavior
                 {
                     SpawnFormations.Enqueue(wave.BatchStructure.GetColumn(j));
                 }
-                
             }
         }
         
@@ -223,7 +222,17 @@ public class SpawnWaves : SpawnerBehavior
 
     public override void Behavior()
     {
-        
+        if (!AllWavesFinished)
+        {
+            var _formation = GetSpawnFormation();
+            for (int i = 0; i < _formation.Length; i++)
+            {
+                if (_formation[i])
+                {
+                    SpawnUnitByColumn(i);
+                }
+            }
+        }
     }
 
 
@@ -232,7 +241,20 @@ public class SpawnWaves : SpawnerBehavior
     private float batchTimerCounter = 0;
     private float WaveTimerCounter = 0;
     private int waveCounter;
-    private bool AllWavesFinished = false;
+    private bool allWavesFinished = false;
+
+    private bool AllWavesFinished
+    {
+        get => allWavesFinished;
+        set
+        {
+            allWavesFinished = value;
+            if (allWavesFinished)
+            {
+                BehaviorInProgress = false;
+            }
+        }
+    }
 
     
 

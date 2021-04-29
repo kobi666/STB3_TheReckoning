@@ -7,6 +7,8 @@ using Sirenix.OdinInspector;
 
 public class UnitBattleManager : MonoBehaviour
 {
+
+    [Required] public AnimationController AnimationController;
     
     [Required]
     public BoxCollider2D AttackArea;
@@ -83,8 +85,16 @@ public class UnitBattleManager : MonoBehaviour
         MeleeWeapon.Target = null;
         MeleeWeapon.InAttackState = false;
     }
-    
-    
+
+    public void PlayOnAttackAnimation()
+    {
+        if (OnAttackAnimation != null)
+        {
+            AnimationController.PlaySingleAnimation(OnAttackAnimation);
+        }
+    }
+
+
 
     public GenericWeaponController MeleeWeapon;
     public List<GenericWeaponController> AllWeapons = new List<GenericWeaponController>();
@@ -130,7 +140,8 @@ public class UnitBattleManager : MonoBehaviour
         GameObjectPool.Instance.onTargetableUpdate += updateTargetState;
         if (MeleeWeapon) {
         MeleeWeapon.TargetBank.onTargetRemove += removeTarget;
-        
+        MeleeWeapon.onAttack += delegate(Effectable effectable, Vector2 vector2) { PlayOnAttackAnimation();};
+
         FlipAttackArea(true);
         }
         onFightStart += delegate { AoeController.OnSingleTargetSet(TargetUnit.MyGameObjectID); };

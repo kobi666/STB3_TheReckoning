@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class PathWalker : MonoBehaviour
 {
+    [Required]
+    public UnitMovementController UnitMovementController;
     private SpriteRenderer SpriteRenderer;
     public BGCcMath spline;
     public SplinePathController SplinePathController;
@@ -163,7 +165,8 @@ public class PathWalker : MonoBehaviour
         CurrentDistanceOnSpline += distancedelta * directionInt;
         parentUnit.FlipDirection(TargetPosition);
         parentUnit.FlipDirection(TargetPosition);
-        ObjectTransform.position = TargetPosition;
+        UnitMovementController.MoveAlongPathAsync(TargetPosition);
+        //ObjectTransform.position = TargetPosition;
         //transform.position = TartPosition;
     }
     

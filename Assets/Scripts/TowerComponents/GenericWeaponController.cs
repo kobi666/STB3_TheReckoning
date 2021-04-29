@@ -334,7 +334,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     }
 
 
-    event Action<Effectable,Vector2> onAttack;
+    public event Action<Effectable,Vector2> onAttack;
 
     void OnAttack()
     {

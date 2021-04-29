@@ -70,14 +70,14 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
             xDirection = value;
         }
     }
-    public void FlipDirection(Vector2 targetPos)
+    public void FlipDirection(Vector2? targetPos)
     {
-        if (transform.position.x > targetPos.x)
+        if (transform.position.x > targetPos?.x)
         {
             XDirection = true;
         }
 
-        if (transform.position.x < targetPos.x)
+        if (transform.position.x < targetPos?.x)
         {
             XDirection = false;
         }

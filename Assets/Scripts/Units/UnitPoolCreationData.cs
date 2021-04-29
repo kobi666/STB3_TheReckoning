@@ -38,7 +38,7 @@ public class UnitPoolCreationData
         GameObject parent = GameObject.Instantiate(new GameObject(), GameObjectPool.Instance.transform);
         GenericUnitController guc =
             GameObject.Instantiate(GenericUnitController, parent.transform);
-        guc.gameObject.SetActive(false);
+        
         guc.Data.MetaData = UnitMetaData;
         if (!MeleeEffects.IsNullOrEmpty())
         {
@@ -47,7 +47,7 @@ public class UnitPoolCreationData
         guc.GroupTag = GroupTag;
         guc.EffectableTargetBank.DiscoverableTags.Clear();
         guc.EffectableTargetBank.DiscoverableTags.Add(TargetGroupTag);
-        
+        guc.gameObject.SetActive(false);
         parent.name = "placeholder_" + ParentGameObject.name + "_" + GenericUnitController.name;
         PoolObjectQueue<GenericUnitController> pool = 
             new PoolObjectQueue<GenericUnitController>(GenericUnitController, 5, parent);

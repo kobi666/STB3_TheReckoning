@@ -8,8 +8,8 @@ using UnityEngine;
 public abstract class CollidingObject : MonoBehaviour
 {
     [Required] public MyGameObject ParentMyGameObject;
-    
-    [HideInInspector]
+
+    public bool FirstRun = true;
     public bool RegisterToGWCS = true;
     protected void OnEnable()
     {

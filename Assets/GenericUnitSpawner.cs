@@ -101,7 +101,7 @@ public class GenericUnitSpawner : TowerComponent
     {
         foreach (var u in Units)
         {
-            UnitPools.Add(u.CreateUnitPool(1000));
+            UnitPools.Add(u.CreateUnitPool(1));
         }
         SpawnerBehavior.InitBehavior(this,PathPointFinder);
     }

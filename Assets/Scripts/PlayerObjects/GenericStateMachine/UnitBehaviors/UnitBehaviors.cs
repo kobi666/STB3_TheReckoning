@@ -31,7 +31,7 @@ namespace UnitBehaviors
         private Vector2? BeginingOfSpline = null;
         public override void Behavior()
         {
-            UnitObject.UnitMovementController.MoveTowardsTarget(BeginingOfSpline);
+            UnitObject.UnitMovementController.MoveTowardsTargetAsync(BeginingOfSpline);
         }
 
         void RecheckPosition()
@@ -188,7 +188,7 @@ namespace UnitBehaviors
         private Transform unitTransform;
         public override void Behavior()
         {
-            UnitMovementController.MoveTowardsTarget(UnitData.DynamicData.BasePosition);
+            UnitMovementController.MoveTowardsTargetAsync(UnitData.DynamicData.BasePosition);
         }
 
         public override void InitBehavior()
@@ -201,6 +201,42 @@ namespace UnitBehaviors
         {
             bool b = ((Vector2) unitTransform.position != UnitData.DynamicData.BasePosition);
             return b;
+        }
+    }
+
+    public class StopUnitFreeMovement : UnitSingleBehvaior
+    {
+        public override void Behavior()
+        {
+            UnitObject.UnitMovementController.FreeMovementInprogress = false;
+        }
+
+        public override void InitBehavior()
+        {
+            
+        }
+
+        public override bool ExecCondition()
+        {
+            return true;
+        }
+    }
+    
+    public class StopUnitPathMovement : UnitSingleBehvaior
+    {
+        public override void Behavior()
+        {
+            UnitObject.UnitMovementController.PathMovementInProgress = false;
+        }
+
+        public override void InitBehavior()
+        {
+            
+        }
+
+        public override bool ExecCondition()
+        {
+            return true;
         }
     }
 
@@ -257,7 +293,7 @@ namespace UnitBehaviors
         }
         public override void Behavior()
         {
-            UnitMovementController.MoveTowardsTarget(UnitBattleManager.TargetUnit.transform.position);
+            UnitMovementController.MoveTowardsTargetAsync(UnitBattleManager.TargetUnit.transform.position);
         }
 
         public override void InitBehavior()

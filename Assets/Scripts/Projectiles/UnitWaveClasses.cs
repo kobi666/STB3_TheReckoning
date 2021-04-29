@@ -72,6 +72,16 @@ namespace UnitSpawning
         
 
     }
+
+    public class SingleUnit : BatchStructure
+    {
+        public override bool[,] Formation { get => formation; }
+        public override void BatchInit()
+        {
+            formation[3, 1] = true;
+        }
+        private bool[,] formation = new bool[5,3];
+    }
 }
 
 

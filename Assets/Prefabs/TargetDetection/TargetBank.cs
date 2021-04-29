@@ -83,7 +83,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
 
     public event Action<int> onTargetRemove;
     public void OnTargetRemoveFromCollision(int targetCollisionID,string callerName) {
-        Debug.LogWarning(name + " : " + "collision ID " + targetCollisionID + "  removed by " + callerName);
+        //Debug.LogWarning(name + " : " + "collision ID " + targetCollisionID + "  removed by " + callerName + " Object Name : " + GameObjectPool.CollisionIDToGameObjectID[targetCollisionID].Item2);
         int GID = GameObjectPool.CollisionIDToGameObjectID[targetCollisionID].Item1;
         onTargetRemove?.Invoke(GID);
     }
@@ -91,7 +91,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
     public void OnTargetRemoveGID(int targetGameObjectID, string callerName)
     {
         if (Targets.ContainsKey(targetGameObjectID)) {
-        Debug.LogWarning(name + " : " + "GID " + targetGameObjectID + " removed by " + callerName);
+        //Debug.LogWarning(name + " : " + "GID " + targetGameObjectID + " removed by " + callerName);
         onTargetRemove?.Invoke(targetGameObjectID);
         }
     }

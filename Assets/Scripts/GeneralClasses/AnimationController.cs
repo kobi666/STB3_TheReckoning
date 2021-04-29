@@ -36,6 +36,8 @@ public class AnimationController : MonoBehaviour
             CurrentAnimationState = animancer.Play(Clip);
         }
     }
+    
+    
 
     public void PlayFiniteAnimation(AnimationClip clip) {
         if (clip != null) {

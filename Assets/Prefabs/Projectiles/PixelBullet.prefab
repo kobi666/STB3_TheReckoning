@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 833066918019150110, guid: d813ad87313d18d44be4fa1af9e6195a,
+        type: 3}
+      propertyPath: tagsICanDetect.Array.data[0]
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5907068859232098817, guid: d813ad87313d18d44be4fa1af9e6195a,
         type: 3}
       propertyPath: m_Size.x
@@ -116,7 +121,7 @@ PrefabInstance:
     - target: {fileID: 5907068859232098831, guid: d813ad87313d18d44be4fa1af9e6195a,
         type: 3}
       propertyPath: m_Name
-      value: GenericProjectile
+      value: PixelBullet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d813ad87313d18d44be4fa1af9e6195a, type: 3}
