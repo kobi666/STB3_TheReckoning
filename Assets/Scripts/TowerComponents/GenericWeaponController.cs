@@ -28,9 +28,6 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     }
 
     [HideInInspector] public List<Effect> ExternalEffectListForInitialization;
-
-    public bool RotatingTurret;
-    private GenericRotator GenericRotator;
     private string cachedTargetName;
     
     private static ValueDropdownList<int> valueList = new ValueDropdownList<int>()
@@ -55,16 +52,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     public SplineAttack SplineAttack = new SplineAttack();
     public string WeaponName;
 
-    private void SetFinalPointPosOnAttackStart(Effectable ef, Vector2 targetPos)
-    {
-        if (RotatingTurret)
-        {
-            foreach (var fp in WeaponAttack.GetFinalPoints())
-            {
-                fp.transform.position = fp.InitialPosition;
-            }
-        }
-    }
+    
 
     public bool WeaponInitialized = false;
     public void InitWeapon()
@@ -72,27 +60,16 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         if (WeaponTypeInt == 0)
         {
             WeaponAttack = projectileAttack;
-            /*projectileAttack.InitlizeAttack(this);
-            onAttack += FireProjectileAttack;*/
-            /*if (!projectileAttack.AttackProperties.Projectiles.Any(x => x.projectileEffect.Homing))
-            {
-                RotatingTurret = true;
-            }*/
         }
 
         if (WeaponTypeInt == 1)
         {
             WeaponAttack = AoeAttack;
-            /*AoeAttack.InitlizeAttack(this);
-            onAttack += FireAOEAttack;
-            onAttackCease += AoeAttack.StopAOEAttack;*/
         }
 
         if (WeaponTypeInt == 4)
         {
-            
             WeaponAttack = SplineAttack;
-            
         }
 
         if (!ExternalEffectListForInitialization.IsNullOrEmpty())
@@ -103,10 +80,10 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         WeaponAttack.InitlizeAttack(this);
         onAttack += WeaponAttack.Attack;
         onAttackCease += WeaponAttack.StopAttack;
-        if (RotatingTurret)
+        if (RotatingComponent)
         {
-            onAttackInitiate += GenericRotator.StartAsyncRotation;
-            onAttackCease += GenericRotator.StopAsyncRotation;
+            onAttackInitiate += ComponentRotator.StartAsyncRotationToweradsTarget;
+            onAttackCease += ComponentRotator.StopAsyncRotation;
         }
         WeaponAttack.SetInitialFinalPointPosition();
         WeaponInitialized = true;
@@ -135,21 +112,10 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     [Required]
     public EffectableTargetBank TargetBank;
 
-    private ComponentRotator componentRotator = null;
-    private ComponentRotator ComponentRotator
-    {
-        get
-        {
-            if (componentRotator == null)
-            {
-                componentRotator = this.GetOrAddComponent<ComponentRotator>();
-            }
+    [Required][ShowIf("RotatingComponent")]
+    public ComponentRotator ComponentRotator;
 
-            return componentRotator;
-        }
-    }
-
-    [ConditionalField("debug")] 
+        [ConditionalField("debug")] 
     public int testAsyncAttackcounter;
     
     public float AttackCounter;
@@ -417,7 +383,6 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
 
     void RotateTowardsTarget()
     {
-        ComponentRotator.TargetTransform = Target.transform;
         ComponentRotator.StartRotatingTowardsTarget();
     }
 
@@ -436,7 +401,6 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     protected void Awake()
     {
         base.Awake();
-        GenericRotator = GetComponent<GenericRotator>();
         onTargetAdd += SetTarget;
         GameObjectPool.Instance.onTargetableUpdate += UpdateTargetState;
     }

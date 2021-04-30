@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Threading.Tasks;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
+
+[System.Serializable]
 public class ComponentRotator : MonoBehaviour
 {
     public float RotationSpeed;
-    public Transform TargetTransform;
     float angleForOrbit;
     public float AngleForOrbit {
         get => angleForOrbit;
@@ -35,6 +37,12 @@ public class ComponentRotator : MonoBehaviour
 
     bool AsyncRotationInProgress = false;
 
+    [Required] public GenericWeaponController ParentWeapon;
+
+    public Transform TargetTransform
+    {
+        get => ParentWeapon.Target?.transform;
+    }
     public void StopAsyncRotation() {
         AsyncRotationInProgress = false;
     }
@@ -44,8 +52,13 @@ public class ComponentRotator : MonoBehaviour
             await Task.Yield();
         }
         AsyncRotationInProgress = true;
+        Vector2 cachedPos = new Vector2();
         while (AsyncRotationInProgress == true) {
-            DefaultRotationFunction(TargetTransform.position);
+            cachedPos = TargetTransform?.position ?? cachedPos;
+            Vector2 vecToTarget = cachedPos - (Vector2)transform.position;
+            float angleToTarget = Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg;
+            Quaternion q = Quaternion.AngleAxis(angleToTarget, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, q, StaticObjects.DeltaGameTime * RotationSpeed);
             await Task.Yield();
         }
         AsyncRotationInProgress = false;
@@ -68,6 +81,14 @@ public class ComponentRotator : MonoBehaviour
         StopRotating();
         RotationCoroutine = WeaponUtils.RotateTowardsTarget(transform, TargetTransform, RotationSpeed);
         StartCoroutine(RotationCoroutine);
+    }
+    
+    public void  RotateTowardsTargetAsync(Transform self, Transform target, float rotationSpeed) {
+        Vector2 cachedPos = new Vector2();
+        while (true)
+        {
+            
+        }
     }
 
     public virtual void StartIdleRotation() {
