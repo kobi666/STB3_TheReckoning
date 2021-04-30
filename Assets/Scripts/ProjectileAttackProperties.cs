@@ -13,6 +13,9 @@ public abstract class ProjectileAttackProperties : AttackProperties,IhasExitAndF
     [Required]
     public List<ProjectileExitPoint> ProjectileExitPoints = new List<ProjectileExitPoint>();
     
+    [Required]
+    public List<ExitFinalPointPair> ExitFinalPointPairs = new List<ExitFinalPointPair>();
+    
     public void InitializeAttackProperties(GenericWeaponController parentWeapon)
     {
         ParentWeapon = parentWeapon;
@@ -44,12 +47,18 @@ public abstract class ProjectileAttackProperties : AttackProperties,IhasExitAndF
 
     public void SetInitialFinalPointPosition()
     {
-        foreach (var fp in GetFinalPoints())
+        /*foreach (var fp in GetFinalPoints())
         {
             var position = fp.transform.position;
-            Vector2 pos = (Vector2)position +
-                          new Vector2(ParentWeapon.Data.componentRadius, position.y);
+            Vector2 pos = (Vector2)ParentWeapon.transform.position + 
+                          new Vector2(ParentWeapon.Data.componentRadius, 0);
             fp.transform.position = pos;
+        }*/
+
+        foreach (var exitFinal in ExitFinalPointPairs)
+        {
+            var position = (Vector2)exitFinal.ExitPoint.transform.position + new Vector2(ParentWeapon.Data.componentRadius, 0f);
+            exitFinal.FinalPoint.transform.position = position;
         }
     }
 
@@ -61,6 +70,14 @@ public abstract class ProjectileAttackProperties : AttackProperties,IhasExitAndF
 
     public void SetInitialExitPointPosition()
     {
-        throw new NotImplementedException();
+        
     }
+}
+
+
+[System.Serializable]
+public struct ExitFinalPointPair
+{
+    public ProjectileExitPoint ExitPoint;
+    public ProjectileFinalPoint FinalPoint;
 }

@@ -637,6 +637,7 @@ MonoBehaviour:
         ParentWeapon: {fileID: 0}
         ProjectileFinalPoints: []
         ProjectileExitPoints: []
+        ExitFinalPointPairs: []
         AsyncAttackInProgress: 0
         Projectiles: []
     00000001:
@@ -1781,6 +1782,7 @@ MonoBehaviour:
         ParentWeapon: {fileID: 0}
         ProjectileFinalPoints: []
         ProjectileExitPoints: []
+        ExitFinalPointPairs: []
         AsyncAttackInProgress: 0
         Projectiles: []
     00000001:
@@ -1997,6 +1999,7 @@ MonoBehaviour:
         ParentWeapon: {fileID: 0}
         ProjectileFinalPoints: []
         ProjectileExitPoints: []
+        ExitFinalPointPairs: []
         AsyncAttackInProgress: 0
         Projectiles: []
     00000001:
@@ -6059,6 +6062,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4075031346932676324, guid: ea74d1b1b162f434e853439ab362fc6d,
         type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.ExitFinalPointPairs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075031346932676324, guid: ea74d1b1b162f434e853439ab362fc6d,
+        type: 3}
       propertyPath: projectileAttack.ProjectileAttackProperties.ProjectileExitPoints.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -6083,6 +6091,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2654216540731372364, guid: 2fd1a16e9c38ea642a5605f87d3b6eff,
         type: 3}
+    - target: {fileID: 4075031346932676324, guid: ea74d1b1b162f434e853439ab362fc6d,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.ExitFinalPointPairs.Array.data[0].ExitPoint
+      value: 
+      objectReference: {fileID: 391048784}
+    - target: {fileID: 4075031346932676324, guid: ea74d1b1b162f434e853439ab362fc6d,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.ExitFinalPointPairs.Array.data[0].FinalPoint
+      value: 
+      objectReference: {fileID: 391048785}
     - target: {fileID: 4075031346932676324, guid: ea74d1b1b162f434e853439ab362fc6d,
         type: 3}
       propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement
@@ -6598,7 +6616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &420872703
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9126,7 +9144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &646078384
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10668,6 +10686,7 @@ MonoBehaviour:
         ParentWeapon: {fileID: 0}
         ProjectileFinalPoints: []
         ProjectileExitPoints: []
+        ExitFinalPointPairs: []
         AsyncAttackInProgress: 0
         Projectiles: []
     00000001:
@@ -10967,7 +10986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &712425150
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17429,6 +17448,7 @@ MonoBehaviour:
         ParentWeapon: {fileID: 1147537315}
         ProjectileFinalPoints: []
         ProjectileExitPoints: []
+        ExitFinalPointPairs: []
         AsyncAttackInProgress: 0
         Projectiles:
         - projectileMovement:

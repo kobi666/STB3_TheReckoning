@@ -27,16 +27,6 @@ public class ProjectileFinalPoint : MonoBehaviour
         EffectableTargetBank = GetComponent<EffectableTargetBank>() ?? null;
     }
 
-    private void OnDrawGizmos()
-    {
-        
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-    }
-
     public void ReturnToInitialPosition()
     {
         transform.position = InitialPosition;
