@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 7209521931939889820}
   - component: {fileID: 7209521931939889821}
   - component: {fileID: 7209521931939889822}
-  - component: {fileID: 7209521931939889823}
   m_Layer: 0
   m_Name: NewEnemyUnit
   m_TagString: Untagged
@@ -118,6 +117,7 @@ MonoBehaviour:
     FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
+    TargetableState: 1
     InStateBehavior:
     - id: 0
     - id: 1
@@ -134,6 +134,7 @@ MonoBehaviour:
     FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
+    TargetableState: 1
     InStateBehavior:
     - id: 4
     OnExitBehavior:
@@ -149,6 +150,7 @@ MonoBehaviour:
     FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
+    TargetableState: 1
     InStateBehavior:
     - id: 7
     OnExitBehavior: []
@@ -163,6 +165,7 @@ MonoBehaviour:
     SMObject: {fileID: 0}
     OnEnterBehvaior:
     - id: 8
+    TargetableState: 1
     InStateBehavior:
     - id: 9
     OnExitBehavior:
@@ -178,9 +181,11 @@ MonoBehaviour:
     SMObject: {fileID: 0}
     OnEnterBehvaior:
     - id: 11
+    TargetableState: 0
     InStateBehavior:
     - id: 12
-    OnExitBehavior: []
+    OnExitBehavior:
+    - id: 13
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 7
@@ -241,6 +246,7 @@ MonoBehaviour:
           FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
+          TargetableState: 1
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
@@ -273,6 +279,7 @@ MonoBehaviour:
           FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
+          TargetableState: 1
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
@@ -304,6 +311,7 @@ MonoBehaviour:
           FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
+          TargetableState: 1
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
@@ -335,6 +343,7 @@ MonoBehaviour:
           FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
+          TargetableState: 1
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
@@ -365,6 +374,7 @@ MonoBehaviour:
           FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
+          TargetableState: 1
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
@@ -396,6 +406,7 @@ MonoBehaviour:
           FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
+          TargetableState: 1
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
@@ -426,6 +437,7 @@ MonoBehaviour:
           FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
+          TargetableState: 1
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
@@ -457,6 +469,7 @@ MonoBehaviour:
           FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
+          TargetableState: 1
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
@@ -487,6 +500,7 @@ MonoBehaviour:
           FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
+          TargetableState: 1
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
@@ -517,6 +531,7 @@ MonoBehaviour:
           FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
+          TargetableState: 1
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
@@ -547,6 +562,7 @@ MonoBehaviour:
           FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
+          TargetableState: 1
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
@@ -577,6 +593,7 @@ MonoBehaviour:
           FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
+          TargetableState: 1
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
@@ -584,7 +601,7 @@ MonoBehaviour:
           stateName: 0
           automaticNextState: 0
     0000000C:
-      type: {class: DoNothing, ns: UnitBehaviors, asm: Assembly-CSharp}
+      type: {class: FadeOut, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
         UnitData:
           MetaData:
@@ -607,6 +624,39 @@ MonoBehaviour:
           FinalState: 0
           SMObject: {fileID: 0}
           OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+        FadeOutSpeed: 0.1
+    0000000D:
+      type: {class: DisableObject, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
           InStateBehavior: []
           OnExitBehavior: []
           SpecialEnterConditions: []
@@ -680,6 +730,7 @@ MonoBehaviour:
   AllWeapons: []
   OnAttackAnimation: {fileID: 7400000, guid: 46e21548a25fe984ab55828e97caaf08, type: 2}
   OnSpecialAttackAnimation: {fileID: 0}
+  DeathAnimation: {fileID: 7400000, guid: a0615fb79f6548448b93a41b77e2fafe, type: 2}
 --- !u!61 &7209521931939889761
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -693,7 +744,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00742054, y: 0.002968073}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -758,7 +809,7 @@ MonoBehaviour:
   CollisionTagInt: 0
   CollisionTagsICanDetectInt: 0
   collisionTag: 7
-  BoxColor: {r: 1, g: 1, b: 1, a: 1}
+  BoxColor: {r: 0.0141509175, g: 0.48878688, b: 1, a: 1}
 --- !u!114 &7209521931939889821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -797,6 +848,7 @@ MonoBehaviour:
     FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
+    TargetableState: 1
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
@@ -810,6 +862,7 @@ MonoBehaviour:
     FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
+    TargetableState: 1
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
@@ -823,6 +876,7 @@ MonoBehaviour:
     FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
+    TargetableState: 1
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
@@ -836,6 +890,7 @@ MonoBehaviour:
     FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
+    TargetableState: 1
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
@@ -849,6 +904,7 @@ MonoBehaviour:
     FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
+    TargetableState: 1
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
@@ -862,6 +918,7 @@ MonoBehaviour:
     FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior: []
+    TargetableState: 1
     InStateBehavior: []
     OnExitBehavior: []
     SpecialEnterConditions: []
@@ -872,26 +929,6 @@ MonoBehaviour:
   CanExecCurrentState: 1
   references:
     version: 1
---- !u!114 &7209521931939889823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7209521931939889816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b260fea9b37e354438e3d7b057071994, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AnimationController: {fileID: 0}
-  AttackArea: {fileID: 4396048698197471631}
-  AoeController: {fileID: 4592654684773825097}
-  targetExists: 0
-  MeleeWeapon: {fileID: 7601679199450330531}
-  AllWeapons: []
-  OnAttackAnimation: {fileID: 0}
-  OnSpecialAttackAnimation: {fileID: 0}
 --- !u!1001 &7209521930492807829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -974,6 +1011,11 @@ PrefabInstance:
       propertyPath: AoeAttack.parentWeaponController
       value: 
       objectReference: {fileID: 7601679199450330531}
+    - target: {fileID: 5345439072985774168, guid: d249efc43b8ba3843aee01653892b0b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6416709179583068952, guid: d249efc43b8ba3843aee01653892b0b1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1073,6 +1115,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MeleeWeaponAOA
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607131285197664478, guid: d249efc43b8ba3843aee01653892b0b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d249efc43b8ba3843aee01653892b0b1, type: 3}
@@ -1207,12 +1254,12 @@ PrefabInstance:
     - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.99
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
         type: 3}
@@ -1289,17 +1336,17 @@ PrefabInstance:
     - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
         type: 3}
       propertyPath: BoxColor.b
-      value: 0.32525948
+      value: 0.033018887
       objectReference: {fileID: 0}
     - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
         type: 3}
       propertyPath: BoxColor.g
-      value: 0.990566
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
         type: 3}
       propertyPath: BoxColor.r
-      value: 0.032707386
+      value: 0.87228256
       objectReference: {fileID: 0}
     - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
         type: 3}

@@ -16,16 +16,22 @@ public class ProjectileMovementDynamicData
 
 
 [System.Serializable]
-public class ProjectileMovementFunction
+public abstract class ProjectileMovementFunction
 {
     [HideInInspector]
     public ProjectileMovementDynamicData ProjectileMovementDynamicData = new ProjectileMovementDynamicData();
-    public virtual void MovementFunction(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos,
+
+    public abstract void OnMovementInit(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos,
         Vector2 TargetPos,
-        float speed)
-    {
-        
-    }
+        float speed);
+
+    public abstract void OnMovementComplete();
+    
+    public abstract void MovementFunction(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos,
+        Vector2 TargetPos,
+        float speed);
+
+
 
     public event Action onTargetLost;
     private bool TargetLost
@@ -68,6 +74,7 @@ public class ProjectileMovementFunction
     public async void MoveToTargetPosition(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos, Vector2 TargetPos
         )
     {
+        OnMovementInit(projectileTransform, targetTarnsform, originPos, TargetPos, Speed);
         while (ProgressCounter <= 1f && ExternalMovementLock == false)
         {
             ProgressCounter += Speed * StaticObjects.DeltaGameTime;
@@ -77,6 +84,7 @@ public class ProjectileMovementFunction
 
         ProgressCounter = 0;
         OnPositionReached();
+        OnMovementComplete();
         posreachedLock = false;
     }
 
@@ -90,7 +98,7 @@ public class ProjectileMovementFunction
             if (targetLost == false) {
                 if (targetTarnsform != null)
                 {
-                    cachedPosition = (Vector2) targetTarnsform.position;
+                    cachedPosition = targetTarnsform.position;
                 }
                 else
                 {
@@ -104,6 +112,7 @@ public class ProjectileMovementFunction
             await Task.Yield();
         }
         OnPositionReached();
+        OnMovementComplete();
         ProgressCounter = 0;
         posreachedLock = false;
     }
@@ -114,11 +123,69 @@ public class ProjectileMovementFunction
 
 public class MoveStraight : ProjectileMovementFunction
 {
+    public override void OnMovementInit(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos, Vector2 TargetPos,
+        float speed)
+    {
+        
+    }
+
+    public override void OnMovementComplete()
+    {
+        
+    }
+
     public override void MovementFunction(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos, Vector2 TargetPos,
         float speed)
     {
         projectileTransform.position = Vector2.Lerp(originPos, TargetPos , ProgressCounter);
     }
+}
+
+public class MoveInArc : ProjectileMovementFunction
+{
+
+    public float arcValue;
+    private Vector2 MiddlePos;
+    private Vector2 InitToMiddle;
+    private Vector2 MiddleToTarget;
+    public static void MoveInArcToPosition(Transform projectileTransform, Vector2 initPos, Vector2 middlePos,
+        Vector2 targetPosition, ref Vector2 initToMiddle, ref Vector2 middleToTarget, float speed, ref float counter)
+    {
+        if (counter <= 1f)
+        {
+            counter += speed * StaticObjects.DeltaGameTime;
+            initToMiddle = Vector2.Lerp(initPos, middlePos, counter);
+            middleToTarget = Vector2.Lerp(middlePos, targetPosition, counter);
+            projectileTransform.position = Vector2.Lerp(initToMiddle, middleToTarget, counter);
+        }
+    }
+    
+    public override void MovementFunction(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos, Vector2 TargetPos,
+        float speed)
+    {
+         InitToMiddle = Vector2.Lerp(originPos, MiddlePos, ProgressCounter);
+         MiddleToTarget = Vector2.Lerp(MiddlePos, TargetPos, ProgressCounter);
+         projectileTransform.position = Vector2.Lerp(InitToMiddle, MiddleToTarget, ProgressCounter);
+    }
+    
+    
+    public override void OnMovementInit(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos, Vector2 TargetPos,
+        float speed)
+    {
+        Vector2 arcDirection = Vector2.up;
+        if ( arcValue < 0) {
+            arcDirection = Vector2.down;
+        }
+
+        MiddlePos = originPos + (TargetPos - originPos) / 2 + arcDirection * Mathf.Abs(arcValue);
+    }
+
+    public override void OnMovementComplete()
+    {
+        
+    }
+
+    
 }
 
 

@@ -51,6 +51,7 @@ public class UnitPoolCreationData
         parent.name = "placeholder_" + ParentGameObject.name + "_" + GenericUnitController.name;
         PoolObjectQueue<GenericUnitController> pool = 
             new PoolObjectQueue<GenericUnitController>(GenericUnitController, 5, parent);
+        guc.QueuePool = pool;
         return pool;
     }
     

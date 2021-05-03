@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7224100814137897049}
   - component: {fileID: 7224100814137897051}
   - component: {fileID: 7224100814137897048}
-  - component: {fileID: 7224100814137897055}
   m_Layer: 0
   m_Name: PathWalker
   m_TagString: Untagged
@@ -45,9 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf73b54f2baede4997ee86173e755c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spline: {fileID: 0}
+  UnitMovementController: {fileID: 0}
+  spline: {fileID: 0}
+  SplinePathController: {fileID: 0}
+  SplineAttached: 0
+  parentUnit: {fileID: 0}
+  PathDirection: 1
   SplineTotalLength: 0
+  ObjectTransform: {fileID: 0}
   OnPath: 0
+  EndOfPathReached: 0
 --- !u!61 &7224100814137897048
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -74,24 +80,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.3}
   m_EdgeRadius: 0
---- !u!50 &7224100814137897055
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7224100814137897045}
-  m_BodyType: 1
-  m_Simulated: 0
-  m_UseFullKinematicContacts: 1
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0

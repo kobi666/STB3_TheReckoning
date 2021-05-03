@@ -386,23 +386,10 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         ComponentRotator.StartRotatingTowardsTarget();
     }
 
-
-    void UpdateTargetState(int targetGameObjectID, bool state, string callerName)
-    {
-        if (targetGameObjectID == Target.GenericUnitController?.MyGameObjectID)
-        {
-            if (state == false)
-            {
-                Target = null;
-            }
-        }
-    }
-
     protected void Awake()
     {
         base.Awake();
         onTargetAdd += SetTarget;
-        GameObjectPool.Instance.onTargetableUpdate += UpdateTargetState;
     }
 
     public override void InitComponent()

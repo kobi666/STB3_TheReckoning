@@ -60,6 +60,31 @@ public class GameObjectPool : MonoBehaviour
 
     public event Action<int,bool,string> onTargetableUpdate;
 
+    public void OnTargetableUpdate(int gameObjectID, bool state, string caller)
+    {
+        onTargetableUpdate?.Invoke(gameObjectID,state,caller);
+    }
+
+    void AddOrRemoveTargetable(int gameObjectID, bool state, string caller)
+    {
+        if (state)
+        {
+            if (!Targetables.Contains(gameObjectID))
+            {
+                Targetables.Add(gameObjectID);
+                onTargetableUpdate?.Invoke(gameObjectID,true,caller);
+            }
+        }
+        else
+        {
+            if (Targetables.Contains(gameObjectID))
+            {
+                Targetables.Remove(gameObjectID);
+                onTargetableUpdate?.Invoke(gameObjectID,false,caller);
+            }
+        }
+    }
+
     public void AddTargetable(int targetabelGameobjectID, string callerName)
     {
         if (!Targetables.Contains(targetabelGameobjectID))
@@ -218,6 +243,7 @@ public class GameObjectPool : MonoBehaviour
 
     private void Awake() {
         Instance = this;
+        onTargetableUpdate += AddOrRemoveTargetable;
     }
 
     protected void Start()

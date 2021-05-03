@@ -28,14 +28,7 @@ public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITarg
 
     void UpdateTargetableState(bool targetableState)
     {
-        if (targetableState == true)
-        {
-            GameObjectPool.Instance.AddTargetable(MyGameObjectID,name);
-        }
-        else
-        {
-            GameObjectPool.Instance.RemoveTargetable(MyGameObjectID,name);
-        }
+        GameObjectPool.Instance.OnTargetableUpdate(MyGameObjectID,targetableState,name);
     }
 
     public abstract void ApplyDamage(int damageAmount);

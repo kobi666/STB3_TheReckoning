@@ -134,9 +134,15 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
         return DefaultState;
     }
 
+    public event Action onStateChange;
+
+    public void OnStateChange()
+    {
+        onStateChange?.Invoke();
+    }
+
     public void ChangeState(T state)
     {
-        
         PreviousState = CurrentState;
         CurrentState = state;
         if (PreviousState.StateName == CurrentState.StateName)
@@ -150,6 +156,7 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
 
         if (counter < 3)
         {
+            OnStateChange();
             ExecuteCurrentState();
             if (InterruptState != null) {
                 if (state.StateName == InterruptState.StateName)

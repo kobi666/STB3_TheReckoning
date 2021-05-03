@@ -22,6 +22,7 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
     private void OnDisable()
     {
         GameObjectPool.Instance.OnUnitDisable(MyGameObjectID);
+        QueuePool.ObjectQueue.Enqueue(this);
     }
 
 
@@ -120,11 +121,17 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
             s.Init(this);
         }
         StateMachine.Init(this,States);
+        StateMachine.onStateChange += CheckTargtableState;
         UnitLifeManager.onUnitDeath += OnDeath;
         if (!TargetTags.IsNullOrEmpty()) {
         UnitBattleManager.MeleeWeapon.TargetBank.DiscoverableTags = TargetTags.ToList();
         GameObjectPool.Instance.OnUnitEnable(this);
         }
+    }
+
+    void CheckTargtableState()
+    {
+        var b = EffectableUnit.IsTargetable();
     }
 
     public event Action onDeath;
@@ -151,6 +158,12 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
         UnitMovementController.UnitTransform = transform;
         UnitMovementController.GenericUnitController = this;
         onDeath += SetStateToDeath;
+        onDeath += PlayDeathAnimation;
+    }
+
+    void PlayDeathAnimation()
+    {
+        AnimationController.PlayFiniteAnimation(UnitBattleManager.DeathAnimation);
     }
 
     private void SetStateToDeath()
@@ -172,15 +185,19 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
     }
 
     public Type QueueableType { get; set; }
-    public PoolObjectQueue<GenericUnitController> QueuePool { get; set; }
+
+    private PoolObjectQueue<GenericUnitController> queuePool;
+    public PoolObjectQueue<GenericUnitController> QueuePool { get => queuePool; set => queuePool = value; }
     public void OnEnqueue()
     {
-       
+        UnitBattleManager.TargetUnit = null;
     }
 
     public void OnDequeue()
     {
-        gameObject.SetActive(false);
+        UnitLifeManager.HP = Data.MetaData.HP;
+        StateMachine.SetState(StateMachine.InitialState);
+        StateMachine.ExecuteCurrentState();
     }
 
     public ActiveObjectPool<GenericUnitController> ActivePool { get; set; }

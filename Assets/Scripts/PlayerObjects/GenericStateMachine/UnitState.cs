@@ -29,6 +29,8 @@ public class UnitState : ObjectState<GenericUnitController>
     [SerializeReference][TypeFilter("GetSingleBehaviors")][GUIColor(1,0,0)]
     public List<UnitBehavior> OnEnterBehvaior;
 
+
+    public bool TargetableState = true;
     
 
     [SerializeReference][TypeFilter("GetConcurrentBehaviors")][GUIColor(0,1,0)]

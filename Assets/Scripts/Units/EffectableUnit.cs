@@ -6,18 +6,18 @@
     {
         get => GenericUnitController.StateMachine;
     }
-    private bool _targetable = false;
-    public bool targetable
+    private bool targetable = false;
+    public bool Targetable
     {
         get
         {
-            return _targetable;
+            return targetable;
         }
         set
         {
-            if (value != _targetable)
+            if (value != targetable)
             {
-                _targetable = value;
+                targetable = value;
                 OnTargetStateChange(value);
             }
         }
@@ -28,18 +28,18 @@
     public bool ExternalTargetableLock { get; set; }
     public override bool IsTargetable()
     {
-        if (gameObject.activeSelf == true) {
+        if (gameObject.activeSelf) {
             if (ExternalTargetableLock == false)
             {
-                if (StateMachine.CurrentState.stateName != UnitStates.Death)
+                if (StateMachine.CurrentState.TargetableState)
                 {
-                    targetable = true;
+                    Targetable = true;
                     return true;
                 }
             }
         }
 
-        targetable = false;
+        Targetable = false;
         return false;
     }
     

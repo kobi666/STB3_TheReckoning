@@ -257,8 +257,6 @@ public class SpawnWaves : SpawnerBehavior
     }
 
     
-
-    private int namecounter;
     public void SpawnUnitByColumn(int splineIndex)
     {
         GenericUnitController guc = UnitPools[0].GetInactive();
@@ -267,8 +265,6 @@ public class SpawnWaves : SpawnerBehavior
         guc.Data.DynamicData.Spline = PathSplines[(SplineTypes)splineIndex].BgCcMath;
         //change to spawning position
         guc.transform.position = ParentComponent.transform.position;
-        guc.name = guc.name + namecounter;
-        namecounter++;
         guc.Data.DynamicData.BasePosition = PathSplines[(SplineTypes)splineIndex].splinePoints[0];
         guc.gameObject.SetActive(true);
     }

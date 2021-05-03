@@ -438,8 +438,47 @@ namespace UnitBehaviors
             return true;
         }
     }
-    
-    
+
+    public class FadeOut : UnitConcurrentBehavior
+    {
+        private SpriteRenderer UnitSpriteRenderer;
+        public float FadeOutSpeed = 0.1f;
+        public override void Behavior()
+        {
+            Color currentColor = UnitSpriteRenderer.color;
+            UnitSpriteRenderer.color = new Color(currentColor.r,currentColor.g,currentColor.b, currentColor.a - (FadeOutSpeed * StaticObjects.DeltaGameTime));
+        }
+
+        public override void InitBehavior()
+        {
+            UnitSpriteRenderer = UnitObject.SpriteRenderer;
+        }
+
+        public override bool ExecCondition()
+        {
+            return (UnitSpriteRenderer.color.a > 0f);
+        }
+    }
+
+    public class DisableObject : UnitSingleBehvaior
+    {
+        public override void Behavior()
+        {
+            UnitObject.gameObject.SetActive(false);
+        }
+
+        public override void InitBehavior()
+        {
+            
+        }
+
+        public override bool ExecCondition()
+        {
+            return true;
+        }
+    }
+
+
 }
 
 

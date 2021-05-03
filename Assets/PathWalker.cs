@@ -3,7 +3,6 @@ using BansheeGz.BGSpline.Components;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
 public class PathWalker : MonoBehaviour
 {
     [Required]
@@ -13,8 +12,6 @@ public class PathWalker : MonoBehaviour
     public SplinePathController SplinePathController;
     [HideInInspector]
     public bool SplineAttached;
-
-    private Rigidbody2D Rigidbody2D;
 
     private void Awake()
     {
@@ -180,6 +177,5 @@ public class PathWalker : MonoBehaviour
         onPathShift += delegate(bool b) { OnPath = b; };
         onPathMovement += MoveAlongSpline;
         Spline = SplinePathController?.BgCcMath ?? Spline;
-        Rigidbody2D = transform.parent.GetComponent<Rigidbody2D>();
     }
 }

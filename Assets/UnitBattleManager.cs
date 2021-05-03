@@ -100,17 +100,9 @@ public class UnitBattleManager : MonoBehaviour
     public List<GenericWeaponController> AllWeapons = new List<GenericWeaponController>();
     public AnimationClip OnAttackAnimation;
     public AnimationClip OnSpecialAttackAnimation;
+    public AnimationClip DeathAnimation;
 
-    void updateTargetState(int gameObjectID, bool state, string callerName)
-    {
-        if (gameObjectID == TargetUnit?.MyGameObjectID)
-        {
-            if (state == false)
-            {
-                TargetUnit = null;
-            }
-        }
-    }
+    
 
     
 
@@ -137,7 +129,6 @@ public class UnitBattleManager : MonoBehaviour
         {
             weapon.TargetBank.AddNameExclusion(name);
         }
-        GameObjectPool.Instance.onTargetableUpdate += updateTargetState;
         if (MeleeWeapon) {
         MeleeWeapon.TargetBank.onTargetRemove += removeTarget;
         MeleeWeapon.onAttack += delegate(Effectable effectable, Vector2 vector2) { PlayOnAttackAnimation();};

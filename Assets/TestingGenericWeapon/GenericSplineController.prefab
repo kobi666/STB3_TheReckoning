@@ -10,21 +10,19 @@ GameObject:
   m_Component:
   - component: {fileID: 2350894109049245225}
   - component: {fileID: 2350894109049245224}
-  - component: {fileID: 2350894109049245204}
   - component: {fileID: 2350894109049245227}
-  - component: {fileID: 2350894109049245226}
   - component: {fileID: 2350894109049245206}
-  - component: {fileID: 2350894109049245205}
-  - component: {fileID: 2350894109049245207}
   - component: {fileID: 2350894109049245200}
   - component: {fileID: 2350894109049245201}
+  - component: {fileID: 7029880545217689701}
+  - component: {fileID: 7963332769253806010}
   m_Layer: 0
   m_Name: GenericSplineController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2350894109049245225
 Transform:
   m_ObjectHideFlags: 0
@@ -127,57 +125,6 @@ MonoBehaviour:
   eventMode: 0
   pointsMode: 0
   forceChangedEventMode: 0
---- !u!68 &2350894109049245204
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2350894109049245231}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!114 &2350894109049245227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,37 +155,6 @@ MonoBehaviour:
   spheresScale: 1
   spheresColor: {r: 1, g: 1, b: 1, a: 1}
   spheresCount: 100
---- !u!114 &2350894109049245226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2350894109049245231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ca749f7df32ed4885ba9b0c6a00c41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showHandles: 1
-  hidden: 0
-  parent: {fileID: 2350894109049245227}
-  ccName: 
-  splitMode: 0
-  partsTotal: 30
-  partsPerSection: 30
-  doNotOptimizeStraightLines: 0
-  useLocal: 1
-  spheresScale: 1
-  spheresColor: {r: 1, g: 1, b: 1, a: 1}
-  spheresCount: 100
-  showIfNotSelected: 0
-  collidersColor: {r: 1, g: 1, b: 1, a: 1}
-  maxNumberOfColliders: 200
-  maxExceeded: 0
-  inheritLayer: 0
-  layer: 0
-  childPrefab: {fileID: 0}
 --- !u!120 &2350894109049245206
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -335,47 +251,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &2350894109049245205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2350894109049245231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a69af748a081a14dbc7aa333bece5af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showHandles: 1
-  hidden: 0
-  parent: {fileID: 2350894109049245227}
-  ccName: 
-  splitMode: 0
-  partsTotal: 30
-  partsPerSection: 30
-  doNotOptimizeStraightLines: 0
-  useLocal: 0
-  spheresScale: 1
-  spheresColor: {r: 1, g: 1, b: 1, a: 1}
-  spheresCount: 100
-  updateAtStart: 0
---- !u!114 &2350894109049245207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2350894109049245231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e12c8ca099cab148b5f5d9d8761078b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DiscoverableTags:
-  - Enemy
-  DebugTargetByTag: 0
-  DebugTargetTag: 
 --- !u!114 &2350894109049245200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,10 +283,76 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BgCurve: {fileID: 0}
   TargetBank: {fileID: 2350894109049245200}
-  Detector: {fileID: 2350894109049245207}
+  Detector: {fileID: 0}
   FinalPoint: {fileID: 0}
   ExitPoint: {fileID: 0}
   LineRenderer: {fileID: 0}
+--- !u!114 &7029880545217689701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2350894109049245231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ef7f1b53f5e408428556a3dba7de6bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentMyGameObject: {fileID: 0}
+  FirstRun: 1
+  RegisterToGWCS: 1
+  CollisionID: 0
+  BoxCollider2D: {fileID: 0}
+  CollisionTagInt: 0
+  CollisionTagsICanDetectInt: 0
+  ColliderSize: 0
+  BoxColor: {r: 1, g: 1, b: 1, a: 1}
+  tagsICanDetect: 
+  ChildCollisionDetectors: []
+--- !u!114 &7963332769253806010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2350894109049245231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f575379cd8e95b41b38cef7a0dd7095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showHandles: 1
+  hidden: 0
+  parent: {fileID: 2350894109049245227}
+  ccName: 
+  splitMode: 0
+  partsTotal: 30
+  partsPerSection: 30
+  doNotOptimizeStraightLines: 0
+  useLocal: 0
+  spheresScale: 1
+  spheresColor: {r: 1, g: 1, b: 1, a: 1}
+  spheresCount: 100
+  showIfNotSelected: 0
+  collidersColor: {r: 1, g: 1, b: 1, a: 1}
+  maxNumberOfColliders: 200
+  maxExceeded: 0
+  inheritLayer: 0
+  layer: 0
+  childPrefab: {fileID: 0}
+  CollisionAggregator: {fileID: 7029880545217689701}
+  ParentMyGameObject: {fileID: 0}
+  height: 1
+  heightOffset: 0
+  usedByEffector: 0
+  material: {fileID: 0}
+  lengthExtends: 0
+  effector: {fileID: 0}
+  isTrigger: 0
+  generateKinematicRigidbody: 0
+  Rigidbody: {fileID: 0}
+  usedByComposite: 0
 --- !u!1001 &6499143542104343830
 PrefabInstance:
   m_ObjectHideFlags: 0

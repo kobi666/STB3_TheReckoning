@@ -6,24 +6,23 @@ using UnityEngine;
 
 public class CollisionDetector : CollidingObject
 {
-    private float ColliderSize;
+    public float ColliderSize;
     private Bounds ColliderBounds;
-    
     public Color BoxColor = Color.white;
-    /*void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
         Gizmos.color = BoxColor;
         if (BoxCollider2D != null)
         {
-            Vector3 Pos = transform.position;
-            Vector3 Size = new Vector3(BoxCollider2D.size.x * transform.lossyScale.x, BoxCollider2D.size.y * transform.lossyScale.y, 1f);
+            Vector2 Pos = (Vector2)transform.position + BoxCollider2D.offset;
+            Vector3 Size = new Vector3(BoxCollider2D.size.x, BoxCollider2D.size.y, 1f);
             Size /= 2f;
 
-            Vector3[] Points = new Vector3[4];
-            Points[0].Set(Pos.x - Size.x, Pos.y + Size.y, Pos.z);
-            Points[1].Set(Pos.x + Size.x, Pos.y + Size.y, Pos.z);
-            Points[2].Set(Pos.x + Size.x, Pos.y - Size.y, Pos.z);
-            Points[3].Set(Pos.x - Size.x, Pos.y - Size.y, Pos.z);
+            Vector2[] Points = new Vector2[4];
+            Points[0].Set(Pos.x - Size.x, Pos.y + Size.y);
+            Points[1].Set(Pos.x + Size.x, Pos.y + Size.y);
+            Points[2].Set(Pos.x + Size.x, Pos.y - Size.y);
+            Points[3].Set(Pos.x - Size.x, Pos.y - Size.y);
 
             float RotationInRad = transform.eulerAngles.z * Mathf.Deg2Rad;
 
@@ -43,7 +42,7 @@ public class CollisionDetector : CollidingObject
             Gizmos.DrawLine(Points[2], Points[3]);
             Gizmos.DrawLine(Points[3], Points[0]);
         }
-    }*/
+    }
     
     
     public float GetSize()
@@ -57,6 +56,10 @@ public class CollisionDetector : CollidingObject
         baseSize = new Vector2( newSize, newSize);
         BoxCollider2D.size = baseSize;
         ColliderSize = newSize;
+        if (newSize > GWCS.instance.QuadrentCellSize)
+        {
+            Debug.LogError("Collider size bigger than Quadrant Cell size!");
+        }
         ColliderBounds = BoxCollider2D.bounds;
     }
     
