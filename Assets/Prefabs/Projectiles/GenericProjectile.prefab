@@ -170,7 +170,7 @@ MonoBehaviour:
   parentMyGameObject: {fileID: 5907068859232098816}
   HasTargets: 0
   HasTargetableTargets: 0
-  Detector: {fileID: 833066918019150110}
+  Detector: {fileID: 7907611498853995413}
 --- !u!114 &1336342848312063452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,11 +184,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ParentMyGameObject: {fileID: 5907068859232098816}
+  FirstRun: 1
+  RegisterToGWCS: 1
   CollisionID: 0
   BoxCollider2D: {fileID: 0}
   CollisionTagInt: 0
   CollisionTagsICanDetectInt: 0
-  SubscribeToGWCS: 1
   collisionTag: 1
   BoxColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &833066918019150110
@@ -204,11 +205,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ParentMyGameObject: {fileID: 5907068859232098816}
+  FirstRun: 1
+  RegisterToGWCS: 1
   CollisionID: 0
   BoxCollider2D: {fileID: 0}
   CollisionTagInt: 0
   CollisionTagsICanDetectInt: 0
-  SubscribeToGWCS: 1
+  ColliderSize: 0
   BoxColor: {r: 1, g: 0.033018887, b: 0.033018887, a: 1}
   tagsICanDetect: 00000000
 --- !u!1001 &1159949154516130493
@@ -293,6 +296,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498647, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6fc023bc2782354d95ce0cb470b96e7, type: 3}
 --- !u!4 &7907611498853995496 stripped
@@ -301,3 +309,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1159949154516130493}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7907611498853995413 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1159949154516130493}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caa475697a7ed9543a6259f255d9d087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

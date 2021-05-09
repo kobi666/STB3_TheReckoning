@@ -76,9 +76,10 @@ public class CollisionDetector : CollidingObject
 
     public bool IsPositionInRange(Vector2 pos)
     {
-        if (pos.x > ColliderBounds.min.x && pos.x < ColliderBounds.max.x)
+        Vector2 selfPos = (Vector2)transform.position + BoxCollider2D.offset;
+        if (pos.x > selfPos.x - BoxCollider2D.size.x && pos.x < selfPos.x + BoxCollider2D.size.x)
         {
-            if (pos.y > ColliderBounds.min.y && pos.y < ColliderBounds.max.y)
+            if (pos.y > selfPos.y - BoxCollider2D.size.y && pos.y < selfPos.x + BoxCollider2D.size.y)
             {
                 return true;
             }
@@ -91,6 +92,10 @@ public class CollisionDetector : CollidingObject
     public override DetectionTags CollisionTag
     {
         get => DetectionTags.NONE;
+        set
+        {
+            
+        }
     }
     public override List<DetectionTags> TagsICanDetect { get => tagsICanDetect; }
 }

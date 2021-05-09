@@ -47,7 +47,10 @@ public class ProjectileEffect
     public bool AOE;
 
     [ShowInInspector, ShowIf("AOE")]
-    public float EffectRadius { get; set; } = 0.2f;
+    public float EffectRadius { get => effectRadius; set => effectRadius = value; } 
+
+    public float effectRadius = 0.2f;
+    
     private static IEnumerable<Type> GetFilteredTypeList()
     {
         var q = typeof(Effect).Assembly.GetTypes()

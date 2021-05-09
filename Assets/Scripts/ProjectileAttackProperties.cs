@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -15,10 +16,42 @@ public abstract class ProjectileAttackProperties : AttackProperties,IhasExitAndF
     
     [Required]
     public List<ExitFinalPointPair> ExitFinalPointPairs = new List<ExitFinalPointPair>();
+
+
+    private bool finalPointMovementInProgress = false;
+    async void  SetFinalPointPositionToTarget()
+    {
+        if (!finalPointMovementInProgress)
+        {
+            finalPointMovementInProgress = true;
+            while (finalPointMovementInProgress)
+            {
+                foreach (var exitFinalPointPair in ExitFinalPointPairs)
+                {
+                    exitFinalPointPair.cachedFinalPointPosition = ParentWeapon.Target?.TargetTransform?.position ?? exitFinalPointPair.cachedFinalPointPosition;
+                    exitFinalPointPair.FinalPoint.transform.position = exitFinalPointPair.cachedFinalPointPosition;
+                }
+
+                await Task.Yield();
+            }
+
+            finalPointMovementInProgress = false;
+        }
+    }
+
+    void stopFinalPointMovement()
+    {
+        finalPointMovementInProgress = false;
+    }
     
     public void InitializeAttackProperties(GenericWeaponController parentWeapon)
     {
         ParentWeapon = parentWeapon;
+        if (!ParentWeapon.RotatingComponent)
+        {
+            ParentWeapon.onAttackInitiate += SetFinalPointPositionToTarget;
+            ParentWeapon.onAttackCease += stopFinalPointMovement;
+        }
         InitializeAttack(ParentWeapon);
     }
     public abstract void InitializeAttack(GenericWeaponController parentWeapon);
@@ -76,8 +109,9 @@ public abstract class ProjectileAttackProperties : AttackProperties,IhasExitAndF
 
 
 [System.Serializable]
-public struct ExitFinalPointPair
+public class ExitFinalPointPair
 {
     public ProjectileExitPoint ExitPoint;
     public ProjectileFinalPoint FinalPoint;
+    public Vector2 cachedFinalPointPosition;
 }

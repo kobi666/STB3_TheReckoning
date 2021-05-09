@@ -43,6 +43,9 @@ namespace BansheeGz.BGSpline.Components
 
         [SerializeField][Required]
         public MyGameObject ParentMyGameObject;
+
+        [SerializeField] public DetectionTags MyDetectionTag;
+        [SerializeField] public List<DetectionTags> TagsICanDetect = new List<DetectionTags>();
         
         //===============================================================================================
         //                                                    Static
@@ -241,7 +244,7 @@ namespace BansheeGz.BGSpline.Components
 
             //rigidbody
             ChildCollisionDetector collisionDetector = collider.gameObject.GetOrAddComponent<ChildCollisionDetector>();
-            collisionDetector.InitChildDetector(ParentMyGameObject,CollisionAggregator,CollisionAggregator.TagsICanDetect);
+            collisionDetector.InitChildDetector(ParentMyGameObject,CollisionAggregator,CollisionAggregator.TagsICanDetect, CollisionAggregator.ChildDetectablesTag);
 
 #if UNITY_5_6_OR_NEWER
             if (usedByComposite) collider.usedByComposite = true;

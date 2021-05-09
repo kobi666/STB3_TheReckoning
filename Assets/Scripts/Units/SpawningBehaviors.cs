@@ -121,6 +121,7 @@ public class SpawnSingleUnitToBasePosition : SpawnerBehavior
     void SpawnUnitToBasePosition()
     {
         GenericUnitController guc = ParentComponent.SpawnUnitInactive(UnitPools[0]);
+        guc.transform.position = ParentComponent.transform.position;
         if (PathPointTypesByPriority[0] == PathPointFinder.PathPointType.RandomPosition)
         {
             guc.Data.DynamicData.BasePosition = new Vector2(Random.Range(-100f,100f),Random.Range(-100f,100f)); 

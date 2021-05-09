@@ -27,7 +27,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         set => weaponAttack = value;
     }
 
-    [HideInInspector] public List<Effect> ExternalEffectListForInitialization;
+    [SerializeReference] public List<Effect> ExternalEffectListForInitialization;
     private string cachedTargetName;
     
     private static ValueDropdownList<int> valueList = new ValueDropdownList<int>()

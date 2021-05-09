@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEditor;
@@ -67,26 +68,13 @@ public class GenericProjectile : MyGameObject,IQueueable<GenericProjectile>,IAct
     private float MaxLifeTimeCounter = 0;
     public event Action onHitCounterZero;
 
-    private CollisionDetector rangeDetector
+    public CollisionDetector AOERangeDetector
     {
         get => EffectableTargetBank.Detector;
-        set => effectableTargetBank.Detector = value;
     }
-    private EffectableTargetBank effectableTargetBank;
 
-    private EffectableTargetBank EffectableTargetBank
-    {
-        get
-        {
-            if (effectableTargetBank == null)
-            {
-                effectableTargetBank = GetComponent<EffectableTargetBank>();
-            }
-            return effectableTargetBank;
-        }
-        set => effectableTargetBank = value;
-    }
-    
+    [Required] public EffectableTargetBank EffectableTargetBank;
+
     public void OnHitCounterZero() {
         onHitCounterZero?.Invoke();
     }
@@ -273,11 +261,11 @@ public class GenericProjectile : MyGameObject,IQueueable<GenericProjectile>,IAct
         {
             if (BaseProjectileEffect.EffectRadius <= 0)
             {
-                rangeDetector.UpdateSize(1);
+                AOERangeDetector.UpdateSize(1);
             }
             else
             {
-                rangeDetector.UpdateSize(BaseProjectileEffect.EffectRadius);
+                AOERangeDetector.UpdateSize(BaseProjectileEffect.EffectRadius);
             } 
         }
     }
@@ -323,7 +311,16 @@ public class GenericProjectile : MyGameObject,IQueueable<GenericProjectile>,IAct
         {
             foreach (var effect in BaseProjectileEffect.onPositionReachedEffects)
             {
-                onTargetPositionReachedEffect += effect.Apply;
+                if (effect.IsAOE)
+                {
+                    onHitMultipleTargets += effect.Apply;
+                    onTargetPositionReachedEffect += OnHitMultipleTargets;
+                }
+                else
+                {
+                    onTargetPositionReachedEffect += effect.Apply;    
+                }
+                
             }
         }
 
@@ -431,16 +428,21 @@ public class GenericProjectile : MyGameObject,IQueueable<GenericProjectile>,IAct
         
             projectileInitlized = true;
         }
-        onTargetPositionReached += Disable;
         MovementFunction.onPositionReached += OnTargetPositionReached;
+        onTargetPositionReached += DisableAfterPeriod;
+        
         
         projectileInitlized = true;
         
         
     }
 
-    void Disable()
+    async void DisableAfterPeriod()
     {
+        for (int i = 0; i < 2; i++)
+        {
+            await Task.Yield();
+        }
         gameObject.SetActive(false);
     }
 

@@ -147,7 +147,9 @@ public class PathPointFinder : MonoBehaviour
                     counter++;
                 }
             }
-            v2 = points[points.Count / 2];
+            if (!points.IsNullOrEmpty()) {
+           v2 = points[points.Count / 2];
+            }
         }
 
         return v2;
@@ -203,8 +205,10 @@ public class PathPointFinder : MonoBehaviour
                 }
                 if (GameObjectPool.Instance.ActiveSplines.Pool[targetGameObjectID].SplineType == SplineTypes.Main_Middle) {
                     {
+                        if (!PathSplines.ContainsKey(targetGameObjectID)) {
                             PathSplines.Add(targetGameObjectID,GameObjectPool.Instance.ActiveSplines.Pool[targetGameObjectID]);
                             onPathFound?.Invoke();    
+                            }
                         }
                 }
             }
@@ -262,8 +266,6 @@ public class PathPointFinder : MonoBehaviour
     void Start()
     {
         RangeDetector.onTargetEnter += AddPathSplines;
-        RangeDetector.gameObject.SetActive(false);
-        RangeDetector.gameObject.SetActive(true);
     }
 
     // Update is called once per frame

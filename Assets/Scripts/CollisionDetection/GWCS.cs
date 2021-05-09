@@ -25,7 +25,9 @@ public class GWCS : MonoBehaviour
 
     [ShowInInspector] private Queue<CollidingObject> RemovalQueue = new Queue<CollidingObject>();
 
-    public void AddObject(CollidingObject _collidingObject)
+
+    public bool DebugRegister;
+    public void AddObject(CollidingObject _collidingObject, int collisionID)
     {
         AdditionQueue.Enqueue(_collidingObject);
     }

@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -526778269
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 8114985772114671235, guid: aa45a3a6aa2c8404d9762fc77842b2c2,
     type: 3}
@@ -112,6 +112,7 @@ MonoBehaviour:
   DiscoverableTags:
   - Enemy
   TargetExclusionList: 
+  EffectableTargetBank: {fileID: 7641706526667284788}
   Data:
     Speed: 0
     EffectRadius: 0
@@ -170,7 +171,7 @@ MonoBehaviour:
   parentMyGameObject: {fileID: 7641706526667284794}
   HasTargets: 0
   HasTargetableTargets: 0
-  Detector: {fileID: 3492948051544082980}
+  Detector: {fileID: 6218255638233360559}
 --- !u!114 &2989669904514453222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +214,7 @@ MonoBehaviour:
   CollisionTagsICanDetectInt: 0
   ColliderSize: 0
   BoxColor: {r: 1, g: 0.033018887, b: 0.033018887, a: 1}
-  tagsICanDetect: 00000000
+  tagsICanDetect: 07000000
 --- !u!1001 &3165506972635521415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,6 +236,11 @@ PrefabInstance:
         type: 3}
       propertyPath: tagsICanDetect.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: tagsICanDetect.Array.data[0]
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9053798066310498601, guid: c6fc023bc2782354d95ce0cb470b96e7,
         type: 3}
@@ -304,3 +310,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3165506972635521415}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6218255638233360559 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 3165506972635521415}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caa475697a7ed9543a6259f255d9d087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -113,6 +113,7 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
 
     void Init()
     {
+        UnitMovementController.MovementSpeed = Data.MetaData.MovementSpeed;
         UnitLifeManager.InitialHP = Data.MetaData.HP;
         UnitLifeManager.Init();
         UpdateRange(Data.MetaData.DiscoveryRadius, GetTagDetectors());
@@ -127,6 +128,7 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
         UnitBattleManager.MeleeWeapon.TargetBank.DiscoverableTags = TargetTags.ToList();
         GameObjectPool.Instance.OnUnitEnable(this);
         }
+        
     }
 
     void CheckTargtableState()
@@ -146,7 +148,7 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
     {
         selfCollider = GetComponent<BoxCollider2D>();
         StateMachine = GetComponent<UnitStateMachine>();
-        tag = GroupTag;
+        //tag = GroupTag;
         //StateMachine = StateMachine ?? GetComponent<GenericStateMachine>();
         AnimationController = AnimationController ?? GetComponent<AnimationController>();
         SpriteRenderer = SpriteRenderer ?? GetComponent<SpriteRenderer>();

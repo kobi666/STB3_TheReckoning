@@ -12,6 +12,8 @@ public class CollisionAggregator : CollisionDetector
         RegisterToGWCS = false;
         base.Awake();
     }
+
+    public DetectionTags ChildDetectablesTag;
     
     public List<CollisionDetector> ChildCollisionDetectors = new List<CollisionDetector>();
     [ShowInInspector]

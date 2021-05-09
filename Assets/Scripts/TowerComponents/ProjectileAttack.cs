@@ -120,6 +120,7 @@ public class ProjectileAttack : WeaponAttack
     public override void InitlizeAttack(GenericWeaponController weapon)
     {
         ProjectileAttackProperties.InitializeAttack(weapon);
+        ProjectileAttackProperties.InitializeAttackProperties(weapon);
     }
 }
 

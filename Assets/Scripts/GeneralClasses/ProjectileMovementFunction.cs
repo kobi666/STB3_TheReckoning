@@ -2,6 +2,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 using System.Threading.Tasks;
+using Random = UnityEngine.Random;
 
 [Serializable]
 public class ProjectileMovementDynamicData
@@ -44,8 +45,8 @@ public abstract class ProjectileMovementFunction
         }
     }
     private bool targetLost = false;
-
-    public float Speed;
+    
+    public abstract float Speed { get; set; }
 
     [ShowInInspector] protected float ProgressCounter = 0;
 
@@ -139,36 +140,36 @@ public class MoveStraight : ProjectileMovementFunction
     {
         projectileTransform.position = Vector2.Lerp(originPos, TargetPos , ProgressCounter);
     }
+
+    public float speed;
+    public override float Speed { get => speed; set => speed = value; }
 }
 
 public class MoveInArc : ProjectileMovementFunction
 {
-
+    public bool RotateProjectile;
+    [ShowIf("RotateProjectile")] public float RotationSpeed = 1;
+    public bool RandomArc;
     public float arcValue;
     private Vector2 MiddlePos;
     private Vector2 InitToMiddle;
     private Vector2 MiddleToTarget;
-    public static void MoveInArcToPosition(Transform projectileTransform, Vector2 initPos, Vector2 middlePos,
-        Vector2 targetPosition, ref Vector2 initToMiddle, ref Vector2 middleToTarget, float speed, ref float counter)
-    {
-        if (counter <= 1f)
-        {
-            counter += speed * StaticObjects.DeltaGameTime;
-            initToMiddle = Vector2.Lerp(initPos, middlePos, counter);
-            middleToTarget = Vector2.Lerp(middlePos, targetPosition, counter);
-            projectileTransform.position = Vector2.Lerp(initToMiddle, middleToTarget, counter);
-        }
-    }
-    
+
     public override void MovementFunction(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos, Vector2 TargetPos,
         float speed)
     {
          InitToMiddle = Vector2.Lerp(originPos, MiddlePos, ProgressCounter);
          MiddleToTarget = Vector2.Lerp(MiddlePos, TargetPos, ProgressCounter);
          projectileTransform.position = Vector2.Lerp(InitToMiddle, MiddleToTarget, ProgressCounter);
+         if (RotateProjectile)
+         {
+             projectileTransform.Rotate(Vector3.forward, RotationSpeed);
+         }
     }
     
-    
+    public override float Speed { get => speed; set => speed = value; }
+    public float speed = 1;
+
     public override void OnMovementInit(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos, Vector2 TargetPos,
         float speed)
     {
@@ -177,6 +178,10 @@ public class MoveInArc : ProjectileMovementFunction
             arcDirection = Vector2.down;
         }
 
+        if (RandomArc)
+        {
+            arcValue = Random.Range(2, 6);
+        }
         MiddlePos = originPos + (TargetPos - originPos) / 2 + arcDirection * Mathf.Abs(arcValue);
     }
 

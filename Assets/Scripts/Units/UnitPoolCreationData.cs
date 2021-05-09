@@ -50,7 +50,7 @@ public class UnitPoolCreationData
         guc.gameObject.SetActive(false);
         parent.name = "placeholder_" + ParentGameObject.name + "_" + GenericUnitController.name;
         PoolObjectQueue<GenericUnitController> pool = 
-            new PoolObjectQueue<GenericUnitController>(GenericUnitController, 5, parent);
+            new PoolObjectQueue<GenericUnitController>(guc, 5, parent);
         guc.QueuePool = pool;
         return pool;
     }
@@ -61,8 +61,8 @@ public class UnitPoolCreationData
         parent.name = ParentGameObject.name + "_" + GenericUnitController.name;
         GenericUnitController guc =
             GameObject.Instantiate(GenericUnitController, parent.transform);
-        guc.gameObject.SetActive(false);
         guc.Data.MetaData = UnitMetaData;
+        
         if (!MeleeEffects.IsNullOrEmpty())
         {
             guc.UnitBattleManager.MeleeWeapon.ExternalEffectListForInitialization = MeleeEffects;
@@ -73,7 +73,8 @@ public class UnitPoolCreationData
         
         parent.name = "placeholder_" + ParentGameObject.name + "_" + GenericUnitController.name;
         PoolObjectQueue<GenericUnitController> pool = 
-            new PoolObjectQueue<GenericUnitController>(GenericUnitController, MaxUnits, parent);
+            new PoolObjectQueue<GenericUnitController>(guc, MaxUnits, parent);
+        guc.QueuePool = pool;
         return pool;
     }
 }

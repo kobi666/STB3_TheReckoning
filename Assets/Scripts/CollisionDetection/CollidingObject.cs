@@ -7,14 +7,14 @@ using UnityEngine;
 
 public abstract class CollidingObject : MonoBehaviour
 {
-    [Required] public MyGameObject ParentMyGameObject;
+    [Required][SerializeField] public MyGameObject ParentMyGameObject;
 
     public bool FirstRun = true;
     public bool RegisterToGWCS = true;
     protected void OnEnable()
     {
         if (RegisterToGWCS) {
-        GWCS.instance.AddObject(this);
+        GWCS.instance.AddObject(this, CollisionID);
         }
     }
 
@@ -33,7 +33,7 @@ public abstract class CollidingObject : MonoBehaviour
     
     public int CollisionID;
     
-    public abstract DetectionTags CollisionTag { get; }
+    public abstract DetectionTags CollisionTag { get; set; }
     public abstract List<DetectionTags> TagsICanDetect { get; }
     public BoxCollider2D BoxCollider2D;
     
@@ -62,6 +62,8 @@ public abstract class CollidingObject : MonoBehaviour
             BoxCollider2D.enabled = false;
         }
     }
+    
+    
 
 
     protected void Start()
