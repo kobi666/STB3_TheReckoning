@@ -14,6 +14,7 @@ using UnityEngine;
 
 namespace BansheeGz.BGSpline.Components
 {
+    
     /// <summary>Create a set of 2D Box colliders along 2D spline</summary>
     [HelpURL("http://www.bansheegz.com/BGCurve/Cc/BGCcCollider2DBox")]
     [
@@ -23,8 +24,9 @@ namespace BansheeGz.BGSpline.Components
             Icon = "BGCcCollider2DBox123")
     ]
     [AddComponentMenu("BansheeGz/BGCurve/Components/BGCcCollider2DBox")][RequireComponent(typeof(CollisionAggregator))]
-    public class CustomBGCBoxCollider : BGCcColliderAbstract<BoxCollider2D>
+    public class CustomBGCBoxCollider : BGCcCustomColliderAbstract<BoxCollider2D>
     {
+        private int GoCounter;
         protected void Start()
         {
             base.Start();
@@ -33,16 +35,10 @@ namespace BansheeGz.BGSpline.Components
                 ParentMyGameObject = transform.parent.GetComponent<MyGameObject>();
             }
         }
-        
-        [SerializeField]
-        public CollisionAggregator CollisionAggregator;
         protected void Awake()
         {
             CollisionAggregator = GetComponent<CollisionAggregator>();
         }
-
-        [SerializeField][Required]
-        public MyGameObject ParentMyGameObject;
 
         [SerializeField] public DetectionTags MyDetectionTag;
         [SerializeField] public List<DetectionTags> TagsICanDetect = new List<DetectionTags>();
@@ -242,9 +238,7 @@ namespace BansheeGz.BGSpline.Components
 
             collider.usedByEffector = usedByEffector;
 
-            //rigidbody
-            ChildCollisionDetector collisionDetector = collider.gameObject.GetOrAddComponent<ChildCollisionDetector>();
-            collisionDetector.InitChildDetector(ParentMyGameObject,CollisionAggregator,CollisionAggregator.TagsICanDetect, CollisionAggregator.ChildDetectablesTag);
+            
 
 #if UNITY_5_6_OR_NEWER
             if (usedByComposite) collider.usedByComposite = true;

@@ -139,11 +139,10 @@ MonoBehaviour:
     - id: 4
     OnExitBehavior:
     - id: 5
-    - id: 6
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 2
-    automaticNextState: 0
+    automaticNextState: 3
   - DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
@@ -152,7 +151,7 @@ MonoBehaviour:
     OnEnterBehvaior: []
     TargetableState: 1
     InStateBehavior:
-    - id: 7
+    - id: 6
     OnExitBehavior: []
     SpecialEnterConditions: []
     SpecialExitConditions: []
@@ -164,12 +163,12 @@ MonoBehaviour:
     FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior:
-    - id: 8
+    - id: 7
     TargetableState: 1
     InStateBehavior:
-    - id: 9
+    - id: 8
     OnExitBehavior:
-    - id: 10
+    - id: 9
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 3
@@ -180,12 +179,12 @@ MonoBehaviour:
     FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior:
-    - id: 11
+    - id: 10
     TargetableState: 0
     InStateBehavior:
-    - id: 12
+    - id: 11
     OnExitBehavior:
-    - id: 13
+    - id: 12
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 7
@@ -414,38 +413,6 @@ MonoBehaviour:
           stateName: 0
           automaticNextState: 0
     00000006:
-      type: {class: ChangeState, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
-        State: 3
-    00000007:
       type: {class: DoNothing, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
         UnitData:
@@ -476,7 +443,7 @@ MonoBehaviour:
           SpecialExitConditions: []
           stateName: 0
           automaticNextState: 0
-    00000008:
+    00000007:
       type: {class: StartFight, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
         UnitData:
@@ -507,7 +474,7 @@ MonoBehaviour:
           SpecialExitConditions: []
           stateName: 0
           automaticNextState: 0
-    00000009:
+    00000008:
       type: {class: Fight, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
         UnitData:
@@ -538,7 +505,7 @@ MonoBehaviour:
           SpecialExitConditions: []
           stateName: 0
           automaticNextState: 0
-    0000000A:
+    00000009:
       type: {class: EndFight, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
         UnitData:
@@ -569,7 +536,7 @@ MonoBehaviour:
           SpecialExitConditions: []
           stateName: 0
           automaticNextState: 0
-    0000000B:
+    0000000A:
       type: {class: AnnounceDeath, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
         UnitData:
@@ -600,7 +567,7 @@ MonoBehaviour:
           SpecialExitConditions: []
           stateName: 0
           automaticNextState: 0
-    0000000C:
+    0000000B:
       type: {class: FadeOut, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
         UnitData:
@@ -632,7 +599,7 @@ MonoBehaviour:
           stateName: 0
           automaticNextState: 0
         FadeOutSpeed: 0.1
-    0000000D:
+    0000000C:
       type: {class: DisableObject, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
         UnitData:

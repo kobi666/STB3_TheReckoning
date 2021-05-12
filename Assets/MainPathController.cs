@@ -72,6 +72,7 @@ public class MainPathController : SplinePathController
     SeconderyPathController CreateSeconderyPath(float pathPositionDelta)
     {
         SeconderyPathController seconderyPathController = Instantiate(SeconderyPathControllerPrefab, transform);
+        seconderyPathController.parentPath = this;
         seconderyPathController.transform.position = transform.position + new Vector3(0, pathPositionDelta, 0);
         for (int i = 0; i < BgCurve.Points.Length; i++)
         {

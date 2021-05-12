@@ -33,16 +33,14 @@ public class ProjectileExitPoint : MonoBehaviour
         }
         AsyncRotationInProgress = false;
     }
-    
-    public void DefaultRotationFunction() {
-        
-        if (Target != null)
-        {
-            Vector2 vecToTarget = Target.TargetTransform?.position - transform.position ?? transform.position;
-        float angleToTarget = Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg;
+
+    private Vector2 cachecVectorToTargetPosition;
+    public void DefaultRotationFunction()
+    {
+        cachecVectorToTargetPosition = Target.TargetTransform?.position - transform.position ?? cachecVectorToTargetPosition;
+        float angleToTarget = Mathf.Atan2(cachecVectorToTargetPosition.y, cachecVectorToTargetPosition.x) * Mathf.Rad2Deg;
         Quaternion q = Quaternion.AngleAxis(angleToTarget, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, q, StaticObjects.DeltaGameTime * rotationSpeed);
-        }
     }
     
 }

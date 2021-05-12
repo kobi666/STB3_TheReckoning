@@ -6,42 +6,33 @@ using UnityEngine;
 
 public class CollisionDetector : CollidingObject
 {
+
+    public bool DebugCollision;
     public float ColliderSize;
     private Bounds ColliderBounds;
     public Color BoxColor = Color.white;
     void OnDrawGizmosSelected()
     {
+        if (BoxCollider2D != null) {
         Gizmos.color = BoxColor;
-        if (BoxCollider2D != null)
-        {
-            Vector2 Pos = (Vector2)transform.position + BoxCollider2D.offset;
-            Vector3 Size = new Vector3(BoxCollider2D.size.x, BoxCollider2D.size.y, 1f);
-            Size /= 2f;
-
-            Vector2[] Points = new Vector2[4];
-            Points[0].Set(Pos.x - Size.x, Pos.y + Size.y);
-            Points[1].Set(Pos.x + Size.x, Pos.y + Size.y);
-            Points[2].Set(Pos.x + Size.x, Pos.y - Size.y);
-            Points[3].Set(Pos.x - Size.x, Pos.y - Size.y);
-
-            float RotationInRad = transform.eulerAngles.z * Mathf.Deg2Rad;
-
-            for(int i=0; i<4; i++)
-            {
-                float x = Points[i].x - Pos.x, y = Points[i].y - Pos.y;
-
-                Points[i].x = x * Mathf.Cos(RotationInRad) - y * Mathf.Sin(RotationInRad);
-                Points[i].y = x * Mathf.Sin(RotationInRad) + y * Mathf.Cos(RotationInRad);
-
-                Points[i].x = Points[i].x + Pos.x;
-                Points[i].y = Points[i].y + Pos.y;
-            }                   
-
-            Gizmos.DrawLine(Points[0], Points[1]);
-            Gizmos.DrawLine(Points[1], Points[2]);
-            Gizmos.DrawLine(Points[2], Points[3]);
-            Gizmos.DrawLine(Points[3], Points[0]);
+        Gizmos.DrawWireCube(transform.position + (Vector3)BoxCollider2D.offset,new Vector3(BoxCollider2D.size.x,BoxCollider2D.size.y));
         }
+    }    
+    [Button]
+    void DebugCollsion()
+    {
+        onTargetEnter += delegate(int i) { Debug.LogWarning("Found collision " + i + ", Object : " + GameObjectPool.CollisionIDToGameObjectID[i].Item2); };
+        onTargetExit += delegate(int i, string s) { Debug.LogWarning("REMOVED collision " + i + ", Object : " + GameObjectPool.CollisionIDToGameObjectID[i].Item2); };
+    }
+
+    protected void Start()
+    {
+        base.Start();
+    }
+
+    protected void Awake()
+    {
+        base.Awake();
     }
     
     
@@ -89,6 +80,10 @@ public class CollisionDetector : CollidingObject
     }
 
     public List<DetectionTags> tagsICanDetect = new List<DetectionTags>();
+
+    public bool registerToGwcs = true;
+    public override bool RegisterToGWCS { get => registerToGwcs; set => registerToGwcs = value; }
+
     public override DetectionTags CollisionTag
     {
         get => DetectionTags.NONE;

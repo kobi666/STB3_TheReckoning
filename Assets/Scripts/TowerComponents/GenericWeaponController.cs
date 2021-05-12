@@ -283,6 +283,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         testAsyncAttackcounter += 1;
         AsyncAttackInProgress = true;
         while (AsyncAttackInProgress) {
+            Debug.DrawLine(projectileExitPoint?.transform.position ?? transform.position, cachedAttackPosition );
             if (CanAttack() && AttackCounter >= CounterMax)
             {
                 Attack();
@@ -302,9 +303,11 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
 
     public event Action<Effectable,Vector2> onAttack;
 
+    public Vector2 cachedAttackPosition;
     void OnAttack()
     {
-        onAttack?.Invoke(Target.Effectable, Target.TargetTransform.position);
+        cachedAttackPosition = Target.TargetTransform?.position ?? cachedAttackPosition;
+        onAttack?.Invoke(Target?.Effectable, cachedAttackPosition);
     }
 
     
@@ -343,9 +346,23 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         }
     }
     [GUIColor(1,0,0)]
-    public bool TargetExists = false;
+    public bool targetExists = false;
 
-    
+    public bool TargetExists
+    {
+        get => targetExists;
+        set
+        {
+            if (value == false)
+            {
+                InAttackState = false;
+            }
+
+            targetExists = value;
+        }
+    }
+
+
 
     [SerializeField]
     bool inAttackState = false;
@@ -419,10 +436,6 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         onEnemyLeftRange += StandardOnTargetLeftRange;
         projectileExitPoint = GetComponentInChildren<ProjectileExitPoint>() ?? null;
         ProjectileFinalPoint = GetComponentInChildren<ProjectileFinalPoint>() ?? null;
-        if (RotatingComponent) {
-            onAttackInitiate += RotateTowardsTarget;
-            onAttackCease += ComponentRotator.StopRotating;
-        }
         if (TargetBank != null) {
             if (Data.componentRadius == 0) {
                 Data.componentRadius = 1;

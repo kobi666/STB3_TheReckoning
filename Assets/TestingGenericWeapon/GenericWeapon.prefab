@@ -193,7 +193,6 @@ MonoBehaviour:
   RangeCollider: {fileID: 0}
   WeaponTypeInt: 0
   ExternalEffectListForInitialization: []
-  RotatingTurret: 1
   projectileAttack:
     parentWeaponController: {fileID: 0}
     ProjectileAttackProperties:
@@ -219,7 +218,8 @@ MonoBehaviour:
   ExternalAttackLock: 0
   canattackFieldPH: 0
   ProjectileFinalPoint: {fileID: 7132678530149083603}
-  TargetExists: 0
+  cachedAttackPosition: {x: 0, y: 0}
+  targetExists: 0
   inAttackState: 0
   references:
     version: 1
@@ -229,7 +229,10 @@ MonoBehaviour:
         ParentWeapon: {fileID: 0}
         ProjectileFinalPoints: []
         ProjectileExitPoints: []
-        ExitFinalPointPairs: []
+        ExitFinalPointPairs:
+        - ExitPoint: {fileID: 7134627240943377192}
+          FinalPoint: {fileID: 7132678530149083603}
+          cachedFinalPointPosition: {x: 0, y: 0}
         AsyncAttackInProgress: 0
         Projectiles: []
     00000001:
@@ -582,6 +585,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8977666038003848182}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7134627240943377192 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2275542799276280030, guid: 43b0a984e43ce9c48816a023d43ea06f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8977666038003848182}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7134627240943377199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0e162f14b01c34d8215408fd521263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8977666038269293127
 PrefabInstance:
   m_ObjectHideFlags: 0

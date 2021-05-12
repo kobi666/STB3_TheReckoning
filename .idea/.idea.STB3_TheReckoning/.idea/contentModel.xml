@@ -1102,6 +1102,7 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="CollisionDetection" t="Include">
+            <e p="BGCcCustomColliderAbstract.cs" t="Include" />
             <e p="ChildCollisionDetector.cs" t="Include" />
             <e p="ChildDetectableCollider.cs" t="Include" />
             <e p="CollidingObject.cs" t="Include" />

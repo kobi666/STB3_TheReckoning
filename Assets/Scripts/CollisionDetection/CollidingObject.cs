@@ -8,9 +8,9 @@ using UnityEngine;
 public abstract class CollidingObject : MonoBehaviour
 {
     [Required][SerializeField] public MyGameObject ParentMyGameObject;
-
+    
     public bool FirstRun = true;
-    public bool RegisterToGWCS = true;
+    public abstract bool RegisterToGWCS { get; set; }
     protected void OnEnable()
     {
         if (RegisterToGWCS) {

@@ -34,11 +34,19 @@
                 if (StateMachine.CurrentState.TargetableState)
                 {
                     Targetable = true;
+                    if (!GameObjectPool.Instance.Targetables.Contains(MyGameObjectID))
+                    {
+                        GameObjectPool.Instance.Targetables.Add(MyGameObjectID);
+                    }
                     return true;
                 }
             }
         }
 
+        if (GameObjectPool.Instance.Targetables.Contains(MyGameObjectID))
+        {
+            GameObjectPool.Instance.Targetables.Remove(MyGameObjectID);
+        }
         Targetable = false;
         return false;
     }

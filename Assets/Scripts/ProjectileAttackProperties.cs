@@ -80,17 +80,9 @@ public abstract class ProjectileAttackProperties : AttackProperties,IhasExitAndF
 
     public void SetInitialFinalPointPosition()
     {
-        /*foreach (var fp in GetFinalPoints())
-        {
-            var position = fp.transform.position;
-            Vector2 pos = (Vector2)ParentWeapon.transform.position + 
-                          new Vector2(ParentWeapon.Data.componentRadius, 0);
-            fp.transform.position = pos;
-        }*/
-
         foreach (var exitFinal in ExitFinalPointPairs)
         {
-            var position = (Vector2)exitFinal.ExitPoint.transform.position + new Vector2(ParentWeapon.Data.componentRadius, 0f);
+            var position = (Vector2)ParentWeapon.transform.position + new Vector2(ParentWeapon.Data.componentRadius / 1.5f, 0f);
             exitFinal.FinalPoint.transform.position = position;
         }
     }

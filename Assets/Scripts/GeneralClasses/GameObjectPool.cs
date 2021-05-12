@@ -194,6 +194,10 @@ public class GameObjectPool : MonoBehaviour
 
     
     public TargetUnit GetTargetUnit(int gameObjectID) {
+        if (gameObjectID == 0)
+        {
+            return null;
+        }
         TargetUnit tu = new TargetUnit(gameObjectID);
         return tu;
     }

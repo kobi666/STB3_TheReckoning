@@ -186,7 +186,7 @@ public class TargetUnit
     public string name {get => Effectable?.name ?? null;}
     public Transform transform {get => Effectable?.transform ?? null;
     }
-    public float Proximity {get => GenericUnitController.PathWalker.ProximityToPathEnd;}
+    public float Proximity {get => GenericUnitController?.PathWalker.ProximityToPathEnd ?? 9999f;}
 
     public TargetUnit(int targetGameObjectID) {
         try

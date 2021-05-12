@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9053798066310498601}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.25, y: -1.84, z: -2.6380928}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,10 +72,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ParentMyGameObject: {fileID: 0}
+  FirstRun: 1
+  RegisterToGWCS: 1
   CollisionID: 0
   BoxCollider2D: {fileID: 0}
   CollisionTagInt: 0
   CollisionTagsICanDetectInt: 0
+  ColliderSize: 0
   BoxColor: {r: 1, g: 1, b: 1, a: 1}
   tagsICanDetect: 0000000002000000
 --- !u!114 &6945914222311010425

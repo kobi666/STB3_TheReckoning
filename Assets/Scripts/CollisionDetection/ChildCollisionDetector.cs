@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class ChildCollisionDetector : CollisionDetector
 {
+    private bool _registerToGWCS = false;
+    public override bool RegisterToGWCS { get => _registerToGWCS; set => _registerToGWCS = value; }
+
     public override DetectionTags CollisionTag { get => DetectionTags.NONE;
         set
         {
@@ -16,9 +19,11 @@ public class ChildCollisionDetector : CollisionDetector
     public override List<DetectionTags> TagsICanDetect { get => tagsICanDetect; }
     public CollisionAggregator ParentCollisionAggregator;
 
+    public bool initialized = false;
     public void InitChildDetector(MyGameObject parentMyGameObject, CollisionAggregator parentCollisionAggregator,
-        List<DetectionTags> detectionTags, DetectionTags myDetectionTag)
+        List<DetectionTags> detectionTags, DetectionTags myDetectionTag, int nameCounter)
     {
+        name = "ChildCollisionDetector_" + nameCounter;
         if (myDetectionTag != DetectionTags.NONE)
         {
             DetectableCollider = gameObject.GetOrAddComponent<DetectableCollider>();
@@ -29,17 +34,14 @@ public class ChildCollisionDetector : CollisionDetector
         ParentCollisionAggregator = parentCollisionAggregator;
         ParentMyGameObject = parentMyGameObject;
         RegisterToGWCS = true;
-    }
-
-    protected void Awake()
-    {
-        base.Awake();
-    }
-
-    protected void Start()
-    {
-        base.Start();
         onTargetEnter += ParentCollisionAggregator.OnChildDetectorAdd;
         onTargetExit += ParentCollisionAggregator.OnChildDetectorRemove;
+        initialized = true;
+        Awake();
+        Start();
+        GameObjectPool.CollisionIDToGameObjectID.TryAdd(CollisionID, (GameObjectID, name));
+        GWCS.instance.AddObject(this, CollisionID);
     }
+
+    
 }

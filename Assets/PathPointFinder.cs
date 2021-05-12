@@ -183,9 +183,10 @@ public class PathPointFinder : MonoBehaviour
     {
         onPathFound?.Invoke();
     }
-    void AddPathSplines(int targetGameObjectID)
+    void AddPathSplines(int targetGameObjectCollisionID)
     {
-        if (GameObjectPool.Instance.ActiveSplines.Contains(targetGameObjectID))
+        int targetGID = GameObjectPool.CollisionIDToGameObjectID[targetGameObjectCollisionID].Item1;
+        if (GameObjectPool.Instance.ActiveSplines.Contains(targetGID))
             {
                 if (OnlyTargetSpecificPaths)
                 {
@@ -198,15 +199,15 @@ public class PathPointFinder : MonoBehaviour
                         }
                     }
 
-                    if (!specificPathNames.Contains(GameObjectPool.Instance.ActiveSplines.Pool[targetGameObjectID].parentPath.name))
+                    if (!specificPathNames.Contains(GameObjectPool.Instance.ActiveSplines.Pool[targetGID].parentPath.name))
                     {
                         return;
                     }
                 }
-                if (GameObjectPool.Instance.ActiveSplines.Pool[targetGameObjectID].SplineType == SplineTypes.Main_Middle) {
+                if (GameObjectPool.Instance.ActiveSplines.Pool[targetGID].SplineType == SplineTypes.Main_Middle) {
                     {
-                        if (!PathSplines.ContainsKey(targetGameObjectID)) {
-                            PathSplines.Add(targetGameObjectID,GameObjectPool.Instance.ActiveSplines.Pool[targetGameObjectID]);
+                        if (!PathSplines.ContainsKey(targetGID)) {
+                            PathSplines.Add(targetGID,GameObjectPool.Instance.ActiveSplines.Pool[targetGID]);
                             onPathFound?.Invoke();    
                             }
                         }

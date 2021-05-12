@@ -5,6 +5,8 @@ using UnityEngine;
 public class DetectableCollider : CollidingObject
 {
     public DetectionTags collisionTag;
+    public override bool RegisterToGWCS { get => _registerToGwcs ; set => _registerToGwcs = value; }
+    private bool _registerToGwcs = true;
     public override DetectionTags CollisionTag { get => collisionTag;
         set => collisionTag = value;
     }

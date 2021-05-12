@@ -288,6 +288,7 @@
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurveFormulas.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Examples\Scripts\BGTestPerformance.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\MethodDropDown.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\ChildDetectableCollider.cs" />
      <Compile Include="Assets\testwalker.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcWithCursor.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\RangeDetector.cs" />
@@ -400,7 +401,11 @@
      <Compile Include="Assets\Scripts\Towers\SlotParentManager.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider2DEdge.cs" />
      <Compile Include="Assets\Prefabs\ProjectileDynamicData.cs" />
-     <Compile Include="Assets\Scripts\CollisionDetection\ChildDetectableCollider.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\BGCcCustomColliderAbstract.cs" />
+     <Compile Include="Assets\CursorObject.cs" />
+     <Compile Include="Assets\CursorController.cs" />
+     <Compile Include="Assets\CursorMovementController.cs" />
+     <Compile Include="Assets\CursorActionController.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\BansheeGz\BGCollider\readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
