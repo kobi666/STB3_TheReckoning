@@ -18,7 +18,7 @@ public class TowerActionManager : MonoBehaviour
     private void Awake()
     {
         PlayerInput = new PlayerInput();
-        PlayerInput.TestButtons.T.performed += ctx => Actions.North.ExecuteAction(parentSlotController);
+        PlayerInput.TestButtons.T.performed += ctx => Actions.North.ExecAction();
     }
 
     private void Start()

@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2059776707121217188}
   - component: {fileID: 2059776707121217189}
+  - component: {fileID: 6191932464815913968}
+  - component: {fileID: 7663113929734669332}
   m_Layer: 0
   m_Name: BasicShooterTower
   m_TagString: Untagged
@@ -84,6 +86,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6191932464815913968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059776707121217190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de2f52d3b03ad2742aa7e95d07dbc297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Actions:
+    North:
+      id: 0
+    East:
+      id: 0
+    South:
+      id: 0
+    West:
+      id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: , ns: , asm: }
+--- !u!114 &7663113929734669332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059776707121217190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d1dba04a3ec5b4aaed6d6b6213106d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TowerActionManager: {fileID: 6191932464815913968}
+  WeaponController: {fileID: 0}
+  ParentSlotController: {fileID: 0}
+  TowerComponents:
+  - {fileID: 2601012865893847596}
 --- !u!1 &2059776708476167567
 GameObject:
   m_ObjectHideFlags: 0

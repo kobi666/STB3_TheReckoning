@@ -4,7 +4,7 @@ public class EmptyTowerSlot : TowerControllerLegacy
 {
     public void PlaceTestTower1() {
         Debug.Log("1");
-        ParentSlotController.PlaceNewTowerLegacy(TowerArsenal.arsenal.TestTower1.TowerPrefab);
+        
     }
 
     public override TowerSlotAction NorthAction() {
@@ -49,21 +49,20 @@ public class EmptyTowerSlot : TowerControllerLegacy
     
 
     public void PlaceTestTower2() {
-       
-       ParentSlotController.PlaceNewTowerLegacy(TowerArsenal.arsenal.TestTower2.TowerPrefab);
+        
     }
     public void PlaceTestTower3() {
         
-        ParentSlotController.PlaceNewTowerLegacy(TowerArsenal.arsenal.EmptyTowerSlotLegacy.TowerPrefab);
+        
     }
     public void PlaceTestTower4() {
         
-        ParentSlotController.PlaceNewTowerLegacy(TowerArsenal.arsenal.TestTower4.TowerPrefab);
+        
     }
 
     public void PlaceTestTowerSouth()
     {
-        ParentSlotController.PlaceNewTowerLegacy(TowerArsenal.arsenal.TestTower3.TowerPrefab);
+        
     }
 
     public override void PostAwake() {

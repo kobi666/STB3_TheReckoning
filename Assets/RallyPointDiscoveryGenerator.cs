@@ -68,7 +68,7 @@ public class RallyPointDiscoveryGenerator : MonoBehaviour
         }
         foreach ((Vector2,TowerSlotController) slot in towerSlotControllers.Values)
         {
-            slot.Item2.OnPathDiscoveryEvent();
+            
         }
         
         yield break;

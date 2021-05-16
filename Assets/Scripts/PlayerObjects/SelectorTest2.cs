@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Sirenix.OdinInspector;
+using System.Threading.Tasks;
 
+
+[System.Serializable][DefaultExecutionOrder(20)]
 public class SelectorTest2 : MonoBehaviour
 {
 
+    public LevelManager CurrentLevelManager;
     float FirstDiscoveryRange;
     public float SecondDiscoveryRangeMultiplier;
     public float SecondDiscoveryRange;
@@ -21,15 +26,13 @@ public class SelectorTest2 : MonoBehaviour
 
     public bool MoveInProgress = false;
     public TowerPosIndicator[] indicators = new TowerPosIndicator[4];
+    private Dictionary<Vector2,TowerPosIndicator> indicatorsDict = new Dictionary<Vector2, TowerPosIndicator>();
 
     public PlayerInput PlayerControl;
     public float moveLock;
 
     [SerializeField]
     TowerSlotController selectedTowerSlot;
-    TowerControllerLegacy SelectedTowerControllerLegacy {
-        get => SelectedTowerSlot.towerObjectControllerLegacy;
-    }
 
     public TowerSlotController SelectedTowerSlot {
         get => selectedTowerSlot;
@@ -82,31 +85,33 @@ public class SelectorTest2 : MonoBehaviour
 
 
     public void ExecNorth() {
-        SelectedTowerControllerLegacy.TowerActions.ButtonNorth?.ExecuteFunction();
+        
     }
 
     public void ExecEast() {
         
-        SelectedTowerControllerLegacy.TowerActions.ButtonEast?.ExecuteFunction();
+        
     }
 
     public void ExecSouth() {
 
-        SelectedTowerControllerLegacy.TowerActions.ButtonSouth?.ExecuteFunction();
+       
     }
 
     public void ExecWest() {
         
-        SelectedTowerControllerLegacy.TowerActions.ButtonWest?.ExecuteFunction();
     }
 
 
     public TowerSlotActions TowerActions;
-
+    
+    [ShowInInspector]
     public Dictionary<Vector2, TowerPositionData> CardinalTowerSlots {
         get => SelectedTowerSlot?.TowerSlotsByDirections8 ?? null;
     }
-
+    
+    
+    [ShowInInspector]
     public Dictionary<Vector2, TowerSlotController> towerSlotsWithPositions = new Dictionary<Vector2, TowerSlotController>();
     public static SelectorTest2 instance;
     public float speed;
@@ -125,11 +130,6 @@ public class SelectorTest2 : MonoBehaviour
         SelectedTowerSlot = tsc;
     }
 
-    void DrawRange(TowerSlotController tsc)
-    {
-        RangeDrawer.DrawCircle(SelectedTowerControllerLegacy?.mainTowerComponent?.Data.componentRadius ?? 0);
-    }
-
     private void Awake()
     {
         shaker = GetComponent<Shaker>();
@@ -139,13 +139,12 @@ public class SelectorTest2 : MonoBehaviour
             TowerUtils.TowerSlotsWithPositionsFromParent(GameObject.FindGameObjectWithTag("TowerParent"));*/
          
         onTowerSelect += SelectTowerSlot;
-        onTowerSelect += DrawRange;
         onCantPerformActionDueToResources += Shake;
         //PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => Move = ctx.ReadValue<Vector2>();
         //PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => DebugAxis(ctx.ReadValue<Vector2>(), TowerUtils.GetCardinalDirectionFromAxis(ctx.ReadValue<Vector2>()));
         PlayerControl.GamePlay.MoveTowerCursor.performed += ctx =>
             MoveToNewTower4(TowerUtils.GetCardinalDirectionFromAxis(ctx.ReadValue<Vector2>()));
-        PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => ShowIndicators();
+        
 
         
         
@@ -165,26 +164,26 @@ public class SelectorTest2 : MonoBehaviour
 
     public void ShowIndicators()
     {
-        Transform[] towerTransforms = new Transform[4] {null, null, null, null};
-        for (int i = 0; i < towerTransforms.Length; i++)
+        foreach (var towerSlot in SelectedTowerSlot.TowerSlotsByDirections8)
         {
-            if (SelectedTowerSlot.TowersDebug[2 * i].GO != null)
+            if (towerSlot.Value.TowerSlotGo != null)
             {
-                towerTransforms[i] = SelectedTowerSlot.TowersDebug[2 * i].GO.transform;
-                indicators[i].MoveToNewTarget( towerTransforms[i].position);
-                indicators[i].SR.enabled = true;
-                indicators[i].text.enabled = true;
-                indicators[i].text.text = SelectedTowerSlot.TowersDebug[2 * i].Direction;
+                if (indicatorsDict.ContainsKey(towerSlot.Key)) {
+                indicatorsDict[towerSlot.Key].MoveToNewTarget(towerSlot.Value.TowerPosition);
+                indicatorsDict[towerSlot.Key].SR.enabled = true;
+                }
             }
             else
             {
-                indicators[i].SR.enabled = false;
-                indicators[i].text.enabled = false;
+                if (indicatorsDict.ContainsKey(towerSlot.Key))
+                {
+                    indicatorsDict[towerSlot.Key].SR.enabled = false;
+                }
             }
         }
-
         
-
+        //write code to make redundednt indicators disapper
+        
     }
 
     public void SetMoveInProgress()
@@ -210,37 +209,63 @@ public class SelectorTest2 : MonoBehaviour
     }
 
 
+    public event Action onMovementComplete;
+    [HideInInspector]
+    public bool asyncMoveLock;
+    public async void MoveToNewTargetAsync(Vector2 targetPos)
+    {
+        if (asyncMoveLock == false)
+        {
+            asyncMoveLock = true;
+            float startTime = Time.time;
+            float t;
+            while (asyncMoveLock && (Vector2)transform.position != targetPos)
+            {
+                t = (Time.time - startTime) / MovementDuration;
+                transform.position = new Vector2(Mathf.SmoothStep(transform.position.x, targetPos.x, t),Mathf.SmoothStep(transform.position.y, targetPos.y, t));
+                await Task.Yield();
+            }
+
+            asyncMoveLock = false;
+        }
+    }
+    
+    
+
+
 
     public void MoveToNewTower4(Vector2 cardinalDirectionV2) {
-        if (moveLock >= 0.20f) {
-            moveLock = 0.0f;
-            if (cardinalDirectionV2 == Vector2.zero) {
-                Debug.Log("Didn't move cause Vector2 was ZERO");
-                return;
+        if (!asyncMoveLock) {
+            if (moveLock >= 0.15f) {
+                moveLock = 0.0f;
+                if (cardinalDirectionV2 == Vector2.zero) {
+                    Debug.Log("Didn't move cause Vector2 was ZERO");
+                    return;
+                }
+                
+                TowerSlotController _towerSlotcontroller = null;
+                if (CardinalTowerSlots.ContainsKey(cardinalDirectionV2)) {
+                    _towerSlotcontroller = CardinalTowerSlots[cardinalDirectionV2].TowerSlotController;
+                }
+                if (_towerSlotcontroller != null) {
+                //transform.position = towerSlotGO.transform.position;
+                OnTowerSelect(_towerSlotcontroller);
+                
+                StartCoroutine(SelectorUtils.SmoothMove(transform,_towerSlotcontroller.transform.position,0.3f,
+                    delegate { MoveInProgress = true; },  SetMoveInProgress));
+
+                shaker.StopAllCoroutines();
+                shaker.ShakeInProgress = false;
+                MoveToNewTargetAsync(_towerSlotcontroller.transform.position);
+                ShowIndicators();
+                
+                //Debug.LogWarning("On Move : " + TowerObjectController.TowerActions.ButtonSouth.ActionDescription);
+
+
+                //Debug.LogWarning(TowerActions.ButtonSouth.ActionDescription);
+                }
+
             }
-            
-            TowerSlotController _towerSlotcontroller = null;
-            if (CardinalTowerSlots.ContainsKey(cardinalDirectionV2)) {
-                _towerSlotcontroller = CardinalTowerSlots[cardinalDirectionV2].TowerSlotController;
-            }
-            if (_towerSlotcontroller != null) {
-            //transform.position = towerSlotGO.transform.position;
-            OnTowerSelect(_towerSlotcontroller);
-            
-            StartCoroutine(SelectorUtils.SmoothMove(transform,_towerSlotcontroller.transform.position,0.3f,
-                delegate { MoveInProgress = true; },  SetMoveInProgress));
-
-            shaker.StopAllCoroutines();
-            shaker.ShakeInProgress = false;
-            MoveToNewTarget(_towerSlotcontroller.transform.position);
-            
-            
-            //Debug.LogWarning("On Move : " + TowerObjectController.TowerActions.ButtonSouth.ActionDescription);
-
-
-            //Debug.LogWarning(TowerActions.ButtonSouth.ActionDescription);
-            }
-
         }
         else {
             //Debug.Log("Move lock was less then 0.1");
@@ -258,34 +283,29 @@ public class SelectorTest2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TowerSlotParentManager.instance.OnGetTowerSlotsWithPositions();
-        foreach (var tscv2 in TowerSlotParentManager.instance.TowerslotControllers.Values)
+        int indicatorsCounter = 0;
+        foreach (var direction in TowerUtils.DirectionsClockwise4)
         {
-            towerSlotsWithPositions.Add(tscv2.Item1,tscv2.Item2);
+            indicatorsDict.Add(direction,indicators[indicatorsCounter]);
+            indicatorsCounter++;
         }
-
-        if (Legacy)
+        
+        CurrentLevelManager = GameManager.Instance.CurrentLevelManager;
+        foreach (var v2tsc in CurrentLevelManager.LevelTowerSlots.Values)
         {
-            PlayerControl.GamePlay.NorthButton.performed += ctx =>
-                ExecActionIfPossible(SelectedTowerControllerLegacy.TowerActions.ButtonNorth);
-            PlayerControl.GamePlay.EastButton.performed += ctx =>
-                ExecActionIfPossible(SelectedTowerControllerLegacy.TowerActions.ButtonEast);
-            PlayerControl.GamePlay.SouthButton.performed += ctx =>
-                ExecActionIfPossible(SelectedTowerControllerLegacy.TowerActions.ButtonSouth);
-            PlayerControl.GamePlay.WestButton.performed += ctx =>
-                ExecActionIfPossible(SelectedTowerControllerLegacy.TowerActions.ButtonWest);
+            towerSlotsWithPositions.Add(v2tsc.Item1,v2tsc.Item2);
         }
 
         if (!Legacy)
         {
             PlayerControl.GamePlay.NorthButton.performed +=
-                ctx => SelectedTowerSlot.TowerActions.North.ExecuteAction(SelectedTowerSlot);
+                ctx => SelectedTowerSlot.TowerActions.North.ExecAction();
             PlayerControl.GamePlay.EastButton.performed +=
-                ctx => SelectedTowerSlot.TowerActions.East.ExecuteAction(SelectedTowerSlot);
+                ctx => SelectedTowerSlot.TowerActions.East.ExecAction();
             PlayerControl.GamePlay.SouthButton.performed +=
-                ctx => SelectedTowerSlot.TowerActions.South.ExecuteAction(SelectedTowerSlot);
+                ctx => SelectedTowerSlot.TowerActions.South.ExecAction();
             PlayerControl.GamePlay.WestButton.performed +=
-                ctx => SelectedTowerSlot.TowerActions.West.ExecuteAction(SelectedTowerSlot);
+                ctx => SelectedTowerSlot.TowerActions.West.ExecAction();
         }
 
         Vector2 FirstKey = Vector2.zero;
@@ -295,7 +315,6 @@ public class SelectorTest2 : MonoBehaviour
             FirstKey = item.Key;
             break;
             }
-            
         }
         FirstDiscoveryRange = StaticObjects.Instance.TowerSize;
         int random = UnityEngine.Random.Range(1, towerSlotsWithPositions.Count);

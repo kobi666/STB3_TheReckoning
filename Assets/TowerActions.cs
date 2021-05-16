@@ -34,23 +34,23 @@ public class TowerActions
     [Button]
     void north()
     {
-        North.ExecuteAction(parentTowerSlotController);
+        North.ExecAction();
     }
     [Button]
     void east()
     {
-        East.ExecuteAction(parentTowerSlotController);
+        East.ExecAction();
     }
     [Button]
     void south()
     {
-        South.ExecuteAction(parentTowerSlotController);
+        South.ExecAction();
     }
     
     [Button]
     void west()
     {
-        West.ExecuteAction(parentTowerSlotController);
+        West.ExecAction();
     }
 
     public void initActions(TowerSlotController tsc)

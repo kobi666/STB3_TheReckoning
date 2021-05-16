@@ -1,23 +1,37 @@
 ﻿using System.Collections;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using TMPro;
-
-
+using System.Threading.Tasks;
 
 public class TowerPosIndicator : MonoBehaviour
 {
     public TextMeshPro text;
     public SpriteRenderer SR;
+    [Required]
+    public SelectorTest2 ParentSelector;
 
-    private IEnumerator moveCoroutine;
-    public void MoveToNewTarget(Vector2 TargetPos)
+    public Vector2 tPos;
+
+    private bool movelock;
+    public async void MoveToNewTarget(Vector2 TargetPos)
     {
-        if (moveCoroutine != null)
+        if (!movelock)
         {
-            StopCoroutine(moveCoroutine);
+            tPos = TargetPos;
+            movelock = true;
+            float startTime = Time.time;
+            float t;
+            while ((Vector2)transform.position != TargetPos)
+            {
+                t = (Time.time - startTime) / ParentSelector.MovementDuration;
+                transform.position = new Vector2(Mathf.SmoothStep(transform.position.x, TargetPos.x, t),Mathf.SmoothStep(transform.position.y, TargetPos.y, t));
+                await Task.Yield();
+            }
+
+            movelock = false;
         }
-        moveCoroutine = SelectorUtils.SmoothMove(transform, TargetPos, 0.15f, null, null);
-        StartCoroutine(moveCoroutine);
+        
     }
     
     public void SetPosition(Vector2 pos)
@@ -28,7 +42,7 @@ public class TowerPosIndicator : MonoBehaviour
     private void Awake()
     {
         SR = GetComponent<SpriteRenderer>();
-        SR.enabled = false;
+        /*SR.enabled = false;*/
     }
 
 

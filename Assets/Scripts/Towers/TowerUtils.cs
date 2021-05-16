@@ -127,7 +127,7 @@ public static float GetDistanceScore( float baseDiscoveryRange, TowerPositionDat
     return DistanceScore;
 }
 
-public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoopOver(GameObject self,  Dictionary<Vector2, TowerSlotController> allTowers, CardinalSet cardinalSet, int rangeCheckCyclesAmount) {
+public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoopOver(GameObject self,  (Vector2,TowerSlotController)[] allTowers, CardinalSet cardinalSet, int rangeCheckCyclesAmount) {
     Dictionary<Vector2, TowerPositionData> dict = new Dictionary<Vector2, TowerPositionData>();
     Vector2 selfPosition = self.transform.position;
     float towerDiscoveryRange = StaticObjects.Instance.TowerSize;
@@ -136,21 +136,21 @@ public static Dictionary<Vector2, TowerPositionData> CardinalTowersNoAnglesLoopO
         dict.Add(cardinalSet.directionsClockwise[i], new TowerPositionData(null, 999f, 99));
         foreach (var tower in allTowers)
         {
-            if (tower.Value.name == self.name || tower.Value == null) {
+            if (tower.Item2.name == self.name || tower.Item2 == null) {
                 continue;
             }
             for (int ii = 1; ii < rangeCheckCyclesAmount; ii++)
             {
                 float newDiscoveryRange = (towerDiscoveryRange * (float)ii);
-                TowerPositionQuery tq = new TowerPositionQuery(selfPosition, tower.Key, towerDiscoveryRange, newDiscoveryRange);
-                if (tower.Value.name == dict[cardinalSet.directionsClockwise[i]].TowerSlotGo?.name)
+                TowerPositionQuery tq = new TowerPositionQuery(selfPosition, tower.Item1, towerDiscoveryRange, newDiscoveryRange);
+                if (tower.Item2.name == dict[cardinalSet.directionsClockwise[i]].TowerSlotGo?.name)
                 {
                     continue;
                 }
                 if (cardinalSet.discoveryConditionsClockwise[i](tq))
                 {
-                    float d = Vector2.Distance(selfPosition, tower.Key);
-                    TowerPositionData tempTowerPos = new TowerPositionData(tower.Value.gameObject, tower.Value, d, ii);
+                    float d = Vector2.Distance(selfPosition, tower.Item1);
+                    TowerPositionData tempTowerPos = new TowerPositionData(tower.Item2.gameObject, tower.Item2, d, ii);
                     float currentDistanceScore =
                         GetDistanceScore(towerDiscoveryRange, dict[cardinalSet.directionsClockwise[i]]);
                     float candidateDistanceScore = GetDistanceScore(towerDiscoveryRange, tempTowerPos);

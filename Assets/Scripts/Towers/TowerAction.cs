@@ -5,10 +5,13 @@ using System;
 using System.Linq;
 using UnityEngine.Serialization;
 
+
+
+
+
 [System.Serializable]
 public abstract class TowerAction
 {
-   
    public static IEnumerable<Type> GetTowerActions()
    {
       var q = typeof(TowerAction).Assembly.GetTypes()
@@ -17,308 +20,138 @@ public abstract class TowerAction
          .Where(x => typeof(TowerAction).IsAssignableFrom(x)); // Excludes classes not inheriting from BaseClass
       return q;
    }
+
+   public Sprite actionSprite;
+   public virtual Sprite ActionSprite { get => actionSprite; set => actionSprite = value; }
    
-   
-   
-   
-   [FormerlySerializedAs("ParentTowerController")] public TowerControllerLegacy parentTowerControllerLegacy;
    public TowerSlotController ParentSlotController;
-   public TowerComponent towerComponent;
 
-   public event Action<TowerSlotController> onInitAction;
-
-   public void OnInitAction()
-   {
-      onInitAction?.Invoke(ParentSlotController);
-   }
    public void InitAction(TowerSlotController tsc)
    {
       ParentSlotController = tsc;
-      PlayerResources.Instance.onMoneyzUpdate += EnoughMoneyzCheck;
-      //PlayerResources.Instance.UpdateMoneyz(0);
-      if (towerComponent == null)
-      {
-         InitActionSpecific(tsc);
-      }
-      else
-      {
-         InitActionSpecific(tsc);
-         onInitAction += InitActionSpecific;
-         towerComponent.onInitComponent += OnInitAction;
-      }
    }
 
-   public abstract void InitActionSpecific(TowerSlotController tsc);
+   public abstract void InitActionSpecific();
 
-
-
-   private void EnoughMoneyzCheck(int moneyz)
-   {
-      if (moneyz >= Cost)
-      {
-         PlayerHasEnoughMoney = true;
-      }
-      else
-      {
-         PlayerHasEnoughMoney = false;
-      }
-   }
-
-   public void onActionTerminate(TowerSlotController tsc)
-   {
-      PlayerResources.instance.onMoneyzUpdate -= EnoughMoneyzCheck;
-   }
+   public int ActionCost;
    
-   
-
-   private bool PlayerHasEnoughMoney = true;
-
-   private bool ActionCounterIsZero
+   [ShowInInspector]
+   public int ActualActionCost
    {
       get
       {
-         if (actionCounter < MaxActions)
+         if (GameManager.Instance?.FreeActions ?? false)
          {
-            return true;
+            return 0;
          }
-
-         return false;
+         else
+         {
+            return ActionCost + (actionConter * ActionCostIncrement);
+         }
       }
    }
 
-   public bool CanActionExecute()
+
+   [SerializeField] private int actionConter;
+
+   public event Action maxActionsReached;
+   public int ActionCounter
    {
-      if (PlayerHasEnoughMoney)
+      get => actionConter;
+      set
       {
-         if (ActionCounterIsZero)
+         if (value <= MaxActions)
          {
-            if (SpecificExecuteCondition(ParentSlotController) == true)
+            actionConter = value;
+            if (actionConter >= MaxActions)
             {
-               return true;
+               maxActionsReached?.Invoke();
             }
          }
+         
+      }
+   }
+
+   public int MaxActions = 1;
+
+   public int ActionCostIncrement = 0;
+   
+   //it is possible to chain actions one after the other by adding another TowerAction with serializeReference as another object here,
+   //and then initializing it and switching it on maxActionsReached.
+
+
+
+   public event Action<TowerAction> onActionExec;
+
+   public void OnActionExec()
+   {
+      onActionExec?.Invoke(this);
+   }
+   public abstract void Action();
+
+   public void ExecAction()
+   {
+      if (GeneralExecutionConditions())
+      {
+         Action();
+         OnActionExec();
+         ActionCounter++;
+      }
+   }
+
+   public abstract bool ExecutionConditions();
+
+   public bool GeneralExecutionConditions()
+   {
+      if (ExecutionConditions())
+      {
+         return true;
       }
 
       return false;
    }
-
-   public abstract void Action(TowerSlotController tsc);
-
-   public void ExecuteAction(TowerSlotController tsc)
-   {
-      if (CanActionExecute())
-      {
-         Action(tsc);
-      }
-      actionCounter += 1;
-   }
-
-   public virtual bool SpecificExecuteCondition(TowerSlotController tsc)
-   {
-      return true;
-   }
-
-   public int Cost = 0;
-   public float ActionTimer = 0;
-   [ShowInInspector]
-   private float actionCounter = 0;
-   public float MaxActions = 5;
-
 }
 
-
-[System.Serializable]
-public class UpgradeToNewTowerLegacy : TowerAction
+public class TestTowerAction : TowerAction
 {
-   [SerializeField]
-   public TowerController UpgradeTowerObject;
-
-   public override void InitActionSpecific(TowerSlotController tsc)
+   public override void InitActionSpecific()
    {
       
    }
 
-   public override void Action(TowerSlotController tsc)
-   {
-      tsc.PlaceNewTowerLegacy(UpgradeTowerObject.gameObject);
-   }
-
-   public override bool SpecificExecuteCondition(TowerSlotController tsc)
-   {
-      return true;
-   }
-}
-
-public class UpdateDamage : TowerAction
-{
-   
-   private List<Effect> DamageEffects = new List<Effect>();
-   public Damage DamageUpdate = new Damage();
-   public override void InitActionSpecific(TowerSlotController tsc)
-   {
-      var q = towerComponent.GetEffectList().Where(x => x.EffectName() == DamageUpdate.EffectName()).ToList();
-      DamageEffects = q;
-   }
-
-   public override void Action(TowerSlotController tsc)
-   {
-      towerComponent.UpdateEffect(DamageUpdate, DamageEffects);
-   }
-
-   public override bool SpecificExecuteCondition(TowerSlotController tsc)
-   {
-      return true;
-   }
-}
-
-
-[Serializable]
-public class CompundAction : TowerAction
-{
-   [SerializeReference][TypeFilter("getTowerActions")]
-   public List<TowerAction> Actions = new List<TowerAction>();
-   public override void InitActionSpecific(TowerSlotController tsc)
-   {
-      foreach (var towerAction in Actions)
-      {
-         towerAction.towerComponent = towerComponent;
-         towerAction.InitAction(tsc);
-      }
-   }
-
-   private static IEnumerable<Type> getTowerActions()
-   {
-      return TowerAction.GetTowerActions();
-   }
-   
-   
-
-   public override void Action(TowerSlotController tsc)
-   {
-      foreach (var ta in Actions)
-      {
-         ta.ExecuteAction(tsc);
-      }
-   }
-
-   public override bool SpecificExecuteCondition(TowerSlotController tsc)
-   {
-      return true;
-   }
-}
-
-
-[Serializable]
-public class UpdateRange : TowerAction
-{
-   private List<CollisionDetector> DetectorsToApplyOn;
-   public float RangeUpdate = 0.5f;
-   public override void InitActionSpecific(TowerSlotController tsc)
-   {
-      DetectorsToApplyOn = towerComponent.GetTagDetectors();
-   }
-
-   public override void Action(TowerSlotController tsc)
-   {
-      towerComponent.UpdateRange(RangeUpdate,DetectorsToApplyOn);
-   }
-
-   public override bool SpecificExecuteCondition(TowerSlotController tsc)
-   {
-      return base.SpecificExecuteCondition(tsc);
-   }
-}
-
-
-[Serializable]
-public class PlaceNewTower : TowerAction
-{
-   public TowerController TowerPrefab;
-   public override void InitActionSpecific(TowerSlotController tsc)
+   public override void Action()
    {
       
    }
 
-   public override void Action(TowerSlotController tsc)
+   public override bool ExecutionConditions()
+   {
+      if (ActionCounter >= MaxActions)
+      {
+         return false;
+      }
+
+      return true;
+   }
+}
+
+
+public class PlaceNewTowerFromPrefab : TowerAction
+{
+   [Required] public TowerController TowerPrefab;
+   public override void InitActionSpecific()
+   {
+      
+   }
+
+   public override void Action()
    {
       ParentSlotController.PlaceNewTower(TowerPrefab);
    }
 
-   public override bool SpecificExecuteCondition(TowerSlotController tsc)
+   public override bool ExecutionConditions()
    {
-      return base.SpecificExecuteCondition(tsc);
+      return true;
    }
 }
-
-public class PlaceNorthTower : TowerAction
-{
-   public override void InitActionSpecific(TowerSlotController tsc)
-   {
-      Cost = TowerArsenal.arsenal.BaseTowerNorth.Cost;
-   }
-
-   public override void Action(TowerSlotController tsc)
-   {
-      ParentSlotController.PlaceNewTower(TowerArsenal.arsenal.BaseTowerNorth.TowerPrefab);
-   }
-
-   public override bool SpecificExecuteCondition(TowerSlotController tsc)
-   {
-      return base.SpecificExecuteCondition(tsc);
-   }
-}
-
-public class PlaceEastTower : TowerAction
-{
-   public override void InitActionSpecific(TowerSlotController tsc)
-   {
-      Cost = TowerArsenal.arsenal.BaseTowerEast.Cost;
-   }
-
-   public override void Action(TowerSlotController tsc)
-   {
-      ParentSlotController.PlaceNewTower(TowerArsenal.arsenal.BaseTowerEast.TowerPrefab);
-   }
-
-   public override bool SpecificExecuteCondition(TowerSlotController tsc)
-   {
-      return base.SpecificExecuteCondition(tsc);
-   }
-}
-
-public class PlaceSouthTower : TowerAction
-{
-   public override void InitActionSpecific(TowerSlotController tsc)
-   {
-      Cost = TowerArsenal.arsenal.BaseTowerSouth.Cost;
-   }
-
-   public override void Action(TowerSlotController tsc)
-   {
-      ParentSlotController.PlaceNewTower(TowerArsenal.arsenal.BaseTowerSouth.TowerPrefab);
-   }
-
-   public override bool SpecificExecuteCondition(TowerSlotController tsc)
-   {
-      return base.SpecificExecuteCondition(tsc);
-   }
-}
-
-public class PlaceWestTower : TowerAction
-{
-   public override void InitActionSpecific(TowerSlotController tsc)
-   {
-      Cost = TowerArsenal.arsenal.BaseTowerWest.Cost;
-   }
-
-   public override void Action(TowerSlotController tsc)
-   {
-      ParentSlotController.PlaceNewTower(TowerArsenal.arsenal.BaseTowerWest.TowerPrefab);
-   }
-}
-
-
-
-
-
 

@@ -26,7 +26,6 @@ namespace BansheeGz.BGSpline.Components
     [AddComponentMenu("BansheeGz/BGCurve/Components/BGCcCollider2DBox")][RequireComponent(typeof(CollisionAggregator))]
     public class CustomBGCBoxCollider : BGCcCustomColliderAbstract<BoxCollider2D>
     {
-        private int GoCounter;
         protected void Start()
         {
             base.Start();

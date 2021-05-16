@@ -169,7 +169,7 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
         }
         else
         {
-            throw new Exception("Same State Loop!");
+            throw new Exception("Same State Loop! " + CurrentState.StateName);
         }
     }
 

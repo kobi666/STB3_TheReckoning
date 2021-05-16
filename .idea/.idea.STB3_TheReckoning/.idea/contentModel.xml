@@ -218,6 +218,10 @@
         </e>
         <e p="ComponentRotator.cs" t="Include" />
         <e p="ComponentSpriteController.cs" t="Include" />
+        <e p="CursorActionController.cs" t="Include" />
+        <e p="CursorController.cs" t="Include" />
+        <e p="CursorMovementController.cs" t="Include" />
+        <e p="CursorObject.cs" t="Include" />
         <e p="DistanceTester.cs" t="Include" />
         <e p="Editor" t="Include">
           <e p="ConditionalFieldAttribute.cs" t="Include" />
@@ -229,6 +233,7 @@
         <e p="ExternalUtils" t="Include">
           <e p="Direction.cs" t="Include" />
         </e>
+        <e p="GameManager.cs" t="Include" />
         <e p="Garbage" t="Include">
           <e p="OldStateMachine.cs" t="Include" />
           <e p="TestTowerControllerLegacy.cs" t="Include" />
@@ -1115,6 +1120,10 @@
             <e p="IDGenerator.cs" t="Include" />
             <e p="TestMover.cs" t="Include" />
             <e p="UnitMover.cs" t="Include" />
+          </e>
+          <e p="CursorSelection" t="Include">
+            <e p="CursorSelectablesManager.cs" t="Include" />
+            <e p="ICursorSelctable.cs" t="Include" />
           </e>
           <e p="DegreeUtils.cs" t="Include" />
           <e p="Effect.cs" t="Include" />

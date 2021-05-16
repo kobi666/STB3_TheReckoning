@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+[RequireComponent(typeof(TowerActionManager))]
 public class TowerController : MonoBehaviour
 {
     public TowerActionManager TowerActionManager;
@@ -23,7 +23,9 @@ public class TowerController : MonoBehaviour
         {
             tc.ParentTowerConroller = this;
         }
+        if (TowerActionManager == null) {
         TowerActionManager = GetComponent<TowerActionManager>();
+        }
         onInit += delegate(TowerSlotController towerSlotController) { ParentSlotController = towerSlotController;};
         onInit += delegate(TowerSlotController controller) { WeaponController = GetComponentInChildren<GenericWeaponController>(); };
         onInit += TowerActionManager.initActionManager;
