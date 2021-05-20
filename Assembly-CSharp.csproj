@@ -262,10 +262,12 @@
      <Compile Include="Assets\Scripts\GeneralClasses\InGameObjectManager.cs" />
      <Compile Include="Assets\Scripts\Projectiles\AreaOfEffectController.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcCursorObjectScale.cs" />
+     <Compile Include="Assets\Scripts\CursorSelection\TowerActionIndicator.cs" />
      <Compile Include="Assets\Scripts\CollisionDetection\TestMover.cs" />
      <Compile Include="Assets\Scripts\interfaces\WeaponInterfaces.cs" />
      <Compile Include="Assets\Scripts\Units\EnemyUnitUtils.cs" />
      <Compile Include="Assets\ACT.cs" />
+     <Compile Include="Assets\Scripts\CursorSelection\TowerActionSpriteProjector.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\SquareDetector.cs" />
      <Compile Include="Assets\Scripts\Units\UnitUtils.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\Gutils.cs" />
@@ -389,6 +391,7 @@
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\VectorManager.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\TestUtilities.cs" />
      <Compile Include="Assets\CursorObject.cs" />
+     <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\GenericStateMachine\GenericSMClasses.cs" />
      <Compile Include="Assets\instantiateTestspawner.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Events\Events.cs" />
@@ -408,7 +411,6 @@
      <Compile Include="Assets\Scripts\Towers\SlotParentManager.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider2DEdge.cs" />
      <Compile Include="Assets\Prefabs\ProjectileDynamicData.cs" />
-     <Compile Include="Assets\GameManager.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\BansheeGz\BGCollider\readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

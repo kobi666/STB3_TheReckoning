@@ -9,8 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4584915094406051469}
+  - component: {fileID: 5925170879359994638}
+  - component: {fileID: 8158498550827674461}
   m_Layer: 0
-  m_Name: BasicProjectileWeapon
+  m_Name: BombTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,6 +33,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5925170879359994638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7622965594057284744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de2f52d3b03ad2742aa7e95d07dbc297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Actions:
+    North:
+      id: 0
+    East:
+      id: 0
+    South:
+      id: 0
+    West:
+      id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: , ns: , asm: }
+--- !u!114 &8158498550827674461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7622965594057284744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d1dba04a3ec5b4aaed6d6b6213106d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TowerActionManager: {fileID: 0}
+  WeaponController: {fileID: 0}
+  ParentSlotController: {fileID: 0}
+  TowerComponents:
+  - {fileID: 4075031346932676324}
 --- !u!1001 &4907367619142352635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -237,6 +281,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4907367619142352635}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4075031346932676324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4907367619142352635}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2c8e9fee8787c4b84f4836239ec567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2802969102647072552 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7132678530149083603, guid: 54ddd020ad56bdc40ac7480f1f5a661f,

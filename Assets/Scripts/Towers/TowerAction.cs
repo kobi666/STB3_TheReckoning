@@ -103,9 +103,11 @@ public abstract class TowerAction
 
    public bool GeneralExecutionConditions()
    {
-      if (ExecutionConditions())
-      {
-         return true;
+      if (ActionCounter < MaxActions) {
+         if (ExecutionConditions())
+         {
+            return true;
+         }
       }
 
       return false;
@@ -126,11 +128,6 @@ public class TestTowerAction : TowerAction
 
    public override bool ExecutionConditions()
    {
-      if (ActionCounter >= MaxActions)
-      {
-         return false;
-      }
-
       return true;
    }
 }

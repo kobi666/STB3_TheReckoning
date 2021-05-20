@@ -129,7 +129,6 @@ public class UnitMovementController : MonoBehaviour
                 transform.position = (Vector2)TargetPositionOnPath;
                 await Task.Yield();
             }
-
             PathMovementInProgress = false;
         }
     }
@@ -138,6 +137,8 @@ public class UnitMovementController : MonoBehaviour
     private void OnDisable()
     {
         MovementInProgress = false;
+        PathMovementInProgress = false;
+        FreeMovementInprogress = false;
     }
 }
 

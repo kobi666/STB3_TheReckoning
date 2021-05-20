@@ -13,10 +13,7 @@ public class PathWalker : MonoBehaviour
     [HideInInspector]
     public bool SplineAttached;
 
-    private void Awake()
-    {
-        
-    }
+    
 
 
     public GenericUnitController parentUnit;

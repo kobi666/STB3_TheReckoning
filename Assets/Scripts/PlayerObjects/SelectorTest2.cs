@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 [System.Serializable][DefaultExecutionOrder(20)]
 public class SelectorTest2 : MonoBehaviour
 {
-
     public LevelManager CurrentLevelManager;
     float FirstDiscoveryRange;
     public float SecondDiscoveryRangeMultiplier;
@@ -27,6 +26,8 @@ public class SelectorTest2 : MonoBehaviour
     public bool MoveInProgress = false;
     public TowerPosIndicator[] indicators = new TowerPosIndicator[4];
     private Dictionary<Vector2,TowerPosIndicator> indicatorsDict = new Dictionary<Vector2, TowerPosIndicator>();
+    public TowerActionIndicator[] ActionIndicators = new TowerActionIndicator[4];
+    private Dictionary<Vector2,TowerActionIndicator> actionIndicatorsDict = new Dictionary<Vector2, TowerActionIndicator>();
 
     public PlayerInput PlayerControl;
     public float moveLock;
@@ -225,9 +226,9 @@ public class SelectorTest2 : MonoBehaviour
                 transform.position = new Vector2(Mathf.SmoothStep(transform.position.x, targetPos.x, t),Mathf.SmoothStep(transform.position.y, targetPos.y, t));
                 await Task.Yield();
             }
-
             asyncMoveLock = false;
         }
+        onMovementComplete?.Invoke();
     }
     
     
@@ -236,7 +237,7 @@ public class SelectorTest2 : MonoBehaviour
 
     public void MoveToNewTower4(Vector2 cardinalDirectionV2) {
         if (!asyncMoveLock) {
-            if (moveLock >= 0.15f) {
+            if (moveLock >= 0.10f) {
                 moveLock = 0.0f;
                 if (cardinalDirectionV2 == Vector2.zero) {
                     Debug.Log("Didn't move cause Vector2 was ZERO");

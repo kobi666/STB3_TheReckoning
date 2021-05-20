@@ -5,7 +5,7 @@ using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine.Serialization;
 
-public class TowerSlotController : MonoBehaviour
+public class TowerSlotController : MyGameObject
 {
     public LevelManager MyLevelManager;
     [Required]
@@ -63,6 +63,7 @@ public class TowerSlotController : MonoBehaviour
 
     protected void Awake()
     {
+        
         onTowerPositionCalculation += CalculateAdjecentTowers;
     }
     
@@ -71,6 +72,7 @@ public class TowerSlotController : MonoBehaviour
 
     protected void Start()
     {
+        
         MyLevelManager = GameManager.Instance.CurrentLevelManager;
         MyLevelManager.OnTowerSlotUpdate(this,true);
         SR = GetComponent<SpriteRenderer>();

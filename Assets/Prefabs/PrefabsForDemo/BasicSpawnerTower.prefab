@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6240685710877686006}
+  - component: {fileID: 8608614333221810420}
+  - component: {fileID: 1156394239526001621}
   m_Layer: 0
   m_Name: BasicSpawnerTower
   m_TagString: Untagged
@@ -31,6 +33,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8608614333221810420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8335343502985454144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de2f52d3b03ad2742aa7e95d07dbc297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Actions:
+    North:
+      id: 0
+    East:
+      id: 0
+    South:
+      id: 0
+    West:
+      id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: , ns: , asm: }
+--- !u!114 &1156394239526001621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8335343502985454144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d1dba04a3ec5b4aaed6d6b6213106d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TowerActionManager: {fileID: 0}
+  WeaponController: {fileID: 0}
+  ParentSlotController: {fileID: 0}
+  TowerComponents:
+  - {fileID: 722044541130115489}
 --- !u!1001 &8087123515735723970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111,3 +155,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8087123515735723970}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &722044541130115489 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8808491468452841059, guid: 7dfb7fce662b9a24093b4068e8010a0f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8087123515735723970}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be68628a550d4e4c920976eb8e08f7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
