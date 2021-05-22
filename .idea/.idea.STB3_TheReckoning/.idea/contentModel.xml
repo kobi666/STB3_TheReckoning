@@ -218,7 +218,6 @@
         </e>
         <e p="ComponentRotator.cs" t="Include" />
         <e p="ComponentSpriteController.cs" t="Include" />
-        <e p="CursorActionController.cs" t="Include" />
         <e p="CursorController.cs" t="Include" />
         <e p="CursorMovementController.cs" t="Include" />
         <e p="CursorObject.cs" t="Include" />
@@ -1122,8 +1121,10 @@
             <e p="UnitMover.cs" t="Include" />
           </e>
           <e p="CursorSelection" t="Include">
+            <e p="CursorActionsController.cs" t="Include" />
             <e p="CursorSelectablesManager.cs" t="Include" />
             <e p="ICursorSelctable.cs" t="Include" />
+            <e p="InputManager.cs" t="Include" />
             <e p="TowerActionIndicator.cs" t="Include" />
             <e p="TowerActionSpriteProjector.cs" t="Include" />
           </e>

@@ -16,6 +16,11 @@ public class SelectorTest2 : MonoBehaviour
     public RangeDrawer RangeDrawer;
     private Shaker shaker;
     public float MovementDuration = 0.15f;
+
+    public CursorActionsController CursorActionsController;
+
+
+    public float ActionImageDistance = 1f;
     public event Action<TowerSlotController> onTowerSelect;
 
     public void OnTowerSelect(TowerSlotController tsc)
@@ -27,7 +32,7 @@ public class SelectorTest2 : MonoBehaviour
     public TowerPosIndicator[] indicators = new TowerPosIndicator[4];
     private Dictionary<Vector2,TowerPosIndicator> indicatorsDict = new Dictionary<Vector2, TowerPosIndicator>();
     public TowerActionIndicator[] ActionIndicators = new TowerActionIndicator[4];
-    private Dictionary<Vector2,TowerActionIndicator> actionIndicatorsDict = new Dictionary<Vector2, TowerActionIndicator>();
+    private Dictionary<string,TowerActionIndicator> actionIndicatorsDict = new Dictionary<string, TowerActionIndicator>();
 
     public PlayerInput PlayerControl;
     public float moveLock;
@@ -39,7 +44,7 @@ public class SelectorTest2 : MonoBehaviour
         get => selectedTowerSlot;
         set {
             selectedTowerSlot = value;
-            //SelectedTowerController.SlotController = SlotController;
+            CursorActionsController.UpdateTowerActions(selectedTowerSlot.TowerActions);
         }
     }
     
@@ -133,6 +138,7 @@ public class SelectorTest2 : MonoBehaviour
 
     private void Awake()
     {
+        CursorActionsController = GetComponent<CursorActionsController>();
         shaker = GetComponent<Shaker>();
         instance = this;
         PlayerControl = new PlayerInput();
@@ -285,11 +291,13 @@ public class SelectorTest2 : MonoBehaviour
     void Start()
     {
         int indicatorsCounter = 0;
-        foreach (var direction in TowerUtils.DirectionsClockwise4)
+        foreach (var direction in CardinalSet.Cardinal4.directionsClockwise)
         {
             indicatorsDict.Add(direction,indicators[indicatorsCounter]);
             indicatorsCounter++;
         }
+
+        
         
         CurrentLevelManager = GameManager.Instance.CurrentLevelManager;
         foreach (var v2tsc in CurrentLevelManager.LevelTowerSlots.Values)
@@ -297,17 +305,7 @@ public class SelectorTest2 : MonoBehaviour
             towerSlotsWithPositions.Add(v2tsc.Item1,v2tsc.Item2);
         }
 
-        if (!Legacy)
-        {
-            PlayerControl.GamePlay.NorthButton.performed +=
-                ctx => SelectedTowerSlot.TowerActions.North.ExecAction();
-            PlayerControl.GamePlay.EastButton.performed +=
-                ctx => SelectedTowerSlot.TowerActions.East.ExecAction();
-            PlayerControl.GamePlay.SouthButton.performed +=
-                ctx => SelectedTowerSlot.TowerActions.South.ExecAction();
-            PlayerControl.GamePlay.WestButton.performed +=
-                ctx => SelectedTowerSlot.TowerActions.West.ExecAction();
-        }
+        
 
         Vector2 FirstKey = Vector2.zero;
         foreach (var item in towerSlotsWithPositions)

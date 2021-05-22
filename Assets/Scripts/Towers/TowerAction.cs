@@ -21,6 +21,8 @@ public abstract class TowerAction
       return q;
    }
 
+
+   public Color ActionColor;
    public Sprite actionSprite;
    public virtual Sprite ActionSprite { get => actionSprite; set => actionSprite = value; }
    

@@ -10,26 +10,11 @@ public class TowerActionIndicator : MyGameObject
     [Required]
     public TowerActionSpriteProjector SpriteProjector;
 
-    
+    private float ActionColorAlpha;
 
+    public Vector2 PositionDeltaFromCursor;
 
-    public void ProjectAction(TowerAction towerAction)
-    {
-        SpriteProjector.ActionSprite = towerAction.ActionSprite;
-    }
-
-    public bool EvaluateAction(TowerAction towerAction)
-    {
-        bool eval = false;
-        if (towerAction.GeneralExecutionConditions())
-        {
-            eval = true;
-        }
-
-        return eval;
-    }
-
-    protected void Awake()
+    protected void Start()
     {
         
     }

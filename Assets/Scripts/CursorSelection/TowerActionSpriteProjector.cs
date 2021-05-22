@@ -7,8 +7,23 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class TowerActionSpriteProjector : MonoBehaviour
 {
-    private SpriteRenderer SpriteRenderer;
+    public SpriteRenderer SpriteRenderer;
     public Sprite ActionSprite;
+    [ShowInInspector]
+    private float ActionColorAlphaRO;
+
+    public void SetSprite(TowerAction towerAction)
+    {
+        SpriteRenderer.sprite = towerAction.ActionSprite;
+        var actionCOlor = towerAction.ActionColor;
+        var newColor = new Color(actionCOlor.r,actionCOlor.g,actionCOlor.b,ActionColorAlphaRO);
+    }
+
+    public void DisableProjector()
+    {
+        SpriteRenderer.enabled = false;
+        SpriteRenderer.sprite = null;
+    }
     
     [Required]
     public Sprite DefaultSprite;
@@ -16,5 +31,6 @@ public class TowerActionSpriteProjector : MonoBehaviour
     private void Awake()
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
+        ActionColorAlphaRO = SpriteRenderer.color.a;
     }
 }

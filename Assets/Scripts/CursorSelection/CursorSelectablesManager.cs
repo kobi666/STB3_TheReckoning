@@ -65,6 +65,13 @@ public class CardinalSet {
     public float[] anglesClockwise;
     public string[] directionNamesClockwise;
     public Predicate<TowerPositionQuery>[] discoveryConditionsClockwise;
+    public static ButtonDirectionsNames[] buttonDirectionNamesClockwiseArray = new ButtonDirectionsNames[4]
+    {
+        ButtonDirectionsNames.North,
+        ButtonDirectionsNames.East,
+        ButtonDirectionsNames.South,
+        ButtonDirectionsNames.West
+    };
     public int length {
         get => directionsClockwise.Length;
     }

@@ -386,7 +386,6 @@
      <Compile Include="Assets\Scripts\CollisionDetection\CustomBGCBoxCollider.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\ProjectileMovementFunction.cs" />
      <Compile Include="Assets\Scripts\ScriptExtensions.cs" />
-     <Compile Include="Assets\CursorActionController.cs" />
      <Compile Include="Assets\Scripts\Projectiles\SingleAnimationObject.cs" />
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\VectorManager.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\TestUtilities.cs" />
@@ -411,6 +410,8 @@
      <Compile Include="Assets\Scripts\Towers\SlotParentManager.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider2DEdge.cs" />
      <Compile Include="Assets\Prefabs\ProjectileDynamicData.cs" />
+     <Compile Include="Assets\Scripts\CursorSelection\CursorActionsController.cs" />
+     <Compile Include="Assets\Scripts\CursorSelection\InputManager.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\BansheeGz\BGCollider\readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

@@ -7,7 +7,11 @@ using UnityEngine;
 [System.Serializable]
 public class TowerActions
 {
-    private TowerSlotController parentTowerSlotController;
+    public Dictionary<ButtonDirectionsNames, TowerAction> Actions =
+        new Dictionary<ButtonDirectionsNames, TowerAction>();
+
+
+     private TowerSlotController parentTowerSlotController;
     [TypeFilter("GetTowerActions")][SerializeReference]
     public TowerAction North;
     [TypeFilter("GetTowerActions")][SerializeReference]
@@ -17,7 +21,7 @@ public class TowerActions
     [TypeFilter("GetTowerActions")][SerializeReference]
     public TowerAction West;
 
-    public TowerAction[] Actions
+    public TowerAction[] actions
     {
         get
         {
@@ -55,6 +59,10 @@ public class TowerActions
 
     public void initActions(TowerSlotController tsc)
     {
+        Actions.Add(ButtonDirectionsNames.North,North);
+        Actions.Add(ButtonDirectionsNames.East,East);
+        Actions.Add(ButtonDirectionsNames.South,South);
+        Actions.Add(ButtonDirectionsNames.West,West);
         parentTowerSlotController = tsc;
         North?.InitAction(tsc);
         East?.InitAction(tsc);
