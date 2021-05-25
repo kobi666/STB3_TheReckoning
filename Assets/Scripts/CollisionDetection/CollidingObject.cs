@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 
+[System.Serializable]
 public abstract class CollidingObject : MonoBehaviour
 {
     [Required][SerializeField] public MyGameObject ParentMyGameObject;
@@ -15,10 +16,10 @@ public abstract class CollidingObject : MonoBehaviour
     
     protected void OnEnable()
     {
-        if (RegisterToGWCS)
+        /*if (RegisterToGWCS)
         {
             SubscribeToGWCS();
-        }
+        }*/
     }
 
     protected void OnDisable()
@@ -90,6 +91,10 @@ public abstract class CollidingObject : MonoBehaviour
 
     protected void Start()
     {
+        if (RegisterToGWCS)
+        {
+            SubscribeToGWCS();
+        }
         if (RegisterToGWCS)
         {
             GameObjectPool.CollisionIDToGameObjectID.TryAdd(CollisionID, (GameObjectID, name));

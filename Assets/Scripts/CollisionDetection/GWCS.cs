@@ -92,7 +92,7 @@ public class GWCS : MonoBehaviour
 
         public void Execute(int index)
         {
-            gridCells.Add(GetPositionHashMapKey(allSimulatedPositons[index].position, quadrentCellSize), index);
+            gridCells.Add(GetPositionHashMapKey(allSimulatedPositons[index].position, quadrentCellSize), allSimulatedPositons[index].CollisionID);
         }
     }
     
@@ -105,7 +105,7 @@ public class GWCS : MonoBehaviour
         [NativeDisableParallelForRestriction] 
         public NativeBitArray detectorCheckedFlags;
         [NativeDisableParallelForRestriction]
-        public NativeMultiHashMap<int, int>.ParallelWriter newTotalCollisionsByIndex;
+        public NativeMultiHashMap<int, int>.ParallelWriter newTotalCollisionsByCollisionID;
 
         
 
@@ -151,10 +151,10 @@ public class GWCS : MonoBehaviour
             return allKeys;
         }
         
-        private bool CheckOverLapBetweenTwoColliders(int colliderIndex, int otherColliderIndex)
+        private bool CheckOverLapBetweenTwoColliders(int collisionID, int otherCollisionID)
         {
-            BittableSimulatedCollider collider = allSimulatedColliders[colliderIndex];
-            BittableSimulatedCollider otherCollider = allSimulatedColliders[otherColliderIndex];
+            BittableSimulatedCollider collider = allSimulatedColliders[collisionID];
+            BittableSimulatedCollider otherCollider = allSimulatedColliders[otherCollisionID];
             return 
                 (collider.position.x - collider.width / 2 <= otherCollider.position.x + otherCollider.width / 2 &&
                  collider.position.x + collider.width / 2 >= otherCollider.position.x - otherCollider.width / 2 &&
@@ -173,14 +173,14 @@ public class GWCS : MonoBehaviour
         
         
         
-        
+        // at this point, index should be the same as collisionID
         public void Execute(int index)
         {
             FixedList64<int2> getCellKeys = GetCellKeysforsimulatedCollider(allSimulatedColliders[index]);
             var currentCollider = allSimulatedColliders[index];
             if (allSimulatedColliders[index].TypesICanDetect > 0)
             {
-                detectorCheckedFlags.Set(index,true);
+                detectorCheckedFlags.Set(allSimulatedColliders[index].CollisionID,true);
             }
             
             for (int i = 0; i < getCellKeys.Length; i++)
@@ -189,7 +189,7 @@ public class GWCS : MonoBehaviour
                 {
                     do
                     {
-                        if (!detectorCheckedFlags.IsSet(otherColliderIndex))
+                        if (!detectorCheckedFlags.IsSet(allSimulatedColliders[otherColliderIndex].CollisionID))
                         {
                             if (currentCollider.GameObjectID == allSimulatedColliders[otherColliderIndex].GameObjectID)
                             {
@@ -198,9 +198,12 @@ public class GWCS : MonoBehaviour
                             if (TestDetection(currentCollider.TypesICanDetect,
                                 allSimulatedColliders[otherColliderIndex].DetectableType))
                             {
-                                if (CheckOverLapBetweenTwoColliders(index, otherColliderIndex))
+                                if (CheckOverLapBetweenTwoColliders(allSimulatedColliders[index].CollisionID, allSimulatedColliders[otherColliderIndex].CollisionID))
                                 {
-                                    newTotalCollisionsByIndex.Add(index,allSimulatedColliders[otherColliderIndex].CollisionID);
+                                    if (allSimulatedColliders[otherColliderIndex].CollisionID != 0) {
+                                    newTotalCollisionsByCollisionID.Add(allSimulatedColliders[index].CollisionID,allSimulatedColliders[otherColliderIndex].CollisionID);
+                                    //Debug.LogWarning("added " + allSimulatedColliders[otherColliderIndex].CollisionID);
+                                    }
                                 }
                             }
                         }
@@ -211,7 +214,7 @@ public class GWCS : MonoBehaviour
         }
     }
     
-    
+    [BurstCompile]
     private struct JOB_ClearCurrentCollisionsJob : IJob
     {
 
@@ -226,7 +229,7 @@ public class GWCS : MonoBehaviour
     private struct JOB_UpdateCurrentCollisions : IJobParallelFor
     {
         [NativeDisableParallelForRestriction]
-        public NativeMultiHashMap<int, int>.ParallelWriter currentCollisions;
+        public NativeMultiHashMap<int, int>.ParallelWriter PersistnetCurrentCollisions;
         [Unity.Collections.ReadOnly]
         public NativeMultiHashMap<int, int> newTotalCollisionsByIndex;
 
@@ -234,9 +237,16 @@ public class GWCS : MonoBehaviour
 
         public void Execute(int index)
         {
-            var newCollision = newTotalCollisionsByIndex.GetValuesForKey(index);
-            while (newCollision.MoveNext()) {
-            currentCollisions.Add(allSimulatedColliders[index].CollisionID, newCollision.Current);
+            var newCollision = newTotalCollisionsByIndex.GetValuesForKey(allSimulatedColliders[index].CollisionID);
+            /*while (newCollision.MoveNext()) {
+                PersistnetCurrentCollisions.Add(allSimulatedColliders[index].CollisionID, newCollision.Current);*/
+            while (newCollision.MoveNext())
+            {
+                if (newCollision.Current == 0)
+                {
+                    continue;
+                }
+                PersistnetCurrentCollisions.Add(allSimulatedColliders[index].CollisionID, newCollision.Current);
             }
         }
     }
@@ -245,7 +255,7 @@ public class GWCS : MonoBehaviour
     private struct JOB_resolveNewEnters : IJobParallelFor
     {
         [Unity.Collections.ReadOnly] public NativeMultiHashMap<int, int> newTotalCollisionsByIndex;
-        [Unity.Collections.ReadOnly] public NativeMultiHashMap<int, int> currentCollisions;
+        [Unity.Collections.ReadOnly] public NativeMultiHashMap<int, int> OldCollisions;
         [Unity.Collections.ReadOnly] public NativeArray<BittableSimulatedCollider> allSimulatedColliders;
 
         [NativeDisableParallelForRestriction] public NativeMultiHashMap<int, int>.ParallelWriter onEnterCollisions;
@@ -257,28 +267,133 @@ public class GWCS : MonoBehaviour
             {
                 return;
             }
-            var newCollisions = newTotalCollisionsByIndex.GetValuesForKey(index);
-            var oldCollisions = currentCollisions.GetValuesForKey(index);
+            var newCollisionsPerValue = newTotalCollisionsByIndex.GetValuesForKey(allSimulatedColliders[index].CollisionID);
+            bool noOldCollisions = OldCollisions.CountValuesForKey(index) <= 0;
 
-            while (newCollisions.MoveNext())
+            /*var oldColiisionsForDebug = OldCollisions.GetValuesForKey(allSimulatedColliders[index].CollisionID);*/
+            /*while (oldColiisionsForDebug.MoveNext())
             {
-                bool newCollisionNotFoundInOld = true;
-                while (oldCollisions.MoveNext())
+                Debug.LogWarning("index number : " + index + " : " + oldColiisionsForDebug.Current);
+            }
+
+            while (newCollisionsPerValue.MoveNext())
+            {
+                Debug.LogWarning("index number : " + index + " : " + newCollisionsPerValue.Current);
+            }
+            newCollisionsPerValue.Reset();*/
+            
+            
+            //NativeArray<int> collisionsToAdd = new NativeArray<int>(newTotalCollisionsByIndex.CountValuesForKey(index),Allocator.TempJob);
+
+            if (noOldCollisions)
+            {
+                do
                 {
-                    if (oldCollisions.Current == newCollisions.Current)
+                    if (newCollisionsPerValue.Current == 0)
                     {
-                        newCollisionNotFoundInOld = false;
-                        break;
+                        continue;
+                    }
+                    Debug.LogWarning("Totally new collision found :" + newCollisionsPerValue.Current + " on detector ID " + allSimulatedColliders[index].CollisionID );
+                    onEnterCollisions.Add(allSimulatedColliders[index].CollisionID, newCollisionsPerValue.Current);
+                } while (newCollisionsPerValue.MoveNext());
+            }
+
+            if (!noOldCollisions)
+            {
+                var oldCollisionsPerValue = OldCollisions.GetValuesForKey(allSimulatedColliders[index].CollisionID);
+                do
+                {
+                    bool NewCollisionFoundInOld = false;
+                    if (newCollisionsPerValue.Current == 0)
+                    {
+                        continue;
+                    }
+                    
+                    do
+                    {
+                        if (oldCollisionsPerValue.Current == 0)
+                        {
+                            continue;
+                        }
+                        if (newCollisionsPerValue.Current == oldCollisionsPerValue.Current)
+                        {
+                            Debug.LogWarning("Same Collision Found in Old and New");
+                            NewCollisionFoundInOld = true;
+                            break;
+                        }
+                    } while (oldCollisionsPerValue.MoveNext());
+                    
+                    
+                    oldCollisionsPerValue.Reset();
+                    if (!NewCollisionFoundInOld) {
+                        while (oldCollisionsPerValue.MoveNext())
+                        {
+                            Debug.LogWarning("index number : " + index + " : " + oldCollisionsPerValue.Current);
+                        }
+                        Debug.LogWarning("Totally new collision found :" + newCollisionsPerValue.Current + " on detector ID " + allSimulatedColliders[index].CollisionID );
+                        onEnterCollisions.Add(allSimulatedColliders[index].CollisionID, newCollisionsPerValue.Current);
+                    }
+
+                } while (newCollisionsPerValue.MoveNext());
+
+            }
+            //collisionsToAdd.Dispose();
+
+
+            /*if (oldCollisions.Current == 0)
+            {
+                Debug.LogWarning("Current old collisions's current is 0");
+                if (newCollisions.Current != 0) {
+                    Debug.LogWarning("Current NEW collisions's current is NOT 0");
+                    while (newCollisions.MoveNext())
+                    {
+                        Debug.LogWarning("Totally new collision found :" + newCollisions.Current + " on detector ID " +
+                                         allSimulatedColliders[index].CollisionID);
+                        onEnterCollisions.Add(allSimulatedColliders[index].CollisionID, newCollisions.Current);
                     }
                 }
-                oldCollisions.Reset();
-                if (newCollisionNotFoundInOld)
-                {
-                    Debug.LogWarning("Totally new collision found :" + newCollisions.Current + " on detector ID " + allSimulatedColliders[index].CollisionID );
-                    onEnterCollisions.Add(allSimulatedColliders[index].CollisionID, newCollisions.Current);
-                }
             }
-            
+            else
+            {
+                Debug.LogWarning("Current Old Collisions is NOT 0, it is " + oldCollisions.Current);
+                if (newCollisions.Current != 0) {
+                    while (newCollisions.MoveNext())
+                    {
+                        if (newCollisions.Current == 0)
+                        {
+                            continue;
+                        }
+
+                        Debug.LogWarning("asdasd");
+                        int collisionThatWasNotFound = 0;
+                        bool newCollisionNotFoundInOld = true;
+                        int checkCounter = 0;
+                        while (oldCollisions.MoveNext())
+                        {
+                            if (oldCollisions.Current == 0)
+                            {
+                                continue;
+                            }
+
+                            if (oldCollisions.Current == newCollisions.Current)
+                            {
+                                newCollisionNotFoundInOld = false;
+                                checkCounter++;
+                                break;
+                            }
+                        }
+
+                        if (newCollisionNotFoundInOld)
+                        {
+                            Debug.LogWarning("Totally new collision found :" + newCollisions.Current + " on detector ID " +
+                                             allSimulatedColliders[index].CollisionID);
+                            onEnterCollisions.Add(allSimulatedColliders[index].CollisionID, newCollisions.Current);
+                            break;
+                        }
+                        oldCollisions.Reset();
+                    }
+                }
+            }*/
         }
     }
     
@@ -286,7 +401,7 @@ public class GWCS : MonoBehaviour
     private struct JOB_resolveNewExits : IJobParallelFor
     {
         [Unity.Collections.ReadOnly] public NativeMultiHashMap<int, int> newTotalCollisionsByIndex;
-        [Unity.Collections.ReadOnly] public NativeMultiHashMap<int, int> currentCollisions;
+        [Unity.Collections.ReadOnly] public NativeMultiHashMap<int, int> OldCollisions;
         [Unity.Collections.ReadOnly] public NativeArray<BittableSimulatedCollider> allSimulatedColliders;
 
         [NativeDisableParallelForRestriction] public NativeMultiHashMap<int, int>.ParallelWriter onExitCollisions;
@@ -298,8 +413,8 @@ public class GWCS : MonoBehaviour
                 return;
             }
 
-            var newCollisions = newTotalCollisionsByIndex.GetValuesForKey(index);
-            var oldCollisions = currentCollisions.GetValuesForKey(index);
+            var newCollisions = newTotalCollisionsByIndex.GetValuesForKey(allSimulatedColliders[index].CollisionID);
+            var oldCollisions = OldCollisions.GetValuesForKey(allSimulatedColliders[index].CollisionID);
 
             while (oldCollisions.MoveNext())
             {
@@ -339,7 +454,7 @@ public class GWCS : MonoBehaviour
             gridCells = GridCells
         };
         var JH_cleargridCells = _JOB_ClearGridCells.Schedule();
-
+        
 
         //remove objects from queue
         if (RemovalQueue.Count > 0)
@@ -382,7 +497,7 @@ public class GWCS : MonoBehaviour
         {
             var bc2d = _obj.BoxCollider2D;
             var size = bc2d.size;
-            AllSimulatedColliders[objCounter] = new BittableSimulatedCollider(size.x, size.y,
+            AllSimulatedColliders[_obj.CollisionID] = new BittableSimulatedCollider(size.x, size.y,
                 (Vector2) _obj.transform.position + bc2d.offset,
                 _obj.CollisionID,
                 _obj.GameObjectID,
@@ -391,7 +506,7 @@ public class GWCS : MonoBehaviour
             objCounter++;
             //Debug.LogWarning(AllSimulatedColliders[_obj.GameObjectID].GameObjectID + " : " + AllSimulatedColliders[_obj.GameObjectID].CollisionID );
         }
-
+        
 
         var _JOB_fillMapJob = new JOB_FillGridCellMap
         {
@@ -406,13 +521,15 @@ public class GWCS : MonoBehaviour
             detectorCheckedFlags = DetectorCheckdFlags,
             gridCells = GridCells,
             quadrentCellSize = QuadrentCellSize,
-            newTotalCollisionsByIndex = NewTotalCollisionsByIndex.AsParallelWriter(),
+            newTotalCollisionsByCollisionID = NewTotalCollisionsByIndex.AsParallelWriter(),
         };
-
-        var _JOB_ClearNewCollisions = new JOB_ClearNewCollisions
+        
+        
+        //remove because there was no need to clear the new collisions since it's disposed in the end.
+        /*var _JOB_ClearNewCollisions = new JOB_ClearNewCollisions
         {
             newTotalCollisions = NewTotalCollisionsByIndex
-        };
+        };*/
 
         NativeMultiHashMap<int, int> OnEnterCollisions = new NativeMultiHashMap<int, int>(10000, Allocator.TempJob);
         NativeMultiHashMap<int, int> OnExitCollisions = new NativeMultiHashMap<int, int>(10000, Allocator.TempJob);
@@ -420,7 +537,7 @@ public class GWCS : MonoBehaviour
         var _JOB_GetNewEnterCollisions = new JOB_resolveNewEnters
         {
             allSimulatedColliders = AllSimulatedColliders,
-            currentCollisions = CurrentCollisions,
+            OldCollisions = CurrentCollisions,
             newTotalCollisionsByIndex = NewTotalCollisionsByIndex,
             onEnterCollisions = OnEnterCollisions.AsParallelWriter(),
         };
@@ -428,7 +545,7 @@ public class GWCS : MonoBehaviour
         var _JOB_GetNewExitCollisions = new JOB_resolveNewExits
         {
             allSimulatedColliders = AllSimulatedColliders,
-            currentCollisions = CurrentCollisions,
+            OldCollisions = CurrentCollisions,
             newTotalCollisionsByIndex = NewTotalCollisionsByIndex,
             onExitCollisions = OnExitCollisions.AsParallelWriter()
         };
@@ -441,7 +558,7 @@ public class GWCS : MonoBehaviour
         var _JOB_updateCurrentCollisions = new JOB_UpdateCurrentCollisions
         {
             allSimulatedColliders = AllSimulatedColliders,
-            currentCollisions = CurrentCollisions.AsParallelWriter(),
+            PersistnetCurrentCollisions = CurrentCollisions.AsParallelWriter(),
             newTotalCollisionsByIndex = NewTotalCollisionsByIndex
         };
 
@@ -465,7 +582,7 @@ public class GWCS : MonoBehaviour
         JobHandle JH_UpdateCurrentCollisions =
             _JOB_updateCurrentCollisions.Schedule(AllSimulatedColliders.Length, 128, JH_clear_CURRENT_Colissions);
 
-        JobHandle JH_clear_NEW_Collisions = _JOB_ClearNewCollisions.Schedule(JH_UpdateCurrentCollisions);
+        //JobHandle JH_clear_NEW_Collisions = _JOB_ClearNewCollisions.Schedule(JH_UpdateCurrentCollisions);
 
 
         JH_cleargridCells.Complete();
@@ -475,6 +592,17 @@ public class GWCS : MonoBehaviour
         JH_GetNewExitCollisions.Complete();
         OnEnterCollisions.GetEnumerator().Reset();
         OnExitCollisions.GetEnumerator().Reset();
+        JH_clear_CURRENT_Colissions.Complete();
+        JH_UpdateCurrentCollisions.Complete();
+        /*if (CurrentCollisions.Count() > 0)
+        {
+            Debug.LogWarning("OLD Collision Count At end : " + CurrentCollisions.Count());
+        }
+        
+        if (NewTotalCollisionsByIndex.Count() > 0)
+        {
+            Debug.LogWarning("NEW Collision Count At end : " + NewTotalCollisionsByIndex.Count());
+        }*/
         foreach (var detector in AllDetectors)
         {
 
@@ -504,7 +632,7 @@ public class GWCS : MonoBehaviour
 
         JH_postResolveJobHandle.Complete();
 
-        JH_clear_NEW_Collisions.Complete();
+        //JH_clear_NEW_Collisions.Complete();
 
 
 
@@ -522,21 +650,21 @@ public class GWCS : MonoBehaviour
             cc3++;
         }
 
-        Debug.LogWarning("Current Collisions : " + cc3);
+        //Debug.LogWarning("Current Collisions : " + cc3);
         executionInProgress = false;
         }
 }
 
     public bool EnableSystem = true;
     public int frameCounter = 0;
-    public int UpdateRate = 3;
+    public int UpdateRate = 10;
     private void Update()
     {
-        /*if (frameCounter > UpdateRate) {*/
+        if (frameCounter > UpdateRate) {
         ExecuteCollisionSystem();
-        /*frameCounter = 0;
+        frameCounter = 0;
         }
-        frameCounter++;*/
+        frameCounter++;
     }
 
     private void OnDisable()

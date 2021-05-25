@@ -27,7 +27,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7209521931939889770
 Transform:
   m_ObjectHideFlags: 0
@@ -778,6 +778,7 @@ MonoBehaviour:
   HasTargets: 0
   HasTargetableTargets: 0
   Detector: {fileID: 1848957035049136393}
+  debugMe: 0
 --- !u!114 &7209521931939889820
 MonoBehaviour:
   m_ObjectHideFlags: 0

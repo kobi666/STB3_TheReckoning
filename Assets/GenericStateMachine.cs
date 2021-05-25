@@ -88,7 +88,6 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
             T nextState = NextStateResolver();
             if (DebugStateMachine)
             {
-                
                 Debug.LogError( name + " Current State : " + CurrentState.StateName +  " |||  Next State : " + nextState.StateName);
             }
             if (!CurrentState.FinalState) {
