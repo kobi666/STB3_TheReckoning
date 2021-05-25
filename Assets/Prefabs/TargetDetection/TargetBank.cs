@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Collections.Concurrent;
 using MyBox;
 using Sirenix.OdinInspector;
 using UnityEditor;
@@ -23,12 +24,12 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
     public bool HasTargets;
     private void OnEnable()
     {
-        InitRangeDetectorEvents();
+        
     }
 
     protected void OnDisable()
     {
-        DisableRangedetectorEvents();
+        //DisableRangedetectorEvents();
         Targets.Clear();
     }
 
@@ -39,33 +40,22 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
 
     void TargetablesCheck(int gameObjectID,bool targetableState,string callerName)
     {
-        if (!Targets.IsNullOrEmpty())
+        if (Targets.IsNullOrEmpty())
         {
-            if (Targets.ContainsKey(gameObjectID))
+            HasTargets = false;
+            HasTargetableTargets = false;
+            return;
+        }
+
+        foreach (var target in Targets)
+        {
+            if (target.Value.Item1.IsTargetable())
             {
-                if (targetableState)
-                {
-                    HasTargetableTargets = true;
-                    Targets[gameObjectID] = (Targets[gameObjectID].Item1, true);
-                    return;
-                }
-
-                if (!targetableState)
-                {
-                    Targets[gameObjectID] = (Targets[gameObjectID].Item1, false);
-                }
-
-                foreach (var target in Targets)
-                {
-                    if (target.Value.Item2)
-                    {
-                        HasTargetableTargets = true;
-                        return;
-                    }
-                }
+                HasTargets = true;
+                HasTargetableTargets = true;
+                return;
             }
         }
-        HasTargetableTargets = false;
         
     }
     
@@ -105,7 +95,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
     /// </summary>
     ///
     [SerializeReference] 
-    public Dictionary<int,(T,bool)> Targets = new Dictionary<int,(T,bool)>();
+    public ConcurrentDictionary<int,(T,bool)> Targets = new ConcurrentDictionary<int,(T,bool)>();
 
     public abstract T TryToGetTargetOfType(int gameObjectID);
     
@@ -113,7 +103,6 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
     public void OnTargetAdd(T t) {
         onTargetAdd?.Invoke(t);
         onTargetsUpdate?.Invoke();
-        Collision c;
     }
 
     private List<string> excludedNames = new List<string>();
@@ -134,7 +123,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
         if (t != null) {
             if (!Targets.ContainsKey(_gameobjectID))
             {
-                Targets.Add(_gameobjectID, (t,t.IsTargetable()));
+                Targets.TryAdd(_gameobjectID, (t,t.IsTargetable()));
                 OnTargetAdd(t);
                 if (t.IsTargetable())
                 {
@@ -145,10 +134,12 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
         }
     }
 
+
+    public bool debugMe;
     void RemoveTarget(int gameObjectID) {
         clearNulls();
         if (Targets.ContainsKey(gameObjectID)) {
-            Targets.Remove(gameObjectID);
+            Targets.TryRemove(gameObjectID,out outValue);
             if (Targets.IsNullOrEmpty())
             {
                 HasTargets = false;
@@ -157,12 +148,13 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
         }
     }
 
+    private (T, bool) outValue;
     void clearNulls() {
         if (Targets.Count > 0) {
             foreach (var item in Targets)
             {
                 if (item.Value.Item1 == null) {
-                    Targets.Remove(item.Key);
+                    Targets.TryRemove(item.Key,out outValue);
                     onTargetsUpdate?.Invoke();
                 }
             }
@@ -173,16 +165,10 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
     
 
     
-    void Awake()
-    {
-        excludedNames.Add(name);
-        onTryToAddTarget += AddTarget;
-        onTargetRemove += RemoveTarget;
-        GameObjectPool.Instance.onTargetableUpdate += TargetablesCheck;
-    }
+    
 
     public void InitRangeDetectorEvents() {
-        Detector.onTargetEnter += OnTryToAddTarget;
+        Detector.onNewTargetEnter += OnTryToAddTarget;
         Detector.onTargetExit += OnTargetRemoveFromCollision;
     }
 
@@ -195,8 +181,13 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
         }
     }
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
+        InitRangeDetectorEvents();
+        excludedNames.Add(name);
+        onTryToAddTarget += AddTarget;
+        onTargetRemove += RemoveTarget;
+        GameObjectPool.Instance.onTargetableUpdate += TargetablesCheck;
         GameObjectPool.Instance.onTargetableUpdate += OnTargetableRemove;
         GameObjectPool.Instance.onObjectDisable += OnTargetRemoveGID;
         PostStart();

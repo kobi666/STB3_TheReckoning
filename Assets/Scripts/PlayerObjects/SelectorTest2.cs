@@ -44,7 +44,7 @@ public class SelectorTest2 : MonoBehaviour
         get => selectedTowerSlot;
         set {
             selectedTowerSlot = value;
-            CursorActionsController.UpdateTowerActions(selectedTowerSlot.TowerActions);
+            CursorActionsController.UpdateTowerActions(value.TowerActions);
         }
     }
     

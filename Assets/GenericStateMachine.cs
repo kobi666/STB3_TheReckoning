@@ -4,11 +4,12 @@ using System.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
+
 [Serializable]
 public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : ObjectState<TS> where TS : IHasStateMachine
 {
     public bool DebugStateMachine;
-    
+    private bool runLock = true;
     public bool InitOnStartup;
     
     [ShowInInspector]
@@ -57,28 +58,32 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
         {
             if (CurrentState.StateName == EmptyStateName)
             {
-                //Debug.LogWarning(new Exception("Empty state entered or empty state name on : " + gameObject.name));
+                Debug.Log("Empty state entered or empty state name on : " + gameObject.name);
                 return;
             }
             SMObject.OnEnterStateDefaultBehavior();
             CurrentState.OnStateEnterActions();
             CurrentState.StateIsRunning = true;
-            if (CurrentState.StateEnterConditions())
+            if (CurrentState.StateEnterConditions() && runLock)
+            {
                 CanExecCurrentState = true;
                 NextState = null;
-                while (CurrentState?.RunningStateConditions() ?? false)
+                while ( /*runLock &&*/ (CurrentState.RunningStateConditions()))
                 {
                     if (CanExecCurrentState)
                     {
                         CurrentState.InStateActions();
-                        await Task.Yield();
+                        await Task.Delay(1);
                     }
                     else
                     {
                         break;
                     }
                 }
+
                 CurrentState.OnStateExitActions();
+                
+            }
             CurrentState.StateIsRunning = false;
             T nextState = NextStateResolver();
             if (DebugStateMachine)
@@ -86,7 +91,9 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
                 
                 Debug.LogError( name + " Current State : " + CurrentState.StateName +  " |||  Next State : " + nextState.StateName);
             }
+            if (!CurrentState.FinalState) {
             ChangeState(nextState);
+            }
         }
         
         
@@ -157,6 +164,7 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
         if (counter < 3)
         {
             OnStateChange();
+            Debug.Log("state name" + CurrentState.StateName + " : " + name);
             ExecuteCurrentState();
             if (InterruptState != null) {
                 if (state.StateName == InterruptState.StateName)
@@ -177,6 +185,11 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
     {
         NextState = nextState;
         CanExecCurrentState = false;
+    }
+
+    protected void OnDisable()
+    {
+        runLock = false;
     }
 
     public void SetState(string stateName)

@@ -199,7 +199,8 @@ public class TargetUnit
         catch(Exception e) {
             Debug.LogWarning(e.Message);
         }
-        if (GenericUnitController == null || Effectable == null) {
+        if (GenericUnitController == null || Effectable == null)
+        {
             Effectable = null;
             TargetTransform = null;
             GenericUnitController = null;

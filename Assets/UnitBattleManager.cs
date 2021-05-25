@@ -45,6 +45,8 @@ public class UnitBattleManager : MonoBehaviour
     
     public bool targetExists;
     private GenericUnitController targetUnit;
+    
+    [ShowInInspector]
     public GenericUnitController TargetUnit
     {
         get => targetUnit;
@@ -57,7 +59,9 @@ public class UnitBattleManager : MonoBehaviour
             }
             else
             {
+                if (value.EffectableUnit.IsTargetable()) {
                 targetExists = true;
+                }
             }
         }
     }

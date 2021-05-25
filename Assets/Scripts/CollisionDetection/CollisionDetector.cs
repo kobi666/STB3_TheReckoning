@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEditor;
@@ -6,7 +7,26 @@ using UnityEngine;
 
 public class CollisionDetector : CollidingObject
 {
+    [ShowInInspector]
+    public ConcurrentDictionary<int,byte> UniqueTargets = new ConcurrentDictionary<int, byte>();
 
+    public void TryToAddTarget(int collisionID)
+    {
+        if (!UniqueTargets.ContainsKey(collisionID)) {
+            bool b = UniqueTargets.TryAdd(collisionID, new byte());
+            if (b)
+            {
+                onNewTargetEnter?.Invoke(collisionID);
+            }
+        }
+        
+    }
+    
+    
+    
+
+    public event Action<int> onNewTargetEnter;
+    
     public bool DebugCollision;
     public float ColliderSize;
     private Bounds ColliderBounds;
@@ -21,13 +41,16 @@ public class CollisionDetector : CollidingObject
     [Button]
     void DebugCollsion()
     {
-        onTargetEnter += delegate(int i) { Debug.LogWarning("Found collision " + i + ", Object : " + GameObjectPool.CollisionIDToGameObjectID[i].Item2); };
-        onTargetExit += delegate(int i, string s) { Debug.LogWarning("REMOVED collision " + i + ", Object : " + GameObjectPool.CollisionIDToGameObjectID[i].Item2); };
+        onTargetEnter += delegate(int i) { Debug.LogWarning("Found collision " + i + ", Object : " + GameObjectPool.CollisionIDToGameObjectID[i].Item2 + " on " + transform.root.name); };
+        onTargetExit += delegate(int i, string s) { Debug.LogWarning("REMOVED collision " + i + ", Object : " + GameObjectPool.CollisionIDToGameObjectID[i].Item2,gameObject); };
     }
 
+    private byte outByte;
     protected void Start()
     {
         base.Start();
+        onTargetEnter += TryToAddTarget;
+        onTargetExit += delegate(int i, string s) { UniqueTargets.TryRemove(i, out outByte); };
     }
 
     protected void Awake()
@@ -93,4 +116,6 @@ public class CollisionDetector : CollidingObject
         }
     }
     public override List<DetectionTags> TagsICanDetect { get => tagsICanDetect; }
+
+    private int counter = 0;
 }

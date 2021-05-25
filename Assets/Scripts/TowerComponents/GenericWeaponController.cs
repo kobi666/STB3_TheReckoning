@@ -191,6 +191,10 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     
     public void StandardOnTargetEnteredRange(GenericWeaponController self, Effectable ef) {
         TargetUnit tu = GameObjectPool.Instance.GetTargetUnit(ef.MyGameObjectID);
+        if (tu == null)
+        {
+            return;
+        }
         if (Target?.Effectable == null) {
             OnTargetAdd(tu);
             if (Autonomous)
@@ -199,14 +203,17 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
             }
         }
         if (Target?.Effectable != null) {
+
             
-            if (tu.Proximity < Target.Proximity) {
-                OnTargetAdd(tu);
-                if (Autonomous)
-                {
-                    InAttackState = true;
+                if (tu.Proximity < Target?.Proximity) {
+                    OnTargetAdd(tu);
+                    if (Autonomous)
+                    {
+                        InAttackState = true;
+                    }
                 }
-            }
+            
+            
         }
     }
 
@@ -379,7 +386,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
                 }
                 else
                 {
-                    Debug.LogWarning("Attack state set to true, but conditions to attack are False.");
+                    //Debug.LogWarning("Attack state set to true, but conditions to attack are False.");
                 }
             }
             if (value == false) {

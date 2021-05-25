@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ public class AreaEffect : MonoBehaviour,IQueueable<AreaEffect>
 {
 	// Start is called before the first frame update
 	public EffectableTargetBank TargetBank;
-	protected Dictionary<int,(Effectable,bool)> Targets
+	protected ConcurrentDictionary<int,(Effectable,bool)> Targets
 	{
 		get => TargetBank.Targets;
 	}

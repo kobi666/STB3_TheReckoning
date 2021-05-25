@@ -133,12 +133,13 @@ MonoBehaviour:
     StateIsRunning: 0
     FinalState: 0
     SMObject: {fileID: 0}
-    OnEnterBehvaior: []
+    OnEnterBehvaior:
+    - id: 4
     TargetableState: 1
     InStateBehavior:
-    - id: 4
-    OnExitBehavior:
     - id: 5
+    OnExitBehavior:
+    - id: 6
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 2
@@ -148,27 +149,14 @@ MonoBehaviour:
     StateIsRunning: 0
     FinalState: 0
     SMObject: {fileID: 0}
-    OnEnterBehvaior: []
-    TargetableState: 1
-    InStateBehavior:
-    - id: 6
-    OnExitBehavior: []
-    SpecialEnterConditions: []
-    SpecialExitConditions: []
-    stateName: 1
-    automaticNextState: 0
-  - DefaultState: 0
-    InitialState: 0
-    StateIsRunning: 0
-    FinalState: 0
-    SMObject: {fileID: 0}
     OnEnterBehvaior:
     - id: 7
+    - id: 8
     TargetableState: 1
     InStateBehavior:
-    - id: 8
-    OnExitBehavior:
     - id: 9
+    OnExitBehavior:
+    - id: 10
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 3
@@ -176,15 +164,15 @@ MonoBehaviour:
   - DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
-    FinalState: 0
+    FinalState: 1
     SMObject: {fileID: 0}
     OnEnterBehvaior:
-    - id: 10
+    - id: 11
     TargetableState: 0
     InStateBehavior:
-    - id: 11
-    OnExitBehavior:
     - id: 12
+    OnExitBehavior:
+    - id: 13
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 7
@@ -219,6 +207,7 @@ MonoBehaviour:
   StateMachine: {fileID: 7209521931939889822}
   PathWalker: {fileID: 21520285034811200}
   UnitMovementController: {fileID: 7209521931939889821}
+  DetectableCollider: {fileID: 0}
   references:
     version: 1
     00000000:
@@ -350,6 +339,38 @@ MonoBehaviour:
           stateName: 0
           automaticNextState: 0
     00000004:
+      type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+        TargetPriority: 0
+    00000005:
       type: {class: MoveTowardsTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
         UnitData:
@@ -381,7 +402,7 @@ MonoBehaviour:
           stateName: 0
           automaticNextState: 0
         MovementSpeed: 1
-    00000005:
+    00000006:
       type: {class: StopUnitFreeMovement, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
         UnitData:
@@ -412,8 +433,8 @@ MonoBehaviour:
           SpecialExitConditions: []
           stateName: 0
           automaticNextState: 0
-    00000006:
-      type: {class: DoNothing, ns: UnitBehaviors, asm: Assembly-CSharp}
+    00000007:
+      type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
         UnitData:
           MetaData:
@@ -443,7 +464,8 @@ MonoBehaviour:
           SpecialExitConditions: []
           stateName: 0
           automaticNextState: 0
-    00000007:
+        TargetPriority: 0
+    00000008:
       type: {class: StartFight, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
         UnitData:
@@ -474,7 +496,7 @@ MonoBehaviour:
           SpecialExitConditions: []
           stateName: 0
           automaticNextState: 0
-    00000008:
+    00000009:
       type: {class: Fight, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
         UnitData:
@@ -505,7 +527,7 @@ MonoBehaviour:
           SpecialExitConditions: []
           stateName: 0
           automaticNextState: 0
-    00000009:
+    0000000A:
       type: {class: EndFight, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
         UnitData:
@@ -536,7 +558,7 @@ MonoBehaviour:
           SpecialExitConditions: []
           stateName: 0
           automaticNextState: 0
-    0000000A:
+    0000000B:
       type: {class: AnnounceDeath, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
         UnitData:
@@ -567,7 +589,7 @@ MonoBehaviour:
           SpecialExitConditions: []
           stateName: 0
           automaticNextState: 0
-    0000000B:
+    0000000C:
       type: {class: FadeOut, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
         UnitData:
@@ -599,7 +621,7 @@ MonoBehaviour:
           stateName: 0
           automaticNextState: 0
         FadeOutSpeed: 0.1
-    0000000C:
+    0000000D:
       type: {class: DisableObject, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
         UnitData:
@@ -770,7 +792,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ParentMyGameObject: {fileID: 7209521931939889764}
   FirstRun: 1
-  RegisterToGWCS: 1
   CollisionID: 0
   BoxCollider2D: {fileID: 7209521931939889761}
   CollisionTagInt: 0
@@ -1340,6 +1361,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitRangeDiscovery
       objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498601, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
         type: 3}
       propertyPath: m_RootOrder
@@ -1398,12 +1424,12 @@ PrefabInstance:
     - target: {fileID: 9053798066310498647, guid: c6fc023bc2782354d95ce0cb470b96e7,
         type: 3}
       propertyPath: m_Size.x
-      value: 7
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 9053798066310498647, guid: c6fc023bc2782354d95ce0cb470b96e7,
         type: 3}
       propertyPath: m_Size.y
-      value: 7
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 9053798066310498647, guid: c6fc023bc2782354d95ce0cb470b96e7,
         type: 3}

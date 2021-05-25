@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
+[System.Serializable]
 [DefaultExecutionOrder(-10)]
 public class CursorActionsController : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class CursorActionsController : MonoBehaviour
 
     /*public TowerActions TowerActions;*/
     public float DistanceFromCursor = 1f;
-
+    
+    [ShowInInspector]
     public Dictionary<ButtonDirectionsNames, CursorActionHandler> CursorActionHandlers =
         new Dictionary<ButtonDirectionsNames, CursorActionHandler>();
 
@@ -25,6 +27,7 @@ public class CursorActionsController : MonoBehaviour
     }
 
     public void UpdateTowerActions(TowerActions towerActions)
+              
     {
         foreach (var towerAction in towerActions.Actions)
         {
@@ -47,6 +50,8 @@ public class CursorActionsController : MonoBehaviour
     }
 }
 
+
+[System.Serializable]
 public class CursorActionHandler
 {
     private CursorActionsController ParentCursorActionsController;
@@ -55,6 +60,8 @@ public class CursorActionHandler
 
     private bool actionState = false;
     private bool previousActionState = false;
+
+    
     
 
     private bool ActionAvailableCheck()
@@ -90,15 +97,16 @@ public class CursorActionHandler
         {
             if (ActionAvailableCheck())
             {
-                if (previousActionState != actionState)
-                {
-                    TowerActionIndicator.SpriteProjector.SetSprite(CurrentTowerAction);
-                }
+                TowerActionIndicator.SpriteProjector.SetSprite(CurrentTowerAction, true);
             }
             else
             {
                 TowerActionIndicator.SpriteProjector.DisableProjector();
             }
+        }
+        else
+        {
+            TowerActionIndicator.SpriteProjector.DisableProjector();
         }
     }
 

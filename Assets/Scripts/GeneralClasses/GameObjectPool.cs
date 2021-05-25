@@ -198,8 +198,11 @@ public class GameObjectPool : MonoBehaviour
         {
             return null;
         }
+        if (ActiveEffectables.Contains(gameObjectID) && ActiveUnits.ContainsKey(gameObjectID)) {
         TargetUnit tu = new TargetUnit(gameObjectID);
         return tu;
+        }
+        return null;
     }
     
     

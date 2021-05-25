@@ -12,6 +12,7 @@ namespace UnitBehaviors
         public override void Behavior()
         {
             DeathManager.Instance.OnUnitDeath(UnitObject.MyGameObjectID);
+            UnitObject.DetectableCollider.UnSubscribeFromGWCS();
         }
 
         public override void InitBehavior()
@@ -289,11 +290,26 @@ namespace UnitBehaviors
 
         private int targetGameObjectID
         {
-            get => UnitBattleManager.TargetUnit.MyGameObjectID;
+            get => UnitBattleManager.TargetUnit?.MyGameObjectID ?? 0;
         }
         public override void Behavior()
         {
+            if (UnitBattleManager.targetExists) {
+                if (UnitBattleManager.TargetUnit.EffectableUnit) {
             UnitMovementController.MoveTowardsTargetAsync(UnitBattleManager.TargetUnit.transform.position);
+                }
+                else
+                {
+                    foreach (var target in TargetBank.Targets)
+                    {
+                        if (target.Value.Item1.IsTargetable())
+                        {
+                            EffectableUnit efu = target.Value.Item1 as EffectableUnit;
+                            UnitBattleManager.TargetUnit = efu.GenericUnitController;
+                        }
+                    }
+                }
+            }
         }
 
         public override void InitBehavior()
@@ -303,9 +319,13 @@ namespace UnitBehaviors
 
         public override bool ExecCondition()
         {
-            if (UnitBattleManager.targetExists)
+            if (TargetBank.HasTargetableTargets)
             {
-                if (AttackAreaTargetBank.Targets.ContainsKey(targetGameObjectID))
+                if (UnitBattleManager.TargetUnit == null)
+                {
+                    UnitBattleManager.TargetUnit = GameObjectPool.Instance.ActiveUnits[TargetBank.Targets.First().Key];
+                }
+                if (AttackAreaTargetBank.HasTargetableTargets)
                 {
                     return false;
                 }
@@ -391,10 +411,12 @@ namespace UnitBehaviors
 
         public override bool ExecCondition()
         {
-            if (UnitBattleManager.targetExists)
+            
+            if (TargetBank.HasTargetableTargets)
             {
-                if (AttackAreaTargetBank.Targets.ContainsKey(UnitObject.UnitBattleManager
-                    .TargetUnit.MyGameObjectID))
+                if (AttackAreaTargetBank.HasTargetableTargets)
+                    /*if (AttackAreaTargetBank.Targets.ContainsKey(UnitObject.UnitBattleManager
+                        .TargetUnit.MyGameObjectID))*/
                 {
                     return true;
                 }
@@ -438,6 +460,10 @@ namespace UnitBehaviors
             return true;
         }
     }
+    
+    
+    
+    
 
     public class FadeOut : UnitConcurrentBehavior
     {
@@ -465,6 +491,24 @@ namespace UnitBehaviors
         public override void Behavior()
         {
             UnitObject.gameObject.SetActive(false);
+        }
+
+        public override void InitBehavior()
+        {
+            
+        }
+
+        public override bool ExecCondition()
+        {
+            return true;
+        }
+    }
+
+    public class FindClosestPointOnPath : UnitSingleBehvaior
+    {
+        public override void Behavior()
+        {
+            
         }
 
         public override void InitBehavior()

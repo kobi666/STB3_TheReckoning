@@ -11,10 +11,13 @@ public abstract class CollidingObject : MonoBehaviour
     
     public bool FirstRun = true;
     public abstract bool RegisterToGWCS { get; set; }
+    
+    
     protected void OnEnable()
     {
-        if (RegisterToGWCS) {
-        GWCS.instance.AddObject(this, CollisionID);
+        if (RegisterToGWCS)
+        {
+            SubscribeToGWCS();
         }
     }
 
@@ -22,7 +25,26 @@ public abstract class CollidingObject : MonoBehaviour
     {
         if (RegisterToGWCS)
         {
+            UnSubscribeFromGWCS();
+        }
+    }
+
+    private bool subscribedToGWCS = false;
+    public void UnSubscribeFromGWCS()
+    {
+        if (subscribedToGWCS)
+        {
             GWCS.instance.RemoveObject(this);
+            subscribedToGWCS = false;
+        }
+    }
+
+    public void SubscribeToGWCS()
+    {
+        if (!subscribedToGWCS)
+        {
+            GWCS.instance.AddObject(this, CollisionID);
+            subscribedToGWCS = true;
         }
     }
 

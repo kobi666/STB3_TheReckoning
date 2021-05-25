@@ -64,7 +64,7 @@ public class GWCS : MonoBehaviour
     }
     
     [BurstCompile]
-    private struct JOB_ClerNewCollisions : IJob
+    private struct JOB_ClearNewCollisions : IJob
     {
         public NativeMultiHashMap<int, int> newTotalCollisions;
         public void Execute()
@@ -267,7 +267,6 @@ public class GWCS : MonoBehaviour
                 {
                     if (oldCollisions.Current == newCollisions.Current)
                     {
-                        
                         newCollisionNotFoundInOld = false;
                         break;
                     }
@@ -275,7 +274,7 @@ public class GWCS : MonoBehaviour
                 oldCollisions.Reset();
                 if (newCollisionNotFoundInOld)
                 {
-                    //Debug.Log("Totally new collision found :" + newCollisions.Current);
+                    Debug.LogWarning("Totally new collision found :" + newCollisions.Current + " on detector ID " + allSimulatedColliders[index].CollisionID );
                     onEnterCollisions.Add(allSimulatedColliders[index].CollisionID, newCollisions.Current);
                 }
             }
@@ -328,18 +327,24 @@ public class GWCS : MonoBehaviour
         }
     }
 
+    private bool executionInProgress;
+
     private void ExecuteCollisionSystem()
     {
+        if (!executionInProgress)
+        {
+            executionInProgress = true;
         var _JOB_ClearGridCells = new JOB_ClearGridCells
         {
             gridCells = GridCells
         };
         var JH_cleargridCells = _JOB_ClearGridCells.Schedule();
 
-        
+
         //remove objects from queue
-        if (RemovalQueue.Count > 0) {
-        do
+        if (RemovalQueue.Count > 0)
+        {
+            do
             {
                 var objectToBeremoved = RemovalQueue.Dequeue();
                 AllObjects.Remove(objectToBeremoved.CollisionID);
@@ -349,39 +354,44 @@ public class GWCS : MonoBehaviour
                 }
             } while (RemovalQueue.Count > 0);
         }
-        
+
         //add objects from queue
-        
-        if (AdditionQueue.Count > 0) {
+
+        if (AdditionQueue.Count > 0)
+        {
             do
             {
                 var objecttobeadded = AdditionQueue.Dequeue();
-                AllObjects.Add(objecttobeadded.CollisionID,objecttobeadded);
+                AllObjects.Add(objecttobeadded.CollisionID, objecttobeadded);
                 if (objecttobeadded.CollisionTagsICanDetectInt > 0)
                 {
-                    AllDetectors.Add(objecttobeadded.CollisionID,objecttobeadded as CollisionDetector);
+                    AllDetectors.Add(objecttobeadded.CollisionID, objecttobeadded as CollisionDetector);
                 }
 
             } while (AdditionQueue.Count > 0);
         }
-        
-        NativeArray<BittableSimulatedCollider> AllSimulatedColliders = new NativeArray<BittableSimulatedCollider>(AllObjects.Count + 1, Allocator.TempJob);
-        NativeBitArray DetectorCheckdFlags = new NativeBitArray(AllSimulatedColliders.Length + 1,Allocator.TempJob);
-        NativeMultiHashMap<int,int> NewTotalCollisionsByIndex = new NativeMultiHashMap<int, int>(200000, Allocator.TempJob);
-        
+
+        NativeArray<BittableSimulatedCollider> AllSimulatedColliders =
+            new NativeArray<BittableSimulatedCollider>(AllObjects.Count + 1, Allocator.TempJob);
+        NativeBitArray DetectorCheckdFlags = new NativeBitArray(AllSimulatedColliders.Length + 1, Allocator.TempJob);
+        NativeMultiHashMap<int, int> NewTotalCollisionsByIndex =
+            new NativeMultiHashMap<int, int>(200000, Allocator.TempJob);
+
         int objCounter = 1;
         foreach (var _obj in AllObjects.Values)
         {
             var bc2d = _obj.BoxCollider2D;
             var size = bc2d.size;
             AllSimulatedColliders[objCounter] = new BittableSimulatedCollider(size.x, size.y,
-                (Vector2)_obj.transform.position + bc2d.offset,
+                (Vector2) _obj.transform.position + bc2d.offset,
                 _obj.CollisionID,
                 _obj.GameObjectID,
                 _obj.CollisionTagInt,
                 _obj.CollisionTagsICanDetectInt);
             objCounter++;
+            //Debug.LogWarning(AllSimulatedColliders[_obj.GameObjectID].GameObjectID + " : " + AllSimulatedColliders[_obj.GameObjectID].CollisionID );
         }
+
 
         var _JOB_fillMapJob = new JOB_FillGridCellMap
         {
@@ -399,13 +409,13 @@ public class GWCS : MonoBehaviour
             newTotalCollisionsByIndex = NewTotalCollisionsByIndex.AsParallelWriter(),
         };
 
-        var _JOB_ClearNewCollisions = new JOB_ClerNewCollisions
+        var _JOB_ClearNewCollisions = new JOB_ClearNewCollisions
         {
             newTotalCollisions = NewTotalCollisionsByIndex
         };
-        
-        NativeMultiHashMap<int,int> OnEnterCollisions = new NativeMultiHashMap<int, int>(10000, Allocator.TempJob);
-        NativeMultiHashMap<int,int> OnExitCollisions = new NativeMultiHashMap<int, int>(10000, Allocator.TempJob);
+
+        NativeMultiHashMap<int, int> OnEnterCollisions = new NativeMultiHashMap<int, int>(10000, Allocator.TempJob);
+        NativeMultiHashMap<int, int> OnExitCollisions = new NativeMultiHashMap<int, int>(10000, Allocator.TempJob);
 
         var _JOB_GetNewEnterCollisions = new JOB_resolveNewEnters
         {
@@ -434,17 +444,18 @@ public class GWCS : MonoBehaviour
             currentCollisions = CurrentCollisions.AsParallelWriter(),
             newTotalCollisionsByIndex = NewTotalCollisionsByIndex
         };
-        
 
+//        Debug.LogWarning(CurrentCollisions.Count());
         JobHandle JH_fillGridCellsMap =
             _JOB_fillMapJob.Schedule(AllSimulatedColliders.Length, 128, JH_cleargridCells);
-        
-        JobHandle JH_GetcurrentCollisions = _JOB_GetCurrentCollisions.Schedule(AllSimulatedColliders.Length, 1, JH_fillGridCellsMap);
 
-        
-        
-        
-        
+        JobHandle JH_GetcurrentCollisions =
+            _JOB_GetCurrentCollisions.Schedule(AllSimulatedColliders.Length, 1, JH_fillGridCellsMap);
+
+
+
+
+
         JobHandle JH_GetNewEnterCollisions =
             _JOB_GetNewEnterCollisions.Schedule(AllSimulatedColliders.Length, 4, JH_GetcurrentCollisions);
         JobHandle JH_GetNewExitCollisions =
@@ -453,55 +464,79 @@ public class GWCS : MonoBehaviour
         JobHandle JH_clear_CURRENT_Colissions = _JOB_clearCurrentCollisions.Schedule(JH_GetNewExitCollisions);
         JobHandle JH_UpdateCurrentCollisions =
             _JOB_updateCurrentCollisions.Schedule(AllSimulatedColliders.Length, 128, JH_clear_CURRENT_Colissions);
-        
+
         JobHandle JH_clear_NEW_Collisions = _JOB_ClearNewCollisions.Schedule(JH_UpdateCurrentCollisions);
-        
-        
+
+
         JH_cleargridCells.Complete();
         JH_fillGridCellsMap.Complete();
         JH_GetcurrentCollisions.Complete();
         JH_GetNewEnterCollisions.Complete();
         JH_GetNewExitCollisions.Complete();
+        OnEnterCollisions.GetEnumerator().Reset();
+        OnExitCollisions.GetEnumerator().Reset();
         foreach (var detector in AllDetectors)
         {
+
             var allNewEnters = OnEnterCollisions.GetValuesForKey(detector.Key);
             var allNewExits = OnExitCollisions.GetValuesForKey(detector.Key);
-            while (allNewEnters.MoveNext()) 
+            int enterCounters = 0;
+            while (allNewEnters.MoveNext())
             {
+                enterCounters++;
                 detector.Value.OnTargetEnter(allNewEnters.Current);
+                //Debug.LogWarning("ENTER : " + detector.Key + " " + allNewEnters.Current);
             }
-                
+            
+            //Debug.LogWarning("enter counter : " + enterCounters);
+
+            int exitCounters = 0;
             while (allNewExits.MoveNext())
             {
-                detector.Value.OnTargetExit(allNewExits.Current,name);
+                exitCounters++;
+                detector.Value.OnTargetExit(allNewExits.Current, name);
+                //Debug.LogWarning("EXIT : " + detector.Key + " " + allNewExits.Current);
             }
+            
+
+            //Debug.LogWarning("exit counter : " + exitCounters);
         }
+
         JH_postResolveJobHandle.Complete();
-        
+
         JH_clear_NEW_Collisions.Complete();
-        
-        
-        
-        
-        
+
+
+
+
+
         // the part where I dispose of all the things
         AllSimulatedColliders.Dispose();
         DetectorCheckdFlags.Dispose();
         NewTotalCollisionsByIndex.Dispose();
         OnExitCollisions.Dispose();
         OnEnterCollisions.Dispose();
-    }
+        int cc3 = 0;
+        foreach (var VARIABLE in CurrentCollisions)
+        {
+            cc3++;
+        }
+
+        Debug.LogWarning("Current Collisions : " + cc3);
+        executionInProgress = false;
+        }
+}
 
     public bool EnableSystem = true;
     public int frameCounter = 0;
     public int UpdateRate = 3;
     private void Update()
     {
-        if (frameCounter > UpdateRate) {
+        /*if (frameCounter > UpdateRate) {*/
         ExecuteCollisionSystem();
-        frameCounter = 0;
+        /*frameCounter = 0;
         }
-        frameCounter++;
+        frameCounter++;*/
     }
 
     private void OnDisable()

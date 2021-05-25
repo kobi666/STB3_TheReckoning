@@ -18,6 +18,14 @@ public class TowerActionSpriteProjector : MonoBehaviour
         var actionCOlor = towerAction.ActionColor;
         var newColor = new Color(actionCOlor.r,actionCOlor.g,actionCOlor.b,ActionColorAlphaRO);
     }
+    
+    public void SetSprite(TowerAction towerAction, bool onSwicth)
+    {
+        SpriteRenderer.sprite = towerAction.ActionSprite;
+        var actionCOlor = towerAction.ActionColor;
+        var newColor = new Color(actionCOlor.r,actionCOlor.g,actionCOlor.b,ActionColorAlphaRO);
+        SpriteRenderer.enabled = true;
+    }
 
     public void DisableProjector()
     {

@@ -52,6 +52,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\CursorSelection\CursorActionsController.cs" />
      <Compile Include="Assets\SplineController.cs" />
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\RefInt.cs" />
      <Compile Include="Assets\testSplineCon.cs" />
@@ -362,6 +363,7 @@
      <Compile Include="Assets\Scripts\TowerPlacementItem.cs" />
      <Compile Include="Assets\LaserTest2.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\Size.cs" />
+     <Compile Include="Assets\Scripts\CursorSelection\InputManager.cs" />
      <Compile Include="Assets\GenericUnitController.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\ProjectileAttack.cs" />
      <Compile Include="Assets\GenericTowerController.cs" />
@@ -410,8 +412,6 @@
      <Compile Include="Assets\Scripts\Towers\SlotParentManager.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider2DEdge.cs" />
      <Compile Include="Assets\Prefabs\ProjectileDynamicData.cs" />
-     <Compile Include="Assets\Scripts\CursorSelection\CursorActionsController.cs" />
-     <Compile Include="Assets\Scripts\CursorSelection\InputManager.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\BansheeGz\BGCollider\readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

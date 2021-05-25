@@ -13,8 +13,13 @@ public class PathWalker : MonoBehaviour
     [HideInInspector]
     public bool SplineAttached;
 
-    
 
+    public Vector2 FindClosestPointToCurrentPosition()
+    {
+        Vector2 pos = new Vector2();
+        
+        return pos;
+    }
 
     public GenericUnitController parentUnit;
 

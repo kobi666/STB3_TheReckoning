@@ -135,7 +135,7 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
 
     void CheckTargtableState()
     {
-        var b = EffectableUnit.IsTargetable();
+        var b = EffectableUnit?.IsTargetable();
     }
 
     public event Action onDeath;
@@ -143,11 +143,12 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
     {
         onDeath?.Invoke();
     }
-    
-    
-    
+
+
+    public DetectableCollider DetectableCollider;
     protected void Awake()
     {
+        DetectableCollider = GetComponent<DetectableCollider>();
         selfCollider = GetComponent<BoxCollider2D>();
         StateMachine = GetComponent<UnitStateMachine>();
         //tag = GroupTag;

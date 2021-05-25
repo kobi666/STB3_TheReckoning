@@ -2,9 +2,12 @@
 using UnityEngine;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine.Serialization;
 
+
+[System.Serializable]
 public class TowerSlotController : MyGameObject
 {
     public LevelManager MyLevelManager;
@@ -30,7 +33,7 @@ public class TowerSlotController : MyGameObject
         set => childTower = value;
     }
 
-    public void PlaceNewTower(TowerController newTowerPrefab) {
+    public async void PlaceNewTower(TowerController newTowerPrefab) {
         if (childTower != null) {
             oldTower = childTower;
             childTower = null;
@@ -38,6 +41,8 @@ public class TowerSlotController : MyGameObject
 
         TowerController newTower =
             Instantiate(newTowerPrefab, transform.position, Quaternion.identity, gameObject.transform);
+        
+            newTower.gameObject.SetActive(true);
         newTower.ParentSlotController = this;
         childTower = newTower;
         childTower.name = (newTowerPrefab.name + UnityEngine.Random.Range(10000, 99999).ToString());
@@ -46,6 +51,7 @@ public class TowerSlotController : MyGameObject
             Destroy(oldTower.gameObject);
         }
         SR.sprite = null;
+        
     }
 
     public void CalculateAdjecentTowers()

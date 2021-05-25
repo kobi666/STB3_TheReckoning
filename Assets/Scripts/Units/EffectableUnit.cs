@@ -28,8 +28,7 @@
     public bool ExternalTargetableLock { get; set; }
     public override bool IsTargetable()
     {
-        if (gameObject.activeSelf) {
-            if (ExternalTargetableLock == false)
+        if (ExternalTargetableLock == false)
             {
                 if (StateMachine.CurrentState.TargetableState)
                 {
@@ -41,7 +40,7 @@
                     return true;
                 }
             }
-        }
+        
 
         if (GameObjectPool.Instance.Targetables.Contains(MyGameObjectID))
         {

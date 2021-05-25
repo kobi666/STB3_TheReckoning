@@ -43,7 +43,11 @@ public abstract class ObjectState<T> where T: IHasStateMachine
 
     public bool StateEnterConditions()
     {
+        if (RunningStateConditions()) {
         return stateEnterConditions?.Invoke() ?? true;
+        }
+
+        return false;
     }
 
     public bool RunningStateConditions()
