@@ -619,6 +619,11 @@ PrefabInstance:
       objectReference: {fileID: 4884602083011168778}
     - target: {fileID: 6871467969345597117, guid: ea74d1b1b162f434e853439ab362fc6d,
         type: 3}
+      propertyPath: DebugCollider
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6871467969345597117, guid: ea74d1b1b162f434e853439ab362fc6d,
+        type: 3}
       propertyPath: ParentMyGameObject
       value: 
       objectReference: {fileID: 2601012865893847596}

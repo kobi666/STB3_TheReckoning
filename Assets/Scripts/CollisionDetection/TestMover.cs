@@ -171,8 +171,9 @@ public struct BittableSimulatedCollider
     public int GameObjectID;
     public int DetectableType;
     public int TypesICanDetect;
+    public bool DebugCollider;
 
-    public BittableSimulatedCollider(float _width, float _height, Vector2 _position, int collisionID, int gameObjectID, int detectableType, int typesICanDetect)
+    public BittableSimulatedCollider(float _width, float _height, Vector2 _position, int collisionID, int gameObjectID, int detectableType, int typesICanDetect, bool debugCollider)
     {
         position = _position;
         width = _width;
@@ -181,6 +182,7 @@ public struct BittableSimulatedCollider
         DetectableType = detectableType;
         TypesICanDetect = typesICanDetect;
         GameObjectID = gameObjectID;
+        DebugCollider = debugCollider;
     }
 }
 

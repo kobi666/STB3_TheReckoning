@@ -459,7 +459,6 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         onAttackCease += projectileExitPoint.StopAsyncRotation;
         }
         InitWeapon();
-        
     }
 
     public override List<Effect> GetEffectList()

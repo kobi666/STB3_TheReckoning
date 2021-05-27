@@ -170,7 +170,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
     public void InitRangeDetectorEvents() {
         Detector.onNewTargetEnter += OnTryToAddTarget;
         Detector.onTargetExit += OnTargetRemoveFromCollision;
-        //Detector.ResetCollisions();
+        Detector.ResetCollisions();
     }
 
     void DisableRangedetectorEvents()

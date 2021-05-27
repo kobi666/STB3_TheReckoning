@@ -259,28 +259,40 @@ public class GWCS : MonoBehaviour
 
         public void Execute(int index)
         {
-            if (index == 0)
+            /*if (index == 0)
             {
                 return;
-            }
+            }*/
             var newCollisions = newTotalCollisionsByIndex.GetValuesForKey(allSimulatedColliders[index].CollisionID);
             var oldCollisions = currentCollisions.GetValuesForKey(allSimulatedColliders[index].CollisionID);
-
+            bool dbg = allSimulatedColliders[index].DebugCollider;
+            /*if (dbg)
+            {
+                Debug.LogWarning("Debug Collider");
+                Debug.LogWarning(allSimulatedColliders[index].CollisionID + " : " + newCollisions.Current + " : " + oldCollisions.Current);
+            }*/
             while (newCollisions.MoveNext())
             {
                 bool newCollisionNotFoundInOld = true;
                 while (oldCollisions.MoveNext())
                 {
+                    
                     if (oldCollisions.Current == newCollisions.Current)
                     {
                         newCollisionNotFoundInOld = false;
+                        /*if (dbg)
+                        {
+                            Debug.LogWarning("Collider ID : " + allSimulatedColliders[index].CollisionID 
+                                            + ", old collision : " + oldCollisions.Current  + ", new collision : " + newCollisions.Current + 
+                                            " , new collision Found in old");
+                        }*/
                         break;
                     }
                 }
                 oldCollisions.Reset();
                 if (newCollisionNotFoundInOld)
                 {
-                    Debug.LogWarning("Totally new collision found :" + newCollisions.Current + " on detector ID " + allSimulatedColliders[index].CollisionID );
+                    //Debug.LogWarning("Totally new collision found :" + newCollisions.Current + " on detector ID " + allSimulatedColliders[index].CollisionID );
                     onEnterCollisions.Add(allSimulatedColliders[index].CollisionID, newCollisions.Current);
                 }
             }
@@ -326,7 +338,7 @@ public class GWCS : MonoBehaviour
                 newCollisions.Reset();
                 if (!oldCollisionFound)
                 {
-                    /*Debug.Log("Found new Exit : " + oldCollisions.Current);*/
+                  //  Debug.LogWarning("Found new Exit : " + oldCollisions.Current);
                     onExitCollisions.Add(allSimulatedColliders[index].CollisionID, oldCollisions.Current);
                 }
             }
@@ -347,14 +359,20 @@ public class GWCS : MonoBehaviour
         var JH_cleargridCells = _JOB_ClearGridCells.Schedule();
 
         
-        /*if (!ClearCollisionsQueue.Any())
+        if (ClearCollisionsQueue.Any())
         {
             do
             {
                 int collisionIDToClearCollisions = ClearCollisionsQueue.Dequeue();
+                //Debug.LogWarning("Clear collisions for " + collisionIDToClearCollisions + "reachd" );
+                var allCollisions = CurrentCollisions.GetValuesForKey(collisionIDToClearCollisions);
+                /*while (allCollisions.MoveNext())
+                {
+                    Debug.LogWarning(collisionIDToClearCollisions + " : " + allCollisions.Current);
+                }*/
                 CurrentCollisions.Remove(collisionIDToClearCollisions);
             } while (ClearCollisionsQueue.Any());
-        }*/
+        }
         
         //remove objects from queue
         if (RemovalQueue.Count > 0)
@@ -402,7 +420,8 @@ public class GWCS : MonoBehaviour
                 _obj.CollisionID,
                 _obj.GameObjectID,
                 _obj.CollisionTagInt,
-                _obj.CollisionTagsICanDetectInt);
+                _obj.CollisionTagsICanDetectInt, _obj.DebugCollider);
+            
             objCounter++;
             //Debug.LogWarning(AllSimulatedColliders[_obj.GameObjectID].GameObjectID + " : " + AllSimulatedColliders[_obj.GameObjectID].CollisionID );
         }
@@ -460,7 +479,7 @@ public class GWCS : MonoBehaviour
             newTotalCollisionsByIndex = NewTotalCollisionsByIndex
         };
 
-//        Debug.LogWarning(CurrentCollisions.Count());
+       //Debug.LogWarning(CurrentCollisions.Count());
         JobHandle JH_fillGridCellsMap =
             _JOB_fillMapJob.Schedule(AllSimulatedColliders.Length, 128, JH_cleargridCells);
 
@@ -492,7 +511,10 @@ public class GWCS : MonoBehaviour
         OnExitCollisions.GetEnumerator().Reset();
         foreach (var detector in AllDetectors)
         {
-
+            /*if (detector.Value.DebugCollision)
+            {
+                Debug.LogWarning("Found new enter and invoking event");
+            }*/
             var allNewEnters = OnEnterCollisions.GetValuesForKey(detector.Key);
             var allNewExits = OnExitCollisions.GetValuesForKey(detector.Key);
             int enterCounters = 0;
