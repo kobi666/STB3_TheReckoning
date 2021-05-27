@@ -154,3 +154,21 @@ public class PlaceNewTowerFromPrefab : TowerAction
    }
 }
 
+public class NullAction : TowerAction
+{
+   public override void InitActionSpecific()
+   {
+      
+   }
+
+   public override void Action()
+   {
+      
+   }
+
+   public override bool ExecutionConditions()
+   {
+      return false;
+   }
+}
+

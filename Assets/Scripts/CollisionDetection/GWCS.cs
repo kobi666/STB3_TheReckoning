@@ -4,6 +4,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using MyBox;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Unity;
@@ -24,6 +25,8 @@ public class GWCS : MonoBehaviour
     [ShowInInspector] private Queue<CollidingObject> AdditionQueue = new Queue<CollidingObject>();
 
     [ShowInInspector] private Queue<CollidingObject> RemovalQueue = new Queue<CollidingObject>();
+    
+    public Queue<int> ClearCollisionsQueue = new Queue<int>();
 
 
     public bool DebugRegister;
@@ -105,7 +108,7 @@ public class GWCS : MonoBehaviour
         [NativeDisableParallelForRestriction] 
         public NativeBitArray detectorCheckedFlags;
         [NativeDisableParallelForRestriction]
-        public NativeMultiHashMap<int, int>.ParallelWriter newTotalCollisionsByIndex;
+        public NativeMultiHashMap<int, int>.ParallelWriter newTotalCollisionsByCollisionID;
 
         
 
@@ -116,6 +119,8 @@ public class GWCS : MonoBehaviour
             int2 _int2 = new int2((int)math.floor(position.x / quadrantCellSize),(int)(math.floor(position.y / quadrantCellSize)));
             return _int2;
         }
+        
+        
         
         private FixedList64<int2> GetCellKeysforsimulatedCollider(BittableSimulatedCollider bittableSimulatedCollider)
         {
@@ -200,7 +205,8 @@ public class GWCS : MonoBehaviour
                             {
                                 if (CheckOverLapBetweenTwoColliders(index, otherColliderIndex))
                                 {
-                                    newTotalCollisionsByIndex.Add(index,allSimulatedColliders[otherColliderIndex].CollisionID);
+                                  //  Debug.LogWarning("found collision on " + allSimulatedColliders[index].CollisionID);
+                                    newTotalCollisionsByCollisionID.Add(allSimulatedColliders[index].CollisionID,allSimulatedColliders[otherColliderIndex].CollisionID);
                                 }
                             }
                         }
@@ -234,7 +240,7 @@ public class GWCS : MonoBehaviour
 
         public void Execute(int index)
         {
-            var newCollision = newTotalCollisionsByIndex.GetValuesForKey(index);
+            var newCollision = newTotalCollisionsByIndex.GetValuesForKey(allSimulatedColliders[index].CollisionID);
             while (newCollision.MoveNext()) {
             currentCollisions.Add(allSimulatedColliders[index].CollisionID, newCollision.Current);
             }
@@ -257,8 +263,8 @@ public class GWCS : MonoBehaviour
             {
                 return;
             }
-            var newCollisions = newTotalCollisionsByIndex.GetValuesForKey(index);
-            var oldCollisions = currentCollisions.GetValuesForKey(index);
+            var newCollisions = newTotalCollisionsByIndex.GetValuesForKey(allSimulatedColliders[index].CollisionID);
+            var oldCollisions = currentCollisions.GetValuesForKey(allSimulatedColliders[index].CollisionID);
 
             while (newCollisions.MoveNext())
             {
@@ -298,8 +304,8 @@ public class GWCS : MonoBehaviour
                 return;
             }
 
-            var newCollisions = newTotalCollisionsByIndex.GetValuesForKey(index);
-            var oldCollisions = currentCollisions.GetValuesForKey(index);
+            var newCollisions = newTotalCollisionsByIndex.GetValuesForKey(allSimulatedColliders[index].CollisionID);
+            var oldCollisions = currentCollisions.GetValuesForKey(allSimulatedColliders[index].CollisionID);
 
             while (oldCollisions.MoveNext())
             {
@@ -340,7 +346,16 @@ public class GWCS : MonoBehaviour
         };
         var JH_cleargridCells = _JOB_ClearGridCells.Schedule();
 
-
+        
+        /*if (!ClearCollisionsQueue.Any())
+        {
+            do
+            {
+                int collisionIDToClearCollisions = ClearCollisionsQueue.Dequeue();
+                CurrentCollisions.Remove(collisionIDToClearCollisions);
+            } while (ClearCollisionsQueue.Any());
+        }*/
+        
         //remove objects from queue
         if (RemovalQueue.Count > 0)
         {
@@ -406,7 +421,7 @@ public class GWCS : MonoBehaviour
             detectorCheckedFlags = DetectorCheckdFlags,
             gridCells = GridCells,
             quadrentCellSize = QuadrentCellSize,
-            newTotalCollisionsByIndex = NewTotalCollisionsByIndex.AsParallelWriter(),
+            newTotalCollisionsByCollisionID = NewTotalCollisionsByIndex.AsParallelWriter(),
         };
 
         var _JOB_ClearNewCollisions = new JOB_ClearNewCollisions
@@ -516,13 +531,14 @@ public class GWCS : MonoBehaviour
         NewTotalCollisionsByIndex.Dispose();
         OnExitCollisions.Dispose();
         OnEnterCollisions.Dispose();
+        //ClearCollisionFlags.Dispose();
         int cc3 = 0;
         foreach (var VARIABLE in CurrentCollisions)
         {
             cc3++;
         }
 
-        Debug.LogWarning("Current Collisions : " + cc3);
+       // Debug.LogWarning("Current Collisions : " + cc3);
         executionInProgress = false;
         }
 }

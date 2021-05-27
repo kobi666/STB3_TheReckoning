@@ -87,6 +87,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         }
         WeaponAttack.SetInitialFinalPointPosition();
         WeaponInitialized = true;
+        //TargetBank.Detector.ResetCollisions();
     }
     
     private static IEnumerable<Type> GetAOEAttacks()

@@ -18,7 +18,7 @@ public class SelectorTest2 : MonoBehaviour
     public float MovementDuration = 0.15f;
 
     public CursorActionsController CursorActionsController;
-
+    
 
     public float ActionImageDistance = 1f;
     public event Action<TowerSlotController> onTowerSelect;
@@ -256,15 +256,16 @@ public class SelectorTest2 : MonoBehaviour
                 }
                 if (_towerSlotcontroller != null) {
                 //transform.position = towerSlotGO.transform.position;
-                OnTowerSelect(_towerSlotcontroller);
                 
-                StartCoroutine(SelectorUtils.SmoothMove(transform,_towerSlotcontroller.transform.position,0.3f,
-                    delegate { MoveInProgress = true; },  SetMoveInProgress));
+                
+                /*StartCoroutine(SelectorUtils.SmoothMove(transform,_towerSlotcontroller.transform.position,0.3f,
+                    delegate { MoveInProgress = true; },  SetMoveInProgress));*/
 
                 shaker.StopAllCoroutines();
                 shaker.ShakeInProgress = false;
                 MoveToNewTargetAsync(_towerSlotcontroller.transform.position);
                 ShowIndicators();
+                OnTowerSelect(_towerSlotcontroller);
                 
                 //Debug.LogWarning("On Move : " + TowerObjectController.TowerActions.ButtonSouth.ActionDescription);
 

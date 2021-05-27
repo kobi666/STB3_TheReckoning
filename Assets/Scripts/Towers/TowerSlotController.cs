@@ -33,7 +33,7 @@ public class TowerSlotController : MyGameObject
         set => childTower = value;
     }
 
-    public async void PlaceNewTower(TowerController newTowerPrefab) {
+    public /*async*/ void PlaceNewTower(TowerController newTowerPrefab) {
         if (childTower != null) {
             oldTower = childTower;
             childTower = null;
@@ -51,7 +51,6 @@ public class TowerSlotController : MyGameObject
             Destroy(oldTower.gameObject);
         }
         SR.sprite = null;
-        
     }
 
     public void CalculateAdjecentTowers()

@@ -28,8 +28,9 @@ public abstract class CollidingObject : MonoBehaviour
             UnSubscribeFromGWCS();
         }
     }
-
-    private bool subscribedToGWCS = false;
+    
+    [ShowInInspector]
+    public bool subscribedToGWCS = false;
     public void UnSubscribeFromGWCS()
     {
         if (subscribedToGWCS)

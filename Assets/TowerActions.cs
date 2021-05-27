@@ -7,21 +7,36 @@ using UnityEngine;
 [System.Serializable]
 public class TowerActions
 {
-    public Dictionary<ButtonDirectionsNames, TowerAction> Actions =
+
+    public Dictionary<ButtonDirectionsNames, TowerAction> Actions
+    {
+        get
+        {
+            if (!actions.Any())
+            {
+                initActions(parentTowerSlotController);
+            }
+
+            return actions;
+        }
+    }
+    
+    
+    public Dictionary<ButtonDirectionsNames, TowerAction> actions =
         new Dictionary<ButtonDirectionsNames, TowerAction>();
 
 
      private TowerSlotController parentTowerSlotController;
     [TypeFilter("GetTowerActions")][SerializeReference]
-    public TowerAction North;
+    public TowerAction North = new NullAction();
     [TypeFilter("GetTowerActions")][SerializeReference]
-    public TowerAction East;
+    public TowerAction East = new NullAction();
     [TypeFilter("GetTowerActions")][SerializeReference]
-    public TowerAction South;
+    public TowerAction South = new NullAction();
     [TypeFilter("GetTowerActions")][SerializeReference]
-    public TowerAction West;
+    public TowerAction West = new NullAction();
 
-    public TowerAction[] actions
+    public TowerAction[] actionsByButtonName
     {
         get
         {
@@ -57,17 +72,22 @@ public class TowerActions
         West.ExecAction();
     }
 
+
+    private bool actionInitialized = false;
     public void initActions(TowerSlotController tsc)
     {
-        Actions.Add(ButtonDirectionsNames.North,North);
-        Actions.Add(ButtonDirectionsNames.East,East);
-        Actions.Add(ButtonDirectionsNames.South,South);
-        Actions.Add(ButtonDirectionsNames.West,West);
+        if (actionInitialized == false) {
+        actions.Add(ButtonDirectionsNames.North,North);
+        actions.Add(ButtonDirectionsNames.East,East);
+        actions.Add(ButtonDirectionsNames.South,South);
+        actions.Add(ButtonDirectionsNames.West,West);
         parentTowerSlotController = tsc;
         North?.InitAction(tsc);
         East?.InitAction(tsc);
         South?.InitAction(tsc);
         West?.InitAction(tsc);
+        actionInitialized = true;
+        }
     }
     
     private static IEnumerable<Type> GetTowerActions()

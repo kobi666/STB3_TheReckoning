@@ -102,15 +102,53 @@ MonoBehaviour:
     North:
       id: 0
     East:
-      id: 0
+      id: 1
     South:
-      id: 0
+      id: 2
     West:
-      id: 0
+      id: 3
   references:
     version: 1
     00000000:
-      type: {class: , ns: , asm: }
+      type: {class: NullAction, ns: , asm: Assembly-CSharp}
+      data:
+        ActionColor: {r: 0, g: 0, b: 0, a: 0}
+        actionSprite: {fileID: 0}
+        ParentSlotController: {fileID: 0}
+        ActionCost: 0
+        actionConter: 0
+        MaxActions: 1
+        ActionCostIncrement: 0
+    00000001:
+      type: {class: NullAction, ns: , asm: Assembly-CSharp}
+      data:
+        ActionColor: {r: 0, g: 0, b: 0, a: 0}
+        actionSprite: {fileID: 0}
+        ParentSlotController: {fileID: 0}
+        ActionCost: 0
+        actionConter: 0
+        MaxActions: 1
+        ActionCostIncrement: 0
+    00000002:
+      type: {class: NullAction, ns: , asm: Assembly-CSharp}
+      data:
+        ActionColor: {r: 0, g: 0, b: 0, a: 0}
+        actionSprite: {fileID: 0}
+        ParentSlotController: {fileID: 0}
+        ActionCost: 0
+        actionConter: 0
+        MaxActions: 1
+        ActionCostIncrement: 0
+    00000003:
+      type: {class: NullAction, ns: , asm: Assembly-CSharp}
+      data:
+        ActionColor: {r: 0, g: 0, b: 0, a: 0}
+        actionSprite: {fileID: 0}
+        ParentSlotController: {fileID: 0}
+        ActionCost: 0
+        actionConter: 0
+        MaxActions: 1
+        ActionCostIncrement: 0
 --- !u!114 &7663113929734669332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,7 +710,7 @@ PrefabInstance:
     - target: {fileID: 8109291047759205712, guid: ea74d1b1b162f434e853439ab362fc6d,
         type: 3}
       propertyPath: RotationSpeed
-      value: 1
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea74d1b1b162f434e853439ab362fc6d, type: 3}

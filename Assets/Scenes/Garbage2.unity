@@ -9534,7 +9534,7 @@ MonoBehaviour:
     MeleeEffects:
     - id: 0
     UnitMetaData:
-      HP: 3000
+      HP: 10000
       MovementSpeed: 0.5
       AttackSpeed: 1
       DiscoveryRadius: 1
@@ -9575,11 +9575,11 @@ MonoBehaviour:
         - BatchStructure:
             id: 2
           WaveDelayInSpawnTimeMultiplier: 0
-          AmountOfBatches: 10
+          AmountOfBatches: 0
         SpawningWaveInProgress: 0
         formationRowIndex: 0
     00000002:
-      type: {class: ArrowShape, ns: UnitSpawning, asm: Assembly-CSharp}
+      type: {class: SingleUnit, ns: UnitSpawning, asm: Assembly-CSharp}
 --- !u!114 &532368330
 MonoBehaviour:
   m_ObjectHideFlags: 0

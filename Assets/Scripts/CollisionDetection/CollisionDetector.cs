@@ -21,6 +21,14 @@ public class CollisionDetector : CollidingObject
         }
         
     }
+
+    public void ResetCollisions()
+    {
+        if (subscribedToGWCS) {
+        GWCS.instance.ClearCollisionsQueue.Enqueue(CollisionID);
+        UniqueTargets.Clear();
+        }
+    }
     
     
     
