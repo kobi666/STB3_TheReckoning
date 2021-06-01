@@ -3,10 +3,11 @@ using UnityEngine;
 using System;
 using Sirenix.OdinInspector;
 
+[DefaultExecutionOrder(-10)]
 public class LevelManager : MonoBehaviour
 {
     [ShowInInspector]
-    public Dictionary<string,(Vector2,TowerSlotController)> LevelTowerSlots = new Dictionary<string, (Vector2,TowerSlotController)>();
+    public Dictionary<int,(Vector2,TowerSlotController)> LevelTowerSlots = new Dictionary<int, (Vector2,TowerSlotController)>();
 
     [Required] public resourcesManager ResourcesManager; 
     
@@ -29,21 +30,21 @@ public class LevelManager : MonoBehaviour
     {
         if (addAndUpdateOrRemove)
         {
-            if (!LevelTowerSlots.ContainsKey(tsc.name))
+            if (!LevelTowerSlots.ContainsKey(tsc.MyGameObjectID))
             {
-                LevelTowerSlots.Add(tsc.name,(tsc.transform.position,tsc));
+                LevelTowerSlots.Add(tsc.MyGameObjectID,(tsc.transform.position,tsc));
                 onTowerSlotReclaculate += tsc.OnTowerPositionCalculation;
             }
             else
             {
-                LevelTowerSlots[tsc.name] = (tsc.transform.position, tsc);
+                LevelTowerSlots[tsc.MyGameObjectID] = (tsc.transform.position, tsc);
             }
         }
         else
         {
-            if (LevelTowerSlots.ContainsKey(tsc.name))
+            if (LevelTowerSlots.ContainsKey(tsc.MyGameObjectID))
             {
-                LevelTowerSlots.Remove(tsc.name);
+                LevelTowerSlots.Remove(tsc.MyGameObjectID);
                 onTowerSlotReclaculate -= tsc.OnTowerPositionCalculation;
             }
         }

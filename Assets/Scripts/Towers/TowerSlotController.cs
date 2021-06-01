@@ -14,6 +14,9 @@ public class TowerSlotController : MyGameObject
     [Required]
     public TowerController childTower;
     
+    [Required]
+    public DirectionalDiscovery DirectionalDiscoveryController;
+    
     public TowerActions TowerActions
     {
         get => childTower?.TowerActionManager.Actions ?? null;
@@ -22,8 +25,26 @@ public class TowerSlotController : MyGameObject
     SpriteRenderer SR;
     [ShowInInspector]
     public Dictionary<Vector2, TowerPositionData> TowerSlotsByDirections8 = new Dictionary<Vector2, TowerPositionData>();
+    
+    public Dictionary<Vector2,TowerSlotController> FoundTowerSlots = new Dictionary<Vector2, TowerSlotController>(); 
     // Start is called before the first frame update
 
+
+    public Dictionary<Vector2, TowerPositionData> FindTowerSlotsByDirections8()
+    {
+        Dictionary<Vector2, TowerPositionData> dict = new Dictionary<Vector2, TowerPositionData>();
+        DirectionalDiscoveryController.GetDirectionalDiscoveriesOnObject();
+        var VectorDirectionsClockwise = TowerUtils.DirectionsClockwise4;
+        for (int i = 0; i < DirectionalDiscoveryController.DirectionalDiscoveriesFound.Length; i++)
+        {
+            int foundTowerSlotID = DirectionalDiscoveryController.DirectionalDiscoveriesFound[i].Item2.MyGameObjectID;
+            
+        }
+
+        return dict;
+    }
+    
+    
     private TowerController oldTower;
     
 
@@ -55,7 +76,15 @@ public class TowerSlotController : MyGameObject
 
     public void CalculateAdjecentTowers()
     {
-        TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoopOver(gameObject, MyLevelManager.LevelTowerSlots.Values.ToArray(), TowerUtils.Cardinal8,20);
+        DirectionalDiscoveryController.GetDirectionalDiscoveriesOnObject();
+        var DirectionalVectors4 = TowerUtils.DirectionsClockwise4;
+        for (int i = 0; i < DirectionalDiscoveryController.DirectionalDiscoveriesFound.Length; i++)
+        {
+            var foundDirectionalDiscovery = DirectionalDiscoveryController.DirectionalDiscoveriesFound[i].Item2;
+            TowerSlotController foundTowerSlot = foundDirectionalDiscovery != null ? MyLevelManager.LevelTowerSlots[foundDirectionalDiscovery._MyGameObjectID].Item2 : null;
+            FoundTowerSlots.Add(DirectionalVectors4[i],foundTowerSlot);
+        }
+        //TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoopOver(gameObject, MyLevelManager.LevelTowerSlots.Values.ToArray(), TowerUtils.Cardinal8,20);
     }
 
     
@@ -68,7 +97,7 @@ public class TowerSlotController : MyGameObject
 
     protected void Awake()
     {
-        
+        MyLevelManager.LevelTowerSlots.Add(MyGameObjectID,(transform.position,this));
         onTowerPositionCalculation += CalculateAdjecentTowers;
     }
     
@@ -77,7 +106,6 @@ public class TowerSlotController : MyGameObject
 
     protected void Start()
     {
-        
         MyLevelManager = GameManager.Instance.CurrentLevelManager;
         MyLevelManager.OnTowerSlotUpdate(this,true);
         SR = GetComponent<SpriteRenderer>();

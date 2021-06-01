@@ -112,8 +112,8 @@ public class SelectorTest2 : MonoBehaviour
     public TowerSlotActions TowerActions;
     
     [ShowInInspector]
-    public Dictionary<Vector2, TowerPositionData> CardinalTowerSlots {
-        get => SelectedTowerSlot?.TowerSlotsByDirections8 ?? null;
+    public Dictionary<Vector2, TowerSlotController> CardinalTowerSlots {
+        get => SelectedTowerSlot?.FoundTowerSlots ?? null;
     }
     
     
@@ -171,12 +171,12 @@ public class SelectorTest2 : MonoBehaviour
 
     public void ShowIndicators()
     {
-        foreach (var towerSlot in SelectedTowerSlot.TowerSlotsByDirections8)
+        foreach (var towerSlot in SelectedTowerSlot.FoundTowerSlots)
         {
-            if (towerSlot.Value.TowerSlotGo != null)
+            if (towerSlot.Value != null)
             {
                 if (indicatorsDict.ContainsKey(towerSlot.Key)) {
-                indicatorsDict[towerSlot.Key].MoveToNewTarget(towerSlot.Value.TowerPosition);
+                indicatorsDict[towerSlot.Key].MoveToNewTarget(towerSlot.Value.transform.position);
                 indicatorsDict[towerSlot.Key].SR.enabled = true;
                 }
             }
@@ -252,7 +252,7 @@ public class SelectorTest2 : MonoBehaviour
                 
                 TowerSlotController _towerSlotcontroller = null;
                 if (CardinalTowerSlots.ContainsKey(cardinalDirectionV2)) {
-                    _towerSlotcontroller = CardinalTowerSlots[cardinalDirectionV2].TowerSlotController;
+                    _towerSlotcontroller = CardinalTowerSlots[cardinalDirectionV2];
                 }
                 if (_towerSlotcontroller != null) {
                 //transform.position = towerSlotGO.transform.position;

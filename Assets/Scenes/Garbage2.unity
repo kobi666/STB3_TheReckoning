@@ -4846,6 +4846,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewTowerSlot (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078452, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078453, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: MyLevelManager
+      value: 
+      objectReference: {fileID: 1400262299}
+    - target: {fileID: 4024619000755164736, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: DirectionalDiscoveriesContainer
+      value: 
+      objectReference: {fileID: 1400262302}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b72171a1bbdd4d478fd22a51f90e734, type: 3}
 --- !u!1001 &373188141
@@ -11064,6 +11079,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewTowerSlot (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078452, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078453, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: MyLevelManager
+      value: 
+      objectReference: {fileID: 1400262299}
+    - target: {fileID: 4024619000755164736, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: DirectionalDiscoveriesContainer
+      value: 
+      objectReference: {fileID: 1400262302}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b72171a1bbdd4d478fd22a51f90e734, type: 3}
 --- !u!1001 &662064472
@@ -12728,6 +12758,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewTowerSlot (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078452, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078453, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: MyLevelManager
+      value: 
+      objectReference: {fileID: 1400262299}
+    - target: {fileID: 4024619000755164736, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: DirectionalDiscoveriesContainer
+      value: 
+      objectReference: {fileID: 1400262302}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b72171a1bbdd4d478fd22a51f90e734, type: 3}
 --- !u!1 &703686009
@@ -17043,7 +17088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &980663670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18128,6 +18173,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewTowerSlot (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078452, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024619000755164736, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: DirectionalDiscoveriesContainer
+      value: 
+      objectReference: {fileID: 1400262302}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b72171a1bbdd4d478fd22a51f90e734, type: 3}
 --- !u!1 &1038511127
@@ -18659,6 +18714,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewTowerSlot (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078453, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: MyLevelManager
+      value: 
+      objectReference: {fileID: 1400262299}
+    - target: {fileID: 4024619000755164736, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: DirectionalDiscoveriesContainer
+      value: 
+      objectReference: {fileID: 1400262302}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b72171a1bbdd4d478fd22a51f90e734, type: 3}
 --- !u!114 &1069989023 stripped
@@ -18851,6 +18916,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewTowerSlot (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078452, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078453, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: MyLevelManager
+      value: 
+      objectReference: {fileID: 1400262299}
+    - target: {fileID: 4024619000755164736, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: DirectionalDiscoveriesContainer
+      value: 
+      objectReference: {fileID: 1400262302}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b72171a1bbdd4d478fd22a51f90e734, type: 3}
 --- !u!1 &1091026888
@@ -20473,6 +20553,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewTowerSlot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078452, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078453, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: MyLevelManager
+      value: 
+      objectReference: {fileID: 1400262299}
+    - target: {fileID: 4024619000755164736, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: DirectionalDiscoveriesContainer
+      value: 
+      objectReference: {fileID: 1400262302}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b72171a1bbdd4d478fd22a51f90e734, type: 3}
 --- !u!1 &1211190973
@@ -21238,6 +21333,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewTowerSlot (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078453, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: MyLevelManager
+      value: 
+      objectReference: {fileID: 1400262299}
+    - target: {fileID: 4024618999397562379, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024618999496702243, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024619000755164736, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: DirectionalDiscoveriesContainer
+      value: 
+      objectReference: {fileID: 1400262302}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b72171a1bbdd4d478fd22a51f90e734, type: 3}
 --- !u!1001 &1323660047
@@ -21930,6 +22045,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewTowerSlot (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078452, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078453, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: MyLevelManager
+      value: 
+      objectReference: {fileID: 1400262299}
+    - target: {fileID: 4024619000755164736, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: DirectionalDiscoveriesContainer
+      value: 
+      objectReference: {fileID: 1400262302}
+    - target: {fileID: 4024619000755164749, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b72171a1bbdd4d478fd22a51f90e734, type: 3}
 --- !u!1 &1366548814
@@ -22318,6 +22453,7 @@ GameObject:
   - component: {fileID: 1400262300}
   - component: {fileID: 1400262299}
   - component: {fileID: 1400262301}
+  - component: {fileID: 1400262302}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -22365,6 +22501,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoneyMultiplier: 1
+--- !u!114 &1400262302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400262298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9706f784695dc234db5ad177c6639da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1400483104
 GameObject:
   m_ObjectHideFlags: 0
@@ -24271,6 +24419,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewTowerSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078453, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: MyLevelManager
+      value: 
+      objectReference: {fileID: 1400262299}
+    - target: {fileID: 4024619000755164736, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: DirectionalDiscoveriesContainer
+      value: 
+      objectReference: {fileID: 1400262302}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b72171a1bbdd4d478fd22a51f90e734, type: 3}
 --- !u!1001 &1442573240
@@ -25010,6 +25168,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewTowerSlot (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078452, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078453, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: MyLevelManager
+      value: 
+      objectReference: {fileID: 1400262299}
+    - target: {fileID: 4024619000755164736, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: DirectionalDiscoveriesContainer
+      value: 
+      objectReference: {fileID: 1400262302}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b72171a1bbdd4d478fd22a51f90e734, type: 3}
 --- !u!1 &1480453641
@@ -26091,6 +26264,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewTowerSlot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078453, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: MyLevelManager
+      value: 
+      objectReference: {fileID: 1400262299}
+    - target: {fileID: 4024618999371568321, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: _DEBUG
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024619000755164736, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: DirectionalDiscoveriesContainer
+      value: 
+      objectReference: {fileID: 1400262302}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b72171a1bbdd4d478fd22a51f90e734, type: 3}
 --- !u!1 &1507831718
@@ -27875,6 +28063,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewTowerSlot (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078452, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078453, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: MyLevelManager
+      value: 
+      objectReference: {fileID: 1400262299}
+    - target: {fileID: 4024619000755164736, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: DirectionalDiscoveriesContainer
+      value: 
+      objectReference: {fileID: 1400262302}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b72171a1bbdd4d478fd22a51f90e734, type: 3}
 --- !u!1 &1566595972
@@ -32532,6 +32735,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewTowerSlot (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078452, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078453, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: MyLevelManager
+      value: 
+      objectReference: {fileID: 1400262299}
+    - target: {fileID: 4024619000755164736, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: DirectionalDiscoveriesContainer
+      value: 
+      objectReference: {fileID: 1400262302}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b72171a1bbdd4d478fd22a51f90e734, type: 3}
 --- !u!1 &1876226809
@@ -33009,6 +33227,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewTowerSlot (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078453, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: MyLevelManager
+      value: 
+      objectReference: {fileID: 1400262299}
+    - target: {fileID: 4024619000755164736, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: DirectionalDiscoveriesContainer
+      value: 
+      objectReference: {fileID: 1400262302}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b72171a1bbdd4d478fd22a51f90e734, type: 3}
 --- !u!1001 &1950213394
@@ -38216,10 +38444,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentPath: {fileID: 0}
   SplineType: 0
-  BgCurve: {fileID: 2097825615}
-  BgCcMath: {fileID: 2097825614}
-  EdgeCollider2D: {fileID: 2097825611}
-  SplineDetector: {fileID: 2097825608}
+  BgCurve: {fileID: 0}
+  BgCcMath: {fileID: 0}
+  EdgeCollider2D: {fileID: 0}
+  SplineDetector: {fileID: 0}
 --- !u!114 &2097825610
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -39137,6 +39365,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewTowerSlot (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 2835729042853078452, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024619000755164736, guid: 8b72171a1bbdd4d478fd22a51f90e734,
+        type: 3}
+      propertyPath: DirectionalDiscoveriesContainer
+      value: 
+      objectReference: {fileID: 1400262302}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b72171a1bbdd4d478fd22a51f90e734, type: 3}
 --- !u!1 &2124352159
