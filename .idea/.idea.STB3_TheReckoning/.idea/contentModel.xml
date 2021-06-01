@@ -221,6 +221,8 @@
         <e p="CursorController.cs" t="Include" />
         <e p="CursorMovementController.cs" t="Include" />
         <e p="CursorObject.cs" t="Include" />
+        <e p="DirectionalDiscovery.cs" t="Include" />
+        <e p="DirectionalDiscoveryNode.cs" t="Include" />
         <e p="DistanceTester.cs" t="Include" />
         <e p="Editor" t="Include">
           <e p="ConditionalFieldAttribute.cs" t="Include" />
@@ -246,6 +248,7 @@
         <e p="GenericTowerController.cs" t="Include" />
         <e p="GenericUnitController.cs" t="Include" />
         <e p="GenericUnitSpawner.cs" t="Include" />
+        <e p="GuyTest.cs" t="Include" />
         <e p="instantiateTest.cs" t="Include" />
         <e p="instantiateTestspawner.cs" t="Include" />
         <e p="LaserTest.cs" t="Include" />
@@ -1085,6 +1088,7 @@
         <e p="ProjectileAttacks.cs" t="Include" />
         <e p="RallyPointDiscoveryGenerator.cs" t="Include" />
         <e p="RangeDrawer.cs" t="Include" />
+        <e p="resourcesManager.cs" t="Include" />
         <e p="Samples" t="Include">
           <e p="Input System" t="Include">
             <e p="1.0.0-preview.5" t="Include">
@@ -1115,6 +1119,7 @@
             <e p="CustomBGCBoxCollider.cs" t="Include" />
             <e p="DetectableCollider.cs" t="Include" />
             <e p="DetectionTags.cs" t="Include" />
+            <e p="DirectionalDiscoveriesManager.cs" t="Include" />
             <e p="GWCS.cs" t="Include" />
             <e p="IDGenerator.cs" t="Include" />
             <e p="TestMover.cs" t="Include" />

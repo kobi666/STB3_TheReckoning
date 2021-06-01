@@ -113,6 +113,21 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1965297248374509627, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965297248374509627, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965297248374509627, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1965297248374509638, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: ParentMyGameObject
@@ -133,6 +148,26 @@ PrefabInstance:
       propertyPath: ParentMyGameObject
       value: 
       objectReference: {fileID: 4075031346932676324}
+    - target: {fileID: 2364858829580033368, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364858829580033368, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364858829580033368, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3788518940088118187, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: RotationSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4308265041604180721, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: serializationData.Prefab
@@ -186,12 +221,12 @@ PrefabInstance:
     - target: {fileID: 8977666037474068509, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068509, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.19
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068509, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
@@ -206,17 +241,17 @@ PrefabInstance:
     - target: {fileID: 8977666037474068509, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068509, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068509, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068509, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
@@ -232,6 +267,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: CounterMax
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
@@ -286,6 +326,26 @@ PrefabInstance:
       objectReference: {fileID: 2802969102647072552}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.ProjectileExitPoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.ProjectileFinalPoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.ProjectileExitPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 2817337424042698195}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.ProjectileFinalPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 2802969102647072552}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
       propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].ProjectileBase
       value: 
       objectReference: {fileID: 7641706526667284794, guid: 21147db04aa63634e9e807f2f506d603,
@@ -318,7 +378,7 @@ PrefabInstance:
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.effectRadius
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
@@ -333,6 +393,11 @@ PrefabInstance:
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement.RotateProjectile
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.OnPositionReachedEffect
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
@@ -388,7 +453,7 @@ PrefabInstance:
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onPositionReachedEffects.Array.data[0].IsAOE
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
@@ -398,12 +463,12 @@ PrefabInstance:
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onPositionReachedEffects.Array.data[0].DamageRange.max
-      value: 0
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
       propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onPositionReachedEffects.Array.data[0].DamageRange.min
-      value: 0
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 8977666039327672661, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}

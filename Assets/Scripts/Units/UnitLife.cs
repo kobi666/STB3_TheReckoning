@@ -27,8 +27,11 @@ public class UnitLifeManager
     }
     public event Action onUnitDeath;
     public void OnUnitDeath() {
+        if (!UnitDied) {
         if (onUnitDeath != null) {
             onUnitDeath.Invoke();
+            UnitDied = true;
+            }
         }
     }
     
@@ -39,8 +42,10 @@ public class UnitLifeManager
     public void Init()
     {
         CurrentHP = InitialHP;
+        UnitDied = false;
     }
-    
+
+    private bool UnitDied = false;
     public int HP {get => CurrentHP ; set {
         if (value <= 0) {
             CurrentHP = value;

@@ -133,6 +133,7 @@
      <Compile Include="Assets\Scripts\Levels-rooms\RoomController.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurveBaseMath.cs" />
      <Compile Include="Assets\Scripts\testInterface.cs" />
+     <Compile Include="Assets\TestEdenDetection.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurveSettings.cs" />
      <Compile Include="Assets\Garbage\TestTowerControllerLegacy.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\ShaderInt.cs" />
@@ -140,6 +141,7 @@
      <Compile Include="Assets\Pixelplacement\Surge\Chooser\Chooser.cs" />
      <Compile Include="Assets\ProjectileAttacks.cs" />
      <Compile Include="Assets\Prefabs\TargetDetection\EffectableTargetBank.cs" />
+     <Compile Include="Assets\GuyTest.cs" />
      <Compile Include="Assets\Scripts\Units\EffectableUnit.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ProjectileUtils.cs" />
      <Compile Include="Assets\Scripts\Units\UnitMovementController.cs" />
@@ -412,7 +414,10 @@
      <Compile Include="Assets\Scripts\Towers\SlotParentManager.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider2DEdge.cs" />
      <Compile Include="Assets\Prefabs\ProjectileDynamicData.cs" />
-     <Compile Include="Assets\TestEdenDetection.cs" />
+     <Compile Include="Assets\resourcesManager.cs" />
+     <Compile Include="Assets\DirectionalDiscovery.cs" />
+     <Compile Include="Assets\DirectionalDiscoveryNode.cs" />
+     <Compile Include="Assets\Scripts\CollisionDetection\DirectionalDiscoveriesManager.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\BansheeGz\BGCollider\readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

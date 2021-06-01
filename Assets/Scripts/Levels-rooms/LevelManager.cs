@@ -7,8 +7,8 @@ public class LevelManager : MonoBehaviour
 {
     [ShowInInspector]
     public Dictionary<string,(Vector2,TowerSlotController)> LevelTowerSlots = new Dictionary<string, (Vector2,TowerSlotController)>();
-    
-    
+
+    [Required] public resourcesManager ResourcesManager; 
     
 
     public event Action<TowerSlotController, bool> onTowerSlotUpdate;

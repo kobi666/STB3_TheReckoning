@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b2d6c38c30d9c46996e21d2d94193c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoneyOnDeath: 20
   States:
   - DefaultState: 1
     InitialState: 1
@@ -778,6 +779,7 @@ MonoBehaviour:
   HasTargets: 0
   HasTargetableTargets: 0
   Detector: {fileID: 1848957035049136393}
+  debugMe: 0
 --- !u!114 &7209521931939889820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,6 +794,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ParentMyGameObject: {fileID: 7209521931939889764}
   FirstRun: 1
+  DebugCollider: 0
+  OBB: 0
+  subscribedToGWCS: 0
   CollisionID: 0
   BoxCollider2D: {fileID: 7209521931939889761}
   CollisionTagInt: 0

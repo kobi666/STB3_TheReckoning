@@ -19,6 +19,40 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
         }
     }
 
+    private void AddMoney()
+    {
+        GameManager.Instance.Money += MoneyOnDeath;
+    }
+
+    public int MoneyOnDeath = 0;
+    private bool addMoneyOnDeath = true;
+
+    [ShowInInspector]
+    public bool AddMoneyOnDeath
+    {
+        get => addMoneyOnDeath;
+        set
+        {
+            if (value != addMoneyOnDeath)
+            {
+                if (value)
+                {
+                    onDeath += AddMoney;
+                }
+                if (!value)
+                {
+                    onDeath -= AddMoney;
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
     private void OnDisable()
     {
         GameObjectPool.Instance.OnUnitDisable(MyGameObjectID);
@@ -187,6 +221,10 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
         }
         Init();
         firstRun = false;
+        if (AddMoneyOnDeath)
+        {
+            onDeath += AddMoney;
+        }
     }
 
     public Type QueueableType { get; set; }

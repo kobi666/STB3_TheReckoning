@@ -106,9 +106,10 @@ public class CollisionDetector : CollidingObject
                 return true;
             }
         }
-
         return false;
     }
+    
+    
 
     public List<DetectionTags> tagsICanDetect = new List<DetectionTags>();
 

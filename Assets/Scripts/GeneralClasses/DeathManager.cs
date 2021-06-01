@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System;
+using Sirenix.OdinInspector;
 
 public class DeathManager : MonoBehaviour
 {
     public event Action<int> onUnitDeath;
     public event Action<string,string> onEnemyUnitDeath;
     public event Action<string,string> onPlayerUnitDeath;
+    [Required]
+    private GameManager GameManager;
 
     public void OnUnitDeath(int unitGameObjectID) {
         onUnitDeath?.Invoke(unitGameObjectID);
@@ -35,6 +38,11 @@ public class DeathManager : MonoBehaviour
         }
     }
 
+    public void AddMoney(int money)
+    {
+        
+    }
+
     private void Awake() {
         Instance = this;
         
@@ -43,7 +51,7 @@ public class DeathManager : MonoBehaviour
 
     void Start()
     {
-        
+        GameManager = GameManager.Instance;
     }
     
 }

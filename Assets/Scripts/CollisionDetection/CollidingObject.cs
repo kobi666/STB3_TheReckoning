@@ -12,6 +12,7 @@ public abstract class CollidingObject : MonoBehaviour
     public bool FirstRun = true;
     public abstract bool RegisterToGWCS { get; set; }
     public bool DebugCollider = false;
+    public bool OBB = false;
     
     protected void OnEnable()
     {
