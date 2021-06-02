@@ -169,9 +169,40 @@ public class SelectorTest2 : MonoBehaviour
     }
 
 
+    public void ShowIndicatorsStupid(Dictionary<Vector2, TowerSlotController> slotsDict)
+    {
+        for (int i = 0; i < TowerUtils.DirectionsClockwise4.Length; i++)
+        {
+            TowerSlotController tsc = slotsDict[TowerUtils.DirectionsClockwise4[i]] != null
+                ? slotsDict[TowerUtils.DirectionsClockwise4[i]]
+                : null;
+            Vector2 targetPos = tsc != null ? tsc.transform.position : SelectedTowerSlot.transform.position;
+            indicatorsDict[TowerUtils.DirectionsClockwise4[i]].SR.enabled = tsc != null;
+            indicatorsDict[TowerUtils.DirectionsClockwise4[i]].MoveToNewTarget(targetPos, tsc);
+        }
+    }
+    
+    
+    
     public void ShowIndicators()
     {
-        foreach (var towerSlot in SelectedTowerSlot.FoundTowerSlots)
+        foreach (var directionToSlot in SelectedTowerSlot.FoundTowerSlots)
+        {
+            if (directionToSlot.Value != null)
+            {
+                indicatorsDict[directionToSlot.Key].SR.enabled = true;
+                indicatorsDict[directionToSlot.Key].MoveToNewTarget(directionToSlot.Value.transform.position, directionToSlot.Value);
+            }
+            else
+            {
+                indicatorsDict[directionToSlot.Key].SR.enabled = false;
+                indicatorsDict[directionToSlot.Key].TargetTowerSlot = null;
+            }
+        }
+        
+        
+        
+        /*foreach (var towerSlot in SelectedTowerSlot.FoundTowerSlots)
         {
             if (towerSlot.Value != null)
             {
@@ -187,7 +218,7 @@ public class SelectorTest2 : MonoBehaviour
                     indicatorsDict[towerSlot.Key].SR.enabled = false;
                 }
             }
-        }
+        }*/
         
         //write code to make redundednt indicators disapper
         
@@ -264,7 +295,7 @@ public class SelectorTest2 : MonoBehaviour
                 shaker.StopAllCoroutines();
                 shaker.ShakeInProgress = false;
                 MoveToNewTargetAsync(_towerSlotcontroller.transform.position);
-                ShowIndicators();
+                ShowIndicatorsStupid(_towerSlotcontroller.FoundTowerSlots);
                 OnTowerSelect(_towerSlotcontroller);
                 
                 //Debug.LogWarning("On Move : " + TowerObjectController.TowerActions.ButtonSouth.ActionDescription);

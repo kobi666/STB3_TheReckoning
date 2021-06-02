@@ -23,7 +23,20 @@ public class CursorActionsController : MonoBehaviour
 
     public void ExecuteAction(ButtonDirectionsNames buttonName)
     {
+        if (GameManager.Instance.FreeActions) {
         CursorActionHandlers[buttonName].ExecuteAction();
+        }
+        else
+        {
+            var cursorActionHandler = CursorActionHandlers[buttonName];
+            if (GameManager.Instance.Money >= cursorActionHandler.CurrentTowerAction.ActionCost)
+            {
+                if (cursorActionHandler.ActionAvailableCheck()) {
+                GameManager.Instance.UpdateMoney(-cursorActionHandler.CurrentTowerAction.ActionCost);
+                CursorActionHandlers[buttonName].ExecuteAction();
+                }
+            }
+        }
     }
 
     public void UpdateTowerActions(TowerActions towerActions)
@@ -64,7 +77,7 @@ public class CursorActionHandler
     
     
 
-    private bool ActionAvailableCheck()
+    public bool ActionAvailableCheck()
     {
         if (CurrentTowerAction != null)
             {

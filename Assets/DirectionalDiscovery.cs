@@ -93,7 +93,7 @@ public class DirectionalDiscovery : MyGameObject
                     VARIABLE.Value.Item2.MyRectTransform.GetWorldCorners(PHArray);
                     for (int k = 0; k < PHArray.Length; k++)
                     {
-                        check = directionalDiscoveryNodes[j].MyBoxCollider2D.Contains2d(PHArray[k], true);
+                        check = directionalDiscoveryNodes[j].MyBoxCollider2D.Contains2d(PHArray[k]);
                         _currentDistance = Vector2.Distance(transform.position, PHArray[k]);
                         if (check) { break;}
                     }

@@ -11,21 +11,24 @@ public class TowerPosIndicator : MonoBehaviour
     [Required]
     public SelectorTest2 ParentSelector;
 
-    public Vector2 tPos;
+    
+    public TowerSlotController TargetTowerSlot;
 
     private bool movelock;
-    public async void MoveToNewTarget(Vector2 TargetPos)
+    public async void MoveToNewTarget(Vector2 TargetPos, TowerSlotController tsc)
     {
+        
         if (!movelock)
         {
-            tPos = TargetPos;
+            TargetTowerSlot = tsc != null ? tsc : null;
+            var tPos = TargetPos;
             movelock = true;
             float startTime = Time.time;
             float t;
-            while ((Vector2)transform.position != TargetPos)
+            while ((Vector2)transform.position != tPos)
             {
                 t = (Time.time - startTime) / ParentSelector.MovementDuration;
-                transform.position = new Vector2(Mathf.SmoothStep(transform.position.x, TargetPos.x, t),Mathf.SmoothStep(transform.position.y, TargetPos.y, t));
+                transform.position = new Vector2(Mathf.SmoothStep(transform.position.x, tPos.x, t),Mathf.SmoothStep(transform.position.y, tPos.y, t));
                 await Task.Yield();
             }
 

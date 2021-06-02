@@ -10,12 +10,42 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    private event Action<int> onLifeUpdate;
+
+    public void OnLifeUpdate(int lifeDelta)
+    {
+        onLifeUpdate?.Invoke(lifeDelta);
+    }
+    
+    
+
+    public event Action onMoneyUpdate;
+
+    public void OnMoneyUpdate()
+    {
+        onMoneyUpdate?.Invoke();
+    }
+
+    public void UpdateMoney(int Moneydelta)
+    {
+        CurrentLevelManager.ResourcesManager.Money += Moneydelta;
+        OnMoneyUpdate();
+    }
+
+    public void UpdateLife(int LifeDelta)
+    {
+        CurrentLevelManager.ResourcesManager.PlayerLife += LifeDelta;
+        OnLifeUpdate(CurrentLevelManager.ResourcesManager.PlayerLife);
+    }
+
     public bool FreeActions;
 
     public LevelManager CurrentLevelManager;
     
     [Required]
     public TextMeshProUGUI MoneyTextObject;
+
+    [Required] public TextMeshProUGUI LifeTextObject;
     
     [ShowInInspector]
     public int Money
@@ -31,10 +61,15 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        onMoneyUpdate += delegate { MoneyTextObject.text = CurrentLevelManager.ResourcesManager.Money.ToString(); };
+        onLifeUpdate += delegate(int i) { LifeTextObject.text = CurrentLevelManager.ResourcesManager.PlayerLife.ToString();};
     }
+    
+    
 
     private void Start()
     {
-        Money = Money;
+        UpdateMoney(CurrentLevelManager.InitialMoney);
+        UpdateLife(CurrentLevelManager.InitialLife);
     }
 }

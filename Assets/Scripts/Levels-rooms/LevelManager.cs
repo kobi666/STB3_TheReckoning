@@ -9,8 +9,10 @@ public class LevelManager : MonoBehaviour
     [ShowInInspector]
     public Dictionary<int,(Vector2,TowerSlotController)> LevelTowerSlots = new Dictionary<int, (Vector2,TowerSlotController)>();
 
-    [Required] public resourcesManager ResourcesManager; 
+    [Required] public resourcesManager ResourcesManager;
     
+    public int InitialMoney = 0;
+    public int InitialLife = 20;
 
     public event Action<TowerSlotController, bool> onTowerSlotUpdate;
 
