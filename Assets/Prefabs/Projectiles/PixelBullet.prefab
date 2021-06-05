@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: tagsICanDetect.Array.data[0]
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5907068859232098816, guid: d813ad87313d18d44be4fa1af9e6195a,
+        type: 3}
+      propertyPath: EffectableTargetBank
+      value: 
+      objectReference: {fileID: 2654216540731372354}
     - target: {fileID: 5907068859232098817, guid: d813ad87313d18d44be4fa1af9e6195a,
         type: 3}
       propertyPath: m_Size.x
@@ -125,3 +130,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d813ad87313d18d44be4fa1af9e6195a, type: 3}
+--- !u!114 &2654216540731372354 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5907068859232098830, guid: d813ad87313d18d44be4fa1af9e6195a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8444165966221240652}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -11,12 +11,25 @@ using UnityEngine.Serialization;
 [Searchable][Serializable]
 public class GenericUnitController : MyGameObject,IQueueable<GenericUnitController>,IActiveObject<GenericUnitController>,IHasEffects,IHasRangeComponents,IHasStateMachine
 {
+
+    public bool ReducesLevelUnitsOnDeath = false;
+    
+    
     private bool firstRun = true;
     private void OnEnable()
     {
-        if (!firstRun) {
-            Init();
+        if (!firstRun)
+        {
+            if (!StateMachine.CurrentState.StateIsRunning)
+            {
+                StateMachine.SetState(StateMachine.InitialState);
+                StateMachine.runLock = true;
+                StateMachine.ExecuteCurrentState();
+            }
+            SpriteRenderer.color = new Color(SpriteRenderer.color.r,SpriteRenderer.color.g,SpriteRenderer.color.b,255f);
         }
+        GameObjectPool.Instance.OnUnitEnable(this);
+        UnitLifeManager.UnitDied = false;
     }
 
     private void AddMoney()
@@ -26,8 +39,7 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
 
     public int MoneyOnDeath = 0;
     private bool addMoneyOnDeath = true;
-
-
+    
     public int DamageToBase = 1;
 
 
@@ -39,6 +51,7 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
     {
         GameObjectPool.Instance.OnUnitDisable(MyGameObjectID);
         QueuePool.ObjectQueue.Enqueue(this);
+        StateMachine.runLock = false;
     }
 
 
@@ -144,7 +157,7 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
         UnitLifeManager.onUnitDeath += OnDeath;
         if (!TargetTags.IsNullOrEmpty()) {
         UnitBattleManager.MeleeWeapon.TargetBank.DiscoverableTags = TargetTags.ToList();
-        GameObjectPool.Instance.OnUnitEnable(this);
+        
         }
         
     }
@@ -180,6 +193,12 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
         UnitMovementController.GenericUnitController = this;
         onDeath += SetStateToDeath;
         onDeath += PlayDeathAnimation;
+        onDeath += delegate { DetectableCollider.UnSubscribeFromGWCS(); };
+        if (ReducesLevelUnitsOnDeath)
+        {
+            onDeath += delegate { GameManager.Instance.CurrentLevelManager.CurrentUnitsInLevel--; };
+        }
+        onDeath += delegate { DetectableCollider.DebugCollider = true; };
     }
 
     void PlayDeathAnimation()
@@ -202,8 +221,8 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
             Data.DynamicData.BasePosition = new Vector2();
         }
         Init();
-        firstRun = false;
         onDeath += AddMoney;
+        firstRun = false;
     }
 
     public Type QueueableType { get; set; }
@@ -218,7 +237,7 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
     public void OnDequeue()
     {
         UnitLifeManager.HP = Data.MetaData.HP;
-        StateMachine.SetState(StateMachine.InitialState);
+        StateMachine.ChangeState(StateMachine.InitialState);
         StateMachine.ExecuteCurrentState();
     }
 

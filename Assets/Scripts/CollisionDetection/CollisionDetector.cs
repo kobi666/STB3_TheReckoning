@@ -7,33 +7,23 @@ using UnityEngine;
 
 public class CollisionDetector : CollidingObject
 {
-    [ShowInInspector]
-    public ConcurrentDictionary<int,byte> UniqueTargets = new ConcurrentDictionary<int, byte>();
+    /*[ShowInInspector]
+    public ConcurrentDictionary<int,byte> UniqueTargets = new ConcurrentDictionary<int, byte>();*/
 
-    public void TryToAddTarget(int collisionID)
-    {
-        if (!UniqueTargets.ContainsKey(collisionID)) {
-            bool b = UniqueTargets.TryAdd(collisionID, new byte());
-            if (b)
-            {
-                onNewTargetEnter?.Invoke(collisionID);
-            }
-        }
-        
-    }
+    
 
     public void ResetCollisions()
     {
         if (subscribedToGWCS) {
         GWCS.instance.ClearCollisionsQueue.Enqueue(CollisionID);
-        UniqueTargets.Clear();
+        /*UniqueTargets.Clear();*/
         }
     }
     
     
     
 
-    public event Action<int> onNewTargetEnter;
+    //public event Action<int> onNewTargetEnter;
     
     public bool DebugCollision;
     public float ColliderSize;
@@ -57,8 +47,8 @@ public class CollisionDetector : CollidingObject
     protected void Start()
     {
         base.Start();
-        onTargetEnter += TryToAddTarget;
-        onTargetExit += delegate(int i, string s) { UniqueTargets.TryRemove(i, out outByte); };
+        /*onTargetEnter += TryToAddTarget;
+        onTargetExit += delegate(int i, string s) { UniqueTargets.TryRemove(i, out outByte); };*/
     }
 
     protected void Awake()

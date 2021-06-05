@@ -97,6 +97,7 @@
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurveFormulaMath.cs" />
      <Compile Include="Assets\Scripts\Towers\TowerAction.cs" />
      <Compile Include="Assets\Scripts\CollisionDetection\DetectionTags.cs" />
+     <Compile Include="Assets\PlayerBaseController.cs" />
      <Compile Include="Assets\TestingGenericWeapon\AOEEffect.cs" />
      <Compile Include="Assets\VDtest.cs" />
      <Compile Include="Assets\Scripts\Units\SpawningBehaviors.cs" />
@@ -267,6 +268,7 @@
      <Compile Include="Assets\Scripts\GeneralClasses\InGameObjectManager.cs" />
      <Compile Include="Assets\Scripts\Projectiles\AreaOfEffectController.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcCursorObjectScale.cs" />
+     <Compile Include="Assets\UDedText.cs" />
      <Compile Include="Assets\Scripts\CursorSelection\TowerActionIndicator.cs" />
      <Compile Include="Assets\Scripts\CollisionDetection\TestMover.cs" />
      <Compile Include="Assets\Scripts\interfaces\WeaponInterfaces.cs" />
@@ -276,6 +278,7 @@
      <Compile Include="Assets\Scripts\RangeDetection\SquareDetector.cs" />
      <Compile Include="Assets\Scripts\Units\UnitUtils.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\Gutils.cs" />
+     <Compile Include="Assets\Scripts\CanvasTextController.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcTriangulate2D.cs" />
      <Compile Include="Assets\TestingGenericWeapon\AOEAttack.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Examples\Scripts\BGTestCurveSnapping.cs" />
@@ -418,7 +421,6 @@
      <Compile Include="Assets\Scripts\Towers\SlotParentManager.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider2DEdge.cs" />
      <Compile Include="Assets\Prefabs\ProjectileDynamicData.cs" />
-     <Compile Include="Assets\PlayerBaseController.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\BansheeGz\BGCollider\readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

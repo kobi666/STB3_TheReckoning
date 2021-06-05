@@ -470,12 +470,12 @@ PrefabInstance:
     - target: {fileID: 4075031346932676324, guid: ea74d1b1b162f434e853439ab362fc6d,
         type: 3}
       propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onHitEffects.Array.data[0].DamageRange.max
-      value: 30
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 4075031346932676324, guid: ea74d1b1b162f434e853439ab362fc6d,
         type: 3}
       propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onHitEffects.Array.data[0].DamageRange.min
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4075031346932676324, guid: ea74d1b1b162f434e853439ab362fc6d,
         type: 3}

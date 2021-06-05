@@ -110,7 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b2d6c38c30d9c46996e21d2d94193c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ReducesLevelUnitsOnDeath: 1
   MoneyOnDeath: 20
+  DamageToBase: 1
   States:
   - DefaultState: 1
     InitialState: 1
@@ -121,26 +123,25 @@ MonoBehaviour:
     TargetableState: 1
     InStateBehavior:
     - id: 0
-    - id: 1
     OnExitBehavior:
+    - id: 1
     - id: 2
-    - id: 3
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 5
-    automaticNextState: 2
+    automaticNextState: 0
   - DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
     FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior:
-    - id: 4
+    - id: 3
     TargetableState: 1
     InStateBehavior:
-    - id: 5
+    - id: 4
     OnExitBehavior:
-    - id: 6
+    - id: 5
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 2
@@ -151,13 +152,13 @@ MonoBehaviour:
     FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior:
+    - id: 6
     - id: 7
-    - id: 8
     TargetableState: 1
     InStateBehavior:
-    - id: 9
+    - id: 8
     OnExitBehavior:
-    - id: 10
+    - id: 9
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 3
@@ -168,12 +169,12 @@ MonoBehaviour:
     FinalState: 1
     SMObject: {fileID: 0}
     OnEnterBehvaior:
-    - id: 11
+    - id: 10
     TargetableState: 0
     InStateBehavior:
-    - id: 12
+    - id: 11
     OnExitBehavior:
-    - id: 13
+    - id: 12
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 7
@@ -212,8 +213,437 @@ MonoBehaviour:
   references:
     version: 1
     00000000:
+      type: {class: DivergingBehaviors, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+        BehaviorsToState:
+        - Behaviors:
+          - id: 13
+          AutomaticState: 0
+        - Behaviors:
+          - id: 14
+          AutomaticState: 2
+    00000001:
+      type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+        TargetPriority: 0
+    00000002:
+      type: {class: StopUnitPathMovement, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+    00000003:
+      type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+        TargetPriority: 0
+    00000004:
+      type: {class: MoveTowardsTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+        MovementSpeed: 1
+    00000005:
+      type: {class: StopUnitFreeMovement, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+    00000006:
+      type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+        TargetPriority: 0
+    00000007:
+      type: {class: StartFight, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+    00000008:
+      type: {class: Fight, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+    00000009:
+      type: {class: EndFight, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+    0000000A:
+      type: {class: AnnounceDeath, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+    0000000B:
+      type: {class: FadeOut, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+        FadeOutSpeed: 0.1
+    0000000C:
+      type: {class: DisableObject, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+    0000000D:
       type: {class: WalkAlongSpline, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
+        _DEBUG: 0
         UnitData:
           MetaData:
             HP: 0
@@ -244,9 +674,10 @@ MonoBehaviour:
           automaticNextState: 0
         Distance: 0
         MovementSpeed: 1
-    00000001:
+    0000000E:
       type: {class: WaitForEnemiesToEnterRange, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
+        _DEBUG: 0
         UnitData:
           MetaData:
             HP: 0
@@ -276,383 +707,6 @@ MonoBehaviour:
           stateName: 0
           automaticNextState: 0
         Detector: {fileID: 0}
-    00000002:
-      type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
-        TargetPriority: 0
-    00000003:
-      type: {class: StopUnitPathMovement, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
-    00000004:
-      type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
-        TargetPriority: 0
-    00000005:
-      type: {class: MoveTowardsTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
-        MovementSpeed: 1
-    00000006:
-      type: {class: StopUnitFreeMovement, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
-    00000007:
-      type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
-        TargetPriority: 0
-    00000008:
-      type: {class: StartFight, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
-    00000009:
-      type: {class: Fight, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
-    0000000A:
-      type: {class: EndFight, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
-    0000000B:
-      type: {class: AnnounceDeath, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
-    0000000C:
-      type: {class: FadeOut, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
-        FadeOutSpeed: 0.1
-    0000000D:
-      type: {class: DisableObject, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
 --- !u!114 &7209521931939889765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,6 +887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugStateMachine: 0
+  runLock: 1
   InitOnStartup: 1
   CurrentState:
     DefaultState: 0

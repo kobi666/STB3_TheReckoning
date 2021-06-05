@@ -93,6 +93,11 @@ public class PathWalker : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        currentDistanceOnSpline = 0;
+    }
+
 
     private float currentDistanceOnSpline = 999f;
 
@@ -106,6 +111,10 @@ public class PathWalker : MonoBehaviour
             if (!SplineAttached)
             {
                 EndOfPathReached = true;
+                if (EndOfPathReached)
+                {
+                    Debug.LogWarning("End of spline Reached because spline was not attached");
+                }
                 return;
             }
             if (PathDirection) {
@@ -119,6 +128,10 @@ public class PathWalker : MonoBehaviour
                         if (!EndOfPathReached) {
                         onPathEnd?.Invoke();
                         EndOfPathReached = true;
+                        if (EndOfPathReached)
+                        {
+                            Debug.LogWarning("End of spline Reached because reached Spline End");
+                        }
                         }
                     //}
                 }

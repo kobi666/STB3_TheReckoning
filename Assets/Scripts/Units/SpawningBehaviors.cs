@@ -7,6 +7,7 @@ using MyBox;
 using Sirenix.OdinInspector;
 using Random = UnityEngine.Random;
 using DegreeUtils;
+using UniRx;
 using UnitSpawning;
 
 [Serializable]
@@ -189,6 +190,7 @@ public class SpawnWaves : SpawnerBehavior
 
     public override void SpecificBehaviorInit()
     {
+        int UnitCounter = 0;
         if (PathController == null) {
         PathController = PathPointFinder.PathSplines[PathPointFinder.FindShortestSpline()].parentPath;
         }
@@ -207,8 +209,21 @@ public class SpawnWaves : SpawnerBehavior
                     SpawnFormations.Enqueue(wave.BatchStructure.GetColumn(j));
                 }
             }
+
+            foreach (var spawnFormation in SpawnFormations)
+            {
+                foreach (var unit in spawnFormation)
+                {
+                    if (unit)
+                    {
+                        UnitCounter++;
+                    }
+                }
+            }
         }
-        
+
+        GameManager.Instance.CurrentLevelManager.TotalUnitsInLevel += UnitCounter;
+
     }
     
     

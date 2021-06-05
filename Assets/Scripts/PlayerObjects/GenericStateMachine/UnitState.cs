@@ -157,6 +157,9 @@ public static class GetRandomGuiColor
 [Serializable][FoldoutGroup("UnitState")]
 public abstract class UnitBehavior
 {
+    public bool _DEBUG;
+    
+    
     public UnitData UnitData;
     [FoldoutGroup("Components")]
     public GenericUnitController UnitObject;

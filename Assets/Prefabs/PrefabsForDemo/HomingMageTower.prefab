@@ -1,0 +1,215 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &957039414458421969
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2059776707121217188, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059776707121217188, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059776707121217188, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059776707121217188, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059776707121217188, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059776707121217188, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059776707121217188, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059776707121217188, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059776707121217188, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059776707121217188, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059776707121217188, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059776707121217190, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_Name
+      value: BasicShooterTower (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059776707121217190, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059776708476167565, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f896723d983bcb84cbb663c08a0e0e44,
+        type: 3}
+    - target: {fileID: 2059776708476167566, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: CounterMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: RotatingComponent
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].ProjectileBase
+      value: 
+      objectReference: {fileID: 4368387927189870131, guid: 13b9655cb50f8934e82b7c0f219aeed7,
+        type: 3}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement
+      value: Assembly-CSharp EscelatingMoveStraight
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.Homing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement.speed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.OnHitEffect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement.baseSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.TriggersOnCollision
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.OnPositionReachedEffect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement.SpeedEscelationFactor
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.TriggersOnSpecificTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement.ProjectileMovementDynamicData.Speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement.ProjectileMovementDynamicData.ArcingValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onPositionReachedEffects.Array.data[0].ParentWeapon
+      value: 
+      objectReference: {fileID: 2977074162285494525}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onPositionReachedEffects.Array.data[0].DamageRange.max
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onPositionReachedEffects.Array.data[0].DamageRange.min
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847598, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847598, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012866137920358, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012866137920358, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291083224083890458, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291083224083890458, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.17
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 06d94edc402622f429d3cb17c0afe0c0, type: 3}
+--- !u!114 &2977074162285494525 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 957039414458421969}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2c8e9fee8787c4b84f4836239ec567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

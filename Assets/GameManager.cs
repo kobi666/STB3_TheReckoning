@@ -34,10 +34,30 @@ public class GameManager : MonoBehaviour
 
     public void UpdateLife(int LifeDelta)
     {
+        if (!playerLost) {
         CurrentLevelManager.ResourcesManager.PlayerLife += LifeDelta;
         OnLifeUpdate(CurrentLevelManager.ResourcesManager.PlayerLife);
+        if (CurrentLevelManager.ResourcesManager.PlayerLife <= 0)
+            {
+                playerLost = true;
+                OnLose();
+            }
+        }
     }
 
+
+    private bool playerLost = false;
+    public event Action onLose;
+
+    public void OnLose()
+    {
+        onLose?.Invoke();
+    }
+    
+    [Required]
+    public CanvasTextController UDedText;
+
+    [Required] public CanvasTextController YouWinText;
     public bool FreeActions;
 
     public LevelManager CurrentLevelManager;
@@ -63,6 +83,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         onMoneyUpdate += delegate { MoneyTextObject.text = CurrentLevelManager.ResourcesManager.Money.ToString(); };
         onLifeUpdate += delegate(int i) { LifeTextObject.text = CurrentLevelManager.ResourcesManager.PlayerLife.ToString();};
+        onLose += UDedText.FadeTextInAndOut;
     }
     
     

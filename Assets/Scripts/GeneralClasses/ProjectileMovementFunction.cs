@@ -48,7 +48,25 @@ public abstract class ProjectileMovementFunction
     
     public abstract float Speed { get; set; }
 
-    [ShowInInspector] protected float ProgressCounter = 0;
+    private float progressCounter;
+
+    [ShowInInspector]
+    protected float ProgressCounter
+    {
+        get => progressCounter;
+        set
+        {
+            if (value < 1)
+            {
+                progressCounter = value;
+            }
+
+            if (value >= 1)
+            {
+                progressCounter = 1;
+            }
+        }
+    }
 
     [ShowInInspector]
     public bool ExternalMovementLock { get; set; } = false;
@@ -191,6 +209,35 @@ public class MoveInArc : ProjectileMovementFunction
     }
 
     
+}
+
+
+public class EscelatingMoveStraight : ProjectileMovementFunction
+{
+
+    public float baseSpeed = 0;
+    public float SpeedEscelationFactor = 0.02f;
+    public override void OnMovementInit(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos, Vector2 TargetPos,
+        float speed)
+    {
+        baseSpeed = Speed;
+    }
+
+    public override void OnMovementComplete()
+    {
+        Speed = baseSpeed;
+    }
+
+    public override void MovementFunction(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos, Vector2 TargetPos,
+        float speed)
+    {
+        projectileTransform.position = Vector2.Lerp(originPos, TargetPos , ProgressCounter);
+        Speed += SpeedEscelationFactor;
+    }
+
+    public float speed = 0.2f;
+
+    public override float Speed { get => speed; set => speed = value; }
 }
 
 

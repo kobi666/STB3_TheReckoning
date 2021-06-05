@@ -51,6 +51,7 @@ public abstract class Effectable : MonoBehaviour,IActiveObject<Effectable>,ITarg
         int objID = ParentMyGameObject.MyGameObjectID;
         ActivePool.AddObjectToActiveObjectPool(this);
         onTargetableStateChange += UpdateTargetableState;
+        OnFirstStart = false;
     }
 
     

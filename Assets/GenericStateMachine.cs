@@ -9,7 +9,7 @@ using UnityEngine;
 public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : ObjectState<TS> where TS : IHasStateMachine
 {
     public bool DebugStateMachine;
-    private bool runLock = true;
+    public bool runLock = true;
     public bool InitOnStartup;
     
     [ShowInInspector]
@@ -88,7 +88,6 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
             T nextState = NextStateResolver();
             if (DebugStateMachine)
             {
-                
                 Debug.LogError( name + " Current State : " + CurrentState.StateName +  " |||  Next State : " + nextState.StateName);
             }
             if (!CurrentState.FinalState) {
@@ -96,6 +95,11 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
             }
         }
         
+        
+    }
+
+    public void RestartStateMachine()
+    {
         
     }
 
@@ -177,7 +181,7 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
         }
         else
         {
-            throw new Exception("Same State Loop! " + CurrentState.StateName);
+            Debug.LogError("Same State Loop! " + CurrentState.StateName + " : " + name);
         }
     }
 

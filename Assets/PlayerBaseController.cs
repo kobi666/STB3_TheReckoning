@@ -19,17 +19,24 @@ public class PlayerBaseController : MyGameObject
 
     protected void Awake()
     {
-        CollisionDetector.onNewTargetEnter += OnEnemyEnter;
+        CollisionDetector.onTargetEnter += OnEnemyEnter;
         onEnemyEnter += KillEnemyEntered;
+            //        onEnemyEnter += delegate(int i) { Debug.LogWarning("Enemy Entered with collision ID" + i);   };
     }
 
     void KillEnemyEntered(int EnemyCollisionID)
     {
         int GID = GameObjectPool.CollisionIDToGameObjectID[EnemyCollisionID].Item1;
+        if (GameObjectPool.Instance.ActiveUnits.ContainsKey(GID)) {
         var enemy = GameObjectPool.Instance.ActiveUnits[GID];
         int DamageToBase = enemy.DamageToBase;
         GameManager.Instance.UpdateLife(-DamageToBase);
         enemy.EffectableUnit.ApplyDamage(99999);
+        }
+        else
+        {
+            Debug.LogWarning("Got collision but unit not found");
+        }
     }
     
     

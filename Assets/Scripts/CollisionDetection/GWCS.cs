@@ -12,6 +12,7 @@ using Unity.Jobs;
 using Unity.Collections;
 using Unity.Burst;
 using Unity.Mathematics;
+using Random = UnityEngine.Random;
 
 [DefaultExecutionOrder(-20)]
 public class GWCS : MonoBehaviour
@@ -22,9 +23,31 @@ public class GWCS : MonoBehaviour
 
     [ShowInInspector] private Dictionary<int, CollisionDetector> AllDetectors = new Dictionary<int, CollisionDetector>();
 
-    [ShowInInspector] private Queue<CollidingObject> AdditionQueue = new Queue<CollidingObject>();
+     private Queue<CollidingObject> AdditionQueue = new Queue<CollidingObject>();
 
-    [ShowInInspector] private Queue<CollidingObject> RemovalQueue = new Queue<CollidingObject>();
+     private Queue<CollidingObject> RemovalQueue = new Queue<CollidingObject>();
+    
+    [ShowInInspector]
+    public Dictionary<int,List<int>> CurrentCollisionsPerPrint = new Dictionary<int, List<int>>();
+
+    public bool printOnce = false;
+    public void PrintCurrentCollisionsToList()
+    {
+        if (printOnce)
+        {
+            int counter = 0;
+            foreach (var VARIABLE in CurrentCollisions)
+            {
+                counter++;
+            }
+            //Debug.LogWarning(counter);
+        }
+
+        printOnce = false;
+
+    }
+    
+    
     
     public Queue<int> ClearCollisionsQueue = new Queue<int>();
 
@@ -160,11 +183,18 @@ public class GWCS : MonoBehaviour
         {
             BittableSimulatedCollider collider = allSimulatedColliders[colliderIndex];
             BittableSimulatedCollider otherCollider = allSimulatedColliders[otherColliderIndex];
-            return 
+            
+            
+            bool c = 
                 (collider.position.x - collider.width / 2 <= otherCollider.position.x + otherCollider.width / 2 &&
                  collider.position.x + collider.width / 2 >= otherCollider.position.x - otherCollider.width / 2 &&
                  collider.position.y - collider.height / 2 <= otherCollider.position.y + otherCollider.height / 2 &&
                  collider.position.y + collider.height / 2 >= otherCollider.position.y - otherCollider.height / 2);
+            /*if (otherCollider.DebugCollider && collider.DebugCollider) {
+            Debug.LogWarning("Check collision for GID :" + otherCollider.GameObjectID + " and found the result to be " + c );
+            }*/
+
+            return c;
         }
         
         private bool TestDetection(int TypesICanDetect, int TargetDetectionType)
@@ -205,8 +235,11 @@ public class GWCS : MonoBehaviour
                             {
                                 if (CheckOverLapBetweenTwoColliders(index, otherColliderIndex))
                                 {
-                                  //  Debug.LogWarning("found collision on " + allSimulatedColliders[index].CollisionID);
+                                    
                                     newTotalCollisionsByCollisionID.Add(allSimulatedColliders[index].CollisionID,allSimulatedColliders[otherColliderIndex].CollisionID);
+                                    /*if (allSimulatedColliders[index].DebugCollider && allSimulatedColliders[otherColliderIndex].DebugCollider) {
+                                        Debug.LogWarning("Added new  collision for GID :" + allSimulatedColliders[otherColliderIndex].GameObjectID);
+                                    }*/
                                 }
                             }
                         }
@@ -266,24 +299,23 @@ public class GWCS : MonoBehaviour
             var newCollisions = newTotalCollisionsByIndex.GetValuesForKey(allSimulatedColliders[index].CollisionID);
             var oldCollisions = currentCollisions.GetValuesForKey(allSimulatedColliders[index].CollisionID);
             bool dbg = allSimulatedColliders[index].DebugCollider;
-            /*if (dbg)
-            {
-                Debug.LogWarning("Debug Collider");
-                Debug.LogWarning(allSimulatedColliders[index].CollisionID + " : " + newCollisions.Current + " : " + oldCollisions.Current);
-            }*/
             while (newCollisions.MoveNext())
             {
+                var messegeID = new Unity.Mathematics.Random(999999 + (uint)index).NextInt() + (uint)newCollisions.Current;
                 bool newCollisionNotFoundInOld = true;
                 while (oldCollisions.MoveNext())
                 {
-                    
+                    /*if (dbg)
+                    {
+                        Debug.LogWarning("Testing for new collisions on : " + allSimulatedColliders[index].CollisionID + " , checking collision ID : " + oldCollisions.Current);
+                    }*/
                     if (oldCollisions.Current == newCollisions.Current)
                     {
                         newCollisionNotFoundInOld = false;
                         /*if (dbg)
                         {
-                            Debug.LogWarning("Collider ID : " + allSimulatedColliders[index].CollisionID 
-                                            + ", old collision : " + oldCollisions.Current  + ", new collision : " + newCollisions.Current + 
+                            Debug.LogWarning(messegeID + " : Collider ID : " + allSimulatedColliders[index].CollisionID 
+                                                                       + ", old collision : " + oldCollisions.Current  + ", new collision : " + newCollisions.Current + 
                                             " , new collision Found in old");
                         }*/
                         break;
@@ -292,8 +324,11 @@ public class GWCS : MonoBehaviour
                 oldCollisions.Reset();
                 if (newCollisionNotFoundInOld)
                 {
-                    //Debug.LogWarning("Totally new collision found :" + newCollisions.Current + " on detector ID " + allSimulatedColliders[index].CollisionID );
                     onEnterCollisions.Add(allSimulatedColliders[index].CollisionID, newCollisions.Current);
+                    /*if (dbg)
+                    {
+                        Debug.LogWarning( messegeID +  " : ADDING new collisions on : " + allSimulatedColliders[index].CollisionID + " , checking collision ID : " + newCollisions.Current );
+                    }*/
                 }
             }
             
@@ -415,6 +450,10 @@ public class GWCS : MonoBehaviour
         {
             var bc2d = _obj.BoxCollider2D;
             var size = bc2d.size;
+            /*if (_obj.DebugCollider)
+            {
+                Debug.LogWarning("I got here let's see what's up");
+            }*/
             AllSimulatedColliders[objCounter] = new BittableSimulatedCollider(size.x, size.y,
                 (Vector2) _obj.transform.position + bc2d.offset,
                 _obj.CollisionID,
@@ -546,7 +585,7 @@ public class GWCS : MonoBehaviour
 
 
 
-
+        PrintCurrentCollisionsToList();
         // the part where I dispose of all the things
         AllSimulatedColliders.Dispose();
         DetectorCheckdFlags.Dispose();

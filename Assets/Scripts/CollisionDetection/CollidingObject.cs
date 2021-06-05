@@ -20,6 +20,11 @@ public abstract class CollidingObject : MonoBehaviour
         {
             SubscribeToGWCS();
         }
+
+        if (FirstRun)
+        {
+            FirstRun = false;
+        }
     }
 
     protected void OnDisable()

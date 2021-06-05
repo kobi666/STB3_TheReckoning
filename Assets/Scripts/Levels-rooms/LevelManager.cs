@@ -8,6 +8,23 @@ public class LevelManager : MonoBehaviour
 {
     [ShowInInspector]
     public Dictionary<int,(Vector2,TowerSlotController)> LevelTowerSlots = new Dictionary<int, (Vector2,TowerSlotController)>();
+    
+    [ShowInInspector]
+    private int totalUnitsInLevel = 0;
+
+    public int TotalUnitsInLevel
+    {
+        get => totalUnitsInLevel;
+        set
+        {
+            totalUnitsInLevel += value;
+            CurrentUnitsInLevel += value;
+        }
+    }
+    
+    public int CurrentUnitsInLevel;
+
+
 
     [Required] public resourcesManager ResourcesManager;
     

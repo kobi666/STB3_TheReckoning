@@ -16,6 +16,11 @@ public class DirectionalDiscovery : MyGameObject
         (Vector2.zero,null,string.Empty),(Vector2.zero,null,string.Empty),(Vector2.zero,null,string.Empty),(Vector2.zero,null,string.Empty)
     };
     
+    public DirectionalColliders ImmidiateGroups
+    {
+        get => DirectionalColliderGroupsByPriority[0];
+    }
+    
     public RectTransform MyRectTransform {get => transform as RectTransform;}
 
     public Color[] DirectionalColors = new Color[4]
@@ -86,8 +91,32 @@ public class DirectionalDiscovery : MyGameObject
                         continue;
                     }
 
-                    bool check = false;
+                    bool foundInImmidiateGroups = false;
+                    var immidiateGroups = ImmidiateGroups.GetNodes();
+                    for (int H = 0; H < immidiateGroups.Length; H++)
+                    {
+                        if (H == j || foundInImmidiateGroups)
+                        {
+                            continue;
+                        }
+                        Vector3[] PHArrayInner = new Vector3[4];
+                        VARIABLE.Value.Item2.MyRectTransform.GetWorldCorners(PHArrayInner);
+                        var otherImmidiateGroup = immidiateGroups[H];
+                        for (int k = 0; k < PHArrayInner.Length; k++)
+                        {
+                            if (otherImmidiateGroup.MyBoxCollider2D.Contains2d(PHArrayInner[k]))
+                            {
+                                foundInImmidiateGroups = true;
+                                break;
+                            }
+                        }
+                        
+                    }
+                    
                     float _currentDistance = 999f;
+                    bool check = false;
+                    if (!foundInImmidiateGroups) {
+                    
                     
                     Vector3[] PHArray = new Vector3[4];
                     VARIABLE.Value.Item2.MyRectTransform.GetWorldCorners(PHArray);
@@ -97,10 +126,11 @@ public class DirectionalDiscovery : MyGameObject
                         _currentDistance = Vector2.Distance(transform.position, PHArray[k]);
                         if (check) { break;}
                     }
+                    }
                     
                     if (check) {
                     
-                    if (_currentDistance < foundDistance)
+                    if (_currentDistance <= foundDistance)
                         {
                             foundDirectionalColliderID = VARIABLE.Key;
                             foundDistance = _currentDistance;

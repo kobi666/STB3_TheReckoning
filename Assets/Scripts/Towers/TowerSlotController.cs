@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 using UnityEngine.Serialization;
 
 
-[System.Serializable]
+[System.Serializable][DefaultExecutionOrder(10)]
 public class TowerSlotController : MyGameObject
 {
     public LevelManager MyLevelManager;
@@ -80,11 +80,18 @@ public class TowerSlotController : MyGameObject
         var DirectionalVectors4 = TowerUtils.DirectionsClockwise4;
         for (int i = 0; i < DirectionalDiscoveryController.DirectionalDiscoveriesFound.Length; i++)
         {
-            var foundDirectionalDiscovery = DirectionalDiscoveryController.DirectionalDiscoveriesFound[i].Item2;
-            TowerSlotController foundTowerSlot = foundDirectionalDiscovery != null ? MyLevelManager.LevelTowerSlots[foundDirectionalDiscovery._MyGameObjectID].Item2 : null;
+            TowerSlotController foundTowerSlot = null;
+            DirectionalDiscovery foundDirectionalDiscovery = null;
+            if (DirectionalDiscoveryController.DirectionalDiscoveriesFound[i].Item2 != null) {
+                foundDirectionalDiscovery = DirectionalDiscoveryController.DirectionalDiscoveriesFound[i].Item2;
+                if (MyLevelManager.LevelTowerSlots.ContainsKey(foundDirectionalDiscovery._MyGameObjectID))
+                {
+                    foundTowerSlot = MyLevelManager.LevelTowerSlots[foundDirectionalDiscovery._MyGameObjectID].Item2;
+                }
+            }
             FoundTowerSlots.Add(DirectionalVectors4[i],foundTowerSlot);
         }
-        //TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoopOver(gameObject, MyLevelManager.LevelTowerSlots.Values.ToArray(), TowerUtils.Cardinal8,20);
+        
     }
 
     
@@ -110,9 +117,9 @@ public class TowerSlotController : MyGameObject
         MyLevelManager.OnTowerSlotUpdate(this,true);
         SR = GetComponent<SpriteRenderer>();
         ChildTower = GetComponentInChildren<TowerController>();
-        TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoopOver(gameObject, MyLevelManager.LevelTowerSlots.Values.ToArray(), TowerUtils.Cardinal8,6);
+        //TowerSlotsByDirections8 = TowerUtils.CardinalTowersNoAnglesLoopOver(gameObject, MyLevelManager.LevelTowerSlots.Values.ToArray(), TowerUtils.Cardinal8,6);
         OnTowerPositionCalculation();
-        //ChildTower.OnInit(this);
+        ChildTower.OnInit(this);
         TowerActions?.initActions(this);
     }
 

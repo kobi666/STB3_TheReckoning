@@ -45,7 +45,7 @@ public class UnitLifeManager
         UnitDied = false;
     }
 
-    private bool UnitDied = false;
+    public bool UnitDied = false;
     public int HP {get => CurrentHP ; set {
         if (value <= 0) {
             CurrentHP = value;

@@ -12,7 +12,7 @@ namespace UnitBehaviors
         public override void Behavior()
         {
             DeathManager.Instance.OnUnitDeath(UnitObject.MyGameObjectID);
-            UnitObject.DetectableCollider.UnSubscribeFromGWCS();
+            //UnitObject.DetectableCollider.UnSubscribeFromGWCS();
         }
 
         public override void InitBehavior()
@@ -74,7 +74,16 @@ namespace UnitBehaviors
 
         public override bool ExecCondition()
         {
+            
             bool b = PathWalker.EndOfPathReached == false;
+            if (_DEBUG)
+            {
+                if (!b)
+                {
+                    Debug.LogError("End Of Path Reached :" + PathWalker.EndOfPathReached);
+                }
+                
+            }
             return b;
         }
     }
