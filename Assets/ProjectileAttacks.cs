@@ -15,7 +15,7 @@ public class ShootOneProjectile : ProjectileAttackProperties
     public override void InitializeAttack(GenericWeaponController parentWeapon)
     {
         if (!Projectiles.IsNullOrEmpty()) {
-        projectilePool = Projectiles[0].CreatePool();
+        projectilePool = Projectiles[0].CreatePool(parentWeapon.gameObject);
         }
         else
         {
@@ -64,7 +64,7 @@ public class ShootOneProjectile : ProjectileAttackProperties
 
         public override void InitializeAttack(GenericWeaponController parentWeapon)
         {
-            projectilePool = Projectiles[0].CreatePool();
+            projectilePool = Projectiles[0].CreatePool(parentWeapon.gameObject);
         }
 
         public override async void AttackFunction(Effectable singleTarget,

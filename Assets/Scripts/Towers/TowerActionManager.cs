@@ -10,6 +10,10 @@ public class TowerActionManager : MonoBehaviour
 
     public void initActionManager(TowerSlotController tsc)
     {
+        if (tsc == null)
+        {
+            Debug.LogError("TSC is NULL");
+        }
         parentSlotController = tsc;
         parentTowerController = tsc.ChildTower;
         Actions.initActions(tsc);

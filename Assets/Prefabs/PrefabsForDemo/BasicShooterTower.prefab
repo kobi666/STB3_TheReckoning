@@ -434,6 +434,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4075031346932676324, guid: ea74d1b1b162f434e853439ab362fc6d,
         type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.OnPositionReachedEffect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075031346932676324, guid: ea74d1b1b162f434e853439ab362fc6d,
+        type: 3}
       propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.onHitEffects.Array.size
       value: 1
       objectReference: {fileID: 0}

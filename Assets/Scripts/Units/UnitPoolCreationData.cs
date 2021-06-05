@@ -8,6 +8,7 @@ using UnityEngine;
 [Serializable]
 public class UnitPoolCreationData
 {
+    [Required]
     public GameObject ParentGameObject;
     [SerializeField] public GenericUnitController GenericUnitController;
 #if UNITY_EDITOR
@@ -35,7 +36,7 @@ public class UnitPoolCreationData
 
     public PoolObjectQueue<GenericUnitController> CreateUnitPool()
     {
-        GameObject parent = GameObject.Instantiate(new GameObject(), GameObjectPool.Instance.transform);
+        GameObject parent = GameObject.Instantiate(new GameObject(), ParentGameObject.transform);
         GenericUnitController guc =
             GameObject.Instantiate(GenericUnitController, parent.transform);
         
@@ -57,7 +58,7 @@ public class UnitPoolCreationData
     
     public PoolObjectQueue<GenericUnitController> CreateUnitPool(int MaxUnits)
     {
-        GameObject parent = GameObject.Instantiate(new GameObject(), GameObjectPool.Instance.transform);
+        GameObject parent = GameObject.Instantiate(new GameObject(), ParentGameObject.transform);
         parent.name = ParentGameObject.name + "_" + GenericUnitController.name;
         GenericUnitController guc =
             GameObject.Instantiate(GenericUnitController, parent.transform);

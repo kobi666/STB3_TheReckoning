@@ -45,7 +45,7 @@ public class Effect
     }
     public bool IsAOE;
 
-    public virtual void InitializeEffectForWeapon(GenericWeaponController parentWeapon)
+    public virtual void InitializeEffectForWeapon(GenericWeaponController parentWeapon, GameObject parentGameObject)
     {
         
     }
@@ -76,7 +76,7 @@ public class Damage : Effect
         ef?.ApplyDamage(DamageRange.RandomDamage());
     }
 
-    public override void InitializeEffectForWeapon(GenericWeaponController parentWeapon)
+    public override void InitializeEffectForWeapon(GenericWeaponController parentWeapon, GameObject parentGameObject)
     {
         
     }
@@ -92,7 +92,7 @@ public class DebugEffect : Effect
         Debug.LogWarning(ef.name + " was affected");
     }
 
-    public override void InitializeEffectForWeapon(GenericWeaponController parentWeapon)
+    public override void InitializeEffectForWeapon(GenericWeaponController parentWeapon, GameObject parentGameobject)
     {
         
     }
@@ -111,7 +111,7 @@ public class SplitToMultipleProjectiles : Effect
         {
             if (pool == null)
             {
-                pool = ProjectileData[0].CreatePool();
+                pool = ProjectileData[0].CreatePool(ParentWeapon.gameObject);
             }
             return pool;
         }
@@ -132,10 +132,10 @@ public class SplitToMultipleProjectiles : Effect
         }
     }
 
-    public override void InitializeEffectForWeapon(GenericWeaponController parentWeapon)
+    public override void InitializeEffectForWeapon(GenericWeaponController parentWeapon,GameObject parentGameObject)
     {
         ParentWeapon = parentWeapon;
-        Pool = ProjectileData[0].CreatePool(ParentWeapon.name);
+        Pool = ProjectileData[0].CreatePool(ParentWeapon.name,parentGameObject);
     }
 }
 
@@ -152,7 +152,7 @@ public class DoSomethingWithPrefab : Effect
         
     }
 
-    public override void InitializeEffectForWeapon(GenericWeaponController parentWeapon)
+    public override void InitializeEffectForWeapon(GenericWeaponController parentWeapon, GameObject ParentGameObject)
     {
         
     }

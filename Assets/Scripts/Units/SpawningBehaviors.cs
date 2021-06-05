@@ -210,14 +210,16 @@ public class SpawnWaves : SpawnerBehavior
                 }
             }
 
-            foreach (var spawnFormation in SpawnFormations)
+            
+        }
+        
+        foreach (var spawnFormation in SpawnFormations)
+        {
+            foreach (var unit in spawnFormation)
             {
-                foreach (var unit in spawnFormation)
+                if (unit)
                 {
-                    if (unit)
-                    {
-                        UnitCounter++;
-                    }
+                    UnitCounter++;
                 }
             }
         }

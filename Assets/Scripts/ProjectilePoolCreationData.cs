@@ -39,7 +39,7 @@ public class ProjectilePoolCreationData : IHasEffectAnimation
         }
     }
 
-    public PoolObjectQueue<GenericProjectile> CreatePool()
+    public PoolObjectQueue<GenericProjectile> CreatePool(GameObject parentGameObject)
     {
         GenericProjectile proj = GameObject.Instantiate(ProjectileBase, nowhere, Quaternion.identity);
         proj.BaseProjectileEffect = projectileEffect;
@@ -48,7 +48,7 @@ public class ProjectilePoolCreationData : IHasEffectAnimation
         proj.gameObject.SetActive(true);
         proj.name = ProjectileBase + "_" + Random.Range(0, 999999);
         GameObject placeholder = GameObject.Instantiate(new GameObject(), Vector3.zero, Quaternion.identity,
-            GameObjectPool.Instance.transform);
+            parentGameObject.transform);
         placeholder.name = proj.name + "_placeHolder";
         proj.gameObject.SetActive(false);
         PoolObjectQueue<GenericProjectile> pool = new PoolObjectQueue<GenericProjectile>(proj, 10, placeholder);
@@ -57,7 +57,7 @@ public class ProjectilePoolCreationData : IHasEffectAnimation
         projectilePool = pool;
         return pool;
     }
-    public PoolObjectQueue<GenericProjectile> CreatePool(string ParentName)
+    public PoolObjectQueue<GenericProjectile> CreatePool(string ParentName, GameObject ParentGameObject)
     {
         GenericProjectile proj = GameObject.Instantiate(ProjectileBase, nowhere, Quaternion.identity);
         proj.BaseProjectileEffect = projectileEffect;

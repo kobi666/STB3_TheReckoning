@@ -11,6 +11,8 @@ public class CanvasTextController : MonoBehaviour
     [Required]
     public TextMeshProUGUI TextMeshProUGUI;
 
+    public event Action OnFadeOutEnd;
+
     public float FadeInTime = 2;
     public int StayTimeMS = 3000;
     public float FadeOutTime = 2;
@@ -41,9 +43,31 @@ public class CanvasTextController : MonoBehaviour
             TextMeshProUGUI.color = Color.Lerp(BaseColor,Color.clear, FOCounter / FadeInTime);
             await Task.Yield();
         }
-        
-        Debug.LogWarning("U DED DONE");
+        OnFadeOutEnd?.Invoke();
+        OnFadeOutEnd = null;
+    }
+    
+    public async void FadeTextInAndOut(Action<LevelManager> action, LevelManager levelManager)
+    {
+        float FIcounter = 0;
+        while (FIcounter <= FadeInTime)
+        {
+            TextMeshProUGUI.color = Color.Lerp(Color.clear, BaseColor, FIcounter / FadeInTime);
+            FIcounter += Time.deltaTime;
+            await Task.Yield();
+        }
 
+        await Task.Delay(StayTimeMS);
+
+        float FOCounter = 0;
+        while (FOCounter <= FadeOutTime)
+        {
+            FOCounter += Time.deltaTime;
+            TextMeshProUGUI.color = Color.Lerp(BaseColor,Color.clear, FOCounter / FadeInTime);
+            await Task.Yield();
+        }
+        OnFadeOutEnd?.Invoke();
+        action.Invoke(levelManager);
     }
     
     

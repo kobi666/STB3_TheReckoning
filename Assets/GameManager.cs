@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using TMPro;
@@ -9,6 +10,14 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public Camera MainCamera;
+
+    public List<LevelManager> AllLevels = new List<LevelManager>();
+    
+    private Queue<LevelManager> AllLevelsQueue = new Queue<LevelManager>();
+    
+    [Required]
+    public SelectorTest2 PlayerCursor;
 
     private event Action<int> onLifeUpdate;
 
@@ -16,7 +25,13 @@ public class GameManager : MonoBehaviour
     {
         onLifeUpdate?.Invoke(lifeDelta);
     }
-    
+
+    public event Action onLevelVictoryAcheived;
+
+    public void OnLevelVictoryAcheived()
+    {
+        onLevelVictoryAcheived?.Invoke();
+    }
     
 
     public event Action onMoneyUpdate;
@@ -78,19 +93,86 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private LevelManager PreviousLevel;
     private void Awake()
     {
+        onCameraFinishedMoving += delegate { if (PreviousLevel != null) { PreviousLevel.gameObject.SetActive(false);} };
         Instance = this;
+        MainCamera = Camera.main;
         onMoneyUpdate += delegate { MoneyTextObject.text = CurrentLevelManager.ResourcesManager.Money.ToString(); };
         onLifeUpdate += delegate(int i) { LifeTextObject.text = CurrentLevelManager.ResourcesManager.PlayerLife.ToString();};
         onLose += UDedText.FadeTextInAndOut;
+        foreach (var level in AllLevels)
+        {
+            AllLevelsQueue.Enqueue(level);
+        }
+
+        onLevelVictoryAcheived += StartVictoryTextSequenceAndChangeLevel;
+    }
+
+    public void StartNewLevel(LevelManager levelManager)
+    {
+        if (CurrentLevelManager != null)
+        {
+            CurrentLevelManager.AllUnitsFinished -= OnLevelVictoryAcheived;
+            PreviousLevel = CurrentLevelManager;
+        }
+        CurrentLevelManager = levelManager;
+        levelManager.gameObject.SetActive(true);
+        var levelPos = levelManager.transform.position;
+        MoveCameraSmooth(1.5f, levelPos);
+        UpdateMoney(CurrentLevelManager.InitialMoney);
+        UpdateLife(CurrentLevelManager.InitialLife);
+        CurrentLevelManager.AllUnitsFinished += OnLevelVictoryAcheived;
+    }
+
+
+    public void StartVictoryTextSequenceAndChangeLevel()
+    {
+        YouWinText.OnFadeOutEnd += DoStuffOnVictory;
+        YouWinText.FadeTextInAndOut();
+    }
+
+
+    public event Action onGameVictory;
+    public void DoStuffOnVictory()
+    {
+        if (AllLevelsQueue.Count > 0)
+        {
+            StartNewLevel(AllLevelsQueue.Dequeue());
+            PlayerCursor.InitializeCursorForLevel();
+        }
+        else
+        {
+            onGameVictory?.Invoke();
+        }
+    }
+    
+
+    private event Action onCameraFinishedMoving;
+    public async void MoveCameraSmooth(float MovementDuration, Vector2 targetPos)
+    {
+        var cameraTransfrom = MainCamera.transform;
+        float t = 0;
+        var cameraZ = cameraTransfrom.position.z;
+        float startTime = Time.time;
+        while ((Vector2)transform.position != targetPos)
+        {
+            t += StaticObjects.DeltaGameTime;
+            t = (Time.time - startTime) / MovementDuration;
+            cameraTransfrom.position = new Vector3(Mathf.SmoothStep(cameraTransfrom.position.x, targetPos.x, t),Mathf.SmoothStep(cameraTransfrom.position.y, targetPos.y, t), cameraZ);
+            await Task.Yield();
+        }
+        onCameraFinishedMoving?.Invoke();
     }
     
     
 
     private void Start()
     {
+        StartNewLevel(AllLevelsQueue.Dequeue());
         UpdateMoney(CurrentLevelManager.InitialMoney);
         UpdateLife(CurrentLevelManager.InitialLife);
+        PlayerCursor.InitializeCursorForLevel();
     }
 }

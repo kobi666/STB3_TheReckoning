@@ -30,7 +30,12 @@ public abstract class TowerAction
 
    public void InitAction(TowerSlotController tsc)
    {
-      ParentSlotController = tsc;
+      /*if (tsc == null)
+      {
+         Debug.LogError("TSC IS NULL");
+      }*/
+
+      ParentSlotController = ParentSlotController != null ? ParentSlotController : tsc;
    }
 
    public abstract void InitActionSpecific();
@@ -145,7 +150,16 @@ public class PlaceNewTowerFromPrefab : TowerAction
 
    public override void Action()
    {
-      ParentSlotController.PlaceNewTower(TowerPrefab);
+      try
+      {
+         ParentSlotController.PlaceNewTower(TowerPrefab);
+      }
+      catch (Exception e)
+      {
+         Debug.LogWarning(e);
+         throw;
+      }
+      
    }
 
    public override bool ExecutionConditions()

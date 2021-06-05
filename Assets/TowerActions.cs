@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MyBox;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ public class TowerActions
     {
         get
         {
-            if (!actions.Any())
+            if (!actionInitialized)
             {
                 initActions(parentTowerSlotController);
             }
@@ -73,7 +74,7 @@ public class TowerActions
     }
 
 
-    private bool actionInitialized = false;
+    public bool actionInitialized = false;
     public void initActions(TowerSlotController tsc)
     {
         if (actionInitialized == false) {
@@ -82,10 +83,10 @@ public class TowerActions
         actions.Add(ButtonDirectionsNames.South,South);
         actions.Add(ButtonDirectionsNames.West,West);
         parentTowerSlotController = tsc;
-        North?.InitAction(tsc);
-        East?.InitAction(tsc);
-        South?.InitAction(tsc);
-        West?.InitAction(tsc);
+        North?.InitAction(parentTowerSlotController);
+        East?.InitAction(parentTowerSlotController);
+        South?.InitAction(parentTowerSlotController);
+        West?.InitAction(parentTowerSlotController);
         actionInitialized = true;
         }
     }

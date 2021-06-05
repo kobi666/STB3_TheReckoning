@@ -49,7 +49,7 @@ public class CursorActionsController : MonoBehaviour
         }
     }
 
-    protected void Start()
+    protected void Awake()
     {
         for (int i = 0; i < CardinalSet.buttonDirectionNamesClockwiseArray.Length; i++)
         {

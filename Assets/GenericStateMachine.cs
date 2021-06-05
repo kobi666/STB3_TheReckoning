@@ -181,7 +181,8 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
         }
         else
         {
-            Debug.LogError("Same State Loop! " + CurrentState.StateName + " : " + name);
+            // Need to fix same state loop on walking on path
+            //Debug.LogError("Same State Loop! " + CurrentState.StateName + " : " + name);
         }
     }
 

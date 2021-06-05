@@ -8,6 +8,10 @@ public class LevelManager : MonoBehaviour
 {
     [ShowInInspector]
     public Dictionary<int,(Vector2,TowerSlotController)> LevelTowerSlots = new Dictionary<int, (Vector2,TowerSlotController)>();
+
+    [HideInInspector] public bool LevelFinished = false;
+    
+    
     
     [ShowInInspector]
     private int totalUnitsInLevel = 0;
@@ -21,8 +25,24 @@ public class LevelManager : MonoBehaviour
             CurrentUnitsInLevel += value;
         }
     }
-    
-    public int CurrentUnitsInLevel;
+
+    [ShowInInspector]
+    public int CurrentUnitsInLevel
+    {
+        get => currentUnitsInLevel;
+        set
+        {
+            currentUnitsInLevel = value;
+            if (currentUnitsInLevel <= 0)
+            {
+                AllUnitsFinished?.Invoke();
+            }
+        }
+    }
+
+    public event Action AllUnitsFinished;
+
+    private int currentUnitsInLevel;
 
 
 

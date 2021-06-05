@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using Sirenix.OdinInspector;
 using System.Threading.Tasks;
+using MyBox;
 
 
 [System.Serializable][DefaultExecutionOrder(20)]
@@ -332,14 +333,14 @@ public class SelectorTest2 : MonoBehaviour
         
         
         CurrentLevelManager = GameManager.Instance.CurrentLevelManager;
-        foreach (var v2tsc in CurrentLevelManager.LevelTowerSlots.Values)
+        /*foreach (var v2tsc in CurrentLevelManager.LevelTowerSlots.Values)
         {
             towerSlotsWithPositions.Add(v2tsc.Item1,v2tsc.Item2);
-        }
+        }*/
 
         
 
-        Vector2 FirstKey = Vector2.zero;
+        /*Vector2 FirstKey = Vector2.zero;
         foreach (var item in towerSlotsWithPositions)
         {
             if (item.Value != null) {
@@ -347,15 +348,45 @@ public class SelectorTest2 : MonoBehaviour
             break;
             }
         }
-        FirstDiscoveryRange = StaticObjects.Instance.TowerSize;
-        int random = UnityEngine.Random.Range(1, towerSlotsWithPositions.Count);
-        OnTowerSelect(towerSlotsWithPositions[FirstKey]);
+        //FirstDiscoveryRange = StaticObjects.Instance.TowerSize;
+        //int random = UnityEngine.Random.Range(1, towerSlotsWithPositions.Count);
         //SelectedTowerSlot = towerSlotsWithPositions[FirstKey];
-        MoveToNewTower4(SelectedTowerSlot.transform.position);
+        MoveToNewTower4(SelectedTowerSlot.transform.position);*/
         //transform.position = SelectedTowerSlot.transform.position;
-        SecondDiscoveryRange = FirstDiscoveryRange * SecondDiscoveryRangeMultiplier;
+       
 
         //StartCoroutine(SelectorUtils.Shake(transform, 10f, 1.5f));
+    }
+
+    public void InitializeCursorForLevel()
+    {
+        towerSlotsWithPositions.Clear();
+        CurrentLevelManager = GameManager.Instance.CurrentLevelManager;
+        foreach (var v2tsc in CurrentLevelManager.LevelTowerSlots.Values)
+        {
+            towerSlotsWithPositions.Add(v2tsc.Item1,v2tsc.Item2);
+        }
+        
+        //Get First Tower
+        float DistanceFromCenter = 999f;
+        var levelPos = CurrentLevelManager.transform.position;
+        Vector2 towerKey = new Vector2(9999f,9999f);
+        foreach (var positionToTower in towerSlotsWithPositions)
+        {
+            float currentDistance = Vector2.Distance(levelPos, positionToTower.Key);
+            if (currentDistance < DistanceFromCenter)
+            {
+                towerKey = positionToTower.Key;
+            }
+        }
+
+        var foundCenterTower = towerSlotsWithPositions.ContainsKey(towerKey) ? towerSlotsWithPositions[towerKey] : null;
+        
+        if (foundCenterTower != null) {
+        OnTowerSelect(foundCenterTower);
+        }
+        MoveToNewTower4(SelectedTowerSlot.transform.position);
+        
     }
 
     
