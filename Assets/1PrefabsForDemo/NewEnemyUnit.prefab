@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3070438863732686636
+--- !u!1 &7209521931939889816
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,52 +8,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3070438863732686650}
-  - component: {fileID: 3070438863732686649}
-  - component: {fileID: 3070438863732686648}
-  - component: {fileID: 3070438863732686647}
-  - component: {fileID: 3070438863732686646}
-  - component: {fileID: 3070438863732686645}
-  - component: {fileID: 3070438863732686644}
-  - component: {fileID: 3070438863732686643}
-  - component: {fileID: 3070438863732686642}
-  - component: {fileID: 3070438863732686641}
-  - component: {fileID: 3070438863732686640}
-  - component: {fileID: 3070438863732686639}
-  - component: {fileID: 3070438863732686638}
-  - component: {fileID: 3070438863732686637}
+  - component: {fileID: 7209521931939889770}
+  - component: {fileID: 7209521931939889771}
+  - component: {fileID: 7209521931939889764}
+  - component: {fileID: 7209521931939889765}
+  - component: {fileID: 7209521931939889766}
+  - component: {fileID: 7209521931939889767}
+  - component: {fileID: 7209521931939889760}
+  - component: {fileID: 7209521931939889761}
+  - component: {fileID: 7209521931939889762}
+  - component: {fileID: 7209521931939889763}
+  - component: {fileID: 7209521931939889820}
+  - component: {fileID: 7209521931939889821}
+  - component: {fileID: 7209521931939889822}
   m_Layer: 0
-  m_Name: NewPlayerUnit
+  m_Name: NewEnemyUnit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!4 &3070438863732686650
+--- !u!4 &7209521931939889770
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3070438863732686636}
+  m_GameObject: {fileID: 7209521931939889816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2, y: 0.59, z: 0}
+  m_LocalPosition: {x: -8.02, y: 4.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6285317262775815315}
-  - {fileID: 2877704418039072466}
-  - {fileID: 5682780265424949515}
-  - {fileID: 8481869620579339126}
+  - {fileID: 1848957035049136500}
+  - {fileID: 7601679199450330533}
+  - {fileID: 21520285034811202}
+  - {fileID: 4261699803613574072}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3070438863732686649
+--- !u!212 &7209521931939889771
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3070438863732686636}
+  m_GameObject: {fileID: 7209521931939889816}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -85,9 +84,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -278495349
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -853690955047969418, guid: d4eb1e5d24cd59740a27e2092fe2afae,
+  m_Sprite: {fileID: -6299190680713649593, guid: 0773bc2085227a5418970f1f3f36c382,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -99,45 +98,54 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3070438863732686648
+--- !u!114 &7209521931939889764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3070438863732686636}
+  m_GameObject: {fileID: 7209521931939889816}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6b2d6c38c30d9c46996e21d2d94193c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ReducesLevelUnitsOnDeath: 1
+  MoneyOnDeath: 20
+  DamageToBase: 1
   States:
   - DefaultState: 1
-    InitialState: 0
+    InitialState: 1
     StateIsRunning: 0
     FinalState: 0
     SMObject: {fileID: 0}
-    OnEnterBehvaior: []
+    OnEnterBehvaior:
+    - id: 0
     TargetableState: 1
     InStateBehavior:
-    - id: 0
-    OnExitBehavior:
     - id: 1
+    OnExitBehavior:
+    - id: 2
+    - id: 3
     SpecialEnterConditions: []
     SpecialExitConditions: []
-    stateName: 1
-    automaticNextState: 2
+    stateName: 5
+    automaticNextState: 0
   - DefaultState: 0
     InitialState: 0
     StateIsRunning: 0
     FinalState: 0
     SMObject: {fileID: 0}
-    OnEnterBehvaior: []
+    OnEnterBehvaior:
+    - id: 4
+    - id: 5
+    - id: 6
     TargetableState: 1
     InStateBehavior:
-    - id: 2
+    - id: 7
     OnExitBehavior:
-    - id: 3
+    - id: 8
+    - id: 9
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 2
@@ -148,30 +156,16 @@ MonoBehaviour:
     FinalState: 0
     SMObject: {fileID: 0}
     OnEnterBehvaior:
-    - id: 4
+    - id: 10
+    - id: 11
     TargetableState: 1
     InStateBehavior:
-    - id: 5
+    - id: 12
     OnExitBehavior:
-    - id: 6
+    - id: 13
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 3
-    automaticNextState: 6
-  - DefaultState: 0
-    InitialState: 1
-    StateIsRunning: 0
-    FinalState: 0
-    SMObject: {fileID: 0}
-    OnEnterBehvaior: []
-    TargetableState: 1
-    InStateBehavior:
-    - id: 7
-    OnExitBehavior:
-    - id: 8
-    SpecialEnterConditions: []
-    SpecialExitConditions: []
-    stateName: 6
     automaticNextState: 0
   - DefaultState: 0
     InitialState: 0
@@ -179,12 +173,12 @@ MonoBehaviour:
     FinalState: 1
     SMObject: {fileID: 0}
     OnEnterBehvaior:
-    - id: 9
+    - id: 14
     TargetableState: 0
     InStateBehavior:
-    - id: 10
+    - id: 15
     OnExitBehavior:
-    - id: 11
+    - id: 16
     SpecialEnterConditions: []
     SpecialExitConditions: []
     stateName: 7
@@ -194,6 +188,7 @@ MonoBehaviour:
     UnitInVaulenrable: 0
     InitialHP: 0
     CurrentHP: 0
+    UnitDied: 0
     _armor: 0
     _specialArmor: 0
   Data:
@@ -209,21 +204,24 @@ MonoBehaviour:
   GroupTag: Player
   TargetTags:
   - Enemy
-  AnimationController: {fileID: 0}
-  SpriteRenderer: {fileID: 3070438863732686649}
-  UnitBattleManager: {fileID: 3070438863732686644}
+  AnimationController: {fileID: 7209521931939889767}
+  SpriteRenderer: {fileID: 7209521931939889771}
+  UnitBattleManager: {fileID: 7209521931939889760}
   LifeBarmanager: {fileID: 0}
-  CollisionDetector: {fileID: 6285317262775815406}
-  EffectableUnit: {fileID: 3070438863732686642}
-  EffectableTargetBank: {fileID: 3070438863732686641}
-  StateMachine: {fileID: 3070438863732686638}
-  PathWalker: {fileID: 5682780265424949513}
-  UnitMovementController: {fileID: 3070438863732686639}
+  CollisionDetector: {fileID: 0}
+  EffectableUnit: {fileID: 7209521931939889762}
+  EffectableTargetBank: {fileID: 7209521931939889763}
+  StateMachine: {fileID: 7209521931939889822}
+  PathWalker: {fileID: 21520285034811200}
+  UnitMovementController: {fileID: 7209521931939889821}
+  DetectableCollider: {fileID: 0}
+  DeququeCounter: 0
   references:
     version: 1
     00000000:
-      type: {class: WaitForEnemiesToEnterRange, ns: UnitBehaviors, asm: Assembly-CSharp}
+      type: {class: InitilizeMovement, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
+        _DEBUG: 0
         UnitData:
           MetaData:
             HP: 0
@@ -252,198 +250,10 @@ MonoBehaviour:
           SpecialExitConditions: []
           stateName: 0
           automaticNextState: 0
-        Detector: {fileID: 0}
     00000001:
-      type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
-        TargetPriority: 0
-    00000002:
-      type: {class: MoveTowardsTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
-        MovementSpeed: 1
-    00000003:
-      type: {class: StopUnitFreeMovement, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
-    00000004:
-      type: {class: StartFight, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
-    00000005:
-      type: {class: Fight, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
-    00000006:
-      type: {class: EndFight, ns: UnitBehaviors, asm: Assembly-CSharp}
-      data:
-        UnitData:
-          MetaData:
-            HP: 0
-            MovementSpeed: 1
-            AttackSpeed: 0
-            DiscoveryRadius: 1
-          DynamicData:
-            TargetPosition: {x: 0, y: 0}
-            Spline: {fileID: 0}
-            DistanceOnPath: 0
-        UnitObject: {fileID: 0}
-        TargetBank: {fileID: 0}
-        AttackAreaTargetBank: {fileID: 0}
-        UnitBattleManager: {fileID: 0}
-        parentState:
-          DefaultState: 0
-          InitialState: 0
-          StateIsRunning: 0
-          FinalState: 0
-          SMObject: {fileID: 0}
-          OnEnterBehvaior: []
-          TargetableState: 1
-          InStateBehavior: []
-          OnExitBehavior: []
-          SpecialEnterConditions: []
-          SpecialExitConditions: []
-          stateName: 0
-          automaticNextState: 0
-    00000007:
       type: {class: DivergingBehaviors, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
+        _DEBUG: 0
         UnitData:
           MetaData:
             HP: 0
@@ -474,14 +284,210 @@ MonoBehaviour:
           automaticNextState: 0
         BehaviorsToState:
         - Behaviors:
-          - id: 12
-          AutomaticState: 1
+          - id: 17
+          AutomaticState: 2
         - Behaviors:
-          - id: 13
-          AutomaticState: 3
+          - id: 18
+          AutomaticState: 8
+    00000002:
+      type: {class: FinalizeMovement, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+    00000003:
+      type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+        TargetPriority: 0
+    00000004:
+      type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+        TargetPriority: 0
+    00000005:
+      type: {class: StopUnitPathMovement, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+    00000006:
+      type: {class: InitilizeMovement, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+    00000007:
+      type: {class: MoveTowardsTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+        MovementSpeed: 1
     00000008:
       type: {class: StopUnitFreeMovement, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
+        _DEBUG: 0
         UnitData:
           MetaData:
             HP: 0
@@ -511,8 +517,9 @@ MonoBehaviour:
           stateName: 0
           automaticNextState: 0
     00000009:
-      type: {class: AnnounceDeath, ns: UnitBehaviors, asm: Assembly-CSharp}
+      type: {class: FinalizeMovement, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
+        _DEBUG: 0
         UnitData:
           MetaData:
             HP: 0
@@ -542,8 +549,9 @@ MonoBehaviour:
           stateName: 0
           automaticNextState: 0
     0000000A:
-      type: {class: FadeOut, ns: UnitBehaviors, asm: Assembly-CSharp}
+      type: {class: GetTarget, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
+        _DEBUG: 0
         UnitData:
           MetaData:
             HP: 0
@@ -572,10 +580,11 @@ MonoBehaviour:
           SpecialExitConditions: []
           stateName: 0
           automaticNextState: 0
-        FadeOutSpeed: 0.1
+        TargetPriority: 0
     0000000B:
-      type: {class: DisableObject, ns: UnitBehaviors, asm: Assembly-CSharp}
+      type: {class: StartFight, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
+        _DEBUG: 0
         UnitData:
           MetaData:
             HP: 0
@@ -605,8 +614,9 @@ MonoBehaviour:
           stateName: 0
           automaticNextState: 0
     0000000C:
-      type: {class: MoveToBasePosition, ns: UnitBehaviors, asm: Assembly-CSharp}
+      type: {class: Fight, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
+        _DEBUG: 0
         UnitData:
           MetaData:
             HP: 0
@@ -636,8 +646,9 @@ MonoBehaviour:
           stateName: 0
           automaticNextState: 0
     0000000D:
-      type: {class: WaitForEnemiesToEnterRange, ns: UnitBehaviors, asm: Assembly-CSharp}
+      type: {class: EndFight, ns: UnitBehaviors, asm: Assembly-CSharp}
       data:
+        _DEBUG: 0
         UnitData:
           MetaData:
             HP: 0
@@ -666,29 +677,192 @@ MonoBehaviour:
           SpecialExitConditions: []
           stateName: 0
           automaticNextState: 0
-        Detector: {fileID: 0}
---- !u!114 &3070438863732686647
+    0000000E:
+      type: {class: AnnounceDeath, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+    0000000F:
+      type: {class: FadeOut, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+        FadeOutSpeed: 0.1
+    00000010:
+      type: {class: DisableObject, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+    00000011:
+      type: {class: WaitForEnemiesToEnterRange, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+        Detector: {fileID: 1848957035049136393}
+    00000012:
+      type: {class: WalkAlongSpline, ns: UnitBehaviors, asm: Assembly-CSharp}
+      data:
+        _DEBUG: 0
+        UnitData:
+          MetaData:
+            HP: 0
+            MovementSpeed: 1
+            AttackSpeed: 0
+            DiscoveryRadius: 1
+          DynamicData:
+            TargetPosition: {x: 0, y: 0}
+            Spline: {fileID: 0}
+            DistanceOnPath: 0
+        UnitObject: {fileID: 0}
+        TargetBank: {fileID: 0}
+        AttackAreaTargetBank: {fileID: 0}
+        UnitBattleManager: {fileID: 0}
+        parentState:
+          DefaultState: 0
+          InitialState: 0
+          StateIsRunning: 0
+          FinalState: 0
+          SMObject: {fileID: 0}
+          OnEnterBehvaior: []
+          TargetableState: 1
+          InStateBehavior: []
+          OnExitBehavior: []
+          SpecialEnterConditions: []
+          SpecialExitConditions: []
+          stateName: 0
+          automaticNextState: 0
+        Distance: 0
+        MovementSpeed: 1
+--- !u!114 &7209521931939889765
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3070438863732686636}
+  m_GameObject: {fileID: 7209521931939889816}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Animator: {fileID: 0}
+  _Animator: {fileID: 7209521931939889766}
   _ActionOnDisable: 0
---- !u!95 &3070438863732686646
+--- !u!95 &7209521931939889766
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3070438863732686636}
+  m_GameObject: {fileID: 7209521931939889816}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
@@ -700,13 +874,13 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3070438863732686645
+--- !u!114 &7209521931939889767
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3070438863732686636}
+  m_GameObject: {fileID: 7209521931939889816}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ffaa51dc3e79d554aac5ac85683a68c0, type: 3}
@@ -714,135 +888,144 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Clip: {fileID: 0}
   animancer: {fileID: 0}
---- !u!114 &3070438863732686644
+--- !u!114 &7209521931939889760
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3070438863732686636}
+  m_GameObject: {fileID: 7209521931939889816}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b260fea9b37e354438e3d7b057071994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimationController: {fileID: 3070438863732686645}
-  AttackArea: {fileID: 8327394171100594936}
-  AoeController: {fileID: 8155276778098051390}
+  AnimationController: {fileID: 7209521931939889767}
+  AttackArea: {fileID: 4396048698197471631}
+  AoeController: {fileID: 4592654684773825097}
   targetExists: 0
-  MeleeWeapon: {fileID: 2877704418039072468}
+  MeleeWeapon: {fileID: 7601679199450330531}
   AllWeapons: []
-  OnAttackAnimation: {fileID: 0}
+  OnAttackAnimation: {fileID: 7400000, guid: 46e21548a25fe984ab55828e97caaf08, type: 2}
   OnSpecialAttackAnimation: {fileID: 0}
-  DeathAnimation: {fileID: 0}
---- !u!61 &3070438863732686643
+  DeathAnimation: {fileID: 7400000, guid: a0615fb79f6548448b93a41b77e2fafe, type: 2}
+--- !u!61 &7209521931939889761
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3070438863732686636}
+  m_GameObject: {fileID: 7209521931939889816}
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0049924254, y: 0.009984821}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.59, y: 0.66}
+    oldSize: {x: 0.61, y: 0.7}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.44022763, y: 0.5202125}
+  m_Size: {x: 0.4683075, y: 0.582829}
   m_EdgeRadius: 0
---- !u!114 &3070438863732686642
+--- !u!114 &7209521931939889762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3070438863732686636}
+  m_GameObject: {fileID: 7209521931939889816}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cfaf404a69f91a458494a5bb4866f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canOnlyBeHitOnce: 0
-  ParentMyGameObject: {fileID: 3070438863732686648}
-  GenericUnitController: {fileID: 3070438863732686648}
---- !u!114 &3070438863732686641
+  ParentMyGameObject: {fileID: 7209521931939889764}
+  GenericUnitController: {fileID: 7209521931939889764}
+--- !u!114 &7209521931939889763
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3070438863732686636}
+  m_GameObject: {fileID: 7209521931939889816}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0843944fdace95f498664ca385d504ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DiscoverableTags: []
-  parentMyGameObject: {fileID: 3070438863732686648}
+  parentMyGameObject: {fileID: 7209521931939889764}
   HasTargets: 0
   HasTargetableTargets: 0
-  Detector: {fileID: 6285317262775815406}
---- !u!114 &3070438863732686640
+  Detector: {fileID: 1848957035049136393}
+  debugMe: 0
+--- !u!114 &7209521931939889820
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3070438863732686636}
+  m_GameObject: {fileID: 7209521931939889816}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71663229fcfdcae4c96e17b4b4a97bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParentMyGameObject: {fileID: 3070438863732686648}
+  ParentMyGameObject: {fileID: 7209521931939889764}
   FirstRun: 1
+  DebugCollider: 0
+  OBB: 0
+  subscribedToGWCS: 0
   CollisionID: 0
-  BoxCollider2D: {fileID: 0}
+  BoxCollider2D: {fileID: 7209521931939889761}
   CollisionTagInt: 0
   CollisionTagsICanDetectInt: 0
-  collisionTag: 6
-  BoxColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &3070438863732686639
+  collisionTag: 7
+  BoxColor: {r: 0.0141509175, g: 0.48878688, b: 1, a: 1}
+--- !u!114 &7209521931939889821
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3070438863732686636}
+  m_GameObject: {fileID: 7209521931939889816}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7008c75cdcc413547a1c98765d860759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitTransform: {fileID: 3070438863732686650}
-  GenericUnitController: {fileID: 3070438863732686648}
-  MovementSpeed: 0.2
-  MovementAnimation: {fileID: 7400000, guid: 762a51d0b0b971b42a87510ef05f9363, type: 2}
-  AnimationController: {fileID: 3070438863732686645}
---- !u!114 &3070438863732686638
+  UnitTransform: {fileID: 7209521931939889770}
+  GenericUnitController: {fileID: 7209521931939889764}
+  MovementSpeed: 2
+  MovementAnimation: {fileID: 7400000, guid: 103d48b133d0b4e4fb3c33386ee4faca, type: 2}
+  AnimationController: {fileID: 7209521931939889767}
+  spline: {fileID: 0}
+  SplinePathController: {fileID: 0}
+  LerpCounter: 0
+  cachedPosition: {x: 0, y: 0}
+--- !u!114 &7209521931939889822
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3070438863732686636}
+  m_GameObject: {fileID: 7209521931939889816}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a712af620318774babfc79d6e43c603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugStateMachine: 0
+  DebugStateMachine: 1
+  runLock: 1
   InitOnStartup: 1
   CurrentState:
     DefaultState: 0
@@ -928,282 +1111,16 @@ MonoBehaviour:
     SpecialExitConditions: []
     stateName: 0
     automaticNextState: 0
-  SMObject: {fileID: 3070438863732686648}
+  SMObject: {fileID: 7209521931939889764}
   CanExecCurrentState: 1
   references:
     version: 1
---- !u!114 &3070438863732686637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3070438863732686636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b260fea9b37e354438e3d7b057071994, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AnimationController: {fileID: 3070438863732686645}
-  AttackArea: {fileID: 8327394171100594936}
-  AoeController: {fileID: 8155276778098051390}
-  targetExists: 0
-  MeleeWeapon: {fileID: 2877704418039072468}
-  AllWeapons: []
-  OnAttackAnimation: {fileID: 7400000, guid: d19cc2901ea37fe4da479f230e1f5f2a, type: 2}
-  OnSpecialAttackAnimation: {fileID: 0}
-  DeathAnimation: {fileID: 0}
---- !u!1001 &3070438862117249362
+--- !u!1001 &7209521930492807829
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 3070438863732686650}
-    m_Modifications:
-    - target: {fileID: 7224100814137897045, guid: db3ce021091af8d40b4cc5af19ce83ce,
-        type: 3}
-      propertyPath: m_Name
-      value: PathWalker
-      objectReference: {fileID: 0}
-    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -7.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7224100814137897051, guid: db3ce021091af8d40b4cc5af19ce83ce,
-        type: 3}
-      propertyPath: UnitMovementController
-      value: 
-      objectReference: {fileID: 3070438863732686639}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: db3ce021091af8d40b4cc5af19ce83ce, type: 3}
---- !u!4 &5682780265424949515 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 3070438862117249362}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5682780265424949513 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7224100814137897051, guid: db3ce021091af8d40b4cc5af19ce83ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 3070438862117249362}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cf73b54f2baede4997ee86173e755c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &3070438862215726534
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 3070438863732686650}
-    m_Modifications:
-    - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: BoxColor.b
-      value: 0.32525948
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: BoxColor.g
-      value: 0.990566
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: BoxColor.r
-      value: 0.032707386
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: BoxCollider2D
-      value: 
-      objectReference: {fileID: 6285317262775815313}
-    - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: ParentMyGameObject
-      value: 
-      objectReference: {fileID: 3070438863732686648}
-    - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: tagsICanDetect.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: tagsICanDetect.Array.data[0]
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498601, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: m_Name
-      value: UnitRangeDiscovery
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498647, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498647, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498647, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498647, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053798066310498647, guid: c6fc023bc2782354d95ce0cb470b96e7,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c6fc023bc2782354d95ce0cb470b96e7, type: 3}
---- !u!4 &6285317262775815315 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
-    type: 3}
-  m_PrefabInstance: {fileID: 3070438862215726534}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &6285317262775815313 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 9053798066310498647, guid: c6fc023bc2782354d95ce0cb470b96e7,
-    type: 3}
-  m_PrefabInstance: {fileID: 3070438862215726534}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6285317262775815406 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
-    type: 3}
-  m_PrefabInstance: {fileID: 3070438862215726534}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caa475697a7ed9543a6259f255d9d087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &3070438862855961058
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 3070438863732686650}
+    m_TransformParent: {fileID: 7209521931939889770}
     m_Modifications:
     - target: {fileID: 969341594410942256, guid: d249efc43b8ba3843aee01653892b0b1,
         type: 3}
@@ -1264,7 +1181,7 @@ PrefabInstance:
         type: 3}
       propertyPath: parentMyGameObject
       value: 
-      objectReference: {fileID: 3070438863732686648}
+      objectReference: {fileID: 7209521931939889764}
     - target: {fileID: 969341594410942260, guid: d249efc43b8ba3843aee01653892b0b1,
         type: 3}
       propertyPath: m_Name
@@ -1277,12 +1194,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 969341594410942262, guid: d249efc43b8ba3843aee01653892b0b1,
         type: 3}
-      propertyPath: AoeAttack.AoeBehaviors.Array.data[0].Effects.Array.data[0].Effects.Array.data[0].DamageRange.max
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 969341594410942262, guid: d249efc43b8ba3843aee01653892b0b1,
+      propertyPath: AoeAttack.parentWeaponController
+      value: 
+      objectReference: {fileID: 7601679199450330531}
+    - target: {fileID: 5345439072985774168, guid: d249efc43b8ba3843aee01653892b0b1,
         type: 3}
-      propertyPath: AoeAttack.AoeBehaviors.Array.data[0].Effects.Array.data[0].Effects.Array.data[0].DamageRange.min
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6416709179583068952, guid: d249efc43b8ba3843aee01653892b0b1,
@@ -1303,12 +1220,12 @@ PrefabInstance:
     - target: {fileID: 6416709179583068954, guid: d249efc43b8ba3843aee01653892b0b1,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.30038893
+      value: 0.33378696
       objectReference: {fileID: 0}
     - target: {fileID: 6416709179583068954, guid: d249efc43b8ba3843aee01653892b0b1,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.28791344
+      value: 0.3397231
       objectReference: {fileID: 0}
     - target: {fileID: 6416709179583068954, guid: d249efc43b8ba3843aee01653892b0b1,
         type: 3}
@@ -1318,12 +1235,12 @@ PrefabInstance:
     - target: {fileID: 6416709179583068954, guid: d249efc43b8ba3843aee01653892b0b1,
         type: 3}
       propertyPath: m_Offset.x
-      value: -0.03
+      value: -0.017808914
       objectReference: {fileID: 0}
     - target: {fileID: 6416709179583068954, guid: d249efc43b8ba3843aee01653892b0b1,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.01
+      value: -0.002968073
       objectReference: {fileID: 0}
     - target: {fileID: 6416709179583069028, guid: d249efc43b8ba3843aee01653892b0b1,
         type: 3}
@@ -1349,12 +1266,12 @@ PrefabInstance:
         type: 3}
       propertyPath: BoxCollider2D
       value: 
-      objectReference: {fileID: 8327394171100594936}
+      objectReference: {fileID: 4396048698197471631}
     - target: {fileID: 6416709179583069029, guid: d249efc43b8ba3843aee01653892b0b1,
         type: 3}
       propertyPath: ParentMyGameObject
       value: 
-      objectReference: {fileID: 3070438863732686648}
+      objectReference: {fileID: 7209521931939889764}
     - target: {fileID: 6416709179583069029, guid: d249efc43b8ba3843aee01653892b0b1,
         type: 3}
       propertyPath: tagsICanDetect.Array.size
@@ -1363,7 +1280,7 @@ PrefabInstance:
     - target: {fileID: 6416709179583069029, guid: d249efc43b8ba3843aee01653892b0b1,
         type: 3}
       propertyPath: tagsICanDetect.Array.data[0]
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6607131285197664475, guid: d249efc43b8ba3843aee01653892b0b1,
         type: 3}
@@ -1373,31 +1290,36 @@ PrefabInstance:
     - target: {fileID: 6607131285197664476, guid: d249efc43b8ba3843aee01653892b0b1,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6607131285197664477, guid: d249efc43b8ba3843aee01653892b0b1,
         type: 3}
       propertyPath: parentMyGameObject
       value: 
-      objectReference: {fileID: 3070438863732686648}
+      objectReference: {fileID: 7209521931939889764}
     - target: {fileID: 6607131285197664478, guid: d249efc43b8ba3843aee01653892b0b1,
         type: 3}
       propertyPath: m_Name
       value: MeleeWeaponAOA
       objectReference: {fileID: 0}
+    - target: {fileID: 6607131285197664478, guid: d249efc43b8ba3843aee01653892b0b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d249efc43b8ba3843aee01653892b0b1, type: 3}
---- !u!4 &2877704418039072466 stripped
+--- !u!4 &7601679199450330533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 969341594410942256, guid: d249efc43b8ba3843aee01653892b0b1,
     type: 3}
-  m_PrefabInstance: {fileID: 3070438862855961058}
+  m_PrefabInstance: {fileID: 7209521930492807829}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2877704418039072468 stripped
+--- !u!114 &7601679199450330531 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 969341594410942262, guid: d249efc43b8ba3843aee01653892b0b1,
     type: 3}
-  m_PrefabInstance: {fileID: 3070438862855961058}
+  m_PrefabInstance: {fileID: 7209521930492807829}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -1405,30 +1327,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2c8e9fee8787c4b84f4836239ec567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8155276778098051390 stripped
+--- !u!114 &4592654684773825097 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6607131285197664476, guid: d249efc43b8ba3843aee01653892b0b1,
     type: 3}
-  m_PrefabInstance: {fileID: 3070438862855961058}
+  m_PrefabInstance: {fileID: 7209521930492807829}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0587adc365093bd42ab31ab471f63bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &8327394171100594936 stripped
+--- !u!61 &4396048698197471631 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 6416709179583068954, guid: d249efc43b8ba3843aee01653892b0b1,
     type: 3}
-  m_PrefabInstance: {fileID: 3070438862855961058}
+  m_PrefabInstance: {fileID: 7209521930492807829}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &3070438863971283129
+--- !u!1001 &7209521930703849591
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 3070438863732686650}
+    m_TransformParent: {fileID: 7209521931939889770}
     m_Modifications:
     - target: {fileID: 6857228081308957640, guid: eec082e4a5501b540a7926b58d7acb72,
         type: 3}
@@ -1492,9 +1414,259 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eec082e4a5501b540a7926b58d7acb72, type: 3}
---- !u!4 &8481869620579339126 stripped
+--- !u!4 &4261699803613574072 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6857228081308957647, guid: eec082e4a5501b540a7926b58d7acb72,
     type: 3}
-  m_PrefabInstance: {fileID: 3070438863971283129}
+  m_PrefabInstance: {fileID: 7209521930703849591}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7209521931253169947
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7209521931939889770}
+    m_Modifications:
+    - target: {fileID: 7224100814137897045, guid: db3ce021091af8d40b4cc5af19ce83ce,
+        type: 3}
+      propertyPath: m_Name
+      value: PathWalker
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224100814137897051, guid: db3ce021091af8d40b4cc5af19ce83ce,
+        type: 3}
+      propertyPath: UnitMovementController
+      value: 
+      objectReference: {fileID: 7209521931939889821}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: db3ce021091af8d40b4cc5af19ce83ce, type: 3}
+--- !u!4 &21520285034811202 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7224100814137897049, guid: db3ce021091af8d40b4cc5af19ce83ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 7209521931253169947}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &21520285034811200 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7224100814137897051, guid: db3ce021091af8d40b4cc5af19ce83ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 7209521931253169947}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf73b54f2baede4997ee86173e755c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &7209521931603572769
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7209521931939889770}
+    m_Modifications:
+    - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: BoxColor.b
+      value: 0.033018887
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: BoxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: BoxColor.r
+      value: 0.87228256
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: BoxCollider2D
+      value: 
+      objectReference: {fileID: 1848957035049136502}
+    - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: ParentMyGameObject
+      value: 
+      objectReference: {fileID: 7209521931939889764}
+    - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: tagsICanDetect.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: tagsICanDetect.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498601, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_Name
+      value: UnitRangeDiscovery
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498601, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498647, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498647, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498647, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498647, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053798066310498647, guid: c6fc023bc2782354d95ce0cb470b96e7,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6fc023bc2782354d95ce0cb470b96e7, type: 3}
+--- !u!4 &1848957035049136500 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9053798066310498645, guid: c6fc023bc2782354d95ce0cb470b96e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7209521931603572769}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1848957035049136502 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 9053798066310498647, guid: c6fc023bc2782354d95ce0cb470b96e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7209521931603572769}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1848957035049136393 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9053798066310498600, guid: c6fc023bc2782354d95ce0cb470b96e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7209521931603572769}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caa475697a7ed9543a6259f255d9d087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

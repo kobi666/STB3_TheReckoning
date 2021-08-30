@@ -5,7 +5,7 @@ public class ProjectileExitPoint : MonoBehaviour
 {
     public GenericWeaponController ParentWeaponController;
     public float rotationSpeed = 1;
-    public TargetUnit Target
+    public GenericUnitController Target
     {
         get => ParentWeaponController?.Target;
     }
@@ -37,7 +37,7 @@ public class ProjectileExitPoint : MonoBehaviour
     private Vector2 cachecVectorToTargetPosition;
     public void DefaultRotationFunction()
     {
-        cachecVectorToTargetPosition = Target.TargetTransform?.position - transform.position ?? cachecVectorToTargetPosition;
+        cachecVectorToTargetPosition = Target?.transform.position - transform.position ?? cachecVectorToTargetPosition;
         float angleToTarget = Mathf.Atan2(cachecVectorToTargetPosition.y, cachecVectorToTargetPosition.x) * Mathf.Rad2Deg;
         Quaternion q = Quaternion.AngleAxis(angleToTarget, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, q, StaticObjects.DeltaGameTime * rotationSpeed);

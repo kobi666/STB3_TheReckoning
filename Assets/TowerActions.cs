@@ -8,12 +8,11 @@ using UnityEngine;
 [System.Serializable]
 public class TowerActions
 {
-
     public Dictionary<ButtonDirectionsNames, TowerAction> Actions
     {
         get
         {
-            if (!actionInitialized)
+            if (!actionsInitialized)
             {
                 initActions(parentTowerSlotController);
             }
@@ -27,68 +26,54 @@ public class TowerActions
         new Dictionary<ButtonDirectionsNames, TowerAction>();
 
 
-     private TowerSlotController parentTowerSlotController;
+    private TowerSlotController parentTowerSlotController;
     [TypeFilter("GetTowerActions")][SerializeReference]
-    public TowerAction North = new NullAction();
-    [TypeFilter("GetTowerActions")][SerializeReference]
-    public TowerAction East = new NullAction();
-    [TypeFilter("GetTowerActions")][SerializeReference]
-    public TowerAction South = new NullAction();
-    [TypeFilter("GetTowerActions")][SerializeReference]
-    public TowerAction West = new NullAction();
+    public TowerAction[] ActionsByIndex = new TowerAction[4];
 
-    public TowerAction[] actionsByButtonName
-    {
-        get
-        {
-            return new TowerAction[]
-            {
-                North,
-                East,
-                South,
-                West
-            };
-        }
-    }
+   
     
     [Button]
     void north()
     {
-        North.ExecAction();
+        ActionsByIndex[0].ExecAction();
     }
     [Button]
     void east()
     {
-        East.ExecAction();
+        ActionsByIndex[1].ExecAction();
     }
     [Button]
     void south()
     {
-        South.ExecAction();
+        ActionsByIndex[2].ExecAction();
     }
     
     [Button]
     void west()
     {
-        West.ExecAction();
+        ActionsByIndex[3].ExecAction();
     }
 
 
-    public bool actionInitialized = false;
+    public bool actionsInitialized = false;
     public void initActions(TowerSlotController tsc)
     {
-        if (actionInitialized == false) {
-        actions.Add(ButtonDirectionsNames.North,North);
-        actions.Add(ButtonDirectionsNames.East,East);
-        actions.Add(ButtonDirectionsNames.South,South);
-        actions.Add(ButtonDirectionsNames.West,West);
-        parentTowerSlotController = tsc;
-        North?.InitAction(parentTowerSlotController);
-        East?.InitAction(parentTowerSlotController);
-        South?.InitAction(parentTowerSlotController);
-        West?.InitAction(parentTowerSlotController);
-        actionInitialized = true;
-        }
+        
+        if (actionsInitialized == false) { 
+            actions.Clear();
+            actions.Add(ButtonDirectionsNames.North,ActionsByIndex[0]);
+            actions.Add(ButtonDirectionsNames.East,ActionsByIndex[1]);
+            actions.Add(ButtonDirectionsNames.South,ActionsByIndex[2]);
+            actions.Add(ButtonDirectionsNames.West,ActionsByIndex[3]);
+            parentTowerSlotController = tsc;
+            if (parentTowerSlotController != null) {
+                for (int i = 0; i < ActionsByIndex.Length; i++)
+                {
+                    ActionsByIndex[i].InitAction(tsc,i);
+                }
+                actionsInitialized = true;
+            }
+            }
     }
     
     private static IEnumerable<Type> GetTowerActions()

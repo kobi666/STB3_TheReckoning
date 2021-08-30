@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -49,7 +50,8 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
     public abstract string EmptyStateName { get; }
 
     public bool CanExecCurrentState = true;
-    
+
+    private bool OverrideStateChangeLock = false;
     private int counter;
     private float debugCounter;
     public async void ExecuteCurrentState()
@@ -68,31 +70,48 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
             {
                 CanExecCurrentState = true;
                 NextState = null;
-                while ( /*runLock &&*/ (CurrentState.RunningStateConditions()))
+                try
                 {
-                    if (CanExecCurrentState)
+                    do
                     {
-                        CurrentState.InStateActions();
-                        await Task.Delay(1);
-                    }
-                    else
-                    {
-                        break;
-                    }
+                        if (CanExecCurrentState)
+                        {
+                            CurrentState.InStateActions();
+                            await UniTask.Yield();
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    } while (CurrentState.RunningStateConditions());
                 }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+                
 
                 CurrentState.OnStateExitActions();
                 
             }
             CurrentState.StateIsRunning = false;
             T nextState = NextStateResolver();
-            if (DebugStateMachine)
+            /*if (DebugStateMachine)
             {
                 Debug.LogError( name + " Current State : " + CurrentState.StateName +  " |||  Next State : " + nextState.StateName);
+            }*/
+            if (CurrentState.FinalState)
+            {
+                if (!OverrideStateChangeLock)
+                {
+                    return;
+                }
             }
-            if (!CurrentState.FinalState) {
+            
+            
             ChangeState(nextState);
-            }
+            
         }
         
         
@@ -152,8 +171,11 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
         onStateChange?.Invoke();
     }
 
+    private int changeStateCounter = 0;
     public void ChangeState(T state)
     {
+        if (runLock) {
+        changeStateCounter++;
         PreviousState = CurrentState;
         CurrentState = state;
         if (PreviousState.StateName == CurrentState.StateName)
@@ -167,9 +189,10 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
 
         if (counter < 3)
         {
+            
             OnStateChange();
-            Debug.Log("state name" + CurrentState.StateName + " : " + name);
-            ExecuteCurrentState();
+//            Debug.LogWarning(Time.time + " Moving from " + CurrentState.StateName + " to " + PreviousState.StateName + 
+  //                           " on unit " + name + " , change counter: " + changeStateCounter);
             if (InterruptState != null) {
                 if (state.StateName == InterruptState.StateName)
                 {
@@ -178,11 +201,15 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
             }
 
             NextState = null;
+            ExecuteCurrentState();
+            CheckAndSwitchOffOverride();
         }
+        
         else
         {
             // Need to fix same state loop on walking on path
-            //Debug.LogError("Same State Loop! " + CurrentState.StateName + " : " + name);
+            Debug.LogWarning("Same State Loop! " + CurrentState.StateName + " to " + state.StateName );
+        }
         }
     }
 
@@ -190,6 +217,30 @@ public abstract class GenericStateMachine<T,TS> : MonoBehaviour where T : Object
     {
         NextState = nextState;
         CanExecCurrentState = false;
+    }
+
+    public bool CheckAndSwitchOffOverride()
+    {
+        if (OverrideStateChangeLock)
+        {
+            OverrideStateChangeLock = false;
+        }
+
+        return OverrideStateChangeLock;
+    }
+    
+    public async void SetStateForce(T nextState)
+    {
+        NextState = nextState;
+        CanExecCurrentState = false;
+        runLock = false;
+        OverrideStateChangeLock = true;
+        while (CurrentState.StateIsRunning)
+        {
+            await Task.Yield();
+        }
+        ChangeState(NextState);
+        runLock = true;
     }
 
     protected void OnDisable()

@@ -13,7 +13,9 @@ public class TowerSlotController : MyGameObject
     public LevelManager MyLevelManager;
     [Required]
     public TowerController childTower;
-    
+
+    public int TowerLevel = 0;
+
     [Required]
     public DirectionalDiscovery DirectionalDiscoveryController;
     
@@ -72,6 +74,7 @@ public class TowerSlotController : MyGameObject
             Destroy(oldTower.gameObject);
         }
         SR.sprite = null;
+        TowerLevel++;
     }
 
     public void CalculateAdjecentTowers()
@@ -107,8 +110,8 @@ public class TowerSlotController : MyGameObject
         MyLevelManager.LevelTowerSlots.Add(MyGameObjectID,(transform.position,this));
         onTowerPositionCalculation += CalculateAdjecentTowers;
     }
-    
-    
+
+    public Sprite TowerSprite => childTower.TowerSprite ?? null;
 
 
     protected void Start()

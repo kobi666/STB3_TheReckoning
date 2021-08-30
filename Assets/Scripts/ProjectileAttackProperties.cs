@@ -28,7 +28,7 @@ public abstract class ProjectileAttackProperties : AttackProperties,IhasExitAndF
             {
                 foreach (var exitFinalPointPair in ExitFinalPointPairs)
                 {
-                    exitFinalPointPair.cachedFinalPointPosition = ParentWeapon.Target?.TargetTransform?.position ?? exitFinalPointPair.cachedFinalPointPosition;
+                    exitFinalPointPair.cachedFinalPointPosition = ParentWeapon.Target?.transform.position ?? exitFinalPointPair.cachedFinalPointPosition;
                     exitFinalPointPair.FinalPoint.transform.position = exitFinalPointPair.cachedFinalPointPosition;
                 }
 
@@ -82,7 +82,11 @@ public abstract class ProjectileAttackProperties : AttackProperties,IhasExitAndF
     {
         foreach (var exitFinal in ExitFinalPointPairs)
         {
-            var position = (Vector2)ParentWeapon.transform.position + new Vector2(ParentWeapon.Data.componentRadius / 1.5f, 0f);
+            var position1 = exitFinal.ExitPoint.transform.position;
+            var distanceForFinalPoint = (ParentWeapon.Data.componentRadius / 1.5f) -
+                                        Vector2.Distance(ParentWeapon.transform.position, position1);
+            var position = new Vector2(position1.x + distanceForFinalPoint,
+                position1.y);
             exitFinal.FinalPoint.transform.position = position;
         }
     }

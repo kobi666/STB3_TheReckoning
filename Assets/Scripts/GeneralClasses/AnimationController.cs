@@ -41,7 +41,7 @@ public class AnimationController : MonoBehaviour
 
     public void PlayFiniteAnimation(AnimationClip clip) {
         if (clip != null) {
-        CurrentAnimationState.Stop();
+        CurrentAnimationState?.Stop();
         var state = animancer.Play(clip);
         state.Events.OnEnd += delegate { state.IsPlaying = false;};
         }

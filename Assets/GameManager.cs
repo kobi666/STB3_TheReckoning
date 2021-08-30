@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public List<LevelManager> AllLevels = new List<LevelManager>();
     
     private Queue<LevelManager> AllLevelsQueue = new Queue<LevelManager>();
+
+    [Required] public PlayerTowersManager PlayerTowersManager;
     
     [Required]
     public SelectorTest2 PlayerCursor;
@@ -85,7 +87,7 @@ public class GameManager : MonoBehaviour
     [ShowInInspector]
     public int Money
     {
-        get => CurrentLevelManager.ResourcesManager.Money;
+        get => CurrentLevelManager?.ResourcesManager.Money ?? -999;
         set
         {
             CurrentLevelManager.ResourcesManager.Money += value;
@@ -96,7 +98,7 @@ public class GameManager : MonoBehaviour
     private LevelManager PreviousLevel;
     private void Awake()
     {
-        onCameraFinishedMoving += delegate { if (PreviousLevel != null) { PreviousLevel.gameObject.SetActive(false);} };
+        //onCameraFinishedMoving += delegate { if (PreviousLevel != null) { PreviousLevel.gameObject.SetActive(false);} };
         Instance = this;
         MainCamera = Camera.main;
         onMoneyUpdate += delegate { MoneyTextObject.text = CurrentLevelManager.ResourcesManager.Money.ToString(); };
@@ -117,6 +119,8 @@ public class GameManager : MonoBehaviour
             CurrentLevelManager.AllUnitsFinished -= OnLevelVictoryAcheived;
             PreviousLevel = CurrentLevelManager;
         }
+        
+        onCameraFinishedMoving += DisablePreviousLevel;
         CurrentLevelManager = levelManager;
         levelManager.gameObject.SetActive(true);
         var levelPos = levelManager.transform.position;
@@ -124,6 +128,14 @@ public class GameManager : MonoBehaviour
         UpdateMoney(CurrentLevelManager.InitialMoney);
         UpdateLife(CurrentLevelManager.InitialLife);
         CurrentLevelManager.AllUnitsFinished += OnLevelVictoryAcheived;
+    }
+
+    void DisablePreviousLevel()
+    {
+        if (PreviousLevel != null)
+        {
+            PreviousLevel.gameObject.SetActive(false);
+        }
     }
 
 
@@ -150,29 +162,38 @@ public class GameManager : MonoBehaviour
     
 
     private event Action onCameraFinishedMoving;
+    public bool MovementInProgress = false;
     public async void MoveCameraSmooth(float MovementDuration, Vector2 targetPos)
     {
         var cameraTransfrom = MainCamera.transform;
         float t = 0;
+        MovementInProgress = true;
         var cameraZ = cameraTransfrom.position.z;
         float startTime = Time.time;
-        while ((Vector2)transform.position != targetPos)
+        while (t < 1 && MovementInProgress)
         {
-            t += StaticObjects.DeltaGameTime;
             t = (Time.time - startTime) / MovementDuration;
             cameraTransfrom.position = new Vector3(Mathf.SmoothStep(cameraTransfrom.position.x, targetPos.x, t),Mathf.SmoothStep(cameraTransfrom.position.y, targetPos.y, t), cameraZ);
             await Task.Yield();
         }
+        if (MovementInProgress) {
         onCameraFinishedMoving?.Invoke();
+        }
+        MovementInProgress = false;
     }
-    
+
+    private void OnDisable()
+    {
+        MovementInProgress = false;
+    }
+
     
 
     private void Start()
     {
         StartNewLevel(AllLevelsQueue.Dequeue());
-        UpdateMoney(CurrentLevelManager.InitialMoney);
-        UpdateLife(CurrentLevelManager.InitialLife);
+        /*UpdateMoney(CurrentLevelManager.InitialMoney);
+        UpdateLife(CurrentLevelManager.InitialLife);*/
         PlayerCursor.InitializeCursorForLevel();
     }
 }

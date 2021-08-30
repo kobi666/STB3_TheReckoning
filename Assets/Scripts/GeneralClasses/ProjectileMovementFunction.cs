@@ -31,7 +31,9 @@ public abstract class ProjectileMovementFunction
     public abstract void MovementFunction(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos,
         Vector2 TargetPos,
         float speed);
-
+    
+    
+    
 
 
     public event Action onTargetLost;
@@ -87,20 +89,22 @@ public abstract class ProjectileMovementFunction
         }
     }
 
-    private bool posreachedLock = false;
-    
-    
+    public bool posreachedLock = false;
+
+    public bool moving = false;
     public async void MoveToTargetPosition(Transform projectileTransform, Transform targetTarnsform, Vector2 originPos, Vector2 TargetPos
         )
     {
         OnMovementInit(projectileTransform, targetTarnsform, originPos, TargetPos, Speed);
-        while (ProgressCounter <= 1f && ExternalMovementLock == false)
+        moving = true;
+        while (ProgressCounter < 1f && ExternalMovementLock == false)
         {
             ProgressCounter += Speed * StaticObjects.DeltaGameTime;
             MovementFunction(projectileTransform, null, originPos, TargetPos, Speed);
             await Task.Yield();
         }
 
+        moving = false;
         ProgressCounter = 0;
         OnPositionReached();
         OnMovementComplete();

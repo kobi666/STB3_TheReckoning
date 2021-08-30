@@ -11,7 +11,7 @@ public class SplinePathController : MyGameObject,IActiveObject<SplinePathControl
     [ShowInInspector]
     public SortedList<int,Vector2> splinePoints = new SortedList<int,Vector2>();
 
-    public float GetPointIndexAccordingToRation(int pointIndex)
+    public float GetPointIndexAccordingToRatio(int pointIndex)
     {
         float p = pointIndex / (float)splinePoints.Count;
         return p;
@@ -48,16 +48,16 @@ public class SplinePathController : MyGameObject,IActiveObject<SplinePathControl
     }
 
     public event Action OnPathUpdate;
-
+    
+    
     public void GetSplinePoints()
     {
-        splinePoints.Clear();
-        Vector2[] points = EdgeCollider2D.points;
-        int i = 0;
-        foreach (var p in points)
+        var b = BgCcMath.GetDistance();
+        int ii = 0;
+        for (float i = 0; i <= b; i += (b / 100f))
         {
-            splinePoints.Add(i,transform.TransformPoint(p));
-            i++;
+            splinePoints.Add(ii,BgCcMath.CalcPositionByDistance(i));
+            ii++;
         }
     }
 

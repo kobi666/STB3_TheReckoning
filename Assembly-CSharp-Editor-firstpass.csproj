@@ -762,6 +762,10 @@
       <Project>{7df9d579-b523-17c0-d22a-1f08ef40f7de}</Project>
       <Name>Unity.InternalAPIEditorBridge.001</Name>
     </ProjectReference>
+    <ProjectReference Include="UniTask.DOTween.csproj">
+      <Project>{e13c6a0a-cbbf-2129-8e5c-0f2663024b2a}</Project>
+      <Name>UniTask.DOTween</Name>
+    </ProjectReference>
     <ProjectReference Include="ScriptInspector.csproj">
       <Project>{0200984e-7307-7a6b-107b-62c491592bdd}</Project>
       <Name>ScriptInspector</Name>
@@ -773,6 +777,10 @@
     <ProjectReference Include="Unity.Rider.Editor.csproj">
       <Project>{635894d9-bcb2-edee-0264-530e751d2f71}</Project>
       <Name>Unity.Rider.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.Linq.csproj">
+      <Project>{94fc84e9-2f0d-467f-33ce-69a9ea1dbdca}</Project>
+      <Name>UniTask.Linq</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Jobs.Editor.csproj">
       <Project>{079c09e1-ffa3-b7bc-197b-13b449b1e611}</Project>
@@ -805,6 +813,10 @@
     <ProjectReference Include="Unity.2D.IK.Runtime.csproj">
       <Project>{a8897053-913a-cd62-e22d-2b36f80d4ae6}</Project>
       <Name>Unity.2D.IK.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.TextMeshPro.csproj">
+      <Project>{1be625cb-c36b-ffae-0b7f-d40c45f1e704}</Project>
+      <Name>UniTask.TextMeshPro</Name>
     </ProjectReference>
     <ProjectReference Include="InputSystem.Samples.Visualizers.csproj">
       <Project>{3a10130d-ca5b-fb61-a173-c43809519df6}</Project>
@@ -853,6 +865,14 @@
     <ProjectReference Include="Unity.2D.Common.Editor.csproj">
       <Project>{fac1fd9c-efbc-428e-9d1b-a6a266baa961}</Project>
       <Name>Unity.2D.Common.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.csproj">
+      <Project>{deaa9672-5d4c-6c5a-5d96-e9c273b71128}</Project>
+      <Name>UniTask</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.Addressables.csproj">
+      <Project>{25bb3ced-8461-49a3-240f-88452c57423d}</Project>
+      <Name>UniTask.Addressables</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

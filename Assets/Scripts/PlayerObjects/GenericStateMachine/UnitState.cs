@@ -59,7 +59,7 @@ public class UnitState : ObjectState<GenericUnitController>
         return automaticNextState != UnitStates.None;
     }
     
-    
+    [ShowInInspector]
     public override string AutomaticNextState
     {
         get => automaticNextState.ToString();
@@ -181,6 +181,7 @@ public abstract class UnitBehavior
         UnitBattleManager = UnitObject.UnitBattleManager;
         AttackAreaTargetBank = UnitBattleManager.MeleeWeapon.TargetBank;
         InitBehavior();
+        this.parentState = parentState;
     }
 
     public abstract void InitBehavior();

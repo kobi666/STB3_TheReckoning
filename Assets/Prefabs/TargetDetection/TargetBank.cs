@@ -95,7 +95,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
     /// </summary>
     ///
     [SerializeReference] 
-    public ConcurrentDictionary<int,(T,bool)> Targets = new ConcurrentDictionary<int,(T,bool)>();
+    public Dictionary<int,(T,bool)> Targets = new Dictionary<int,(T,bool)>();
 
     public abstract T TryToGetTargetOfType(int gameObjectID);
     
@@ -123,7 +123,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
         if (t != null) {
             if (!Targets.ContainsKey(_gameobjectID))
             {
-                Targets.TryAdd(_gameobjectID, (t,t.IsTargetable()));
+                Targets.Add(_gameobjectID, (t,t.IsTargetable()));
                 OnTargetAdd(t);
                 if (t.IsTargetable())
                 {
@@ -139,7 +139,7 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
     void RemoveTarget(int gameObjectID) {
         clearNulls();
         if (Targets.ContainsKey(gameObjectID)) {
-            Targets.TryRemove(gameObjectID,out outValue);
+            Targets.Remove(gameObjectID);
             if (Targets.IsNullOrEmpty())
             {
                 HasTargets = false;
@@ -154,8 +154,15 @@ public abstract class TargetBank<T> : MonoBehaviour where T : ITargetable,IhasGa
             foreach (var item in Targets)
             {
                 if (item.Value.Item1 == null) {
-                    Targets.TryRemove(item.Key,out outValue);
-                    onTargetsUpdate?.Invoke();
+                    try
+                    {
+                        Targets.Remove(item.Key);
+                        onTargetsUpdate?.Invoke();
+                    }
+                    catch (Exception e)
+                    {
+                       Debug.Log(e);
+                    }
                 }
             }
             

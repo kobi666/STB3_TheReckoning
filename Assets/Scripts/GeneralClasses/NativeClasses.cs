@@ -184,7 +184,9 @@ public class TargetUnit
     }
     [SerializeField]
     public string name {get => Effectable?.name ?? null;}
-    public Transform transform {get => Effectable?.transform ?? null;
+    public Transform transform
+    {
+        get { return (TargetTransform != null ? TargetTransform : null); }
     }
     public float Proximity {get => GenericUnitController?.PathWalker.ProximityToPathEnd ?? 9999f;}
 
@@ -194,7 +196,7 @@ public class TargetUnit
             GenericUnitController = GameObjectPool.Instance.ActiveUnits[targetGameObjectID];
             
             Effectable = GameObjectPool.Instance.ActiveEffectables.Pool[targetGameObjectID];
-            TargetTransform = transform;
+            TargetTransform = GenericUnitController.transform;
         }
         catch(Exception e) {
             Debug.LogWarning(e.Message);

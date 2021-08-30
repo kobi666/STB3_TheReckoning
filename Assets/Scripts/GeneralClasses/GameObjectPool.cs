@@ -193,13 +193,13 @@ public class GameObjectPool : MonoBehaviour
     }
 
     
-    public TargetUnit GetTargetUnit(int gameObjectID) {
+    public GenericUnitController GetTargetUnit(int gameObjectID) {
         if (gameObjectID == 0)
         {
             return null;
         }
-        if (ActiveEffectables.Contains(gameObjectID) && ActiveUnits.ContainsKey(gameObjectID)) {
-        TargetUnit tu = new TargetUnit(gameObjectID);
+        if (ActiveUnits.ContainsKey(gameObjectID)) {
+        GenericUnitController tu = ActiveUnits[gameObjectID];
         return tu;
         }
         return null;

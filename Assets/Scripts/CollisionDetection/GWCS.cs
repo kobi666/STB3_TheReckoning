@@ -585,7 +585,7 @@ public class GWCS : MonoBehaviour
 
 
 
-        PrintCurrentCollisionsToList();
+        //PrintCurrentCollisionsToList();
         // the part where I dispose of all the things
         AllSimulatedColliders.Dispose();
         DetectorCheckdFlags.Dispose();

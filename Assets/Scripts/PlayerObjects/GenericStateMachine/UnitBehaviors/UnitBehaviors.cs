@@ -52,6 +52,47 @@ namespace UnitBehaviors
             return PathWalker.SplineAttached && BeginingOfSpline != null && UnitObject.transform.position != BeginingOfSpline;
         }
     }
+
+
+
+    public class InitilizeMovement : UnitSingleBehvaior
+    {
+        
+        public override void Behavior()
+        {
+            UnitObject.UnitMovementController.OnMovementStart();
+        }
+
+        public override void InitBehavior()
+        {
+            
+        }
+
+        public override bool ExecCondition()
+        {
+            return true;
+        }
+    }
+    
+    public class FinalizeMovement : UnitSingleBehvaior
+    {
+        
+        public override void Behavior()
+        {
+            UnitObject.UnitMovementController.OnMovementEnd();
+        }
+
+        public override void InitBehavior()
+        {
+            
+        }
+
+        public override bool ExecCondition()
+        {
+            return true;
+        }
+    }
+    
     
     
     public class WalkAlongSpline : UnitConcurrentBehavior
@@ -141,11 +182,14 @@ namespace UnitBehaviors
             }
         }
 
+
+        private bool CheckingInProgress = false;
         public bool EvaluateConditions()
         {
             bool eval = true;
-            foreach (var behavior in BehaviorsToState)
-            {
+            string behaviorCheckedName = String.Empty;
+            /*foreach (var behavior in BehaviorsToState)
+            {*/
                 foreach (var bs in BehaviorsToState)
                 {
                     foreach (var b in bs.Behaviors)
@@ -155,6 +199,7 @@ namespace UnitBehaviors
                             continue;
                         }
                         eval = false;
+                        
                         break;
                     }
                     if (eval == false)
@@ -163,11 +208,11 @@ namespace UnitBehaviors
                         {
                             parentState.AutomaticNextState = bs.AutomaticState.ToString();
                         }
-                        
+                        return eval;
                         break;
                     }
                 }
-            }
+            
             return eval;
         }
 
@@ -198,7 +243,7 @@ namespace UnitBehaviors
         private Transform unitTransform;
         public override void Behavior()
         {
-            UnitMovementController.MoveTowardsTargetAsync(UnitData.DynamicData.BasePosition);
+            UnitMovementController.MoveTowardsTargetAsyncLerp(UnitData.DynamicData.BasePosition);
         }
 
         public override void InitBehavior()
@@ -209,7 +254,18 @@ namespace UnitBehaviors
 
         public override bool ExecCondition()
         {
-            bool b = ((Vector2) unitTransform.position != UnitData.DynamicData.BasePosition);
+            bool b = false;
+            try
+            {
+                b = UnitObject.UnitMovementController.FreeMovementInprogress;
+                //b = ((Vector2) unitTransform?.position != UnitData.DynamicData.BasePosition);
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning(e);
+                throw;
+            }
+           
             return b;
         }
     }
@@ -330,9 +386,15 @@ namespace UnitBehaviors
         {
             if (TargetBank.HasTargetableTargets)
             {
-                if (UnitBattleManager.TargetUnit == null)
+                if (!UnitBattleManager.targetExists)
                 {
                     UnitBattleManager.TargetUnit = GameObjectPool.Instance.ActiveUnits[TargetBank.Targets.First().Key];
+                    if (UnitBattleManager.targetExists)
+                    {
+                        return true;
+                    }
+
+                    return false;
                 }
                 if (AttackAreaTargetBank.HasTargetableTargets)
                 {
@@ -491,7 +553,7 @@ namespace UnitBehaviors
 
         public override bool ExecCondition()
         {
-            return (UnitSpriteRenderer.color.a > 0f);
+            return (UnitSpriteRenderer.color.a > 0);
         }
     }
 

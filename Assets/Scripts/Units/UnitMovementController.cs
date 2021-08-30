@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Threading.Tasks;
+using BansheeGz.BGSpline.Components;
 
 public class UnitMovementController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class UnitMovementController : MonoBehaviour
     private Rigidbody2D Rigidbody2D;
     public AnimationClip MovementAnimation;
     public AnimationController AnimationController;
+    public BGCcMath spline;
+    public SplinePathController SplinePathController;
 
     private void Awake()
     {
@@ -44,6 +47,17 @@ public class UnitMovementController : MonoBehaviour
     }
 
     public event Action onMovementStart;
+
+    public void OnMovementStart()
+    {
+        onMovementStart?.Invoke();
+    }
+
+    public void OnMovementEnd()
+    {
+        onMovementEnd?.Invoke();
+    }
+    
     public event Action onMovementEnd;
 
     private bool pathMovementInProgress = false;
@@ -113,6 +127,29 @@ public class UnitMovementController : MonoBehaviour
             FreeMovementInprogress = false;
         }
     }
+    
+    public async void MoveTowardsTargetAsyncLerp(Vector2? targetPosition)
+    {
+        TargetPositionFreeMovement = targetPosition;
+        Vector2 basePosition = UnitTransform.position;
+        if (!FreeMovementInprogress)
+        {
+            FreeMovementInprogress = true;
+            float ProgressCounter = 0;
+            while (ProgressCounter <= 1)
+            {
+                ProgressCounter += MovementSpeed * StaticObjects.DeltaGameTime;
+                //need to fix this not right now
+                //MovementInProgress = true;
+                //Debug.LogWarning("moving free");
+                GenericUnitController.FlipDirection(TargetPositionFreeMovement);
+                transform.position = Vector2.Lerp(basePosition, (Vector2)TargetPositionFreeMovement,
+                    ProgressCounter);
+                await Task.Yield();
+            }
+            FreeMovementInprogress = false;
+        }
+    }
 
     public async void MoveAlongPathAsync(Vector2 targetPosition)
     {
@@ -130,6 +167,48 @@ public class UnitMovementController : MonoBehaviour
                 await Task.Yield();
             }
             PathMovementInProgress = false;
+        }
+    }
+    
+    private int splinePointCounter = 0;
+    
+    private int maxSplinePointIndex
+    {
+        get => SplinePathController?.splinePoints.Count ?? 0;
+    }
+    
+    public float LerpCounter = 0;
+
+    public Vector2 cachedPosition;
+    
+    public void MoveAlongPathFixedPoints()
+    {
+        if (splinePointCounter < maxSplinePointIndex)
+        {
+            if (LerpCounter < 1)
+            {
+                try
+                {
+                    cachedPosition = Vector2.Lerp(
+                        SplinePathController?.splinePoints[splinePointCounter] ?? transform.position,
+                        SplinePathController?.splinePoints[splinePointCounter + 1] ?? transform.position, LerpCounter);
+                    LerpCounter += StaticObjects.DeltaGameTime * MovementSpeed;
+                    transform.position = cachedPosition;
+                    PathMovementInProgress = true;
+                }
+                catch (Exception e)
+                {
+                    Debug.LogWarning(e);
+                    throw;
+                }
+                
+            }
+
+            else
+            {
+                splinePointCounter++;
+                LerpCounter = 0;
+            }
         }
     }
 

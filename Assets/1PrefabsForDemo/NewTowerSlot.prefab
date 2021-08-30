@@ -45,64 +45,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Actions:
-    North:
-      id: 0
-    East:
-      id: 1
-    South:
-      id: 2
-    West:
-      id: 3
+    ActionsByIndex:
+    - id: 0
+    - id: 1
+    - id: 2
+    - id: 3
+    actionsInitialized: 0
   references:
     version: 1
     00000000:
-      type: {class: PlaceNewTowerFromPrefab, ns: , asm: Assembly-CSharp}
+      type: {class: PlaceNewTowerFromGameManager, ns: , asm: Assembly-CSharp}
       data:
+        ActionIndex: 0
         ActionColor: {r: 0, g: 0, b: 0, a: 0}
-        actionSprite: {fileID: 21300000, guid: c31dab7a4cbb08948921c7103423b682, type: 3}
-        ParentSlotController: {fileID: 2835729042853078453}
-        ActionCost: 60
+        ParentSlotController: {fileID: 0}
         actionConter: 0
         MaxActions: 1
         ActionCostIncrement: 0
-        TowerPrefab: {fileID: 5499253152475365824, guid: 7902eeaa54b505440b9fc2bb541b6fdd,
-          type: 3}
     00000001:
-      type: {class: PlaceNewTowerFromPrefab, ns: , asm: Assembly-CSharp}
+      type: {class: PlaceNewTowerFromGameManager, ns: , asm: Assembly-CSharp}
       data:
+        ActionIndex: 0
         ActionColor: {r: 0, g: 0, b: 0, a: 0}
-        actionSprite: {fileID: 21300000, guid: ba5d05fa735e2ae408c8ed35e7884094, type: 3}
-        ParentSlotController: {fileID: 2835729042853078453}
-        ActionCost: 60
+        ParentSlotController: {fileID: 0}
         actionConter: 0
         MaxActions: 1
         ActionCostIncrement: 0
-        TowerPrefab: {fileID: 7663113929734669332, guid: 06d94edc402622f429d3cb17c0afe0c0,
-          type: 3}
     00000002:
-      type: {class: PlaceNewTowerFromPrefab, ns: , asm: Assembly-CSharp}
+      type: {class: PlaceNewTowerFromGameManager, ns: , asm: Assembly-CSharp}
       data:
+        ActionIndex: 0
         ActionColor: {r: 0, g: 0, b: 0, a: 0}
-        actionSprite: {fileID: 21300000, guid: 9014e42e98b84114ea6412874915907b, type: 3}
-        ParentSlotController: {fileID: 2835729042853078453}
-        ActionCost: 80
+        ParentSlotController: {fileID: 0}
         actionConter: 0
         MaxActions: 1
         ActionCostIncrement: 0
-        TowerPrefab: {fileID: 1156394239526001621, guid: 4104f12c375a07b4db26937d6d82a14d,
-          type: 3}
     00000003:
-      type: {class: PlaceNewTowerFromPrefab, ns: , asm: Assembly-CSharp}
+      type: {class: PlaceNewTowerFromGameManager, ns: , asm: Assembly-CSharp}
       data:
+        ActionIndex: 0
         ActionColor: {r: 0, g: 0, b: 0, a: 0}
-        actionSprite: {fileID: 21300000, guid: a10ebdda0e2609847880dc7abd069f06, type: 3}
-        ParentSlotController: {fileID: 2835729042853078453}
-        ActionCost: 120
+        ParentSlotController: {fileID: 0}
         actionConter: 0
         MaxActions: 1
         ActionCostIncrement: 0
-        TowerPrefab: {fileID: 8158498550827674461, guid: ea74d1b1b162f434e853439ab362fc6d,
-          type: 3}
 --- !u!114 &2835729042074619242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +105,7 @@ MonoBehaviour:
   WeaponController: {fileID: 0}
   ParentSlotController: {fileID: 0}
   TowerComponents: []
+  TowerSprite: {fileID: 0}
 --- !u!1 &2835729042853078452
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyLevelManager: {fileID: 0}
   childTower: {fileID: 2835729042074619242}
+  TowerLevel: 0
   DirectionalDiscoveryController: {fileID: 4024619000755164736}
 --- !u!212 &2835729042853078451
 SpriteRenderer:
@@ -206,7 +194,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1892930427
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ee3bc6f8d73f1324d80c12e32cd66f87, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

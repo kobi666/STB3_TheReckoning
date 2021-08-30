@@ -6,7 +6,7 @@ public class TowerComponentData
     public float componentRadius = 0;
     public Effectable effectableTarget = null;
 
-    public TargetUnit targetUnit = null;
+    public GenericUnitController targetUnit = null;
 
     public TowerComponentOrbitalControllerData orbitalData;
     public TowerComponentUnitSpawnerData SpawnerData;

@@ -16,7 +16,7 @@ public enum EffectNames
 }
 
 [System.Serializable]
-public class Effect
+public abstract class Effect
 {
     public static IEnumerable<Type> GetEffects()
     {
@@ -27,12 +27,9 @@ public class Effect
         
         return q;
     }
-    
-    
-    public virtual void UpdateEffectValues(Effect ef)
-    {
-        
-    }
+
+
+    public abstract void UpdateEffectValues(Effect ef);
     public virtual EffectNames EffectName()
     {
         return EffectNames.None;
@@ -58,9 +55,10 @@ public class Damage : Effect
 {
     public override void UpdateEffectValues(Effect ef)
     {
-        Damage d = ef as Damage;
-        DamageRange.min += d.DamageRange.min;
+        if (ef is Damage d) {
+            DamageRange.min += d.DamageRange.min;
         DamageRange.max += d.DamageRange.max;
+        }
     }
 
     public override EffectNames EffectName()
@@ -87,6 +85,11 @@ public class Damage : Effect
 
 public class DebugEffect : Effect
 {
+    public override void UpdateEffectValues(Effect ef)
+    {
+        
+    }
+
     public override void Apply(Effectable ef,Vector2 targetPos)
     {
         Debug.LogWarning(ef.name + " was affected");
@@ -117,6 +120,15 @@ public class SplitToMultipleProjectiles : Effect
         }
         set => pool = value;
     }
+
+    public override void UpdateEffectValues(Effect ef)
+    {
+        if (ef is SplitToMultipleProjectiles split)
+        {
+            
+        }
+    }
+
     public override void Apply(Effectable ef,Vector2 tpos)
     {
         for (int i = 0; i < AmountOfProjectiles; i++)
@@ -146,7 +158,12 @@ public class SplitToMultipleProjectiles : Effect
 public class DoSomethingWithPrefab : Effect
 {
     [ShowInInspector] public GameObject somePrefab;
-    
+
+    public override void UpdateEffectValues(Effect ef)
+    {
+        
+    }
+
     public override void Apply(Effectable ef,Vector2 targetPos)
     {
         

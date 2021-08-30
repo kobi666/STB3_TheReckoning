@@ -46,14 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Actions:
-    North:
-      id: 0
-    East:
-      id: 0
-    South:
-      id: 0
-    West:
-      id: 0
+    ActionsByIndex:
+    - id: 0
+    - id: 0
+    - id: 0
+    - id: 0
+    actionsInitialized: 0
   references:
     version: 1
     00000000:
@@ -70,11 +68,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d1dba04a3ec5b4aaed6d6b6213106d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DefaultTowerCost: 60
   TowerActionManager: {fileID: 0}
   WeaponController: {fileID: 0}
   ParentSlotController: {fileID: 0}
   TowerComponents:
   - {fileID: 722044541130115489}
+  TowerRank: 1
+  TowerSprite: {fileID: 21300000, guid: 9014e42e98b84114ea6412874915907b, type: 3}
 --- !u!1001 &8087123515735723970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90,7 +91,7 @@ PrefabInstance:
     - target: {fileID: 8808491468452841058, guid: 7dfb7fce662b9a24093b4068e8010a0f,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8808491468452841058, guid: 7dfb7fce662b9a24093b4068e8010a0f,
         type: 3}
@@ -106,6 +107,26 @@ PrefabInstance:
         type: 3}
       propertyPath: Data.componentRadius
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808491468452841059, guid: 7dfb7fce662b9a24093b4068e8010a0f,
+        type: 3}
+      propertyPath: SpawnerBehavior.SpawnInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808491468452841059, guid: 7dfb7fce662b9a24093b4068e8010a0f,
+        type: 3}
+      propertyPath: Units.Array.data[0].UnitMetaData.DiscoveryRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808491468452841059, guid: 7dfb7fce662b9a24093b4068e8010a0f,
+        type: 3}
+      propertyPath: Units.Array.data[0].MeleeEffects.Array.data[0].DamageRange.max
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808491468452841059, guid: 7dfb7fce662b9a24093b4068e8010a0f,
+        type: 3}
+      propertyPath: Units.Array.data[0].MeleeEffects.Array.data[0].DamageRange.min
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8808491468452841059, guid: 7dfb7fce662b9a24093b4068e8010a0f,
         type: 3}

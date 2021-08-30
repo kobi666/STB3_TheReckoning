@@ -177,33 +177,33 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         }
     }
 
-    public event Action<TargetUnit> onTargetAdd;
+    public event Action<GenericUnitController> onTargetAdd;
 
-    public void OnTargetAdd(TargetUnit tu)
+    public void OnTargetAdd(GenericUnitController tu)
     {
         onTargetAdd?.Invoke(tu);
     }
 
-    void SetTarget(TargetUnit tu)
+    void SetTarget(GenericUnitController tu)
     {
         Target = tu;
     }
     
     
     public void StandardOnTargetEnteredRange(GenericWeaponController self, Effectable ef) {
-        TargetUnit tu = GameObjectPool.Instance.GetTargetUnit(ef.MyGameObjectID);
+        GenericUnitController tu = GameObjectPool.Instance.GetTargetUnit(ef.MyGameObjectID);
         if (tu == null)
         {
             return;
         }
-        if (Target?.Effectable == null) {
+        if (Target?.EffectableUnit == null) {
             OnTargetAdd(tu);
             if (Autonomous)
             {
                 InAttackState = true;
             }
         }
-        if (Target?.Effectable != null) {
+        if (Target?.EffectableUnit != null) {
 
             
                 if (tu.Proximity < Target?.Proximity) {
@@ -219,7 +219,7 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     }
 
     public virtual void StandardOnTargetLeftRange(int targetGameObjectID,string callerName) {
-        if (Target?.GenericUnitController?.MyGameObjectID == targetGameObjectID)
+        if (Target?.MyGameObjectID == targetGameObjectID)
         {
             Target = FindSingleTargetNearestToEndOfSpline(targetGameObjectID);
         }
@@ -235,8 +235,8 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     }
 
     int CurrentLowestProximtyTargetID;
-    TargetUnit FindSingleTargetNearestToEndOfSpline() {
-        TargetUnit tu = null;
+    GenericUnitController FindSingleTargetNearestToEndOfSpline() {
+        GenericUnitController tu = null;
         float p = 999999.0f;
         int foundTargetID = 0;
         foreach (var item in TargetBank.Targets)
@@ -256,8 +256,8 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         return tu;
     }
     
-    TargetUnit FindSingleTargetNearestToEndOfSpline(int formerTargetGameObjectID) {
-        TargetUnit tu = null;
+    GenericUnitController FindSingleTargetNearestToEndOfSpline(int formerTargetGameObjectID) {
+        GenericUnitController tu = null;
         float p = 999999.0f;
         int foundTargetID = 0;
         foreach (var item in TargetBank.Targets)
@@ -314,8 +314,8 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     public Vector2 cachedAttackPosition;
     void OnAttack()
     {
-        cachedAttackPosition = Target.TargetTransform?.position ?? cachedAttackPosition;
-        onAttack?.Invoke(Target?.Effectable, cachedAttackPosition);
+        cachedAttackPosition = Target?.transform.position ?? cachedAttackPosition;
+        onAttack?.Invoke(Target?.EffectableUnit, cachedAttackPosition);
     }
 
     
@@ -337,12 +337,12 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     }
     
     [ShowInInspector]
-    public TargetUnit Target {
+    public GenericUnitController Target {
         get => Data.targetUnit;
         set {
             Data.targetUnit = value;
             //GenericRotator.Target = value?.transform;
-            onTargetSet?.Invoke(Target?.GenericUnitController.MyGameObjectID ?? 0);
+            onTargetSet?.Invoke(Target?.MyGameObjectID ?? 0);
             if (value != null)
             {
                 TargetExists = true;

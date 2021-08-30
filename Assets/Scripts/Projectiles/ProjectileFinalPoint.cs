@@ -12,7 +12,7 @@ public class ProjectileFinalPoint : MonoBehaviour
     
 
     
-    public TargetUnit Target
+    public GenericUnitController Target
     {
         get => ParentWeaponController?.Target;
     }

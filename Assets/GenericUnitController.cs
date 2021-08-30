@@ -22,11 +22,14 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
         {
             if (!StateMachine.CurrentState.StateIsRunning)
             {
-                StateMachine.SetState(StateMachine.InitialState);
-                StateMachine.runLock = true;
-                StateMachine.ExecuteCurrentState();
+                StateMachine.SetStateForce(StateMachine.InitialState);
+                if (DeququeCounter >= 1)
+                {
+                    Debug.LogWarning("dequeue counter :"+ DeququeCounter + " , Cu");
+                }
             }
-            SpriteRenderer.color = new Color(SpriteRenderer.color.r,SpriteRenderer.color.g,SpriteRenderer.color.b,255f);
+
+            SpriteRenderer.color = BaseColor;
         }
         GameObjectPool.Instance.OnUnitEnable(this);
         UnitLifeManager.UnitDied = false;
@@ -145,6 +148,8 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
     void Init()
     {
         UnitMovementController.MovementSpeed = Data.MetaData.MovementSpeed;
+        UnitMovementController.spline = PathWalker.spline;
+        UnitMovementController.SplinePathController = PathWalker.SplinePathController;
         UnitLifeManager.InitialHP = Data.MetaData.HP;
         UnitLifeManager.Init();
         UpdateRange(Data.MetaData.DiscoveryRadius, GetTagDetectors());
@@ -175,8 +180,11 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
 
 
     public DetectableCollider DetectableCollider;
+
+    private Color BaseColor = new Color();
     protected void Awake()
     {
+        BaseColor = SpriteRenderer.color;
         DetectableCollider = GetComponent<DetectableCollider>();
         selfCollider = GetComponent<BoxCollider2D>();
         StateMachine = GetComponent<UnitStateMachine>();
@@ -234,8 +242,10 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
         UnitBattleManager.TargetUnit = null;
     }
 
+    public int DeququeCounter = 0;
     public void OnDequeue()
     {
+        DeququeCounter++;
         UnitLifeManager.HP = Data.MetaData.HP;
         StateMachine.ChangeState(StateMachine.InitialState);
         StateMachine.ExecuteCurrentState();

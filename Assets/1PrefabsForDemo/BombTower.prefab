@@ -46,14 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Actions:
-    North:
-      id: 0
-    East:
-      id: 0
-    South:
-      id: 0
-    West:
-      id: 0
+    ActionsByIndex:
+    - id: 0
+    - id: 0
+    - id: 0
+    - id: 0
+    actionsInitialized: 0
   references:
     version: 1
     00000000:
@@ -70,11 +68,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d1dba04a3ec5b4aaed6d6b6213106d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DefaultTowerCost: 80
   TowerActionManager: {fileID: 0}
   WeaponController: {fileID: 0}
   ParentSlotController: {fileID: 0}
   TowerComponents:
   - {fileID: 4075031346932676324}
+  TowerRank: 1
+  TowerSprite: {fileID: 21300000, guid: a10ebdda0e2609847880dc7abd069f06, type: 3}
 --- !u!1001 &4907367619142352635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -362,6 +363,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement.moving
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
       propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.HitCounter
       value: 1
       objectReference: {fileID: 0}
@@ -384,6 +390,11 @@ PrefabInstance:
         type: 3}
       propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement.RotationSpeed
       value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement.posreachedLock
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8977666037474068511, guid: 54ddd020ad56bdc40ac7480f1f5a661f,
         type: 3}

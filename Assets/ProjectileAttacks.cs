@@ -30,13 +30,35 @@ public class ShootOneProjectile : ProjectileAttackProperties
         if (AsyncAttackInProgress == false)
         { 
             AsyncAttackInProgress = true;
-            GenericProjectile proj = projectilePool.Get();
+            /*for (int i = 0; i < ExitFinalPointPairs.Count; i++)
+            {
+                GenericProjectile proj = projectilePool.Get();
+                var transform = proj.transform;
+                transform.rotation = ProjectileExitPoints[0].transform.rotation;
+                transform.position = ProjectileExitPoints[0].transform.position;
+                proj.TargetPosition = ProjectileFinalPoints[0].transform.position; // can also be projectile final point position
+                proj.EffectableTarget = singleTarget ?? null;
+                proj.Activate();
+            }*/
+
+            foreach (var exitFinalPointPair in ExitFinalPointPairs)
+            {
+                GenericProjectile proj = projectilePool.Get();
+                var transform = proj.transform;
+                transform.rotation = exitFinalPointPair.ExitPoint.transform.rotation;
+                transform.position = exitFinalPointPair.ExitPoint.transform.position;
+                proj.TargetPosition = exitFinalPointPair.FinalPoint.transform.position; // can also be projectile final point position
+                proj.EffectableTarget = singleTarget ?? null;
+                proj.Activate();
+            }
+            
+            /*GenericProjectile proj = projectilePool.Get();
             var transform = proj.transform;
             transform.rotation = ProjectileExitPoints[0].transform.rotation;
             transform.position = ProjectileExitPoints[0].transform.position;
             proj.TargetPosition = ProjectileFinalPoints[0].transform.position; // can also be projectile final point position
             proj.EffectableTarget = singleTarget ?? null;
-            proj.Activate();
+            proj.Activate();*/
             AsyncAttackInProgress = false;
         }
         

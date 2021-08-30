@@ -11,7 +11,8 @@ public class GenericUnitSpawner : TowerComponent
 {
     [ShowInInspector]
     public Dictionary<string,SplinePathController> PathSplines = new Dictionary<string, SplinePathController>();
-
+    
+    [ShowInInspector]
     private Dictionary<int,GenericUnitController> ManagedUnits = new Dictionary<int,GenericUnitController>();
     
     public List<UnitPoolCreationData> Units = new List<UnitPoolCreationData>();
@@ -19,6 +20,8 @@ public class GenericUnitSpawner : TowerComponent
 
     public bool MaxUnitsReached;
     private int numberOfManagedUnits;
+    
+    [ShowInInspector]
     public int NumberOfManagedUnits
     {
         get => numberOfManagedUnits;
@@ -119,13 +122,15 @@ public class GenericUnitSpawner : TowerComponent
         PathPointFinder = GetComponent<PathPointFinder>();
     }
 
+    public event Action onManagedUnitRemoval;
+    
     void RemoveUnitFromManagedUnits(int GameObjectID)
     {
         if (ManagedUnits.ContainsKey(GameObjectID))
         {
             ManagedUnits.Remove(GameObjectID);
         }
-
+        onManagedUnitRemoval?.Invoke();
         NumberOfManagedUnits = ManagedUnits.Count();
     }
 

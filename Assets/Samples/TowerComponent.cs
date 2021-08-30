@@ -12,6 +12,8 @@ public abstract class TowerComponent : MyGameObject, IHasEffects,IHasRangeCompon
     public abstract void InitComponent();
     public event Action onInitComponent;
 
+    [FormerlySerializedAs("TowerComponentFamily")] public ComponentFamily componentFamily;
+
     public void OnInitComponent()
     {
         InitComponent();
@@ -72,6 +74,11 @@ public abstract class TowerComponent : MyGameObject, IHasEffects,IHasRangeCompon
         SR = GetComponent<SpriteRenderer>() ?? null;
         Animancer = GetComponent<AnimancerComponent>() ?? null;
         PostAwake();
+
+        if (componentFamily == ComponentFamily.None)
+        {
+            Debug.LogError("Tower Component Family is NONE");
+        }
     }
     
     
@@ -99,4 +106,18 @@ public abstract class TowerComponent : MyGameObject, IHasEffects,IHasRangeCompon
         Data.componentRadius = Data.componentRadius += RangeSizeDelta;
     }
 
+}
+
+
+public enum ComponentFamily
+{
+    None,
+    AllShooter,
+    FastShooter,
+    SlowShooter,
+    AOE,
+    Spawner,
+    Beam,
+    Cursor,
+    All
 }

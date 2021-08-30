@@ -9,6 +9,8 @@ public class PathWalker : MonoBehaviour
     public UnitMovementController UnitMovementController;
     private SpriteRenderer SpriteRenderer;
     public BGCcMath spline;
+    
+    
     public SplinePathController SplinePathController;
     [HideInInspector]
     public bool SplineAttached;
@@ -172,12 +174,54 @@ public class PathWalker : MonoBehaviour
             return -1;
         }
     }
+
+    private int maxSplinePointIndex
+    {
+        get => SplinePathController?.splinePoints.Count ?? 0;
+    }
+
+    private int splinePointCounter = 0;
+
+    public float LerpCounter = 0;
+
+    public Vector2 cachedPosition;
+    public void MoveAlongPathFixedPoints()
+    {
+        if (splinePointCounter < maxSplinePointIndex)
+        {
+            if (LerpCounter < 1)
+            {
+                try
+                {
+                    cachedPosition = Vector2.Lerp(
+                        SplinePathController?.splinePoints[splinePointCounter] ?? transform.position,
+                        SplinePathController?.splinePoints[splinePointCounter + 1] ?? transform.position, LerpCounter);
+                    LerpCounter += StaticObjects.DeltaGameTime * UnitMovementController.MovementSpeed;
+                    parentUnit.transform.position = cachedPosition;
+                }
+                catch (Exception e)
+                {
+                    Debug.LogWarning(e);
+                }
+                
+            }
+
+            else
+            {
+                splinePointCounter++;
+                LerpCounter = 0;
+            }
+        }
+    }
+    
+    
     public void MoveAlongSpline(float distancedelta)
     {
-        CurrentDistanceOnSpline += distancedelta * directionInt;
-        parentUnit.FlipDirection(TargetPosition);
-        parentUnit.FlipDirection(TargetPosition);
-        UnitMovementController.MoveAlongPathAsync(TargetPosition);
+        //CurrentDistanceOnSpline += distancedelta * directionInt;
+        //parentUnit.FlipDirection(TargetPosition);
+        //parentUnit.FlipDirection(TargetPosition);
+        //UnitMovementController.MoveAlongPathAsync(TargetPosition);
+        MoveAlongPathFixedPoints();
         //ObjectTransform.position = TargetPosition;
         //transform.position = TartPosition;
     }

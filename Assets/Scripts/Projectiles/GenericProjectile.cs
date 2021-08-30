@@ -376,7 +376,7 @@ public class GenericProjectile : MyGameObject,IQueueable<GenericProjectile>,IAct
         EffectAnimationController = GameObjectPool.Instance.GetEffectAnimationQueue().Get();
         onHitCounterZero += delegate {gameObject.SetActive(false);};
         gameObject.tag = TypeTag;
-        
+        firstRun = false;
     }
 
     //public EffectableTargetBank TargetBank {get;set;}
@@ -452,7 +452,12 @@ public class GenericProjectile : MyGameObject,IQueueable<GenericProjectile>,IAct
     void OnEnable()
     {
         ActivePool?.AddObjectToActiveObjectPool(this);
+        if (!firstRun) {
+        MovementFunction.posreachedLock = false;
+        }
     }
+
+    private bool firstRun = true;
 
     protected void OnDisable()
     {

@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1892930427
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ee3bc6f8d73f1324d80c12e32cd66f87, type: 3}
   m_Color: {r: 0.3915094, g: 1, b: 0.9928131, a: 1}
@@ -99,56 +99,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Actions:
-    North:
-      id: 0
-    East:
-      id: 1
-    South:
-      id: 2
-    West:
-      id: 3
+    ActionsByIndex:
+    - id: 0
+    - id: 1
+    - id: 2
+    - id: 3
+    actionsInitialized: 0
   references:
     version: 1
     00000000:
       type: {class: NullAction, ns: , asm: Assembly-CSharp}
       data:
+        ActionIndex: 0
         ActionColor: {r: 0, g: 0, b: 0, a: 0}
-        actionSprite: {fileID: 0}
         ParentSlotController: {fileID: 0}
-        ActionCost: 0
         actionConter: 0
         MaxActions: 1
         ActionCostIncrement: 0
+        actionSprite: {fileID: 0}
     00000001:
       type: {class: NullAction, ns: , asm: Assembly-CSharp}
       data:
+        ActionIndex: 0
         ActionColor: {r: 0, g: 0, b: 0, a: 0}
-        actionSprite: {fileID: 0}
         ParentSlotController: {fileID: 0}
-        ActionCost: 0
         actionConter: 0
         MaxActions: 1
         ActionCostIncrement: 0
+        actionSprite: {fileID: 0}
     00000002:
       type: {class: NullAction, ns: , asm: Assembly-CSharp}
       data:
+        ActionIndex: 0
         ActionColor: {r: 0, g: 0, b: 0, a: 0}
-        actionSprite: {fileID: 0}
         ParentSlotController: {fileID: 0}
-        ActionCost: 0
         actionConter: 0
         MaxActions: 1
         ActionCostIncrement: 0
+        actionSprite: {fileID: 0}
     00000003:
       type: {class: NullAction, ns: , asm: Assembly-CSharp}
       data:
+        ActionIndex: 0
         ActionColor: {r: 0, g: 0, b: 0, a: 0}
-        actionSprite: {fileID: 0}
         ParentSlotController: {fileID: 0}
-        ActionCost: 0
         actionConter: 0
         MaxActions: 1
         ActionCostIncrement: 0
+        actionSprite: {fileID: 0}
 --- !u!114 &7663113929734669332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,11 +159,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d1dba04a3ec5b4aaed6d6b6213106d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DefaultTowerCost: 50
   TowerActionManager: {fileID: 6191932464815913968}
   WeaponController: {fileID: 0}
   ParentSlotController: {fileID: 0}
   TowerComponents:
   - {fileID: 2601012865893847596}
+  TowerRank: 1
+  TowerSprite: {fileID: 21300000, guid: ba5d05fa735e2ae408c8ed35e7884094, type: 3}
 --- !u!1 &2059776708476167567
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +236,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1892930427
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ee3bc6f8d73f1324d80c12e32cd66f87, type: 3}
   m_Color: {r: 0, g: 1, b: 0.96936965, a: 1}
@@ -414,6 +415,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4075031346932676324, guid: ea74d1b1b162f434e853439ab362fc6d,
         type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement.moving
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075031346932676324, guid: ea74d1b1b162f434e853439ab362fc6d,
+        type: 3}
       propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.HitCounter
       value: 1
       objectReference: {fileID: 0}
@@ -421,6 +427,11 @@ PrefabInstance:
         type: 3}
       propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.OnHitEffect
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075031346932676324, guid: ea74d1b1b162f434e853439ab362fc6d,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement.posreachedLock
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4075031346932676324, guid: ea74d1b1b162f434e853439ab362fc6d,
         type: 3}

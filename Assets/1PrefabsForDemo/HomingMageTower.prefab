@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 2059776707121217190, guid: 06d94edc402622f429d3cb17c0afe0c0,
         type: 3}
       propertyPath: m_Name
-      value: BasicShooterTower (7)
+      value: HomingMageTower
       objectReference: {fileID: 0}
     - target: {fileID: 2059776707121217190, guid: 06d94edc402622f429d3cb17c0afe0c0,
         type: 3}
@@ -116,12 +116,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
         type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement.moving
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
       propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileEffect.OnHitEffect
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
         type: 3}
       propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement.baseSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: projectileAttack.ProjectileAttackProperties.Projectiles.Array.data[0].projectileMovement.posreachedLock
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2601012865893847596, guid: 06d94edc402622f429d3cb17c0afe0c0,
@@ -198,6 +208,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663113929734669332, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: DefaultTowerCost
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7902976443176275861, guid: 06d94edc402622f429d3cb17c0afe0c0,
+        type: 3}
+      propertyPath: TowerRank
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06d94edc402622f429d3cb17c0afe0c0, type: 3}

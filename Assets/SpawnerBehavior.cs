@@ -49,6 +49,7 @@ using Sirenix.OdinInspector;
             PathPointFinder.onPathFound += OnPositionRecalculation;
             SpecificBehaviorInit();
             onBehaviorStart += InvokeBehavior;
+            //ParentComponent.onManagedUnitRemoval += OnBehaviorStart;
         }
 
         public abstract void SpecificBehaviorInit();
@@ -60,26 +61,35 @@ using Sirenix.OdinInspector;
         [Button("Start SpawnerBehavior")]
         public async void InvokeBehavior()
         {
-            if (BehaviorInProgress == false)
+            try
             {
-                BehaviorInProgress = true;
-                while (BehaviorInProgress)
+                if (BehaviorInProgress == false)
                 {
-                    if (SpawnCounter < SpawnInterval) {
-                    SpawnCounter += StaticObjects.DeltaGameTime;
-                    if (SpawnCounter >= SpawnInterval) { 
-                        if (ExecCondition()) {
-                            Behavior();
-                            SpawnCounter = 0;
+                    BehaviorInProgress = true;
+                    while (BehaviorInProgress)
+                    {
+                        if (ExecCondition())
+                        {
+                            SpawnCounter = Mathf.Clamp(SpawnCounter + StaticObjects.DeltaGameTime, 0f, SpawnInterval + 0.1f);
+                            if (SpawnCounter >= SpawnInterval)
+                            {
+                                Behavior();
+                                SpawnCounter = 0;
+                            }
                         }
-                    }
-                    }
                     
-                    await Task.Yield();
-                }
+                        await Task.Yield();
+                    }
 
-                BehaviorInProgress = false;
+                    BehaviorInProgress = false;
+                }
             }
+            catch (Exception e)
+            {
+                Debug.LogWarning(e);
+                throw;
+            }
+            
         }
 
         private bool ExecCondition()

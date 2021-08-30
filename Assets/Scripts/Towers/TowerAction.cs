@@ -21,26 +21,25 @@ public abstract class TowerAction
       return q;
    }
 
+   public int ActionIndex;
+
 
    public Color ActionColor;
-   public Sprite actionSprite;
-   public virtual Sprite ActionSprite { get => actionSprite; set => actionSprite = value; }
+   [PreviewField]
+   
+   public abstract Sprite ActionSprite { get ; set; }
    
    public TowerSlotController ParentSlotController;
 
-   public void InitAction(TowerSlotController tsc)
+   public void InitAction(TowerSlotController tsc, int actionIndex)
    {
-      /*if (tsc == null)
-      {
-         Debug.LogError("TSC IS NULL");
-      }*/
-
+      ActionIndex = actionIndex;
       ParentSlotController = ParentSlotController != null ? ParentSlotController : tsc;
    }
 
    public abstract void InitActionSpecific();
-
-   public int ActionCost;
+   
+   public abstract int ActionCost { get; set; }
    
    [ShowInInspector]
    public int ActualActionCost
@@ -123,10 +122,15 @@ public abstract class TowerAction
 
 public class TestTowerAction : TowerAction
 {
+   public override Sprite ActionSprite { get => null; set => value = null; }
+
    public override void InitActionSpecific()
    {
       
    }
+
+   public int actionCost;
+   public override int ActionCost { get => actionCost; set => actionCost = value; }
 
    public override void Action()
    {
@@ -143,10 +147,18 @@ public class TestTowerAction : TowerAction
 public class PlaceNewTowerFromPrefab : TowerAction
 {
    [Required] public TowerController TowerPrefab;
+   
+   [PreviewField,ShowInInspector]
+   public override Sprite ActionSprite { get => TowerPrefab.TowerSprite; set => TowerPrefab.TowerSprite = value; }
+
    public override void InitActionSpecific()
    {
       
    }
+
+   public int actionCost = 50;
+   
+   public override int ActionCost { get => actionCost; set => actionCost = value; }
 
    public override void Action()
    {
@@ -168,12 +180,55 @@ public class PlaceNewTowerFromPrefab : TowerAction
    }
 }
 
-public class NullAction : TowerAction
+public class PlaceNewTowerFromGameManager : TowerAction
 {
+   public override Sprite ActionSprite { get => TowerController.TowerSprite; set => ActionSprite = ActionSprite; }
+
+   public TowerController TowerController
+   {
+      get => GameManager.Instance.PlayerTowersManager.PlayerTowersByIndex[ActionIndex] ?? null;
+   }
+
    public override void InitActionSpecific()
    {
       
    }
+
+   public override int ActionCost { get => TowerController?.DefaultTowerCost ?? 10; set => ActionCost = ActionCost; }
+   public override void Action()
+   {
+      try
+      {
+         ParentSlotController.PlaceNewTower(TowerController);
+      }
+      catch (Exception e)
+      {
+         Debug.LogWarning(e);
+         throw;
+      }
+   }
+
+   public override bool ExecutionConditions()
+   {
+      return (TowerController != null);
+   }
+}
+
+public class NullAction : TowerAction
+{
+   [PreviewField]
+   public Sprite actionSprite;
+   public override Sprite ActionSprite { get => actionSprite; set => actionSprite = value; }
+
+   public override void InitActionSpecific()
+   {
+      
+   }
+   
+   
+
+   private int actionCost = 0;
+   public override int ActionCost { get => actionCost; set => actionCost = value; }
 
    public override void Action()
    {

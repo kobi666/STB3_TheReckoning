@@ -108,7 +108,7 @@ public class SpawnSingleUnitToBasePosition : SpawnerBehavior
         }
         set
         {
-            if (value > ParentComponent.MaxUnits)
+            if (value >= ParentComponent.MaxUnits)
             {
                 spawningIndex = 0;
             }
@@ -128,7 +128,17 @@ public class SpawnSingleUnitToBasePosition : SpawnerBehavior
             guc.Data.DynamicData.BasePosition = new Vector2(Random.Range(-100f,100f),Random.Range(-100f,100f)); 
         }
         else {
-        guc.Data.DynamicData.BasePosition = UnitRallyPoints[SpawningIndex];
+            try
+            {
+                guc.Data.DynamicData.BasePosition = UnitRallyPoints[SpawningIndex];
+            }
+            catch (Exception e)
+            {
+                
+                Console.WriteLine(e);
+                
+            }
+       
         SpawningIndex++;
         }
         guc.gameObject.SetActive(true);
