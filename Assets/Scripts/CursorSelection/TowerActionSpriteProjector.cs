@@ -12,14 +12,14 @@ public class TowerActionSpriteProjector : MonoBehaviour
     [ShowInInspector]
     private float ActionColorAlphaRO;
 
-    public void SetSprite(TowerAction towerAction)
+    public void SetSprite(CursorActionBaseBase towerAction)
     {
         SpriteRenderer.sprite = towerAction.ActionSprite;
         var actionCOlor = towerAction.ActionColor;
         var newColor = new Color(actionCOlor.r,actionCOlor.g,actionCOlor.b,ActionColorAlphaRO);
     }
     
-    public void SetSprite(TowerAction towerAction, bool onSwicth)
+    public void SetSprite(CursorActionBaseBase towerAction, bool onSwicth)
     {
         SpriteRenderer.sprite = towerAction.ActionSprite;
         var actionCOlor = towerAction.ActionColor;

@@ -84,6 +84,7 @@
      <Compile Include="Assets\Scripts\Units\LifeBarmanager.cs" />
      <Compile Include="Assets\Scripts\Effect.cs" />
      <Compile Include="Assets\uniteventTest.cs" />
+     <Compile Include="Assets\Scripts\UserActions\CursorActionsBase.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\ActiveObjectPool.cs" />
      <Compile Include="Assets\pathGeneratorTest.cs" />
      <Compile Include="Assets\testloop.cs" />
@@ -109,9 +110,11 @@
      <Compile Include="Assets\BansheeGz\BGCurve\Examples\Scripts\BGTestCurveMath.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\TowerComponentData.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\NativeClasses.cs" />
+     <Compile Include="Assets\Scripts\ItemActions.cs" />
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\VectorChar.cs" />
      <Compile Include="Assets\MainPathController.cs" />
      <Compile Include="Assets\TriggerTest.cs" />
+     <Compile Include="Assets\LootStuff\LootObjectSlot.cs" />
      <Compile Include="Assets\Samples\Input System\1.0.0-preview.5\Custom Binding Composite\CustomComposite.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ProjectileExitPoint.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurvePointField.cs" />
@@ -170,6 +173,7 @@
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\ValueVector2.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Examples\Scripts\BGTestCurveChange.cs" />
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\LineManager.cs" />
+     <Compile Include="Assets\LootObject.cs" />
      <Compile Include="Assets\Scripts\Units\UnitType.cs" />
      <Compile Include="Assets\Scripts\Projectiles\AOEAnimationController.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\SelectorTest2.cs" />
@@ -273,7 +277,7 @@
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcCursorObjectScale.cs" />
      <Compile Include="Assets\UDedText.cs" />
      <Compile Include="Assets\ReallyFuckingSimpleStateMachine\StupidState.cs" />
-     <Compile Include="Assets\Scripts\CursorSelection\TowerActionIndicator.cs" />
+     <Compile Include="Assets\Scripts\CursorSelection\CursorActionIndicator.cs" />
      <Compile Include="Assets\Scripts\CollisionDetection\TestMover.cs" />
      <Compile Include="Assets\Scripts\interfaces\WeaponInterfaces.cs" />
      <Compile Include="Assets\Scripts\Units\EnemyUnitUtils.cs" />
@@ -319,6 +323,7 @@
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\LocalPosition.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcCursorChangeLinear.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\ValueRect.cs" />
+     <Compile Include="Assets\Scripts\UserActions\CursorActionBase.cs" />
      <Compile Include="Assets\testplayerunit.cs" />
      <Compile Include="Assets\DistanceTester.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\PlayerInput.cs" />
@@ -378,6 +383,7 @@
      <Compile Include="Assets\Scripts\TowerPlacementItem.cs" />
      <Compile Include="Assets\LaserTest2.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\Size.cs" />
+     <Compile Include="Assets\LootItemManager.cs" />
      <Compile Include="Assets\Scripts\CursorSelection\InputManager.cs" />
      <Compile Include="Assets\GenericUnitController.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\ProjectileAttack.cs" />
@@ -423,6 +429,7 @@
      <Compile Include="Assets\Scripts\GeneralClasses\PerksAndNerfs.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\LocalRotation.cs" />
      <Compile Include="Assets\CursorMovementController.cs" />
+     <Compile Include="Assets\Scripts\UserActions\LootAction.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider3DAbstract.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Chooser\Interfaces\IChooser.cs" />
      <Compile Include="Assets\Scripts\Towers\SlotParentManager.cs" />
@@ -1054,15 +1061,6 @@
  <Reference Include="System.Xml.Serialization">
  <HintPath>C:/UnityEditors/2020.3.0f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
- <Reference Include="Unity.2D.Sprite.Editor">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.UI">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.UI">
- <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
- </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
@@ -1121,6 +1119,10 @@
       <Project>{bd459538-6fb9-4e36-04b3-d0b2a9cfbc39}</Project>
       <Name>Unity.2D.IK.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
+      <Project>{c6058412-0853-6e07-daa2-34c7d7b804e5}</Project>
+      <Name>Unity.2D.Sprite.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.2D.Psdimporter.Editor.csproj">
       <Project>{65e3a8e4-3ddf-7655-6642-ce0abef39310}</Project>
       <Name>Unity.2D.Psdimporter.Editor</Name>
@@ -1137,6 +1139,10 @@
       <Project>{0200984e-7307-7a6b-107b-62c491592bdd}</Project>
       <Name>ScriptInspector</Name>
     </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{7260ea30-11e9-1999-b179-71703c4bef96}</Project>
+      <Name>UnityEditor.UI</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.InputSystem.csproj">
       <Project>{4d80603f-a58f-c234-50c9-071159105c65}</Project>
       <Name>Unity.InputSystem</Name>
@@ -1152,6 +1158,10 @@
     <ProjectReference Include="Unity.Jobs.Editor.csproj">
       <Project>{079c09e1-ffa3-b7bc-197b-13b449b1e611}</Project>
       <Name>Unity.Jobs.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{34c0a3b6-fc1d-3a6b-1128-1df2dd321db9}</Project>
+      <Name>UnityEngine.UI</Name>
     </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.Modules.UnityMathematics.csproj">
       <Project>{f5e8b68c-a276-5883-3300-b9a0a74e665e}</Project>

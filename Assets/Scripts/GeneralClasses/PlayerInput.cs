@@ -362,6 +362,353 @@ public class @PlayerInput : IInputActionCollection, IDisposable
             ]
         },
         {
+            ""name"": ""ItemSelection"",
+            ""id"": ""e089fb80-151b-4a74-8c57-859ddf373abe"",
+            ""actions"": [
+                {
+                    ""name"": ""MoveItemCursor"",
+                    ""type"": ""Button"",
+                    ""id"": ""22f15f0a-8bd3-406d-ada6-11c11e9f5c24"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""TestAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""0a3d719f-0543-4110-8c8f-4be0fa282d3d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MoveTargetCursor"",
+                    ""type"": ""Button"",
+                    ""id"": ""8c35d56d-38dd-43a3-9bbd-c1a72ac6d6bd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""NorthButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""e5031130-57d8-483a-874b-e17a9438c217"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""EastButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""a6183e14-d5db-4ded-b387-85b29ce84b85"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SouthButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""b48f3962-7daa-4e5f-8c70-1ddf0fbd273c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""WestButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""39952f84-c112-4d60-8476-b6a3eb865656"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MovePlayer"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""52e814f7-0bc1-452e-bdf8-fbac7c14c9c5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""31b3f313-19e4-4ddb-b6b1-6a92249586b6"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveItemCursor"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""b59dac7d-a4b1-4f73-8d86-a878f249d09f"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard;GamePad"",
+                    ""action"": ""MoveItemCursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""dff42975-181d-4c40-b6d8-6973b8625413"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveItemCursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""a523665b-6a4a-43d4-9326-dfb9ab3e5292"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard;GamePad"",
+                    ""action"": ""MoveItemCursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""d77029c1-b900-45a3-9d8d-cfcfc739c695"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard;GamePad"",
+                    ""action"": ""MoveItemCursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""8c64ece9-71b9-4891-bb0e-749090c23489"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveItemCursor"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""00e3bd26-843a-4f5e-abb0-c0f4193e40a5"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard;GamePad"",
+                    ""action"": ""MoveItemCursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""dfa5c983-3997-4b5e-bf99-ed7e7f84f19a"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""MoveItemCursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""da4f96fc-f917-4115-999c-ee9224e698bd"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard;GamePad"",
+                    ""action"": ""MoveItemCursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""5c8da361-5091-47ff-a9f4-a2fdbc823cc9"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard;GamePad"",
+                    ""action"": ""MoveItemCursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c20f67ee-a4a6-455e-b045-407e5c44981d"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TestAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd211d9d-610b-408b-8daa-a5df834b7baf"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""MoveTargetCursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c0656a7a-0220-44d7-abeb-569a6d357a1f"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NorthButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""73dbdeb8-9024-426e-8905-5e8eb809df1b"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NorthButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37b08cce-9512-4cd8-8b1f-cc4a133e46ef"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EastButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95b9feac-f0f4-4446-b5c9-f8479fd75bab"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EastButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""86ff2219-1902-436f-8a05-20bfd6514b15"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SouthButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""051d29ec-eda3-4809-9418-7417a7fb7a06"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SouthButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""30d2a62a-e2ca-4dbf-962a-a97a8e3e2b13"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WestButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a3b0ad9-6544-4e17-8383-ec1d1e5c7a95"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WestButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""4a4ed5a2-8607-4963-aac2-b8052f108850"",
+                    ""path"": ""2DVector(mode=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovePlayer"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""3604cdb2-ea93-4c85-ae01-9212bedf315c"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad;Keyboard"",
+                    ""action"": ""MovePlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""ad2ecbed-6a72-4679-92f5-6a6d8eb48a72"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad;Keyboard"",
+                    ""action"": ""MovePlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""5e44515f-ac8a-4fe2-bb58-5634157c3753"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad;Keyboard"",
+                    ""action"": ""MovePlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""05baafe6-bed3-4cdd-a856-ac75d37645ef"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad;Keyboard"",
+                    ""action"": ""MovePlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
             ""name"": ""TestButtons"",
             ""id"": ""f7397da4-4cb4-4d0f-a776-d16bef6f8071"",
             ""actions"": [
@@ -481,6 +828,16 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_GamePlay_SouthButton = m_GamePlay.FindAction("SouthButton", throwIfNotFound: true);
         m_GamePlay_WestButton = m_GamePlay.FindAction("WestButton", throwIfNotFound: true);
         m_GamePlay_MovePlayer = m_GamePlay.FindAction("MovePlayer", throwIfNotFound: true);
+        // ItemSelection
+        m_ItemSelection = asset.FindActionMap("ItemSelection", throwIfNotFound: true);
+        m_ItemSelection_MoveItemCursor = m_ItemSelection.FindAction("MoveItemCursor", throwIfNotFound: true);
+        m_ItemSelection_TestAction = m_ItemSelection.FindAction("TestAction", throwIfNotFound: true);
+        m_ItemSelection_MoveTargetCursor = m_ItemSelection.FindAction("MoveTargetCursor", throwIfNotFound: true);
+        m_ItemSelection_NorthButton = m_ItemSelection.FindAction("NorthButton", throwIfNotFound: true);
+        m_ItemSelection_EastButton = m_ItemSelection.FindAction("EastButton", throwIfNotFound: true);
+        m_ItemSelection_SouthButton = m_ItemSelection.FindAction("SouthButton", throwIfNotFound: true);
+        m_ItemSelection_WestButton = m_ItemSelection.FindAction("WestButton", throwIfNotFound: true);
+        m_ItemSelection_MovePlayer = m_ItemSelection.FindAction("MovePlayer", throwIfNotFound: true);
         // TestButtons
         m_TestButtons = asset.FindActionMap("TestButtons", throwIfNotFound: true);
         m_TestButtons_T = m_TestButtons.FindAction("T", throwIfNotFound: true);
@@ -622,6 +979,95 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     }
     public GamePlayActions @GamePlay => new GamePlayActions(this);
 
+    // ItemSelection
+    private readonly InputActionMap m_ItemSelection;
+    private IItemSelectionActions m_ItemSelectionActionsCallbackInterface;
+    private readonly InputAction m_ItemSelection_MoveItemCursor;
+    private readonly InputAction m_ItemSelection_TestAction;
+    private readonly InputAction m_ItemSelection_MoveTargetCursor;
+    private readonly InputAction m_ItemSelection_NorthButton;
+    private readonly InputAction m_ItemSelection_EastButton;
+    private readonly InputAction m_ItemSelection_SouthButton;
+    private readonly InputAction m_ItemSelection_WestButton;
+    private readonly InputAction m_ItemSelection_MovePlayer;
+    public struct ItemSelectionActions
+    {
+        private @PlayerInput m_Wrapper;
+        public ItemSelectionActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MoveItemCursor => m_Wrapper.m_ItemSelection_MoveItemCursor;
+        public InputAction @TestAction => m_Wrapper.m_ItemSelection_TestAction;
+        public InputAction @MoveTargetCursor => m_Wrapper.m_ItemSelection_MoveTargetCursor;
+        public InputAction @NorthButton => m_Wrapper.m_ItemSelection_NorthButton;
+        public InputAction @EastButton => m_Wrapper.m_ItemSelection_EastButton;
+        public InputAction @SouthButton => m_Wrapper.m_ItemSelection_SouthButton;
+        public InputAction @WestButton => m_Wrapper.m_ItemSelection_WestButton;
+        public InputAction @MovePlayer => m_Wrapper.m_ItemSelection_MovePlayer;
+        public InputActionMap Get() { return m_Wrapper.m_ItemSelection; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ItemSelectionActions set) { return set.Get(); }
+        public void SetCallbacks(IItemSelectionActions instance)
+        {
+            if (m_Wrapper.m_ItemSelectionActionsCallbackInterface != null)
+            {
+                @MoveItemCursor.started -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnMoveItemCursor;
+                @MoveItemCursor.performed -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnMoveItemCursor;
+                @MoveItemCursor.canceled -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnMoveItemCursor;
+                @TestAction.started -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnTestAction;
+                @TestAction.performed -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnTestAction;
+                @TestAction.canceled -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnTestAction;
+                @MoveTargetCursor.started -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnMoveTargetCursor;
+                @MoveTargetCursor.performed -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnMoveTargetCursor;
+                @MoveTargetCursor.canceled -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnMoveTargetCursor;
+                @NorthButton.started -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnNorthButton;
+                @NorthButton.performed -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnNorthButton;
+                @NorthButton.canceled -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnNorthButton;
+                @EastButton.started -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnEastButton;
+                @EastButton.performed -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnEastButton;
+                @EastButton.canceled -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnEastButton;
+                @SouthButton.started -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnSouthButton;
+                @SouthButton.performed -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnSouthButton;
+                @SouthButton.canceled -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnSouthButton;
+                @WestButton.started -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnWestButton;
+                @WestButton.performed -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnWestButton;
+                @WestButton.canceled -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnWestButton;
+                @MovePlayer.started -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnMovePlayer;
+                @MovePlayer.performed -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnMovePlayer;
+                @MovePlayer.canceled -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnMovePlayer;
+            }
+            m_Wrapper.m_ItemSelectionActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @MoveItemCursor.started += instance.OnMoveItemCursor;
+                @MoveItemCursor.performed += instance.OnMoveItemCursor;
+                @MoveItemCursor.canceled += instance.OnMoveItemCursor;
+                @TestAction.started += instance.OnTestAction;
+                @TestAction.performed += instance.OnTestAction;
+                @TestAction.canceled += instance.OnTestAction;
+                @MoveTargetCursor.started += instance.OnMoveTargetCursor;
+                @MoveTargetCursor.performed += instance.OnMoveTargetCursor;
+                @MoveTargetCursor.canceled += instance.OnMoveTargetCursor;
+                @NorthButton.started += instance.OnNorthButton;
+                @NorthButton.performed += instance.OnNorthButton;
+                @NorthButton.canceled += instance.OnNorthButton;
+                @EastButton.started += instance.OnEastButton;
+                @EastButton.performed += instance.OnEastButton;
+                @EastButton.canceled += instance.OnEastButton;
+                @SouthButton.started += instance.OnSouthButton;
+                @SouthButton.performed += instance.OnSouthButton;
+                @SouthButton.canceled += instance.OnSouthButton;
+                @WestButton.started += instance.OnWestButton;
+                @WestButton.performed += instance.OnWestButton;
+                @WestButton.canceled += instance.OnWestButton;
+                @MovePlayer.started += instance.OnMovePlayer;
+                @MovePlayer.performed += instance.OnMovePlayer;
+                @MovePlayer.canceled += instance.OnMovePlayer;
+            }
+        }
+    }
+    public ItemSelectionActions @ItemSelection => new ItemSelectionActions(this);
+
     // TestButtons
     private readonly InputActionMap m_TestButtons;
     private ITestButtonsActions m_TestButtonsActionsCallbackInterface;
@@ -699,6 +1145,17 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     public interface IGamePlayActions
     {
         void OnMoveTowerCursor(InputAction.CallbackContext context);
+        void OnTestAction(InputAction.CallbackContext context);
+        void OnMoveTargetCursor(InputAction.CallbackContext context);
+        void OnNorthButton(InputAction.CallbackContext context);
+        void OnEastButton(InputAction.CallbackContext context);
+        void OnSouthButton(InputAction.CallbackContext context);
+        void OnWestButton(InputAction.CallbackContext context);
+        void OnMovePlayer(InputAction.CallbackContext context);
+    }
+    public interface IItemSelectionActions
+    {
+        void OnMoveItemCursor(InputAction.CallbackContext context);
         void OnTestAction(InputAction.CallbackContext context);
         void OnMoveTargetCursor(InputAction.CallbackContext context);
         void OnNorthButton(InputAction.CallbackContext context);

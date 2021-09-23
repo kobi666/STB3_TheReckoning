@@ -77,7 +77,7 @@ public abstract class TowerComponent : MyGameObject, IHasEffects,IHasRangeCompon
 
         if (componentFamily == ComponentFamily.None)
         {
-            Debug.LogError("Tower Component Family is NONE");
+            Debug.LogError("Tower Component Family is NONE : " + name);
         }
     }
     
@@ -119,5 +119,6 @@ public enum ComponentFamily
     Spawner,
     Beam,
     Cursor,
+    Melee,
     All
 }

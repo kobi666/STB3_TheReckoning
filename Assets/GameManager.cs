@@ -5,12 +5,15 @@ using System.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using TMPro;
+using MyBox;
 
 [DefaultExecutionOrder(-20)]
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public Camera MainCamera;
+
+    public ItemManager ItemManager;
 
     public List<LevelManager> AllLevels = new List<LevelManager>();
     
@@ -109,6 +112,7 @@ public class GameManager : MonoBehaviour
             AllLevelsQueue.Enqueue(level);
         }
 
+        ItemManager = GetComponent<ItemManager>();
         onLevelVictoryAcheived += StartVictoryTextSequenceAndChangeLevel;
     }
 

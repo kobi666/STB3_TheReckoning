@@ -1,34 +1,37 @@
-﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using MyBox;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using System;
+
 
 [System.Serializable]
-public class TowerActions
+public abstract class CursorActionsBase<TYPE,PARENT_TYPE> where TYPE : CursorActionBase<PARENT_TYPE>
 {
-    public Dictionary<ButtonDirectionsNames, TowerAction> Actions
+    public Dictionary<ButtonDirectionsNames, TYPE> Actions
     {
         get
         {
             if (!actionsInitialized)
             {
-                initActions(parentTowerSlotController);
+                initActions(parentObject);
             }
 
             return actions;
         }
     }
+
+    public abstract PARENT_TYPE parentObject { get; set; } 
     
     
-    public Dictionary<ButtonDirectionsNames, TowerAction> actions =
-        new Dictionary<ButtonDirectionsNames, TowerAction>();
+    public Dictionary<ButtonDirectionsNames, TYPE> actions =
+        new Dictionary<ButtonDirectionsNames, TYPE>();
 
 
-    private TowerSlotController parentTowerSlotController;
-    [TypeFilter("GetTowerActions")][SerializeReference]
-    public TowerAction[] ActionsByIndex = new TowerAction[4];
+    
+    [TypeFilter("getActionsTypes")][SerializeReference]
+    public TYPE[] ActionsByIndex = new TYPE[4];
 
    
     
@@ -56,33 +59,31 @@ public class TowerActions
 
 
     public bool actionsInitialized = false;
-    public void initActions(TowerSlotController tsc)
+    public void initActions(PARENT_TYPE tsc)
     {
-        
         if (actionsInitialized == false) { 
             actions.Clear();
             actions.Add(ButtonDirectionsNames.North,ActionsByIndex[0]);
             actions.Add(ButtonDirectionsNames.East,ActionsByIndex[1]);
             actions.Add(ButtonDirectionsNames.South,ActionsByIndex[2]);
             actions.Add(ButtonDirectionsNames.West,ActionsByIndex[3]);
-            parentTowerSlotController = tsc;
-            if (parentTowerSlotController != null) {
+            parentObject = tsc;
+            if (parentObject != null) {
                 for (int i = 0; i < ActionsByIndex.Length; i++)
                 {
                     ActionsByIndex[i].InitAction(tsc,i);
                 }
                 actionsInitialized = true;
-                }
+            }
             }
     }
     
-    private static IEnumerable<Type> GetTowerActions()
+    private static IEnumerable<Type> getActionsTypes()
     {
-        var q = typeof(TowerAction).Assembly.GetTypes()
+        var q = typeof(TYPE).Assembly.GetTypes()
             .Where(x => !x.IsAbstract) // Excludes BaseClass
             .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
-            .Where(x => x.IsSubclassOf(typeof(TowerAction)));
-        
+            .Where(x => x.IsSubclassOf(typeof(TYPE)));
         return q;
     }
 }

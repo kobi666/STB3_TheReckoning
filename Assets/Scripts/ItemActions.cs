@@ -1,20 +1,19 @@
-﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using MyBox;
-using Sirenix.OdinInspector;
 using UnityEngine;
+using System;
+using System.Linq;
+using Sirenix.OdinInspector;
 
-[System.Serializable]
-public class TowerActions
+public class ItemActions : MonoBehaviour
 {
-    public Dictionary<ButtonDirectionsNames, TowerAction> Actions
+    public Dictionary<ButtonDirectionsNames, LootAction> Actions
     {
         get
         {
             if (!actionsInitialized)
             {
-                initActions(parentTowerSlotController);
+                initActions(parentLootObjectSlot);
             }
 
             return actions;
@@ -22,13 +21,13 @@ public class TowerActions
     }
     
     
-    public Dictionary<ButtonDirectionsNames, TowerAction> actions =
-        new Dictionary<ButtonDirectionsNames, TowerAction>();
+    public Dictionary<ButtonDirectionsNames, LootAction> actions =
+        new Dictionary<ButtonDirectionsNames, LootAction>();
 
 
-    private TowerSlotController parentTowerSlotController;
+    private LootObjectSlot parentLootObjectSlot;
     [TypeFilter("GetTowerActions")][SerializeReference]
-    public TowerAction[] ActionsByIndex = new TowerAction[4];
+    public LootAction[] ActionsByIndex = new LootAction[4];
 
    
     
@@ -56,7 +55,7 @@ public class TowerActions
 
 
     public bool actionsInitialized = false;
-    public void initActions(TowerSlotController tsc)
+    public void initActions(LootObjectSlot lootObjectSlot)
     {
         
         if (actionsInitialized == false) { 
@@ -65,11 +64,11 @@ public class TowerActions
             actions.Add(ButtonDirectionsNames.East,ActionsByIndex[1]);
             actions.Add(ButtonDirectionsNames.South,ActionsByIndex[2]);
             actions.Add(ButtonDirectionsNames.West,ActionsByIndex[3]);
-            parentTowerSlotController = tsc;
-            if (parentTowerSlotController != null) {
+            parentLootObjectSlot = lootObjectSlot;
+            if (parentLootObjectSlot != null) {
                 for (int i = 0; i < ActionsByIndex.Length; i++)
                 {
-                    ActionsByIndex[i].InitAction(tsc,i);
+                    ActionsByIndex[i].InitAction(lootObjectSlot,i);
                 }
                 actionsInitialized = true;
                 }

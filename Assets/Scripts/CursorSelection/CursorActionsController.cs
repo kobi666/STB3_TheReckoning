@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 [DefaultExecutionOrder(-10)]
@@ -11,7 +12,7 @@ public class CursorActionsController : MonoBehaviour
 {
     
     [Required]
-    public TowerActionIndicator[] TowerActionIndicators = new TowerActionIndicator[4];
+    public CursorActionIndicator[] TowerActionIndicators = new CursorActionIndicator[4];
 
     /*public TowerActions TowerActions;*/
     public float DistanceFromCursor = 1f;
@@ -56,7 +57,7 @@ public class CursorActionsController : MonoBehaviour
             var cah = new CursorActionHandler(this, TowerActionIndicators[i]);
             CursorActionHandlers.Add(CardinalSet.buttonDirectionNamesClockwiseArray[i], cah);
             var v2 = TowerUtils.Cardinal4.directionsClockwise[i] * DistanceFromCursor;
-            cah.TowerActionIndicator.SpriteProjector.transform.localPosition =v2;
+            cah.cursorActionIndicator.SpriteProjector.transform.localPosition =v2;
         }
 
         InputManager.Instance.onActionButtonPress += ExecuteAction;
@@ -68,8 +69,8 @@ public class CursorActionsController : MonoBehaviour
 public class CursorActionHandler
 {
     private CursorActionsController ParentCursorActionsController;
-    public TowerActionIndicator TowerActionIndicator;
-    public TowerAction CurrentTowerAction;
+    [FormerlySerializedAs("TowerActionIndicator")] public CursorActionIndicator cursorActionIndicator;
+    public CursorActionBaseBase CurrentTowerAction;
 
     private bool actionState = false;
     private bool previousActionState = false;
@@ -110,23 +111,23 @@ public class CursorActionHandler
         {
             if (ActionAvailableCheck())
             {
-                TowerActionIndicator.SpriteProjector.SetSprite(CurrentTowerAction, true);
+                cursorActionIndicator.SpriteProjector.SetSprite(CurrentTowerAction, true);
             }
             else
             {
-                TowerActionIndicator.SpriteProjector.DisableProjector();
+                cursorActionIndicator.SpriteProjector.DisableProjector();
             }
         }
         else
         {
-            TowerActionIndicator.SpriteProjector.DisableProjector();
+            cursorActionIndicator.SpriteProjector.DisableProjector();
         }
     }
 
-    public CursorActionHandler(CursorActionsController parentCursorActionsController, TowerActionIndicator towerActionIndicator)
+    public CursorActionHandler(CursorActionsController parentCursorActionsController, CursorActionIndicator cursorActionIndicator)
     {
         ParentCursorActionsController = parentCursorActionsController;
-        TowerActionIndicator = towerActionIndicator;
+        this.cursorActionIndicator = cursorActionIndicator;
         UpdateAction();
     }
     

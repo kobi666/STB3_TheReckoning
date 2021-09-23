@@ -10,6 +10,66 @@ using MyBox;
 [System.Serializable][DefaultExecutionOrder(20)]
 public class SelectorTest2 : MonoBehaviour
 {
+
+    public event Action<CursorMode> onCursorModeChange;
+
+    public void OnCursorModeChanged(CursorMode newMode)
+    {
+        onCursorModeChange?.Invoke(newMode);
+    }
+    
+    private CursorMode _cursorMode;
+    public CursorMode CursorMode { get => _cursorMode;
+        set
+        {
+            _cursorMode = value;
+            OnCursorModeChanged(_cursorMode);
+        } 
+    }
+
+   
+
+    public void ChangeCursorMode(CursorMode newMode)
+    {
+        foreach (var mode in ModeChangeDict)
+        {
+            if (mode.Key == newMode)
+            {
+                //first item is Enable Function
+                mode.Value.Item1.Invoke();
+            }
+            else
+            {
+                //second item is Disable Function
+                mode.Value.Item2.Invoke();
+            }
+        }
+    }
+
+    public void EnableTowerMode()
+    {
+        PlayerControl.GamePlay.Enable();
+    }
+
+    public void DisableTowerMode()
+    {
+        PlayerControl.GamePlay.Disable();
+    }
+
+    public void EnableItemMode()
+    {
+        PlayerControl.ItemSelection.Enable();
+    }
+
+    public void DisableItemMode()
+    {
+        PlayerControl.ItemSelection.Disable();
+    }
+
+    private Dictionary<CursorMode, (Action, Action)> ModeChangeDict = new Dictionary<CursorMode, (Action, Action)>();
+    
+    
+    
     public LevelManager CurrentLevelManager;
     float FirstDiscoveryRange;
     public float SecondDiscoveryRangeMultiplier;
@@ -19,7 +79,6 @@ public class SelectorTest2 : MonoBehaviour
     public float MovementDuration = 0.15f;
 
     public CursorActionsController CursorActionsController;
-    
 
     public float ActionImageDistance = 1f;
     public event Action<TowerSlotController> onTowerSelect;
@@ -32,8 +91,8 @@ public class SelectorTest2 : MonoBehaviour
     public bool MoveInProgress = false;
     public TowerPosIndicator[] indicators = new TowerPosIndicator[4];
     private Dictionary<Vector2,TowerPosIndicator> indicatorsDict = new Dictionary<Vector2, TowerPosIndicator>();
-    public TowerActionIndicator[] ActionIndicators = new TowerActionIndicator[4];
-    private Dictionary<string,TowerActionIndicator> actionIndicatorsDict = new Dictionary<string, TowerActionIndicator>();
+    public CursorActionIndicator[] ActionIndicators = new CursorActionIndicator[4];
+    private Dictionary<string,CursorActionIndicator> actionIndicatorsDict = new Dictionary<string, CursorActionIndicator>();
 
     public PlayerInput PlayerControl;
     public float moveLock;
@@ -85,29 +144,7 @@ public class SelectorTest2 : MonoBehaviour
     {
         onCantPerformActionDueToResources?.Invoke();
     }
-
     
-    
-
-
-
-    public void ExecNorth() {
-        
-    }
-
-    public void ExecEast() {
-        
-        
-    }
-
-    public void ExecSouth() {
-
-       
-    }
-
-    public void ExecWest() {
-        
-    }
 
 
     public TowerSlotActions TowerActions;
@@ -145,20 +182,16 @@ public class SelectorTest2 : MonoBehaviour
         PlayerControl = new PlayerInput();
         /*TowerSlotsWithPositions =
             TowerUtils.TowerSlotsWithPositionsFromParent(GameObject.FindGameObjectWithTag("TowerParent"));*/
-         
+
         onTowerSelect += SelectTowerSlot;
         onCantPerformActionDueToResources += Shake;
         //PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => Move = ctx.ReadValue<Vector2>();
         //PlayerControl.GamePlay.MoveTowerCursor.performed += ctx => DebugAxis(ctx.ReadValue<Vector2>(), TowerUtils.GetCardinalDirectionFromAxis(ctx.ReadValue<Vector2>()));
         PlayerControl.GamePlay.MoveTowerCursor.performed += ctx =>
             MoveToNewTower4(TowerUtils.GetCardinalDirectionFromAxis(ctx.ReadValue<Vector2>()));
-        
-
-        
-        
         PlayerControl.GamePlay.MoveTowerCursor.canceled += ctx => resetMoveCounter();
         //PlayerControl.GamePlay.NorthButton.performed += ctx => TowerActions.ButtonNorth.ExecuteFunction(TowerSlotController.TowerSlot, TowerSlotController.gameObject);
-        
+        PlayerControl.ItemSelection.MoveItemCursor.performed += ctx => Shake();
     }
 
     private void Shake()
@@ -356,6 +389,10 @@ public class SelectorTest2 : MonoBehaviour
        
 
         //StartCoroutine(SelectorUtils.Shake(transform, 10f, 1.5f));
+        
+        ModeChangeDict.Add(CursorMode.TowerSelection,(EnableTowerMode,DisableTowerMode));
+        ModeChangeDict.Add(CursorMode.ItemSelection,(EnableItemMode,DisableItemMode));
+        
     }
 
     public void InitializeCursorForLevel()
@@ -400,3 +437,13 @@ public class SelectorTest2 : MonoBehaviour
 
     }
 }
+
+public enum CursorMode
+{
+    TowerSelection,
+    ItemSelection,
+    None,
+    Menu
+}
+
+

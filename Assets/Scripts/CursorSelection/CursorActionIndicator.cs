@@ -4,18 +4,14 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class TowerActionIndicator : MyGameObject
+public class CursorActionIndicator : MyGameObject
 {
-    public TowerAction TowerAction;
+    [SerializeReference]
+    public CursorActionBaseBase Action;
     [Required]
     public TowerActionSpriteProjector SpriteProjector;
 
     private float ActionColorAlpha;
 
     public Vector2 PositionDeltaFromCursor;
-
-    protected void Start()
-    {
-        
-    }
 }

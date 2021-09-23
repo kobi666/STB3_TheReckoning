@@ -10,7 +10,7 @@ using UnityEngine.Serialization;
 
 
 [System.Serializable]
-public abstract class TowerAction
+public abstract class TowerAction : CursorActionBase<TowerSlotController>
 {
    public static IEnumerable<Type> GetTowerActions()
    {
@@ -21,17 +21,9 @@ public abstract class TowerAction
       return q;
    }
 
-   public int ActionIndex;
-
-
-   public Color ActionColor;
-   [PreviewField]
-   
-   public abstract Sprite ActionSprite { get ; set; }
-   
    public TowerSlotController ParentSlotController;
 
-   public void InitAction(TowerSlotController tsc, int actionIndex)
+   public override void InitAction(TowerSlotController tsc, int actionIndex)
    {
       ActionIndex = actionIndex;
       ParentSlotController = ParentSlotController != null ? ParentSlotController : tsc;
@@ -39,7 +31,7 @@ public abstract class TowerAction
 
    public abstract void InitActionSpecific();
    
-   public abstract int ActionCost { get; set; }
+   
    
    [ShowInInspector]
    public int ActualActionCost
@@ -87,15 +79,12 @@ public abstract class TowerAction
 
 
 
-   public event Action<TowerAction> onActionExec;
+   
 
-   public void OnActionExec()
-   {
-      onActionExec?.Invoke(this);
-   }
-   public abstract void Action();
+   
+   
 
-   public void ExecAction()
+   public override void ExecAction()
    {
       if (GeneralExecutionConditions())
       {
@@ -105,7 +94,7 @@ public abstract class TowerAction
       }
    }
 
-   public abstract bool ExecutionConditions();
+   
 
    public bool GeneralExecutionConditions()
    {

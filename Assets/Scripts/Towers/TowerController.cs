@@ -4,7 +4,7 @@ using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 [RequireComponent(typeof(TowerActionManager))]
-public class TowerController : MonoBehaviour
+public class TowerController : MyGameObject
 {
     [InfoBox("Can't be 0...")] public int DefaultTowerCost = 10;
     
@@ -47,6 +47,11 @@ public class TowerController : MonoBehaviour
 
     protected void Start()
     {
-         
+         GameManager.Instance.PlayerTowersManager.ActiveTowers.Add(MyGameObjectID,this);
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.PlayerTowersManager.ActiveTowers.Remove(MyGameObjectID);
     }
 }
