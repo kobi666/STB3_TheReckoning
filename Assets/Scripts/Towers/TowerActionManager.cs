@@ -6,6 +6,8 @@ public class TowerActionManager : MonoBehaviour
     public PlayerInput PlayerInput;
     private TowerSlotController parentSlotController;
     private TowerController parentTowerController;
+    
+    [SerializeReference]
     public TowerActions Actions = new TowerActions();
 
     public void initActionManager(TowerSlotController tsc)

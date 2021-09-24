@@ -45,27 +45,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Actions:
-    ActionsByIndex:
-    - id: 0
-    - id: 1
-    - id: 2
-    - id: 3
-    actionsInitialized: 0
+    id: 0
   references:
     version: 1
     00000000:
-      type: {class: PlaceNewTowerFromGameManager, ns: , asm: Assembly-CSharp}
+      type: {class: TowerActions, ns: , asm: Assembly-CSharp}
       data:
-        ActionIndex: 0
-        ActionColor: {r: 0, g: 0, b: 0, a: 0}
-        ParentSlotController: {fileID: 0}
-        actionConter: 0
-        MaxActions: 1
-        ActionCostIncrement: 0
+        actionsInitialized: 0
+        ActionsByIndex:
+        - id: 1
+        - id: 2
+        - id: 3
+        - id: 4
+        Parent: {fileID: 0}
     00000001:
       type: {class: PlaceNewTowerFromGameManager, ns: , asm: Assembly-CSharp}
       data:
         ActionIndex: 0
+        ButtonDirectionsName: 0
         ActionColor: {r: 0, g: 0, b: 0, a: 0}
         ParentSlotController: {fileID: 0}
         actionConter: 0
@@ -75,6 +72,7 @@ MonoBehaviour:
       type: {class: PlaceNewTowerFromGameManager, ns: , asm: Assembly-CSharp}
       data:
         ActionIndex: 0
+        ButtonDirectionsName: 1
         ActionColor: {r: 0, g: 0, b: 0, a: 0}
         ParentSlotController: {fileID: 0}
         actionConter: 0
@@ -84,6 +82,17 @@ MonoBehaviour:
       type: {class: PlaceNewTowerFromGameManager, ns: , asm: Assembly-CSharp}
       data:
         ActionIndex: 0
+        ButtonDirectionsName: 2
+        ActionColor: {r: 0, g: 0, b: 0, a: 0}
+        ParentSlotController: {fileID: 0}
+        actionConter: 0
+        MaxActions: 1
+        ActionCostIncrement: 0
+    00000004:
+      type: {class: PlaceNewTowerFromGameManager, ns: , asm: Assembly-CSharp}
+      data:
+        ActionIndex: 0
+        ButtonDirectionsName: 3
         ActionColor: {r: 0, g: 0, b: 0, a: 0}
         ParentSlotController: {fileID: 0}
         actionConter: 0
@@ -101,10 +110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d1dba04a3ec5b4aaed6d6b6213106d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DefaultTowerCost: 10
   TowerActionManager: {fileID: 0}
   WeaponController: {fileID: 0}
   ParentSlotController: {fileID: 0}
   TowerComponents: []
+  TowerRank: 0
   TowerSprite: {fileID: 0}
 --- !u!1 &2835729042853078452
 GameObject:

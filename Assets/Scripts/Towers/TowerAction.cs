@@ -20,7 +20,8 @@ public abstract class TowerAction : CursorActionBase<TowerSlotController>
          .Where(x => typeof(TowerAction).IsAssignableFrom(x)); // Excludes classes not inheriting from BaseClass
       return q;
    }
-
+   
+   [SerializeField]
    public TowerSlotController ParentSlotController;
 
    public override void InitAction(TowerSlotController tsc, int actionIndex)
@@ -175,7 +176,7 @@ public class PlaceNewTowerFromGameManager : TowerAction
 
    public TowerController TowerController
    {
-      get => GameManager.Instance.PlayerTowersManager.PlayerTowersByIndex[ActionIndex] ?? null;
+      get => GameManager.Instance?.PlayerTowersManager.GetTowerByButtonName(ButtonDirectionsName) ?? null;
    }
 
    public override void InitActionSpecific()

@@ -9,6 +9,7 @@ using System.Linq;
 public abstract class CursorActions<T,ParentT> where T : CursorActionBase<ParentT>
 {
     public bool actionsInitialized = false;
+    
     public Dictionary<ButtonDirectionsNames, T> Actions
     {
         get
@@ -22,14 +23,17 @@ public abstract class CursorActions<T,ParentT> where T : CursorActionBase<Parent
         }
     }
     
+    [SerializeReference]
     public Dictionary<ButtonDirectionsNames, T> actions =
         new Dictionary<ButtonDirectionsNames, T>();
     
+    [SerializeReference]
     public T[] ActionsByIndex = new T[4];
-
+    
+    [SerializeReference]
     public ParentT Parent;
     
-    public void initActions(ParentT tsc)
+    public void initActions(ParentT parentObject)
     {
         if (actionsInitialized == false) { 
             actions.Clear();
@@ -37,24 +41,16 @@ public abstract class CursorActions<T,ParentT> where T : CursorActionBase<Parent
             actions.Add(ButtonDirectionsNames.East,ActionsByIndex[1]);
             actions.Add(ButtonDirectionsNames.South,ActionsByIndex[2]);
             actions.Add(ButtonDirectionsNames.West,ActionsByIndex[3]);
-            Parent = tsc;
+            Parent = parentObject;
             if (Parent != null) {
                 for (int i = 0; i < ActionsByIndex.Length; i++)
                 {
-                    ActionsByIndex[i].InitAction(tsc,i);
+                    ActionsByIndex[i]?.InitAction(parentObject,i);
                 }
                 actionsInitialized = true;
             }
         }
     }
-    
-    private static IEnumerable<Type> GetTowerActions()
-    {
-        var q = typeof(T).Assembly.GetTypes()
-            .Where(x => !x.IsAbstract) // Excludes BaseClass
-            .Where(x => !x.IsGenericTypeDefinition) // Excludes C1<>
-            .Where(x => x.IsSubclassOf(typeof(T)));
-        
-        return q;
-    }
+
+    public abstract IEnumerable<Type> GetActions();
 }

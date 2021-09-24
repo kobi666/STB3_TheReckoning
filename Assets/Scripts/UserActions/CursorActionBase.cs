@@ -26,6 +26,8 @@ public abstract class CursorActionBaseBase
     
     public int ActionIndex;
 
+    public ButtonDirectionsNames ButtonDirectionsName;
+
 
     public Color ActionColor;
     [PreviewField]
@@ -36,9 +38,6 @@ public abstract class CursorActionBaseBase
 public abstract class CursorActionBase<PARENT_TYPE> : CursorActionBaseBase
 {
     public abstract void InitAction(PARENT_TYPE p, int actionIndex);
-    
-    
-    
     
     public event Action<CursorActionBase<PARENT_TYPE>> onActionExec;
 
