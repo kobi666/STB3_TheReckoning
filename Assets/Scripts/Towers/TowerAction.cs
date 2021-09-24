@@ -84,11 +84,11 @@ public abstract class TowerAction : CursorActionBase<TowerSlotController>
    
    
 
-   public override void ExecAction()
+   public override void ExecAction(ButtonDirectionsNames buttonDirectionsNames)
    {
       if (GeneralExecutionConditions())
       {
-         Action();
+         Action(buttonDirectionsNames);
          OnActionExec();
          ActionCounter++;
       }
@@ -121,7 +121,7 @@ public class TestTowerAction : TowerAction
    public int actionCost;
    public override int ActionCost { get => actionCost; set => actionCost = value; }
 
-   public override void Action()
+   public override void Action(ButtonDirectionsNames buttonDirectionsName)
    {
       
    }
@@ -149,7 +149,7 @@ public class PlaceNewTowerFromPrefab : TowerAction
    
    public override int ActionCost { get => actionCost; set => actionCost = value; }
 
-   public override void Action()
+   public override void Action(ButtonDirectionsNames buttonDirectionsName)
    {
       try
       {
@@ -184,7 +184,7 @@ public class PlaceNewTowerFromGameManager : TowerAction
    }
 
    public override int ActionCost { get => TowerController?.DefaultTowerCost ?? 10; set => ActionCost = ActionCost; }
-   public override void Action()
+   public override void Action(ButtonDirectionsNames buttonDirectionsName)
    {
       try
       {
@@ -219,7 +219,7 @@ public class NullAction : TowerAction
    private int actionCost = 0;
    public override int ActionCost { get => actionCost; set => actionCost = value; }
 
-   public override void Action()
+   public override void Action(ButtonDirectionsNames buttonDirectionsNames)
    {
       
    }

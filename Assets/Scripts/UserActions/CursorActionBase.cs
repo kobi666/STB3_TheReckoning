@@ -7,9 +7,9 @@ using UnityEngine;
 
 public abstract class CursorActionBaseBase
 {
-    public abstract void Action();
+    public abstract void Action(ButtonDirectionsNames buttonDirectionsName);
 
-    public abstract void ExecAction();
+    public abstract void ExecAction(ButtonDirectionsNames buttonDirectionsName);
     
     public abstract bool ExecutionConditions();
 

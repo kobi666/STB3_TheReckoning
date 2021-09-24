@@ -143,7 +143,4 @@ public class ComponentFilter
 }
 
 
-public class LootActions
-{
-    
-}
+

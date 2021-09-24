@@ -38,23 +38,23 @@ public abstract class CursorActionsBase<TYPE,PARENT_TYPE> where TYPE : CursorAct
     [Button]
     void north()
     {
-        ActionsByIndex[0].ExecAction();
+        ActionsByIndex[0].ExecAction(ButtonDirectionsNames.North);
     }
     [Button]
     void east()
     {
-        ActionsByIndex[1].ExecAction();
+        ActionsByIndex[1].ExecAction(ButtonDirectionsNames.East);
     }
     [Button]
     void south()
     {
-        ActionsByIndex[2].ExecAction();
+        ActionsByIndex[2].ExecAction(ButtonDirectionsNames.South);
     }
     
     [Button]
     void west()
     {
-        ActionsByIndex[3].ExecAction();
+        ActionsByIndex[3].ExecAction(ButtonDirectionsNames.West);
     }
 
 
