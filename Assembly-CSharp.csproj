@@ -84,7 +84,9 @@
      <Compile Include="Assets\Scripts\Units\LifeBarmanager.cs" />
      <Compile Include="Assets\Scripts\Effect.cs" />
      <Compile Include="Assets\uniteventTest.cs" />
+     <Compile Include="Assets\WaterRippleForScreens\Scripts\RippleEffect.cs" />
      <Compile Include="Assets\Scripts\UserActions\CursorActionsBase.cs" />
+     <Compile Include="Assets\CameraBoundObjects.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\ActiveObjectPool.cs" />
      <Compile Include="Assets\pathGeneratorTest.cs" />
      <Compile Include="Assets\testloop.cs" />
@@ -94,27 +96,30 @@
      <Compile Include="Assets\Scripts\GeneralClasses\GO_PRXM.cs" />
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\CapInfo.cs" />
      <Compile Include="Assets\Scripts\CollisionDetection\UnitMover.cs" />
+     <Compile Include="Assets\_LootStuff\NewLootStuff\ItemLootObject.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\TextColor.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\ProjectileMovementFunctions.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurveFormulaMath.cs" />
      <Compile Include="Assets\Scripts\Towers\TowerAction.cs" />
      <Compile Include="Assets\Scripts\CollisionDetection\DetectionTags.cs" />
      <Compile Include="Assets\PlayerBaseController.cs" />
+     <Compile Include="Assets\testingHold.cs" />
      <Compile Include="Assets\TestingGenericWeapon\AOEEffect.cs" />
      <Compile Include="Assets\VDtest.cs" />
      <Compile Include="Assets\Scripts\Units\SpawningBehaviors.cs" />
      <Compile Include="Assets\WeaponAttack.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurveCalculatorClosestPoint.cs" />
+     <Compile Include="Assets\Scripts\CursorSelection\CursorActions.cs" />
      <Compile Include="Assets\Garbage\WeaponUpdates.cs" />
+     <Compile Include="Assets\TestTableMatrix.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Explosion.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Examples\Scripts\BGTestCurveMath.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\TowerComponentData.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\NativeClasses.cs" />
-     <Compile Include="Assets\Scripts\ItemActions.cs" />
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\VectorChar.cs" />
      <Compile Include="Assets\MainPathController.cs" />
      <Compile Include="Assets\TriggerTest.cs" />
-     <Compile Include="Assets\LootStuff\LootObjectSlot.cs" />
+     <Compile Include="Assets\_LootStuff\LootObjectSlot.cs" />
      <Compile Include="Assets\Samples\Input System\1.0.0-preview.5\Custom Binding Composite\CustomComposite.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ProjectileExitPoint.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurvePointField.cs" />
@@ -138,15 +143,18 @@
      <Compile Include="Assets\Scripts\CollisionDetection\GWCS.cs" />
      <Compile Include="Assets\Scripts\Levels-rooms\RoomController.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurveBaseMath.cs" />
+     <Compile Include="Assets\TestingGenericWeapon\ComponentFilter.cs" />
      <Compile Include="Assets\Scripts\testInterface.cs" />
+     <Compile Include="Assets\_LootStuff\NewLootStuff\TowerLootObject.cs" />
      <Compile Include="Assets\TestEdenDetection.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurveSettings.cs" />
      <Compile Include="Assets\Garbage\TestTowerControllerLegacy.cs" />
+     <Compile Include="Assets\Garbage\TestingHold.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\ShaderInt.cs" />
      <Compile Include="Assets\LaserTest.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Chooser\Chooser.cs" />
      <Compile Include="Assets\ProjectileAttacks.cs" />
-     <Compile Include="Assets\Prefabs\TargetDetection\EffectableTargetBank.cs" />
+     <Compile Include="Assets\_Prefabs\TargetDetection\EffectableTargetBank.cs" />
      <Compile Include="Assets\GuyTest.cs" />
      <Compile Include="Assets\Scripts\Units\EffectableUnit.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ProjectileUtils.cs" />
@@ -160,6 +168,7 @@
      <Compile Include="Assets\Scripts\GeneralClasses\AnimationController.cs" />
      <Compile Include="Assets\Scripts\Units\NormalUnitStates.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Examples\Scripts\BGTestCurveRuntimeCustomFields.cs" />
+     <Compile Include="Assets\_LootStuff\NewLootStuff\IStaticDirectionalSlot.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\Helpers\TweenBase.cs" />
      <Compile Include="Assets\Scripts\PlayerActionsManager.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\TowerCrosshairMovementController.cs" />
@@ -181,7 +190,9 @@
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcSplitterPolyline.cs" />
      <Compile Include="Assets\Scripts\TestScripts\TestScript.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Examples\Scripts\BGTestCurveDynamic.cs" />
+     <Compile Include="Assets\_LootStuff\NewLootStuff\LootPreview.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\ValueFloat.cs" />
+     <Compile Include="Assets\WaterRippleForScreens\Examples\Scripts\PanelPositionItem.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\SplinePercentage.cs" />
      <Compile Include="Assets\GenericStateMachine.cs" />
      <Compile Include="Assets\UnitBattleManager.cs" />
@@ -254,6 +265,7 @@
      <Compile Include="Assets\TextMesh Pro\ProjectileEffect.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\StateMachineClasses.cs" />
      <Compile Include="Assets\Scripts\CursorSelection\ICursorSelctable.cs" />
+     <Compile Include="Assets\PlacementSelectionMenu.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\Tween.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\DeathManager.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Utilities\Math.cs" />
@@ -312,7 +324,7 @@
      <Compile Include="Assets\Scripts\GeneralClasses\MethodDropDown.cs" />
      <Compile Include="Assets\Scripts\CollisionDetection\ChildDetectableCollider.cs" />
      <Compile Include="Assets\testwalker.cs" />
-     <Compile Include="Assets\LootStuff\LootItem.cs" />
+     <Compile Include="Assets\_LootStuff\LootItem.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcWithCursor.cs" />
      <Compile Include="Assets\Scripts\RangeDetection\RangeDetector.cs" />
      <Compile Include="Assets\Scripts\PathControl\SeconderyPathController.cs" />
@@ -336,6 +348,7 @@
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcCursorObjectRotate.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\ShaderColor.cs" />
      <Compile Include="Assets\Scripts\Projectiles\GenericProjectile.cs" />
+     <Compile Include="Assets\_LootStuff\LootActions.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurvePoint.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\Volume.cs" />
      <Compile Include="Assets\Scripts\Towers\TowerCrosshairData.cs" />
@@ -347,8 +360,10 @@
      <Compile Include="Assets\Scripts\Units\UnitAnimationController.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcColliderMeshAbstract.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Curve\BGCurve.cs" />
+     <Compile Include="Assets\_LootStuff\NewLootStuff\NewLootObject.cs" />
      <Compile Include="Assets\SplineDetector.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\ValueColor.cs" />
+     <Compile Include="Assets\WaterRippleForScreens\Scripts\RippleGenerator.cs" />
      <Compile Include="Assets\Scripts\CollisionDetection\DetectableCollider.cs" />
      <Compile Include="Assets\Samples\TowerComponent.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\PoolObjectQueue.cs" />
@@ -368,6 +383,7 @@
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\ShaderVector.cs" />
      <Compile Include="Assets\Scripts\Units\UnitTypes.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Spline\Objects\SplineAnchor.cs" />
+     <Compile Include="Assets\_LootStuff\NewLootStuff\LootPreviewController.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Spline\Objects\SplineTangent.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcSweep2D.cs" />
      <Compile Include="Assets\BansheeGz\BGCurve\Scripts\Cc\BGCcWithCursorObject.cs" />
@@ -379,6 +395,7 @@
      <Compile Include="Assets\Scripts\PlayerObjects\PlayerControllerUtilis.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\Rotator.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\Helpers\TweenEngine.cs" />
+     <Compile Include="Assets\WaterRippleForScreens\Examples\Scripts\UIManager.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\CanvasGroupAlpha.cs" />
      <Compile Include="Assets\Scripts\TowerPlacementItem.cs" />
      <Compile Include="Assets\LaserTest2.cs" />
@@ -396,7 +413,7 @@
      <Compile Include="Assets\BansheeGz\BGCurve\Examples\Scripts\BGTestCamera.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Examples\Scripts\BGPointControlAnimator2D.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\ValueVector4.cs" />
-     <Compile Include="Assets\Prefabs\TargetDetection\TagDetector.cs" />
+     <Compile Include="Assets\_Prefabs\TargetDetection\TagDetector.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\StateMachine\StateMachine.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\SpriteRendererColor.cs" />
      <Compile Include="Assets\PathWalker.cs" />
@@ -415,15 +432,18 @@
      <Compile Include="Assets\Scripts\GeneralClasses\TestUtilities.cs" />
      <Compile Include="Assets\CursorObject.cs" />
      <Compile Include="Assets\GameManager.cs" />
+     <Compile Include="Assets\_LootStuff\NewLootStuff\NewLootAction.cs" />
      <Compile Include="Assets\Scripts\PlayerObjects\GenericStateMachine\GenericSMClasses.cs" />
      <Compile Include="Assets\instantiateTestspawner.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Events\Events.cs" />
+     <Compile Include="Assets\_LootStuff\NewLootStuff\NewLootSlot.cs" />
      <Compile Include="Assets\Vectrosity\Plugins\Scripts\VisibilityControl.cs" />
+     <Compile Include="Assets\_LootStuff\NewLootStuff\LootSelector.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\SerializedFunc.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Spline\Objects\CurveDetail.cs" />
      <Compile Include="Assets\Scripts\TowerComponents\UnitSpawnerTowerControllerLegacy.cs" />
      <Compile Include="Assets\Testmovement.cs" />
-     <Compile Include="Assets\Prefabs\TargetDetection\TargetBank.cs" />
+     <Compile Include="Assets\_Prefabs\TargetDetection\TargetBank.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Tween\TweenActions\LightRange.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Utilities\EditorUtilities.cs" />
      <Compile Include="Assets\Scripts\GeneralClasses\PerksAndNerfs.cs" />
@@ -432,20 +452,22 @@
      <Compile Include="Assets\Scripts\UserActions\LootAction.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider3DAbstract.cs" />
      <Compile Include="Assets\Pixelplacement\Surge\Chooser\Interfaces\IChooser.cs" />
+     <Compile Include="Assets\TowerSelectionDisplay.cs" />
      <Compile Include="Assets\Scripts\Towers\SlotParentManager.cs" />
      <Compile Include="Assets\BansheeGz\BGCollider\Scripts\Collider\BGCcCollider2DEdge.cs" />
-     <Compile Include="Assets\Prefabs\ProjectileDynamicData.cs" />
-     <Compile Include="Assets\LootStuff\LootActions.cs" />
-     <Compile Include="Assets\Scripts\CursorSelection\CursorActions.cs" />
+     <Compile Include="Assets\_Prefabs\ProjectileDynamicData.cs" />
+     <Compile Include="Assets\Garbage\TestBuffClass.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\BansheeGz\BGCollider\readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Pixelplacement\Surge\Spline\Art\Shaders\Invisible.shader" />
      <None Include="Assets\Pixelplacement\Surge\ReadMe.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\WaterRippleForScreens\Shaders\RippleDiffuse.shader" />
      <None Include="Assets\Pixelplacement\Surge\License.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\CGHierarchyIcons\Documentation\README.txt" />
+     <None Include="Assets\WaterRippleForScreens\Readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
@@ -688,6 +710,9 @@
  <Reference Include="Unity.Collections.LowLevel.ILSupport">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.collections@0.15.0-preview.21/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll</HintPath>
  </Reference>
+ <Reference Include="DemiLib">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+ </Reference>
  <Reference Include="Sirenix.OdinInspector.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
  </Reference>
@@ -714,6 +739,9 @@
  </Reference>
  <Reference Include="Sirenix.Serialization">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenPro">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
  </Reference>
  <Reference Include="Sirenix.Utilities.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>

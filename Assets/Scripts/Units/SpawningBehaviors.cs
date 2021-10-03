@@ -149,14 +149,14 @@ public class SpawnSingleUnitToBasePosition : SpawnerBehavior
         throw new NotImplementedException();
     }
 
-    public override void UpdateEffect(Effect ef, List<Effect> appliedEffects)
+    public override void UpdateEffect(Effect ef)
     {
-        throw new NotImplementedException();
+        
     }
 
     public override void SetEffectList(List<Effect> effects)
     {
-        throw new NotImplementedException();
+        
     }
 }
 
@@ -302,7 +302,7 @@ public class SpawnWaves : SpawnerBehavior
         return null;
     }
 
-    public override void UpdateEffect(Effect ef, List<Effect> appliedEffects)
+    public override void UpdateEffect(Effect ef)
     {
        
     }

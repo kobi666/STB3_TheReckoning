@@ -15,6 +15,7 @@ public class ProjectilePoolCreationData : IHasEffectAnimation
     [HideLabel] public ProjectileEffect projectileEffect;
     public GenericProjectile ProjectileBase;
     public AnimationClip OnHitAnimation = null;
+    public ProjectileFamily ProjectileFamily;
     
     static Vector3 nowhere = new Vector3(9999,9999,9999);
     private PoolObjectQueue<GenericProjectile> projectilePool;
@@ -42,6 +43,7 @@ public class ProjectilePoolCreationData : IHasEffectAnimation
     public PoolObjectQueue<GenericProjectile> CreatePool(GameObject parentGameObject)
     {
         GenericProjectile proj = GameObject.Instantiate(ProjectileBase, nowhere, Quaternion.identity);
+        proj.ProjectileFamily = ProjectileFamily;
         proj.BaseProjectileEffect = projectileEffect;
         proj.MovementFunction = projectileMovement;
         proj.OnHitAnimation = OnHitAnimation;

@@ -109,6 +109,16 @@ public class GenericUnitSpawner : TowerComponent
         SpawnerBehavior.InitBehavior(this,PathPointFinder);
     }
 
+    public override void OnAwake()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void OnStart()
+    {
+        throw new NotImplementedException();
+    }
+
     public event Action onPathUpdate;
 
     public override void PostAwake()
@@ -158,7 +168,7 @@ public class GenericUnitSpawner : TowerComponent
         return null;
     }
 
-    public override void UpdateEffect(Effect ef, List<Effect> appliedEffects)
+    public override void UpdateEffect(Effect ef)
     {
         
     }

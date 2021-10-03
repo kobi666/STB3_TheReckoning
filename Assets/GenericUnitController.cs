@@ -257,7 +257,7 @@ public class GenericUnitController : MyGameObject,IQueueable<GenericUnitControll
         return null;
     }
 
-    public void UpdateEffect(Effect ef, List<Effect> appliedEffects)
+    public void UpdateEffect(Effect ef)
     {
         
     }

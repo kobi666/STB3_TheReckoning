@@ -48,8 +48,10 @@ public class GameManager : MonoBehaviour
 
     public void UpdateMoney(int Moneydelta)
     {
+        if (Moneydelta != 0) {
         CurrentLevelManager.ResourcesManager.Money += Moneydelta;
         OnMoneyUpdate();
+        }
     }
 
     public void UpdateLife(int LifeDelta)
@@ -156,7 +158,7 @@ public class GameManager : MonoBehaviour
         if (AllLevelsQueue.Count > 0)
         {
             StartNewLevel(AllLevelsQueue.Dequeue());
-            PlayerCursor.InitializeCursorForLevel();
+            PlayerCursor?.InitializeCursorForLevel();
         }
         else
         {
@@ -198,6 +200,6 @@ public class GameManager : MonoBehaviour
         StartNewLevel(AllLevelsQueue.Dequeue());
         /*UpdateMoney(CurrentLevelManager.InitialMoney);
         UpdateLife(CurrentLevelManager.InitialLife);*/
-        PlayerCursor.InitializeCursorForLevel();
+        PlayerCursor?.InitializeCursorForLevel();
     }
 }

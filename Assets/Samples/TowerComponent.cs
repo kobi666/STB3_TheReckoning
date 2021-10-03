@@ -14,10 +14,15 @@ public abstract class TowerComponent : MyGameObject, IHasEffects,IHasRangeCompon
 
     [FormerlySerializedAs("TowerComponentFamily")] public ComponentFamily componentFamily;
 
-    public void OnInitComponent()
+
+    public abstract void OnAwake();
+    public abstract void OnStart();
+
+    public event Action onComponentInitlized;
+
+    public void OnComponentInitlized()
     {
-        InitComponent();
-        onInitComponent?.Invoke();
+        onComponentInitlized?.Invoke();
     }
     
     public bool RotatingComponent;
@@ -79,6 +84,7 @@ public abstract class TowerComponent : MyGameObject, IHasEffects,IHasRangeCompon
         {
             Debug.LogError("Tower Component Family is NONE : " + name);
         }
+        OnAwake();
     }
     
     
@@ -88,11 +94,13 @@ public abstract class TowerComponent : MyGameObject, IHasEffects,IHasRangeCompon
         parentTowerComponent = parentTowerComponent ?? GetComponentInParent<TowerComponent>() ?? null;
         ParentTowerLegacy =  ParentTowerLegacy ?? GetComponentInParent<TowerControllerLegacy>() ?? null;
         ParentTowerSlot = parentTowerSlot ?? GetComponentInParent<TowerSlotController>() ?? null;
+        OnStart();
+        
     }
 
     public abstract List<Effect> GetEffectList();
 
-    public abstract void UpdateEffect(Effect ef, List<Effect> appliedEffects);
+    public abstract void UpdateEffect(Effect ef);
     public void SetEffectList(List<Effect> effects)
     {
         Debug.LogWarning("Redundent");

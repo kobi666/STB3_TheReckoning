@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 using Sirenix.OdinInspector;
 using System.Threading.Tasks;
 using MyBox;
@@ -26,8 +27,12 @@ public class SelectorTest2 : MonoBehaviour
             OnCursorModeChanged(_cursorMode);
         } 
     }
-
-   
+    
+    /*[Button]
+    void ChangeModeToItemTest()
+    {
+        ChangeCursorMode(CursorMode.ItemSelection);
+    }*/
 
     public void ChangeCursorMode(CursorMode newMode)
     {
@@ -104,7 +109,7 @@ public class SelectorTest2 : MonoBehaviour
         get => selectedTowerSlot;
         set {
             selectedTowerSlot = value;
-            CursorActionsController.UpdateTowerActions(value.TowerActions);
+            CursorActionsController.UpdateActions(value.TowerActions);
         }
     }
     
@@ -191,7 +196,8 @@ public class SelectorTest2 : MonoBehaviour
             MoveToNewTower4(TowerUtils.GetCardinalDirectionFromAxis(ctx.ReadValue<Vector2>()));
         PlayerControl.GamePlay.MoveTowerCursor.canceled += ctx => resetMoveCounter();
         //PlayerControl.GamePlay.NorthButton.performed += ctx => TowerActions.ButtonNorth.ExecuteFunction(TowerSlotController.TowerSlot, TowerSlotController.gameObject);
-        PlayerControl.ItemSelection.MoveItemCursor.performed += ctx => Shake();
+        
+        onLootSlotUpdate += delegate(LootObjectSlot slot) {  CursorActionsController.UpdateActions(slot.LootObject.LootAction.LootActions()); };
     }
 
     private void Shake()
@@ -345,6 +351,27 @@ public class SelectorTest2 : MonoBehaviour
         }
     }
 
+    public event Action<LootObjectSlot> onLootSlotUpdate;
+
+    public void OnLootSlotUpdate(LootObjectSlot lootObjectSlot)
+    {
+        onLootSlotUpdate?.Invoke(lootObjectSlot);
+    }
+
+    public LootObjectSlot SelectedLootSlot
+    {
+        get => _selectedLootSlot;
+        set
+        {
+            OnLootSlotUpdate(value);
+            _selectedLootSlot = value;
+        }
+    }
+
+    
+    
+    
+
     private void OnDisable() {
         PlayerControl.GamePlay.Disable();
         moveLock = 0.7f;
@@ -352,6 +379,7 @@ public class SelectorTest2 : MonoBehaviour
     }
     
     public bool Legacy = false;
+    private LootObjectSlot _selectedLootSlot;
 
     // Start is called before the first frame update
     void Start()

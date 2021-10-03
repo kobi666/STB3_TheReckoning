@@ -57,10 +57,10 @@ public class ProjectileAttack : WeaponAttack
         return GetEffects();
     }
 
-    public override void UpdateEffect(Effect effectUpdate, List<Effect> appliedEffects)
+    public override void UpdateEffect(Effect effectUpdate)
     {
         if (effectUpdate != null){
-            foreach (var effect in appliedEffects)
+            foreach (var effect in GetEffectList())
             {
                 if (effectUpdate.EffectName() == effect.EffectName())
                 {

@@ -52,9 +52,25 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
     public SplineAttack SplineAttack = new SplineAttack();
     public string WeaponName;
 
-    
 
-    public bool WeaponInitialized = false;
+    private bool _weaponInitilized = false;
+    [ShowInInspector]
+    public bool WeaponInitialized 
+    {
+        get => _weaponInitilized;
+        set
+        {
+            if (value)
+            {
+                _weaponInitilized = true;
+                
+            }
+        }
+    }
+    
+    
+    
+    
     public void InitWeapon()
     {
         if (WeaponTypeInt == 0)
@@ -411,27 +427,21 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
         ComponentRotator.StartRotatingTowardsTarget();
     }
 
-    protected void Awake()
-    {
-        base.Awake();
-        onTargetAdd += SetTarget;
-    }
+    
 
     public override void InitComponent()
     {
         InitWeapon();
-    }
-
-    public override void PostAwake() {
-        
         
     }
 
+    public override void OnAwake()
+    {
+        onTargetAdd += SetTarget;throw new NotImplementedException();
+    }
 
-
-    
-    protected void Start() {
-        base.Start();
+    public override void OnStart()
+    {
         TargetBank.onTargetAdd += OnEnemyEnteredRange;
         TargetBank.onTargetRemove += OnEnemyLeftRange;
         onAttackInitiate += StartAsyncAttack;
@@ -455,20 +465,33 @@ public class GenericWeaponController : TowerComponent,IhasExitAndFinalPoint,ITar
 
         ParentTowerLegacy = ParentTowerLegacy ?? GetComponentInParent<TowerControllerLegacy>();
         if (projectileExitPoint != null) {
-        onAttackInitiate += projectileExitPoint.StartAsyncRotation;
-        onAttackCease += projectileExitPoint.StopAsyncRotation;
+            onAttackInitiate += projectileExitPoint.StartAsyncRotation;
+            onAttackCease += projectileExitPoint.StopAsyncRotation;
         }
         InitWeapon();
     }
+
+
+    public override void PostAwake() {
+        
+        
+    }
+
+
+
+    
+    
 
     public override List<Effect> GetEffectList()
     {
         return WeaponAttack.GetEffectList();
     }
 
-    public override void UpdateEffect(Effect ef,List<Effect> appliedEffects)
+    
+
+    public override void UpdateEffect(Effect ef)
     {
-        WeaponAttack.UpdateEffect(ef,appliedEffects);
+        WeaponAttack.UpdateEffect(ef);
     }
 
     public override List<CollisionDetector> GetTagDetectors()

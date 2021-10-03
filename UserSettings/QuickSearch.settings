@@ -6,7 +6,7 @@ debug = false
 itemIconSize = 1
 queryFolder = "Assets/Editor/Queries"
 onBoardingDoNotAskAgain = true
-showPackageIndexes = false
+showPackageIndexes = true
 debounceMs = 250
 filters = {
 	asset = true
@@ -16,7 +16,7 @@ filters = {
 	settings = true
 }
 scopes = {
-	"last_search.AB59B443" = "entity debugger"
+	"last_search.AB59B443" = "playerinput"
 }
 providers = {
 	asset = {

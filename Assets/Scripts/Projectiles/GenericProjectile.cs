@@ -14,6 +14,8 @@ public class GenericProjectile : MyGameObject,IQueueable<GenericProjectile>,IAct
     [SerializeReference]
     public ProjectileEffect BaseProjectileEffect;
 
+    public ProjectileFamily ProjectileFamily;
+    
     public CollisionDetector CollisionDetector;
     public DetectableCollider DetectableCollider;
 
@@ -473,4 +475,13 @@ public class GenericProjectile : MyGameObject,IQueueable<GenericProjectile>,IAct
 
 
     
+}
+
+
+public enum ProjectileFamily
+{
+    Reguler,
+    Energy,
+    Ballistic,
+    someotherBS
 }

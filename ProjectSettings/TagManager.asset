@@ -25,7 +25,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - InGameUI
   - Units
   - Enemy
   - PlayerUnits
@@ -78,6 +78,9 @@ TagManager:
     locked: 0
   - name: Projectiles
     uniqueID: 3768189027
+    locked: 0
+  - name: InGameUI
+    uniqueID: 706206799
     locked: 0
   - name: Cursor
     uniqueID: 2763423751

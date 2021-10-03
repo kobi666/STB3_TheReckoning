@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
 
 public class InputManager : MonoBehaviour
 {
     public PlayerInput PlayerInput;
     public PlayerInput.GamePlayActions GamePlayActions;
+    public PlayerInput.ItemSelectionActions ItemSelectionActions;
 
     private static InputManager instance;
 
@@ -33,10 +35,18 @@ public class InputManager : MonoBehaviour
         onActionButtonPress?.Invoke(buttonName);
     }
 
+    public event Action<ButtonDirectionsNames> onButtonHoldStart;
+
+    public void OnButtonHoldStart(ButtonDirectionsNames buttonName)
+    {
+        onButtonHoldStart?.Invoke(buttonName);
+    }
+
     private void Awake()
     {
         PlayerInput = new PlayerInput();
         GamePlayActions = PlayerInput.GamePlay;
+        ItemSelectionActions = PlayerInput.ItemSelection;
     }
 
     private void OnEnable()
@@ -47,6 +57,7 @@ public class InputManager : MonoBehaviour
     private void OnDisable()
     {
         PlayerInput.GamePlay.Disable();
+        ItemSelectionActions.Disable();
     }
 
     private void Start()
@@ -55,5 +66,13 @@ public class InputManager : MonoBehaviour
         GamePlayActions.EastButton.performed += ctx => OnActionButtonPress(ButtonDirectionsNames.East);
         GamePlayActions.SouthButton.performed += ctx => OnActionButtonPress(ButtonDirectionsNames.South);
         GamePlayActions.WestButton.performed += ctx => OnActionButtonPress(ButtonDirectionsNames.West);
+
+        ItemSelectionActions.NorthButton.started += ctx =>
+        {
+            if (ctx.interaction is HoldInteraction)
+            {
+
+            }
+        };
     }
 }

@@ -53,6 +53,33 @@ public class SplineAttack : WeaponAttack
         return listeffect;
     }
 
+    public override List<Effect> GetEffectList()
+    {
+        List<Effect> effects = new List<Effect>();
+        foreach (var splineBehavior in SplineAttackProperties.SplineBehaviors)
+        {
+            foreach (var se in splineBehavior.SplineEffect)
+            {
+                effects.AddRange(se.AllEffects());
+            }
+        }
+
+        return effects;
+    }
+
+    public override void UpdateEffect(Effect ef)
+    {
+        if (ef != null){
+            foreach (var effect in GetEffectList())
+            {
+                if (ef.EffectName() == effect.EffectName())
+                {
+                    effect.UpdateEffectValues(ef);
+                }
+            }
+        }
+    }
+
     public override void SetEffectList(List<Effect> effects)
     {
         Debug.LogWarning("Redundent");

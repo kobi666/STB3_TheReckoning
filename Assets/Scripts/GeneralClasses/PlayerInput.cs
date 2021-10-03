@@ -428,6 +428,22 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""CancelButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""f201b4ab-ebd0-442e-b0bf-d6d1450375e2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ConfirmButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""0fa604e3-29d7-4e4c-b180-813d1d6a1776"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -705,6 +721,50 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""MovePlayer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""91c1b284-4449-49bc-b023-e7cb1cc170b4"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ConfirmButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""81b9112a-62a8-4ed7-9d4e-6b671eea9518"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ConfirmButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7e90f421-bb4b-4f39-b8b8-1eba1102a7c0"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CancelButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1678dfec-2a3c-448e-a1a3-3dcdaea8da35"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CancelButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -838,6 +898,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_ItemSelection_SouthButton = m_ItemSelection.FindAction("SouthButton", throwIfNotFound: true);
         m_ItemSelection_WestButton = m_ItemSelection.FindAction("WestButton", throwIfNotFound: true);
         m_ItemSelection_MovePlayer = m_ItemSelection.FindAction("MovePlayer", throwIfNotFound: true);
+        m_ItemSelection_CancelButton = m_ItemSelection.FindAction("CancelButton", throwIfNotFound: true);
+        m_ItemSelection_ConfirmButton = m_ItemSelection.FindAction("ConfirmButton", throwIfNotFound: true);
         // TestButtons
         m_TestButtons = asset.FindActionMap("TestButtons", throwIfNotFound: true);
         m_TestButtons_T = m_TestButtons.FindAction("T", throwIfNotFound: true);
@@ -990,6 +1052,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_ItemSelection_SouthButton;
     private readonly InputAction m_ItemSelection_WestButton;
     private readonly InputAction m_ItemSelection_MovePlayer;
+    private readonly InputAction m_ItemSelection_CancelButton;
+    private readonly InputAction m_ItemSelection_ConfirmButton;
     public struct ItemSelectionActions
     {
         private @PlayerInput m_Wrapper;
@@ -1002,6 +1066,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @SouthButton => m_Wrapper.m_ItemSelection_SouthButton;
         public InputAction @WestButton => m_Wrapper.m_ItemSelection_WestButton;
         public InputAction @MovePlayer => m_Wrapper.m_ItemSelection_MovePlayer;
+        public InputAction @CancelButton => m_Wrapper.m_ItemSelection_CancelButton;
+        public InputAction @ConfirmButton => m_Wrapper.m_ItemSelection_ConfirmButton;
         public InputActionMap Get() { return m_Wrapper.m_ItemSelection; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1035,6 +1101,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @MovePlayer.started -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnMovePlayer;
                 @MovePlayer.performed -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnMovePlayer;
                 @MovePlayer.canceled -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnMovePlayer;
+                @CancelButton.started -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnCancelButton;
+                @CancelButton.performed -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnCancelButton;
+                @CancelButton.canceled -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnCancelButton;
+                @ConfirmButton.started -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnConfirmButton;
+                @ConfirmButton.performed -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnConfirmButton;
+                @ConfirmButton.canceled -= m_Wrapper.m_ItemSelectionActionsCallbackInterface.OnConfirmButton;
             }
             m_Wrapper.m_ItemSelectionActionsCallbackInterface = instance;
             if (instance != null)
@@ -1063,6 +1135,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @MovePlayer.started += instance.OnMovePlayer;
                 @MovePlayer.performed += instance.OnMovePlayer;
                 @MovePlayer.canceled += instance.OnMovePlayer;
+                @CancelButton.started += instance.OnCancelButton;
+                @CancelButton.performed += instance.OnCancelButton;
+                @CancelButton.canceled += instance.OnCancelButton;
+                @ConfirmButton.started += instance.OnConfirmButton;
+                @ConfirmButton.performed += instance.OnConfirmButton;
+                @ConfirmButton.canceled += instance.OnConfirmButton;
             }
         }
     }
@@ -1163,6 +1241,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnSouthButton(InputAction.CallbackContext context);
         void OnWestButton(InputAction.CallbackContext context);
         void OnMovePlayer(InputAction.CallbackContext context);
+        void OnCancelButton(InputAction.CallbackContext context);
+        void OnConfirmButton(InputAction.CallbackContext context);
     }
     public interface ITestButtonsActions
     {

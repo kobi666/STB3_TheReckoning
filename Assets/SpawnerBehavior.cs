@@ -102,9 +102,10 @@ using Sirenix.OdinInspector;
         public abstract void Behavior();
 
         public abstract List<Effect> GetEffectList();
+        
 
 
-        public abstract void UpdateEffect(Effect ef, List<Effect> appliedEffects);
+        public abstract void UpdateEffect(Effect ef);
 
 
         public abstract void SetEffectList(List<Effect> effects);

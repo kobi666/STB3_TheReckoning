@@ -49,6 +49,14 @@ public class SplineEffect
         new Damage()
     };
 
+    public List<Effect> AllEffects()
+    {
+        return MainTargetEffects.Select(x => x).Concat(OnPathTargetsEffects.Select(x => x)).ToList();
+    }
+    
+        
+    
+
     private event Action<Effectable,Vector2> onPathEffect;
     private event Action<Effectable,Vector2> onMainTargetEffect;
     private event Action<Effectable,Vector2> onAttack;

@@ -30,6 +30,11 @@ public abstract class CursorActions<T,ParentT> where T : CursorActionBase<Parent
     [SerializeReference]
     public T[] ActionsByIndex = new T[4];
     
+    public abstract T Action_North { get; set; }
+    public abstract T Action_East { get; set; }
+    public abstract T Action_South { get; set; }
+    public abstract T Action_West { get; set; }
+    
     [SerializeReference]
     public ParentT Parent;
     
@@ -37,10 +42,10 @@ public abstract class CursorActions<T,ParentT> where T : CursorActionBase<Parent
     {
         if (actionsInitialized == false) { 
             actions.Clear();
-            actions.Add(ButtonDirectionsNames.North,ActionsByIndex[0]);
-            actions.Add(ButtonDirectionsNames.East,ActionsByIndex[1]);
-            actions.Add(ButtonDirectionsNames.South,ActionsByIndex[2]);
-            actions.Add(ButtonDirectionsNames.West,ActionsByIndex[3]);
+            actions.Add(ButtonDirectionsNames.North,Action_North);
+            actions.Add(ButtonDirectionsNames.East,Action_East);
+            actions.Add(ButtonDirectionsNames.South,Action_South);
+            actions.Add(ButtonDirectionsNames.West,Action_West);
             Parent = parentObject;
             if (Parent != null) {
                 for (int i = 0; i < ActionsByIndex.Length; i++)

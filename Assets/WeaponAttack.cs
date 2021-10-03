@@ -25,15 +25,9 @@ public abstract class WeaponAttack : IHasEffects,IHasRangeComponents,IhasExitAnd
         return null;
     }
 
-    public virtual List<Effect> GetEffectList()
-    {
-        return null;
-    }
+    public abstract List<Effect> GetEffectList();
 
-    public virtual void UpdateEffect(Effect ef, List<Effect> appliedEffects)
-    {
-        
-    }
+    public abstract void UpdateEffect(Effect ef);
 
     public abstract void SetEffectList(List<Effect> effects);
     

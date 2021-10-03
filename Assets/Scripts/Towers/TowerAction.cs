@@ -112,7 +112,10 @@ public abstract class TowerAction : CursorActionBase<TowerSlotController>
 
 public class TestTowerAction : TowerAction
 {
-   public override Sprite ActionSprite { get => null; set => value = null; }
+   public override Sprite ActionSprite(ButtonDirectionsNames buttonDirectionsName)
+   {
+      return null;
+   }
 
    public override void InitActionSpecific()
    {
@@ -137,9 +140,12 @@ public class TestTowerAction : TowerAction
 public class PlaceNewTowerFromPrefab : TowerAction
 {
    [Required] public TowerController TowerPrefab;
-   
-   [PreviewField,ShowInInspector]
-   public override Sprite ActionSprite { get => TowerPrefab.TowerSprite; set => TowerPrefab.TowerSprite = value; }
+
+   [PreviewField, ShowInInspector]
+   public override Sprite ActionSprite(ButtonDirectionsNames buttonDirectionsName)
+   {
+      return TowerPrefab.TowerSprite;
+   }
 
    public override void InitActionSpecific()
    {
@@ -172,7 +178,10 @@ public class PlaceNewTowerFromPrefab : TowerAction
 
 public class PlaceNewTowerFromGameManager : TowerAction
 {
-   public override Sprite ActionSprite { get => TowerController.TowerSprite; set => ActionSprite = ActionSprite; }
+   public override Sprite ActionSprite(ButtonDirectionsNames buttonDirectionsName)
+   {
+      return TowerController.TowerSprite;
+   }
 
    public TowerController TowerController
    {
@@ -208,7 +217,11 @@ public class NullAction : TowerAction
 {
    [PreviewField]
    public Sprite actionSprite;
-   public override Sprite ActionSprite { get => actionSprite; set => actionSprite = value; }
+
+   public override Sprite ActionSprite(ButtonDirectionsNames buttonDirectionsName)
+   {
+      return null;
+   }
 
    public override void InitActionSpecific()
    {

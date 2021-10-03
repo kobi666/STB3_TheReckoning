@@ -52,12 +52,17 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Plugins\Demigiant\DOTweenPro\DOTweenProShortcuts.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTweenPro\DOTweenTextMeshPro.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\BezierPoint.cs" />
      <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTweenPro\DOTweenTk2d.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\BezierWalkerWithTime.cs" />
      <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\BezierWalkerLocomotion.cs" />
      <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTweenPro\DOTweenDeAudio.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\ParticlesFollowBezier.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\BezierSpline.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\BezierWalkerWithSpeed.cs" />
@@ -67,16 +72,20 @@
      <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Utilities\BezierWalker.cs" />
      <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTweenPro\DOTweenDeUnityExtended.cs" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\NoEditor\Sirenix.Serialization.dll.backup.txt" />
      <None Include="Assets\Plugins\BezierSolution\README.txt" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.xml" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.xml" />
      <None Include="Assets\Plugins\UniRx\ReadMe.txt" />
+     <None Include="Assets\Plugins\Demigiant\readme_DOTweenPro.txt" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\NoEditor\Sirenix.Utilities.dll.backup.txt" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll.backup.txt" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Utilities.dll.backup.txt" />
      <None Include="Assets\Plugins\Sirenix\Readme.txt" />
+     <None Include="Assets\Plugins\Demigiant\DOTweenPro\readme.txt" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.xml" />
+     <None Include="Assets\Plugins\Demigiant\DemiLib\Core\DemiLib.xml" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\link.xml.backup.txt" />
      <None Include="Assets\Plugins\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Serialization.dll.backup.txt" />
      <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
@@ -307,6 +316,9 @@
  <Reference Include="Unity.Collections.LowLevel.ILSupport">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.collections@0.15.0-preview.21/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll</HintPath>
  </Reference>
+ <Reference Include="DemiLib">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+ </Reference>
  <Reference Include="Sirenix.OdinInspector.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
  </Reference>
@@ -333,6 +345,9 @@
  </Reference>
  <Reference Include="Sirenix.Serialization">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenPro">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
  </Reference>
  <Reference Include="Sirenix.Utilities.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public interface IHasEffects
 {
     List<Effect> GetEffectList();
-    void UpdateEffect(Effect ef, List<Effect> appliedEffects);
+    void UpdateEffect(Effect ef);
     void SetEffectList(List<Effect> effects);
 }
 

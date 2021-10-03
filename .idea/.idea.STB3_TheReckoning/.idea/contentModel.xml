@@ -227,6 +227,30 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.Player.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="_LootStuff" t="Include">
+          <e p="LootActions.cs" t="Include" />
+          <e p="LootItem.cs" t="Include" />
+          <e p="LootObjectSlot.cs" t="Include" />
+          <e p="NewLootStuff" t="Include">
+            <e p="IStaticDirectionalSlot.cs" t="Include" />
+            <e p="ItemLootObject.cs" t="Include" />
+            <e p="LootPreview.cs" t="Include" />
+            <e p="LootPreviewController.cs" t="Include" />
+            <e p="LootSelector.cs" t="Include" />
+            <e p="NewLootAction.cs" t="Include" />
+            <e p="NewLootObject.cs" t="Include" />
+            <e p="NewLootSlot.cs" t="Include" />
+            <e p="TowerLootObject.cs" t="Include" />
+          </e>
+        </e>
+        <e p="_Prefabs" t="Include">
+          <e p="ProjectileDynamicData.cs" t="Include" />
+          <e p="TargetDetection" t="Include">
+            <e p="EffectableTargetBank.cs" t="Include" />
+            <e p="TagDetector.cs" t="Include" />
+            <e p="TargetBank.cs" t="Include" />
+          </e>
+        </e>
         <e p="ACT.cs" t="Include" />
         <e p="AreaEffect.cs" t="Include" />
         <e p="BansheeGz" t="Include">
@@ -405,6 +429,7 @@
           </e>
         </e>
         <e p="BeamTowerControllerLegacy.cs" t="Include" />
+        <e p="CameraBoundObjects.cs" t="Include" />
         <e p="CGHierarchyIcons" t="Include">
           <e p="Documentation" t="Include">
             <e p="README.txt" t="Include" />
@@ -449,6 +474,8 @@
         <e p="GameManager.cs" t="Include" />
         <e p="Garbage" t="Include">
           <e p="OldStateMachine.cs" t="Include" />
+          <e p="TestBuffClass.cs" t="Include" />
+          <e p="TestingHold.cs" t="Include" />
           <e p="TestTowerControllerLegacy.cs" t="Include" />
           <e p="TestWeaponController.cs" t="Include" />
           <e p="TowerTestScript.cs" t="Include" />
@@ -469,11 +496,6 @@
         <e p="LaserWeaponTest.cs" t="Include" />
         <e p="LootItemManager.cs" t="Include" />
         <e p="LootObject.cs" t="Include" />
-        <e p="LootStuff" t="Include">
-          <e p="LootActions.cs" t="Include" />
-          <e p="LootItem.cs" t="Include" />
-          <e p="LootObjectSlot.cs" t="Include" />
-        </e>
         <e p="MainPathController.cs" t="Include" />
         <e p="MapManager.cs" t="Include" />
         <e p="PathController.cs" t="Include" />
@@ -607,6 +629,7 @@
             </e>
           </e>
         </e>
+        <e p="PlacementSelectionMenu.cs" t="Include" />
         <e p="PlayerBaseController.cs" t="Include" />
         <e p="PlayerResources.cs" t="Include" />
         <e p="PlayerTowersManager.cs" t="Include" />
@@ -704,6 +727,14 @@
             </e>
           </e>
           <e p="Demigiant" t="Include">
+            <e p="DemiLib" t="Include">
+              <e p="Core" t="Include">
+                <e p="DemiLib.xml" t="Include" />
+                <e p="Editor" t="Include">
+                  <e p="DemiEditor.xml" t="Include" />
+                </e>
+              </e>
+            </e>
             <e p="DOTween" t="Include">
               <e p="Modules" t="Include">
                 <e p="DOTweenModuleAudio.cs" t="Include" />
@@ -716,6 +747,20 @@
               </e>
               <e p="README.txt" t="Include" />
             </e>
+            <e p="DOTweenPro" t="Include">
+              <e p="DOTweenAnimation.cs" t="Include" />
+              <e p="DOTweenDeAudio.cs" t="Include" />
+              <e p="DOTweenDeUnityExtended.cs" t="Include" />
+              <e p="DOTweenProShortcuts.cs" t="Include" />
+              <e p="DOTweenTextMeshPro.cs" t="Include" />
+              <e p="DOTweenTk2d.cs" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="DOTweenAnimationInspector.cs" t="Include" />
+                <e p="DOTweenPreviewManager.cs" t="Include" />
+              </e>
+              <e p="README.txt" t="Include" />
+            </e>
+            <e p="readme_DOTweenPro.txt" t="Include" />
           </e>
           <e p="Editor" t="Include">
             <e p="ScriptInspector3" t="Include">
@@ -1299,14 +1344,6 @@
             </e>
           </e>
         </e>
-        <e p="Prefabs" t="Include">
-          <e p="ProjectileDynamicData.cs" t="Include" />
-          <e p="TargetDetection" t="Include">
-            <e p="EffectableTargetBank.cs" t="Include" />
-            <e p="TagDetector.cs" t="Include" />
-            <e p="TargetBank.cs" t="Include" />
-          </e>
-        </e>
         <e p="ProjectileAttacks.cs" t="Include" />
         <e p="RallyPointDiscoveryGenerator.cs" t="Include" />
         <e p="RangeDrawer.cs" t="Include" />
@@ -1398,7 +1435,6 @@
           <e p="interfaces" t="Include">
             <e p="WeaponInterfaces.cs" t="Include" />
           </e>
-          <e p="ItemActions.cs" t="Include" />
           <e p="Levels-rooms" t="Include">
             <e p="LevelManager.cs" t="Include" />
             <e p="RoomBorder.cs" t="Include" />
@@ -1539,12 +1575,14 @@
           <e p="AOEEffect.cs" t="Include" />
           <e p="AreaOfEffect.cs" t="Include" />
           <e p="AttackProperties.cs" t="Include" />
+          <e p="ComponentFilter.cs" t="Include" />
           <e p="SplineAttack.cs" t="Include" />
           <e p="SplineAttackProperties.cs" t="Include" />
           <e p="SplineBehavior.cs" t="Include" />
           <e p="SplineDynamicData.cs" t="Include" />
           <e p="SplineMovementFunction.cs" t="Include" />
         </e>
+        <e p="TestingHold.cs" t="Include" />
         <e p="testloop.cs" t="Include" />
         <e p="Testmovement.cs" t="Include" />
         <e p="TestPlayerControllerOfir.cs" t="Include" />
@@ -1552,6 +1590,7 @@
         <e p="testPredicate.cs" t="Include" />
         <e p="testscript2.cs" t="Include" />
         <e p="testSplineCon.cs" t="Include" />
+        <e p="TestTableMatrix.cs" t="Include" />
         <e p="testwalker.cs" t="Include" />
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">
@@ -1584,6 +1623,7 @@
         </e>
         <e p="TowerActions.cs" t="Include" />
         <e p="TowerPosIndicator.cs" t="Include" />
+        <e p="TowerSelectionDisplay.cs" t="Include" />
         <e p="TowerSlotParentManager.cs" t="Include" />
         <e p="TriggerTest.cs" t="Include" />
         <e p="UDedText.cs" t="Include" />
@@ -1619,6 +1659,22 @@
           <e p="Vectrosity Documentation" t="Include">
             <e p="Vectrosity changelog.txt" t="Include" />
             <e p="Vectrosity5 Upgrade Guide.txt" t="Include" />
+          </e>
+        </e>
+        <e p="WaterRippleForScreens" t="Include">
+          <e p="Examples" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="PanelPositionItem.cs" t="Include" />
+              <e p="UIManager.cs" t="Include" />
+            </e>
+          </e>
+          <e p="README.txt" t="Include" />
+          <e p="Scripts" t="Include">
+            <e p="RippleEffect.cs" t="Include" />
+            <e p="RippleGenerator.cs" t="Include" />
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="RippleDiffuse.shader" t="Include" />
           </e>
         </e>
         <e p="WeaponAttack.cs" t="Include" />

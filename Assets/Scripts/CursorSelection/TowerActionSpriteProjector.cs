@@ -12,18 +12,16 @@ public class TowerActionSpriteProjector : MonoBehaviour
     [ShowInInspector]
     private float ActionColorAlphaRO;
 
-    public void SetSprite(CursorActionBaseBase towerAction)
+    public void SetSprite(CursorActionBaseBase towerAction, ButtonDirectionsNames buttonName)
     {
-        SpriteRenderer.sprite = towerAction.ActionSprite;
+        SpriteRenderer.sprite = towerAction.ActionSprite(buttonName);
         var actionCOlor = towerAction.ActionColor;
         var newColor = new Color(actionCOlor.r,actionCOlor.g,actionCOlor.b,ActionColorAlphaRO);
     }
     
-    public void SetSprite(CursorActionBaseBase towerAction, bool onSwicth)
+    public void SetSprite(CursorActionBaseBase towerAction, ButtonDirectionsNames buttonName, bool onSwitch)
     {
-        SpriteRenderer.sprite = towerAction.ActionSprite;
-        var actionCOlor = towerAction.ActionColor;
-        var newColor = new Color(actionCOlor.r,actionCOlor.g,actionCOlor.b,ActionColorAlphaRO);
+        SetSprite(towerAction,buttonName);
         SpriteRenderer.enabled = true;
     }
 

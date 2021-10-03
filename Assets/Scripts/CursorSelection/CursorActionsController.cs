@@ -40,13 +40,22 @@ public class CursorActionsController : MonoBehaviour
         }
     }
 
-    public void UpdateTowerActions(TowerActions towerActions)
+    public void UpdateActions(TowerActions towerActions)
               
     {
         foreach (var towerAction in towerActions.Actions)
         {
             CursorActionHandlers[towerAction.Key].CurrentTowerAction = towerAction.Value;
-            CursorActionHandlers[towerAction.Key].UpdateAction();
+            CursorActionHandlers[towerAction.Key].UpdateAction(towerAction.Key);
+        }
+    }
+    
+    public void UpdateActions(LootActions lootActions) 
+    {
+        foreach (var towerAction in lootActions.Actions)
+        {
+            CursorActionHandlers[towerAction.Key].CurrentTowerAction = towerAction.Value;
+            CursorActionHandlers[towerAction.Key].UpdateAction(towerAction.Key);
         }
     }
 
@@ -54,7 +63,7 @@ public class CursorActionsController : MonoBehaviour
     {
         for (int i = 0; i < CardinalSet.buttonDirectionNamesClockwiseArray.Length; i++)
         {
-            var cah = new CursorActionHandler(this, TowerActionIndicators[i]);
+            var cah = new CursorActionHandler(this, TowerActionIndicators[i],CardinalSet.buttonDirectionNamesClockwiseArray[i]);
             CursorActionHandlers.Add(CardinalSet.buttonDirectionNamesClockwiseArray[i], cah);
             var v2 = TowerUtils.Cardinal4.directionsClockwise[i] * DistanceFromCursor;
             cah.cursorActionIndicator.SpriteProjector.transform.localPosition =v2;
@@ -100,18 +109,18 @@ public class CursorActionHandler
         if (ActionAvailableCheck())
         {
             CurrentTowerAction.ExecAction(buttonDirectionsName);
-            UpdateAction();
+            UpdateAction(buttonDirectionsName);
         }
     }
 
-    public async void UpdateAction()
+    public async void UpdateAction(ButtonDirectionsNames buttonName)
     {
         await Task.Yield();
         if (CurrentTowerAction != null)
         {
             if (ActionAvailableCheck())
             {
-                cursorActionIndicator.SpriteProjector.SetSprite(CurrentTowerAction, true);
+                cursorActionIndicator.SpriteProjector.SetSprite(CurrentTowerAction,buttonName, true);
             }
             else
             {
@@ -124,11 +133,11 @@ public class CursorActionHandler
         }
     }
 
-    public CursorActionHandler(CursorActionsController parentCursorActionsController, CursorActionIndicator cursorActionIndicator)
+    public CursorActionHandler(CursorActionsController parentCursorActionsController, CursorActionIndicator cursorActionIndicator,ButtonDirectionsNames buttonName)
     {
         ParentCursorActionsController = parentCursorActionsController;
         this.cursorActionIndicator = cursorActionIndicator;
-        UpdateAction();
+        UpdateAction(buttonName);
     }
     
     
@@ -140,5 +149,6 @@ public enum ButtonDirectionsNames
     North = 0,
     East = 1,
     South = 2,
-    West = 3
+    West = 3,
+    None = 99
 }

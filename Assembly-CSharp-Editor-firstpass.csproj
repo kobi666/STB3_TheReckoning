@@ -54,13 +54,16 @@
   <ItemGroup>
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierUtils.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierSplineEditor.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTweenPro\Editor\DOTweenPreviewManager.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierPointEditor.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierPointExtraDataDrawer.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierWalkerLocomotionEditor.cs" />
+     <Compile Include="Assets\Plugins\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Editor\ParticlesFollowBezierEditor.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierWalkerWithTimeEditor.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierWalkerEditor.cs" />
      <Compile Include="Assets\Plugins\BezierSolution\Editor\BezierWalkerWithSpeedEditor.cs" />
+     <None Include="Assets\Plugins\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
  <Reference Include="UnityEngine">
  <HintPath>C:/UnityEditors/2020.3.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -298,6 +301,12 @@
  <Reference Include="Unity.Collections.LowLevel.ILSupport">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.collections@0.15.0-preview.21/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll</HintPath>
  </Reference>
+ <Reference Include="DemiLib">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenProEditor">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
+ </Reference>
  <Reference Include="Sirenix.OdinInspector.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
  </Reference>
@@ -306,6 +315,9 @@
  </Reference>
  <Reference Include="Unity.Burst.Unsafe">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Library/PackageCache/com.unity.burst@1.4.1/Unity.Burst.Unsafe.dll</HintPath>
+ </Reference>
+ <Reference Include="DemiEditor">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
  </Reference>
  <Reference Include="Sirenix.OdinInspector.Attributes">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
@@ -327,6 +339,9 @@
  </Reference>
  <Reference Include="Sirenix.Serialization">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenPro">
+ <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
  </Reference>
  <Reference Include="Sirenix.Utilities.Editor">
  <HintPath>D:/_unityProjects/STB3_TheReckoning/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>

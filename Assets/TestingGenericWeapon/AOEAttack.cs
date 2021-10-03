@@ -44,6 +44,33 @@ public class AOEAttack : WeaponAttack
         
     }
 
+    public override List<Effect> GetEffectList()
+    {
+        List<Effect> effects = new List<Effect>();
+        foreach (var aoeb in AoeBehaviors)
+        {
+            foreach (var aoebEffect in aoeb.Effects)
+            {
+                effects.AddRange(aoebEffect.Effects);
+            }
+        }
+
+        return effects;
+    }
+
+    public override void UpdateEffect(Effect ef)
+    {
+        if (ef != null){
+            foreach (var effect in GetEffectList())
+            {
+                if (ef.EffectName() == effect.EffectName())
+                {
+                    effect.UpdateEffectValues(ef);
+                }
+            }
+        }
+    }
+
     public override void SetEffectList(List<Effect> effects)
     {
         foreach (var aoebeahavior in AoeBehaviors)

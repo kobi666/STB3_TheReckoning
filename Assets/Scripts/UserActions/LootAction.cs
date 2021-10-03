@@ -7,15 +7,18 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 
 [System.Serializable]
-public abstract class LootAction : CursorActionBase<Object>
+public abstract class LootAction : CursorActionBase<LootObject>
 {
+
+    public abstract LootActions LootActions();
     public override void ExecAction(ButtonDirectionsNames buttonDirectionsNames)
     {
         Action(buttonDirectionsNames);
     }
 
-    public override void InitAction(Object p, int actionIndex)
+    public override void InitAction(LootObject p, int actionIndex)
     {
+        
         InitActionInternal();
     }
 
@@ -35,7 +38,7 @@ public class GetLootItem : LootAction
     }
     public override void Action(ButtonDirectionsNames buttonDirectionsName)
     {
-        Item.OnItemGet(GameManager.Instance);
+        Item.OnItemGet(ItemManager.instance);
     }
 
     public override bool ExecutionConditions()
@@ -44,10 +47,17 @@ public class GetLootItem : LootAction
     }
 
     public override int ActionCost { get; set; } = 0;
-    public override Sprite ActionSprite
+
+    public override Sprite ActionSprite(ButtonDirectionsNames buttonDirectionsName)
     {
-        get => Item.ItemSprite;
-        set { }
+        return Item.ItemSprite;
+    }
+
+    private LootItemActions LootItemActions = new LootItemActions();
+
+    public override LootActions LootActions()
+    {
+        return LootItemActions;
     }
 
     public override void InitActionInternal()
@@ -56,41 +66,7 @@ public class GetLootItem : LootAction
     }
 }
 
-[System.Serializable]
-public class AddOrReplaceTower : LootAction
-{
-    [Required]
-    public TowerController TowerControllerPrefab;
-    public override void Action(ButtonDirectionsNames buttonDirectionsName)
-    {
-        if (TowerControllerPrefab != null) {
-        var ptm = GameManager.Instance.PlayerTowersManager;
-        
-            ptm.SetTowerByButtonName(buttonDirectionsName,TowerControllerPrefab);
-        
-        }
-        else
-        {
-            Debug.LogWarning("NULL tower prefab");
-        }
-        
-    }
 
-    public override bool ExecutionConditions()
-    {
-        return true;
-    }
-
-    public override int ActionCost { get; set; }
-    public override Sprite ActionSprite { 
-        get => TowerControllerPrefab?.TowerSprite;
-        set { }
-    }
-    public override void InitActionInternal()
-    {
-        
-    }
-}
 
 
  

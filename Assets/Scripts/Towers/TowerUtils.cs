@@ -287,6 +287,15 @@ public static bool FindIfTowerInHorizontalRange(TowerPositionQuery tq)
     public static string[] DirectionNamesClockWise8 = {"UP","UP_RIGHT","RIGHT","DOWN_RIGHT","DOWN","DOWN_LEFT","LEFT","UP_LEFT"};
     public static string[] DirectionNamesClockWise4 = {"UP","RIGHT","DOWN","LEFT"};
     public static Predicate<TowerPositionQuery>[] DiscoveryConditions8 = {GetUpTower, GetUpRightTower,GetRightTower,GetDownRightTower,GetDownTower,GetDownLeftTower,GetLeftTower,GetUpLeftTower};
+
+
+    public static ButtonDirectionsNames[] ButtonDirectionsNamesArray =
+    {
+        ButtonDirectionsNames.North,
+        ButtonDirectionsNames.East,
+        ButtonDirectionsNames.South,
+        ButtonDirectionsNames.West
+    };
     
 
     public class CardinalSet {

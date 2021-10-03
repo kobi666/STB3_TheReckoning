@@ -30,8 +30,9 @@ public abstract class CursorActionBaseBase
 
 
     public Color ActionColor;
+
     [PreviewField]
-    public abstract Sprite ActionSprite { get ; set; }
+    public abstract Sprite ActionSprite(ButtonDirectionsNames buttonDirectionsName);
 }
 
 
